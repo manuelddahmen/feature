@@ -1,0 +1,149 @@
+package one.empty3.feature;
+
+public class M {
+    protected final int columns;
+    protected final int lines;
+    double [] x;
+    public M(int c, int l) {
+        this.lines = l;
+        this.columns = c;
+        x = new double[l*c];
+        //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
+    }
+    public M(int lc) {
+        this(lc, lc);
+    }
+    public double get(int column, int line) {
+        if(column>=0 && column<columns && line>=0 && line<lines)
+            return x[line*columns+column];
+        else
+            return 0.0;
+    }
+    public void set(int column, int line, double d) {
+        if(column>=0 && column<columns && line>=0 && line<lines)
+            x[line*columns+column] = d;
+    }
+    public M tild() {
+        if(columns==lines)
+        {
+            M m = new M(columns, lines);
+            for(int i=0; i<columns; i++)
+                for(int j=0;j< lines; j++)
+                    m.set(i, j, get(j, i));
+            return m;
+        }
+        throw new MatrixFormatException("l!=c"+ lines+" "+ columns+"M . tild()");
+    }
+    public double trace() {
+        return tild().dot(this).trace();
+    }
+
+
+
+    public double diagonalSum() {
+        if(!isSquare())
+            throw new MatrixFormatException("determinant: not square matrix");
+        double sum = 0.0;
+        for(int i = 0; i<lines; i++)
+            sum+=get(i, i);
+        return sum;
+    }
+
+    private M dot(M m) {
+        if(!isSquare() || columns==m.lines)
+            throw new MatrixFormatException("determinant: not square matrix");
+            M res = new M(m.columns, lines);
+            for(int i=0; i<m.columns; i++)
+                for(int j=0; j<lines; j++) {
+                    for(int k = 0; k<lines; k++)
+                        res.set(i, j, res.get(i, j) + get(i, k)*res.get(k, j));
+                }
+            return res;
+    }
+/*
+    Recursive definition of determinate using expansion by minors.
+            */
+    double determinant()
+    {
+        if(!isSquare())
+            throw new MatrixFormatException("determinant: not square matrix");
+        int i,j,j1,j2;
+        double det = 0;
+        M m = null;
+
+        if (lines < 1) { /* Error */
+            throw new MatrixFormatException("<1 determinant");
+        } else if (lines == 1) { /* Shouldn't get used */
+            det = get(0, 0);
+        } else if (lines== 2) {
+            det = get(0, 0) * get(1,1) - get(1,0) * get(0,1);
+        } else {
+            det = 0;
+            for (j1=0;j1<lines;j1++) {
+                m = new M(lines-1);
+                for (i=1;i<lines;i++) {
+                    j2 = 0;
+                    for (j=0;j<lines;j++) {
+                        if (j == j1)
+                            continue;
+                        m.set(i-1,j2, get(i, j));
+                        j2++;
+                    }
+                }
+                det += Math.pow(-1.0,j1+2.0) * get(0, j1) * m.determinant();
+            }
+        }
+        return(det);
+    }
+
+    private boolean isSquare() {
+        return lines==columns;
+    }
+
+    /*
+       Find the cofactor matrix of a square matrix
+    */
+    public M CoFactor()
+    {
+        if(!isSquare())
+            throw new MatrixFormatException("determinant: not square matrix");
+        int n = lines;
+        M a = this;
+        M b = new M(lines-1);
+
+
+        int i,j,ii,jj,i1,j1;
+        double det;
+        M c;
+
+        c = new M(n-1);
+
+        for (j=0;j<n;j++) {
+            for (i=0;i<n;i++) {
+
+                /* Form the adjoint a_ij */
+                i1 = 0;
+                for (ii=0;ii<n;ii++) {
+                    if (ii == i)
+                        continue;
+                    j1 = 0;
+                    for (jj=0;jj<n;jj++) {
+                        if (jj == j)
+                            continue;
+                        c.set(i1,j1,get(ii,jj));
+                        j1++;
+                    }
+                    i1++;
+                }
+
+                /* Calculate the determinate */
+                det = c.determinant();
+
+                /* Fill in the elements of the cofactor */
+                b.set(i,j, Math.pow(-1.0,i+j+2.0) * det);
+            }
+        }
+        return b;
+    }
+
+}
