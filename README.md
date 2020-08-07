@@ -4,7 +4,11 @@ https://drive.google.com/folderview?id=10CXWU2JPVsNMbHrAssxN23KzizzNkvHg
 Documentation utilisée.
 
 ## filtres (kernels) d'images
-En développement.
+Gauss. Multiple iterations. Tests for photos.
+
+
+
+En développement. Ambitions.
 
 Mis à part la curiosité technocrate le but est 
 d'aider ou d'assister les personnes auxquelles
