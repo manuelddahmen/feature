@@ -23,7 +23,7 @@ public class Main {
                     System.out.println("format name image " + ext + " found");
 
                     PixM pixM = new PixM(ImageIO.read(new File("resources/"+s)), PixM.COMP_RED);
-                    BufferedImage grayScale = new MIMmops().harris(pixM, 1.2, 2, 1).getGrayScale();
+                    BufferedImage grayScale = new MIMmops().harris(pixM, 1.2, 5, 10).getGrayScale();
                     File file = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
 
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')

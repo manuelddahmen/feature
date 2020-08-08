@@ -29,7 +29,7 @@ public class M {
             M m = new M(columns, lines);
             for(int i=0; i<columns; i++)
                 for(int j=0;j< lines; j++)
-                    m.set(i, j, get(j, i));
+                    m.set(i, j, get(i, j));
             return m;
         }
         throw new MatrixFormatException("l!=c"+ lines+" "+ columns+"M . tild()");
