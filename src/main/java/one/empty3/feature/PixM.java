@@ -9,6 +9,15 @@ public class PixM extends M {
     public static final int COMP_BLUE = 2;
     public static final int COMP_ALPHA = 3;
     public static final int COMP_INTENSITY = 4;
+
+    public int getCompNo() {
+        return compNo;
+    }
+
+    public void setCompNo(int compNo) {
+        this.compNo = compNo;
+    }
+
     private int compNo;
 
     public PixM(int l, int c) {
@@ -29,13 +38,18 @@ public class PixM extends M {
     }
 
 
-    private void delta(PixM orig, int i, int j) {
-        WindowPixM gaussFilter = new WindowPixM(5, 2.0);
-        for (int u = -2; u <= 2; u++)
-            for (int v = -2; v <= 2; v++) {
-                this.set(i, j,
-                        orig.get(i + u, j + v) - orig.get(i, j) * gaussFilter.gauss(u, v));
+    public PixM filter(GaussFilterPixM gaussFilter) {
+        PixM c = new PixM(columns, lines);
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < lines; j++) {
+                for (int u = -2; u <= 2; u++)
+                    for (int v = -2; v <= 2; v++) {
+                        c.set(i, j,
+                                get(i + u, j + v) - get(i, j) * gaussFilter.gauss(u, v));
+                    }
             }
+        }
+        return c;
     }
 
 
@@ -44,19 +58,14 @@ public class PixM extends M {
         float[] f = new float[4];
         Color.white.getColorComponents(f);
         float maxColorValue = f[compNo];
-        PixM c = new PixM(columns, lines);
         double maxRgbai = 0.0;
         double meanRgbai = 0.0;
         BufferedImage image = new BufferedImage(columns,
                 lines, BufferedImage.TYPE_INT_ARGB);
+        PixM c;
+        GaussFilterPixM gaussFilter = new GaussFilterPixM(5, 2.0);
+        c = filter(gaussFilter);
 
-
-        for (int i = 0; i < image.getWidth(); i++) {
-            for (int j = 0; j < image.getHeight(); j++) {
-                c.delta(this, i, j);
-
-            }
-        }
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
                 maxRgbai = Math.max(get(i, j), meanRgbai);
@@ -78,4 +87,9 @@ public class PixM extends M {
         }
         return image;
     }
+
+    public int getCompCount() {
+        return 4;
+    }
+
 }
