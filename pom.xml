@@ -10,7 +10,7 @@
     <name>FeaturesManager</name>
 
     <groupId>one.empty3</groupId>
-    <artifactId>FeaturesManager</artifactId>
+    <artifactId>features</artifactId>
     <version>2020.3.9-SNAPSHOT</version><!-- -SNAPSHOT-->
     <description>FeaturesManager</description>
     <packaging>jar</packaging>
@@ -125,7 +125,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
                 <configuration>
-                    <mainClass>sample.Main</mainClass>
+                    <mainClass>one.empty3.feature.Main</mainClass>
                     <arguments>
                         <argument>-Xms4000m</argument>
                         <argument>-Xmx4000m</argument>
@@ -454,6 +454,11 @@
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
             <version>14</version>
+        </dependency>
+        <dependency>
+            <groupId>com.miglayout</groupId>
+            <artifactId>miglayout-javafx</artifactId>
+            <version>5.2</version>
         </dependency>
     </dependencies>
 </project>

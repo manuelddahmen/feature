@@ -14,7 +14,7 @@ public class Main {
     public static void main(String[] args) {
         Arrays.stream(ImageIO.getWriterFormatNames()).forEach(s1 ->
                 System.out.println("Format name : \"" + s1 + "\""));
-        Arrays.stream(Objects.requireNonNull(new File("resources").list())).sorted().forEach(s -> {
+        for(String s : Objects.requireNonNull(new File("resources").list())) {
             String s0 = s.substring(s.lastIndexOf(".") + 1);
             String ext = s0.equals("jpg")||s0.equals("jpeg")?"jpg":s0;
             if (Arrays.asList(ImageIO.getWriterFormatNames()).contains(ext)) {
@@ -23,7 +23,7 @@ public class Main {
                     System.out.println("format name image " + ext + " found");
 
                     PixM pixM = new PixM(ImageIO.read(new File("resources/"+s)), PixM.COMP_RED);
-                    BufferedImage grayScale = pixM.getGrayScale();
+                    BufferedImage grayScale = new MIMmops().harris(pixM, 3.0, 1, 1).getGrayScale();
                     File file = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
 
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
@@ -45,6 +45,6 @@ public class Main {
                 }
 
             }
-        });
+        }
     }
 }

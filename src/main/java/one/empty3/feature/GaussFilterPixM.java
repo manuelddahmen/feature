@@ -1,21 +1,22 @@
 package one.empty3.feature;
 
 public class GaussFilterPixM extends M {
-    private final double sigma;
+    public final double sigma;
 
-    public double gauss(double x, double y) {
-        return 1.0 / Math.PI / 2 / sigma / sigma * Math.exp(-(x * x + y * y) / 2 / sigma / sigma);
+    public double gauss(double x, double y, double epsilon) {
+        return 1.0 / Math.PI / 2 / sigma / sigma * Math.exp(
+                -((x-epsilon) * (x-epsilon) + (y-epsilon) * (y-epsilon))
+                        / 2 / sigma / sigma);
     }
 
     /***
      * Gaussian filter Matrix
-     * @param size n*n square distribution
+     * @param halfSquareSizeMinus1 n*n square distribution
      * @param sigma gauss parameter
      */
-    public GaussFilterPixM(int size, double sigma) {
-        super(size);
+    public GaussFilterPixM(int halfSquareSizeMinus1, double sigma) {
+        super(halfSquareSizeMinus1*2+1);
         this.sigma = sigma;
-  //      fill();
     }
 /*
     private void fill() {

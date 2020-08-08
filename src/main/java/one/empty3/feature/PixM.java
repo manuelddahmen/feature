@@ -39,19 +39,52 @@ public class PixM extends M {
 
 
     public PixM filter(GaussFilterPixM gaussFilter) {
+        double sigmaR = gaussFilter.sigma;
         PixM c = new PixM(columns, lines);
+        double sum;
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
-                for (int u = -2; u <= 2; u++)
-                    for (int v = -2; v <= 2; v++) {
-                        c.set(i, j,
-                                get(i + u, j + v) - get(i, j) * gaussFilter.gauss(u, v));
+                sum = 0;
+                for (int u = -gaussFilter.lines/2; u <= gaussFilter.lines/2; u++)
+                    for (int v = -gaussFilter.lines/2; v <= gaussFilter.lines/2; v++) {
+
+                        /*V derivative = derivative(i, j, 2, null);
+                        double v1 = derivative.get(0, 0);
+                        double v2 = derivative.get(1, 0);
+                        c.set(i, j,(v1+v2)
+                                * gaussFilter.gauss(u, v, u*v));*/
+                        double gauss = -0.5 * (Math.sqrt(u * u + v * v));
+                        c.set(j, i, c.get(j,i)+gaussFilter.gauss(u, v, 0.0)
+                                * Math.exp(gauss /sigmaR)
+                                * (get(j+u, i+u)*get(j,i)));
+                        sum += gaussFilter.gauss(u, v, 0.0)
+                                * Math.exp(gauss /sigmaR);
+                                //* (get(j+u, i+u)*c.get(j,i));
+
+
+
+
                     }
+                c.set(j, i, c.get(j, i)/sum);
             }
         }
         return c;
     }
 
+    public V derivative(int x, int y, int order, V originValue) {
+        if(originValue == null) {
+            originValue = new V(2, 1);
+            originValue.set(0, 0,  get(x,y));
+            originValue.set(1, 0,  get(x,y));
+        }
+        originValue.set(0, 0, -get(x+1, y)+2*get(x,y)-get(x-1,y));
+        originValue.set(1, 0, -get(x, y+1)+2*get(x,y)-get(x,y-1));
+        if(order>0) {
+            derivative(x, y, order - 1, originValue);
+        }
+
+        return originValue;
+    }
 
 
     public BufferedImage getGrayScale() {
@@ -63,7 +96,7 @@ public class PixM extends M {
         BufferedImage image = new BufferedImage(columns,
                 lines, BufferedImage.TYPE_INT_ARGB);
         PixM c;
-        GaussFilterPixM gaussFilter = new GaussFilterPixM(5, 2.0);
+        GaussFilterPixM gaussFilter = new GaussFilterPixM(1, 1.2);
         c = filter(gaussFilter);
 
         for (int i = 0; i < image.getWidth(); i++) {
@@ -77,12 +110,12 @@ public class PixM extends M {
 
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
-                float value;
-                value = (float) Math.max(Math.abs(c.get(i, j)), 0f);
-                value = (float) Math.min(value, 1f);
+                double value = Math.abs(c.get(i, j)/maxRgbai);
+                value =  Math.max(value, 0f);
+                value =  Math.min(value, 1f);
 
                 image.setRGB(i, j,
-                        new Color(value, value, value).getRGB());
+                        new Color((float)value, (float)value, (float)value).getRGB());
             }
         }
         return image;

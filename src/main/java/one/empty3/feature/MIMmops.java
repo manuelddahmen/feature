@@ -4,7 +4,7 @@ package one.empty3.feature;
  * Multi-Image Matching using Multi-Scale Oriented Patches
  */
 public class MIMmops {
-    public PixM harris(PixM image, double sigma, int level ) {
+    public PixM harris(PixM image, double sigma, int halfSize_1, int level ) {
         PixM res = null;
         for(int comp=0; comp<image.getCompCount(); comp++) {
             // Hl(x, y) = ∇σd Pl(x, y)∇σd Pl(x, y)T∗ gσi(x, y)
@@ -20,7 +20,12 @@ public class MIMmops {
             // (get(x+1)-2*get(x)+get(x-1) + get(y+1)+2*get(y)-get(y))/4/4 ou /1/1 ??
             image.setCompNo(comp);
 
-            image.filter(new GaussFilterPixM(3 /*** sigma */, sigma));
+            PixM imageRes = image;
+
+            for(int i=0; i<level; i++)
+                imageRes = imageRes.filter(new GaussFilterPixM(halfSize_1 , sigma));
+
+            res = imageRes;
         }
 
 
@@ -28,7 +33,7 @@ public class MIMmops {
         return res;
     }
 
-    /***
+    /*
      * fHM(x, y) = det Hl(x, y)
      * tr Hl(x, y)
      * =
