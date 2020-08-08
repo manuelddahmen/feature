@@ -18,8 +18,11 @@ il manque un sens. - 1 point.
 
 La conception de features 2d 3d.
 
-Les collections d'images correspondant à une
+Les collections d'images contenant à une
 feature (caractéristiques) ou d'un ensemble
 de caractéristiques.
 
-Le matching pattern et le machine learning.
+Features' matching
+
+
+??
