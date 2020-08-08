@@ -54,13 +54,15 @@ public class PixM extends M {
                         c.set(i, j,(v1+v2)
                                 * gaussFilter.gauss(u, v, u*v));*/
                         double gauss = -0.5 * (Math.sqrt(u * u + v * v));
-                        c.set(j, i, c.get(j,i)+gaussFilter.gauss(u, v, 0.0)
-                                * Math.exp(gauss /sigmaR)
-                                * (get(j+u, i+u)*get(j,i)));
-                        sum += gaussFilter.gauss(u, v, 0.0)
-                                * Math.exp(gauss /sigmaR);
-                                //* (get(j+u, i+u)*c.get(j,i));
+                        double value1 = get(j, i);
+                        if(value1!=0.0) {
 
+                            c.set(j, i, + //gaussFilter.gauss(u, v)
+                                    Math.exp(gauss / sigmaR)
+                                    * get(j, i));
+                            sum += //gaussFilter.gauss(u, v)
+                                    Math.exp(gauss / sigmaR);
+                        }
 
 
 
@@ -110,7 +112,7 @@ public class PixM extends M {
 
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
-                double value = Math.abs(c.get(i, j)/maxRgbai);
+                double value = get(j, i); //Math.abs(c.get(i, j))/maxRgbai);
                 value =  Math.max(value, 0f);
                 value =  Math.min(value, 1f);
 

@@ -3,9 +3,9 @@ package one.empty3.feature;
 public class GaussFilterPixM extends M {
     public final double sigma;
 
-    public double gauss(double x, double y, double epsilon) {
-        return 1.0 / Math.PI / 2 / sigma / sigma * Math.exp(
-                -((x-epsilon) * (x-epsilon) + (y-epsilon) * (y-epsilon))
+    public double gauss(double x, double y) {
+        return Math.exp(
+                -(x*x+y*x)
                         / 2 / sigma / sigma);
     }
 
