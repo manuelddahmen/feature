@@ -52,7 +52,7 @@ public class Main {
                         System.out.println("Done writing : " + file.toString());
 
                     }
-                    makeGoodOutput(new File("resources/"+s), file, null);
+                    makeGoodOutput(new File("resources/"+s)" new File("outputFiles/"), null);
                     System.out.println("Thread terminated without exception");
                 } catch (IOException e) {
                     e.printStackTrace();
