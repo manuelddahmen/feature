@@ -35,15 +35,16 @@ public class PixM extends M {
         double sigmaR = gaussFilter.sigma;
         PixM c = new PixM(columns, lines);
         double sum;
+        for(int comp= 0; comp<getCompCount(); comp++) {
+                            setCompNo(comp);
+                            c.setCompNo(comp);
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
                 sum = 0;
                 for (int u = -gaussFilter.lines / 2; u <= gaussFilter.lines / 2; u++)
                     for (int v = -gaussFilter.lines / 2; v <= gaussFilter.lines / 2; v++) {
      
-                        for(int comp= 0; comp<getCompCount(); comp++) {
-                            setCompNo(comp);
-                            c.setCompNo(comp);
+                        
                         /*V derivative = derivative(i, j, 2, null);
                         double v1 = derivative.get(0, 0);
                         double v2 = derivative.get(1, 0);
@@ -62,10 +63,11 @@ public class PixM extends M {
 
                     }
                
-                        }
+                        
                  c.set(i, j, c.get(i, j) / sum);
             }
         }
+            }
         return c;
     }
 
@@ -124,8 +126,8 @@ public class PixM extends M {
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
                     float value = (float) get(i, j);
-                    value = Math.max(value, 0f);
-                    value = Math.min(value, 1f);
+                    //value = Math.max(value, 0f);
+                    //value = Math.min(value, 1f);
 
                     rgba[comp] = value;
 
