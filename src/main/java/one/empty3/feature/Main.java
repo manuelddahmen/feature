@@ -41,7 +41,7 @@ public class Main {
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
                                     .replace('\\', '_').replace('/', '_').replace(':', '_')
                             + "/");
-                    File output =new File(file.getAbsolutePath()+"RR"+s+".png");
+                    File output =new File(file.getAbsolutePath()+"/RR"+s+".png");
                     file.mkdirs();
                     System.out.println(file.getAbsolutePath() + "\n(width, height) = " + grayScale.getWidth() +
                             ", " + grayScale.getHeight() + ")");
