@@ -23,7 +23,7 @@ public class Main {
         }
     } 
     
-    public static void work(File file, BufferedImage grayScale, File output)
+    public static void work(File file, BufferedImage grayScale, File output) throws IOException
         {
     file.mkdirs();
                     System.out.println(file.getAbsolutePath() + "\n(width, height) = " + grayScale.getWidth() +
