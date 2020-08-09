@@ -129,8 +129,8 @@ public class PixM extends M {
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
                     double value = get(i, j);
-                    value = Math.max(value, 0f);
-                    value = Math.min(value, 1f);
+                    //value = Math.max(value, 0f);
+                    //value = Math.min(value, 1f);
 
                     int rgbComp = (int) (value * 255);
 
