@@ -50,7 +50,8 @@ public class PixM extends M {
                         double v2 = derivative.get(1, 0);
                         c.set(i, j,(v1+v2)
                                 * gaussFilter.gauss(u, v, u*v));*/
-                        double gauss = -0.5 * (u * u + v * v)/sigmaR/sigmaR;
+                        double gauss = gaussFilter.get(u+gaussFilter.lines,
+                                                 v+gaussFilter.lines);
                         double value1 = get(i, j);
                         if (!Double.isNaN(value1)) {
 
