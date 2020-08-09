@@ -119,7 +119,7 @@ public class PixM extends M {
                 float [] rgba = new float[getCompCount()];
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
-                    float value = get(i, j);
+                    float value = (float) get(i, j);
                     value = Math.max(value, 0f);
                     value = Math.min(value, 1f);
 
