@@ -50,7 +50,7 @@ public class Main {
                         System.out.println("Error inappropriate writer or not found "+"png");
                         System.exit(-2);
                     } else {
-                        System.out.println("Done writing : " + file.toString());
+                        System.out.println("Done writing : " + output.toString());
 
                     }
                     makeGoodOutput(new File("resources/"+s), file, null);
