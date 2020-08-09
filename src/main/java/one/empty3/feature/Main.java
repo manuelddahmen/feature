@@ -30,6 +30,7 @@ public class Main {
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
                                     .replace('\\', '_').replace('/', '_').replace(':', '_')
                             + ".png");
+                    file.mkdirs();
                     System.out.println(file.getAbsolutePath() + "\n(width, height) = " + grayScale.getWidth() +
                             ", " + grayScale.getHeight() + ")");
 
