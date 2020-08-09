@@ -59,7 +59,7 @@ public class M {
             return sum;
     }
 
-    private int getCompCount() {
+    public int getCompCount() {
         return compCount;
     }
 
