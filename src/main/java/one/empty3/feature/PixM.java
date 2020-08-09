@@ -116,18 +116,20 @@ public class PixM extends M {
         int savedComp = getCompNo();
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
+                float [] rgba = new float[getCompCount()];
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
-                    double value = get(i, j);
+                    float value = get(i, j);
                     value = Math.max(value, 0f);
                     value = Math.min(value, 1f);
 
-                    int rgbComp = (int) (value * 255);
+                    rgba[comp] = value;
 
-                    values[j * columns + i] += ((rgbComp & 0xFF) << ((  comp) * 8));
+                    //values[j * columns + i] += ((rgbComp & 0xFF) << ((3-  comp) * 8));
                 }
                 image.setRGB(i, j,
-                        values[j * columns + i]);
+                        new Color(rgba[0], rgba[1],
+                                  rgba[2], rgba[3]).getRGB());
             }
         }
         setCompNo(savedComp);
