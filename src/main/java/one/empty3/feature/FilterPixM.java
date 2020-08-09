@@ -8,6 +8,6 @@ public class FilterPixM extends PixM {
     }
 
     public FilterPixM(BufferedImage image, int compNo) {
-        super(image, compNo);
+        super(image);
     }
 }
