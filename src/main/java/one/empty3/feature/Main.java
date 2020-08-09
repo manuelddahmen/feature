@@ -3,8 +3,7 @@ package one.empty3.feature;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.sql.Time;
 import java.time.Instant;
 import java.util.Arrays;
@@ -12,7 +11,7 @@ import java.util.Objects;
 
 public class Main {
     public void makeGoodOutput(File original, File folderOutput, PrintWriter out) {
-        out.println("<a href=\""+original.getName()+"\">"orginal</a>\n");
+        out.println("<a href=\""+original.getName()+"\">orginal</a>\n");
         out.println("<a href=\""+File.getName()+"\">computed result image</a>\n");
     }
     public static void main(String[] args) {
