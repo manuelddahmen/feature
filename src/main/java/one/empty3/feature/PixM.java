@@ -16,33 +16,32 @@ public class PixM extends M {
 
     public PixM(BufferedImage image) {
         super(image.getWidth(), image.getHeight());
-        float[] comp = new float[4];
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
                 int rgb = image.getRGB(i, j);
-                new Color(rgb).getColorComponents(comp);
-                for(int com=0; com<4; com++) {
-                    
+                float[] colorComponents = new float[getCompCount()];
+                colorComponents = new Color(rgb).getColorComponents(colorComponents);
+                for (int com = 0; com < getCompCount(); com++) {
+
                     setCompNo(com);
-                    set(i, j, comp[compNo]);
+                    set(i, j, colorComponents[com]);
                 }
             }
         }
     }
 
 
-    public PixM filter(GaussFilterPixM gaussFilter) {
-        double sigmaR = gaussFilter.sigma;
+    public PixM applyFilter(FilterPixM gaussFilter) {
         PixM c = new PixM(columns, lines);
         double sum;
-        for(int comp= 0; comp<getCompCount(); comp++) {
-                            setCompNo(comp);
-                            c.setCompNo(comp);
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < lines; j++) {
-                sum = 0;
-                for (int u = -gaussFilter.lines / 2; u <= gaussFilter.lines / 2; u++)
-                    for (int v = -gaussFilter.lines / 2; v <= gaussFilter.lines / 2; v++) {
+        for (int comp = 0; comp < getCompCount(); comp++) {
+            setCompNo(comp);
+            c.setCompNo(comp);
+            for (int i = 0; i < columns; i++) {
+                for (int j = 0; j < lines; j++) {
+                    sum = 0;
+                    for (int u = -gaussFilter.columns / 2; u <= gaussFilter.lines / 2; u++)
+                        for (int v = -gaussFilter.lines / 2; v <= gaussFilter.lines / 2; v++) {
      
                         
                         /*V derivative = derivative(i, j, 2, null);
@@ -50,25 +49,24 @@ public class PixM extends M {
                         double v2 = derivative.get(1, 0);
                         c.set(i, j,(v1+v2)
                                 * gaussFilter.gauss(u, v, u*v));*/
-                        double gauss = gaussFilter.get(u+gaussFilter.lines,
-                                                 v+gaussFilter.lines);
-                        double value1 = get(i, j);
-                        if (!Double.isNaN(value1)) {
+                            double gauss = gaussFilter.get(u + gaussFilter.columns,
+                                    v + gaussFilter.lines);
+                            double value1 = get(i, j);
+                            if (!Double.isNaN(value1)) {
 
-                            c.set(i, j, c.get(i, j) +
-                                    Math.exp(gauss)
-                                            * get(i, j));
-                            sum += Math.exp(gauss);
+                                c.set(i, j, c.get(i, j) +
+                                        gaussFilter.filter(i + u, j + v) * get(i, j));
+                                sum += Math.exp(gauss);
+                            }
+
+
                         }
 
 
-                    }
-               
-                        
-                 c.set(i, j, c.get(i, j) / sum);
+                    c.set(i, j, c.get(i, j) / sum);
+                }
             }
         }
-            }
         return c;
     }
 
@@ -86,25 +84,27 @@ public class PixM extends M {
 
         return originValue;
     }
+
     public PixM exampleFilter() {
         PixM c;
         GaussFilterPixM gaussFilter = new GaussFilterPixM(1, 1.2);
-        c = filter(gaussFilter);
+        c = applyFilter(gaussFilter);
         return c;
     }
+
     public BufferedImage getImage() {
-        float[] f = new float[4];
+        float[] f = new float[getCompCount()];
         Color.white.getColorComponents(f);
         float maxColorValue = f[compNo];
-        double [] maxRgbai = new double[4];
-        double [] meanRgbai = new double[4];
+        double[] maxRgbai = new double[getCompCount()];
+        double[] meanRgbai = new double[getCompCount()];
 
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
 
-                    if(get(i, j)>maxRgbai[comp]) {
+                    if (get(i, j) > maxRgbai[comp]) {
                         maxRgbai[comp] = get(i, j);
                     }
                     meanRgbai[comp] += get(i, j);
@@ -123,7 +123,7 @@ public class PixM extends M {
         int savedComp = getCompNo();
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
-                float [] rgba = new float[getCompCount()];
+                float[] rgba = new float[getCompCount()];
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
                     float value = (float) get(i, j);
@@ -137,7 +137,7 @@ public class PixM extends M {
                 }
                 image.setRGB(i, j,
                         new Color(rgba[0], rgba[1],
-                                  rgba[2], rgba[3]).getRGB());
+                                rgba[2]).getRGB());
             }
         }
         setCompNo(savedComp);

@@ -50,7 +50,7 @@ public class Main {
 
                     PixM pixM = new PixM(ImageIO.read(new File("resources/"+s)));
                     BufferedImage origImg = pixM.getImage();
-                    BufferedImage grayScale = pixM.filter(new GaussFilterPixM(5, 1.5))
+                    BufferedImage grayScale = pixM.applyFilter(new GaussFilterPixM(5, 1.5))
                             .getImage();
                     
                     File file = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+

@@ -23,7 +23,7 @@ public class MIMmops {
             PixM imageRes = image;
 
             for(int i=0; i<level; i++)
-                imageRes = imageRes.filter(new GaussFilterPixM(halfSize_1 , sigma));
+                imageRes = imageRes.applyFilter(new GaussFilterPixM(halfSize_1 , sigma));
 
             res = imageRes;
         }

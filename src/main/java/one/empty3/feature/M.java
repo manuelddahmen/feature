@@ -5,16 +5,17 @@ public class M {
     protected final int lines;
     final double [] x;
     protected int compNo;
-    protected int compCount = 4;
+    protected int compCount = 3;
     public M(int c, int l) {
         this.lines = l;
         this.columns = c;
         x = new double[l*c*compCount];
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
-    public M(int lc) {
-        this(lc, lc);
+    public M(int cl) {
+        this(cl, cl);
     }
+
     public double get(int column, int line) {
         if(column>=0 && column<columns && line>=0 && line<lines)
             return x[(line*columns+column)*(getCompNo()+1)];
