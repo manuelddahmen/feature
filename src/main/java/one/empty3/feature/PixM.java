@@ -24,7 +24,7 @@ public class PixM extends M {
                 for(int com=0; com<4; com++) {
                     
                     setCompNo(com);
-                    set(i, j,(int) ( comp[compNo]*255));
+                    set(i, j, comp[compNo]);
                 }
             }
         }
