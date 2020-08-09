@@ -3,9 +3,9 @@ package one.empty3.feature;
 public class M {
     protected final int columns;
     protected final int lines;
-    double [] x;
-    private int compNo;
-    private int compCount = 4;
+    final double [] x;
+    protected int compNo;
+    protected int compCount = 4;
     public M(int c, int l) {
         this.lines = l;
         this.columns = c;
