@@ -4,6 +4,8 @@ public class M {
     protected final int columns;
     protected final int lines;
     double [] x;
+    private int compNo;
+    private int compCount = 4;
     public M(int c, int l) {
         this.lines = l;
         this.columns = c;
@@ -15,24 +17,30 @@ public class M {
     }
     public double get(int column, int line) {
         if(column>=0 && column<columns && line>=0 && line<lines)
-            return x[line*columns+column];
+            return x[(line*columns+column)*getCompNo()];
         else
-            return 0.0;
+            return Double.NaN; // OutOfBound?
     }
+
+    private int getCompNo() {
+        return compNo;
+    }
+
+    public void setCompNo(int compNo) {
+        this.compNo = compNo;
+    }
+
     public void set(int column, int line, double d) {
         if(column>=0 && column<columns && line>=0 && line<lines)
-            x[line*columns+column] = d;
+            x[(line*columns+column)*getCompNo()] = d;
     }
     public M tild() {
-        if(columns==lines)
-        {
-            M m = new M(columns, lines);
-            for(int i=0; i<columns; i++)
-                for(int j=0;j< lines; j++)
-                    m.set(i, j, get(i, j));
+            M m = new M(lines, columns);
+            for(int i=0; i<lines; i++)
+                for(int j=0;j< columns; j++)
+                    for(int comp = 0; comp < getCompNo(); comp++)
+                        m.set(i, j, get(j, i));
             return m;
-        }
-        throw new MatrixFormatException("l!=c"+ lines+" "+ columns+"M . tild()");
     }
     public double trace() {
         return tild().dot(this).trace();
@@ -41,23 +49,34 @@ public class M {
 
 
     public double diagonalSum() {
+        double[] sums = new double[getCompCount()];
         if(!isSquare())
             throw new MatrixFormatException("determinant: not square matrix");
         double sum = 0.0;
-        for(int i = 0; i<lines; i++)
-            sum+=get(i, i);
-        return sum;
+        for(int comp = 0; comp < getCompNo(); comp++)
+            for(int i = 0; i<lines; i++)
+                sums[comp]+=get(i, i);
+            return sum;
+    }
+
+    private int getCompCount() {
+        return 4;
     }
 
     private M dot(M m) {
         if(!isSquare() || columns==m.lines)
             throw new MatrixFormatException("determinant: not square matrix");
             M res = new M(m.columns, lines);
-            for(int i=0; i<m.columns; i++)
-                for(int j=0; j<lines; j++) {
-                    for(int k = 0; k<lines; k++)
-                        res.set(i, j, res.get(i, j) + get(i, k)*res.get(k, j));
+            for(int comp = 0; comp<getCompNo(); comp++) {
+                res.setCompNo(comp);
+                this.setCompNo(comp);
+                for (int i = 0; i < m.columns; i++) {
+                    for (int j = 0; j < lines; j++) {
+                        for (int k = 0; k < lines; k++)
+                            res.set(i, j, res.get(i, j) + get(i, k) * res.get(k, j));
+                    }
                 }
+            }
             return res;
     }
 /*
@@ -146,4 +165,7 @@ public class M {
         return b;
     }
 
+    public void setCompCount(int compCount) {
+        this.compCount = compCount;
+    }
 }
