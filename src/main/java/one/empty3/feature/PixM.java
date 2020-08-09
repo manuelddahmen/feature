@@ -35,12 +35,15 @@ public class PixM extends M {
         PixM c = new PixM(columns, lines);
         double sum;
         for (int comp = 0; comp < getCompCount(); comp++) {
+
             setCompNo(comp);
             c.setCompNo(comp);
+            gaussFilter.setCompNo(comp);
+
             for (int i = 0; i < columns; i++) {
                 for (int j = 0; j < lines; j++) {
-                    sum = 0;
-                    for (int u = -gaussFilter.columns / 2; u <= gaussFilter.lines / 2; u++)
+                    sum = 0.0;
+                    for (int u = -gaussFilter.columns / 2; u <= gaussFilter.lines / 2; u++) {
                         for (int v = -gaussFilter.lines / 2; v <= gaussFilter.lines / 2; v++) {
      
                         
@@ -54,15 +57,13 @@ public class PixM extends M {
                             double value1 = get(i, j);
                             if (!Double.isNaN(value1)) {
 
-                                c.set(i, j, c.get(i, j) +
-                                        gaussFilter.filter(i + u, j + v) * get(i, j));
-                                sum += Math.exp(gauss);
+                                c.set(i, j, c.get(i, j) + gauss * get(i, j));
+                                sum += gauss;
                             }
 
 
                         }
-
-
+                    }
                     c.set(i, j, c.get(i, j) / sum);
                 }
             }
@@ -95,7 +96,7 @@ public class PixM extends M {
     public BufferedImage getImage() {
         float[] f = new float[getCompCount()];
         Color.white.getColorComponents(f);
-        float maxColorValue = f[compNo];
+        float [] maxColorValue = f;
         double[] maxRgbai = new double[getCompCount()];
         double[] meanRgbai = new double[getCompCount()];
 
@@ -116,9 +117,8 @@ public class PixM extends M {
             meanRgbai[comp] /= (lines * columns);
         }
         BufferedImage image = new BufferedImage(columns,
-                lines, BufferedImage.TYPE_INT_ARGB);
+                lines, BufferedImage.TYPE_INT_RGB);
 
-        int[] values = new int[lines * columns];
 
         int savedComp = getCompNo();
         for (int i = 0; i < image.getWidth(); i++) {
@@ -135,9 +135,7 @@ public class PixM extends M {
 
                     //values[j * columns + i] += ((rgbComp & 0xFF) << ((3-  comp) * 8));
                 }
-                image.setRGB(i, j,
-                        new Color(rgba[0], rgba[1],
-                                rgba[2]).getRGB());
+                image.setRGB(i, j, new Color(rgba[0], rgba[1], rgba[2]).getRGB());
             }
         }
         setCompNo(savedComp);

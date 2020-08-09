@@ -17,8 +17,9 @@ public class M {
     }
 
     public double get(int column, int line) {
-        if(column>=0 && column<columns && line>=0 && line<lines)
-            return x[(line*columns+column)*(getCompNo()+1)];
+        if(column>=0 && column<columns && line>=0 && line<lines) {
+            return x[(line * columns + column) * (getCompNo() + 1)];
+        }
         else
             return Double.NaN; // OutOfBound?
     }
@@ -32,8 +33,10 @@ public class M {
     }
 
     public void set(int column, int line, double d) {
-        if(column>=0 && column<columns && line>=0 && line<lines)
-            x[(line*columns+column)*(getCompNo()+1)] = d;
+        if(column>=0 && column<columns && line>=0 && line<lines) {
+            x[(line * columns + column) * (getCompNo() + 1)] = d;
+        }
+
     }
     public M tild() {
             M m = new M(lines, columns);
