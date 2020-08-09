@@ -22,7 +22,7 @@ public class M {
             return Double.NaN; // OutOfBound?
     }
 
-    private int getCompNo() {
+    public int getCompNo() {
         return compNo;
     }
 
@@ -60,7 +60,7 @@ public class M {
     }
 
     private int getCompCount() {
-        return 4;
+        return compCount;
     }
 
     private M dot(M m) {
