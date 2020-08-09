@@ -40,19 +40,20 @@ public class Main {
 
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
                                     .replace('\\', '_').replace('/', '_').replace(':', '_')
-                            + ".png");
+                            + "/");
+                    File output =file.getAbsolutePath()+"RR"+s+".png");
                     file.mkdirs();
                     System.out.println(file.getAbsolutePath() + "\n(width, height) = " + grayScale.getWidth() +
                             ", " + grayScale.getHeight() + ")");
 
-                    if (!ImageIO.write((RenderedImage) grayScale, "png", file)) {
+                    if (!ImageIO.write((RenderedImage) grayScale, "png", output)) {
                         System.out.println("Error inappropriate writer or not found "+"png");
                         System.exit(-2);
                     } else {
                         System.out.println("Done writing : " + file.toString());
 
                     }
-                    makeGoodOutput(new File("resources/"+s)" new File("outputFiles/"), null);
+                    makeGoodOutput(new File("resources/"+s), file, null);
                     System.out.println("Thread terminated without exception");
                 } catch (IOException e) {
                     e.printStackTrace();
