@@ -12,8 +12,8 @@ import java.nio.file.*;
 
 public class Main {
     public void makeGoodOutput(File original, File folderOutput, PrintWriter out) {
-Path source = FileSystems.getDefault().getPath(original) ;
-     Path newdir = FileSystems.getDefault().getPath(folderOutput);
+Path source = FileSystems.getDefault().getPath(original.getAbsolutePath()) ;
+     Path newdir = FileSystems.getDefault().getPath(folderOutput.getAbsolutePath());
      Files.copy(source, newdir.resolve(source.getFileName()));
       //  out.println("<a href=\""+original.getName()+"\">orginal</a>\n");
        // out.println("<a href=\""+folderOutput.getPath()+"\">computed result image folder</a>\n");
