@@ -34,7 +34,8 @@ public class Main {
                     System.out.println("format name image " + ext + " found");
 
                     PixM pixM = new PixM(ImageIO.read(new File("resources/"+s)));
-                    BufferedImage grayScale = new MIMmops().harris(pixM, 1.2, 5, 1)
+                    BufferedImage origImg = pixM.getImage();
+                    BufferedImage grayScale = pixM.filter()
                             .getImage();
                     File file = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
 
