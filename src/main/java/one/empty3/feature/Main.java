@@ -23,17 +23,18 @@ public class Main {
         }
     } 
     
-    public static void work(File file, BufferedImage grayScale, File output) throws IOException
+    public static void work(File dir, BufferedImage imageToWrite, String outputFilename) throws IOException
         {
-    file.mkdirs();
-                    System.out.println(file.getAbsolutePath() + "\n(width, height) = " + grayScale.getWidth() +
-                            ", " + grayScale.getHeight() + ")");
+                    dir.mkdirs();
+                    System.out.println(dir.getAbsolutePath() + "\n(width, height) = " + imageToWrite.getWidth() +
+                            ", " + imageToWrite.getHeight() + ")");
 
-                    if (!ImageIO.write((RenderedImage) grayScale, "png", output)) {
+                    if (!ImageIO.write((RenderedImage) imageToWrite, "png",new File(dir.getAbsolutePath()+
+                            outputFilename))) {
                         System.out.println("Error inappropriate writer or not found "+"png");
                         System.exit(-2);
                     } else {
-                        System.out.println("Done writing : " + output.toString());
+                        System.out.println("Done writing : " + outputFilename.toString());
 
                     }
     }
@@ -50,16 +51,16 @@ public class Main {
 
                     PixM pixM = new PixM(ImageIO.read(new File("resources/"+s)));
                     BufferedImage origImg = pixM.getImage();
-                    BufferedImage grayScale = pixM.applyFilter(new GaussFilterPixM(5, 1.5))
-                            .getImage();
-                    
+                    BufferedImage grayScale = MIMmops.applyMultipleFilters(
+                            pixM, 10, new GaussFilterPixM(5, 0.1)).getImage();
+
                     File file = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
 
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
                                     .replace('\\', '_').replace('/', '_').replace(':', '_')
                             + "/");
-                    File output =new File(file.getAbsolutePath()+"/Output"+s+".png");
-                    File input =new File(file.getAbsolutePath()+"/Input"+s+".png");
+                    String output ="/Output"+s+".png";
+                    String input ="/Input"+s+".png";
                     
                      work(file, origImg, input);
                     work(file, grayScale, output);

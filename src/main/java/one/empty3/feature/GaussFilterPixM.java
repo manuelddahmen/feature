@@ -9,8 +9,8 @@ public class GaussFilterPixM extends FilterPixM {
 
     @Override
     public double filter(double x, double y) {
-        return Math.exp(
-                -(x * x + y * x)
+        return 0.5 / Math.PI/sigma *Math.exp(
+                -(x * x + y * y)
                         / 2 / sigma / sigma);
     }
 
