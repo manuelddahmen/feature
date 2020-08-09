@@ -51,10 +51,13 @@ public class Main {
 
                     PixM pixM = new PixM(ImageIO.read(new File("resources/"+s)));
                     BufferedImage origImg = pixM.getImage();
-                    BufferedImage grayScale = MIMmops.applyMultipleFilters(
-                            pixM, 10, new GaussFilterPixM(5, 0.1)).getImage();
 
-                    File file = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
+                    FilterPixM gaussFilterPixM = new GaussFilterPixM(20, 20.0);
+
+                    BufferedImage outputImage = MIMmops.applyMultipleFilters(
+                            pixM, 4, gaussFilterPixM).getImage();
+
+                    File directory = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
 
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
                                     .replace('\\', '_').replace('/', '_').replace(':', '_')
@@ -62,10 +65,10 @@ public class Main {
                     String output ="/Output"+s+".png";
                     String input ="/Input"+s+".png";
                     
-                     work(file, origImg, input);
-                    work(file, grayScale, output);
+                     work(directory, origImg, input);
+                    work(directory, outputImage, output);
                     
-                    makeGoodOutput(new File("resources/"+s), file, null);
+                    makeGoodOutput(new File("resources/"+s), directory, null);
                     System.out.println("Thread terminated without exception");
                 } catch (IOException e) {
                     e.printStackTrace();

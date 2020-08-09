@@ -31,36 +31,37 @@ public class PixM extends M {
     }
 
 
-    public PixM applyFilter(FilterPixM gaussFilter) {
+    public PixM applyFilter(FilterPixM filter) {
         PixM c = new PixM(columns, lines);
         double sum;
         for (int comp = 0; comp < getCompCount(); comp++) {
 
             setCompNo(comp);
             c.setCompNo(comp);
-            gaussFilter.setCompNo(comp);
+            filter.setCompNo(comp);
 
 
             for (int i = 0; i < columns; i++) {
                 for (int j = 0; j < lines; j++) {
                     c.set(i, j, 0.0); //???
                     sum = 0.0;
-                    for (int u = -gaussFilter.columns / 2; u <= gaussFilter.lines / 2; u++) {
-                        for (int v = -gaussFilter.lines / 2; v <= gaussFilter.lines / 2; v++) {
+                    for (int u = -filter.columns / 2; u <= filter.lines / 2; u++) {
+                        for (int v = -filter.lines / 2; v <= filter.lines / 2; v++) {
      
                         
                         /*V derivative = derivative(i, j, 2, null);
                         double v1 = derivative.get(0, 0);
                         double v2 = derivative.get(1, 0);
                         c.set(i, j,(v1+v2)
-                                * gaussFilter.gauss(u, v, u*v));*/
-                            double gauss = gaussFilter.get(u + gaussFilter.columns/2,
-                                    v + gaussFilter.lines/2);
-                            double value1 = get(i, j);
-                            if (!Double.isNaN(value1)) {
+                                * filter.filterUVvalue(u, v, u*v));*/
+                            double filterUVvalue = filter.get(u + filter.columns/2,
+                                    v + filter.lines/2);
+                            double vAtUv = get(i+u, j+v);
+                            if (!Double.isNaN(vAtUv)) {
 
-                                c.set(i, j, c.get(i, j) + gauss * get(i, j));
-                                sum += gauss;
+                                c.set(i, j, c.get(i, j) + filterUVvalue * vAtUv);
+                                sum += filterUVvalue;
+
                             }
 
 
