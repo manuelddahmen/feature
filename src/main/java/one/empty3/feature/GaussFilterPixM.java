@@ -17,15 +17,16 @@ public class GaussFilterPixM extends M {
     public GaussFilterPixM(int halfSquareSizeMinus1, double sigma) {
         super(halfSquareSizeMinus1*2+1);
         this.sigma = sigma;
+        fill();
     }
-/*
+
     private void fill() {
         for (int i = 0; i < columns; i++)
             for (int j = 0; j < lines; j++) {
-                set(i, j, gauss(1.0 * (lines - i) / 2.,
-                        1.0 * (columns - i) / 2.,
-                        sigma));
+                set(i, j, gauss(columns-i/2,
+                        lines-j/2)
+                   );
             }
     }
-*/
+
 }
