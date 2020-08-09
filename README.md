@@ -1,7 +1,10 @@
 # feature
 
 https://drive.google.com/folderview?id=10CXWU2JPVsNMbHrAssxN23KzizzNkvHg
-Documentation utilisée.
+Documentation utilisée. Jr n'a aucun droit sur
+ces documents en ligne publiés. Mais je les partage
+à toute fin utile hormis me Peter Pan Jackson
+le nez et les...
 
 ## filtres (kernels) d'images
 Gauss. Multiple iterations. Tests for photos.
