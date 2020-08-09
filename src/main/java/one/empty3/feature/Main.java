@@ -22,6 +22,21 @@ public class Main {
             ex.printStackTrace();
         }
     } 
+    
+    public static void work(File file, BufferedImage grayScale, File output)
+        {
+    file.mkdirs();
+                    System.out.println(file.getAbsolutePath() + "\n(width, height) = " + grayScale.getWidth() +
+                            ", " + grayScale.getHeight() + ")");
+
+                    if (!ImageIO.write((RenderedImage) grayScale, "png", output)) {
+                        System.out.println("Error inappropriate writer or not found "+"png");
+                        System.exit(-2);
+                    } else {
+                        System.out.println("Done writing : " + output.toString());
+
+                    }
+    }
     public static void main(String[] args) {
         Arrays.stream(ImageIO.getWriterFormatNames()).forEach(s1 ->
                 System.out.println("Format name : \"" + s1 + "\""));
@@ -35,25 +50,20 @@ public class Main {
 
                     PixM pixM = new PixM(ImageIO.read(new File("resources/"+s)));
                     BufferedImage origImg = pixM.getImage();
-                    BufferedImage grayScale = pixM.filter()
+                    BufferedImage grayScale = pixM.filter(new GaussFilterPixM(5, 1.5))
                             .getImage();
+                    
                     File file = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
 
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
                                     .replace('\\', '_').replace('/', '_').replace(':', '_')
                             + "/");
-                    File output =new File(file.getAbsolutePath()+"/RR"+s+".png");
-                    file.mkdirs();
-                    System.out.println(file.getAbsolutePath() + "\n(width, height) = " + grayScale.getWidth() +
-                            ", " + grayScale.getHeight() + ")");
-
-                    if (!ImageIO.write((RenderedImage) grayScale, "png", output)) {
-                        System.out.println("Error inappropriate writer or not found "+"png");
-                        System.exit(-2);
-                    } else {
-                        System.out.println("Done writing : " + output.toString());
-
-                    }
+                    File output =new File(file.getAbsolutePath()+"/Output"+s+".png");
+                    File input =new File(file.getAbsolutePath()+"/Input"+s+".png");
+                    
+                     work(file, origImg, input);
+                    work(file, grayScale, output);
+                    
                     makeGoodOutput(new File("resources/"+s), file, null);
                     System.out.println("Thread terminated without exception");
                 } catch (IOException e) {
