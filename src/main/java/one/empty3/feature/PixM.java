@@ -10,16 +10,6 @@ public class PixM extends M {
     public static final int COMP_ALPHA = 3;
     public static final int COMP_INTENSITY = 4;
 
-    public int getCompNo() {
-        return compNo;
-    }
-
-    public void setCompNo(int compNo) {
-        this.compNo = compNo;
-    }
-
-    private int compNo;
-
     public PixM(int l, int c) {
         super(l, c);
     }
@@ -148,10 +138,6 @@ public class PixM extends M {
 
     private void saveCompNo() {
 
-    }
-
-    public int getCompCount() {
-        return 4;
     }
 
 }
