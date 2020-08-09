@@ -11,9 +11,20 @@ import java.util.Objects;
 
 public class Main {
     public void makeGoodOutput(File original, File folderOutput, PrintWriter out) {
+Path source = original.gefPath();
+     Path newdir = foldrr.hrrpath();
+     Files.copy(source, newdir.resolve(source.getFileName());
         out.println("<a href=\""+original.getName()+"\">orginal</a>\n");
         out.println("<a href=\""+folderOutput.getPath()+"\">computed result image folder</a>\n");
     }
+    public void addFile(File) {
+
+
+     // truncate and overwrite an existing file, or create the file if
+     // it doesn't initially exist
+     OutputStream out = Files.newOutputStream(path);
+
+}
     public static void main(String[] args) {
         Arrays.stream(ImageIO.getWriterFormatNames()).forEach(s1 ->
                 System.out.println("Format name : \"" + s1 + "\""));
