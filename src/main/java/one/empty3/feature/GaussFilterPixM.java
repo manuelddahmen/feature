@@ -26,9 +26,10 @@ public class GaussFilterPixM extends FilterPixM {
             setCompNo(comp);
             fill();
         }
+        setCompNo(0);
     }
 
-    private void fill() {
+    public void fill() {
         for (int i = 0; i < columns; i++)
             for (int j = 0; j < lines; j++) {
                 set(i, j, filter(i-columns/2 ,

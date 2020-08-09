@@ -40,8 +40,10 @@ public class PixM extends M {
             c.setCompNo(comp);
             gaussFilter.setCompNo(comp);
 
+
             for (int i = 0; i < columns; i++) {
                 for (int j = 0; j < lines; j++) {
+                    c.set(i, j, 0.0); //???
                     sum = 0.0;
                     for (int u = -gaussFilter.columns / 2; u <= gaussFilter.lines / 2; u++) {
                         for (int v = -gaussFilter.lines / 2; v <= gaussFilter.lines / 2; v++) {
@@ -88,12 +90,14 @@ public class PixM extends M {
 
     public PixM exampleFilter() {
         PixM c;
-        GaussFilterPixM gaussFilter = new GaussFilterPixM(1, 1.2);
+        GaussFilterPixM gaussFilter = new GaussFilterPixM(10, 3.0);
+        gaussFilter.fill();
         c = applyFilter(gaussFilter);
         return c;
     }
 
     public BufferedImage getImage() {
+        /*
         float[] f = new float[getCompCount()];
         Color.white.getColorComponents(f);
         float [] maxColorValue = f;
@@ -116,6 +120,8 @@ public class PixM extends M {
             setCompNo(comp);
             meanRgbai[comp] /= (lines * columns);
         }
+        */
+
         BufferedImage image = new BufferedImage(columns,
                 lines, BufferedImage.TYPE_INT_RGB);
 

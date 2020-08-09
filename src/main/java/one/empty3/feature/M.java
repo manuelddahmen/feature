@@ -18,7 +18,7 @@ public class M {
 
     public double get(int column, int line) {
         if(column>=0 && column<columns && line>=0 && line<lines) {
-            return x[(line * columns + column) * (getCompNo() + 1)];
+            return x[(line * columns + column)+ (getCompNo()*lines*columns)];
         }
         else
             return Double.NaN; // OutOfBound?
@@ -34,7 +34,7 @@ public class M {
 
     public void set(int column, int line, double d) {
         if(column>=0 && column<columns && line>=0 && line<lines) {
-            x[(line * columns + column) * (getCompNo() + 1)] = d;
+            x[(line * columns + column) + (getCompNo()*lines*columns)] = d;
         }
 
     }
