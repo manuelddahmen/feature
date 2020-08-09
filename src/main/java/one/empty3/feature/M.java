@@ -9,7 +9,7 @@ public class M {
     public M(int c, int l) {
         this.lines = l;
         this.columns = c;
-        x = new double[l*c];
+        x = new double[l*c*compCount];
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
     public M(int lc) {
