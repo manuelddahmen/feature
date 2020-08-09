@@ -11,7 +11,7 @@ import java.util.Objects;
 import java.nio.file.*;
 
 public class Main {
-    public void makeGoodOutput(File original, File folderOutput, PrintWriter out) {
+    public static void makeGoodOutput(File original, File folderOutput, PrintWriter out) {
 Path source = FileSystems.getDefault().getPath(original.getAbsolutePath()) ;
      Path newdir = FileSystems.getDefault().getPath(folderOutput.getAbsolutePath());
      Files.copy(source, newdir.resolve(source.getFileName()));
