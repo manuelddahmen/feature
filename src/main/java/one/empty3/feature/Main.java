@@ -13,12 +13,14 @@ import java.nio.file.*;
 public class Main {
     public static void makeGoodOutput(File original, File folderOutput, PrintWriter out) {
         try{
-Path source = FileSystems.getDefault().getPath(original.getAbsolutePath()) ;
-     Path newdir = FileSystems.getDefault().getPath(folderOutput.getAbsolutePath());
-     Files.copy(source, newdir.resolve(source.getFileName()));
+            Path source = FileSystems.getDefault().getPath(original.getAbsolutePath()) ;
+            Path newdir = FileSystems.getDefault().getPath(folderOutput.getAbsolutePath());
+            Files.copy(source, newdir.resolve(source.getFileName()));
       //  out.println("<a href=\""+original.getName()+"\">orginal</a>\n");
        // out.println("<a href=\""+folderOutput.getPath()+"\">computed result image folder</a>\n");
-    }catch(Exceptoon ex){ex.printStackTrace();}
+     }catch(Exception ex){
+            ex.printStackTrace();
+        }
     } 
     public static void main(String[] args) {
         Arrays.stream(ImageIO.getWriterFormatNames()).forEach(s1 ->
