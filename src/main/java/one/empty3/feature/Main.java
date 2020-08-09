@@ -11,6 +11,10 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class Main {
+    public void makeGoodOutput(File original, File folderOutput, PrintWriter out) {
+        out.println("<a href=\""+original.getName()+"\">"orginal</a>\n");
+        out.println("<a href=\""+File.getName()+"\">computed result image</a>\n");
+    }
     public static void main(String[] args) {
         Arrays.stream(ImageIO.getWriterFormatNames()).forEach(s1 ->
                 System.out.println("Format name : \"" + s1 + "\""));
