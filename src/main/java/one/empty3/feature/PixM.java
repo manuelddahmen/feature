@@ -30,11 +30,11 @@ public class PixM extends M {
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
                 int rgb = image.getRGB(i, j);
-                float[] colorComponents = new Color(rgb).getColorComponents(comp);
+                new Color(rgb).getColorComponents(comp);
                 for(int com=0; com<4; com++) {
                     
                     setCompNo(com);
-                    set(i, j,(int) ( colorComponents[compNo]*255));
+                    set(i, j,(int) ( comp[compNo]*255));
                 }
             }
         }
