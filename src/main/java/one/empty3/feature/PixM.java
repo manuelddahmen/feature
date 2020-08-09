@@ -40,7 +40,10 @@ public class PixM extends M {
                 sum = 0;
                 for (int u = -gaussFilter.lines / 2; u <= gaussFilter.lines / 2; u++)
                     for (int v = -gaussFilter.lines / 2; v <= gaussFilter.lines / 2; v++) {
-
+     
+                        for(int comp= 0; comp<getCompCount(); comp++) {
+                            setCompNo(comp);
+                            c.setCompNo(comp);
                         /*V derivative = derivative(i, j, 2, null);
                         double v1 = derivative.get(0, 0);
                         double v2 = derivative.get(1, 0);
@@ -59,7 +62,9 @@ public class PixM extends M {
 
 
                     }
-                c.set(i, j, c.get(i, j) / sum);
+               
+                        }
+                 c.set(i, j, c.get(i, j) / sum);
             }
         }
         return c;
