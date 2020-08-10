@@ -9,10 +9,7 @@ public class DefineFilter extends FilterPixM {
 
     @Override
     public double filter(double x, double y) {
-    
         return 1.0 * get((int)x-columns/2, (int)y-lines/2);
-             
-;
     }
 
     /***
