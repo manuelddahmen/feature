@@ -3,7 +3,7 @@ package one.empty3.feature;
 sobel. 3×3 ou plus. 1*2+1
 |p1 -p2| (/ n/n)?
 */
-public SobelDerivative extends PixM{
+public SobelDerivative extends FilterPixM{
      int[][] sobelX = new int[] {-1,-2,-1,0,0,0
                                 ,1,2,1};
      int[][] sobelY = new int[] {-1,0,-1,
