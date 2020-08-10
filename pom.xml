@@ -14,7 +14,7 @@
     <version>2020.3.9</version><!-- -SNAPSHOT-->
     <description>FeaturesManager</description>
     <packaging>jar</packaging>
-    <url>https://github.com/manuelddahmen/empty3</url>
+    <url>https://github.com/manuelddahmen/feature</url>
 
     <distributionManagement>
 
@@ -47,9 +47,9 @@
 
     <scm>
         <url>https://github.com/manuelddahmen/empty3</url>
-        <connection>scm:git:git://github.com/manuelddahmen/empty3.git</connection>
+        <connection>scm:git:git://github.com/manuelddahmen/feature.git</connection>
         <developerConnection>
-            scm:git:git://github.com/manuelddahmen/empty3.git
+            scm:git:git://github.com/manuelddahmen/feature.git
         </developerConnection>
     </scm>
     <developers>
