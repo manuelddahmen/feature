@@ -26,7 +26,7 @@ public class DefineFilter extends FilterPixM {
         setCompNo(comp);
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
-                set(i, j, matrix[j][x]);
+                set(i, j, matrix[j][i]);
             }
         }
       }
