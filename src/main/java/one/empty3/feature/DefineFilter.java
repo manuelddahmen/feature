@@ -24,11 +24,11 @@ public class DefineFilter extends FilterPixM {
     public void fill(double[][] matrix) {
      for(int comp = 0 ; comp<getCompCount(); comp++) {
         setCompNo(comp);
-        for (int i = 0; i < columns; i++)
+        for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
                 set(i, j, matrix[j][x]);
             }
-       
+        }
       }
     
     }
