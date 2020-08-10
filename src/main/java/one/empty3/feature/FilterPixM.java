@@ -7,7 +7,7 @@ public abstract class FilterPixM extends PixM {
         super(l, c);
     }
 
-    public FilterPixM(BufferedImage image, int compNo) {
+    public FilterPixM(BufferedImage image) {
         super(image);
     }
 
