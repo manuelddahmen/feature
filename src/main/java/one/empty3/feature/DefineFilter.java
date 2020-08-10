@@ -20,8 +20,8 @@ public class DefineFilter extends FilterPixM {
      * @param matrix 2d double
      */
    
-/*
-    public void fill() {
+
+    public void fill(double[][] matrix) {
     for(int comp = 0 ; comp<getCompCount(); comp++) {
         setCompNo(comp);
         for (int i = 0; i < columns; i++)
