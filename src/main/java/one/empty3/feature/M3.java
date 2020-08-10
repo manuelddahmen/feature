@@ -1,9 +1,9 @@
 package one.empty3.feature;
 
 public class M3 {
-    private double[] x;
-    private int columns;
-    private int lines;
+    private final double[] x;
+    private final int columns;
+    private final int lines;
 
     public M3(int columns, int lines, int columnsIn, int linesIn) {
         this.lines = lines;

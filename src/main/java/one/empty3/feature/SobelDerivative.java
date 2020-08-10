@@ -1,23 +1,23 @@
 package one.empty3.feature;
 
-import java.awt.image.BufferedImage;
-
 /*
 sobel. 3×3 ou plus. 1*2+1
 |p1 -p2| (/ n/n)?
 */
 public class SobelDerivative extends FilterPixM {
-     double[] sobelX = new double[] {-1,-2,-1,0,0,0
+    private final boolean isX;
+    double[] sobelX = new double[] {-1,-2,-1,0,0,0
                                 ,1,2,1};
      double[] sobelY = new double[] {-1,0,-1,
                                  -2,0,2
                                 ,1,0,1};
-     public SobelDerivative(int l, int c) {
-        super(l, c);
+     public SobelDerivative(boolean isX) {
+        super(3, 3);
+        this.isX = isX;
     }
 
-    public SobelDerivative(BufferedImage image) {
-        super(image);
+    private void fill() {
+
     }
 
     public double x(int i, int j) {
@@ -34,6 +34,6 @@ public class SobelDerivative extends FilterPixM {
     public double filter(double x, double y) {
         int i = (int)(x+lines/2);
         int j = (int)(x+columns/2);
-        return get(i, j);
+        return isX?(sobelX[j*columns+i]):(sobelY[j*columns+i]);
     }
 }

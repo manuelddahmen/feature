@@ -1,6 +1,12 @@
 package one.empty3.feature;
 
+import java.util.PrimitiveIterator;
+import java.util.Random;
+
 public class M {
+    public static PrimitiveIterator.OfDouble r = new Random().doubles().iterator();
+    public static final Double noValue = r.next();
+
     protected final int columns;
     protected final int lines;
     final double [] x;
@@ -21,7 +27,7 @@ public class M {
             return x[(line * columns + column)+ (getCompNo()*lines*columns)];
         }
         else
-            return Double.NaN; // OutOfBound?
+            return noValue; // OutOfBound?
     }
 
     public int getCompNo() {

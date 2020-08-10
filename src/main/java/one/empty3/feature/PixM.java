@@ -2,6 +2,9 @@ package one.empty3.feature;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.util.PrimitiveIterator;
+import java.util.Random;
+import java.util.stream.DoubleStream;
 
 public class PixM extends M {
     public static final int COMP_RED = 0;
@@ -57,7 +60,7 @@ public class PixM extends M {
                             double filterUVvalue = filter.get(u + filter.columns/2,
                                     v + filter.lines/2);
                             double vAtUv = get(i+u, j+v);
-                            if (!Double.isNaN(vAtUv)) {
+                            if (!(vAtUv==noValue)) {
 
                                 c.set(i, j, c.get(i, j) + filterUVvalue * vAtUv);
                                 sum += filterUVvalue;
