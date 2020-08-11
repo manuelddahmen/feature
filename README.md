@@ -29,3 +29,9 @@ Features' matching
 
 
 ??
+
+"oh mon projet non"
+je previens tout de suite le but de ce
+projet n est pas du hack ou du crack, comme
+pirater les captcha mais de developper une ia 
+robotique.
