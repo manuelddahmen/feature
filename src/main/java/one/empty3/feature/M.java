@@ -174,6 +174,8 @@ public class M {
         }
         return b;
     }
+    
+    public double error(double... )
 
     public void setCompCount(int compCount) {
         this.compCount = compCount;
