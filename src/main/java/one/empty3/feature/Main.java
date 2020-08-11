@@ -55,7 +55,7 @@ public class Main {
                     FilterPixM gaussFilterPixM = new GaussFilterPixM(20, 20.0);
 
                     BufferedImage outputImage = MIMmops.applyMultipleFilters(
-                            pixM, 4, gaussFilterPixM, new SobelDerivative(true),
+                            pixM, 4,/* gaussFilterPixM, */new SobelDerivative(true),
                             new SobelDerivative(false)).getImage();
 
                     File directory = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
