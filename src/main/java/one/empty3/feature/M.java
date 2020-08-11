@@ -175,6 +175,7 @@ public class M {
         return b;
     }
     /***
+    * pa: erreur. tu n'as jamais pris de photo alors?
     * @param w12 x0, y0, w.w, w.h, x1, y1
     * @returns errors sum of differences. compNo
     */
