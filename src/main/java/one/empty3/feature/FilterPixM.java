@@ -10,15 +10,16 @@ public abstract class FilterPixM extends PixM {
     public final static int NORM_FLOOR_1 = 8;
     public final static int NORM_CUSTOM  = 16;
 
-    public String getNormalize() {
+    public int getNormalize() {
         return normalize;
     }
 
-    public void setNormalize(String normalize) {
+    public FilterPixM setNormalize(int normalize) {
         this.normalize = normalize;
+        return this;
     }
 
-    private String normalize;
+    private int normalize = NORM_NONE;
 
     public FilterPixM(int l, int c) {
         super(l, c);
@@ -30,9 +31,4 @@ public abstract class FilterPixM extends PixM {
 
     public abstract double filter(double i, double i1);
 
-    public FilterPixM normalizeFunction(String s) {
-        this.normalize = s;
-        return this;
-
-    }
 }
