@@ -37,6 +37,22 @@ public class MIMmops {
         return res[0];
     }
 
+
+    public M harris(PixM image, M3 gradientX, M3 gradientY) {
+        M harris = null;
+        // image :  smoothes
+        // image : gradientX M3(w, h, 2, 1)
+        // image : gradientY M3(w, h, 1, 2)
+
+        // ?mode radar?
+
+        // image of matrix harris. outer product of vectors gradient.
+
+
+
+        // image of angles gradient orientation atan(y/x)
+        return harris;
+    }
     /*
      * fHM(x, y) = det Hl(x, y)
      * tr Hl(x, y)
