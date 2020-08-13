@@ -1,3 +1,9 @@
+#!! Si vous avez une perle gardez la précision.
+
+Parce que ça sert à rien de la remettre 
+
+dans une moule...
+
 # feature
 
 https://drive.google.com/folderview?id=10CXWU2JPVsNMbHrAssxN23KzizzNkvHg
