@@ -52,11 +52,11 @@ public class Main {
                     PixM pixM = new PixM(ImageIO.read(new File("resources/"+s)));
                     BufferedImage origImg = pixM.getImage();
 
-                    FilterPixM gaussFilterPixM = new GaussFilterPixM(20, 20.0);
+                    FilterPixM gaussFilterPixM = new GaussFilterPixM(5, 4.0);
 
                     BufferedImage outputImage = MIMmops.applyMultipleFilters(
-                            pixM, 4, gaussFilterPixM, new SobelDerivative(true),
-                            new SobelDerivative(false)).getImage();
+                            pixM, 4, gaussFilterPixM/*, new SobelDerivative(true),
+                            new SobelDerivative(false)*/).getImage();
 
                     File directory = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
 

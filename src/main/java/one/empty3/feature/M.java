@@ -175,16 +175,21 @@ public class M {
         return b;
     }
     /***
-    * pa: erreur. tu n'as jamais pris de photo alors?
-    * @param w12 x0, y0, w.w, w.h, x1, y1
-    * @returns errors sum of differences. compNo
-    */
+     * pa: mesure de l'erreur dans la fenêtre
+     * en W(0, 1, 2, 3)
+     * par rapport à W(4, 5, 2, 3)
+     * @param w12 x0, y0, w.w, w.h, x1, y1
+     * @return E  errors sum of differences. compNo
+     */
     public double error(double... w12) {
+        double E = 0.0;
         for(double i=0; i <w12[2]; i++)
             for(double j=0; j <w12[3]; j++) {
-                get(w12[0]+w12[2], w12[1]+w12[3])
-                    - get(w12[4]+w12[2], w12[5]+w12[3]
+                E+=
+                (get((int)(w12[0]+w12[2]), (int)(w12[1]+w12[3]))
+                    - get((int)(w12[4]+w12[2]), (int)(w12[5]+w12[3])));
             }
+        return E;
     }
 
     public void setCompCount(int compCount) {
