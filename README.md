@@ -1,3 +1,9 @@
+#!! Si vous avez une perle gardez la précision.
+
+Parce que ça sert à rien de la remettre 
+
+dans une moule...
+
 # feature
 
 https://drive.google.com/folderview?id=10CXWU2JPVsNMbHrAssxN23KzizzNkvHg
@@ -29,3 +35,9 @@ Features' matching
 
 
 ??
+
+"oh mon projet non"
+je previens tout de suite le but de ce
+projet n est pas du hack ou du crack, comme
+pirater les captcha mais de developper une ia 
+robotique.
