@@ -10,6 +10,12 @@ le nez et les...
 ## filtres (kernels) d'images
 Gauss. Multiple iterations. Tests for photos.
 
+<!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
+<dependency>
+    <groupId>org.openpnp</groupId>
+    <artifactId>opencv</artifactId>
+    <version>3.2.0-0</version>
+</dependency>
 
 
 En développement. Ambitions.
