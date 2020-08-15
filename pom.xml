@@ -11,7 +11,7 @@
 
     <groupId>one.empty3</groupId>
     <artifactId>features</artifactId>
-    <version>2020.3.9</version><!-- -SNAPSHOT-->
+    <version>2020.3.9.1-SNAPSHOT</version><!-- -SNAPSHOT-->
     <description>FeaturesManager</description>
     <packaging>jar</packaging>
     <url>https://github.com/manuelddahmen/feature</url>

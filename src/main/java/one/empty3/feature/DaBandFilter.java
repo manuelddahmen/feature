@@ -14,7 +14,6 @@ public class DaBandFilter {
     // gradient == 0.0 ~+ 0.1
     // surface { (xi, yi) }
 
-    // "Donc t'aurais un feature en nombres et des reproductions dans plusieurs images.*
 
 
 }
