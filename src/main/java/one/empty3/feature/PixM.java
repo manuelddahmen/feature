@@ -158,4 +158,27 @@ public class PixM extends M {
 
     }
 
+    public M3 applyFilter2D(GradientFilter gradientFilter) {
+        M3 c = new M3(columns, lines, gradientFilter.getInColumbs(), gradientFilter.getInLines());
+        double sum;
+
+        for (int comp = 0; comp < getCompCount(); comp++) {
+
+            setCompNo(comp);
+            c.setCompNo(comp);
+            gradientFilter.setCompNo(comp);
+
+
+
+            for (int i = 0; i < columns; i++) {
+                for (int j = 0; j < lines; j++) {
+                    for(int ii=0; ii<c.columnsIn; ii++)
+                        for(int ij=0; ij<c.linesIn; ij++)
+                            gradientFilter.filter(this, i, j, ii, ij);
+                }
+
+            }
+        }
+        return c;
+    }
 }
