@@ -61,6 +61,7 @@ public class QuadTransform2D {
         Point3D[] pTemp = quadTemp(t);
         Point3D[] p0 = quadTemp(0.0);
         Point3D pa0 = pT(p0, p1243, p1423);
+        Poinf3D ca0 = pC(new Point3D(i1.getRBG((int)p0.getX(),(int) p0.getY())));
         Point3D pT = pT(pTemp, p1243, p1423);
         return new Inter(pT, null);
     }
