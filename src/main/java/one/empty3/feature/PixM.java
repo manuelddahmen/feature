@@ -158,7 +158,7 @@ public class PixM extends M {
 
     }
 
-    public M3 applyFilter2D(GradientFilter gradientFilter) {
+    public M3 applyFilter2D(FilterMatPixM gradientFilter) {
         M3 c = new M3(columns, lines, gradientFilter.getInColumbs(), gradientFilter.getInLines());
         double sum;
 
