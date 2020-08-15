@@ -460,5 +460,10 @@
             <artifactId>miglayout-javafx</artifactId>
             <version>5.2</version>
         </dependency>
+        <dependency>
+            <groupId>one.empty3</groupId>
+            <artifactId>empty3-library-3d</artifactId>
+            <version>2020.3.8.2-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 </project>
