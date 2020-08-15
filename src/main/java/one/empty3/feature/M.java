@@ -195,4 +195,25 @@ public class M {
     public void setCompCount(int compCount) {
         this.compCount = compCount;
     }
+
+
+    public double getOpValue(String op, int m1ij, int m2ij) {
+        return m1ij-m2ij;
+    }
+    public M op(M mat2, String op) {
+    
+M res = new M(m.columns, lines);
+            for(int comp = 0; comp<getCompNo(); comp++) {
+                res.setCompNo(comp);
+                this.setCompNo(comp);
+                for (int i = 0; i < m.columns; i++) {
+                    for (int j = 0; j < lines; j++) {
+                        
+                            res.set(i, j, getOpValue("", get(i, j), mat2.get(i, j)));
+                    }
+                }
+            }
+            return res;
+        
+    }
 }
