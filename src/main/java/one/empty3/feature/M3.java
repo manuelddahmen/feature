@@ -8,6 +8,7 @@ import java.util.Random;
 public class M3 {
     public static PrimitiveIterator.OfDouble r = new Random().doubles().iterator();
     public static final Double noValue = r.next();
+    private PixM pixM;
     private double[] x;
     public final int columns;
     public final int lines;
@@ -27,29 +28,33 @@ public class M3 {
         this.columns = columns;
         this.linesIn = linesIn;
         this.columnsIn = columnsIn;
-        setCompCount(4);
+        setCompCount();
         init();
+        pixM = new PixM(columns, lines);
     }
 
     private void init() {
         x = new double[columns * lines * columnsIn * linesIn * compCount];
     }
-    private void setCompCount(int count) {
-        compCount = count;
+
+    private void setCompCount() {
+        compCount = 4;
     }
+
     public M3(BufferedImage image, int columnsIn, int linesIn) {
         this(image.getWidth(), image.getHeight(), columnsIn, linesIn);
+        pixM = new PixM(image);
+        float[] colorComponents = new float[compCount];
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
                 saveXY(i, j);
+                int rgb = image.getRGB(i, j);
+                colorComponents = new Color(rgb).getColorComponents(colorComponents);
                 for (int ii = 0; ii < columnsIn; ii++)
                     for (int ij = 0; ij < linesIn; ij++) {
-                        int rgb = image.getRGB(i, j);
-                        float[] colorComponents = new float[compCount];
                         for (int com = 0; com < getCompCount(); com++) {
                             setCompNo(com);
-                            colorComponents = new Color(rgb).getColorComponents(colorComponents);
-                            set(i, j, colorComponents[com]);
+                            set(i, j, ii, ij, colorComponents[com]);
                         }
                     }
                 restoreXY();
@@ -99,24 +104,14 @@ public class M3 {
                     for (int ii = 0; ii < c.columnsIn; ii++)
                         for (int ij = 0; ij < c.linesIn; ij++) {
                             c.setXY(i, j);
-                            f.element(this, c, i, j, ii, ij);
+                            f.element(pixM, c, i, j, ii, ij);
                         }
                 }
 
             }
-
-            for (int i = 0; i < columns; i++) {
-                for (int j = 0; j < lines; j++) {
-                    for (int ii = 0; ii < c.columnsIn; ii++)
-                        for (int ij = 0; ij < c.linesIn; ij++) {
-                            f.norm(this);
-                        }
-                }
-
-            }
-
         }
 
+        f.norm(c);
 
 
         return c;

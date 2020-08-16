@@ -75,22 +75,14 @@ public class Main {
 
                     final int[] i = new int[]{0};
                     work(directory, origImg, input);
-                    Arrays.stream(outputImageGradient).sequential().forEach(new Consumer<BufferedImage[]>() {
-                        @Override
-                        public void accept(BufferedImage[] bufferedImages) {
-                            Arrays.stream(bufferedImages).forEach(new Consumer<BufferedImage>() {
-                                @Override
-                                public void accept(BufferedImage bufferedImage) {
-                                    try {
-                                        work(directory, bufferedImage, "/" + (i[0]++) + outputGrad);
-                                    } catch (IOException e) {
-                                        e.printStackTrace();
-                                    }
-
-                                }
-                            });
+                    Arrays.stream(outputImageGradient).sequential().forEach(bufferedImages -> Arrays.stream(bufferedImages).forEach(bufferedImage -> {
+                        try {
+                            work(directory, bufferedImage, "/" + (i[0]++) + outputGrad);
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
-                    });
+
+                    }));
                     work(directory, outputImage, output);
 
                     makeGoodOutput(new File("resources/" + s), directory, null);

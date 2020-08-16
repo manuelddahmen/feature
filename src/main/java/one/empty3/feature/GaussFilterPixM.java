@@ -9,7 +9,7 @@ public class GaussFilterPixM extends FilterPixM {
 
     @Override
     public double filter(double x, double y) {
-        return 1.0 *Math.exp(
+        return 1.0 * Math.exp(
                 -(x * x + y * y)
                         / 2 / sigma / sigma);
     }
@@ -22,7 +22,7 @@ public class GaussFilterPixM extends FilterPixM {
     public GaussFilterPixM(int halfSquareSizeMinus1, double sigma) {
         this(halfSquareSizeMinus1 * 2 + 1);
         this.sigma = sigma;
-        for(int comp = 0 ; comp<getCompCount(); comp++) {
+        for (int comp = 0; comp < getCompCount(); comp++) {
             setCompNo(comp);
             fill();
         }
@@ -32,8 +32,8 @@ public class GaussFilterPixM extends FilterPixM {
     public void fill() {
         for (int i = 0; i < columns; i++)
             for (int j = 0; j < lines; j++) {
-                set(i, j, filter(i-columns/2 ,
-                        j-lines/2)
+                set(i, j, filter(i - columns / 2,
+                        j - lines / 2)
                 );
             }
     }

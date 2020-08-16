@@ -57,10 +57,10 @@ public class PixM extends M {
                         double v2 = derivative.get(1, 0);
                         c.set(i, j,(v1+v2)
                                 * filter.filterUVvalue(u, v, u*v));*/
-                            double filterUVvalue = filter.get(u + filter.columns/2,
-                                    v + filter.lines/2);
-                            double vAtUv = get(i+u, j+v);
-                            if (!(vAtUv==noValue)) {
+                            double filterUVvalue = filter.get(u + filter.columns / 2,
+                                    v + filter.lines / 2);
+                            double vAtUv = get(i + u, j + v);
+                            if (!(vAtUv == noValue)) {
 
                                 c.set(i, j, c.get(i, j) + filterUVvalue * vAtUv);
                                 sum += filterUVvalue;

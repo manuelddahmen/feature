@@ -10,18 +10,18 @@ public class MIMmops {
     public static PixM applyMultipleFilters(PixM pixM, int level, FilterPixM... filter) {
 
         final PixM[] res = {pixM};
-        for(int i=0; i<level; i++) {
-                // Hl(x, y) = ∇σd Pl(x, y)∇σd Pl(x, y)T∗ gσi(x, y)
-                // g      -> Gauss filter
-                //  Sigma -> filter size
-                //  level -> filter iterations
-                // i      -> Iteration value of sigma (end condition?)
-                // ∇σd Pl     -> Picture "derivative" (iteration x (gradient(image)))
-                //               at level l and at sigma
-                // ^T ??? -> Transpose smoothed matrix ?
+        for (int i = 0; i < level; i++) {
+            // Hl(x, y) = ∇σd Pl(x, y)∇σd Pl(x, y)T∗ gσi(x, y)
+            // g      -> Gauss filter
+            //  Sigma -> filter size
+            //  level -> filter iterations
+            // i      -> Iteration value of sigma (end condition?)
+            // ∇σd Pl     -> Picture "derivative" (iteration x (gradient(image)))
+            //               at level l and at sigma
+            // ^T ??? -> Transpose smoothed matrix ?
 
-                // La dérivée et le filtre ne sont pas les mêmes. sommeMatrice(e-..)   et
-                // (get(x+1)-2*get(x)+get(x-1) + get(y+1)+2*get(y)-get(y))/4/4 ou /1/1 ??
+            // La dérivée et le filtre ne sont pas les mêmes. sommeMatrice(e-..)   et
+            // (get(x+1)-2*get(x)+get(x-1) + get(y+1)+2*get(y)-get(y))/4/4 ou /1/1 ??
             Arrays.stream(filter).sequential().forEach(new Consumer<FilterPixM>() {
                 @Override
                 public void accept(FilterPixM filterPixM) {
@@ -31,7 +31,7 @@ public class MIMmops {
                 }
             });
 
-            }
+        }
 
 
         return res[0];
@@ -49,10 +49,10 @@ public class MIMmops {
         // image of matrix harris. outer product of vectors gradient.
 
 
-
         // image of angles gradient orientation atan(y/x)
         return harris;
     }
+
     /*
      * fHM(x, y) = det Hl(x, y)
      * tr Hl(x, y)
@@ -60,8 +60,7 @@ public class MIMmops {
      * λ1λ2
      * λ1 + λ2
      */
-    public void cornerStrength(M harris)
-    {
+    public void cornerStrength(M harris) {
 
     }
 }
