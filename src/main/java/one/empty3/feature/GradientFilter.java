@@ -15,14 +15,14 @@ public class GradientFilter extends FilterMatPixM{
          + image.get(ii+1, ij)
          + image.get(ii, ij+1) 
       ) / 4.0);
-        set (i, j, 0, 1, Math.atan( - image.get(ii, ij-1) - 
+        set (i, j, 0, 1, Math.atan( (- image.get(ii, ij-1) - 
          
                                    
          + 2*  image.get(ii, ij)
-         + image.get(ii, ij+1),
+         + image.get(ii, ij+1))/(
          - image.get(ii-1, ij) 
          + 2*  image.get(ii, ij)
-       + image.get(ii+1, ij)));
+       + image.get(ii+1, ij))));
  }
 
 }
