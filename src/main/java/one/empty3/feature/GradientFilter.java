@@ -4,6 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class GradientFilter extends FilterMatPixM {
 
+    private final double[][][] gNormalize;
     private double gMin = 10.0;
     private double gMax = -10.0;
     private double gMax1 = Double.MIN_VALUE;
@@ -11,6 +12,7 @@ public class GradientFilter extends FilterMatPixM {
 
     public GradientFilter(BufferedImage image) {
         super(image, 1, 2);
+        gNormalize = new double[1][2][2];//x, y, min/max
     }
 
     public void element(M3 image, M3 res, int i, int j, int ii, int ij) {
@@ -59,6 +61,7 @@ public class GradientFilter extends FilterMatPixM {
      *
      * @param image
      */
+
     public void norm(M3 image) {
         for (int c = 0; c < getCompCount(); c++)
             for (int i = 0; i < image.columns; i++)
@@ -66,7 +69,7 @@ public class GradientFilter extends FilterMatPixM {
                     for (int ii = 0; ii < image.columnsIn; ii++)
                         for (int ij = 0; ij < image.linesIn; ij++) {
                             double v = image.get(i, j, ii, ij);
-                            v = gMin + (v - gMin) / (gMax - gMin);
+                            v = (v - gMin) / (gMax - gMin);
                             image.set(i, j, ii, ij, v);
                         }
 
