@@ -38,7 +38,7 @@ public class GradientFilter extends FilterMatPixM {
             if (ii == 0 && ij == 1) {
                 image.setXY(i, j);
                 res.setXY(i, j);
-                res.set(i, j, 0, 1, Math.atan((-image.get(ii, ij - 1) -
+                res.set(i, j, 0, 1, Math.atan((-image.get(ii, 0) -
 
 
                         +2 * image.get(ii, ij)
@@ -59,7 +59,7 @@ public class GradientFilter extends FilterMatPixM {
      * Norme linéaire
      * Autre exemple : histogramme de valeurs = échelle pondérée
      *
-     * @param image
+     * @param image M3 image array
      */
 
     public void norm(M3 image) {
