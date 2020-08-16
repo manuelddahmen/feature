@@ -8,7 +8,7 @@ public class GradientFilter extends FilterMatPixM{
         super(image, 1, 2);
     }
 
-    public void filter(PixM image, int i, int j, int ii, int ij) {
+    public void filter(M3 image, int i, int j, int ii, int ij) {
         set (i, j, 0, 0, ( - image.get(ii-1, ij) - 
          - image.get(ii, ij-1) - 
          + 4*  image.get(ii, ij)

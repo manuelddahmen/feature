@@ -49,14 +49,19 @@ public class Main {
                     
                     System.out.println("format name image " + ext + " found");
 
-                    PixM pixM = new PixM(ImageIO.read(new File("resources/"+s)));
+                    BufferedImage image = ImageIO.read(new File("resources/" + s));
+                    PixM pixM = new PixM(image);
                     BufferedImage origImg = pixM.getImage();
 
                     FilterPixM gaussFilterPixM = new GaussFilterPixM(5, 4.0);
 
+                    GradientFilter gradientMask = new GradientFilter(pixM.getImage());
+
                     BufferedImage outputImage = MIMmops.applyMultipleFilters(
                             pixM, 4, gaussFilterPixM/*, new SobelDerivative(true),
                             new SobelDerivative(false)*/).getImage();
+                    BufferedImage outputImageGradient = new M3(image, gradientMask.columnsIn, gradientMask.linesIn)
+                            .filter(gradientMask, new int [] {0, 1, 2}).getImage(new int [] {0, 1});
 
                     File directory = new File("outputFiles/res_" + "00"+System.nanoTime()+"__"+
 
@@ -64,9 +69,11 @@ public class Main {
                                     .replace('\\', '_').replace('/', '_').replace(':', '_')
                             + "/");
                     String output ="/Output"+s+".png";
+                    String outputGrad ="/Gradient"+s+".png";
                     String input ="/Input"+s+".png";
                     
-                     work(directory, origImg, input);
+                    work(directory, origImg, input);
+                    work(directory, outputImageGradient, outputGrad);
                     work(directory, outputImage, output);
                     
                     makeGoodOutput(new File("resources/"+s), directory, null);

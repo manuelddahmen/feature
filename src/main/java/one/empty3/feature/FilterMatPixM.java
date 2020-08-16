@@ -22,5 +22,5 @@ public abstract class FilterMatPixM extends M3{
         return columnsIn;
     }
 
-    public abstract void filter(PixM pixM, int i, int j, int columnsIn, int linesIn);
+    public abstract void filter(M3 pixM, int i, int j, int columnsIn, int linesIn);
 }
