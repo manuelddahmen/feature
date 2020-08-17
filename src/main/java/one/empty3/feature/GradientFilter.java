@@ -4,11 +4,7 @@ import java.awt.image.BufferedImage;
 
 public class GradientFilter extends FilterMatPixM {
 
-    private final double[][][] gNormalize;
-    private double gMin = Double.MAX_VALUE;
-    private double gMax = Double.MIN_VALUE;
-    private double gMax1 = Double.MIN_VALUE;
-    private double gMin1 = Double.MAX_VALUE;
+    private double[][][] gNormalize;
 
     public GradientFilter(BufferedImage image) {
         super(image, 1, 2);
@@ -22,11 +18,11 @@ public class GradientFilter extends FilterMatPixM {
             image.setCompNo(c);
             if (ii == 0 && ij == 0) {
                 res.setXY(i, j);
-                res.set(0, 0, (-image.get(ii - 1, ij) -
-                        -image.get(ii, ij - 1)
-                        + 4 * image.get(ii, ij)
-                        + image.get(ii + 1, ij)
-                        + image.get(ii, ij + 1)
+                res.set(0, 0, (-image.get(i+ii - 1, j+ij) -
+                        -image.get(i+ii, j+ij - 1)
+                        + 4 * image.get(i+ii, j+ij)
+                        + image.get(i+ii + 1, j+ij)
+                        + image.get(i+ii, j+ij + 1)
                 ) / 4.0);
                 if (res.get(i, j, 0, 0) < gNormalize[0][0][0])
                     gNormalize[0][0][0] = res.get(i, j, 0, 0);
@@ -36,15 +32,18 @@ public class GradientFilter extends FilterMatPixM {
             }
             if (ii == 0 && ij == 1) {
                 res.setXY(i, j);
-                res.set(0, 1, Math.atan((-image.get(ii, 0) -
-
-
-                        +2 * image.get(ii, ij)
-                        + image.get(ii, ij + 1)) / (
-                        -image.get(ii + 1, ij)
-                                + 2 * image.get(ii, ij)
-                                + image.get(ii + 1, ij))) / Math.PI / 2);
-                if (res.get(i, j, 0, 0) < gNormalize[0][1][0])
+                res.set(0, 1, Math.atan(
+                        (// Delta Y
+                                -image.get(i, j-1)
+                                + image.get(i, j)
+                                //+ image.get(i+1, j + 1) + image.get(i, j+1 + 1)
+                        ) /
+                        (
+                                -image.get(i-1, j)
+                                + image.get(i, j)
+                        )
+                ));
+                if (res.get(i, j, 0, 1) < gNormalize[0][1][0])
                     gNormalize[0][1][0] = res.get(i, j, 0, 1);
                 if (res.get(i, j, 0, 1) >  gNormalize[0][1][1])
                     gNormalize[0][1][1] = res.get(i, j, 0, 1);
@@ -76,10 +75,7 @@ public class GradientFilter extends FilterMatPixM {
 
                 }
         }
-        gMin = Double.MAX_VALUE;
-        gMax = Double.MIN_VALUE;
-        gMax1 = Double.MIN_VALUE;
-        gMin1 = Double.MAX_VALUE;
+        gNormalize = new double[columns][lines][2];//x, y, min/max
 
     }
 }
