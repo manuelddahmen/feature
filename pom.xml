@@ -465,12 +465,12 @@
             <artifactId>empty3-library-3d</artifactId>
             <version>2020.3.9-SNAPSHOT</version>
         </dependency>
-<!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
-<dependency>
-    <groupId>org.openpnp</groupId>
-    <artifactId>opencv</artifactId>
-    <version>3.2.0-0</version>
-</dependency>
+        <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
+        <dependency>
+            <groupId>org.openpnp</groupId>
+            <artifactId>opencv</artifactId>
+            <version>3.2.0-0</version>
+        </dependency>
 
     </dependencies>
 </project>
