@@ -8,7 +8,17 @@ ces documents en ligne publiés. Mais je les partage
 le nez et les...
 
 ## filtres (kernels) d'images
-Gauss. Multiple iterations. Tests for photos.
+Gauss. Multiples iterations. Tests  photos.
+Gradient X, Y, debugging outter dot ptoduct. 
+SobelX, SobelY
+
+## Formats et classes d'images. 
+- BufferedImage Int Rgb
+- PixM components matrix of pictures. 
+color component based. 
+- M3 components 
+  + matrix (columnsIn, linesIn) internal
+  matrix at x, y
 
 <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
 <dependency>
@@ -18,7 +28,7 @@ Gauss. Multiple iterations. Tests for photos.
 </dependency>
 
 
-En développement. Ambitions.
+## En développement. Ambitions.
 
 Mis à part la curiosité technocrate le but est 
 d'aider ou d'assister les personnes auxquelles
@@ -26,7 +36,7 @@ il manque un sens. - 1 point.
 
 -2 rires.
 
-La conception de features 2d 3d.
+## La conception de features 2d 3d.
 
 Les collections d'images contenant à une
 feature (caractéristiques) ou d'un ensemble
@@ -37,7 +47,7 @@ Features' matching
 
 ??
 
-"oh mon projet non"
+_"oh mon projet non"_
 je previens tout de suite le but de ce
 projet n est pas du hack ou du crack, comme
 pirater les captcha mais de developper une ia 
