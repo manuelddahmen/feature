@@ -89,13 +89,13 @@ public class M3 {
                 for (int ii = 0; ii < c.columnsIn; ii++)
                     for (int ij = 0; ij < c.linesIn; ij++) {
                         c.set(i, j, ii, ij, 0.0);
-                        f.element(f, c, i, j, ii, ij);
+                        f.element(this, c, i, j, ii, ij);
                     }
             }
         }
         f.norm(c);
 
-        return f.normalize(0.0, 1.0);
+        return c.normalize(0.0, 1.0);//f.normalize(0.0, 1.0);
     }
 
 

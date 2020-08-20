@@ -81,11 +81,11 @@ public class Main {
                     Linear linear = new Linear(image22[1][0], image22[0][0],
                             new PixM(image.getWidth(), image.getHeight()));
                     linear.op2d2d(new char[] {'*'}, new int [][] {{1, 0}}, new int []{ 2});
-                    BufferedImage image1 = linear.getImages()[2].getImage();
+                    BufferedImage image1 = linear.getImages()[2].normalize().getImage();
                     work(directory, image1, "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
                     Arrays.stream(image22).sequential().forEach(bufferedImages -> Arrays.stream(bufferedImages).forEach(bufferedImage -> {
                         try {
-                            work(directory, bufferedImage.getImage(), "/" + (i[0]++) + outputGrad);
+                            work(directory, bufferedImage.normalize().getImage(), "/" + (i[0]++) + outputGrad);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

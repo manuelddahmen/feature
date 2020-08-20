@@ -14,40 +14,37 @@ public class GradientFilter extends FilterMatPixM {
     public void element(M3 source, M3 res, int i, int j, int ii, int ij) {
 
         for (int c = 0; c < source.getCompCount(); c++) {
-            res.setXY(i, j);
-            setCompNo(c);
-            res.setCompNo(c);
             source.setCompNo(c);
             if (ii == 0 && ij == 0) {
-                res.set(0, 0, -source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0));
+                res.set(i, j, 0, 0, -source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0));
                 //+ image.get(i+ii + 1, j+ij)
                 //+ image.get(i+ii, j+ij + 1
-                if (res.get(0, 0) < gNormalize[c][0][0][0])
-                    gNormalize[c][0][0][0] = res.get(0, 0);
-                if (res.get(0, 0) > gNormalize[c][0][0][1])
-                    gNormalize[c][0][0][1] = res.get(0, 0);
+                if (res.get(i, j, 0, 0) < gNormalize[c][0][0][0])
+                    gNormalize[c][0][0][0] = res.get(i, j, 0, 0);
+                if (res.get(i, j, 0, 0) > gNormalize[c][0][0][1])
+                    gNormalize[c][0][0][1] = res.get(i, j, 0, 0);
 
             }
             if (ii == 0 && ij == 1) {
-                res.set(0, 1, Math.atan( -source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0)) /
+                res.set(i, j, 0, 1, Math.atan( -source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0)) /
                                 (-source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0)));
-                if (res.get(0, 1) < gNormalize[c][0][1][0])
+                if (res.get(i, j, 0, 1) < gNormalize[c][0][1][0])
                     gNormalize[c][0][1][0] = res.get(0, 1);
-                if (res.get(0, 1) > gNormalize[c][0][1][1])
-                    gNormalize[c][0][1][1] = res.get(0, 1);
+                if (res.get(i, j, 0, 1) > gNormalize[c][0][1][1])
+                    gNormalize[c][0][1][1] = res.get(i, j, 0, 1);
 
             }
             if (ii == 1 && ij == 0) {
-                res.set(1, 0, -source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0)
+                res.set(i, j, 1, 0, -source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0)
                 );
-                if (res.get(1, 0) < gNormalize[c][1][0][0])
-                    gNormalize[c][1][0][0] = res.get(1, 0);
-                if (res.get(1, 0) > gNormalize[c][1][0][1])
-                    gNormalize[c][1][0][1] = res.get(1, 0);
+                if (res.get(i, j, 1, 0) < gNormalize[c][1][0][0])
+                    gNormalize[c][1][0][0] = res.get(i, j, 1, 0);
+                if (res.get(i, j, 1, 0) > gNormalize[c][1][0][1])
+                    gNormalize[c][1][0][1] = res.get(i, j, 1, 0);
 
             }
             if (ii == 1 && ij == 1) {
-                res.set(0, 1, Math.atan(
+                res.set(i, j, 0, 1, Math.atan(
                         (// Delta Y/Delta X
                                 -source.get(i, j+1, 0, 0) + source.get(i, j, 0, 0)
                                 //+ image.get(i+1, j + 1) + image.get(i, j+1 + 1)
@@ -56,10 +53,10 @@ public class GradientFilter extends FilterMatPixM {
                                         -source.get(i+1, j, 0, 0) + source.get(i, j, 0, 0)
                                 )
                 ));
-                if (res.get(1, 1) < gNormalize[c][1][1][0])
-                    gNormalize[c][1][1][0] = res.get(0, 1);
-                if (res.get(1, 1) > gNormalize[c][1][1][1])
-                    gNormalize[c][1][1][1] = res.get(1, 1);
+                if (res.get(i, j, 1, 1) < gNormalize[c][1][1][0])
+                    gNormalize[c][1][1][0] = res.get(i, j, 0, 1);
+                if (res.get(i, j, 1, 1) > gNormalize[c][1][1][1])
+                    gNormalize[c][1][1][1] = res.get(i, j, 1, 1);
 
             }
         }
