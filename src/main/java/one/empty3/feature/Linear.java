@@ -1,12 +1,16 @@
 package one.empty3.feature;
 
+import java.awt.image.BufferedImage;
+import java.util.Arrays;
+import java.util.function.Consumer;
+
 public class Linear {
     private int type = 0;
     public static final int TYPE_2D = 0;
     public static final int TYPE_2D_2D = 1;
 
     private PixM[] images;
-    private final M3[] imagesM;
+    private M3[] imagesM;
 
     public Linear(PixM... images) {
         type = TYPE_2D_2D;
@@ -18,6 +22,23 @@ public class Linear {
         type = TYPE_2D;
         this.images = null;
         this.imagesM = imagesM;
+    }
+
+    public Linear(BufferedImage... bufferedImages) {
+        type = TYPE_2D_2D;
+        this.imagesM = null;
+        images = new PixM[bufferedImages.length];
+        final int[] i = {0};
+        Arrays.stream(bufferedImages).forEach(new Consumer<BufferedImage>() {
+            @Override
+            public void accept(BufferedImage bufferedImage) {
+                images[i[0]] = new PixM(bufferedImage);
+                i[0]++;
+            }
+        });
+        this.imagesM = null;
+        this.images = images;
+
     }
 
     public boolean op2d2d(char[] op, int[][] index, int[] indexRes) {
@@ -64,6 +85,7 @@ public class Linear {
                             }
                 }
             }
+            pixM.normalize();
             workingImages[indexRes[x]] = pixM;
         }
         this.images = workingImages == null ? images : workingImages;

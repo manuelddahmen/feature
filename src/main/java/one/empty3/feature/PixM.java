@@ -101,12 +101,18 @@ public class PixM extends M {
     }
 
     public BufferedImage getImage() {
-        /*
+
         float[] f = new float[getCompCount()];
         Color.white.getColorComponents(f);
         float [] maxColorValue = f;
         double[] maxRgbai = new double[getCompCount()];
+        double[] minRgbai = new double[getCompCount()];
         double[] meanRgbai = new double[getCompCount()];
+        for (int i = 0; i < getCompCount(); i++) {
+            maxRgbai[i] = -Double.MAX_VALUE;
+            minRgbai[i] =  Double.MAX_VALUE;
+            meanRgbai[i] = 0.0;
+        }
 
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
@@ -124,7 +130,7 @@ public class PixM extends M {
             setCompNo(comp);
             meanRgbai[comp] /= (lines * columns);
         }
-        */
+
 
         BufferedImage image = new BufferedImage(columns,
                 lines, BufferedImage.TYPE_INT_RGB);
@@ -142,8 +148,6 @@ public class PixM extends M {
                     value = Math.min(value, 1f);
 
                     rgba[comp] = value;
-
-                    //values[j * columns + i] += ((rgbComp & 0xFF) << ((3-  comp) * 8));
                 }
                 image.setRGB(i, j, new Color(rgba[0], rgba[1], rgba[2]).getRGB());
             }
@@ -163,7 +167,11 @@ public class PixM extends M {
         double [] maxRgbai = new double[compCount];
         double[] meanRgbai = new double[compCount] ;
         double [] minRgbai = new double[compCount];
-
+        for (int i = 0; i < getCompCount(); i++) {
+            maxRgbai[i] = -Double.MAX_VALUE;
+            minRgbai[i] =  Double.MAX_VALUE;
+            meanRgbai[i] = 0.0;
+        }
         for (int comp = 0; comp < getCompCount(); comp++) {
             setCompNo(comp);
             for (int i = 0; i < columns; i++) {

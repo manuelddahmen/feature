@@ -9,7 +9,6 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.Objects;
 import java.nio.file.*;
-import java.util.function.Consumer;
 
 public class Main {
     public static void makeGoodOutput(File original, File folderOutput, PrintWriter out) {
@@ -52,18 +51,17 @@ public class Main {
 
                     BufferedImage image = ImageIO.read(new File("resources/" + s));
                     PixM pixM = new PixM(image);
-                    BufferedImage origImg = pixM.getImage();
+                    //BufferedImage origImg = pixM.getImage();
 
                     FilterPixM gaussFilterPixM = new GaussFilterPixM(5, 4.0);
 
-                    GradientFilter gradientMask = new GradientFilter(pixM.getImage());
+                    GradientFilter gradientMask = new GradientFilter(image);
 
                     BufferedImage outputImage = MIMmops.applyMultipleFilters(
                             pixM, 4, gaussFilterPixM/*, new SobelDerivative(true),
                             new SobelDerivative(false)*/).getImage();
-                    M3 image22 = new M3(image, gradientMask.columnsIn, gradientMask.linesIn)
+                    PixM[][] image22 = new M3(image, 1, 1)
                             .filter(gradientMask);
-                    BufferedImage[][] outputImageGradient = image22.getImagesMatrix(gradientMask.columnsIn, gradientMask.linesIn);
 
                     File directory = new File("outputFiles/res_" + "00" + System.nanoTime() + "__" +
 
@@ -76,18 +74,18 @@ public class Main {
 
                     final int[] i = new int[]{0};
 
-                    work(directory, origImg, input);
+                    work(directory, image, input);
+                    //M3 gradientFilter = image22.filter(new GradientFilter(origImg));
 
-                    Linear linear = new Linear(new PixM(image22.filter(new GradientFilter(origImg)).getImagesMatrix(gradientMask.columnsIn, gradientMask.linesIn)
-                            [1][0]
-                    ), new PixM(image22.filter(new GradientFilter(origImg)).getImagesMatrix(gradientMask.columnsIn, gradientMask.linesIn)
-                            [1][0]), pixM);
+                    //PixM[][] imagesMatrix = gradientFilter.getImagesMatrix();
+                    Linear linear = new Linear(image22[1][0], image22[0][0],
+                            new PixM(image.getWidth(), image.getHeight()));
                     linear.op2d2d(new char[] {'*'}, new int [][] {{1, 0}}, new int []{ 2});
-                    linear.getImages()[2].normalize().getImage();
-                    work(directory, linear.getImages()[2].getImage(), "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
-                    Arrays.stream(outputImageGradient).sequential().forEach(bufferedImages -> Arrays.stream(bufferedImages).forEach(bufferedImage -> {
+                    BufferedImage image1 = linear.getImages()[2].getImage();
+                    work(directory, image1, "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
+                    Arrays.stream(image22).sequential().forEach(bufferedImages -> Arrays.stream(bufferedImages).forEach(bufferedImage -> {
                         try {
-                            work(directory, bufferedImage, "/" + (i[0]++) + outputGrad);
+                            work(directory, bufferedImage.getImage(), "/" + (i[0]++) + outputGrad);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
