@@ -28,7 +28,7 @@ color component based.
 </dependency>
 
 
-En développement. Ambitions.
+## En développement. Ambitions.
 
 Mis à part la curiosité technocrate le but est 
 d'aider ou d'assister les personnes auxquelles
@@ -36,7 +36,7 @@ il manque un sens. - 1 point.
 
 -2 rires.
 
-La conception de features 2d 3d.
+## La conception de features 2d 3d.
 
 Les collections d'images contenant à une
 feature (caractéristiques) ou d'un ensemble
@@ -47,7 +47,7 @@ Features' matching
 
 ??
 
-"oh mon projet non"
+_"oh mon projet non"_
 je previens tout de suite le but de ce
 projet n est pas du hack ou du crack, comme
 pirater les captcha mais de developper une ia 
