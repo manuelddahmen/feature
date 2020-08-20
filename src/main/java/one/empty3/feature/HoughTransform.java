@@ -1,10 +1,12 @@
-package ac.essex.ooechs.imaging.commons.edge.hough; 
- 
+//package ac.essex.ooechs.imaging.commons.edge.hough; 
+package one.empty3.feature
 import java.awt.image.BufferedImage; 
 import java.awt.*; 
 import java.util.Vector; 
 import java.io.File; 
- 
+ // je crois que le principe c'est 
+// checker le vote dans l'espace des
+//solutions. 
 /** 
  * <p/> 
  * Java Implementation of the Hough Transform.<br /> 
