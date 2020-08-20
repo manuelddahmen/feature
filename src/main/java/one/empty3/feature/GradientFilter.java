@@ -7,24 +7,28 @@ public class GradientFilter extends FilterMatPixM {
     private double[][][] gNormalize;
 
     public GradientFilter(BufferedImage image) {
-        super(image, 1, 2);
+        super(image, 2, 2);
         gNormalize = new double[][][]{{
                         {Double.MAX_VALUE, -Double.MAX_VALUE},
                 {Double.MAX_VALUE, -Double.MAX_VALUE}
-        }
+        },
+                {
+                        {Double.MAX_VALUE, -Double.MAX_VALUE},
+                        {Double.MAX_VALUE, -Double.MAX_VALUE}
+                }
         };//x, y, min/max
     }
 
     public void element(PixM image, M3 res, int i, int j, int ii, int ij) {
+        res.setXY(i, j);
         for (int c = 0; c < image.getCompCount(); c++) {
             setCompNo(c);
             res.setCompNo(c);
             image.setCompNo(c);
             if (ii == 0 && ij == 0) {
                 res.set(0, 0, (
-                        -image.get(i+ii - 1, j+ij)
-                        -image.get(i+ii, j+ij - 1)
-                                + 2 * image.get(i+ii, j+ij)
+                        -image.get(i - 1, j)
+                                + 1 * image.get(i, j)
                         //+ image.get(i+ii + 1, j+ij)
                         //+ image.get(i+ii, j+ij + 1)
                 ));
@@ -38,7 +42,7 @@ public class GradientFilter extends FilterMatPixM {
                 res.set(0, 1, Math.atan(
                         (// Delta Y
                                 -image.get(i, j-1)
-                                + image.get(i, j)
+                                + 1*image.get(i, j)
                                 //+ image.get(i+1, j + 1) + image.get(i, j+1 + 1)
                         ) /
                         (
@@ -53,6 +57,36 @@ public class GradientFilter extends FilterMatPixM {
 
             }
         }
+        if (ii == 1 && ij == 0) {
+            res.set(1, 0, (
+                            -image.get(i, j - 1)
+                            +  image.get(i, j)
+            ));
+            if (res.get(1, 0) < gNormalize[1][0][0])
+                gNormalize[1][0][0] = res.get(1, 0);
+            if (res.get(1, 0) >  gNormalize[1][0][1])
+                gNormalize[1][0][1] = res.get(1, 0);
+
+        }
+        if (ii == 1 && ij == 1) {
+            res.set(0, 1, Math.atan(
+                    (// Delta Y
+                            -image.get(i, j)
+                                    + image.get(i, j+1)
+                            //+ image.get(i+1, j + 1) + image.get(i, j+1 + 1)
+                    ) /
+                            (
+                                    -image.get(i, j+1)
+                                            + image.get(i+1, j)
+                            )
+            ));
+            if (res.get(1, 1) < gNormalize[1][1][0])
+                gNormalize[1][1][0] = res.get(0, 1);
+            if (res.get(1, 1) >  gNormalize[1][1][1])
+                gNormalize[1][1][1] = res.get(1, 1);
+
+        }
+
     }
 
 

@@ -61,8 +61,9 @@ public class Main {
                     BufferedImage outputImage = MIMmops.applyMultipleFilters(
                             pixM, 4, gaussFilterPixM/*, new SobelDerivative(true),
                             new SobelDerivative(false)*/).getImage();
-                    BufferedImage[][] outputImageGradient = new M3(image, gradientMask.columnsIn, gradientMask.linesIn)
-                            .filter(gradientMask).getImagesMatrix(gradientMask.columnsIn, gradientMask.linesIn);
+                    M3 image22 = new M3(image, gradientMask.columnsIn, gradientMask.linesIn)
+                            .filter(gradientMask);
+                    BufferedImage[][] outputImageGradient = image22.getImagesMatrix(gradientMask.columnsIn, gradientMask.linesIn);
 
                     File directory = new File("outputFiles/res_" + "00" + System.nanoTime() + "__" +
 
@@ -74,7 +75,16 @@ public class Main {
                     String input = "/Input" + s + ".png";
 
                     final int[] i = new int[]{0};
+
                     work(directory, origImg, input);
+
+                    Linear linear = new Linear(new PixM(image22.filter(new GradientFilter(origImg)).getImagesMatrix(gradientMask.columnsIn, gradientMask.linesIn)
+                            [1][0]
+                    ), new PixM(image22.filter(new GradientFilter(origImg)).getImagesMatrix(gradientMask.columnsIn, gradientMask.linesIn)
+                            [1][0]), pixM);
+                    linear.op2d2d(new char[] {'*'}, new int [][] {{1, 0}}, new int []{ 2});
+                    linear.getImages()[2].normalize().getImage();
+                    work(directory, linear.getImages()[2].getImage(), "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
                     Arrays.stream(outputImageGradient).sequential().forEach(bufferedImages -> Arrays.stream(bufferedImages).forEach(bufferedImage -> {
                         try {
                             work(directory, bufferedImage, "/" + (i[0]++) + outputGrad);

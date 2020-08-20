@@ -157,4 +157,49 @@ public class PixM extends M {
     private void saveCompNo() {
 
     }
+
+    public PixM normalize() {
+        int savedComp = getCompNo();
+        double [] maxRgbai = new double[compCount];
+        double[] meanRgbai = new double[compCount] ;
+        double [] minRgbai = new double[compCount];
+
+        for (int comp = 0; comp < getCompCount(); comp++) {
+            setCompNo(comp);
+            for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < lines; j++) {
+
+                    if (get(i, j) > maxRgbai[comp]) {
+                        maxRgbai[comp] = get(i, j);
+                    }
+                if (get(i, j) < minRgbai[comp]) {
+                    minRgbai[comp] = get(i, j);
+                }
+                    meanRgbai[comp] += get(i, j);
+                }
+            }
+            meanRgbai[comp] /= (lines * columns);
+        }
+        PixM image = new PixM(columns, lines);
+        for (int i = 0; i < image.columns; i++) {
+            for (int j = 0; j < image.lines; j++) {
+                float[] rgba = new float[getCompCount()];
+                for (int comp = 0; comp < getCompCount(); comp++) {
+                    setCompNo(comp);
+                    float value = (float) ((get(i, j)-minRgbai[comp])/ (maxRgbai[comp]-minRgbai[comp]));
+                    //TODO problems
+                    value = Math.max(value, 0f);
+                    value = Math.min(value, 1f);
+
+                    rgba[comp] = value;
+
+                    image.set(i, j, value);
+
+                    //values[j * columns + i] += ((rgbComp & 0xFF) << ((3-  comp) * 8));
+                }
+            }
+        }
+        setCompNo(savedComp);
+        return image;
+    }
 }
