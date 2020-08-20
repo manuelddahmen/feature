@@ -1,4 +1,4 @@
-package one.empty3.feature; 
+package ac.essex.ooechs.imaging.commons.edge.hough; 
  
 import java.awt.image.BufferedImage; 
 import java.awt.*; 
@@ -45,7 +45,7 @@ import java.io.File;
  * @author Olly Oechsle, University of Essex 
  */ 
  
-public class HoughTransform2 extends Thread { 
+public class HoughTransform extends Thread { 
  
     public static void main(String[] args) throws Exception { 
         String filename = "/home/ooechs/Desktop/vase.png"; 
@@ -54,7 +54,7 @@ public class HoughTransform2 extends Thread {
         BufferedImage image = javax.imageio.ImageIO.read(new File(filename)); 
  
         // create a hough transform object with the right dimensions 
-        HoughTransform2 h = new HoughTransform2(image.getWidth(), image.getHeight()); 
+        HoughTransform h = new HoughTransform(image.getWidth(), image.getHeight()); 
  
         // add the points from the image (or call the addPoint method separately if your points are not in an image 
         h.addPoints(image); 
@@ -107,7 +107,7 @@ public class HoughTransform2 extends Thread {
      * @param width  The width of the input image 
      * @param height The height of the input image 
      */ 
-    public HoughTransform2(int width, int height) { 
+    public HoughTransform(int width, int height) { 
  
         this.width = width; 
         this.height = height; 
