@@ -29,8 +29,8 @@ public class GradientFilter extends FilterMatPixM {
 
             }
             if (ii == 0 && ij == 1) {
-                res.set(0, 1, Math.atan( -source.get(i, j - 1, 0, 0) + source.get(i, j)) /
-                                (-source.get(i - 1, j, 0, 0) + source.get(i, j)));
+                res.set(0, 1, Math.atan( -source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0)) /
+                                (-source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0)));
                 if (res.get(0, 1) < gNormalize[c][0][1][0])
                     gNormalize[c][0][1][0] = res.get(0, 1);
                 if (res.get(0, 1) > gNormalize[c][0][1][1])

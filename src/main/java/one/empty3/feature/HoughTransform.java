@@ -1,5 +1,4 @@
-//package ac.essex.ooechs.imaging.commons.edge.hough; 
-package one.empty3.feature
+package one.empty3.feature;
 import java.awt.image.BufferedImage; 
 import java.awt.*; 
 import java.util.Vector; 
@@ -197,7 +196,7 @@ public class HoughTransform extends Thread {
      * Once points have been added in some way this method extracts the lines and returns them as a Vector 
      * of HoughLine objects, which can be used to draw on the 
      * 
-     * @param percentageThreshold The percentage threshold above which lines are determined from the hough array 
+     * @param threshold The percentage threshold above which lines are determined from the hough array
      */ 
     public Vector<HoughLine> getLines(int threshold) { 
  
