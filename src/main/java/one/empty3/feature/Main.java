@@ -24,7 +24,7 @@ public class Main {
     }
 
     public static void work(File dir, BufferedImage imageToWrite, String outputFilename) throws IOException {
-        dir.mkdirs();
+        boolean mkdirs = dir.mkdirs();
         System.out.println(dir.getAbsolutePath() + "\n(width, height) = " + imageToWrite.getWidth() +
                 ", " + imageToWrite.getHeight() + ")");
 
@@ -60,10 +60,9 @@ public class Main {
                     BufferedImage outputImage = MIMmops.applyMultipleFilters(
                             pixM, 4, gaussFilterPixM/*, new SobelDerivative(true),
                             new SobelDerivative(false)*/).getImage();
-                    PixM[][] image22 = new M3(image, 1, 1)
-                            .filter(gradientMask);
-
-                    File directory = new File("outputFiles/res_" + "00" + System.nanoTime() + "__" +
+                    new M3(image, 1, 1).filter(gradientMask);
+                    PixM[][] image22 = gradientMask.getImagesMatrix();
+                            File directory = new File("outputFiles/res_" + "00" + System.nanoTime() + "__" +
 
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
                                     .replace('\\', '_').replace('/', '_').replace(':', '_')

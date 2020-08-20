@@ -15,7 +15,7 @@ public abstract class FilterMatPixM extends M3 {
         return columnsIn;
     }
 
-    public abstract void element(M3 source, M3 result, int i, int j, int ii, int ij);
+    public abstract void element(M3 copy,  int i, int j, int ii, int ij);
 
     public abstract void norm(M3 m3);
 }
