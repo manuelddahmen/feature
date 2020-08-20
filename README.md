@@ -8,7 +8,17 @@ ces documents en ligne publiés. Mais je les partage
 le nez et les...
 
 ## filtres (kernels) d'images
-Gauss. Multiple iterations. Tests for photos.
+Gauss. Multiples iterations. Tests  photos.
+Gradient X, Y, debugging outter dot ptoduct. 
+SobelX, SobelY
+
+## Formats et classes d'images. 
+- BufferedImage Int Rgb
+- PixM components matrix of pictures. 
+color component based. 
+- M3 components 
+  + matrix (columnsIn, linesIn) internal
+  matrix at x, y
 
 <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
 <dependency>
