@@ -8,7 +8,11 @@ public class GradientFilter extends FilterMatPixM {
 
     public GradientFilter(BufferedImage image) {
         super(image, 1, 2);
-        gNormalize = new double[columns][lines][2];//x, y, min/max
+        gNormalize = new double[][][]{{
+                        {Double.MAX_VALUE, -Double.MAX_VALUE},
+                {Double.MAX_VALUE, -Double.MAX_VALUE}
+        }
+        };//x, y, min/max
     }
 
     public void element(PixM image, M3 res, int i, int j, int ii, int ij) {
@@ -17,21 +21,20 @@ public class GradientFilter extends FilterMatPixM {
             res.setCompNo(c);
             image.setCompNo(c);
             if (ii == 0 && ij == 0) {
-                res.setXY(i, j);
-                res.set(0, 0, (-image.get(i+ii - 1, j+ij) -
+                res.set(0, 0, (
+                        -image.get(i+ii - 1, j+ij)
                         -image.get(i+ii, j+ij - 1)
-                        + 4 * image.get(i+ii, j+ij)
-                        + image.get(i+ii + 1, j+ij)
-                        + image.get(i+ii, j+ij + 1)
-                ) / 4.0);
-                if (res.get(i, j, 0, 0) < gNormalize[0][0][0])
-                    gNormalize[0][0][0] = res.get(i, j, 0, 0);
-                if (res.get(i, j, 0, 0) >  gNormalize[0][0][1])
-                    gNormalize[0][0][1] = res.get(i, j, 0, 0);
+                                + 2 * image.get(i+ii, j+ij)
+                        //+ image.get(i+ii + 1, j+ij)
+                        //+ image.get(i+ii, j+ij + 1)
+                ));
+                if (res.get(0, 0) < gNormalize[0][0][0])
+                    gNormalize[0][0][0] = res.get(0, 0);
+                if (res.get(0, 0) >  gNormalize[0][0][1])
+                    gNormalize[0][0][1] = res.get(0, 0);
 
             }
             if (ii == 0 && ij == 1) {
-                res.setXY(i, j);
                 res.set(0, 1, Math.atan(
                         (// Delta Y
                                 -image.get(i, j-1)
@@ -43,10 +46,10 @@ public class GradientFilter extends FilterMatPixM {
                                 + image.get(i, j)
                         )
                 ));
-                if (res.get(i, j, 0, 1) < gNormalize[0][1][0])
-                    gNormalize[0][1][0] = res.get(i, j, 0, 1);
-                if (res.get(i, j, 0, 1) >  gNormalize[0][1][1])
-                    gNormalize[0][1][1] = res.get(i, j, 0, 1);
+                if (res.get(0, 1) < gNormalize[0][1][0])
+                    gNormalize[0][1][0] = res.get(0, 1);
+                if (res.get(0, 1) >  gNormalize[0][1][1])
+                    gNormalize[0][1][1] = res.get(0, 1);
 
             }
         }

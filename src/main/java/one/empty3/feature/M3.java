@@ -91,26 +91,16 @@ public class M3 {
 
     public M3 filter(FilterMatPixM f) {
         M3 c = new M3(columns, lines, f.columnsIn, f.linesIn);
-        double sum = 0.0;
-        int[] comps = new int[]{0, 1, 2, 3};
-        for (int comp : comps) {
-
-            setCompNo(comp);
-            c.setCompNo(comp);
-
-
-            for (int i = 0; i < columns; i++) {
-                for (int j = 0; j < lines; j++) {
-                    for (int ii = 0; ii < c.columnsIn; ii++)
-                        for (int ij = 0; ij < c.linesIn; ij++) {
-                            c.setXY(i, j);
-                            f.element(pixM, c, i, j, ii, ij);
-                        }
-                }
-
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < lines; j++) {
+                c.setXY(i, j);
+                for (int ii = 0; ii < c.columnsIn; ii++)
+                    for (int ij = 0; ij < c.linesIn; ij++) {
+                        c.set(i, j, ii, ij, 0.0);
+                        f.element(pixM, c, i, j, ii, ij);
+                    }
             }
         }
-
         f.norm(c);
 
 
@@ -128,7 +118,7 @@ public class M3 {
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
                 float[] rgba = new float[getCompCount()];
-                for (int comp : compsNo) {
+                for (int comp =0;  comp<getCompCount(); comp++) {
                     setCompNo(comp);
                     float value = (float) get(i, j, 0, 0);
                     //TODO problems
