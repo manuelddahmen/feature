@@ -55,16 +55,16 @@ public class GradientFilter extends FilterMatPixM {
             d = (-source.get(i - 1, j, ii, ij) + v)*columns;
         }
         if (ii == 0 && ij == 1) {
-            d = Math.atan((-source.get(i, j - 1, ii, ij) + v) /
-                    (-source.get(i - 1, j, ii, ij) + v));
+            d = Math.atan(((-source.get(i, j - 1, ii, ij) + v) /
+                    (-source.get(i - 1, j, ii, ij) + v))*columns);
         }
         if (ii == 1 && ij == 0) {
             d = (-source.get(i, j - 1, ii, ij) + v)*lines;
         }
         if (ii == 1 && ij == 1) {
-            d = Math.atan(
+            d = Math.atan((
                     (source.get(i, j + 1, ii, ij) - v) /
-                            (source.get(i + 1, j, ii, ij) - v));
+                            (source.get(i + 1, j, ii, ij) - v))*lines);
         }
         if(ii>=0&&ii<2&&ij>=0&&ij<2)
             copy.set(i, j, ii, ij, d);
