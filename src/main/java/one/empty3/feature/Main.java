@@ -74,11 +74,9 @@ public class Main {
                     String output = "/Output" + s + ".png";
                     String outputGrad = "Gradient" + s + ".png";
                     String input = "/Input" + s + ".png";
-
+                    PixM[][] imagesMatrix = filter.getImagesMatrix();
                     work(directory, pic, "/" + ("__load.save.M3.png"));
                     work(directory, picNorm, "/" + ("__load.save.M3_normalize.png"));
-                    work(directory, ls_22.getImagesMatrix()[1][1].getImage(), "/__load.save.M3_22.png");
-                    work(directory, filter.getImagesMatrix()[0][0].getImage(), "/__grad00.M3_22.png");
                     System.out.println("filter gradient size col : "+filter.columnsIn);
                     System.out.println("filter gradient size lin : "+filter.linesIn);
 
@@ -94,7 +92,7 @@ public class Main {
                     linear.op2d2d(new char[] {'*'}, new int [][] {{1, 0}}, new int []{ 2});
                     BufferedImage image1 = linear.getImages()[2].normalize().getImage();
                     work(directory, image1, "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
-                    Arrays.stream(filter4).sequential().forEach(bufferedImages -> Arrays.stream(bufferedImages).forEach(bufferedImage -> {
+                    Arrays.stream(imagesMatrix).sequential().forEach(bufferedImages -> Arrays.stream(bufferedImages).forEach(bufferedImage -> {
                         try {
                             work(directory, bufferedImage.normalize().getImage(), "/" + (i[0]++) + outputGrad);//
                         } catch (IOException e) {
