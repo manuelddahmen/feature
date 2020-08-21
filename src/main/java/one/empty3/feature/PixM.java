@@ -91,23 +91,14 @@ public class PixM extends M {
         return originValue;
     }
 
-    public PixM exampleFilter() {
-        PixM c;
-        GaussFilterPixM gaussFilter = new GaussFilterPixM(10, 3.0);
-        gaussFilter.fill();
-        c = applyFilter(gaussFilter);
-        return c;
-    }
-
     public BufferedImage getImage() {
 
         float[] f = new float[getCompCount()];
 
         BufferedImage image = new BufferedImage(columns,
-                lines, BufferedImage.TYPE_INT_RGB);
+                lines, BufferedImage.TYPE_INT_ARGB);
 
 
-        int savedComp = getCompNo();
         float[] rgba = new float[getCompCount()];
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
@@ -120,69 +111,66 @@ public class PixM extends M {
 
                     rgba[comp] = value;
                 }
-                image.setRGB(i, j, new Color(rgba[0], rgba[1], rgba[2], 1f).getRGB());
+                image.setRGB(i, j, new Color(rgba[0], rgba[1], rgba[2]).getRGB());
             }
         }
-        setCompNo(savedComp);
         return image;
 
     }
 
 
-    private void saveCompNo() {
+    public PixM normalize(final double min, final double max) {
 
-    }
-
-    public PixM normalize() {
-        int savedComp = getCompNo();
         double[] maxRgbai = new double[compCount];
         double[] meanRgbai = new double[compCount];
         double[] minRgbai = new double[compCount];
+        double minA = 0.0;
+        double maxA = 1.0;
+        if (min != -1 || max != -1) {
+            minA = min;
+            maxA = max;
+        }
         for (int i = 0; i < getCompCount(); i++) {
-            maxRgbai[i] = -Double.MAX_VALUE;
-            minRgbai[i] = Double.MAX_VALUE;
+            maxRgbai[i] = maxA;
+            minRgbai[i] = minA;
             meanRgbai[i] = 0.0;
         }
-        for (int comp = 0; comp < getCompCount(); comp++) {
-            setCompNo(comp);
-            for (int i = 0; i < columns; i++) {
-                for (int j = 0; j < lines; j++) {
-                    if (!Double.isNaN(get(i, j))||!Double.isInfinite(get(i, j))) {
-                        if (get(i, j) > maxRgbai[comp]) {
-                            maxRgbai[comp] = get(i, j);
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < lines; j++) {
+                for (int comp = 0; comp < getCompCount(); comp++) {
+                    setCompNo(comp);
+                    double valueAt = get(i, j);
+                    if (!Double.isNaN(valueAt) || !Double.isInfinite(valueAt)) {
+                        if (valueAt > maxRgbai[comp]) {
+                            maxRgbai[comp] = valueAt;
                         }
-                        if (get(i, j) < minRgbai[comp]) {
-                            minRgbai[comp] = get(i, j);
+                        if (valueAt < minRgbai[comp]) {
+                            minRgbai[comp] = valueAt;
                         }
-                        meanRgbai[comp] += get(i, j);
+                    } else {
+                        valueAt = 0.0;
+                        set(i, j, valueAt);
                     }
-                    else {
-                        if(comp==3) {
-                            //
-                        }
-                    }
+                        meanRgbai[comp] += valueAt / (lines * columns);
                 }
             }
-            meanRgbai[comp] /= (lines * columns);
         }
         PixM image = new PixM(columns, lines);
         for (int i = 0; i < image.columns; i++) {
             for (int j = 0; j < image.lines; j++) {
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
-                    float value = (float) ((get(i, j) - minRgbai[comp]) / (maxRgbai[comp] - minRgbai[comp]));
-                    //TODO problems
+                    image.setCompNo(compNo);
+                    float value;
+                    value = (float) ((get(i, j) - minRgbai[comp]) / (maxRgbai[comp] - minRgbai[comp]));
                     value = Math.max(value, 0f);
                     value = Math.min(value, 1f);
                     //if (comp == 3) value = 1f;
 
                     image.set(i, j, value);
-
-                    //values[j * columns + i] += ((rgbComp & 0xFF) << ((3-  comp) * 8));
                 }
             }
         }
-        setCompNo(savedComp);
         return image;
     }
 }

@@ -11,7 +11,7 @@ public class M {
     protected final int lines;
     final double[] x;
     protected int compNo;
-    protected int compCount = 4;
+    protected final int compCount = 4;
 
     public M(int c, int l) {
         this.lines = l;
@@ -198,11 +198,6 @@ public class M {
             }
         return E;
     }
-
-    public void setCompCount(int compCount) {
-        this.compCount = compCount;
-    }
-
 
     public double getOpValue(String op, double m1ij, double m2ij) {
         return m1ij - m2ij;

@@ -15,19 +15,19 @@ public class M3 {
     protected final int linesIn;
     protected int compNo;
     protected BufferedImage image;
-    private int compCount;
+    private final int compCount = 4;
     private int currentX;
     private int currentY;
     private int savedY;
     private int savedX;
     private static int incrGetOut = 0;
+    int incrOK = 0;
 
     public M3(int columns, int lines, int columnsIn, int linesIn) {
         this.lines = lines;
         this.columns = columns;
         this.linesIn = linesIn;
         this.columnsIn = columnsIn;
-        compCount = 4;
         init();
     }
 
@@ -78,7 +78,7 @@ public class M3 {
             x[index(column, line, columnIn, lineIn)] = d;
         } else {
             incrGetOut++;
-            System.out.println("Outs : " + incrGetOut);
+            //System.out.println("Outs : " + incrGetOut);
         }
     }
 
@@ -92,14 +92,15 @@ public class M3 {
 
         for (int i = 0; i < copy.columns; i++) {
             for (int j = 0; j < copy.lines; j++) {
-                for (int ii = 0; ii < copy.columnsIn; ii++)
+                for (int ii = 0; ii < copy.columnsIn; ii++) {
                     for (int ij = 0; ij < copy.linesIn; ij++) {
-                        for (int c = 0; c < getCompCount(); c++) {
+                        for (int c = 0; c < copy.getCompCount(); c++) {
                             setCompNo(c);
                             copy.setCompNo(c);
                             copy.set(i, j, ii, ij, get(i, j, ii, ij));
                         }
                     }
+                }
             }
         }
         return copy;
@@ -121,9 +122,9 @@ public class M3 {
         return currentX;
     }
 
-    protected void setXY(int i, int j) {
-        currentX = i;
-        currentY = j;
+    protected void setXY(int x, int y) {
+        currentX = x;
+        currentY = y;
     }
 
     protected void restoreXY() {
@@ -139,11 +140,6 @@ public class M3 {
 
 
     }
-
-    public void set(int i, int j, double colorComponent) {
-        set(currentX, currentY, i, j, (double) colorComponent);
-    }
-
 
     public void setCompNo(int compNo) {
         this.compNo = compNo;
@@ -165,64 +161,69 @@ public class M3 {
         double[][][] minRgbai = new double[compCount][columnsIn][linesIn];
 
 
-        for (int comp = 0; comp < getCompCount(); comp++) {
-            setCompNo(comp);
-            for (int ii = 0; ii < columnsIn; ii++) {
-                for (int ij = 0; ij < linesIn; ij++) {
-                    maxRgbai[comp][ii][ij] = -Double.MAX_VALUE;
-                    minRgbai[comp][ii][ij] = Double.MAX_VALUE;
+        for (int ii = 0; ii < columnsIn; ii++) {
+            for (int ij = 0; ij < linesIn; ij++) {
+                for (int comp = 0; comp < getCompCount(); comp++) {
+                    setCompNo(comp);
+                    maxRgbai[comp][ii][ij] = -20000000;
+                    minRgbai[comp][ii][ij] = 20000000;
                     meanRgbai[comp][ii][ij] = 0;
                 }
+                PixM image = new PixM(columns, lines);
+                res[ii][ij] = image;
             }
         }
 
 
         for (int comp = 0; comp < getCompCount(); comp++) {
+            setCompNo(comp);
             for (int ii = 0; ii < columnsIn; ii++) {
                 for (int ij = 0; ij < linesIn; ij++) {
                     for (int i = 0; i < columns; i++) {
                         for (int j = 0; j < lines; j++) {
-                            setCompNo(comp);
-                            if (get(i, j, ii, ij) > maxRgbai[comp][ii][ij]) {
-                                maxRgbai[comp][ii][ij] = get(i, j, ii, ij);
+                            double gij = get(i, j, ii, ij);
+                            if (gij > maxRgbai[comp][ii][ij]) {
+                                maxRgbai[comp][ii][ij] = gij;
                             }
-                            if (get(i, j, ii, ij) < minRgbai[comp][ii][ij]) {
-                                minRgbai[comp][ii][ij] = get(i, j, ii, ij);
+                            if (gij < minRgbai[comp][ii][ij]) {
+                                minRgbai[comp][ii][ij] = gij;
                             }
-                            meanRgbai[comp][ii][ij] += get(i, j, ii, ij);
+                            meanRgbai[comp][ii][ij] += gij;
                         }
                     }
                     meanRgbai[comp][ii][ij] /= (lines * columns);
-                    System.out.println("Mean ii, ij" + meanRgbai[comp][ii][ij]);
+                    System.out.println("Mean (ii, ij) (" + ii + ", " + ij + ")" + meanRgbai[comp][ii][ij]);
                 }
             }
         }
 
         for (int ii = 0; ii < columnsIn; ii++) {
             for (int ij = 0; ij < linesIn; ij++) {
-                PixM image = new PixM(columns, lines);
-                res[ii][ij] = image;
-                for (int i = 0; i < image.columns; i++) {
-                    for (int j = 0; j < image.lines; j++) {
-                        for (int comp = 0; comp < getCompCount(); comp++) {
-                            image.setCompNo(comp);
+                for (int i = 0; i < res[ii][ij].columns; i++) {
+                    for (int j = 0; j < res[ii][ij].lines; j++) {
+                        for (int comp = 0; comp < res[ii][ij].getCompCount(); comp++) {
+                            res[ii][ij].setCompNo(comp);
                             setCompNo(comp);
                             double v;
                             v = get(i, j, ii, ij);
-                            /*value = ((v - minRgbai[comp][ii][ij])
-                                        / (maxRgbai[comp][ii][ij] - minRgbai[comp][ii][ij]));*/
+                            float value = (float) v;
+                            //value = (float) ((v - minRgbai[comp][ii][ij])
+                            //        / (maxRgbai[comp][ii][ij] - minRgbai[comp][ii][ij])+1/256.0);
                             //value = (float) ((value - min) * (max - min));
                             //value = (float) Math.max(value, min);
                             //value = (float) Math.min(value, max);
-
-                            image.set(i, j, v);
+                            if(comp==3)
+                                value = 1f;
+                            res[ii][ij].set(i, j, v);
+                            incrOK++;
                         }
                     }
                 }
 
             }
         }
-        System.out.println("Outs : " + incrGetOut);
+        //System.out.println("Outs : " + incrGetOut);
+        System.out.println("Points ok " + incrOK);
         return res;
     }
 }

@@ -1,36 +1,40 @@
 package one.empty3.feature;
 
 public class GradientFilter extends FilterMatPixM {
+    protected int columnsIn = 2;
+    protected int linesIn = 2;
+    protected int columns;
+    protected int lines;
 
     private double[][][][] gNormalize;
+    int incrOK = 0;
 
     public GradientFilter(int width, int height) {
-        super(width, height, 2, 2);
+        this.columns = width;
+        this.lines = height;
         initGNormalise();
 
     }
 
     @Override
     public M3 filter(M3 source) {
-        //System.out.println("TRUE: "+(linesIn==2 && columnsIn==2 && source.linesIn==2 && source.columnsIn==2));
+        initGNormalise();
         M3 copy = source.copy();
-        for (int i = 0; i < copy.columns; i++) {
-            for (int j = 0; j < copy.lines; j++) {
-
-                for (int ii = 0; ii < copy.columnsIn; ii++)
+        for (int j = 0; j < copy.lines; j++) {
+            for (int i = 0; i < copy.columns; i++) {
+                for (int ii = 0; ii < copy.columnsIn; ii++) {
                     for (int ij = 0; ij < copy.linesIn; ij++) {
-                        for (int c = 0; c < 4; c++) {
+                        for (int c = 0; c < copy.getCompCount(); c++) {
                             copy.setCompNo(c);
                             source.setCompNo(c);
                             element(source, copy, i, j, ii, ij);
                         }
 
                     }
+                }
             }
         }
-        //norm(copy);
-
-        return copy;
+        return norm(copy, copy.copy());
     }
 
     /***
@@ -45,36 +49,32 @@ public class GradientFilter extends FilterMatPixM {
      */
     @Override
     public void element(M3 source, M3 copy, int i, int j, int ii, int ij) {
-        //System.out.println("element (GradientFilter class : ii,ij"+ii+","+ij);
         double d = 1.0;
+        double v = source.get(i, j, ii, ij);
         if (ii == 0 && ij == 0) {
-            d=  -source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0);
-            //+ image.get(i+ii + 1, j+ij)
-            //+ image.get(i+ii, j+ij + 1
+            d = (-source.get(i - 1, j, ii, ij) + v)*columns;
         }
         if (ii == 0 && ij == 1) {
-            d = Math.atan(-source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0)) /
-                    (-source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0));
-
+            d = Math.atan((source.get(i, j - 1, ii, ij) + v) /
+                    (source.get(i - 1, j, ii, ij) + v));
         }
         if (ii == 1 && ij == 0) {
-             d = -source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0);
-
+            d = (-source.get(i, j - 1, ii, ij) + v)*lines;
         }
         if (ii == 1 && ij == 1) {
-            d =  Math.atan(
-                    (-source.get(i, j + 1, 0, 0) + source.get(i, j, 0, 0)) /
-                            (-source.get(i + 1, j, 0, 0) + source.get(i, j, 0, 0)));
-
+            d = Math.atan(
+                    (source.get(i, j + 1, ii, ij) - v) /
+                            (source.get(i + 1, j, ii, ij) - v));
         }
-        copy.set(i, j, ii, ij, d);
-
-        if (source.get(i, j, 0, 0) < gNormalize[source.getCompNo()][ii][ij][0])
-            gNormalize[source.getCompNo()][ii][ij][0] = source.get(i, j, 0, 0);
-        if (copy.get(i, j, 0, 0) > gNormalize[source.getCompNo()][ii][ij][1])
-            gNormalize[source.getCompNo()][ii][ij][1] = source.get(i, j, 0, 0);
-
-
+        if(ii>=0&&ii<2&&ij>=0&&ij<2)
+            copy.set(i, j, ii, ij, d);
+        else
+            System.exit(-3);
+        incrOK++;
+        if (v < gNormalize[source.getCompNo()][ii][ij][0])
+            gNormalize[source.getCompNo()][ii][ij][0] = v;
+        if (v > gNormalize[source.getCompNo()][ii][ij][1])
+            gNormalize[source.getCompNo()][ii][ij][1] = v;
     }
 
 
@@ -83,28 +83,34 @@ public class GradientFilter extends FilterMatPixM {
      * Autre exemple : histogramme de valeurs = échelle pondérée
      *
      * @param image M3 image array
+     * @return copy norm
      */
 
-    public void norm(M3 image) {
-        for (int c = 0; c < image.getCompCount(); c++) {
-            image.setCompNo(c);
-            for (int i = 0; i < image.columns; i++)
-                for (int j = 0; j < image.lines; j++) {
-                    for (int ii = 0; ii < image.columnsIn; ii++)
-                        for (int ij = 0; ij < image.linesIn; ij++) {
+    public M3 norm(M3 image, M3 copy) {
+        for (int i = 0; i < image.columns; i++)
+            for (int j = 0; j < image.lines; j++) {
+                for (int ii = 0; ii < image.columnsIn; ii++)
+                    for (int ij = 0; ij < image.linesIn; ij++) {
+                        for (int c = 0; c < image.getCompCount(); c++) {
+                            image.setCompNo(c);
+                            copy.setCompNo(c);
                             double v = image.get(i, j, ii, ij);
                             v = (v - gNormalize[c][ii][ij][0]) /
                                     (gNormalize[c][ii][ij][1] - gNormalize[c][ii][ij][0]);
-                            image.set(i, j, ii, ij, v);
+                            if (Double.isInfinite(v) || Double.isNaN(v)) {
+                                v = 1.0;
+                            }
+                            copy.set(i, j, ii, ij, v);
                         }
 
-                }
-        }
+                    }
+            }
+        return copy;
     }
 
     public void initGNormalise() {
         gNormalize = new double[4][columnsIn][linesIn][2];
-        for (int c = 0; c <4; c++) {
+        for (int c = 0; c < 4; c++) {
             for (int ii = 0; ii < columnsIn; ii++)
                 for (int ij = 0; ij < linesIn; ij++) {
 
@@ -114,7 +120,4 @@ public class GradientFilter extends FilterMatPixM {
 
         }
     }
-
-
-
 }

@@ -85,7 +85,7 @@ public class Linear {
                             }
                 }
             }
-            pixM.normalize();
+            pixM.normalize(0.0, 1.0);
             workingImages[indexRes[x]] = pixM;
         }
         this.images = workingImages == null ? images : workingImages;

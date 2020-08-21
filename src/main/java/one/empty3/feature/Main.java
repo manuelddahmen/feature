@@ -8,6 +8,7 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.Objects;
 import java.nio.file.*;
+import java.util.function.Consumer;
 
 public class Main {
     public static void makeGoodOutput(File original, File folderOutput) {
@@ -26,7 +27,7 @@ public class Main {
         if(dir.mkdirs())
             System.out.println(dir.getAbsolutePath() + " created");
 
-        System.out.println(dir.getAbsolutePath() + "\n(width, height) = " + imageToWrite.getWidth() +
+        System.out.print("\n(width, height) = " + imageToWrite.getWidth() +
                 ", " + imageToWrite.getHeight() + ")");
 
         if (!ImageIO.write(imageToWrite, "png", new File(dir.getAbsolutePath() +
@@ -58,14 +59,15 @@ public class Main {
 
                     GradientFilter gradientMask = new GradientFilter(image.getWidth(), image.getHeight());
                     BufferedImage pic = new M3(image, 1, 1).getImagesMatrix()[0][0].getImage();
-                    BufferedImage picNorm = new M3(image, 1, 1).getImagesMatrix()[0][0].normalize().getImage();
+                    BufferedImage picNorm = new M3(image, 1, 1).getImagesMatrix()[0][0].normalize(0.0,1.0).getImage();
                     BufferedImage outputImage = MIMmops.applyMultipleFilters(
                             pixM, 4, gaussFilterPixM/*, new SobelDerivative(true),
                             new SobelDerivative(false)*/).getImage();
                     M3 filter;
-                    M3 m3 = new M3(image, 2, 2);
+                    PixM[][] imagesMatrix1 = new M3(image, 2, 2).getImagesMatrix();
                     M3 ls_22= new M3(image, 2, 2).copy();
-                    filter = gradientMask.filter(m3);
+                    filter = gradientMask.filter( new M3(image, 2, 2));
+                    System.out.println("points ok : " + gradientMask.incrOK);
                     System.out.println("ls_22 c,l"+ls_22.columnsIn+","+ls_22.linesIn);
 
                     File directory = new File("outputFiles/res" + System.nanoTime() + "__" +
@@ -77,7 +79,7 @@ public class Main {
                     String outputGrad = "Gradient" + s + ".png";
                     String input = "/Input" + s + ".png";
                     PixM[][] imagesMatrix = filter.getImagesMatrix();
-                    work(directory, ls_22.getImagesMatrix()[1][1].getImage(), "/" + ("__load.save.M3_22_11.png"));
+                    work(directory, ls_22.getImagesMatrix()[1][1].getImage(), "/" + ("__load.copy.save.M3_22_11.png"));
                     work(directory, pic, "/" + ("__load.save.M3.png"));
                     work(directory, picNorm, "/" + ("__load.save.M3_normalize.png"));
                     System.out.println("filter gradient size col : "+filter.columnsIn);
@@ -93,11 +95,21 @@ public class Main {
                     Linear linear = new Linear(filter4[1][0], filter4[0][0],
                             new PixM(image));
                     linear.op2d2d(new char[] {'*'}, new int [][] {{1, 0}}, new int []{ 2});
-                    BufferedImage image1 = linear.getImages()[2].normalize().getImage();
+                    BufferedImage image1 = linear.getImages()[2].normalize(0.0,1.0).getImage();
                     work(directory, image1, "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
+                    Arrays.stream(imagesMatrix1).forEach(pixMS -> Arrays.stream(pixMS).forEach(pixM1 -> {
+                        try {
+                            work(directory, pixM1.getImage(), "/__load.22.matrix22.imagesMatrix" + (i[0]%4) + outputGrad);//
+                            i[0]++;
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                        i[0]++;
+                    }));
                     Arrays.stream(imagesMatrix).sequential().forEach(bufferedImages -> Arrays.stream(bufferedImages).forEach(bufferedImage -> {
                         try {
-                            work(directory, bufferedImage.normalize().getImage(), "/" + (i[0]++) + outputGrad);//
+                            work(directory, bufferedImage.normalize(0.0,1.0).getImage(), "/" + (i[0]%4) + outputGrad);//
+                            i[0]++;
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
