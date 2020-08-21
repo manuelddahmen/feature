@@ -111,6 +111,7 @@ public class GradientFilter extends FilterMatPixM {
     }
 
     public M3 mean(M3 image, M3 copy) {
+        double[] sum = new double[copy.getCompCount()];
         for (int i = 0; i < image.columns; i++)
             for (int j = 0; j < image.lines; j++) {
                 for (int ii = 0; ii < image.columnsIn; ii++)
@@ -123,11 +124,25 @@ public class GradientFilter extends FilterMatPixM {
                             if (Double.isInfinite(v) || Double.isNaN(v)) {
                                 v = 1.0;
                             }
+                            sum[c] += v;
                             copy.set(i, j, ii, ij, v);
                         }
 
                     }
             }
+        for (int i = 0; i < image.columns; i++)
+            for (int j = 0; j < image.lines; j++) {
+                for (int ii = 0; ii < image.columnsIn; ii++)
+                    for (int ij = 0; ij < image.linesIn; ij++) {
+                        for (int c = 0; c < image.getCompCount(); c++) {
+                            copy.setCompNo(c);
+                            double v = copy.get(i, j, ii, ij);
+                            copy.set(i, j, ii, ij, v/sum[c]);
+                        }
+
+                    }
+            }
+
         return copy;
     }
 
