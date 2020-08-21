@@ -25,7 +25,6 @@ public class PixM extends M {
                 float[] colorComponents = new float[getCompCount()];
                 colorComponents = new Color(rgb).getColorComponents(colorComponents);
                 for (int com = 0; com < getCompCount(); com++) {
-
                     setCompNo(com);
                     set(i, j, colorComponents[com]);
                 }
@@ -103,53 +102,25 @@ public class PixM extends M {
     public BufferedImage getImage() {
 
         float[] f = new float[getCompCount()];
-        Color.white.getColorComponents(f);
-        float [] maxColorValue = f;
-        double[] maxRgbai = new double[getCompCount()];
-        double[] minRgbai = new double[getCompCount()];
-        double[] meanRgbai = new double[getCompCount()];
-        for (int i = 0; i < getCompCount(); i++) {
-            maxRgbai[i] = -Double.MAX_VALUE;
-            minRgbai[i] =  Double.MAX_VALUE;
-            meanRgbai[i] = 0.0;
-        }
-
-        for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < lines; j++) {
-                for (int comp = 0; comp < getCompCount(); comp++) {
-                    setCompNo(comp);
-
-                    if (get(i, j) > maxRgbai[comp]) {
-                        maxRgbai[comp] = get(i, j);
-                    }
-                    meanRgbai[comp] += get(i, j);
-                }
-            }
-        }
-        for (int comp = 0; comp < getCompCount(); comp++) {
-            setCompNo(comp);
-            meanRgbai[comp] /= (lines * columns);
-        }
-
 
         BufferedImage image = new BufferedImage(columns,
                 lines, BufferedImage.TYPE_INT_RGB);
 
 
         int savedComp = getCompNo();
+        float[] rgba = new float[getCompCount()];
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
-                float[] rgba = new float[getCompCount()];
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
-                    float value = (float) get(i, j);
+                    float value = (float) (get(i, j));
                     //TODO problems
                     value = Math.max(value, 0f);
                     value = Math.min(value, 1f);
 
                     rgba[comp] = value;
                 }
-                image.setRGB(i, j, new Color(rgba[0], rgba[1], rgba[2]).getRGB());
+                image.setRGB(i, j, new Color(rgba[0], rgba[1], rgba[2], 1f).getRGB());
             }
         }
         setCompNo(savedComp);
@@ -164,26 +135,32 @@ public class PixM extends M {
 
     public PixM normalize() {
         int savedComp = getCompNo();
-        double [] maxRgbai = new double[compCount];
-        double[] meanRgbai = new double[compCount] ;
-        double [] minRgbai = new double[compCount];
+        double[] maxRgbai = new double[compCount];
+        double[] meanRgbai = new double[compCount];
+        double[] minRgbai = new double[compCount];
         for (int i = 0; i < getCompCount(); i++) {
             maxRgbai[i] = -Double.MAX_VALUE;
-            minRgbai[i] =  Double.MAX_VALUE;
+            minRgbai[i] = Double.MAX_VALUE;
             meanRgbai[i] = 0.0;
         }
         for (int comp = 0; comp < getCompCount(); comp++) {
             setCompNo(comp);
             for (int i = 0; i < columns; i++) {
-            for (int j = 0; j < lines; j++) {
-
-                    if (get(i, j) > maxRgbai[comp]) {
-                        maxRgbai[comp] = get(i, j);
+                for (int j = 0; j < lines; j++) {
+                    if (!Double.isNaN(get(i, j))||!Double.isInfinite(get(i, j))) {
+                        if (get(i, j) > maxRgbai[comp]) {
+                            maxRgbai[comp] = get(i, j);
+                        }
+                        if (get(i, j) < minRgbai[comp]) {
+                            minRgbai[comp] = get(i, j);
+                        }
+                        meanRgbai[comp] += get(i, j);
                     }
-                if (get(i, j) < minRgbai[comp]) {
-                    minRgbai[comp] = get(i, j);
-                }
-                    meanRgbai[comp] += get(i, j);
+                    else {
+                        if(comp==3) {
+                            //
+                        }
+                    }
                 }
             }
             meanRgbai[comp] /= (lines * columns);
@@ -191,15 +168,13 @@ public class PixM extends M {
         PixM image = new PixM(columns, lines);
         for (int i = 0; i < image.columns; i++) {
             for (int j = 0; j < image.lines; j++) {
-                float[] rgba = new float[getCompCount()];
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
-                    float value = (float) ((get(i, j)-minRgbai[comp])/ (maxRgbai[comp]-minRgbai[comp]));
+                    float value = (float) ((get(i, j) - minRgbai[comp]) / (maxRgbai[comp] - minRgbai[comp]));
                     //TODO problems
                     value = Math.max(value, 0f);
                     value = Math.min(value, 1f);
-
-                    rgba[comp] = value;
+                    //if (comp == 3) value = 1f;
 
                     image.set(i, j, value);
 

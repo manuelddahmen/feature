@@ -11,12 +11,13 @@ public class M {
     protected final int lines;
     final double[] x;
     protected int compNo;
-    protected int compCount = 3;
+    protected int compCount = 4;
 
     public M(int c, int l) {
         this.lines = l;
         this.columns = c;
         x = new double[l * c * compCount];
+
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
 
@@ -26,7 +27,7 @@ public class M {
 
     public double get(int column, int line) {
         if (column >= 0 && column < columns && line >= 0 && line < lines) {
-            return x[(line * columns + column) + (getCompNo() * lines * columns)];
+            return x[index(column, line)];
         } else
             return noValue; // OutOfBound?
     }
@@ -39,9 +40,13 @@ public class M {
         this.compNo = compNo;
     }
 
+    public int index (int column, int line) {
+        return getCompNo()+getCompCount()*((line * columns + column));
+    }
+
     public void set(int column, int line, double d) {
         if (column >= 0 && column < columns && line >= 0 && line < lines) {
-            x[(line * columns + column) + (getCompNo() * lines * columns)] = d;
+            x[index(column, line)] = d;
         }
 
     }
