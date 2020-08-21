@@ -61,7 +61,6 @@ public class M3 {
         if (column >= 0 && column < columns && line >= 0 && line < lines && columnIn >= 0 && columnIn < columnsIn
                 && lineIn >= 0 && lineIn < linesIn && compNo >= 0 && compNo < compCount) {
             return x[index(column, line, columnIn, lineIn)];
-            //compNo+compCount*(lineIn+linesIn*(columnIn+columnsIn*(line+lines*(column+columns*0))))
         } else {
             incrGetOut++;
             return 0.0; // OutOfBound?
@@ -160,12 +159,12 @@ public class M3 {
 
     public PixM[][] normalize(final double min, final double max) {
         PixM[][] res = new PixM[columnsIn][linesIn];
-/*
+
         double[][][] maxRgbai = new double[compCount][columnsIn][linesIn];
         double[][][] meanRgbai = new double[compCount][columnsIn][linesIn];
         double[][][] minRgbai = new double[compCount][columnsIn][linesIn];
-*/
-        /*
+
+
         for (int comp = 0; comp < getCompCount(); comp++) {
             setCompNo(comp);
             for (int ii = 0; ii < columnsIn; ii++) {
@@ -177,13 +176,13 @@ public class M3 {
             }
         }
 
-         *//*
+
         for (int comp = 0; comp < getCompCount(); comp++) {
-            setCompNo(comp);
             for (int ii = 0; ii < columnsIn; ii++) {
                 for (int ij = 0; ij < linesIn; ij++) {
                     for (int i = 0; i < columns; i++) {
                         for (int j = 0; j < lines; j++) {
+                            setCompNo(comp);
                             if (get(i, j, ii, ij) > maxRgbai[comp][ii][ij]) {
                                 maxRgbai[comp][ii][ij] = get(i, j, ii, ij);
                             }
@@ -194,35 +193,33 @@ public class M3 {
                         }
                     }
                     meanRgbai[comp][ii][ij] /= (lines * columns);
-
+                    System.out.println("Mean ii, ij" + meanRgbai[comp][ii][ij]);
                 }
             }
         }
-        */
+
         for (int ii = 0; ii < columnsIn; ii++) {
             for (int ij = 0; ij < linesIn; ij++) {
                 PixM image = new PixM(columns, lines);
+                res[ii][ij] = image;
                 for (int i = 0; i < image.columns; i++) {
                     for (int j = 0; j < image.lines; j++) {
                         for (int comp = 0; comp < getCompCount(); comp++) {
                             image.setCompNo(comp);
                             setCompNo(comp);
-                            double v = get(i, j, ii, ij);
-                            if (!Double.isNaN(v) && !Double.isInfinite(v)) {
-                                float value = (float) v;
-// value = (float) ((v - minRgbai[comp][ii][ij]) / (maxRgbai[comp][ii][ij] - minRgbai[comp][ii][ij]));
-                                value = (float) ((value - min) * (max - min));
-                                //TODO problems
-                                value = (float) Math.max(value, min);
-                                value = (float) Math.min(value, max);
+                            double v;
+                            v = get(i, j, ii, ij);
+                            /*value = ((v - minRgbai[comp][ii][ij])
+                                        / (maxRgbai[comp][ii][ij] - minRgbai[comp][ii][ij]));*/
+                            //value = (float) ((value - min) * (max - min));
+                            //value = (float) Math.max(value, min);
+                            //value = (float) Math.min(value, max);
 
-                                image.set(i, j, value);
-                            }
+                            image.set(i, j, v);
                         }
                     }
                 }
 
-                res[ii][ij] = image;
             }
         }
         System.out.println("Outs : " + incrGetOut);

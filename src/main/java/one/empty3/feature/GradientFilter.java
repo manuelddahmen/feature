@@ -12,7 +12,7 @@ public class GradientFilter extends FilterMatPixM {
 
     @Override
     public M3 filter(M3 source) {
-        assert source.linesIn==2 && source.columnsIn==2;
+        //System.out.println("TRUE: "+(linesIn==2 && columnsIn==2 && source.linesIn==2 && source.columnsIn==2));
         M3 copy = source.copy();
         for (int i = 0; i < copy.columns; i++) {
             for (int j = 0; j < copy.lines; j++) {
@@ -28,14 +28,14 @@ public class GradientFilter extends FilterMatPixM {
                     }
             }
         }
-        norm(copy);
+        //norm(copy);
 
         return copy;
     }
 
     /***
      * Computes gradient element p(x,y)
-     * @param source 1x1 inner image matrix
+     * @param source 2x2 inner image matrix
      * @param copy 2x2 inner image gradient matrix
      * @param i x cordinates of p(x, y)
      * @param j y cordinates of p(x, y)
@@ -45,33 +45,34 @@ public class GradientFilter extends FilterMatPixM {
      */
     @Override
     public void element(M3 source, M3 copy, int i, int j, int ii, int ij) {
+        //System.out.println("element (GradientFilter class : ii,ij"+ii+","+ij);
+        double d = 1.0;
         if (ii == 0 && ij == 0) {
-            copy.set(i, j, 0, 0, -source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0));
+            d=  -source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0);
             //+ image.get(i+ii + 1, j+ij)
             //+ image.get(i+ii, j+ij + 1
         }
         if (ii == 0 && ij == 1) {
-            copy.set(i, j, 0, 1, Math.atan(-source.get(i, j - 1, 0, 1) + source.get(i, j, 0, 1)) /
-                    (-source.get(i - 1, j, 0, 1) + source.get(i, j, 0, 1)));
+            d = Math.atan(-source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0)) /
+                    (-source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0));
 
         }
         if (ii == 1 && ij == 0) {
-            copy.set(i, j, 1, 0, -source.get(i, j - 1, 1, 0) + source.get(i, j, 1, 0)
-            );
+             d = -source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0);
 
         }
         if (ii == 1 && ij == 1) {
-            copy.set(i, j, 1, 1, Math.atan(
-                    (-source.get(i, j + 1, 1, 0) + source.get(i, j, 1, 1)) /
-                            (-source.get(i + 1, j, 1, 1) + source.get(i, j, 1, 1))));
+            d =  Math.atan(
+                    (-source.get(i, j + 1, 0, 0) + source.get(i, j, 0, 0)) /
+                            (-source.get(i + 1, j, 0, 0) + source.get(i, j, 0, 0)));
 
         }
+        copy.set(i, j, ii, ij, d);
 
-
-        if (source.get(i, j, ii, ij) < gNormalize[source.getCompNo()][ii][ij][0])
-            gNormalize[source.getCompNo()][ii][ij][0] = source.get(i, j, ii, ij);
-        if (copy.get(i, j, ii, ij) > gNormalize[source.getCompNo()][ii][ij][1])
-            gNormalize[source.getCompNo()][ii][ij][1] = source.get(i, j, ii, ij);
+        if (source.get(i, j, 0, 0) < gNormalize[source.getCompNo()][ii][ij][0])
+            gNormalize[source.getCompNo()][ii][ij][0] = source.get(i, j, 0, 0);
+        if (copy.get(i, j, 0, 0) > gNormalize[source.getCompNo()][ii][ij][1])
+            gNormalize[source.getCompNo()][ii][ij][1] = source.get(i, j, 0, 0);
 
 
     }

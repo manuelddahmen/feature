@@ -22,24 +22,6 @@ public abstract class FilterMatPixM {
         this.columns = columns;
         this.lines = lines;
     }
-/*
-    public int getCompCount() {
-
-        return compCount;
-    }
-
-    public void setCompCount(int compCount) {
-        this.compCount = compCount;
-    }
-*/
-
-    public int getInLines() {
-        return linesIn;
-    }
-
-    public int getInColumbs() {
-        return columnsIn;
-    }
 
     public abstract M3 filter(M3 original);
 
