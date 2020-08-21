@@ -64,7 +64,6 @@ public class M3 {
             //compNo+compCount*(lineIn+linesIn*(columnIn+columnsIn*(line+lines*(column+columns*0))))
         } else {
             incrGetOut++;
-            System.out.println("Outs : " + incrGetOut);
             return 0.0; // OutOfBound?
         }
 
@@ -107,36 +106,6 @@ public class M3 {
         return copy;
     }
 
-    /*
-        public BufferedImage getImage(int[] compsNo) {
-
-            BufferedImage image = new BufferedImage(columns,
-                    lines, BufferedImage.TYPE_INT_RGB);
-
-
-            int savedComp = getCompNo();
-            for (int i = 0; i < image.getWidth(); i++) {
-                for (int j = 0; j < image.getHeight(); j++) {
-                    float[] rgba = new float[getCompCount()];
-                    for (int comp = 0; comp < getCompCount(); comp++) {
-                        setCompNo(comp);
-                        float value = (float) get(i, j, 0, 0);
-                        //TODO problems
-                        value = Math.max(value, 0f);
-                        value = Math.min(value, 1f);
-
-                        rgba[comp] = value;
-
-                        //values[j * columns + i] += ((rgbComp & 0xFF) << ((3-  comp) * 8));
-                    }
-                    image.setRGB(i, j, new Color(rgba[0], rgba[1], rgba[2]).getRGB());
-                }
-            }
-            setCompNo(savedComp);
-            return image;
-
-        }
-    /*/
     public int getCompCount() {
         return compCount;
     }
@@ -191,11 +160,12 @@ public class M3 {
 
     public PixM[][] normalize(final double min, final double max) {
         PixM[][] res = new PixM[columnsIn][linesIn];
-        int savedComp = getCompNo();
+/*
         double[][][] maxRgbai = new double[compCount][columnsIn][linesIn];
         double[][][] meanRgbai = new double[compCount][columnsIn][linesIn];
         double[][][] minRgbai = new double[compCount][columnsIn][linesIn];
-
+*/
+        /*
         for (int comp = 0; comp < getCompCount(); comp++) {
             setCompNo(comp);
             for (int ii = 0; ii < columnsIn; ii++) {
@@ -206,6 +176,8 @@ public class M3 {
                 }
             }
         }
+
+         *//*
         for (int comp = 0; comp < getCompCount(); comp++) {
             setCompNo(comp);
             for (int ii = 0; ii < columnsIn; ii++) {
@@ -226,6 +198,7 @@ public class M3 {
                 }
             }
         }
+        */
         for (int ii = 0; ii < columnsIn; ii++) {
             for (int ij = 0; ij < linesIn; ij++) {
                 PixM image = new PixM(columns, lines);
@@ -237,11 +210,8 @@ public class M3 {
                             double v = get(i, j, ii, ij);
                             if (!Double.isNaN(v) && !Double.isInfinite(v)) {
                                 float value = (float) v;
-                                value = (float) ((v - minRgbai[comp][ii][ij]) / (maxRgbai[comp][ii][ij] - minRgbai[comp][ii][ij]));
+// value = (float) ((v - minRgbai[comp][ii][ij]) / (maxRgbai[comp][ii][ij] - minRgbai[comp][ii][ij]));
                                 value = (float) ((value - min) * (max - min));
-                                //if(comp==3)
-                                //    value = 1f;
-
                                 //TODO problems
                                 value = (float) Math.max(value, min);
                                 value = (float) Math.min(value, max);
@@ -255,7 +225,7 @@ public class M3 {
                 res[ii][ij] = image;
             }
         }
-        setCompNo(savedComp);
+        System.out.println("Outs : " + incrGetOut);
         return res;
     }
 }

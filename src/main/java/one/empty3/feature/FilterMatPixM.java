@@ -2,10 +2,36 @@ package one.empty3.feature;
 
 import java.awt.image.BufferedImage;
 
-public abstract class FilterMatPixM extends M3 {
-    public FilterMatPixM(int columns, int lines, int c, int l) {
-        super(columns, lines, c, l);
+public abstract class FilterMatPixM {
+    protected int columnsIn = 2;
+    protected int linesIn = 2;
+    protected int columns;
+    protected int lines;
+/*
+    public int getCompNo() {
+        return compNo;
     }
+
+    public void setCompNo(int compNo) {
+        this.compNo = compNo;
+    }
+*/
+    public FilterMatPixM(int columns, int lines, int columnsIn, int linesIn) {
+        this.columnsIn = 2;
+        this.linesIn = 2;
+        this.columns = columns;
+        this.lines = lines;
+    }
+/*
+    public int getCompCount() {
+
+        return compCount;
+    }
+
+    public void setCompCount(int compCount) {
+        this.compCount = compCount;
+    }
+*/
 
     public int getInLines() {
         return linesIn;

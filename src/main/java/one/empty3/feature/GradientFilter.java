@@ -11,18 +11,18 @@ public class GradientFilter extends FilterMatPixM {
     }
 
     @Override
-    public M3 filter(M3 original) {
-        M3 copy = original.copy();
+    public M3 filter(M3 source) {
+        assert source.linesIn==2 && source.columnsIn==2;
+        M3 copy = source.copy();
         for (int i = 0; i < copy.columns; i++) {
             for (int j = 0; j < copy.lines; j++) {
 
                 for (int ii = 0; ii < copy.columnsIn; ii++)
                     for (int ij = 0; ij < copy.linesIn; ij++) {
-                        for (int i1 = 0; i1 < getCompCount(); i1++) {
-                            setCompNo(i1);
-                            copy.setCompNo(i1);
-                            original.setCompNo(i1);
-                            element(original, copy, i, j, ii, ij);
+                        for (int c = 0; c < 4; c++) {
+                            copy.setCompNo(c);
+                            source.setCompNo(c);
+                            element(source, copy, i, j, ii, ij);
                         }
 
                     }
@@ -35,48 +35,43 @@ public class GradientFilter extends FilterMatPixM {
 
     /***
      * Computes gradient element p(x,y)
-     * @param source 1x1 innner image matrix
+     * @param source 1x1 inner image matrix
      * @param copy 2x2 inner image gradient matrix
      * @param i x cordinates of p(x, y)
      * @param j y cordinates of p(x, y)
      * @param ii (0, 1) gradX, gradY
      * @param ij (0, 1) difference, angle (delta phase)
+     *
      */
+    @Override
     public void element(M3 source, M3 copy, int i, int j, int ii, int ij) {
-
         if (ii == 0 && ij == 0) {
             copy.set(i, j, 0, 0, -source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0));
             //+ image.get(i+ii + 1, j+ij)
             //+ image.get(i+ii, j+ij + 1
         }
         if (ii == 0 && ij == 1) {
-            copy.set(i, j, 0, 1, Math.atan(-source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0)) /
-                    (-source.get(i - 1, j, 0, 0) + source.get(i, j, 0, 0)));
+            copy.set(i, j, 0, 1, Math.atan(-source.get(i, j - 1, 0, 1) + source.get(i, j, 0, 1)) /
+                    (-source.get(i - 1, j, 0, 1) + source.get(i, j, 0, 1)));
 
         }
         if (ii == 1 && ij == 0) {
-            copy.set(i, j, 1, 0, -source.get(i, j - 1, 0, 0) + source.get(i, j, 0, 0)
+            copy.set(i, j, 1, 0, -source.get(i, j - 1, 1, 0) + source.get(i, j, 1, 0)
             );
 
         }
         if (ii == 1 && ij == 1) {
             copy.set(i, j, 1, 1, Math.atan(
-                    (// Delta Y/Delta X
-                            -source.get(i, j + 1, 0, 0) + source.get(i, j, 0, 0)
-                            //+ image.get(i+1, j + 1) + image.get(i, j+1 + 1)
-                    ) /
-                            (
-                                    -source.get(i + 1, j, 0, 0) + source.get(i, j, 0, 0)
-                            )
-            ));
+                    (-source.get(i, j + 1, 1, 0) + source.get(i, j, 1, 1)) /
+                            (-source.get(i + 1, j, 1, 1) + source.get(i, j, 1, 1))));
 
         }
 
 
-        if (copy.get(i, j, ii, ij) < gNormalize[getCompNo()][ii][ij][0])
-            gNormalize[getCompNo()][ii][ij][0] = copy.get(i, j, ii, ij);
-        if (copy.get(i, j, ii, ij) > gNormalize[getCompNo()][ii][ij][1])
-            gNormalize[getCompNo()][ii][ij][1] = copy.get(i, j, ii, ij);
+        if (source.get(i, j, ii, ij) < gNormalize[source.getCompNo()][ii][ij][0])
+            gNormalize[source.getCompNo()][ii][ij][0] = source.get(i, j, ii, ij);
+        if (copy.get(i, j, ii, ij) > gNormalize[source.getCompNo()][ii][ij][1])
+            gNormalize[source.getCompNo()][ii][ij][1] = source.get(i, j, ii, ij);
 
 
     }
@@ -107,8 +102,8 @@ public class GradientFilter extends FilterMatPixM {
     }
 
     public void initGNormalise() {
-        gNormalize = new double[getCompCount()][columnsIn][linesIn][2];
-        for (int c = 0; c < getCompCount(); c++) {
+        gNormalize = new double[4][columnsIn][linesIn][2];
+        for (int c = 0; c <4; c++) {
             for (int ii = 0; ii < columnsIn; ii++)
                 for (int ij = 0; ij < linesIn; ij++) {
 
@@ -118,6 +113,7 @@ public class GradientFilter extends FilterMatPixM {
 
         }
     }
+
 
 
 }

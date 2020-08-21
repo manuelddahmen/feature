@@ -64,8 +64,10 @@ public class Main {
                             new SobelDerivative(false)*/).getImage();
                     M3 filter;
                     M3 m3 = new M3(image, 2, 2);
-                    M3 ls_22= new M3(image, 2, 2);
+                    M3 ls_22= new M3(image, 2, 2).copy();
                     filter = gradientMask.filter(m3);
+                    System.out.println("ls_22 c,l"+ls_22.columnsIn+","+ls_22.linesIn);
+
                     File directory = new File("outputFiles/res" + System.nanoTime() + "__" +
 
                             Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
@@ -75,6 +77,7 @@ public class Main {
                     String outputGrad = "Gradient" + s + ".png";
                     String input = "/Input" + s + ".png";
                     PixM[][] imagesMatrix = filter.getImagesMatrix();
+                    work(directory, ls_22.getImagesMatrix()[1][1].getImage(), "/" + ("__load.save.M3_22_11.png"));
                     work(directory, pic, "/" + ("__load.save.M3.png"));
                     work(directory, picNorm, "/" + ("__load.save.M3_normalize.png"));
                     System.out.println("filter gradient size col : "+filter.columnsIn);
