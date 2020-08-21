@@ -8,6 +8,7 @@ public class GradientFilter extends FilterMatPixM {
 
     private double[][][][] gNormalize;
     int incrOK = 0;
+    private double[][][] mean;
 
     public GradientFilter(int width, int height) {
         this.columns = width;
@@ -52,29 +53,31 @@ public class GradientFilter extends FilterMatPixM {
         double d = 1.0;
         double v = source.get(i, j, ii, ij);
         if (ii == 0 && ij == 0) {
-            d = (-source.get(i - 1, j, ii, ij) + v)*columns;
+            d = (-source.get(i - 1, j, ii, ij) + v) * columns;
         }
         if (ii == 0 && ij == 1) {
             d = Math.atan(((-source.get(i, j - 1, ii, ij) + v) /
-                    (-source.get(i - 1, j, ii, ij) + v))*columns);
+                    (-source.get(i - 1, j, ii, ij) + v)) * columns);
         }
         if (ii == 1 && ij == 0) {
-            d = (-source.get(i, j - 1, ii, ij) + v)*lines;
+            d = (-source.get(i, j - 1, ii, ij) + v) * lines;
         }
         if (ii == 1 && ij == 1) {
             d = Math.atan((
                     (source.get(i, j + 1, ii, ij) - v) /
-                            (source.get(i + 1, j, ii, ij) - v))*lines);
+                            (source.get(i + 1, j, ii, ij) - v)) * lines);
         }
-        if(ii>=0&&ii<2&&ij>=0&&ij<2)
+        if (ii >= 0 && ii < 2 && ij >= 0 && ij < 2)
             copy.set(i, j, ii, ij, d);
         else
             System.exit(-3);
         incrOK++;
+
         if (v < gNormalize[source.getCompNo()][ii][ij][0])
             gNormalize[source.getCompNo()][ii][ij][0] = v;
         if (v > gNormalize[source.getCompNo()][ii][ij][1])
             gNormalize[source.getCompNo()][ii][ij][1] = v;
+        mean[source.getCompNo()][ii][ij] += v;
     }
 
 
@@ -102,6 +105,26 @@ public class GradientFilter extends FilterMatPixM {
                             }
                             copy.set(i, j, ii, ij, v);
                         }
+                    }
+            }
+        return copy;
+    }
+
+    public M3 mean(M3 image, M3 copy) {
+        for (int i = 0; i < image.columns; i++)
+            for (int j = 0; j < image.lines; j++) {
+                for (int ii = 0; ii < image.columnsIn; ii++)
+                    for (int ij = 0; ij < image.linesIn; ij++) {
+                        for (int c = 0; c < image.getCompCount(); c++) {
+                            image.setCompNo(c);
+                            copy.setCompNo(c);
+                            double v = image.get(i, j, ii, ij);
+                            v = ((v - mean[c][ii][ij]) * (v - mean[c][ii][ij]));
+                            if (Double.isInfinite(v) || Double.isNaN(v)) {
+                                v = 1.0;
+                            }
+                            copy.set(i, j, ii, ij, v);
+                        }
 
                     }
             }
@@ -116,6 +139,14 @@ public class GradientFilter extends FilterMatPixM {
 
                     gNormalize[c][ii][ij][0] = Double.MAX_VALUE;
                     gNormalize[c][ii][ij][1] = -Double.MAX_VALUE;
+                }
+
+        }
+        mean = new double[4][columnsIn][linesIn];
+        for (int c = 0; c < 4; c++) {
+            for (int ii = 0; ii < columnsIn; ii++)
+                for (int ij = 0; ij < linesIn; ij++) {
+                    mean[c][ii][ij] = 0;
                 }
 
         }

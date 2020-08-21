@@ -8,7 +8,6 @@ import java.time.Instant;
 import java.util.Arrays;
 import java.util.Objects;
 import java.nio.file.*;
-import java.util.function.Consumer;
 
 public class Main {
     public static void makeGoodOutput(File original, File folderOutput) {
@@ -67,6 +66,9 @@ public class Main {
                     PixM[][] imagesMatrix1 = new M3(image, 2, 2).getImagesMatrix();
                     M3 ls_22= new M3(image, 2, 2).copy();
                     filter = gradientMask.filter( new M3(image, 2, 2));
+
+                    gradientMask = new GradientFilter(image.getWidth(), image.getHeight());
+                    M3 mean = gradientMask.mean(gradientMask.filter(new M3(image, 2, 2)), new M3(image, 2, 2));
                     System.out.println("points ok : " + gradientMask.incrOK);
                     System.out.println("ls_22 c,l"+ls_22.columnsIn+","+ls_22.linesIn);
 
@@ -93,7 +95,7 @@ public class Main {
                     //PixM[][] imagesMatrix = gradientFilter.getImagesMatrix();
                     Linear linear = new Linear(imagesMatrix1[1][0], imagesMatrix[0][0],
                             new PixM(image));
-                    linear.op2d2d(new char[] {'*'}, new int [][] {{1, 0}}, new int []{ 2});
+                    linear.op2d2d(new char[] {'*'}, new int [][] {{1, 0}}, new int []{2});
                     BufferedImage image1 = linear.getImages()[2].normalize(0.0,1.0).getImage();
                     work(directory, image1, "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
                     Arrays.stream(imagesMatrix1).forEach(pixMS -> Arrays.stream(pixMS).forEach(pixM1 -> {
@@ -113,6 +115,14 @@ public class Main {
                             e.printStackTrace();
                         }
 
+                    }));
+                    Arrays.stream(mean.getImagesMatrix()).forEach(pixMS -> Arrays.stream(pixMS).forEach(pixM1 -> {
+                        try {
+                            work(directory, pixM1.normalize(0.0,1.0).getImage(), "/___mean_for_harris" + (i[0]%4) + outputGrad);//
+                            i[0]++;
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }));
                     work(directory, outputImage, output);
 
