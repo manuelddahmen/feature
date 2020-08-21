@@ -91,8 +91,7 @@ public class Main {
                     //M3 gradientFilter = image22.filter(new GradientFilter(origImg));
 
                     //PixM[][] imagesMatrix = gradientFilter.getImagesMatrix();
-                    PixM[][] filter4 = filter.getImagesMatrix();
-                    Linear linear = new Linear(filter4[1][0], filter4[0][0],
+                    Linear linear = new Linear(imagesMatrix1[1][0], imagesMatrix[0][0],
                             new PixM(image));
                     linear.op2d2d(new char[] {'*'}, new int [][] {{1, 0}}, new int []{ 2});
                     BufferedImage image1 = linear.getImages()[2].normalize(0.0,1.0).getImage();
