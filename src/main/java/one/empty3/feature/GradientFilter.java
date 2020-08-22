@@ -67,7 +67,7 @@ public class GradientFilter extends FilterMatPixM {
             d = (-source.get(i, j - 1, ii, ij) + v) * lines;
         }
         if (ii == 1 && ij == 1) {
-            d = Math.atan((
+            d = Math.atan(1/(
                     (source.get(i, j + 1, ii, ij) - v) /
                             (source.get(i + 1, j, ii, ij) - v)) * lines);
         }

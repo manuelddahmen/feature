@@ -1,5 +1,7 @@
 package one.empty3.feature;
 
+import org.apache.poi.hssf.util.HSSFColor;
+
 import java.util.ArrayList;
 
 public class LocalExtreMüss extends FilterMatPixM{
@@ -60,7 +62,7 @@ public class LocalExtreMüss extends FilterMatPixM{
     @Override
     public M3 filter(M3 original) {
         M3 copy = new M3(original.columns, original.lines, 1, 1);
-
+/*
         for(int c=0; c< original.getCompCount(); c++) {
             original.setCompNo(c);
             for (int i = 0; i < columns; i++) {
@@ -72,9 +74,12 @@ public class LocalExtreMüss extends FilterMatPixM{
                     }
                 }
             }
-        }
+        }*/
         M3 max = copy.copy();
         for(int c=0; c< max.getCompCount(); c++) {
+            max.setCompNo(c);
+            original.setCompNo(c);
+
             for (int i = 0; i < columns; i++) {
                 for (int j = 0; j < lines; j++) {
                     boolean isMaximm = true;
@@ -82,9 +87,9 @@ public class LocalExtreMüss extends FilterMatPixM{
                     int countOut = 0;
                     for (int ii = -1; ii < 1; ii++) {
                         for (int ij = -1; ij < 1; ij++) {
-                            if(copy.get(i+ii, j+ij, 0, 0)
+                            if(original.get(i+ii, j+ij, 0, 0)
                                     <= maxLocal && ii!=0 && ij!=0) {
-                                maxLocal = copy.get(i+ii, j+ij, 0, 0);
+                                maxLocal = original.get(i+ii, j+ij, 0, 0);
                             }
                             else
                                 countOut++;
