@@ -1,13 +1,20 @@
 package one.empty3.feature;
 
+import com.jogamp.common.util.ArrayHashSet;
+import one.empty3.library.Point2D;
+import one.empty3.library.core.lighting.Colors;
+
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.sql.Time;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 import java.nio.file.*;
+import java.util.function.Consumer;
 
 public class Main {
     public static void makeGoodOutput(File original, File folderOutput) {
@@ -104,7 +111,22 @@ public class Main {
 
                     M3 m3 = new M3(image1, 1, 1);
                     LocalExtreMüss localExtreMüss = new LocalExtreMüss(m3.columns, m3.lines, 3, 4);
-                    PixM filter1 = localExtreMüss.filter(m3).getImagesMatrix()[0][0];
+                    M3 filter2 = localExtreMüss.filter(m3);
+                    PixM filter1 = filter2.getImagesMatrix()[0][0];
+
+                    FollowLines followLines = new FollowLines(filter2);
+                    ArrayList<Line> lines = followLines.processPoints(0, 0);
+
+                    BufferedImage imageDrawn = new BufferedImage(filter2.columns, filter2.lines, BufferedImage.TYPE_INT_ARGB);
+                    lines.forEach(line -> {
+                        int c = Colors.random().getRGB();
+                        line.iterator().forEachRemaining(
+                                point2D
+                                ->
+                                imageDrawn.setRGB((int)point2D.getX(), (int)point2D.getY(), c));
+                    });
+                    work(directory, imageDrawn, "/"
+                            + ("local_matGrad_extrema_DRAW_LINES") + outputGrad);
 
                     work(directory, filter1.getImage(), "/"
                             + ("local_matGrad_extrema") + outputGrad);
