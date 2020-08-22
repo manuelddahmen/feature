@@ -107,7 +107,7 @@ public class Main {
                     BufferedImage image1 =normalize.getImage();
 
 
-                    work(directory, image1, "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
+                    work(directory, image1, "/" + ("GRADIENT MATRIX OUTER DOT PRODUCT") + outputGrad);
 
                     M3 m3 = new M3(image1, 1, 1);
                     LocalExtreMüss localExtreMüss = new LocalExtreMüss(m3.columns, m3.lines, 3, 4);

@@ -53,7 +53,7 @@ public class Line {
     class ListPoint implements Iterable<Point2D> {
         class MyIterator<Point2D> implements Iterator<one.empty3.library.Point2D> {
             private int current = -1;
-            private boolean p1 = false;
+            private boolean p1 = true;
             @Override
             public boolean hasNext() {
                 return !p1 || (current + 1) < xys.size();
