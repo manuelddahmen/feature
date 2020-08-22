@@ -19,7 +19,9 @@ color component based.
 - M3 components 
   + matrix (columnsIn, linesIn) internal
   matrix at x, y
-
+- conversion to BuefferedImage, minMax normalize
+linear
+- gradient. dx, dy, phase atan dy/dy atan dx/dy
 <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
 <dependency>
     <groupId>org.openpnp</groupId>
