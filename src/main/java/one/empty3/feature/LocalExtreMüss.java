@@ -83,20 +83,20 @@ public class LocalExtreMüss extends FilterMatPixM{
                     for (int ii = -1; ii < 1; ii++) {
                         for (int ij = -1; ij < 1; ij++) {
                             if(copy.get(i+ii, j+ij, 0, 0)
-                                    < maxLocal && ii!=0 && ij!=0) {
-                                countOut++;
+                                    <= maxLocal && ii!=0 && ij!=0) {
                                 maxLocal = copy.get(i+ii, j+ij, 0, 0);
                             }
-
+                            else
+                                countOut++;
                         }
                     }
-                    if(countOut>=pointsCount) {
+                    if(countOut<pointsCount) {
                         max.set(i, j, 0, 0, 1.0);
                     }
                 }
             }
         }
-        return copy;
+        return max;
     }
 
     private double lambda1dot2div1sum2(M3 original, int compNo, int i, int j) {
