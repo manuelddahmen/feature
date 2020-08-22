@@ -1,26 +1,26 @@
 
-# feature
+# Feature
 
 https://drive.google.com/folderview?id=10CXWU2JPVsNMbHrAssxN23KzizzNkvHg
 Documentation utilisée. Jr n'a aucun droit sur
 ces documents en ligne publiés. Mais je les partage
 à toute fin utile hormis me Peter Pan Jackson
 le nez et les...
-## licence
+## Licence
 La licence pour les sources publiées est la Gnu Gpl version 3.
-## filtres (kernels) d'images
+## Filtres (kernels) d'images
 Gauss. Multiples iterations. Tests  photos.
 Gradient X, Y, debugging outter dot ptoduct. 
 SobelX, SobelY
 
 ## Formats et classes d'images. 
-- BufferedImage Int Rgb
+- BufferedImage Int aRgb
 - PixM components matrix of pictures. 
 color component based. 
 - M3 components 
   + matrix (columnsIn, linesIn) internal
   matrix at x, y
-- conversion to BuefferedImage, minMax normalize
+- conversion to BufferedImage, minMax normalize
 linear
 - gradient. dx, dy, phase atan dy/dy atan dx/dy
 <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
@@ -32,12 +32,6 @@ linear
 
 
 ## En développement. Ambitions.
-
-Mis à part la curiosité technocrate le but est 
-d'aider ou d'assister les personnes auxquelles
-il manque un sens. - 1 point.
-
--2 rires.
 
 ## La conception de features 2d 3d.
 
