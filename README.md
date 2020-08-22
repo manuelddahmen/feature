@@ -32,7 +32,10 @@ linear
 
 
 ## En développement. Ambitions.
-
+ça vous intéresse un logiciel de détection pour vidéo (film, enregistrement ) ou temps réel (live, webcam). Je débute dans ce domaine. Personnalisé ou personnalisable...
+à venir. 
+https://github.com/manuelddahmen/feature 
+j'ai fini mes études depuis 10 ans je continue à me former.
 ## La conception de features 2d 3d.
 
 Les collections d'images contenant à une
