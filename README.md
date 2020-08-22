@@ -6,7 +6,8 @@ Documentation utilisée. Jr n'a aucun droit sur
 ces documents en ligne publiés. Mais je les partage
 à toute fin utile hormis me Peter Pan Jackson
 le nez et les...
-
+## licence
+La licence pour les sources publiées est la Gnu Gpl version 3.
 ## filtres (kernels) d'images
 Gauss. Multiples iterations. Tests  photos.
 Gradient X, Y, debugging outter dot ptoduct. 
