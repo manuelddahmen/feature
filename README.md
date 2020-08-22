@@ -38,9 +38,9 @@ https://github.com/manuelddahmen/feature
 j'ai fini mes études depuis 10 ans je continue à me former.
 ## La conception de features 2d 3d.
 
-Les collections d'images contenant à une
-feature (caractéristiques) ou d'un ensemble
-de caractéristiques.
+Les collections d'images contenant une
+_feature_ (caractéristiques) ou d'un ensemble
+de _features_.
 
 Features' matching
 
