@@ -25,7 +25,7 @@ public class LocalExtreMüss extends FilterMatPixM{
         initGNormalise();
         subStartX = columns/10;
         subStartY = lines/10;
-        sub = new double[4*lines*columns*lines*columns];
+        //sub = new double[4*lines*columns];
     }
 
     public double getSub(int x, int y, int subI, int subJ) {
@@ -63,7 +63,7 @@ public class LocalExtreMüss extends FilterMatPixM{
                 for (int j = 0; j < lines; j++) {
                     for (int ii = -1; ii < 1; ii++) {
                         for (int ij = -1; ij < 1; ij++) {
-                            copy.set(i, j, ii, ij, lambda1dot2div1sum2(original, original.getCompNo(), i, j));
+                            copy.set(i+ii, j+ij, 0, 0, lambda1dot2div1sum2(original, original.getCompNo(), i, j));
                         }
                     }
                 }
