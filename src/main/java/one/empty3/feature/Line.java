@@ -5,16 +5,20 @@ import java.util.Iterator;
 import java.util.function.Consumer;
 
 public class Line {
-    MultiLinkList xys = new MultiLinkList();
-
+    private int size;
+    static MultiLinkList xys = new MultiLinkList();
+    private int index;
     public Line(int... xys) {
         int n = xys.length / 2;
 
 
-        for (int n2 = 0; n2 < xys.length - 2; n2 += 2) {
+        for (int n2 = 0; n2 <= xys.length - 4; n2 += 4
+        ) {
+            index =
             this.xys.add(new P2P2(new Point2D(xys[n2], xys[n2 + 1]),
-                    new Point2D(xys[n2 + 1], xys[n2 + 2])
+                    new Point2D(xys[n2 + 2], xys[n2 + 3])
             ));
+            size = xys.length/2;
             /*
             this.xys.add(new MultiLinkList.P2P2(new Point2D(xys[n2], xys[n2 + 1]),
                     new Point2D(xys[n2 + 1], xys[n2 + 2])
@@ -22,6 +26,22 @@ public class Line {
 
              */
         }
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getIndex() {
+        return index;
+    }
+
+    public void setIndex(int index) {
+        this.index = index;
     }
 
     public double dist(Line l2) {
@@ -52,7 +72,7 @@ public class Line {
             public void accept(Point2D point2D) {
                 int dist = dist(point2D);
                 if (dist == 0 && dist == xys.size() - 1) {
-                    xys.add(dist, l2.xys, dist);
+                    //xys.add(dist, l2.xys, dist);
                 }
             }
         });
@@ -88,4 +108,6 @@ class MyIterator<T> implements Iterator {
         if (p1) return  line.xys.get(current).getP1();
         return line.xys.get(current).getP0();
     }
+
+
 }

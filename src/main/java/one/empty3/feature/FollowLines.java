@@ -6,12 +6,39 @@ import java.util.function.Consumer;
 
 public class FollowLines {
     private M3 traces;
-    private double threshold = 0.1;
+    private double threshold = 0.9;
     private ArrayList<Line> lines = new ArrayList<>();
+    private int maxNeighbours = 2;
 
     public FollowLines(M3 traces) {
         this.traces = traces;
     }
+
+    public M3 getTraces() {
+        return traces;
+    }
+
+    public void setTraces(M3 traces) {
+        this.traces = traces;
+    }
+
+    public double getThreshold() {
+        return threshold;
+    }
+
+    public void setThreshold(double threshold) {
+        this.threshold = threshold;
+    }
+
+    public ArrayList<Line> getLines() {
+        return lines;
+    }
+
+    public void setLines(ArrayList<Line> lines) {
+        this.lines = lines;
+    }
+
+
     // point00, neighbours 01 angle10, dist11
 
     /***
@@ -21,19 +48,31 @@ public class FollowLines {
      * @return m3 traiter matrice (ii,ij)
      */
     public ArrayList<Line> processPoints(int ii, int ij) {
+        int [] x = new int[getMaxNeighbours()];
+        int [] y = new int[getMaxNeighbours()];
         M3 points = new M3(traces.columns, traces.lines, 1, 1);
         for (int comp = 0; comp < 4; comp++) {
             for (int i = 0; i < traces.columns; i++) {
                 for (int j = 0; j < traces.lines; j++) {
+                    int add = 0;
                     double[][] neighbours = neighbours(i, j, ii, ij);
+                    if(traces.get(i, j, ii, ij)>getThreshold())
                     for (int m = 0; m < neighbours.length; m++) {
                         for (int n = 0; n < neighbours[m].length; n++) {
-                            if (neighbours[m][n] > threshold) {
-                                Line l = new Line(i, j, i + m - 1, j + n - 1);
-                                lines.add(l);
+                            if (!(m==1&&n==1) && neighbours[m][n] > getThreshold() && add<getMaxNeighbours()) {
+                                x[add] = i+m;
+                                y[add] = j+n;
+
+                                add++;
                             }
                         }
 
+                    }
+                    if(add<getMaxNeighbours()) {
+                        for(int a=0; a<getMaxNeighbours(); a++) {
+                            Line l = new Line(i, j, x[a], y[a]);
+                            lines.add(l);
+                        }
                     }
                 }
 
@@ -52,6 +91,10 @@ public class FollowLines {
             }));
         }*/
         return lines;
+    }
+
+    private int getMaxNeighbours() {
+        return maxNeighbours;
     }
 
     private double[][] neighbours(int i, int j, int ii, int ij) {

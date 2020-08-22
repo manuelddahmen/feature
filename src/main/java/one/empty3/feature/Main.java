@@ -126,15 +126,17 @@ public class Main {
                     ArrayList<Line> lines = followLines.processPoints(0, 0);
 
                     BufferedImage imageDrawn = new BufferedImage(filter2.columns, filter2.lines, BufferedImage.TYPE_INT_ARGB);
+                    Graphics graphics = imageDrawn.getGraphics();
                     for (Line line : lines) {
-                        int c = Colors.random().getRGB();
-                        new MyIterator(line).forEachRemaining(new Consumer<Point2D>() {
-                            @Override
-                            public void accept(Point2D point2D) {
+                        Color c = Colors.random();
+                        for (int a = 0; a < line.xys.size(); a++)
+                        {
+                            graphics.setColor(c);
+                            P2P2 p2P2 = line.xys.get(a);
+                            graphics.drawLine((int) p2P2.getP0().getX(), (int) p2P2.getP0().getY(),
+                                    (int) p2P2.getP1().getX(), (int) p2P2.getP1().getY());
 
-                                imageDrawn.setRGB((int) point2D.getX(), (int) point2D.getY(), c);
-                            }
-                        });
+                        }
                     }
                     work(directory, imageDrawn, "/"
                             + ("local_matGrad_extrema_DRAW_LINES") + outputGrad);
