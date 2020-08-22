@@ -219,4 +219,68 @@ public class M {
         return res;
 
     }
+
+    /***
+     * @param original
+     * @param ii
+     * @param ij
+     * @param iStart
+     * @param jStart
+     * @param iEnd
+     * @param jEnd
+     * @param pixM
+     * @param iPaste
+     * @param jPaste
+     */
+    public void setRegionCopy(M3 original, int ii, int ij, int iStart, int jStart, int iEnd, int jEnd,
+                              PixM pixM, int iPaste, int jPaste) {
+        for (int c = 0; c < getCompCount(); c++) {
+            original.setCompNo(c);
+            pixM.setCompNo(c);
+            int x = 0;
+            for(int i=iStart; i<iEnd; i++) {
+                int y=0;
+                for(int j=jStart; j<jEnd; j++) {
+                    double v = original.get(i, j, ii, ij);
+                    pixM.set(iPaste+x, jPaste+y, v);
+                    y++;
+                }
+                x++;
+            }
+
+
+        }
+    }
+
+    /***
+     * TODO implements
+     * @param original
+     * @param iStart
+     * @param jStart
+     * @param iEnd
+     * @param jEnd
+     * @param pixM
+     * @param iPaste
+     * @param jPaste
+     */
+    public void setRegionCopy(PixM original, int iStart, int jStart, int iEnd, int jEnd,
+                              PixM pixM, int iPaste, int jPaste) {
+    }
+
+    /***
+     * TODO implements
+     * @param original
+     * @param iStart
+     * @param jStart
+     * @param iEnd
+     * @param jEnd
+     * @param m3
+     * @param iPaste
+     * @param jPaste
+     * @param iiPaste
+     * @param ijPaste
+     */
+    public void setRegionCopy(PixM original, int iStart, int jStart, int iEnd, int jEnd,
+                              M3 m3, int iPaste, int jPaste, int iiPaste, int ijPaste) {
+    }
 }

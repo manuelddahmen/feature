@@ -96,8 +96,19 @@ public class Main {
                     Linear linear = new Linear(imagesMatrix1[1][0], imagesMatrix[0][0],
                             new PixM(image));
                     linear.op2d2d(new char[] {'*'}, new int [][] {{1, 0}}, new int []{2});
-                    BufferedImage image1 = linear.getImages()[2].normalize(0.0,1.0).getImage();
+                    PixM normalize = linear.getImages()[2].normalize(0.0, 1.0);
+                    BufferedImage image1 =normalize.getImage();
+
+
                     work(directory, image1, "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
+
+                    M3 m3 = new M3(image1, 1, 1);
+                    LocalExtreMüss localExtreMüss = new LocalExtreMüss(m3.columns, m3.lines);
+                    PixM filter1 = localExtreMüss.filter(m3).getImagesMatrix()[0][0];
+
+                    work(directory, filter1.getImage(), "/"
+                            + ("local_harris_extrema") + outputGrad);
+
                     Arrays.stream(imagesMatrix1).forEach(pixMS -> Arrays.stream(pixMS).forEach(pixM1 -> {
                         try {
                             work(directory, pixM1.getImage(), "/__load.22.matrix22.imagesMatrix" + (i[0]%4) + outputGrad);//
