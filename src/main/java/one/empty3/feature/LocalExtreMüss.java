@@ -3,6 +3,8 @@ package one.empty3.feature;
 import java.util.ArrayList;
 
 public class LocalExtreMüss extends FilterMatPixM{
+    private final int pointsCount;
+    private final int neighbourSize;
     private   int subStartX = 0;
     private   int subStartY = 0;
     private   int columns;
@@ -19,12 +21,14 @@ public class LocalExtreMüss extends FilterMatPixM{
 
     private int compNo;
 
-    public LocalExtreMüss(int width, int height) {
+    public LocalExtreMüss(int width, int height, int neighbourSize, int pointsCount) {
         this.columns = width;
         this.lines = height;
         initGNormalise();
         subStartX = columns/10;
         subStartY = lines/10;
+        this.neighbourSize = neighbourSize;
+        this.pointsCount = pointsCount;
         //sub = new double[4*lines*columns];
     }
 
@@ -75,16 +79,18 @@ public class LocalExtreMüss extends FilterMatPixM{
                 for (int j = 0; j < lines; j++) {
                     boolean isMaximm = true;
                     double maxLocal = copy.get(i, j, 0, 0);
+                    int countOut = 0;
                     for (int ii = -1; ii < 1; ii++) {
                         for (int ij = -1; ij < 1; ij++) {
-                            if(copy.get(i+ii, j+ij, 0, 0)<maxLocal && ii!=0 && ij!=0) {
-                                isMaximm = false;
+                            if(copy.get(i+ii, j+ij, 0, 0)
+                                    < maxLocal && ii!=0 && ij!=0) {
+                                countOut++;
                                 maxLocal = copy.get(i+ii, j+ij, 0, 0);
                             }
 
                         }
                     }
-                    if(isMaximm) {
+                    if(countOut>=pointsCount) {
                         max.set(i, j, 0, 0, 1.0);
                     }
                 }

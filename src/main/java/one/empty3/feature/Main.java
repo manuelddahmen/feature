@@ -103,7 +103,7 @@ public class Main {
                     work(directory, image1, "/" + ("HARRIS MATRIX OUTER DOT PRODUCT") + outputGrad);
 
                     M3 m3 = new M3(image1, 1, 1);
-                    LocalExtreMüss localExtreMüss = new LocalExtreMüss(m3.columns, m3.lines);
+                    LocalExtreMüss localExtreMüss = new LocalExtreMüss(m3.columns, m3.lines, 3, 4);
                     PixM filter1 = localExtreMüss.filter(m3).getImagesMatrix()[0][0];
 
                     work(directory, filter1.getImage(), "/"
