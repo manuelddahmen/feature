@@ -82,7 +82,7 @@ public class M3 {
         }
     }
 
-    public void getHarris(int line, int column) {
+    public void getMatGrad(int line, int column) {
 
     }
 

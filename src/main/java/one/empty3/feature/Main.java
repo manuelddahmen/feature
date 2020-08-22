@@ -107,7 +107,7 @@ public class Main {
                     PixM filter1 = localExtreMüss.filter(m3).getImagesMatrix()[0][0];
 
                     work(directory, filter1.getImage(), "/"
-                            + ("local_harris_extrema") + outputGrad);
+                            + ("local_matGrad_extrema") + outputGrad);
 
                     Arrays.stream(imagesMatrix1).forEach(pixMS -> Arrays.stream(pixMS).forEach(pixM1 -> {
                         try {
@@ -129,7 +129,7 @@ public class Main {
                     }));
                     Arrays.stream(mean.getImagesMatrix()).forEach(pixMS -> Arrays.stream(pixMS).forEach(pixM1 -> {
                         try {
-                            work(directory, pixM1.normalize(0.0,1.0).getImage(), "/___mean_for_harris" + (i[0]%4) + outputGrad);//
+                            work(directory, pixM1.normalize(0.0,1.0).getImage(), "/___mean_for_matGrad" + (i[0]%4) + outputGrad);//
                             i[0]++;
                         } catch (IOException e) {
                             e.printStackTrace();
