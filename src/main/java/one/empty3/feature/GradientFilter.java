@@ -1,21 +1,23 @@
 package one.empty3.feature;
 
 public class GradientFilter extends FilterMatPixM {
+
     protected int columnsIn = 2;
     protected int linesIn = 2;
     protected int columns;
     protected int lines;
-
+    // Local minima; maxima
     private double[][][][] gNormalize;
     int incrOK = 0;
     private double[][][] mean;
+
 
     public GradientFilter(int width, int height) {
         this.columns = width;
         this.lines = height;
         initGNormalise();
-
     }
+
 
     @Override
     public M3 filter(M3 source) {
@@ -26,6 +28,8 @@ public class GradientFilter extends FilterMatPixM {
                 for (int ii = 0; ii < copy.columnsIn; ii++) {
                     for (int ij = 0; ij < copy.linesIn; ij++) {
                         for (int c = 0; c < copy.getCompCount(); c++) {
+
+
                             copy.setCompNo(c);
                             source.setCompNo(c);
                             element(source, copy, i, j, ii, ij);
