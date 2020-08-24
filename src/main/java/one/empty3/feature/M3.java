@@ -31,6 +31,24 @@ public class M3 {
         init();
     }
 
+    public M3(PixM pixM, int columnsIn, int linesIn) {
+        this(pixM.columns, pixM.lines, columnsIn, linesIn);
+        for (int c = 0; c < getCompCount(); c++) {
+            pixM.setCompNo(c);
+            setCompNo(c);
+            for (int i = 0; i < columns; i++) {
+                for (int j = 0; j < lines; j++) {
+                    double d = pixM.get(i, j);
+                    for (int ii = 0; ii < columnsIn; ii++)
+                        for (int ij = 0; ij < linesIn; ij++) {
+                            set(i, j, ii, ij, d);
+                        }
+                }
+            }
+        }
+    }
+
+
     private void init() {
         x = new double[columns * lines * columnsIn * linesIn * compCount];
     }
@@ -212,7 +230,7 @@ public class M3 {
                             //value = (float) ((value - min) * (max - min));
                             //value = (float) Math.max(value, min);
                             //value = (float) Math.min(value, max);
-                            if(comp==3)
+                            if (comp == 3)
                                 value = 1f;
                             res[ii][ij].set(i, j, v);
                             incrOK++;
@@ -225,5 +243,39 @@ public class M3 {
         //System.out.println("Outs : " + incrGetOut);
         System.out.println("Points ok " + incrOK);
         return res;
+    }
+
+    public M3 filter(FilterPixM filter1, int ii, int ij) {
+        PixM matrix = getMatrix(ii, ij);
+        matrix.applyFilter(filter1);
+        setMatrix(ii, ij, matrix);
+        return this;
+    }
+
+    private void setMatrix(int ii, int ij, PixM matrix) {
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < lines; j++) {
+                for (int c = 0; c < getCompCount(); c++) {
+                    setCompNo(c);
+                    matrix.setCompNo(c);
+                    set(i, j, ii, ij, matrix.get(i, j));
+                }
+            }
+        }
+
+    }
+
+    private PixM getMatrix(int ii, int ij) {
+        PixM matrix = new PixM(columns, lines);
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < lines; j++) {
+                for (int c = 0; c < getCompCount(); c++) {
+                    setCompNo(c);
+                    matrix.setCompNo(c);
+                    matrix.set(i, j, get(i, j, ii, ij));
+                }
+            }
+        }
+        return matrix;
     }
 }

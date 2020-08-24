@@ -46,7 +46,7 @@ class P2P2 {
 
 public class MultiLinkList {
     static double [] xy = new double[300000000];
-    static int maxIndex = -4;
+    static int maxIndex = 0;
     private int index;
 
 
@@ -56,20 +56,21 @@ public class MultiLinkList {
     }
 
     public P2P2 get(int i) {
+        i = i*4;
         return new P2P2(new Point2D(xy[i], xy[i+1]), new Point2D(xy[i+2], xy[3]));
     }
     public int add(P2P2 p2P2) {
-        maxIndex += 4;
         int i = maxIndex;
         xy[i  ] = p2P2.getP0().getX();
         xy[i+1] = p2P2.getP0().getY();
         xy[i+2] = p2P2.getP1().getX();
         xy[i+3] = p2P2.getP1().getY();
+        maxIndex += 4;
         return maxIndex/4;
     }
 
     public int size() {
-        return (maxIndex+4)/4;
+        return maxIndex/4;
     }
     /*
     public void add(int i, MultiLinkList list, int listItemAt) {
