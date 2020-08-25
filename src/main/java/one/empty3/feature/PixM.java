@@ -173,4 +173,16 @@ public class PixM extends M {
         }
         return image;
     }
+
+    public PixM subSampling(double div) {
+        double columns2 = 1.0*columns/div;
+        double lines2 = 1.0*lines/div;
+        PixM pixM = new PixM((int)(columns2), ((int)lines2));
+        for(int i=0; i<(int)columns2; i++)
+            for(int j=0; j<(int)lines2; j++) {
+                pixM.set(i, j, get((int)(i*div), (int)(j*div)));
+            }
+        return pixM;
+    }
+
 }

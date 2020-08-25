@@ -93,9 +93,9 @@ public class LocalExtrema extends FilterMatPixM {
                             for (int ij = -1; ij < 1; ij++) {
                                 if (original.get(i + ii, j + ij, 0, 0)
                                         <= maxLocal && !(ii == 0 && ij == 0)) {
-                                    countOut++;
-                                } else if (ii != 0 || ij != 0) {
                                     countIn++;
+                                } else if (ii != 0 || ij != 0) {
+                                    countOut++;
                                 }
 
                             }

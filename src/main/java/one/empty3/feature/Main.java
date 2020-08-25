@@ -57,16 +57,16 @@ public class Main {
 
         Arrays.stream(ImageIO.getWriterFormatNames()).forEach(s1 ->
                 System.out.println("Format name : \"" + s1 + "\""));
+        File directory = new File("outputFiles/res" + System.nanoTime() + "__" +
+
+                Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
+                        .replace('\\', '_').replace('/', '_').replace(':', '_')
+                + "/");
         for (String s : Objects.requireNonNull(new File("resources").list())) {
             String s0 = s.substring(s.lastIndexOf(".") + 1);
             String ext = s0.equals("jpg") || s0.equals("jpeg") ? "jpg" : s0;
             if (Arrays.asList(ImageIO.getWriterFormatNames()).contains(ext)) {
                 try {
-                    File directory = new File("outputFiles/res" + System.nanoTime() + "__" +
-
-                            Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
-                                    .replace('\\', '_').replace('/', '_').replace(':', '_')
-                            + "/");
 
                     if(directory.mkdirs())
                         System.out.println("Directory created" + directory.getAbsolutePath());
@@ -80,29 +80,31 @@ public class Main {
                     Linear linear = new Linear(imagesMatrix[1][0], imagesMatrix[0][0],
                             new PixM(image.getWidth(), image.getHeight()));
                     linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
+                    PixM smoothedGrad = linear.getImages()[2]; //.applyFilter(new GaussFilterPixM(4, sigma));
+
+                    // Smooth gradient x, y
 
                     for (double sigma = 0.8; sigma < 4.0; sigma += 0.2) {
-                        PixM smoothedGrad = linear.getImages()[2]; //.applyFilter(new GaussFilterPixM(4, sigma));
 
-                        // Smooth gradient x, y
-
-
-                        //
-                        M3 smoothedGradM3 = new M3(smoothedGrad, 1, 1);
+                        PixM pixM = smoothedGrad.applyFilter(new GaussFilterPixM(4, sigma));
 
 
+                        for (int size = 1; size < 4; size++) {
+                            //
+                            M3 smoothedGradM3 = new M3(pixM.subSampling(size), 1, 1);
 
-                        // Search local maximum
-                        LocalExtrema localExtrema = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 0, 1);
-                        PixM[][] filter2 = localExtrema.filter(smoothedGradM3).normalize(0.0, 1.0);
-                        PixM filter1 = filter2[0][0];
-                        BufferedImage image1 = filter1.getImage();
-                        //work(directory, smoothedGrad.getImage(), "/" + ("1 before extrema search"));
-                        work(directory, imagesMatrix[0][0].getImage(), "1/gradient.png"+s);
-                        work(directory, smoothedGradM3.getImagesMatrix()[0][0].getImage(), "2/dotgradient.png"+s);
-                        work(directory, image1, "3/extremasearch"+sigma + "__feature_detector_ready_image.png"+s);
+
+                            // Search local maximum
+                            LocalExtrema localExtrema = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 0, 1);
+                            PixM[][] filter2 = localExtrema.filter(smoothedGradM3).normalize(0.0, 1.0);
+                            PixM filter1 = filter2[0][0];
+                            BufferedImage image1 = filter1.getImage();
+                            //work(directory, smoothedGrad.getImage(), "/" + ("1 before extrema search"));
+                            work(directory, imagesMatrix[0][0].getImage(), "1/gradient.png");
+                            work(directory, smoothedGradM3.getImagesMatrix()[0][0].getImage(), "2/smoothed_grad-" + sigma + "/size"+size+".png");
+                            work(directory, image1, "3/extremasearch" + sigma +"/size"+size+"__feature_detector_ready_image.png");
+                        }
                     }
-
 
                     //BufferedImage pic = new M3(image, 1, 1).getImagesMatrix()[0][0].getImage();
                     //BufferedImage picNorm = new M3(image, 1, 1).getImagesMatrix()[0][0].normalize(0.0, 1.0).getImage();
