@@ -12,9 +12,9 @@ public class GradientFilter extends FilterMatPixM {
     private double[][][] mean;
 
 
-    public GradientFilter(int width, int height) {
-        this.columns = width;
-        this.lines = height;
+    public GradientFilter(int imageColumns, int imageLines) {
+        this.columns = imageColumns;
+        this.lines = imageLines;
         initGNormalise();
     }
 

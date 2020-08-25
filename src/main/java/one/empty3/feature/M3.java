@@ -100,9 +100,6 @@ public class M3 {
         }
     }
 
-    public void getMatGrad(int line, int column) {
-
-    }
 
 
     public M3 copy() {

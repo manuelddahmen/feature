@@ -4,7 +4,7 @@ import org.apache.poi.hssf.util.HSSFColor;
 
 import java.util.ArrayList;
 
-public class LocalExtreMüss extends FilterMatPixM{
+public class LocalExtrema extends FilterMatPixM {
     private final int pointsCount;
     private final int neighbourSize;
     private   int subStartX = 0;
@@ -23,7 +23,7 @@ public class LocalExtreMüss extends FilterMatPixM{
 
     private int compNo;
 
-    public LocalExtreMüss(int width, int height, int neighbourSize, int pointsCount) {
+    public LocalExtrema(int width, int height, int neighbourSize, int pointsCount) {
         this.columns = width;
         this.lines = height;
         initGNormalise();
@@ -82,7 +82,7 @@ public class LocalExtreMüss extends FilterMatPixM{
 
             for (int i = 0; i < columns; i++) {
                 for (int j = 0; j < lines; j++) {
-                    boolean isMaximm = true;
+                    boolean isMaximum = true;
                     double maxLocal = copy.get(i, j, 0, 0);
                     int countOut = 0;
                     for (int ii = -1; ii < 1; ii++) {

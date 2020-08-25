@@ -34,13 +34,13 @@ public class Main {
     }
 
     public static void work(File dir, BufferedImage imageToWrite, String outputFilename) throws IOException {
-        if(dir.mkdirs())
+        if (dir.mkdirs())
             System.out.println(dir.getAbsolutePath() + " created");
 
         System.out.print("\n(width, height) = " + imageToWrite.getWidth() +
                 ", " + imageToWrite.getHeight() + ")");
 
-        if (!ImageIO.write(imageToWrite, "png", new File(dir.getAbsolutePath() +
+        if (!ImageIO.write(imageToWrite, "png", new File(dir.getAbsolutePath() +"/"+
                 outputFilename))) {
             System.out.println("Error inappropriate writer or not found " + "png");
             System.exit(-2);
@@ -53,6 +53,7 @@ public class Main {
     public static void main(String[] args) {
         new Main().exec();
     }
+
     public void exec() {
 
         Arrays.stream(ImageIO.getWriterFormatNames()).forEach(s1 ->
@@ -71,30 +72,33 @@ public class Main {
                     System.out.println("format name image " + ext + " found");
 
                     BufferedImage image = ImageIO.read(new File("resources/" + s));
-                    //PixM pixM = new PixM(image);
-                    //BufferedImage origImg = pixM.getImage();
 
-                    //FilterPixM gaussFilterPixM = new GaussFilterPixM(5, 4.0);
-
-                    GradientFilter gradientMask = new GradientFilter(image.getWidth(), image.getHeight());
-                    M3 filter = gradientMask.filter(new M3(image, 2, 2));
+                    GradientFilter gradientMask = new GradientFilter(3, 5);
+                    M3 filter = gradientMask.filter(new M3(new PixM(image), 2, 2));
                     PixM[][] imagesMatrix = filter.getImagesMatrix();
                     Linear linear = new Linear(imagesMatrix[1][0], imagesMatrix[0][0],
                             new PixM(image));
                     linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
-                    PixM normalize = linear.getImages()[2];
-                    for(double sigma = 0.8; sigma < 4.0; sigma+=0.2) {
-                        PixM smoothedGrad = normalize.applyFilter(new GaussFilterPixM(6, sigma));
+
+                    for (double sigma = 0.8; sigma < 4.0; sigma += 0.2) {
+                        PixM smoothedGrad = linear.getImages()[2]; //.applyFilter(new GaussFilterPixM(4, sigma));
+
+                        // Smooth gradient x, y
+
+
+                        //
                         M3 smoothedGradM3 = new M3(smoothedGrad, 1, 1);
 
-                        LocalExtreMüss localExtreMüss = new LocalExtreMüss(smoothedGradM3.columns, smoothedGradM3.lines, 3, 4);
-                        M3 filter2 = localExtreMüss.filter(smoothedGradM3);
-                        PixM filter1 = filter2.getImagesMatrix()[0][0];
-                        BufferedImage image1 = normalize.normalize(0.0, 1.0).getImage();
-                        //work(directory, smoothedGrad.getImage(), "/" + ("1 before extrema search"));
-                        work(directory, image1, "/sigma--" +sigma+ "__feature_detector_ready_image.png");
-                    }
 
+
+                        // Search local maximum
+                        LocalExtrema localExtrema = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 4, 1);
+                        M3 filter2 = localExtrema.filter(smoothedGradM3);
+                        PixM filter1 = filter2.getImagesMatrix()[0][0];
+                        BufferedImage image1 = filter1.getImage();
+                        //work(directory, smoothedGrad.getImage(), "/" + ("1 before extrema search"));
+                        work(directory, image1, s+"sigma--" + sigma + "__feature_detector_ready_image.png");
+                    }
 
 
                     //BufferedImage pic = new M3(image, 1, 1).getImagesMatrix()[0][0].getImage();
@@ -114,7 +118,6 @@ public class Main {
                     //String output = "/Output" + s + ".png";
                     String outputGrad = "Gradient" + s + ".png";
                     String input = "/Input" + s + ".png";
-
 
 
                     //work(directory, ls_22.getImagesMatrix()[1][1].getImage(), "/" + ("__load.copy.save.M3_22_11.png"));
