@@ -34,14 +34,13 @@ public class Main {
     }
 
     public static void work(File dir, BufferedImage imageToWrite, String outputFilename) throws IOException {
-        if (dir.mkdirs())
+        File file = new File(dir.getAbsolutePath() + "/" + outputFilename);
+        if (file.mkdirs())
             System.out.println(dir.getAbsolutePath() + " created");
-
         System.out.print("\n(width, height) = " + imageToWrite.getWidth() +
                 ", " + imageToWrite.getHeight() + ")");
 
-        if (!ImageIO.write(imageToWrite, "png", new File(dir.getAbsolutePath() +"/"+
-                outputFilename))) {
+        if (!ImageIO.write(imageToWrite, "png", file)) {
             System.out.println("Error inappropriate writer or not found " + "png");
             System.exit(-2);
         } else {
@@ -69,15 +68,17 @@ public class Main {
                                     .replace('\\', '_').replace('/', '_').replace(':', '_')
                             + "/");
 
+                    if(directory.mkdirs())
+                        System.out.println("Directory created" + directory.getAbsolutePath());
                     System.out.println("format name image " + ext + " found");
 
                     BufferedImage image = ImageIO.read(new File("resources/" + s));
 
-                    GradientFilter gradientMask = new GradientFilter(3, 5);
+                    GradientFilter gradientMask = new GradientFilter(image.getWidth(), image.getHeight());
                     M3 filter = gradientMask.filter(new M3(new PixM(image), 2, 2));
-                    PixM[][] imagesMatrix = filter.getImagesMatrix();
+                    PixM[][] imagesMatrix = filter.normalize(0, 1);
                     Linear linear = new Linear(imagesMatrix[1][0], imagesMatrix[0][0],
-                            new PixM(image));
+                            new PixM(image.getWidth(), image.getHeight()));
                     linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
 
                     for (double sigma = 0.8; sigma < 4.0; sigma += 0.2) {
@@ -92,12 +93,14 @@ public class Main {
 
 
                         // Search local maximum
-                        LocalExtrema localExtrema = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 4, 1);
-                        M3 filter2 = localExtrema.filter(smoothedGradM3);
-                        PixM filter1 = filter2.getImagesMatrix()[0][0];
+                        LocalExtrema localExtrema = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 0, 1);
+                        PixM[][] filter2 = localExtrema.filter(smoothedGradM3).normalize(0.0, 1.0);
+                        PixM filter1 = filter2[0][0];
                         BufferedImage image1 = filter1.getImage();
                         //work(directory, smoothedGrad.getImage(), "/" + ("1 before extrema search"));
-                        work(directory, image1, s+"sigma--" + sigma + "__feature_detector_ready_image.png");
+                        work(directory, imagesMatrix[0][0].getImage(), "1/gradient.png"+s);
+                        work(directory, smoothedGradM3.getImagesMatrix()[0][0].getImage(), "2/dotgradient.png"+s);
+                        work(directory, image1, "3/extremasearch"+sigma + "__feature_detector_ready_image.png"+s);
                     }
 
 

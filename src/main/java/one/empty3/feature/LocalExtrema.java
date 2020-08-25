@@ -6,12 +6,13 @@ import java.util.ArrayList;
 
 public class LocalExtrema extends FilterMatPixM {
     private final int pointsCount;
-    private final int neighbourSize;
+    //private final int neighbourSize;
     private   int subStartX = 0;
     private   int subStartY = 0;
     private   int columns;
     private   int lines;
     protected double sub[];
+    private double threshold = 0.2;
 
     public int getCompNo() {
         return compNo;
@@ -29,7 +30,7 @@ public class LocalExtrema extends FilterMatPixM {
         initGNormalise();
         subStartX = columns/10;
         subStartY = lines/10;
-        this.neighbourSize = neighbourSize;
+        //this.neighbourSize = neighbourSize;
         this.pointsCount = pointsCount;
         //sub = new double[4*lines*columns];
     }
@@ -85,17 +86,22 @@ public class LocalExtrema extends FilterMatPixM {
                     boolean isMaximum = true;
                     double maxLocal = copy.get(i, j, 0, 0);
                     int countOut = 0;
-                    for (int ii = -1; ii < 1; ii++) {
-                        for (int ij = -1; ij < 1; ij++) {
-                            if(original.get(i+ii, j+ij, 0, 0)
-                                    <= maxLocal && ii!=0 && ij!=0) {
-                                maxLocal = original.get(i+ii, j+ij, 0, 0);
+                    int countIn = 0;
+
+                    if (maxLocal > getThreshold()) {
+                        for (int ii = -1; ii < 1; ii++) {
+                            for (int ij = -1; ij < 1; ij++) {
+                                if (original.get(i + ii, j + ij, 0, 0)
+                                        <= maxLocal && !(ii == 0 && ij == 0)) {
+                                    countOut++;
+                                } else if (ii != 0 || ij != 0) {
+                                    countIn++;
+                                }
+
                             }
-                            else
-                                countOut++;
                         }
                     }
-                    if(countOut<pointsCount) {
+                    if (countIn < pointsCount) {
                         max.set(i, j, 0, 0, 1.0);
                     }
                 }
@@ -118,5 +124,13 @@ public class LocalExtrema extends FilterMatPixM {
     @Override
     public M3 norm(M3 m3, M3 copy) {
         return m3.copy();
+    }
+
+    public double getThreshold() {
+        return threshold;
+    }
+
+    public void setThreshold(double threshold) {
+        this.threshold = threshold;
     }
 }
