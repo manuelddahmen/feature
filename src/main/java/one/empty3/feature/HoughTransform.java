@@ -6,7 +6,7 @@ import java.io.File;
  // je crois que le principe c'est 
 // checker le vote dans l'espace des
 //solutions. 
-/** 
+/*
  * <p/> 
  * Java Implementation of the Hough Transform.<br /> 
  * Used for finding straight lines in an image.<br /> 
@@ -258,7 +258,7 @@ public class HoughTransform extends Thread {
         return max; 
     } 
  
-    /** 
+    /*
      * Gets the hough array as an image, in case you want to have a look at it. 
      */ 
     public BufferedImage getHoughArrayImage() { 

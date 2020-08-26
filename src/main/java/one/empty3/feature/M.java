@@ -220,18 +220,6 @@ public class M {
 
     }
 
-    /***
-     * @param original
-     * @param ii
-     * @param ij
-     * @param iStart
-     * @param jStart
-     * @param iEnd
-     * @param jEnd
-     * @param pixM
-     * @param iPaste
-     * @param jPaste
-     */
     public void setRegionCopy(M3 original, int ii, int ij, int iStart, int jStart, int iEnd, int jEnd,
                               PixM pixM, int iPaste, int jPaste) {
         for (int c = 0; c < getCompCount(); c++) {
