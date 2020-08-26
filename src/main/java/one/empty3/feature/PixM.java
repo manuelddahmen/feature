@@ -178,10 +178,14 @@ public class PixM extends M {
         double columns2 = 1.0*columns/div;
         double lines2 = 1.0*lines/div;
         PixM pixM = new PixM((int)(columns2), ((int)lines2));
-        for(int i=0; i<(int)columns2; i++)
-            for(int j=0; j<(int)lines2; j++) {
-                pixM.set(i, j, get((int)(i*div), (int)(j*div)));
-            }
+        for(int c= 0; c<getCompCount(); c++) {
+            setCompNo(c);
+            pixM.setCompNo(c);
+            for (int i = 0; i < (int) columns2; i++)
+                for (int j = 0; j < (int) lines2; j++) {
+                    pixM.set(i, j, get((int) (i * div), (int) (j * div)));
+                }
+        }
         return pixM;
     }
 

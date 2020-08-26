@@ -62,7 +62,9 @@ public class Main {
                 Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
                         .replace('\\', '_').replace('/', '_').replace(':', '_')
                 + "/");
+        int img = 0;
         for (String s : Objects.requireNonNull(new File("resources").list())) {
+            img ++;
             String s0 = s.substring(s.lastIndexOf(".") + 1);
             String ext = s0.equals("jpg") || s0.equals("jpeg") ? "jpg" : s0;
             if (Arrays.asList(ImageIO.getWriterFormatNames()).contains(ext)) {
@@ -100,9 +102,9 @@ public class Main {
                             PixM filter1 = filter2[0][0];
                             BufferedImage image1 = filter1.getImage();
                             //work(directory, smoothedGrad.getImage(), "/" + ("1 before extrema search"));
-                            work(directory, imagesMatrix[0][0].getImage(), "1/gradient.png");
-                            work(directory, smoothedGradM3.getImagesMatrix()[0][0].getImage(), "2/smoothed_grad-" + sigma + "/size"+size+".png");
-                            work(directory, image1, "3/extremasearch" + sigma +"/size"+size+"__feature_detector_ready_image.png");
+                            work(directory, imagesMatrix[0][0].getImage(), img+"/1/gradient.png");
+                            work(directory, smoothedGradM3.getImagesMatrix()[0][0].getImage(),  img+"2/smoothed_grad-" + sigma + "/size"+size+".png");
+                            work(directory, image1,  img+"/3/extremasearch" + sigma +"/size"+size+"__feature_detector_ready_image.png");
                         }
                     }
 
