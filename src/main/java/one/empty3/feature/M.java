@@ -239,35 +239,10 @@ public class M {
 
         }
     }
-
-    /***
-     * TODO implements
-     * @param original
-     * @param iStart
-     * @param jStart
-     * @param iEnd
-     * @param jEnd
-     * @param pixM
-     * @param iPaste
-     * @param jPaste
-     */
     public void setRegionCopy(PixM original, int iStart, int jStart, int iEnd, int jEnd,
                               PixM pixM, int iPaste, int jPaste) {
     }
 
-    /***
-     * TODO implements
-     * @param original
-     * @param iStart
-     * @param jStart
-     * @param iEnd
-     * @param jEnd
-     * @param m3
-     * @param iPaste
-     * @param jPaste
-     * @param iiPaste
-     * @param ijPaste
-     */
     public void setRegionCopy(PixM original, int iStart, int jStart, int iEnd, int jEnd,
                               M3 m3, int iPaste, int jPaste, int iiPaste, int ijPaste) {
     }

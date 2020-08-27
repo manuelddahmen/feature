@@ -180,8 +180,8 @@ public class M3 {
             for (int ij = 0; ij < linesIn; ij++) {
                 for (int comp = 0; comp < getCompCount(); comp++) {
                     setCompNo(comp);
-                    maxRgbai[comp][ii][ij] = -20000000;
-                    minRgbai[comp][ii][ij] = 20000000;
+                    maxRgbai[comp][ii][ij] = max;
+                    minRgbai[comp][ii][ij] = min;
                     meanRgbai[comp][ii][ij] = 0;
                 }
                 PixM image = new PixM(columns, lines);
@@ -207,7 +207,10 @@ public class M3 {
                         }
                     }
                     meanRgbai[comp][ii][ij] /= (lines * columns);
-                    System.out.println("Mean (ii, ij) (" + ii + ", " + ij + ")" + meanRgbai[comp][ii][ij]);
+                    System.out.println("min/max/avg (ii, ij) (" + ii + ", " + ij + ")" +" "+
+                            "min: "+minRgbai[comp][ii][ij]+
+                            "max: "+maxRgbai[comp][ii][ij]+
+                            "avg: "+meanRgbai[comp][ii][ij]);
                 }
             }
         }
@@ -274,5 +277,27 @@ public class M3 {
             }
         }
         return matrix;
+    }
+
+    public double get(int i, int j, int ii, int ij, int c) {
+        double I = 0.0;
+        setCompNo(0);
+        if(c==4) {
+            for(int c1=0; c1<3; c1++) {
+                setCompNo(c1);
+                I += get(i, j, ii, ij)/3;
+            }
+
+        }
+        else  {
+            setCompNo(c);
+            I = get(i, j, ii, ij);
+        }
+
+        return I;
+    }
+
+    public void resizeSubmatrix(int ii0, int ij0, int i2, int j2) {
+
     }
 }

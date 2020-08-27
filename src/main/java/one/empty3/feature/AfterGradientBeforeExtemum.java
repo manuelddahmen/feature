@@ -1,0 +1,81 @@
+package one.empty3.feature;
+
+import java.awt.*;
+
+/***
+ * liste de régions petites ou grandes
+ */
+public class AfterGradientBeforeExtemum extends FilterMatPixM {
+    private int angles;
+    private double eigenValueLamba1 = 0.0, eigenValueLamba2 = 0.0;
+
+    public AfterGradientBeforeExtemum(int angleIterations) {
+        this.angles = angleIterations;
+    }
+    @Override
+    public M3 filter(M3 original) {
+        /* Choisir les points filtrés min (noirs //ou monochromes -- toutes ou  composantes annulés)
+         * et repérer les zones par régions (r,theta)
+         * Réunir les zones par valeur et proximité.
+         *
+         *  (GX,GY).(cos(theta),(sin(theta))
+         * FAUX
+         */
+
+//        M3 filtered = new GradientFilter(original.columns, original.lines).filter(original);
+        M3 filtered = original;
+        int ii;
+        int ij = 0;
+        double itere = 10;
+
+        M3 orientations = new M3(original.columns, original.lines, angles, 1);
+
+
+        for (ii=0; ii<angles; ii++) {
+            double angle = 0;
+            double r = 1.0;
+            for (int i = 0; i < original.columns; i++)
+                for (int j = 0; j < original.lines; j++)
+                    for (int c = 0; c < 4; c++) {
+                        filtered.setCompNo(c);
+                        orientations.setCompNo(c);
+                        double x = filtered.get(i, j, 0, 0, c);
+                        double y = filtered.get(i, j, 0, 1, c);
+                        double[] normale = {
+                                Math.cos(angle),
+                                Math.sin(angle)
+                        };
+                        orientations.set(i, j, ii, ij, r * (x * normale[0] + y * normale[1]));
+                    }
+            angle += 2 * Math.PI / angles;
+        }
+        return orientations;
+        // Rechercher les extremums.
+    }
+
+    @Override
+    public void element(M3 source, M3 copy, int i, int j, int ii, int ij) {
+
+    }
+
+    @Override
+    public M3 norm(M3 m3, M3 copy) {
+        return null;
+    }
+
+    public double getEigenValueLamba1() {
+        return eigenValueLamba1;
+    }
+
+    public void setEigenValueLamba1(double eigenValueLamba1) {
+        this.eigenValueLamba1 = eigenValueLamba1;
+    }
+
+    public double getEigenValueLamba2() {
+        return eigenValueLamba2;
+    }
+
+    public void setEigenValueLamba2(double eigenValueLamba2) {
+        this.eigenValueLamba2 = eigenValueLamba2;
+    }
+}

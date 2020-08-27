@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class LocalExtrema extends FilterMatPixM {
     private final int pointsCount;
-    //private final int neighbourSize;
+    private final int neighbourSize;
     private   int subStartX = 0;
     private   int subStartY = 0;
     private   int columns;
@@ -30,7 +30,7 @@ public class LocalExtrema extends FilterMatPixM {
         initGNormalise();
         subStartX = columns/10;
         subStartY = lines/10;
-        //this.neighbourSize = neighbourSize;
+        this.neighbourSize = neighbourSize;
         this.pointsCount = pointsCount;
         //sub = new double[4*lines*columns];
     }
@@ -43,7 +43,7 @@ public class LocalExtrema extends FilterMatPixM {
         return subJ+ subStartY *(subI+ subStartX *(y+lines*(x+columns+compNo*(4))));
     }
 
-    public void set(int x, int y, int subI, int subJ, double value) {
+    public void setSub(int x, int y, int subI, int subJ, double value) {
         this.sub[index(x, y, subI, subJ)] = value;
     }
     private void initGNormalise() {
@@ -76,38 +76,43 @@ public class LocalExtrema extends FilterMatPixM {
                 }
             }
         }*/
-        M3 max = copy.copy();
-        for(int c=0; c< max.getCompCount(); c++) {
-            max.setCompNo(c);
+        for(int c = 0; c< copy.getCompCount(); c++) {
+            copy.setCompNo(c);
             original.setCompNo(c);
-
             for (int i = 0; i < columns; i++) {
                 for (int j = 0; j < lines; j++) {
                     boolean isMaximum = true;
-                    double maxLocal = copy.get(i, j, 0, 0);
+                    double maxLocal = 0.0;
                     int countOut = 0;
                     int countIn = 0;
 
                     if (maxLocal > getThreshold()) {
-                        for (int ii = -1; ii < 1; ii++) {
-                            for (int ij = -1; ij < 1; ij++) {
-                                if (original.get(i + ii, j + ij, 0, 0)
-                                        <= maxLocal && !(ii == 0 && ij == 0)) {
+                        for (int ii = -neighbourSize/2; ii <= neighbourSize/2; ii++) {
+                            for (int ij = neighbourSize/2; ij <= neighbourSize/2; ij++) {
+                                double v = original.get(i + ii, j + ij, 0, 0);
+                                if (v< maxLocal && !(ii == 0 && ij == 0) && v>=threshold) {
                                     countIn++;
                                 } else if (ii != 0 || ij != 0) {
                                     countOut++;
+                                }
+                                else {
+                                    countIn = 0;
                                 }
 
                             }
                         }
                     }
                     if (countIn < pointsCount) {
-                        max.set(i, j, 0, 0, 1.0);
+                        copy.set(i, j, 0, 0, 1.0);
+                    }
+                    else {
+                        copy.set(i, j, 0, 0, 0.0);
                     }
                 }
             }
         }
-        return max;
+        return copy;
+
     }
 
     private double lambda1dot2div1sum2(M3 original, int compNo, int i, int j) {

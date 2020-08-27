@@ -2,7 +2,7 @@ package one.empty3.feature;
  
 import java.awt.image.BufferedImage; 
  
-/** 
+/*
  * Represents a linear line as detected by the hough transform. 
  * This line is represented by an angle theta and a radius from the centre. 
  * 
@@ -14,7 +14,7 @@ public class HoughLine {
     protected double theta; 
     protected double r; 
  
-    /** 
+    /*
      * Initialises the hough line 
      */ 
     public HoughLine(double theta, double r) { 
@@ -22,7 +22,7 @@ public class HoughLine {
         this.r = r; 
     } 
  
-    /** 
+    /*
      * Draws the line on the image of your choice with the RGB colour of your choice. 
      */ 
     public void draw(BufferedImage image, int color) { 

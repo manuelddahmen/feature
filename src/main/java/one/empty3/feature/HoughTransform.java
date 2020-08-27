@@ -167,9 +167,10 @@ public class HoughTransform extends Thread {
         } 
     } 
  
-    /** 
+    /*
      * Adds a single point to the hough transform. You can use this method directly 
-     * if your data isn't represented as a buffered image. 
+     * if your data isn't represented as a buffered image.
+     *
      */ 
     public void addPoint(int x, int y) { 
  
@@ -243,7 +244,7 @@ public class HoughTransform extends Thread {
         return lines; 
     } 
  
-    /** 
+    /*
      * Gets the highest value in the hough array 
      */ 
     public int getHighestValue() { 
