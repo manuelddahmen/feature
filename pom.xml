@@ -129,6 +129,7 @@
                     <arguments>
                         <argument>-Xms4000m</argument>
                         <argument>-Xmx4000m</argument>
+                        <argument>-XmX4000m</argument>
                     </arguments>
                 </configuration>
             </plugin>
@@ -248,7 +249,7 @@
                 <executions>
                     <execution>
                         <configuration>
-                            <keyname>22EE55E4</keyname>
+                            <keyname>22EE55E4</keyname><!--ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
                             <ascDirectory>C:\Users\manue\gpg</ascDirectory>
                         </configuration>
                         <id>sign-artifacts</id>

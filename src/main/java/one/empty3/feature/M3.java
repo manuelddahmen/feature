@@ -70,6 +70,24 @@ public class M3 {
     }
 
 
+    public M3(BufferedImage image, int columns , int lines,int columnsIn, int linesIn) {
+        this(columns,lines, columnsIn, linesIn);
+        float[] colorComponents = new float[getCompCount()];
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < lines; j++) {
+                int rgb = image.getRGB((int)(1.0*i/columns*image.getWidth()),(int) (1.0*j/lines*image.getHeight()));
+                colorComponents = new Color(rgb).getColorComponents(colorComponents);
+                for (int ii = 0; ii < columnsIn; ii++)
+                    for (int ij = 0; ij < linesIn; ij++) {
+                        for (int com = 0; com < getCompCount(); com++) {
+                            setCompNo(com);
+                            set(i, j, ii, ij, colorComponents[com]);
+                        }
+                    }
+            }
+        }
+    }
+    @Deprecated
     public M3(BufferedImage image, int columnsIn, int linesIn) {
         this(image.getWidth(), image.getHeight(), columnsIn, linesIn);
         this.image = image;
