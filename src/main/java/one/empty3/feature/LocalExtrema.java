@@ -7,10 +7,6 @@ import java.util.ArrayList;
 public class LocalExtrema extends FilterMatPixM {
     private final int pointsCount;
     private final int neighbourSize;
-    private   int subStartX = 0;
-    private   int subStartY = 0;
-    private   int columns;
-    private   int lines;
     protected double sub[];
     private double threshold = 0.2;
 
@@ -25,30 +21,11 @@ public class LocalExtrema extends FilterMatPixM {
     private int compNo;
 
     public LocalExtrema(int width, int height, int neighbourSize, int pointsCount) {
-        this.columns = width;
-        this.lines = height;
-        initGNormalise();
-        subStartX = columns/10;
-        subStartY = lines/10;
         this.neighbourSize = neighbourSize;
         this.pointsCount = pointsCount;
         //sub = new double[4*lines*columns];
     }
 
-    public double getSub(int x, int y, int subI, int subJ) {
-        return index(x, y, subI, subJ);
-    }
-
-    private int index(int x, int y, int subI, int subJ) {
-        return subJ+ subStartY *(subI+ subStartX *(y+lines*(x+columns+compNo*(4))));
-    }
-
-    public void setSub(int x, int y, int subI, int subJ, double value) {
-        this.sub[index(x, y, subI, subJ)] = value;
-    }
-    private void initGNormalise() {
-
-    }
     // Detect regions, vertex(lines or curves), edges
     public ArrayList<AreaDescriptor> searchForFeaturePlaces() {
         ArrayList<AreaDescriptor> areas = new ArrayList<>();
@@ -79,34 +56,26 @@ public class LocalExtrema extends FilterMatPixM {
         for(int c = 0; c< copy.getCompCount(); c++) {
             copy.setCompNo(c);
             original.setCompNo(c);
-            for (int i = 0; i < columns; i++) {
-                for (int j = 0; j < lines; j++) {
+            for (int i = 0; i < original.columns; i++) {
+                for (int j = 0; j < original.lines; j++) {
                     boolean isMaximum = true;
-                    double maxLocal = 0.0;
+                    double maxLocal = original.get(i, j, 0, 0);
                     int countOut = 0;
                     int countIn = 0;
-
-                    if (maxLocal > getThreshold()) {
-                        for (int ii = -neighbourSize/2; ii <= neighbourSize/2; ii++) {
-                            for (int ij = neighbourSize/2; ij <= neighbourSize/2; ij++) {
+                    if(maxLocal>=threshold) {
+                        //if (maxLocal > getThreshold()) {
+                        for (int ii = -neighbourSize / 2; ii <= neighbourSize / 2; ii++) {
+                            for (int ij = neighbourSize / 2; ij <= neighbourSize / 2; ij++) {
                                 double v = original.get(i + ii, j + ij, 0, 0);
-                                if (v< maxLocal && !(ii == 0 && ij == 0) && v>=threshold) {
+                                if (v > maxLocal) {
                                     countIn++;
-                                } else if (ii != 0 || ij != 0) {
-                                    countOut++;
                                 }
-                                else {
-                                    countIn = 0;
-                                }
-
                             }
                         }
-                    }
-                    if (countIn < pointsCount) {
-                        copy.set(i, j, 0, 0, 1.0);
-                    }
-                    else {
-                        copy.set(i, j, 0, 0, 0.0);
+                        //}
+                        if (countIn < pointsCount) {
+                            copy.set(i, j, 0, 0, maxLocal);
+                        }
                     }
                 }
             }

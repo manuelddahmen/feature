@@ -88,15 +88,14 @@ public class Main {
                     int itereAngleGrad = 12;
                     M3 filter3 = new AfterGradientBeforeExtemum(itereAngleGrad).filter(new M3(smoothedGrad, 1, 1));
 
-                    for (
-                            double angle = 0.8;
+                    work(directory, image, s + "/original.png");
+
+                    for (double angle = 0.8;
                             angle < 2 * Math.PI; angle += 2 * Math.PI / itereAngleGrad)
                         stream(filter3, angle, s);
 
 
-                    for (
-                            double sigma = 0.8;
-                            sigma < 2.0; sigma += 0.2) {
+                    for (double sigma = 0.8; sigma < 2.0; sigma += 0.2) {
                         PixM pixM = smoothedGrad.applyFilter(new GaussFilterPixM(4, sigma));
 
 
@@ -109,12 +108,11 @@ public class Main {
                             PixM filter1 = filter2[0][0];
                             BufferedImage image1 = filter1.getImage();
                             System.out.println("Original read image");
-                            work(directory, image, s + "/original.png");
                             work(directory, imagesMatrix[0][0].getImage(), s + "/1/sigma" + sigma + "size" + size + "gradient.png");
                             System.out.println("oriented grad extremum search (max==1.0) ");
-                            work(directory, smoothedGradM3.getImagesMatrix()[0][0].getImage(), s + "/2/smoothed_grad-" + sigma + "/size" + size + ".png");
+                            work(directory, filter1.getImage(), s + "/2/smoothed_grad-" + sigma + "/size" + size + ".png");
                             System.out.println("oriented grad extremum search (max==1.0) ");
-                            work(directory, image1, s + "/3/extremasearch" + sigma + "/size" + size + ".png");
+                            work(directory, image1, s + "/3/extremum_search" + sigma + "/size" + size + ".png");
                         }
                     }
 

@@ -31,6 +31,22 @@ public class M3 {
         init();
     }
 
+    public M3(M3 original) {
+        this(original.columns, original.lines, original.columnsIn, original.linesIn);
+        for (int c = 0; c < getCompCount(); c++) {
+            original.setCompNo(c);
+            setCompNo(c);
+            for (int i = 0; i < columns; i++) {
+                for (int j = 0; j < lines; j++) {
+                    for (int ii = 0; ii < columnsIn; ii++)
+                        for (int ij = 0; ij < linesIn; ij++) {
+                            double d = original.get(i, j, ii, ij);
+                            set(i, j, ii, ij, d);
+                        }
+                }
+            }
+        }
+    }
     public M3(PixM pixM, int columnsIn, int linesIn) {
         this(pixM.columns, pixM.lines, columnsIn, linesIn);
         for (int c = 0; c < getCompCount(); c++) {
