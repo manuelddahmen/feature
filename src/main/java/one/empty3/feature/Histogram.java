@@ -7,7 +7,7 @@ import java.util.*;
  * by mean or mean square or somewhat else. 
  */
 public class Histogram {
-
+    private PixM m = null;
     public class Circle {
         public double x, y, r;
         public double i;
@@ -23,7 +23,7 @@ public class Histogram {
     public Histogram(PixM image, int levels) {
         this.diffLevel = 1.0/levels;
         this.levels = new int[levels][image.columns][image.lines];
-
+        this.m = image;
     }
     public void makeHistogram(double r) {
 
