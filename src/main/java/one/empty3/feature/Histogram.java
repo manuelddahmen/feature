@@ -34,8 +34,10 @@ public class Histogram {
         return 0.0;
     }
     public Circle getLevel(Circle c) {
-        // I mean. 
-        return c;
+        // I mean. Parcourir le cercle 
+        // mesurer I / numPoints
+        // for(int i=Math.sqrt()
+        //  return c;
     } 
     public List<Circle> getPointsOfInterest() {
        
