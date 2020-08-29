@@ -2,10 +2,8 @@
 # Feature
 
 https://drive.google.com/folderview?id=10CXWU2JPVsNMbHrAssxN23KzizzNkvHg
-Documentation utilisée. Jr n'a aucun droit sur
-ces documents en ligne publiés. Mais je les partage
-à toute fin utile hormis me Peter Pan Jackson
-le nez et les...
+Documentation utilisée.
+
 ## Licence
 La licence pour les sources publiées est la Gnu Gpl version 3.
 ## Filtres (kernels) d'images
@@ -43,12 +41,3 @@ _feature_ (caractéristiques) ou d'un ensemble
 de _features_.
 
 Features' matching
-
-
-??
-
-_"oh mon projet non"_
-je previens tout de suite le but de ce
-projet n est pas du hack ou du crack, comme
-pirater les captcha mais de developper une ia 
-robotique.
