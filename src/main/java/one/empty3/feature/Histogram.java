@@ -1,8 +1,18 @@
 package one.empty3.feature;
 
+import java.util.*;
 
-
+/*** 
+ * radial density of region (x, y, r)
+ * by mean or mean square or somewhat else. 
+ */
 public class Histogram {
+
+    public class Circle {
+        public double x, y, r;
+        public double i;
+    } 
+
     private final int[][][] levels;
 
     /***
@@ -14,11 +24,21 @@ public class Histogram {
         this.levels = new int[levels][image.columns][image.lines];
 
     }
-    public void makeHistogram() {
+    public void makeHistogram(double r) {
 
     }
     public double nPoints(int x, int y, int w, int h) {
         return 0.0;
     }
+    public List<Circle> getLevel() {
+       List<Circle> circles 
+           = new ArrayList<>() ;
 
+
+       // gradient radial ???
+       // X-x2 > li-li+-1
+       // i(x2, y2, r2) > i(x, y, r) + leveldiffi|||
+       // stop
+       return circles;
+    } 
 }
