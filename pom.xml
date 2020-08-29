@@ -250,7 +250,6 @@
                     <execution>
                         <configuration>
                             <keyname>22EE55E4</keyname><!--ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
-                            <ascDirectory>C:\Users\manue\gpg</ascDirectory>
                         </configuration>
                         <id>sign-artifacts</id>
                         <phase>verify</phase>
@@ -276,14 +275,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
-                <groupId>org.openjfx</groupId>
-                <artifactId>javafx-maven-plugin</artifactId>
-                <version>0.0.4</version>
-                <configuration>
-                    <mainClass>main.java.sample.Main</mainClass>
-                </configuration>
-            </plugin>
+
         </plugins>
 
         <extensions>
@@ -464,7 +456,7 @@
         <dependency>
             <groupId>one.empty3</groupId>
             <artifactId>empty3-library-3d</artifactId>
-            <version>2020.3.9.2-SNAPSHOT</version>
+            <version>2020.4-SNAPSHOT</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
         <dependency>
