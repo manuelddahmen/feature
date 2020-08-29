@@ -194,10 +194,10 @@ public class PixM extends M {
     public double mean(int i, int j, int w, int h) {
 double m = 0.0;int p=0;
         for(int a=i; a<i+w; a++) 
-for(int b=i; b<i+h; b++) 
+for(int b=i; b<i+h; b++) {
 m += get(a, b) ;
 p++;
-    
+   } 
 return m/p;
 } 
 }
