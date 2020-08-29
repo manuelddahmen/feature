@@ -1,0 +1,17 @@
+package one.empty3.feature;
+
+
+/***
+ * Prendre pour points d'intérêt les zones denses en intensité
+ * Prendre les mesures entre elles et avec les zones moins denses
+ *
+ */
+public class InforceDensity {
+    private double rarityRatio = 0.0;
+
+    public InforceDensity(PixM m, double rarityRatio) {
+        this.rarityRatio = rarityRatio;
+        Histogram h = new Histogram(m, 10);
+
+    }
+}
