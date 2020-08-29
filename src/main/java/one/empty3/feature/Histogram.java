@@ -7,6 +7,8 @@ import java.util.*;
  * by mean or mean square or somewhat else. 
  */
 public class Histogram {
+    private List<Circle> circles 
+           = new ArrayList<>() ;
     private PixM m = null;
     public class Circle {
         public double x, y, r;
@@ -36,9 +38,8 @@ public class Histogram {
         return c;
     } 
     public List<Circle> getPointsOfInterest() {
-       List<Circle> circles 
-           = new ArrayList<>() ;
-
+       
+       circles = new ArrayList<>() ;
 
        // gradient radial ???
        // X-x2 > li-li+-1
