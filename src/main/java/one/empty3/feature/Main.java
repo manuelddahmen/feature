@@ -8,7 +8,6 @@ import java.sql.Time;
 import java.time.Instant;
 import java.util.Arrays;
 import java.util.Objects;
-import java.util.function.Consumer;
 
 public class Main {
     private File directory;
@@ -24,7 +23,7 @@ public class Main {
         }
     }
 */
-    public static void work(File dir, BufferedImage imageToWrite, String outputFilename) throws IOException {
+    public static File work(File dir, BufferedImage imageToWrite, String outputFilename) throws IOException {
         File dir1 = new File(dir.getAbsolutePath() + "/" + outputFilename.substring(0,
                 outputFilename.lastIndexOf("/")));
         File file = new File(dir.getAbsolutePath() + "/" + outputFilename);
@@ -40,6 +39,7 @@ public class Main {
             System.out.println("Done writing : " + outputFilename);
 
         }
+        return file;
     }
 
     public static void main(String[] args) {
@@ -142,8 +142,10 @@ public class Main {
             System.out.println("oriented grad extremum search (max==1.0) ");
             Arrays.stream(extremaOrientedGrad.getImagesMatrix()).forEach(pixMS1 -> Arrays.stream(pixMS1).forEach(pixM -> {
                 try {
-                    work(directory, pixM.getImage(), s + "/4/OrientedGradExtremum_2_" +
-                            +angle + ".png");
+                    String sub = s + "/4/OrientedGradExtremum_2_" +
+                            +angle + ".png";
+                    File image = work(directory, pixM.getImage(), sub);
+                    Histogram.testCircleSelect(image, 10);
                     //i[0]++;
                     System.gc();
                 } catch (IOException e) {
