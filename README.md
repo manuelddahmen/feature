@@ -41,3 +41,6 @@ _feature_ (caractéristiques) ou d'un ensemble
 de _features_.
 
 Features' matching
+
+Base de données à mettre au point.
+Circle. Circle r i dist/ cri
