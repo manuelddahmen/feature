@@ -16,6 +16,7 @@ import java.util.function.Predicate;
  */
 public class Histogram {
     private final double diffLevel;
+    private final double radiusIncr;
     private double min;
     private List<Circle> circles
             = new ArrayList<>();
@@ -39,10 +40,11 @@ public class Histogram {
      * @param image image to histogram
      * @param levels 0..n exemple = level[i][x][y] = number of points of intensity ((i/n), (i+1)/n)
      */
-    public Histogram(PixM image, int levels, double min) {
+    public Histogram(PixM image, int levels, double min, double radiusIncr) {
         this.diffLevel = 1.0 / levels;
         this.min = min;
         this.levels = new int[levels][image.columns][image.lines];
+        this.radiusIncr = radiusIncr;
         this.m = image;
     }
 
@@ -88,27 +90,29 @@ public class Histogram {
         // stop
         for (int i = 0; i < m.columns; i++)
             for (int j = 0; j < m.lines; j++) {
-                int r = 2;
+                double r = radiusIncr;
                 double diffI = 0;
                 Circle c1 = null, c2;
                 while (r < m.columns && diffI < diffLevel) {
                     c1 = new Circle(i, j, r);
-                    c2 = new Circle(i, j, r + 1);
+                    c2 = new Circle(i, j, r + radiusIncr);
                     diffI = Math.abs(getLevel(c1).i - getLevel(c2).i);
                     if(getLevel(c1).i<min) break;
                     c1=c2;
-                    r++;
+                    r+= radiusIncr;
                 }
                 circles.add(c1);
             }
         return circles;
     }
 
-    public static void testCircleSelect(File file, File directory, int levels, double min) {
+    public static void testCircleSelect(File file, File directory, int levels, double min, double radiusIncr) {
         for (int i = 0; i < levels; i++) {
             try {
-                BufferedImage img = ImageIO.read(file);
-                Histogram histogram = new Histogram(new PixM(img), levels, min);
+                BufferedImage img  = ImageIO.read(file);
+                BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+                BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+                Histogram histogram = new Histogram(new PixM(img), levels, min, radiusIncr);
                 int finalI = i;
                 histogram.getPointsOfInterest().stream().forEach(new Consumer<Circle>() {
                     @Override
@@ -117,14 +121,24 @@ public class Histogram {
                             Graphics graphics = img.getGraphics();
                             graphics.setColor(Color.WHITE);
                             graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
-
+                            graphics = img2.getGraphics();
+                            Color color = new Color((float) circle.i, 0f/*(float) circle.r*/, (float) (circle.i / circle.r));
+                            graphics.setColor(color);
+                            graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
+                            img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
                         }
                     }
                 });
                 File fileToWrite = new File(directory.getAbsolutePath()
                         + "level"+ finalI + ".jpg");
+                File fileToWrite2 = new File(directory.getAbsolutePath()
+                        + "level"+ finalI + "_NEW.jpg");
+                File fileToWrite3 = new File(directory.getAbsolutePath()
+                        + "level"+ finalI + "_NEW_RGB.jpg");
                 fileToWrite.mkdirs();
                 ImageIO.write(img, "JPEG", fileToWrite);
+                ImageIO.write(img, "JPEG", fileToWrite2);
+                ImageIO.write(img, "JPEG", fileToWrite3);
 
             } catch (IOException exception) {
                 exception.printStackTrace();
@@ -134,6 +148,6 @@ public class Histogram {
 
     public static void main(String[] args) {
         int levels = 10;
-        testCircleSelect(new File("resources/vg1.jpg"), new File("resources/res/"), levels, 0.3);
+        testCircleSelect(new File("resources/vg1.jpg"), new File("resources/res/"), levels, 0.3, 10);
     }
 }

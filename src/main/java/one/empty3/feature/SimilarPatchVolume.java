@@ -142,13 +142,13 @@ public class SimilarPatchVolume {
                                 LocalExtrema localExtrema = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 3, 0);
                                 M3 filter2 = localExtrema.filter(smoothedGradM3);
                                 PixM filter1 = filter2.getImagesMatrix()[0][0];
-                                BufferedImage image1 = filter1.getImage();
+                                BufferedImage image1 = filter1.normalize(0.0, 1.0).getImage();
                                 System.out.println("Original read image1");
                                 work(directory, imagesMatrix[0][0].getImage(), s + "/1/sigma" + sigma + "/size" + size + "gradient.jpg");
                                 System.out.println("oriented grad extremum search (max==1.0) ");
-                                work(directory, filter1.getImage(), s + "/2/smoothed_grad-" + sigma + "/size" + size + ".jpg");
+                                work(directory, filter1.normalize(0.0, 1.0).getImage(), s + "/2/smoothed_grad-" + sigma + "/size" + size + ".jpg");
                                 System.out.println("oriented grad extremum search (max==1.0) ");
-                                work(directory, image1, s + "/3/extremum_search" + sigma + "/size" + size + ".jpg");
+                                //work(directory, image1, s + "/3/extremum_search" + sigma + "/size" + size + ".jpg");
 
                                 for (double angle = 0.8;
                                      angle < 2 * Math.PI; angle += 2 * Math.PI / itereAngleGrad) {
@@ -187,7 +187,11 @@ public class SimilarPatchVolume {
                         try {
                             String sub = s + "/4/OrientedGradExtremum_2_sigma"+sigma+"angle" + angle + "size"+size+".jpg";
                             File image = work(directory, pixM.getImage(), sub);
-                            Histogram.testCircleSelect(image, new File(directory.getAbsolutePath()+"/"+s+"/5/histogram_sigma"+sigma+"angle" + angle + "size"+size+".jpg"), 10, 0.3);
+
+                            for(double min=0.0; min<1.0; min+=0.1)
+                            Histogram.testCircleSelect(image,
+                                    new File(directory.getAbsolutePath()+"/"+s+"/5/histogram_sigma"+sigma+"angle" + angle + "size"+size+"_"+min+".jpg"),
+                                    10, min, pixM.columns/10.0);
                             //i[0]++;
                             System.gc();
                         } catch (IOException e) {
