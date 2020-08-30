@@ -195,7 +195,7 @@ public class PixM extends M {
         double m = 0.0;
         int p = 0;
         for (int a = i; a < i + w; a++)
-            for (int b = i; b < i + h; b++) {
+            for (int b = j; b < j + h; b++) {
                 m += get(a, b);
                 p++;
             }

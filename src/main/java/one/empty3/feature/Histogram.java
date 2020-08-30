@@ -61,9 +61,10 @@ public class Histogram {
         //  return c;
         int count = 0;
         double intensity = 0.0;
-        for (double i = c.x-c.r; i < c.x+c.r; i++) {
-            for (double j = c.y-c.r; j < c.y+c.r; j++) {
-                if (Math.sqrt((i - c.x) * (i - c.x) + (j - c.y) * (j - c.y)) <= c.r) {
+        for (double i = c.x-c.r; i <= c.x+c.r; i++) {
+            for (double j = c.y-c.r; j <= c.y+c.r; j++) {
+                if (Math.sqrt((i - c.x) * (i - c.x) + (j - c.y) * (j - c.y)) <= c.r
+                && i>=0 && j>=0 && i<m.columns && j<m.lines) {
                     intensity += m.get((int) i, (int) j);
                     count++;
                 }
@@ -87,14 +88,14 @@ public class Histogram {
         // stop
         for (int i = 0; i < m.columns; i++)
             for (int j = 0; j < m.lines; j++) {
-                int r = 1;
+                int r = 2;
                 double diffI = 0;
                 Circle c1 = null, c2;
                 while (r < m.columns && diffI < diffLevel) {
                     c1 = new Circle(i, j, r);
                     c2 = new Circle(i, j, r + 1);
                     diffI = Math.abs(getLevel(c1).i - getLevel(c2).i);
-                    if(getLevel(c1).i<min) continue;
+                    if(getLevel(c1).i<min) break;
                     c1=c2;
                     r++;
                 }
@@ -109,13 +110,19 @@ public class Histogram {
                 BufferedImage img = ImageIO.read(file);
                 Histogram histogram = new Histogram(new PixM(img), levels, min);
                 int finalI = i;
-                histogram.getPointsOfInterest().stream().findAny().filter(circle -> circle.i >= histogram.diffLevel* finalI).stream().forEach(circle -> {
-                    Graphics graphics = img.getGraphics();
-                    graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
+                histogram.getPointsOfInterest().stream().forEach(new Consumer<Circle>() {
+                    @Override
+                    public void accept(Circle circle) {
+                        if(circle.i >= min /*<histogram.diffLevel* finalI*/) {
+                            Graphics graphics = img.getGraphics();
+                            graphics.setColor(Color.WHITE);
+                            graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
 
+                        }
+                    }
                 });
                 File fileToWrite = new File(directory.getAbsolutePath()
-                        + "/5/degraf"+ finalI + ".jpg");
+                        + "level"+ finalI + ".jpg");
                 fileToWrite.mkdirs();
                 ImageIO.write(img, "JPEG", fileToWrite);
 

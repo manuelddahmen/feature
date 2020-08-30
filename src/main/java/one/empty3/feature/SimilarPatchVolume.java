@@ -19,7 +19,11 @@ import java.util.Iterator;
 import java.util.Objects;
 
 public class SimilarPatchVolume {
-    private File directory;
+    private final File directory = new File("outputFiles/_" + "__" +
+
+            Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
+                    .replace('\\', '_').replace('/', '_').replace(':', '_')
+            + "/");
     private BufferedImage image2;
     private BufferedImage image1;
 
@@ -39,6 +43,12 @@ public class SimilarPatchVolume {
         File dir1 = new File(dir.getAbsolutePath() + "/" + outputFilename.substring(0,
                 outputFilename.lastIndexOf("/")));
         File file = new File(dir.getAbsolutePath() + "/" + outputFilename);
+
+        if(file.exists()) {
+            System.out.println("File exists, quit"+file.getAbsolutePath());
+            System.exit(-1);
+        }
+
         if (dir1.mkdirs())
             System.out.println(dir.getAbsolutePath() + " created");
         System.out.print("\n(width, height) = " + imageToWrite.getWidth() +
@@ -82,28 +92,21 @@ public class SimilarPatchVolume {
     }
 
     public void exec() {
-        directory = new File("outputFiles/_" + "__" +
-
-                Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
-                        .replace('\\', '_').replace('/', '_').replace(':', '_')
-                + "/");
 
 
         //int img = 0;
         for (String filename1 : Objects.requireNonNull(new File("resources").list())) {
-            if(filename1.endsWith("png"))
-                continue;
-            for (String filename2 : Objects.requireNonNull(new File("resources").list())) {
-                if(filename2.endsWith("png"))
-                    continue;
+            //for (String filename2 : Objects.requireNonNull(new File("resources").list())) {
                 try {
 
                     //img++;
                     String s = filename1;
                     image1 = getImageFromDir(filename1);
+                    if(image1==null)
+                        continue;
 
-                    image2 = getImageFromDir(filename2);
-                    if (image1 != null && image2 != null) {
+//                    image2 = getImageFromDir(filename2);
+                    if (image1 != null /*&& image2 != null*/) {
                         GradientFilter gradientMask = new GradientFilter(image1.getWidth(), image1.getHeight());
                         PixM pixMOriginal = new PixM(image1);
                         M3 imgFprGrad = new M3(image1, 500, 500, 2, 2);
@@ -127,23 +130,18 @@ public class SimilarPatchVolume {
                             e.printStackTrace();
                         }
 
-                        for (double angle = 0.8;
-                             angle < 2 * Math.PI; angle += 2 * Math.PI / itereAngleGrad) {
-                            stream(filter3, angle, s);
-                            System.gc();
-                        }
 
                         for (double sigma = 0.8; sigma < 2.0; sigma += 0.2) {
                             PixM pixM = smoothedGrad.applyFilter(new GaussFilterPixM(4, sigma));
 
 
-                            for (int size = 1; size < 16; size *= 2) {
+                            for (int size = 1; size <= 16; size *= 2) {
                                 //
                                 M3 smoothedGradM3 = new M3(pixM.subSampling(size), 1, 1);
                                 // Search local maximum
-                                LocalExtrema localExtrema = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 3, 2);
-                                PixM[][] filter2 = localExtrema.filter(smoothedGradM3).normalize(0.0, 1.0);
-                                PixM filter1 = filter2[0][0];
+                                LocalExtrema localExtrema = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 3, 0);
+                                M3 filter2 = localExtrema.filter(smoothedGradM3);
+                                PixM filter1 = filter2.getImagesMatrix()[0][0];
                                 BufferedImage image1 = filter1.getImage();
                                 System.out.println("Original read image1");
                                 work(directory, imagesMatrix[0][0].getImage(), s + "/1/sigma" + sigma + "/size" + size + "gradient.jpg");
@@ -152,8 +150,13 @@ public class SimilarPatchVolume {
                                 System.out.println("oriented grad extremum search (max==1.0) ");
                                 work(directory, image1, s + "/3/extremum_search" + sigma + "/size" + size + ".jpg");
 
-                                System.gc();
+                                for (double angle = 0.8;
+                                     angle < 2 * Math.PI; angle += 2 * Math.PI / itereAngleGrad) {
+                                    stream(smoothedGradM3,sigma, angle, size, s);
+                                    System.gc();
                             }
+                        }
+
                         }
 
                         System.out.println("Thread terminated without exception");
@@ -163,18 +166,18 @@ public class SimilarPatchVolume {
                     exception.printStackTrace();
                 }
 
-            }
+            //}
         }
     }
 
-    private void stream(M3 smoothedGradM3, double angle, String s) {
+    private void stream(M3 smoothedGradM3, double angle, double sigma, int size, String s) {
         //int[] i = {0};
         Arrays.stream(smoothedGradM3.getImagesMatrix()).forEach(pixMS -> Arrays.stream(pixMS).forEach(pixM1 -> {
                     LocalExtrema localExtrema1 = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 3, 0);
                     M3 extremaOrientedGrad = localExtrema1.filter(new M3(pixM1, 1, 1));
                     try {
                         System.out.println("Gradient (gx,gy).(nx,ny)");
-                        work(directory, pixM1.normalize(0,1).getImage(), s + "/4/OrientedGradExtremum_1_" + angle + ".jpg");
+                        work(directory, pixM1.normalize(0,1).getImage(), s + "/4/OrientedGradExtremum_1_sigma"+sigma+"angle" + angle + "size"+size+".jpg");
                         System.gc();
                     } catch (IOException e) {
                         e.printStackTrace();
@@ -182,14 +185,9 @@ public class SimilarPatchVolume {
                     System.out.println("oriented grad extremum search (max==1.0) ");
                     Arrays.stream(extremaOrientedGrad.getImagesMatrix()).forEach(pixMS1 -> Arrays.stream(pixMS1).forEach(pixM -> {
                         try {
-                            String sub = s + "/4/OrientedGradExtremum_2_" +
-                                    +angle + ".jpg";
-                            File image = work(directory, pixM.normalize(0,1).getImage(), sub);
-                            work(directory,
-                                    pixM.normalize(0,1).getImage(),
-                                    s + "/4/OrientedGradExtremum_2_" +
-                                            +angle + ".jpg");
-                            Histogram.testCircleSelect(image, new File(directory.getAbsolutePath()+"/5/histogram"), 10, 0.3);
+                            String sub = s + "/4/OrientedGradExtremum_2_sigma"+sigma+"angle" + angle + "size"+size+".jpg";
+                            File image = work(directory, pixM.getImage(), sub);
+                            Histogram.testCircleSelect(image, new File(directory.getAbsolutePath()+"/"+s+"/5/histogram_sigma"+sigma+"angle" + angle + "size"+size+".jpg"), 10, 0.3);
                             //i[0]++;
                             System.gc();
                         } catch (IOException e) {
@@ -212,6 +210,7 @@ public class SimilarPatchVolume {
         return 0.0;
 
     }
+
     public static BufferedImage hideAlpha(File input) throws IOException {
         // Read input
         BufferedImage inputImage = ImageIO.read(input);
@@ -238,12 +237,25 @@ public class SimilarPatchVolume {
         int width = inputImage.getWidth();
         int height = inputImage.getHeight();
 
-        BufferedImageOp resampler = new RescaleFilter(1f);
+        //BufferedImageOp resampler = new RescaleFilter(1f);
 
         // Using explicit destination, resizedImg will be of TYPE_INT_RGB
-        BufferedImage resizedImg = resampler.filter(inputImage, new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB));
+        BufferedImage resizedImg = inputImage;//resampler.filter(inputImage, new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB));
 
         return resizedImg;
 
+    }
+
+    public File writeImage(BufferedImage image, File imageFile) {
+        try {
+            ImageIO.write(image, imageFile.getAbsolutePath().substring(imageFile.getName().lastIndexOf(".")+1),
+                    imageFile);
+            return imageFile;
+        } catch (IOException exception) {
+
+            exception.printStackTrace();
+
+            return null;
+        }
     }
 }
