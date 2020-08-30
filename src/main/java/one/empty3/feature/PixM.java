@@ -95,7 +95,7 @@ public class PixM extends M {
         float[] f = new float[getCompCount()];
 
         BufferedImage image = new BufferedImage(columns,
-                lines, BufferedImage.TYPE_INT_ARGB);
+                lines, BufferedImage.TYPE_INT_RGB);
 
 
         float[] rgba = new float[getCompCount()];

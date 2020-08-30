@@ -32,8 +32,8 @@ public class Main {
         System.out.print("\n(width, height) = " + imageToWrite.getWidth() +
                 ", " + imageToWrite.getHeight() + ")");
 
-        if (!ImageIO.write(imageToWrite, "png", file)) {
-            System.out.println("Error inappropriate writer or not found " + "png");
+        if (!ImageIO.write(imageToWrite, "jpg", file)) {
+            System.out.println("Error inappropriate writer or not found " + "JEG");
             System.exit(-2);
         } else {
             System.out.println("Done writing : " + outputFilename);
@@ -50,17 +50,14 @@ public class Main {
 
         Arrays.stream(ImageIO.getWriterFormatNames()).forEach(s1 ->
                 System.out.println("Format name : \"" + s1 + "\""));
-        directory = new File("outputFiles/_" + System.nanoTime() + "__" +
+        directory = new File("outputFiles/_" + "__" +
 
                 Time.from(Instant.now()).toString().replace(' ', '_').replace('|', '_')
                         .replace('\\', '_').replace('/', '_').replace(':', '_')
                 + "/");
-        //int img = 0;
         for (String s : Objects.requireNonNull(new File("resources").list())) {
-            //img++;
             String s0 = s.substring(s.lastIndexOf(".") + 1);
-            //String filename = s.substring(0, s.lastIndexOf("."));
-            String ext = s0.equals("jpg") || s0.equals("jpeg") ? "jpg" : s0;
+            String ext = s0.equals("jpg") || s0.equals("jpg") ? "jpg" : s0;
             if (Arrays.asList(ImageIO.getWriterFormatNames()).contains(ext)) {
                 try {
 
@@ -87,7 +84,7 @@ public class Main {
                     int itereAngleGrad = 12;
                     M3 filter3 = new AfterGradientBeforeExtemum(itereAngleGrad).filter(new M3(smoothedGrad, 1, 1));
 
-                    work(directory, pixMOriginal.getImage(), s + "/original.png");
+                    work(directory, pixMOriginal.getImage(), s + "/original.jpg");
 
                     for (double angle = 0.8;
                             angle < 2 * Math.PI; angle += 2 * Math.PI / itereAngleGrad) {
@@ -108,11 +105,11 @@ public class Main {
                             PixM filter1 = filter2[0][0];
                             BufferedImage image1 = filter1.getImage();
                             System.out.println("Original read image");
-                            work(directory, imagesMatrix[0][0].getImage(), s + "/1/sigma" + sigma + "/size" + size + "gradient.png");
+                            work(directory, imagesMatrix[0][0].getImage(), s + "/1/sigma" + sigma + "/size" + size + "gradient.jpg");
                             System.out.println("oriented grad extremum search (max==1.0) ");
-                            work(directory, filter1.getImage(), s + "/2/smoothed_grad-" + sigma + "/size" + size + ".png");
+                            work(directory, filter1.getImage(), s + "/2/smoothed_grad-" + sigma + "/size" + size + ".jpg");
                             System.out.println("oriented grad extremum search (max==1.0) ");
-                            work(directory, image1, s + "/3/extremum_search" + sigma + "/size" + size + ".png");
+                            work(directory, image1, s + "/3/extremum_search" + sigma + "/size" + size + ".jpg");
 
                             System.gc();
                         }
@@ -134,7 +131,7 @@ public class Main {
             M3 extremaOrientedGrad = localExtrema1.filter(new M3(pixM1, 1, 1));
             try {
                 System.out.println("Gradient (gx,gy).(nx,ny)");
-                work(directory, pixM1.getImage(), s + "/4/OrientedGradExtremum_1_" + angle + ".png");
+                work(directory, pixM1.getImage(), s + "/4/OrientedGradExtremum_1_" + angle + ".jpg");
                 System.gc();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -143,9 +140,9 @@ public class Main {
             Arrays.stream(extremaOrientedGrad.getImagesMatrix()).forEach(pixMS1 -> Arrays.stream(pixMS1).forEach(pixM -> {
                 try {
                     String sub = s + "/4/OrientedGradExtremum_2_" +
-                            +angle + ".png";
+                            +angle + ".jpg";
                     File image = work(directory, pixM.getImage(), sub);
-                    Histogram.testCircleSelect(image, 10);
+                    Histogram.testCircleSelect(image, new File("resources"), 10, 0.3);
                     //i[0]++;
                     System.gc();
                 } catch (IOException e) {

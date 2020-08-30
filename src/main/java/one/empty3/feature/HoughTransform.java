@@ -264,7 +264,7 @@ public class HoughTransform extends Thread {
      */ 
     public BufferedImage getHoughArrayImage() { 
         int max = getHighestValue(); 
-        BufferedImage image = new BufferedImage(maxTheta, doubleHeight, BufferedImage.TYPE_INT_ARGB); 
+        BufferedImage image = new BufferedImage(maxTheta, doubleHeight, BufferedImage.TYPE_INT_RGB);
         for (int t = 0; t < maxTheta; t++) { 
             for (int r = 0; r < doubleHeight; r++) { 
                 double value = 255 * ((double) houghArray[t][r]) / max; 

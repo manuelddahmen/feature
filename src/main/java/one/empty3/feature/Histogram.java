@@ -16,6 +16,7 @@ import java.util.function.Predicate;
  */
 public class Histogram {
     private final double diffLevel;
+    private double min;
     private List<Circle> circles
             = new ArrayList<>();
     private PixM m = null;
@@ -38,8 +39,9 @@ public class Histogram {
      * @param image image to histogram
      * @param levels 0..n exemple = level[i][x][y] = number of points of intensity ((i/n), (i+1)/n)
      */
-    public Histogram(PixM image, int levels) {
+    public Histogram(PixM image, int levels, double min) {
         this.diffLevel = 1.0 / levels;
+        this.min = min;
         this.levels = new int[levels][image.columns][image.lines];
         this.m = image;
     }
@@ -59,8 +61,8 @@ public class Histogram {
         //  return c;
         int count = 0;
         double intensity = 0.0;
-        for (double i = -c.r; i < c.r; i++) {
-            for (double j = -c.r; j < c.r; j++) {
+        for (double i = c.x-c.r; i < c.x+c.r; i++) {
+            for (double j = c.y-c.r; j < c.y+c.r; j++) {
                 if (Math.sqrt((i - c.x) * (i - c.x) + (j - c.y) * (j - c.y)) <= c.r) {
                     intensity += m.get((int) i, (int) j);
                     count++;
@@ -92,6 +94,8 @@ public class Histogram {
                     c1 = new Circle(i, j, r);
                     c2 = new Circle(i, j, r + 1);
                     diffI = Math.abs(getLevel(c1).i - getLevel(c2).i);
+                    if(getLevel(c1).i<min) continue;
+                    c1=c2;
                     r++;
                 }
                 circles.add(c1);
@@ -99,20 +103,21 @@ public class Histogram {
         return circles;
     }
 
-    public static void testCircleSelect(File file, int levels) {
+    public static void testCircleSelect(File file, File directory, int levels, double min) {
         for (int i = 0; i < levels; i++) {
             try {
                 BufferedImage img = ImageIO.read(file);
-                Histogram histogram = new Histogram(new PixM(img), levels);
+                Histogram histogram = new Histogram(new PixM(img), levels, min);
                 int finalI = i;
                 histogram.getPointsOfInterest().stream().findAny().filter(circle -> circle.i >= histogram.diffLevel* finalI).stream().forEach(circle -> {
                     Graphics graphics = img.getGraphics();
                     graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
 
                 });
-                File fileToWrite = new File("resources/" +file.getName()+"/degraf"+ finalI + ".png");
+                File fileToWrite = new File(directory.getAbsolutePath()
+                        + "/5/degraf"+ finalI + ".jpg");
                 fileToWrite.mkdirs();
-                ImageIO.write(img, "png", fileToWrite);
+                ImageIO.write(img, "JPEG", fileToWrite);
 
             } catch (IOException exception) {
                 exception.printStackTrace();
@@ -122,6 +127,6 @@ public class Histogram {
 
     public static void main(String[] args) {
         int levels = 10;
-        testCircleSelect(new File("resources/vg1.jpg"), levels);
+        testCircleSelect(new File("resources/vg1.jpg"), new File("resources/res/"), levels, 0.3);
     }
 }

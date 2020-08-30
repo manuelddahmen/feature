@@ -11,7 +11,7 @@ public class InforceDensity {
 
     public InforceDensity(PixM m, double rarityRatio) {
         this.rarityRatio = rarityRatio;
-        Histogram h = new Histogram(m, 10);
+        Histogram h = new Histogram(m, 10, 0.3);
         // circle r grands I faible
         // circle r petits ou grands. I haute. 
   
