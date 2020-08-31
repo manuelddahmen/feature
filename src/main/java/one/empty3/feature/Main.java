@@ -142,7 +142,8 @@ public class Main {
                     String sub = s + "/4/OrientedGradExtremum_2_" +
                             +angle + ".jpg";
                     File image = work(directory, pixM.getImage(), sub);
-                    Histogram.testCircleSelect(image, new File("resources"), 10, 0.3, pixM.columns/10.0);
+                    BufferedImage image1 = pixM.getImage();
+                    Histogram.testCircleSelect(image1, new File("resources"), 10, 0.3, pixM.columns/10.0);
                     //i[0]++;
                     System.gc();
                 } catch (IOException e) {

@@ -32,6 +32,16 @@ public class M {
             return noValue; // OutOfBound?
     }
 
+    public double getIntensity(int column, int line) {
+        double i = 0;
+        for (int c = 0; c < 3; c++) {
+            setCompNo(c);
+            i+=get(column, line)*get(column, line);
+
+        }
+        return Math.sqrt(i);
+    }
+
     public int getCompNo() {
         return compNo;
     }
