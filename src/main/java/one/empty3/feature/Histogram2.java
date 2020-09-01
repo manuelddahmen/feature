@@ -5,23 +5,19 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.function.Consumer;
-import java.util.function.Predicate;
 
 /*** 
  * radial density of region (x, y, r)
  * by mean or mean square or somewhat else. 
  */
-public class Histogram {
-    private final double diffLevel;
-    private final double radiusIncr;
-    private double min;
-    private List<Circle> circles
-            = new ArrayList<>();
+public class Histogram2 {
+    public final int numLevels = 5;
     private PixM m = null;
-    private double levelMin;
+    private double[] max;
+    private double[] min;
 
     public class Circle {
         public double x, y, r;
@@ -31,6 +27,7 @@ public class Histogram {
             this.x = x;
             this.y = y;
             this.r = r;
+
         }
 
         @Override
@@ -48,28 +45,27 @@ public class Histogram {
 
     /***
      *
-     * @param image image to histogram
-     * @param levels 0..n exemple = level[i][x][y] = number of points of intensity ((i/n), (i+1)/n)
+     * @param imageCoutours image to histogram
      */
-    public Histogram(PixM image, int levels, double min, double radiusIncr, double levelMin) {
-        this.diffLevel = 1.0 / levels;
-        this.min = min;
-        //this.levels = new int[levels][image.columns][image.lines];
-        this.radiusIncr = radiusIncr;
-        this.m = image;
-        this.levelMin = levelMin;
+    public Histogram2(PixM imageCoutours) {
+        this.m = imageCoutours;
+
+
+        min = new double[numLevels];
+        max = new double[numLevels];
+
+        for(int i = 0; i< numLevels; i++) {
+            min[i] = 1.0*i/ numLevels;
+            max[i] = 1.0*(i+1)/ numLevels;
+        }
+
     }
 
     public void makeHistogram(double r) {
 
     }
-
-    public double nPoints(int x, int y, int w, int h) {
-        return 0.0;
-    }
-
-    public Circle getLevel(Circle c) {
-        // I mean. Parcourir le cercle 
+    public Circle getLevel(Histogram2.Circle c) {
+        // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
         //  return c;
@@ -78,52 +74,65 @@ public class Histogram {
         for (double i = c.x-c.r; i <= c.x+c.r; i++) {
             for (double j = c.y-c.r; j <= c.y+c.r; j++) {
                 if (Math.sqrt((i - c.x) * (i - c.x) + (j - c.y) * (j - c.y)) <= c.r
-                && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.x+c.r<m.lines) {
+                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.x+c.r<m.lines) {
                     intensity += m.getIntensity((int) i, (int) j);
                     count++;
                 }
             }
         }
 
-        if(count>0)
+        if(count>0) {
             c.i = intensity / count;
+        }
         else {
             c.i = 0.0;
-            c.r = 1;
+            c.r = 0;
         }
 
 
 
         return c;
     }
+    public double nPoints(int x, int y, int w, int h) {
+        return 0.0;
+    }
 
-    public List<Circle> getPointsOfInterest(double heightMaxLevelI) {
 
+    public List<Circle> getPointsOfInterest(double rMin) {
+        ArrayList<Circle> circles;
         circles = new ArrayList<>();
 
-        // gradient radial ???
-        // X-x2 > li-li+-1
-        // i(x2, y2, r2) > i(x, y, r) + leveldiffi|||
-        // stop
-        for (int i = 0; i < m.columns; i++)
-            for (int j = 0; j < m.lines; j++) {
-                double r = radiusIncr;
-                double diffI = 0;
-                Circle c1 = null, c2;
-                int iterates = 0;
-                while (r < m.columns && diffI <heightMaxLevelI ) {
-                    c1 = new Circle(i, j, r);
-                    c2 = new Circle(i, j, r + radiusIncr);
-                    diffI = Math.abs(getLevel(c1).i - getLevel(c2).i);
-                    if(getLevel(c1).i<diffLevel) break;
-                    c1=c2;
-                    r += radiusIncr;
-                    iterates++;
+        // Classer les points par intensité et rayon
+
+//        for(double intensity=1.0; intensity>=0.4; intensity-=0.1) {
+            for(int i=0; i<m.columns; i++) {
+                for(int j=0; j<m.lines; j++) {
+                    Circle level = getLevel(new Circle(i, j, rMin));
+                    level.i = 0;
+                    getLevel(level);
+                    int index = Math.max(((int) (level.i * numLevels)), 0);
+                        index = Math.min(numLevels-1, index);
+
+                    double maxI = max[index];
+                    double minI = min[index];
+                    while(minI<level.i &&level.i<maxI && rMin<Math.max(m.columns, m.lines)/20.) {
+                        rMin+=rMin;
+                        index = Math.max(((int) (level.i * numLevels)), 0);
+                        index = Math.min(numLevels-1, index);
+                        maxI = max[index];
+                        minI = min[index];
+                        getLevel(level);
+                    }
+                    level.r = rMin;
+                    if(level.r>=1) {
+                        circles.add(level);
+                    }
                 }
-                if(iterates>0 && c1.i>0.0) {
-                    circles.add(c1);
-                }
+
             }
+ //       }
+
+
         return circles;
     }
 
@@ -133,11 +142,11 @@ public class Histogram {
                 BufferedImage img  = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
-                Histogram histogram = new Histogram(new PixM(img), levels, min, radiusIncr, 0.1);
+                Histogram2 histogram = new Histogram2(new PixM(img));
                 int finalI = i;
-                List<Circle> pointsOfInterest = histogram.getPointsOfInterest(0.1);
+                List<Circle> pointsOfInterest = histogram.getPointsOfInterest(10);
                 pointsOfInterest.stream().forEach(circle -> {
-                    if (circle.i >= min /*<histogram.diffLevel* finalI*/) {
+                    if (circle.i >= min && circle.r>0) {
                         Graphics graphics = img.getGraphics();
                         graphics.setColor(Color.WHITE);
                         graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
