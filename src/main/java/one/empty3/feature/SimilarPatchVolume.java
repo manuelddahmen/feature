@@ -102,8 +102,10 @@ public class SimilarPatchVolume {
 
 //                    image2 = getImageFromDir(filename2);
                 GradientFilter gradientMask = new GradientFilter(image1.getWidth(), image1.getHeight());
-                PixM pixMOriginal = new PixM(image1);
-                M3 imgForGrad = new M3(image1, 500, 500, 2, 2);
+                PixM pixMOriginal = PixM. pixM(image, 500);
+                
+                M3 imgForGrad = new M3( pixMOriginal
+2, 2);
                 M3 filter = gradientMask.filter(imgForGrad);
                 PixM[][] imagesMatrix = filter.getImagesMatrix();//.normalize(0, 1);
 
