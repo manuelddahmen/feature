@@ -77,7 +77,7 @@ public class ExtractIntensityInfo {
 
 
                 System.gc();
-            }
+           // }
         }
     }
 
