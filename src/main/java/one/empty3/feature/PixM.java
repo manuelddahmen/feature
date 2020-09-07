@@ -40,7 +40,7 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         double cli2 = 1.0 * 1 / div;
         PixM pixM = new PixM((int) (columns2), ((int) lines2));
         
-
+       
         
             
             for (int i = 0; i < (int) columns2; i++) {
