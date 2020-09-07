@@ -30,8 +30,9 @@ public class ExtractIntensityInfo {
         PixM pix = new PixM(read);
         String s = "outputFiles/Extracts/";
         new File(s).mkdirs();
+     double in = 0.0;
         for(double rMin = 3.0; rMin<9.0; rMin+= 0.001) {
-            for (double min = 0.3; min <= 1.0; min += 0.1) {
+           // for (double min = 0.3; min <= 1.0; min += 0.1) {
                 BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
                 PixM out = new PixM(pix.columns, pix.lines);
                 Histogram2 histogram = new Histogram2(pix);
