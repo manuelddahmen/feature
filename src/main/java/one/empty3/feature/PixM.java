@@ -33,10 +33,10 @@ public class PixM extends M {
 
 public static PixM getPixM(BufferedImage image, double maxRes) {
 
-        double div = 1.0+Max.max(image.getWidth(), image.getHeight ())/maxRes;
+        double div = 1.0/Math.max(image.getWidth(), image.getHeight ())*maxRes;
         
-        double columns2 = 1.0 * columns / div;
-        double lines2 = 1.0 * lines / div;
+        double columns2 = 1.0 * image.getWidth() / div;
+        double lines2 = 1.0 * image.getHeight() / div;
         double cli2 = 1.0 * 1 / div;
         PixM pixM = new PixM((int) (columns2), ((int) lines2));
         
@@ -53,8 +53,8 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
                 float[] colorComponents = new float[getCompCount()];
                 colorComponents = new Color(rgb).getColorComponents(colorComponents);
                 for (int com = 0; com < getCompCount(); com++) {
-                    setCompNo(com);
-                    set(i, j, colorComponents[com]);
+                    pixM. setCompNo(com);
+                    pixM. set(i, j, colorComponents[com]);
                 
                     //double m = mean((int) (i * div), (int) (j * div), (int) (cli2 * div),
                     //        (int) (cli2 * div));
