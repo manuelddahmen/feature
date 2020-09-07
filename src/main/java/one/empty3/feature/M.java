@@ -7,9 +7,9 @@ public class M {
     public static PrimitiveIterator.OfDouble r = new Random().doubles().iterator();
     public static final Double noValue = r.next();
 
-    protected final int columns;
-    protected final int lines;
-    final double[] x;
+    protected int columns;
+    protected int lines;
+    double[] x;
     protected int compNo;
     protected final int compCount = 4;
 
