@@ -125,7 +125,10 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
                 <configuration>
-        <mainClass>one.empty3.feature.SimilarPatchVolume</mainClass>      
+        <mainClass>one.empty3.feature.Main
+                         
+                         
+                      </mainClass>      
                          
                      <!--  <mainClass>one.empty3.feature.ExtractIntensityInfo</mainClass>-->
                     <arguments>
