@@ -85,9 +85,9 @@ public class ExtractIntensityInfo {
         
          
         if (args.length > 1 && args[0] != null) {
-            dir = args[0];
+            dir = new File( args[0]) ;
         
-            file = args[1];
+            file = new File( args[1]) ;
              }
         try {
             ExtractIntensityInfo extractIntensityInfo
@@ -100,7 +100,7 @@ public class ExtractIntensityInfo {
 
     private static  void exec() throws IOException {
         if (dir == null)
-            dir = "./";
+            dir = new File("./") ;
         if (file == null) {
             Arrays.stream(Objects.requireNonNull(dir.listFiles())).sequential().forEach(f -> {
                 try {
