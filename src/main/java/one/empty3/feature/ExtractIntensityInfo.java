@@ -15,14 +15,15 @@ import java.util.function.Predicate;
 public class ExtractIntensityInfo {
     private static  File dir;
     private static File file;
-
-    public ExtractIntensityInfo(File file) {
+/*
+    public ExtractIntensityInfo(
+) {
         if (file != null)
             if (file.exists() && file.isDirectory())
                 this.dir = file;
             else if (file.isFile())
                 this.file = file;
-    }
+    }*/
 
     public static void stream(File f) throws IOException {
         BufferedImage read = ImageIO.read(f);
@@ -90,8 +91,8 @@ public class ExtractIntensityInfo {
             file = new File( args[1]) ;
              }
         try {
-            ExtractIntensityInfo extractIntensityInfo
-            = new ExtractIntensityInfo(dir) ;
+          //  ExtractIntensityInfo extractIntensityInfo
+      //      = new ExtractIntensityInfo(dir) ;
             exec(dir);
         } catch (IOException exception) {
             exception.printStackTrace();
