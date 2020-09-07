@@ -33,7 +33,7 @@ public class PixM extends M {
 
 public static PixM getPixM(BufferedImage image, double maxRes) {
 
-        double div = 1.0/Math.max(image.getWidth(), image.getHeight ())*maxRes;
+        double div = 1.0/Math.min(image.getWidth(), image.getHeight ())*maxRes;
         
         double columns2 = 1.0 * image.getWidth() / div;
         double lines2 = 1.0 * image.getHeight() / div;
