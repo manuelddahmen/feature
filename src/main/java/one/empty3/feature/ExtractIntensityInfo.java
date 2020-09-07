@@ -13,8 +13,8 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class ExtractIntensityInfo {
-    private File dir;
-    private File file;
+    private static  File dir;
+    private static File file;
 
     public ExtractIntensityInfo(File file) {
         if (file != null)
@@ -95,7 +95,7 @@ public class ExtractIntensityInfo {
         }
     }
 
-    private void exec() throws IOException {
+    private static  void exec() throws IOException {
         if (dir == null)
             dir "./";
         if (file == null) {
