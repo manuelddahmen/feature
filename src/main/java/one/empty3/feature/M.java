@@ -20,7 +20,11 @@ public class M {
 
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
-
+    protected void init(int l, int c) {
+    this.lines = l;
+        this.columns = c;
+        x = new double[l * c * compCount];
+    } 
     public M(int cl) {
         this(cl, cl);
     }
