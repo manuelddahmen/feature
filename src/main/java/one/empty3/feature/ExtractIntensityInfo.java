@@ -83,15 +83,16 @@ public class ExtractIntensityInfo {
 
     public static void main(String[] args) {
         
-         ExtractIntensityInfo extractIntensityInfo
-             new ExtractIntensityInfo() ;
+         
         if (args.length > 1 && args[0] != null) {
             dir = args[0];
         
             file = args[1];
              }
         try {
-            extractIntensityInfo.exec();
+            ExtractIntensityInfo extractIntensityInfo
+            = new ExtractIntensityInfo() ;
+            exec();
         } catch (IOException exception) {
             exception.printStackTrace();
         }
