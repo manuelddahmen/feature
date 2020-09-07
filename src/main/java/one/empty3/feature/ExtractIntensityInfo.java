@@ -92,7 +92,7 @@ public class ExtractIntensityInfo {
         try {
             ExtractIntensityInfo extractIntensityInfo
             = new ExtractIntensityInfo() ;
-            exec();
+            exec(dir);
         } catch (IOException exception) {
             exception.printStackTrace();
         }
