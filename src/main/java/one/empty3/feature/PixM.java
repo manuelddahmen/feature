@@ -31,6 +31,40 @@ public class PixM extends M {
         }
     }
 
+public PixM(BufferedImage image, double maxRes) {
+
+        double div = 1.0+Max.max(image.getWidth(), image.getHeight ())/maxRes;
+        
+        double columns2 = 1.0 * columns / div;
+        double lines2 = 1.0 * lines / div;
+        double cli2 = 1.0 * 1 / div;
+        PixM pixM = new PixM((int) (columns2), ((int) lines2));
+        
+
+        
+            
+            for (int i = 0; i < (int) columns2; i++)
+                for (int j = 0; j < (int) lines2; j++) {
+
+
+                   int rgb = image.getRGB(
+(int) (i * div)
+, (int) (j * div));
+                float[] colorComponents = new float[getCompCount()];
+                colorComponents = new Color(rgb).getColorComponents(colorComponents);
+                for (int com = 0; com < getCompCount(); com++) {
+                    setCompNo(com);
+                    //set(i, j, colorComponents[com]);
+                }
+                    //double m = mean((int) (i * div), (int) (j * div), (int) (cli2 * div),
+                    //        (int) (cli2 * div));
+                    pixM.set(i, j, m);
+                }
+        }
+        return pixM;
+
+
+    }
 
     public PixM applyFilter(FilterPixM filter) {
         PixM c = new PixM(columns, lines);
