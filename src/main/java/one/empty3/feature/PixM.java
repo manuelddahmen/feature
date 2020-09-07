@@ -50,9 +50,9 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
                    int rgb = image.getRGB(
 (int) (i * div)
 , (int) (j * div));
-                float[] colorComponents = new float[getCompCount()];
+                float[] colorComponents = new float[pixM.getCompCount()];
                 colorComponents = new Color(rgb).getColorComponents(colorComponents);
-                for (int com = 0; com < getCompCount(); com++) {
+                for (int com = 0; com < pixM.getCompCount(); com++) {
                     pixM. setCompNo(com);
                     pixM. set(i, j, colorComponents[com]);
                 
