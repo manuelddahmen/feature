@@ -83,10 +83,11 @@ public class ExtractIntensityInfo {
 
     public static void main(String[] args) {
         ExtractIntensityInfo extractIntensityInfo;
-        if (args.length > 0 && args[0] != null) {
-            extractIntensityInfo = new ExtractIntensityInfo(new File(args[0]));
-        } else
-            extractIntensityInfo = new ExtractIntensityInfo(null);
+        if (args.length > 1 && args[0] != null) {
+            dir = args[0];
+        
+            file = args[1];
+             }
         try {
             extractIntensityInfo.exec();
         } catch (IOException exception) {
@@ -96,7 +97,7 @@ public class ExtractIntensityInfo {
 
     private void exec() throws IOException {
         if (dir == null)
-            dir = new File("G:/Apps/_anew/feature/outputFiles/___Mon_Aug_31_08_31_16_CEST_2020/IMG_20200822_204208.jpg/2-smoothed_grad");
+            dir "./";
         if (file == null) {
             Arrays.stream(Objects.requireNonNull(dir.listFiles())).sequential().forEach(f -> {
                 try {
