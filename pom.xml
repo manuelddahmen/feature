@@ -125,7 +125,7 @@
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
                 <configuration>
-                    <mainClass>one.empty3.feature.Main</mainClass>
+                    <mainClass>one.empty3.features.ExtractIntensityInfo</mainClass>
                     <arguments>
                         <argument>-Xms4000m</argument>
                         <argument>-Xmx4000m</argument>
