@@ -82,7 +82,9 @@ public class ExtractIntensityInfo {
     }
 
     public static void main(String[] args) {
-        ExtractIntensityInfo extractIntensityInfo;
+        
+         ExtractIntensityInfo extractIntensityInfo
+             new ExtractIntensityInfo() ;
         if (args.length > 1 && args[0] != null) {
             dir = args[0];
         
