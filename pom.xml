@@ -127,9 +127,12 @@
                 <configuration>
                     <mainClass>one.empty3.feature.ExtractIntensityInfo</mainClass>
                     <arguments>
+                       <argument>resources/IMG_20200822_204218.jpg</argument>
+                                
                         <argument>-Xms4000m</argument>
                         <argument>-Xmx4000m</argument>
                         <argument>-XmX4000m</argument>
+                             
                     </arguments>
                 </configuration>
             </plugin>
