@@ -31,7 +31,7 @@ public class PixM extends M {
         }
     }
 
-public PixM(BufferedImage image, double maxRes) {
+public static PixM(BufferedImage image, double maxRes) {
 
         double div = 1.0+Max.max(image.getWidth(), image.getHeight ())/maxRes;
         
