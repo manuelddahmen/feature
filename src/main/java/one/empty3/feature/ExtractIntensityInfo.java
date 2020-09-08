@@ -104,7 +104,7 @@ new File(dirOut)
                     ImageIO.write(out.getImage(), "jpg", outputFile);
                     ImageIO.write(img3, "jpg", outputFile2);
                     
-                    System.out.println(files written " + outputFile+" \n"+ outputFile2);
+                    System.out.println("files written " + outputFile+" \n"+ outputFile2);
                 } catch (IOException exception) {
                     exception.printStackTrace();
                 }
