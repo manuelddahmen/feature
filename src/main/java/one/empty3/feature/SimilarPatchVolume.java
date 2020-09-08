@@ -186,7 +186,7 @@ public class SimilarPatchVolume {
                     System.out.println("oriented grad extremum search (max==1.0) ");
                     Arrays.stream(extremaOrientedGrad.getImagesMatrix()).forEach(pixMS1 -> Arrays.stream(pixMS1).forEach(pixM -> {
                         for (double min = 0.40; min < 1.0; min += 0.2)
-                            Histogram.testCircleSelect2(pixM.getImage(),
+                            Histogram2.testCircleSelect(pixM.getImage(),
                                     new File(directory.getAbsolutePath() + "/" + prefixDir + "/5/histogram_sigma" + sigma + "angle" + angle + "size" + size + "_" + min + ".jpg"),
                                     20, min, 20.0);
                         //i[0]++;
