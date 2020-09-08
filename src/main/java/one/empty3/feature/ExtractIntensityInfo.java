@@ -72,7 +72,7 @@ public class ExtractIntensityInfo {
 
                 }
 
-           String dirOut = dir.getAbsolutePath().substring(
+           String dirOut = dir.getAbsolutePath().substring(0,
 dir.getAbsolutePath(). lastIndexOf(".")) + "/extracts";
 
                 double finalMin = min;
