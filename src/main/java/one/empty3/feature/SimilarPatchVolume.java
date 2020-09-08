@@ -154,7 +154,7 @@ image1 = null;
                                     exception.printStackTrace();
                                 }
                             }));
-                            work(directory, filter1.normalize(0.0, 1.0).getImage(), filename1 + "/3/extremum_search" + sigma + "/size" + size + ".jpg");
+                            work(directory, filter1.normalize(0,1).getImage(), filename1 + "/3/extremum_search" + sigma + "/size" + size + ".jpg");
                             stream(smoothedGradM3, angle, sigma, size, filename1);
                             System.gc();
                         }
