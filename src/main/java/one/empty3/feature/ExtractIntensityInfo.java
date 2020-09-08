@@ -73,7 +73,7 @@ public class ExtractIntensityInfo {
                 }
 
            String dirOut = dir.getAbsolutePath().substring(0,
-dir.getAbsolutePath(). lastIndexOf("/")) + "/extracts";
+dir.getAbsolutePath(). lastIndexOf("/")) + "/outputFiles/extracts/";
 new File(dirOut) 
    . mkdirs() ;
                 double finalMin = min;
@@ -99,8 +99,8 @@ new File(dirOut)
                                                
                                                
                                                
-                                               + "0test" + f.getName() + "min" + min + "+rMin"+rMin+".jpg");
-                    File outputFile2 = new File(dirOut + "1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
+                                               + "/0test" + f.getName() + "min" + min + "+rMin"+rMin+".jpg");
+                    File outputFile2 = new File(dirOut + "/1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
                     ImageIO.write(out.getImage(), "jpg", outputFile);
                     ImageIO.write(img3, "jpg", outputFile2);
                     
