@@ -34,11 +34,11 @@ public class PixM extends M {
 public static PixM getPixM(BufferedImage image, double maxRes) {
         System.out.println("pixm resampling init"+image.getWidth()+" "+image.getHeight()+" - " + maxRes);
     
-        double div = 1.0/Math.min(image.getWidth(), image.getHeight ())*maxRes;
+        double f = 1.0/Math.min(image.getWidth(), image.getHeight ())*maxRes;
         
-        double columns2 = 1.0 * image.getWidth() / div;
-        double lines2 = 1.0 * image.getHeight() / div;
-        double cli2 = 1.0 * 1 / div;
+        double columns2 = 1.0 * image.getWidth() * f;
+        double lines2 = 1.0 * image.getHeight() * f;
+        double cli2 = 1.0 * maxRes;
     System.out.println("pixm resampling init"+columns2+"- " + lines2);
         PixM pixM = new PixM((int) (columns2), ((int) lines2));
         
@@ -51,8 +51,11 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
 
 
                    int rgb = image.getRGB(
-(int) (i * div)
-, (int) (j * div));
+(int) (i / columns2 / f) 
+      
+      
+
+, (int) (j / lines2/f ));
                 float[] colorComponents = new float[pixM.getCompCount()];
                 colorComponents = new Color(rgb).getColorComponents(colorComponents);
                 for (int com = 0; com < pixM.getCompCount(); com++) {
