@@ -39,8 +39,9 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         double columns2 = 1.0 * image.getWidth() / div;
         double lines2 = 1.0 * image.getHeight() / div;
         double cli2 = 1.0 * 1 / div;
+    System.out.println("pixm resampling init"+columns2+"- " + lines2);
         PixM pixM = new PixM((int) (columns2), ((int) lines2));
-        System.out.println("pixm resampling init"+columns2+"- " + lines2);
+        
     
        
         
