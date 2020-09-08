@@ -72,7 +72,9 @@ public class ExtractIntensityInfo {
 
                 }
 
-
+dirOut = dir.getAbsolutePath().substring(
+dir.getAbsolutePath(). lastIndexOf("/")) + "/extracts"
+);
                 double finalMin = min;
                 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
@@ -92,8 +94,12 @@ public class ExtractIntensityInfo {
 
                 });
                 try {
-                    File outputFile = new File(s + "0test" + f.getName() + "min" + min + "+rMin"+rMin+".jpg");
-                    File outputFile2 = new File(s + "1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
+                    File outputFile = new File(dirOut
+                                               
+                                               
+                                               
+                                               + "0test" + f.getName() + "min" + min + "+rMin"+rMin+".jpg");
+                    File outputFile2 = new File(dirOut + "1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
                     ImageIO.write(out.getImage(), "jpg", outputFile);
                     ImageIO.write(img3, "jpg", outputFile2);
                 } catch (IOException exception) {
