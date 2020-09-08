@@ -131,7 +131,7 @@ dir.getAbsolutePath(). lastIndexOf(".")) + "/extracts";
 
     private static  void exec() throws IOException {
         if (dir == null)
-            dir = new File("/resources/") ;
+            dir = new File("resources/") ;
         if (file == null) {
             Arrays.stream(Objects.requireNonNull(dir.listFiles())).sequential().forEach(f -> {
                 try {
