@@ -103,7 +103,7 @@ public class SimilarPatchVolume {
 //                    image2 = getImageFromDir(filename2);
                 GradientFilter gradientMask = new GradientFilter(image1.getWidth(), image1.getHeight());
                 PixM pixMOriginal = PixM.getPixM(image1, 500);
-image = null;
+image1 = null;
                 GradientFilter gradientMask = new GradientFilter(pixMOriginal.columns, pixMOriginal.lines);
                 M3 imgForGrad = new M3( pixMOriginal,
 2, 2);
@@ -121,11 +121,11 @@ image = null;
                 int iteratesAngleGrad = 12;
                 M3 filter3 = new AfterGradientBeforeExtemum(iteratesAngleGrad).filter(new M3(smoothedGrad, 1, 1));
                 PixM[][] afterGradientAngular = filter3.getImagesMatrix();
-                try {
+               /** try {
                     work(directory, image1, filename1 + "/original.jpg");
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                }*/
 
                 for (int angleIncr = 0; angleIncr < iteratesAngleGrad; angleIncr++) {
                     double angle = 2 * Math.PI * angleIncr / iteratesAngleGrad;
