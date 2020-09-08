@@ -114,12 +114,12 @@ dir.getAbsolutePath(). lastIndexOf(".")) + "/extracts";
 
     public static void main(String[] args) {
         
-         
+         /*
         if (args.length > 1 && args[0] != null) {
             dir = new File( args[0]) ;
         
             file = new File( args[1]) ;
-             }
+             }*/
         try {
           //  ExtractIntensityInfo extractIntensityInfo
       //      = new ExtractIntensityInfo(dir) ;
