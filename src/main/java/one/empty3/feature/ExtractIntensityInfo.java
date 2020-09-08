@@ -28,7 +28,7 @@ public class ExtractIntensityInfo {
     public static void stream(File f) throws IOException {
         BufferedImage read = ImageIO.read(f);
 
-        PixM pix = PixM.new PixM(read, 500);
+        PixM pix = PixM.getPixM(read, 500);
         
         
         
