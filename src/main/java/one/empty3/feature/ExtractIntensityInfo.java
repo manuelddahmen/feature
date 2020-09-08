@@ -73,7 +73,7 @@ public class ExtractIntensityInfo {
                 }
 
 dirOut = dir.getAbsolutePath().substring(
-dir.getAbsolutePath(). lastIndexOf("/")) + "/extracts"
+dir.getAbsolutePath(). lastIndexOf(".")) + "/extracts"
 );
                 double finalMin = min;
                 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
