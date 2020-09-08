@@ -68,7 +68,7 @@ public class Main {
                     BufferedImage image = ImageIO.read(new File("resources/" + s));
 
                     GradientFilter gradientMask = new GradientFilter(image.getWidth(), image.getHeight());
-                    PixM pixMOriginal = new PixM(image, 300);
+                    PixM pixMOriginal = PixM.getPixM(image, 300);
                     M3 imgFprGrad = new M3(image, 300, 300, 2, 2);
                     M3 filter = gradientMask.filter(imgFprGrad);
                     PixM[][] imagesMatrix = filter.getImagesMatrix();//.normalize(0, 1);
