@@ -13,6 +13,7 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class ExtractIntensityInfo {
+    String diroutstr="." ;
     private static  File dir;
     private static File file;
 /*
@@ -72,8 +73,8 @@ public class ExtractIntensityInfo {
 
                 }
 
-           String dirOut = dir.getAbsolutePath().substring(0,
-dir.getAbsolutePath(). lastIndexOf("/")) + "/outputFiles/extracts/";
+           String dirOut = dirout
++ "/outputFiles/extracts/";
 new File(dirOut) 
    . mkdirs() ;
                 double finalMin = min;
