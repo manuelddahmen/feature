@@ -73,7 +73,7 @@ public class ExtractIntensityInfo {
 
                 }
 
-           String dirOut = dirout
+           String dirOut = dirout+System.getMillis()
 + "/outputFiles/extracts/";
 new File(dirOut) 
    . mkdirs() ;
