@@ -73,8 +73,10 @@ public class ExtractIntensityInfo {
 
                 }
 
-           String dirOut = dirout+System.getCurrentTimeMillis()
-+ "/outputFiles/extracts/";
+           String dirOut = dirout
++ "/outputFiles/extracts/"
+               +System.currentTimeMillis()
+               ;
 new File(dirOut) 
    . mkdirs() ;
                 double finalMin = min;
