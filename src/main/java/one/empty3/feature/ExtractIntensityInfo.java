@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class ExtractIntensityInfo {
-    String dirout="." ;
+    static String dirout="." ;
     private static  File dir;
     private static File file;
 /*
