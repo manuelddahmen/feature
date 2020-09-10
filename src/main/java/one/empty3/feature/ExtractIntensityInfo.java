@@ -145,7 +145,7 @@ new File(dirOut)
         try {
             ExtractIntensityInfo extractIntensityInfo
       = new ExtractIntensityInfo() ;
-            ExtractIntensityInfo.exec();
+            extractIntensityInfo.exec();
         } catch (IOException exception) {
             exception.printStackTrace();
         }
