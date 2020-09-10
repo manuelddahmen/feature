@@ -117,7 +117,7 @@ public class Histogram2 {
                     double maxI = max[index];
                     double minI = min[index];
                     
-                    while(level.i>iOrigin-minI[1] &&level.i<iOrigin+maxI[1] && rMin<Math.max(m.columns, m.lines)) {
+                    while(level.i>iOrigin-maxI &&level.i<iOrigin+maxI && rMin<Math.max(m.columns, m.lines)) {
 
                         rMin*= 1.3;
                         index = Math.max(((int) (level.i * numLevels)), 0);
