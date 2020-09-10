@@ -98,7 +98,7 @@ public class Histogram2 {
     }
 
 
-    public List<Circle> getPointsOfInterest(double rMin) {
+    public List<Circle> getPointsOfInterest(double rMin0) {
         ArrayList<Circle> circles;
         circles = new ArrayList<>();
 
@@ -115,6 +115,7 @@ public class Histogram2 {
                     double iOrigin = getLevel(level). i;
                     double maxI = max[index];
                     double minI = min[index];
+                    double rMin = rMin0;
                     while(level.i>iOrigin-minI[1] &&level.i<iOrigin+maxI[1] && rMin<Math.max(m.columns, m.lines)) {
 
                         rMin*= 1.3;
