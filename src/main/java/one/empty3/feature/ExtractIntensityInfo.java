@@ -86,7 +86,7 @@ new File(dirOut)
                         return circle.i > finalMin;
                     }
                 }).forEach(circle -> {
-                    System.out.println(circle.toString());
+                    //System.out.println(circle.toString());
                     out.set((int) circle.x, (int) circle.y, (circle.r+1)/(circle.i+1));
 
 
