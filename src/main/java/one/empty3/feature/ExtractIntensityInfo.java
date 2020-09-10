@@ -141,6 +141,7 @@ new File(dirOut)
         if (file == null) {
             Arrays.stream(Objects.requireNonNull(dir.listFiles())).sequential().forEach(f -> {
                 try {
+                    if(file.getName().toLowerCase().endsWith(".jpg"))
                     stream(f);
                 } catch (IOException exception) {
                     exception.printStackTrace();
