@@ -103,9 +103,9 @@ new File(dirOut)
                     }
                 }).forEach(circle -> {
                     //System.out.println(circle.toString());
-                    out.setCompCount(0);
+                    out.setCompNo(0);
                     out.set((int) circle.x, (int) circle.y, circle.i) ;
-                     out.setCompCount(2);
+                     out.setCompNo(2);
    out.set((int) circle.x, (int) circle.y, circle.r) ;
 
                     Color color = colors[(int) circle.i];
