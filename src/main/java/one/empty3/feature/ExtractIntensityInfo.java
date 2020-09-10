@@ -78,7 +78,7 @@ new File(dirOut)
                 BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
                 PixM out = new PixM(pix.columns, pix.lines);
                 Histogram2 histogram = new Histogram2(pix);
-                pic.normalize(0.0, numOfLevels) ;
+                
 
                 List<Histogram2.Circle> pointsOfInterest = histogram.getPointsOfInterest(rMin);
 
@@ -113,6 +113,7 @@ new File(dirOut)
                     //img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
+            out.normalize(0.0, numOfLevels) ;
                 try {
                     File outputFile = new File(dirOut
                                                
