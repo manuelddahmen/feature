@@ -34,7 +34,7 @@ public String dir() {
                
                    
                   dirOut = dirout
-+"outputFiles/Extracts" 
++"outputFiles/Extracts/" 
 +System.currentTimeMillis()
                ;
 new File(dirOut) 
