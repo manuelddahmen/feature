@@ -54,8 +54,8 @@ public class ExtractIntensityInfo {
                 linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
                 PixM smoothedGrad = linear.getImages()[2];
         
-        String s = "outputFiles/Extracts/";
-        new File(s).mkdirs();
+       // String s = "outputFiles/Extracts/";
+     //   new File(s).mkdirs();
      double min = 0.3;
         for(double rMin = 3.0; rMin<9.0; rMin+= 0.5) {
            // for (double min = 0.3; min <= 1.0; min += 0.1) {
@@ -74,8 +74,8 @@ public class ExtractIntensityInfo {
                 }
 
            String dirOut = dirout
-+ "/outputFiles/extracts/"
-               +System.currentTimeMillis()
++"outputFiles/Extracts" 
++System.currentTimeMillis()
                ;
 new File(dirOut) 
    . mkdirs() ;
