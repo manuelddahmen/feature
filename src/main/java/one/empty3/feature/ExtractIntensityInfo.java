@@ -115,7 +115,7 @@ new File(dirOut)
                     //img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
-            out.normlize(0.0,1.0);
+            out.normalize(0.0,1.0);
                 try {
                     File outputFile = new File(dirOut
                                                
