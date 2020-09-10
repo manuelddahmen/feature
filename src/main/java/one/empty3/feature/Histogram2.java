@@ -115,7 +115,7 @@ public class Histogram2 {
 
                     double maxI = max[index];
                     double minI = min[index];
-                    while(minI<level.i &&level.i<maxI && rMin<Math.max(m.columns, m.lines)/20.) {
+                    while(minI<level.i &&level.i<maxI && rMin<Math.max(m.columns, m.lines)) {
                         rMin+=rMin;
                         index = Math.max(((int) (level.i * numLevels)), 0);
                         index = Math.min(numLevels-1, index);
@@ -132,7 +132,7 @@ public class Histogram2 {
             }
  //       }
 
-
+        
         return circles;
     }
 
