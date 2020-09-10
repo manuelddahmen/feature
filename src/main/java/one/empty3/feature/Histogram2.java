@@ -73,7 +73,7 @@ public class Histogram2 {
         double intensity = 0.0;
         for (double i = c.x-c.r; i <= c.x+c.r; i++) {
             for (double j = c.y-c.r; j <= c.y+c.r; j++) {
-                if (Math.sqrt((i - c.x) * (i - c.x) + (j - c.y) * (j - c.y)) <= c.r
+                if (Math.sqrt((c.x) * (c.x) + (c.y) * ( c.y)) <= c.r*c.r
                         && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.x+c.r<m.lines) {
                     intensity += m.getIntensity((int) i, (int) j);
                     count++;
@@ -114,8 +114,8 @@ public class Histogram2 {
                     int index = Math.max(((int) (level.i * numLevels)), 0);
                     index = Math.min(numLevels-1, index);
                     double iOrigin = getLevel(level). i;
-                    double maxI = max[index];
-                    double minI = min[index];
+                    double maxI = max[1];
+                    double minI = min[0];
                     
                     while(level.i>iOrigin-maxI &&level.i<iOrigin+maxI && rMin<Math.max(m.columns, m.lines)) {
 
