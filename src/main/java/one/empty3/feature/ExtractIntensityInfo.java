@@ -151,7 +151,8 @@ new File(dirOut)
         }
     }
 
-    private void exec() throws IOException {
+    public
+void exec() throws IOException {
         if (dir == null)
             dir = new File("resources/") ;
         if (file == null) {
