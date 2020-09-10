@@ -107,15 +107,16 @@ public class Histogram2 {
 //        for(double intensity=1.0; intensity>=0.4; intensity-=0.1) {
             for(int i=0; i<m.columns; i++) {
                 for(int j=0; j<m.lines; j++) {
+                    double rMin = rMin0;
                     Circle level = getLevel(new Circle(i, j, rMin));
                     level.i = 0;
                     getLevel(level);
                     int index = Math.max(((int) (level.i * numLevels)), 0);
-                        index = Math.min(numLevels-1, index);
+                    index = Math.min(numLevels-1, index);
                     double iOrigin = getLevel(level). i;
                     double maxI = max[index];
                     double minI = min[index];
-                    double rMin = rMin0;
+                    
                     while(level.i>iOrigin-minI[1] &&level.i<iOrigin+maxI[1] && rMin<Math.max(m.columns, m.lines)) {
 
                         rMin*= 1.3;
@@ -200,6 +201,6 @@ public class Histogram2 {
 
     public static void main(String[] args) {
         int levels = 10;
-        testCircleSelect(new File("resources/vg1.jpg"), new File("resources/res/"), levels, 0.3, 2);
+        //testCircleSelect(new File("resources/vg1.jpg"), new File("resources/res/"), levels, 0.3, 2);
     }
 }
