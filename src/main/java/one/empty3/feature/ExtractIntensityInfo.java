@@ -14,6 +14,7 @@ import java.util.function.Predicate;
 
 public class ExtractIntensityInfo {
     static String dirout="." ;
+    String dirOut = null ;
     private static  File dir;
     private static File file;
 /*
@@ -25,7 +26,20 @@ public class ExtractIntensityInfo {
             else if (file.isFile())
                 this.file = file;
     }*/
-
+public String dir() {
+    if(dirOut!=null) 
+        return dirOut;
+               
+                   
+                  dirOut = dirout
++"outputFiles/Extracts" 
++System.currentTimeMillis()
+               ;
+new File(dirOut) 
+   . mkdirs() ;
+    return dirOut ;
+    
+   } 
     public static void stream(File f) throws IOException {
         BufferedImage read = ImageIO.read(f);
 
@@ -73,12 +87,12 @@ public class ExtractIntensityInfo {
 
                 }
 
-           String dirOut = dirout
-+"outputFiles/Extracts" 
-+System.currentTimeMillis()
-               ;
-new File(dirOut) 
-   . mkdirs() ;
+           String dirOut = dir() ;
+
+
+               
+
+
                 double finalMin = min;
                 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
