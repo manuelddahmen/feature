@@ -134,7 +134,7 @@ new File(dirOut)
         }
     }
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
         
          /*
         if (args.length > 1 && args[0] != null) {
