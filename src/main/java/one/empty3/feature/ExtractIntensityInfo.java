@@ -77,7 +77,7 @@ new File(dirOut)
            // for (double min = 0.3; min <= 1.0; min += 0.1) {
                 BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
                 PixM out = new PixM(pix.columns, pix.lines);
-                Histogram2 histogram = new Histogram2(pix);
+                Histogram2 histogram = new Histogram2(smoothedGrad);
                 
 
                 List<Histogram2.Circle> pointsOfInterest = histogram.getPointsOfInterest(rMin);
