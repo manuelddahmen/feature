@@ -15,8 +15,10 @@ import java.util.function.Predicate;
 public class ExtractIntensityInfo {
     static String dirout="." ;
     String dirOut = null ;
-    private static  File dir;
-    private static File file;
+    private 
+       
+File dir;
+    private File file;
 /*
     public ExtractIntensityInfo(
 ) {
