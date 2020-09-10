@@ -112,7 +112,7 @@ new File(dirOut)
                    // Graphics graphics = img3.getGraphics();
                    // graphics.setColor(color);
                     //graphics.drawRect((int) (circle.x), (int) (circle.y), (int) (1), (int) (1));
-                    img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
+                  //  img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
             out.normalize(0.0,1.0);
@@ -124,7 +124,7 @@ new File(dirOut)
                                                + "/0test" + f.getName() + "min" + min + "+rMin"+rMin+".png");
                     File outputFile2 = new File(dirOut + "/1test" + f.getName() + "min" + min + "rMin2_"+rMin+".png");
                     ImageIO.write(out.getImage(), "png", outputFile);
-                    ImageIO.write(img3, "png", outputFile2);
+                    //ImageIO.write(img3, "png", outputFile2);
                     
                     System.out.println("files written " + outputFile+" \n"+ outputFile2);
                 } catch (IOException exception) {
