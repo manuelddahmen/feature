@@ -108,11 +108,11 @@ new File(dirOut)
                      out.setCompNo(2);
    out.set((int) circle.x, (int) circle.y, circle.r) ;
 
-                    Color color = colors[(int) circle.i];
-                    Graphics graphics = img3.getGraphics();
-                    graphics.setColor(color);
-                    graphics.drawRect((int) (circle.x), (int) (circle.y), (int) (1), (int) (1));
-                    //img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
+                    //Color color = colors[(int) circle.i];
+                   // Graphics graphics = img3.getGraphics();
+                   // graphics.setColor(color);
+                    //graphics.drawRect((int) (circle.x), (int) (circle.y), (int) (1), (int) (1));
+                    img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
             out.normalize(0.0,1.0);
