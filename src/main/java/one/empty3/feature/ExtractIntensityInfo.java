@@ -40,7 +40,7 @@ new File(dirOut)
     return dirOut ;
     
    } 
-    public static void stream(File f) throws IOException {
+    public void stream(File f) throws IOException {
         BufferedImage read = ImageIO.read(f);
 
         PixM pix = PixM.getPixM(read, 500.0);
@@ -141,15 +141,15 @@ new File(dirOut)
             file = new File( args[1]) ;
              }*/
         try {
-          //  ExtractIntensityInfo extractIntensityInfo
-      //      = new ExtractIntensityInfo(dir) ;
-            exec();
+            ExtractIntensityInfo extractIntensityInfo
+      = new ExtractIntensityInfo(dir) ;
+            ExtractIntensityInfo.exec();
         } catch (IOException exception) {
             exception.printStackTrace();
         }
     }
 
-    private static  void exec() throws IOException {
+    private void exec() throws IOException {
         if (dir == null)
             dir = new File("resources/") ;
         if (file == null) {
