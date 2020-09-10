@@ -199,6 +199,6 @@ public class Histogram2 {
 
     public static void main(String[] args) {
         int levels = 10;
-        //testCircleSelect(new File("resources/vg1.jpg"), new File("resources/res/"), levels, 0.3, 10);
+        testCircleSelect(new File("resources/vg1.jpg"), new File("resources/res/"), levels, 0.3, 2);
     }
 }
