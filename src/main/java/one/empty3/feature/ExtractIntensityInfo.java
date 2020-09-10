@@ -103,8 +103,10 @@ new File(dirOut)
                     }
                 }).forEach(circle -> {
                     //System.out.println(circle.toString());
-                    out.set((int) circle.x, (int) circle.y, (circle.r+1)/(circle.i+1));
-
+                    out.setCompCount(0);
+                    out.set((int) circle.x, (int) circle.y, circle.i) ;
+                     out.setCompCount(2);
+   out.set((int) circle.x, (int) circle.y, circle.r) ;
 
                     Color color = colors[(int) circle.i];
                     Graphics graphics = img3.getGraphics();
@@ -113,7 +115,7 @@ new File(dirOut)
                     //img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
-            out.normalize(0.0, numOfLevels) ;
+            
                 try {
                     File outputFile = new File(dirOut
                                                
