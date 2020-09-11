@@ -15,10 +15,16 @@ public class WriteFile {
         new File(directory).mkdirs();
         File n = new File(directory+File.separator+no+"-"+name+".jpg");
         try {
+            
+            no++;
             ImageIO.write(imageJpeg, "jpg", n);
+            return true;
+            
         } catch(Exception ex) {
+            
             ex.printStackTrace();
+            return false;
         }
-        no++;
+        return false;
     }
 }
