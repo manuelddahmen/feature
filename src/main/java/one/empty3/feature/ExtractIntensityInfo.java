@@ -127,7 +127,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
 
                 });
             out.normalize(0.0,1.0);
-                try {
+                
                     //File outputFile = new File(dirOut
                                                
                                                
@@ -138,10 +138,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     WriteFile.writeNext(read, "original");
                     WriteFile.writeNext(img3, "result2");
                     
-                    //System.out.println("files written " + outputFile+" \n"+ outputFile2);
-                } catch (IOException exception) {
-                    exception.printStackTrace();
-                }
+                   
 
 
                 System.gc();
@@ -166,8 +163,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
         }
     }
 
-    public
-void exec() throws IOException {
+    public void exec() throws IOException {
         if (dir == null)
             dir = new File("resources/") ;
         if (file == null) {
