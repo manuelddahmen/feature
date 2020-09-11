@@ -119,11 +119,11 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     out.setCompNo(2);
                     out.set((int) circle.x, (int) circle.y, circle.r) ;
 
-                    //Color color = colors[(int) circle.i];
+                    Color color = colors[(int) circle.i];
                    // Graphics graphics = img3.getGraphics();
                    // graphics.setColor(color);
                     //graphics.drawRect((int) (circle.x), (int) (circle.y), (int) (1), (int) (1));
-                  //  img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
+                    img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
             out.normalize(0.0,1.0);
@@ -134,10 +134,11 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                                                
                                                + "/0test" + f.getName() + "min" + min + "+rMin"+rMin+".jpg");
                     File outputFile2 = new File(dirOut + "/1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
-                    ImageIO.write(out.getImage(), "jpg", outputFile);
-                    //ImageIO.write(img3, "png", outputFile2);
+                    WriteImage.write(out.getImage(), "jpg", "out");
+                    WriteImage.write(read, "jpg", "original);
+                    ImageIO.write(img3, "jpg", ");
                     
-                    System.out.println("files written " + outputFile+" \n"+ outputFile2);
+                    //System.out.println("files written " + outputFile+" \n"+ outputFile2);
                 } catch (IOException exception) {
                     exception.printStackTrace();
                 }
