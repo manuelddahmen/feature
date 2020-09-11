@@ -8,7 +8,9 @@ public class WriteFile {
     public static void init() {
       
     }
-  
+  public static boolean writeNext( BufferedImage imageJpeg, String name) {
+      writeNext(name, imageJpeg);
+  }
     public static boolean writeNext(String name, BufferedImage imageJpeg) {
         new File(directory).mkdirs();
         File n = new File(directory+File.separator+no+"-"+name+".jpg");
