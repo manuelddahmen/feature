@@ -119,7 +119,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     out.setCompNo(2);
                     out.set((int) circle.x, (int) circle.y, circle.r) ;
 
-                    Color color = colors[(int) circle.i];
+                    Color color = colors[(int) (circle.i*histogram.numLevels)];
                    // Graphics graphics = img3.getGraphics();
                    // graphics.setColor(color);
                     //graphics.drawRect((int) (circle.x), (int) (circle.y), (int) (1), (int) (1));
@@ -136,7 +136,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     File outputFile2 = new File(dirOut + "/1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
                     WriteImage.write(out.getImage(), "jpg", "out");
                     WriteImage.write(read, "jpg", "original);
-                    ImageIO.write(img3, "jpg", ");
+                    WriteImage.write(img3, "jpg", "");
                     
                     //System.out.println("files written " + outputFile+" \n"+ outputFile2);
                 } catch (IOException exception) {
