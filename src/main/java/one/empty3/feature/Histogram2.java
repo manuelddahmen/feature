@@ -111,8 +111,8 @@ public class Histogram2 {
                     Circle level = getLevel(new Circle(i, j, rMin));
                     level.i = 0;
                     getLevel(level);
-                    int index = Math.max(((int) (level.i * numLevels)), 0);
-                    index = Math.min(numLevels-1, index);
+                    //int index = Math.max(((int) (level.i * numLevels)), 0);
+                    //index = Math.min(numLevels-1, index);
                     double iOrigin = getLevel(level). i;
                     double maxI = max[1];
                     double minI = min[0];
@@ -120,10 +120,10 @@ public class Histogram2 {
                     while(level.i>iOrigin-maxI &&level.i<iOrigin+maxI && rMin<Math.max(m.columns, m.lines)) {
 
                         rMin*= 1.3;
-                        index = Math.max(((int) (level.i * numLevels)), 0);
-                        index = Math.min(numLevels-1, index);
-                        maxI = max[index];
-                        minI = min[index];
+                        //index = Math.max(((int) (level.i * numLevels)), 0);
+                        //index = Math.min(numLevels-1, index);
+                        //maxI = max[index];
+                        //minI = min[index];
                         getLevel(level);
                     }
                     level.r = rMin;
