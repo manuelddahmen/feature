@@ -10,6 +10,7 @@ public class WriteFile {
     }
   public static boolean writeNext( BufferedImage imageJpeg, String name) {
       writeNext(name, imageJpeg);
+        return true;
   }
     public static boolean writeNext(String name, BufferedImage imageJpeg) {
         new File(directory).mkdirs();
@@ -25,6 +26,6 @@ public class WriteFile {
             ex.printStackTrace();
             return false;
         }
-        return false;
+
     }
 }
