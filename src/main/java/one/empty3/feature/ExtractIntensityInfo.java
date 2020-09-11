@@ -121,9 +121,9 @@ new File(dirOut)
                                                
                                                
                                                
-                                               + "/0test" + f.getName() + "min" + min + "+rMin"+rMin+".png");
-                    File outputFile2 = new File(dirOut + "/1test" + f.getName() + "min" + min + "rMin2_"+rMin+".png");
-                    ImageIO.write(out.getImage(), "png", outputFile);
+                                               + "/0test" + f.getName() + "min" + min + "+rMin"+rMin+".jpg");
+                    File outputFile2 = new File(dirOut + "/1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
+                    ImageIO.write(out.getImage(), "jpg", outputFile);
                     //ImageIO.write(img3, "png", outputFile2);
                     
                     System.out.println("files written " + outputFile+" \n"+ outputFile2);
