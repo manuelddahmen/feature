@@ -77,7 +77,7 @@ new File(dirOut)
            // for (double min = 0.3; min <= 1.0; min += 0.1) {
                // BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
                 PixM pix2 = smoothedGrad.copy();
-            PixM out = smoothedGrad.copy();//??
+                PixM out = new PixM(pix2.columns, pix2.lines);//??
                 Histogram2 histogram = new Histogram2(pix2);
                 
                     List<Histogram2.Circle> pointsOfInterest = histogram.getPointsOfInterest(rMin);
@@ -105,8 +105,8 @@ new File(dirOut)
                     //System.out.println(circle.toString());
                     out.setCompNo(0);
                     out.set((int) circle.x, (int) circle.y, circle.i) ;
-                     out.setCompNo(2);
-   out.set((int) circle.x, (int) circle.y, circle.r) ;
+                    out.setCompNo(2);
+                    out.set((int) circle.x, (int) circle.y, circle.r) ;
 
                     //Color color = colors[(int) circle.i];
                    // Graphics graphics = img3.getGraphics();
