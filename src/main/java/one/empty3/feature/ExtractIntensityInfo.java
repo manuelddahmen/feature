@@ -103,7 +103,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                         return true;
                     }
                 }).forEach(circle -> {
-                    circle.i = (circle.i + min[1] )/(max[2]-min[2]);
+                    circle.i = (circle.i - iSum[1] )/(iSum[2]-iSum[1]);
                 });
             
                 double finalMin = min;
