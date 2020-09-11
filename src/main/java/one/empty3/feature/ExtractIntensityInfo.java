@@ -93,8 +93,19 @@ new File(dirOut)
 
 
                
-
-
+double [] iSum = {0.0, 10000000, -1000000};
+pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
+                    @Override
+                    public boolean test(Histogram2.Circle circle) {
+                        iSum [0] += circle.i;
+                        iSum[1] = Math.min(circle.i, iSum[1]);
+                        iSum[2] = Math.max(circle.i, iSum[2]);
+                        return true;
+                    }
+                }).forEach(circle -> {
+                    circle.i = (circle.i + min[1] )/(max[2]-min[2]);
+                });
+            
                 double finalMin = min;
                 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
