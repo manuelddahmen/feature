@@ -1,5 +1,6 @@
 package one.empty3.feature;
 import java.awt.images.*;
+import javax.imageio.ImageIO;
 import java.io.File;
 public class WriteFile {
     static int no = 1;
