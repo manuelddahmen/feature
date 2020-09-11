@@ -10,7 +10,7 @@ public class WriteFile {
   
     public static boolean writeNext(String name, BufferedImage imageJpeg) {
         new File(directory).mkdirs();
-        File n = new File(directory+File.separator+name+".jpg");
+        File n = new File(directory+File.separator+no+"-"+name+".jpg");
         try {
             ImageIO.write(imageJpeg, "jpg", n);
         } catch(Exception ex) {
