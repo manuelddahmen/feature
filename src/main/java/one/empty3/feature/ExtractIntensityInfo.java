@@ -128,15 +128,15 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                 });
             out.normalize(0.0,1.0);
                 try {
-                    File outputFile = new File(dirOut
+                    //File outputFile = new File(dirOut
                                                
                                                
                                                
-                                               + "/0test" + f.getName() + "min" + min + "+rMin"+rMin+".jpg");
+                    //   + "/0test" + f.getName() + "min" + min + "+rMin"+rMin+".jpg");
                     File outputFile2 = new File(dirOut + "/1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
                     WriteImage.write(out.getImage(), "jpg", "out");
                     WriteImage.write(read, "jpg", "original);
-                    WriteImage.write(img3, "jpg", "");
+                    WriteImage.write(img3, "jpg", "result2");
                     
                     //System.out.println("files written " + outputFile+" \n"+ outputFile2);
                 } catch (IOException exception) {
