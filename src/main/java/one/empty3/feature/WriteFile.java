@@ -1,5 +1,5 @@
 package one.empty3.feature;
-import java.awt.images.*;
+import java.awt.image.*;
 import javax.imageio.ImageIO;
 import java.io.File;
 public class WriteFile {
