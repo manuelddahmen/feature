@@ -75,12 +75,12 @@ new File(dirOut)
      double min = 0.3;
         for(double rMin = 3.0; rMin<9.0; rMin+= 0.5) {
            // for (double min = 0.3; min <= 1.0; min += 0.1) {
-                BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
-                PixM out = new PixM(pix.columns, pix.lines);
-                Histogram2 histogram = new Histogram2(smoothedGrad);
+               // BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
+                PixM pix2 = smoothedGrad.copy();
+            PixM out = smoothedGrad.copy();//??
+                Histogram2 histogram = new Histogram2(pix2);
                 
-
-                List<Histogram2.Circle> pointsOfInterest = histogram.getPointsOfInterest(rMin);
+                    List<Histogram2.Circle> pointsOfInterest = histogram.getPointsOfInterest(rMin);
 
                 Color[] colors = new Color[histogram.numLevels];
 
