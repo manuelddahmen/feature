@@ -75,7 +75,7 @@ new File(dirOut)
      double min = 0.3;
         for(double rMin = 3.0; rMin<9.0; rMin+= 0.5) {
            for (min = 0.0; min <= 1.0; min += 0.1) {
-               // BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
+                BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
                 PixM pix2 = smoothedGrad.copy();
                 PixM out = new PixM(pix2.columns, pix2.lines);//??
                 Histogram2 histogram = new Histogram2(pix2);
