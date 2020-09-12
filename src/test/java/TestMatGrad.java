@@ -32,9 +32,9 @@ public class TestMatGrad {
                 PixM smoothedGrad = linear.getImages()[2];
         WriteFile.writeNext("vg1.jpg image reduite", pixMOriginal.getImage());
             WriteFile.writeNext("vg1.jpg image gradient gx", imageMatrix[0][0].getImage());
-      WriteFile.writeNext("vg1.jpg image gradient gy", imageMatrix[1][0].getImage());
-      WriteFile.writeNext("vg1.jpg image gradient phase x", imageMatrix[0][1].getImage());
-      WriteFile.writeNext("vg1.jpg image gradient phase y", imageMatrix[1][1].getImage());
+      WriteFile.writeNext("vg1.jpg image gradient gy", imagesMatrix[1][0].getImage());
+      WriteFile.writeNext("vg1.jpg image gradient phase x", imagesMatrix[0][1].getImage());
+      WriteFile.writeNext("vg1.jpg image gradient phase y", imagesMatrix[1][1].getImage());
       
 
 }
