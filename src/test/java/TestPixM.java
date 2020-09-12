@@ -7,6 +7,6 @@ public class TestPixM {
      @Test
      public void testPixMblack() {
          PixM p = new PixM(500, 500);
-         WriteFile.write(p.getImage(), "black 500x500");
+         WriteFile.writeNext(p.getImage(), "black 500x500");
      }
 }
