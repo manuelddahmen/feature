@@ -267,7 +267,7 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
 
     public boolean equals(Object compare) {
         if(compare instanceof PixM)
-            if(x.equals(((PixM) compare).x))
+            if(Arrays.equals(((PixM) compare).x), x)
                 return true;
         return false;
 
