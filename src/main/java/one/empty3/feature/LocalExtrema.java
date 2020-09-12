@@ -74,7 +74,7 @@ public class LocalExtrema extends FilterMatPixM {
                         }
                         //}
                         if (countIn <= pointsCount) {
-                            copy.set(i, j, 0, 0, maxLocal);
+                            copy.set(i, j, 0, 0, 1);//1 au lieu value
                         }
                     }
                 }
