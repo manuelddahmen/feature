@@ -317,6 +317,6 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         return columns;
         }
     public int getLines() {
-        return columns;
+        return lines;
         }
 }
