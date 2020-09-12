@@ -274,15 +274,30 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
                    }
     }
     
+    public PixM getColorsRegion(int x, int y, int w, int h, int sizeX, int sizeY) {
+        PixM subimage = new PixM(sizeX, sizeY);
+         for(int i=x; i<x+w; i++)
+              for(int j=y; j<y+h; j++)
+                   for(int c=0; c<comps.length; c++) {
+                        setCompNo(c);
+                        subimage.setCompNo(c);
+                        double v = get(i, j);
+                            subimage.set(1.0*(x+w-i)/w*subimage.columns, 1.0*(y+h-j)/h*subimage.lines, v);
+                        set(i, j, v);
+                   }
+    }
+    
     public void colorsRegion(int x, int y, int w, int h, PixM subimage) {
          for(int i=x; i<x+w; i++)
               for(int j=y; j<y+h; j++)
                    for(int c=0; c<comps.length; c++) {
                         setCompNo(c);
+                        subimage.setCompNo(c);
                         double v = subimage.get(1.0*(x+w-i)/w*subimage.columns, 1.0*(y+h-j)/h*subimage.lines);
                         set(i, j, v);
                    }
     }
+    
     public boolean equals(Object compare) {
         if(compare instanceof PixM)
             if(
