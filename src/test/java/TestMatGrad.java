@@ -41,7 +41,7 @@ public class TestMatGrad {
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines()
                       3, 2);
-  PixM pext = le.filter(le);
+  M3 pext = le.filter(new M3(imagesMatrix[0][0], 0, 0));
      
      
         WriteFile.writeNext(file.getName()+"/image reduite", pixMOriginal.normalize(0.,1.).getImage());
