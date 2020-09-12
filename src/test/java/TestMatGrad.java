@@ -9,7 +9,7 @@ public class TestMatGrad {
   @Test
   public void testMatGradAndDotProduct() {
     new File("resources").list()
-      forEach(file -> {
+     . forEach(file -> {
     PixM pixMOriginal = null;
     try {
         pixMOriginal = new PixM(ImageIO.read(
