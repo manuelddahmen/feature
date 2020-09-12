@@ -4,6 +4,7 @@ import one.empty3.feature.*;
 
 
 public class TestMatGrad {
+  @Test
   public void testMatGradDotProduct() {
     PixM pixMOriginal = new PixM(500, 500);
                 GradientFilter gradientMask = new GradientFilter(pixMOriginal.columns, pixMOriginal.lines);
