@@ -30,7 +30,7 @@ public class TestPixM {
               for(int j=x; j<x-w; j++)
                    for(int c=0; c<p.getCompCount(); c++) {
                         p.setCompNo(c);
-                        p.set(i, j, comp[c]);
+                        p.set(i, j, comps[c]);
                    }
      }
 }
