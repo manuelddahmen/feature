@@ -1,6 +1,6 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
-import java.util.ImageIO;
+import java.imageio.ImageIO;
   
 import one.empty3.feature.*;
 
