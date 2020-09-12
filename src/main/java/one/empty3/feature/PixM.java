@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.util.PrimitiveIterator;
 import java.util.Random;
 import java.util.stream.DoubleStream;
+import java.util.Arrays;
 
 public class PixM extends M {
     public static final int COMP_RED = 0;
