@@ -16,8 +16,9 @@ public class WriteFile {
     public static boolean writeNext(String name, BufferedImage imageJpeg) {
         
         File n = new File(directory);
-        n.mkdirs();
+        
         n = new File(directory+File.separator+no+"-"+name+".jpg");
+        new File(n.getAbsolutePath().substring(0, n.getAbsolutePath().lastIndexOf('/'))).mkdirs();
         try {
             
             no++;
