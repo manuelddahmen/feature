@@ -19,7 +19,7 @@ public class TestPixM {
          colorsRegion(p, 0, 0, 250, 250, new double[]{1.0, 1.0, 1.0});
          WriteFile.writeNext(p.normalize(0.,1.).getImage(), "white 500x500");
          PixM p2 = PixM.getPixM(new PixM(1000, 1000).getImage(), 500.0);
-         colorsRegion(p, 0, 0, 250, 250, new double[]{1.0, 1.0, 1.0});
+         colorsRegion(p2, 0, 0, 250, 250, new double[]{1.0, 1.0, 1.0});
          WriteFile.writeNext(p.normalize(0.,1.).getImage(), "white 500x500 resized from 1000x1000");
          assertTrue(p.equals(p2));
           
