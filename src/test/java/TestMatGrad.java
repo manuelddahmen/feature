@@ -8,7 +8,7 @@ import one.empty3.feature.*;
 public class TestMatGrad {
   @Test
   public void testMatGradAndDotProduct() {
-    new File("resources").list().
+    new File("resources").list()
       forEach(file -> {
     PixM pixMOriginal = null;
     try {
