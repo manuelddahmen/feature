@@ -278,11 +278,11 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         PixM subimage = new PixM(sizeX, sizeY);
          for(int i=x; i<x+w; i++)
               for(int j=y; j<y+h; j++)
-                   for(int c=0; c<comps.length; c++) {
+                   for(int c=0; c<getCompCount(); c++) {
                         setCompNo(c);
                         subimage.setCompNo(c);
                         double v = get(i, j);
-                            subimage.set(1.0*(x+w-i)/w*subimage.columns, 1.0*(y+h-j)/h*subimage.lines, v);
+                        subimage.set((int)(1.0*(x+w-i)/w*subimage.columns), (int)(1.0*(y+h-j)/h*subimage.lines), v);
                         set(i, j, v);
                    }
     }
