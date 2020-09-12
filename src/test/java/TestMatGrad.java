@@ -39,7 +39,7 @@ public class TestMatGrad {
 
      LocalExtrema le =
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
-                      imagesMatrix[1][0].getLines()
+                      imagesMatrix[1][0].getLines(),
                       3, 2);
   M3 pext = le.filter(new M3(imagesMatrix[0][0], 0, 0));
      
