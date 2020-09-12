@@ -93,7 +93,7 @@ new File(dirOut)
 
 
                
-double [] iSum = {0.0, 10000000, -1000000};
+double [] iSum = {0.0, 0.0, 1.0};
 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
                     public boolean test(Histogram2.Circle circle) {
