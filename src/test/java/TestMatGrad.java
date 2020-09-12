@@ -14,7 +14,7 @@ public class TestMatGrad {
      File file = new File("resources/"+fileStr);
     PixM pixMOriginal = null;
     try {
-        pixMOriginal = new PixM(ImageIO.read(file
+        pixMOriginal = new PixM(ImageIO.read(file, 500.0
           ));
     } catch(Exception ex) {
         ex.printStackTrace();
@@ -42,6 +42,8 @@ public class TestMatGrad {
       WriteFile.writeNext(file.getName()+"/image gradient gy", imagesMatrix[1][0].normalize(0.,1.).getImage());
       WriteFile.writeNext(file.getName()+"/image gradient phase x", imagesMatrix[0][1].normalize(0.,1.).getImage());
       WriteFile.writeNext(file.getName()+"/image gradient phase y", imagesMatrix[1][1].normalize(0.,1.).getImage());
+     
+     System.gc();
       }
 
 }
