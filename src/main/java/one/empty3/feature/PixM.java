@@ -40,7 +40,7 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         double columns2 = 1.0 * image.getWidth()* f;
         double lines2 = 1.0 * image.getHeight() * f;
         double cli2 = 1.0 * maxRes;
-    System.out.println("pixm resampling in it ("+columns2+"- " + lines2+") " );
+        System.out.println("pixm resampling in it ("+columns2+"- " + lines2+") " );
         PixM pixM = new PixM((int) (columns2), ((int) lines2));
         
     
@@ -52,11 +52,11 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
 
 
                    int rgb = image.getRGB(
-(int) (i / columns2 / f) 
+(int) (1.0* i / columns2 * image.getWidth()) 
       
       
 
-, (int) (j / lines2/f ));
+, (int) (1.0* j / lines2 * image.getHeight() ));
                 float[] colorComponents = new float[pixM.getCompCount()];
                 colorComponents = new Color(rgb).getColorComponents(colorComponents);
                 for (int com = 0; com < pixM.getCompCount(); com++) {
