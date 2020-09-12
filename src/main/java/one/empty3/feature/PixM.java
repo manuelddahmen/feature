@@ -265,7 +265,16 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         }
         return pixM;
     }
-
+    public void colorsRegion(int x, int y, int w, int h, double[] comps) {
+         for(int i=x; i<x+w; i++)
+              for(int j=y; j<y+h; j++)
+                   for(int c=0; c<comps.length; c++) {
+                        setCompNo(c);
+                        set(i, j, comps[c]);
+                   }
+    }
+    
+    
     public boolean equals(Object compare) {
         if(compare instanceof PixM)
             if(
