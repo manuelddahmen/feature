@@ -20,7 +20,7 @@ public class WriteFile {
             
             no++;
             ImageIO.write(imageJpeg, "jpg", n);
-            Logger.notice("file written: " + n.getAbsolutePath());
+            Logger.log("file written: " + n.getAbsolutePath());
             return true;
             
         } catch(Exception ex) {
