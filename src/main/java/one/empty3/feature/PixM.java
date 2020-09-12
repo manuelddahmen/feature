@@ -287,13 +287,13 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
                    }
     }
     
-    public void colorsRegion(int x, int y, int w, int h, PixM subimage) {
+    public void colorsRegion(int x, int y, int w, int h, PixM subimage, int subImageCopyMode) {
          for(int i=x; i<x+w; i++)
               for(int j=y; j<y+h; j++)
-                   for(int c=0; c<comps.length; c++) {
+                   for(int c=0; c<getCompCount(); c++) {
                         setCompNo(c);
                         subimage.setCompNo(c);
-                        double v = subimage.get(1.0*(x+w-i)/w*subimage.columns, 1.0*(y+h-j)/h*subimage.lines);
+                        double v = subimage.get((int)(1.0*(x+w-i)/w*subimage.columns), (int)(1.0*(y+h-j)/h*subimage.lines));
                         set(i, j, v);
                    }
     }
