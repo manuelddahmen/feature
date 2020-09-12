@@ -9,11 +9,11 @@ public class TestMatGrad {
   @Test
   public void testMatGradAndDotProduct() {
     new File("resources").list()
-     . forEach(file -> {
+     . forEach(fileStr -> {
     PixM pixMOriginal = null;
     try {
         pixMOriginal = new PixM(ImageIO.read(
-          file));
+          new File("resources/"+fileStr)));
     } catch(Exception ex) {
         ex.printStackTrace();
       continue;
