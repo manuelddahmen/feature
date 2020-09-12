@@ -27,7 +27,7 @@ public class TestPixM {
      
      public void colorsRegion(PixM p, int x, int y, int w, int h, double[] comps) {
          for(int i=x; i<x+w; i++)
-              for(int j=x; j<x+h; j++)
+              for(int j=y; j<y+h; j++)
                    for(int c=0; c<comps.length; c++) {
                         p.setCompNo(c);
                         p.set(i, j, comps[c]);
