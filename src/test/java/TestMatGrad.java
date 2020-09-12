@@ -23,8 +23,7 @@ public class TestMatGrad {
      }
         
                 GradientFilter gradientMask = new GradientFilter(pixMOriginal.getColumns(), pixMOriginal.getLines());
-                M3 imgForGrad = new M3( pixMOriginal,
-2, 2);
+                M3 imgForGrad = new M3( pixMOriginal, 2, 2);
                 M3 filter = gradientMask.filter(imgForGrad);
                 PixM[][] imagesMatrix = filter.getImagesMatrix();//.normalize(0, 1);
 
