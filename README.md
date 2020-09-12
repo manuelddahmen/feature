@@ -9,10 +9,11 @@ La licence pour les sources publiées est la Gnu Gpl version 3.
 ## Filtres (kernels) d'images
 Gauss. Multiples iterations. Tests  photos.
 Gradient X, Y, debugging outter dot ptoduct. 
-SobelX, SobelY
+SobelX, SobelY. localextrema, #histogram des densites???
 
 ## Formats et classes d'images. 
-- BufferedImage Int aRgb
+- BufferedImage Int Rgb (sans rgb)
+- format jpg en sortie
 - PixM components matrix of pictures. 
 color component based. 
 - M3 components 
@@ -21,11 +22,12 @@ color component based.
 - conversion to BufferedImage, minMax normalize
 linear
 - gradient. dx, dy, phase atan dy/dy atan dx/dy
-<!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
+- detecteur de contours
+## maven use with pom.xml dependency or checkout the sources
 <dependency>
-    <groupId>org.openpnp</groupId>
-    <artifactId>opencv</artifactId>
-    <version>3.2.0-0</version>
+    <groupId>one.empty3</groupId>
+    <artifactId>features</artifactId>
+    <version>2020.3-SNAPSHOT</version>
 </dependency>
 
 
