@@ -8,14 +8,19 @@ import one.empty3.feature.*;
 public class TestMatGrad {
   @Test
   public void testMatGradAndDotProduct() {
+    new File("resources").list().
+      forEach(file -> {
     PixM pixMOriginal = null;
     try {
         pixMOriginal = new PixM(ImageIO.read(
-          new File("resources/vg1.jpg")));
+          file));
     } catch(Exception ex) {
         ex.printStackTrace();
-        assertTrue(false);
+      continue;
+       // assertTrue(false);
+      
      }
+        
                 GradientFilter gradientMask = new GradientFilter(pixMOriginal.getColumns(), pixMOriginal.getLines());
                 M3 imgForGrad = new M3( pixMOriginal,
 2, 2);
@@ -30,12 +35,12 @@ public class TestMatGrad {
                         new PixM(pixMOriginal.getColumns(), pixMOriginal.getLines()));
                 linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
                 PixM smoothedGrad = linear.getImages()[2];
-        WriteFile.writeNext("vg1.jpg image reduite", pixMOriginal.normalize(0.,1.).getImage());
-            WriteFile.writeNext("vg1.jpg image gradient gx", imagesMatrix[0][0].normalize(0.,1.).getImage());
-      WriteFile.writeNext("vg1.jpg image gradient gy", imagesMatrix[1][0].normalize(0.,1.).getImage());
-      WriteFile.writeNext("vg1.jpg image gradient phase x", imagesMatrix[0][1].normalize(0.,1.).getImage());
-      WriteFile.writeNext("vg1.jpg image gradient phase y", imagesMatrix[1][1].normalize(0.,1.).getImage());
-      
+        WriteFile.writeNext(file.getName()+"/image reduite", pixMOriginal.normalize(0.,1.).getImage());
+            WriteFile.writeNext(file.getName()+"/image gradient gx", imagesMatrix[0][0].normalize(0.,1.).getImage());
+      WriteFile.writeNext(file.getName()+"/image gradient gy", imagesMatrix[1][0].normalize(0.,1.).getImage());
+      WriteFile.writeNext(file.getName()+"/image gradient phase x", imagesMatrix[0][1].normalize(0.,1.).getImage());
+      WriteFile.writeNext(file.getName()+"/image gradient phase y", imagesMatrix[1][1].normalize(0.,1.).getImage());
+      });
 
 }
 }
