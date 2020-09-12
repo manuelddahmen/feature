@@ -14,8 +14,8 @@ public class TestMatGrad {
      File file = new File("resources/"+fileStr);
     PixM pixMOriginal = null;
     try {
-        pixMOriginal = new PixM(ImageIO.read(file, 500.0
-          ));
+        pixMOriginal = new PixM(ImageIO.read(file
+          ), 500.0);
     } catch(Exception ex) {
         ex.printStackTrace();
       continue;
