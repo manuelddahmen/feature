@@ -8,7 +8,12 @@ import one.empty3.feature.*;
 public class TestMatGrad {
   @Test
   public void testMatGradAndDotProduct() {
-    PixM pixMOriginal = new PixM(500, 500);
+    try {
+        PixM pixMOriginal = new PixM(ImageIO.read("resources/vg1.jpg"));
+    } catch(Exception ex) {
+        ex.printStackTrace();
+        assertTrue(false);
+     }
                 GradientFilter gradientMask = new GradientFilter(pixMOriginal.getColumns(), pixMOriginal.getLines());
                 M3 imgForGrad = new M3( pixMOriginal,
 2, 2);
@@ -23,6 +28,6 @@ public class TestMatGrad {
                         new PixM(pixMOriginal.getColumns(), pixMOriginal.getLines()));
                 linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
                 PixM smoothedGrad = linear.getImages()[2];
-        WriteFile.writeNext("black image 500x500", pixMOriginal.getImage());
+        WriteFile.writeNext("vg1.jpg image reduite 500x500", pixMOriginal.getImage());
 }
 }
