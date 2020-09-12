@@ -285,6 +285,7 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
                         subimage.set((int)(1.0*(x+w-i)/w*subimage.columns), (int)(1.0*(y+h-j)/h*subimage.lines), v);
                         set(i, j, v);
                    }
+        return subimage;
     }
     
     public void colorsRegion(int x, int y, int w, int h, PixM subimage, int subImageCopyMode) {
