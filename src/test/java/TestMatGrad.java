@@ -8,7 +8,7 @@ import one.empty3.feature.*;
 public class TestMatGrad {
   @Test
   public void testMatGradAndDotProduct() {
-    PixM pixMOriginal;
+    PixM pixMOriginal = null;
     try {
         pixMOriginal = new PixM(ImageIO.read(
           new File("resources/vg1.jpg")));
