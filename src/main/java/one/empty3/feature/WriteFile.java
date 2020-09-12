@@ -2,6 +2,7 @@ package one.empty3.feature;
 import java.awt.image.*;
 import javax.imageio.ImageIO;
 import java.io.File;
+import java.util.logging.*;
 public class WriteFile {
     static int no = 1;
     static String directory = "./output/";
