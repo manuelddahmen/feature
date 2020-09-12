@@ -144,12 +144,12 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         float[] rgba = new float[getCompCount()];
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
-                for (int comp = 0; comp < getCompCount(); comp++) {
+                for (int comp = 0; comp < 3; comp++) {
                     setCompNo(comp);
                     float value = (float) (get(i, j));
                     //TODO problems
-                    value = Math.max(value, 0f);
-                    value = Math.min(value, 1f);
+                    //value = Math.max(value, 0f);
+                    //value = Math.min(value, 1f);
 
                     rgba[comp] = value;
                 }
@@ -205,8 +205,8 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
                     image.setCompNo(compNo);
                     float value;
                     value = (float) ((get(i, j) - minRgbai[comp]) / (maxRgbai[comp] - minRgbai[comp]));
-                    value = Math.max(value, 0f);
-                    value = Math.min(value, 1f);
+                    //value = Math.max(value, 0f);
+                    //value = Math.min(value, 1f);
                     //if (comp == 3) value = 1f;
 
                     image.set(i, j, value);
