@@ -25,7 +25,7 @@ public class TestPixM {
           
     }
      
-     public void colorsRegion(PixM p, int x, y, w, h, float[] comps) {
+     public void colorsRegion(PixM p, int x, int y, int w, int h, float[] comps) {
          for(int i=x; i<x-w; i++)
               for(int j=x; j<x-w; j++)
                    for(int c=0; c<p.getCompCount(); c++) {
