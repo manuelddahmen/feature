@@ -1,6 +1,6 @@
 import org.junit.Test;
 import static org.junit.Assert.*;
-import java.imageio.ImageIO;
+import javax.imageio.ImageIO;
   
 import one.empty3.feature.*;
 
@@ -8,8 +8,9 @@ import one.empty3.feature.*;
 public class TestMatGrad {
   @Test
   public void testMatGradAndDotProduct() {
+    PixM pixMOriginal;
     try {
-        PixM pixMOriginal = new PixM(ImageIO.read("resources/vg1.jpg"));
+        pixMOriginal = new PixM(ImageIO.read("resources/vg1.jpg"));
     } catch(Exception ex) {
         ex.printStackTrace();
         assertTrue(false);
