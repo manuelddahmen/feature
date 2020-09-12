@@ -8,8 +8,8 @@ import one.empty3.feature.*;
 public class TestMatGrad {
   @Test
   public void testMatGradAndDotProduct() {
-    new File("resources").list()
-     . forEach(fileStr -> {
+   for(String fileStr :  new File("resources").list()) {
+    
     PixM pixMOriginal = null;
     try {
         pixMOriginal = new PixM(ImageIO.read(
