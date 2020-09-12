@@ -17,7 +17,7 @@ public class WriteFile {
         
         File n = new File(directory);
         n.mkdirs();
-        n = new File(directory+File.separator+no+"-"+name+".jpg"));
+        n = new File(directory+File.separator+no+"-"+name+".jpg");
         try {
             
             no++;
