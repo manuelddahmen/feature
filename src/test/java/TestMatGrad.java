@@ -9,7 +9,9 @@ public class TestMatGrad {
   @Test
   public void testMatGradAndDotProduct() {
    for(String fileStr :  new File("resources").list()) {
-    File file = new File("resources/"+fileStr);
+    if(!fileStr.endsWith(".jpg"))
+        continue;
+     File file = new File("resources/"+fileStr);
     PixM pixMOriginal = null;
     try {
         pixMOriginal = new PixM(ImageIO.read(file
