@@ -7,9 +7,9 @@ import one.empty3.feature.*;
 
 public class TestMatGrad {
   @Test
-  public void testMatGradDotProduct() {
+  public void testMatGradAndDotProduct() {
     PixM pixMOriginal = new PixM(500, 500);
-                GradientFilter gradientMask = new GradientFilter(pixMOriginal.columns, pixMOriginal.lines);
+                GradientFilter gradientMask = new GradientFilter(pixMOriginal.getColumns, pixMOriginal.getLines);
                 M3 imgForGrad = new M3( pixMOriginal,
 2, 2);
                 M3 filter = gradientMask.filter(imgForGrad);
@@ -20,7 +20,7 @@ public class TestMatGrad {
 
                 // Zero. +++Zero orientation variation.
                 Linear linear = new Linear(imagesMatrix[1][0], imagesMatrix[0][0],
-                        new PixM(pixMOriginal.columns, pixMOriginal.lines));
+                        new PixM(pixMOriginal.getColumns, pixMOriginal.getLines));
                 linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
                 PixM smoothedGrad = linear.getImages()[2];
         WriteFile.writeNext("black image 500x500", pixMOriginal);
