@@ -5,11 +5,11 @@ import java.awt.*;
 /***
  * liste de régions petites ou grandes
  */
-public class AfterGradientBeforeExtemum extends FilterMatPixM {
+public class AfterGradientBeforeExtremum extends FilterMatPixM {
     private int angles;
     private double eigenValueLamba1 = 0.0, eigenValueLamba2 = 0.0;
 
-    public AfterGradientBeforeExtemum(int angleIterations) {
+    public AfterGradientBeforeExtremum(int angleIterations) {
         this.angles = angleIterations;
     }
     @Override
