@@ -44,8 +44,10 @@ public class TestMatGrad {
      
       AfterGradientBeforeExtremum a 
         = new AfterGradientBeforeExtremum(17);
-      M3 anglesTangente = new M3(pext, imagesMatrix[0][0], imagesMatrix[1][0]);
-     
+      M3 anglesTangente = a.filter(new M3(
+        new M3[][] {{
+            pext, imagesMatrix[0][0], imagesMatrix[1][0]);
+        }}));
      
         WriteFile.writeNext(file.getName()+"image reduite/", pixMOriginal.normalize(0.,1.).getImage());
             WriteFile.writeNext(file.getName()+"image gradient gx/", imagesMatrix[0][0].normalize(0.,1.).getImage());
