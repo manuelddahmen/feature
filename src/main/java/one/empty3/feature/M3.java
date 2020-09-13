@@ -76,7 +76,7 @@ public class M3 {
                                 
                                 pixM[ii][ij].setCompNo(c);
                                 
-                                double d = pixM.get(i, j);
+                                double d = pixM[ii][ij].get(i, j);
                                 
                                 setCompNo(c);
                                 set(i, j, ii, ij, d);
