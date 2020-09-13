@@ -42,8 +42,8 @@ public class TestMatGrad {
                       3, 2);
      PixM pext = le.filter(new M3(imagesMatrix[0][0], 1, 1)).getImagesMatrix()[0][0];
      
-      AfterGradientBeforeExtrema a 
-        = new AfterGradientBeforeExtrema();
+      AfterGradientBeforeExtremum a 
+        = new AfterGradientBeforeExtremum(17);
       M3 anglesTangente = new M3(pext, imagesMatrix[0][0], imagesMatrix[1][0]);
      
      
