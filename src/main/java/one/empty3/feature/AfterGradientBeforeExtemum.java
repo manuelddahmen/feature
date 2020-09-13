@@ -27,9 +27,9 @@ public class AfterGradientBeforeExtemum extends FilterMatPixM {
         M3 filtered = original;
         int ii;
         int ij = 0;
-        double itere = 10;
+        double itere = angles;
 
-        M3 orientations = new M3(original.columns, original.lines, angles, 1);
+        PixM orientations = new PixM(original.columns, original.lines);
 
         double angle = 0;
         for (ii=0; ii<angles; ii++) {
@@ -38,21 +38,25 @@ public class AfterGradientBeforeExtemum extends FilterMatPixM {
             for (int i = 0; i < original.columns; i++)
                 for (int j = 0; j < original.lines; j++)
                     for (int c = 0; c < 4; c++) {
-                        filtered.setCompNo(c);
+                        if(maximumAndGradient00m01gx02gy.get(i, j, 0, 0)==1.0) {
+                        maximumAndGradient00m01gx02gy.setCompNo(c);
                         orientations.setCompNo(c);
-                        double x = filtered.get(i, j, 0, 0, c);
-                        double y = filtered.get(i, j, 0, 1, c);
+                        double x = maximumAndGradient00m01gx02gy.get(i, j, 0, 1, c);
+                        double y = maximumAndGradient00m01gx02gy.get(i, j, 0, 2, c);
                         double[] normale = {
                                 Math.cos(angle),
                                 Math.sin(angle)
                         };
-                        orientations.set(i, j, ii, ij, r * (x * normale[0] + y * normale[1]));
+                        double dotVec = r * (x * normale[0] + y * normale[1]);
+                            if(orientations.get(i, j)<= dotVec) 
+                        orientations.set(i, j, angle);
+                        }
                     }
             angle += 2 * Math.PI / angles;
         }
         
         // iterer sur les matrices => angle choisi 
-        // quand maximum en ii
+        // quand maximum en ii tangente angle en i,j
         return orientations;
         // Rechercher les extremums.
     }
