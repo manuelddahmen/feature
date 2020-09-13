@@ -65,7 +65,7 @@ public class M3 {
     }
 
 public M3(PixM pixM[][]) {
-        this(pixM.columns, pixM.lines, columnsIn, linesIn);
+        this(pixM[0][0].columns, pixM[0][0].lines, pixM.length, pixM[0].length);
         
             for (int i = 0; i < columns; i++) {
                 for (int j = 0; j < lines; j++) {
