@@ -13,7 +13,7 @@ public class AfterGradientBeforeExtemum extends FilterMatPixM {
         this.angles = angleIterations;
     }
     @Override
-    public PixM filter(M3 maximumAndGradient00m01gx02gy) {
+    public M3 filter(M3 maximumAndGradient00m01gx02gy) {
         M3 original = maximumAndGradient00m01gx02gy;
         /* Choisir les points filtrés min (noirs //ou monochromes -- toutes ou  composantes annulés)
          * et repérer les zones par régions (r,theta)
@@ -29,7 +29,8 @@ public class AfterGradientBeforeExtemum extends FilterMatPixM {
         int ij = 0;
         double itere = angles;
 
-        PixM orientations = new PixM(original.columns, original.lines);
+        M3 orientations = new PixM(original.columns, original.lines,
+                                  1, 1);
 
         double angle = 0;
         for (ii=0; ii<angles; ii++) {
@@ -48,8 +49,8 @@ public class AfterGradientBeforeExtemum extends FilterMatPixM {
                                 Math.sin(angle)
                         };
                         double dotVec = r * (x * normale[0] + y * normale[1]);
-                            if(orientations.get(i, j)<= dotVec) 
-                        orientations.set(i, j, angle);
+                            if(orientations.get(i, j, 0, 0)<= dotVec) 
+                        orientations.set(i, j, 0, 0, angle);
                         }
                     }
             angle += 2 * Math.PI / angles;
