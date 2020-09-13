@@ -119,7 +119,7 @@ image1 = null;
                 linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
                 PixM smoothedGrad = linear.getImages()[2];
                 int iteratesAngleGrad = 12;
-                M3 filter3 = new AfterGradientBeforeExtemum(iteratesAngleGrad).filter(new M3(smoothedGrad, 1, 1));
+                M3 filter3 = new AfterGradientBeforeExtremum(iteratesAngleGrad).filter(new M3(smoothedGrad, 1, 1));
                 PixM[][] afterGradientAngular = filter3.getImagesMatrix();
                /** try {
                     work(directory, image1, filename1 + "/original.jpg");
