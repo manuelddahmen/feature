@@ -30,9 +30,9 @@ public class AfterGradientBeforeExtemum extends FilterMatPixM {
 
         M3 orientations = new M3(original.columns, original.lines, angles, 1);
 
-
+        double angle = 0;
         for (ii=0; ii<angles; ii++) {
-            double angle = 0;
+            
             double r = 1.0;
             for (int i = 0; i < original.columns; i++)
                 for (int j = 0; j < original.lines; j++)
@@ -49,6 +49,9 @@ public class AfterGradientBeforeExtemum extends FilterMatPixM {
                     }
             angle += 2 * Math.PI / angles;
         }
+        
+        // iterer sur les matrices => angle choisi 
+        // quand maximum en ii
         return orientations;
         // Rechercher les extremums.
     }
