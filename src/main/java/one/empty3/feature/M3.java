@@ -64,6 +64,24 @@ public class M3 {
         }
     }
 
+public M3(PixM pixM[][], int columnsIn, int linesIn) {
+        this(pixM.columns, pixM.lines, columnsIn, linesIn);
+        
+            for (int i = 0; i < columns; i++) {
+                for (int j = 0; j < lines; j++) {
+                    double d = pixM.get(i, j);
+                    for (int ii = 0; ii < columnsIn; ii++)
+                        for (int ij = 0; ij < linesIn; ij++) {
+                            for (int c = 0; c < getCompCount(); c++) {
+                                pixM[ii][ij].setCompNo(c);
+                                setCompNo(c);
+                                set(i, j, ii, ij, pixM[ii][ij].get(i, j));
+                            }
+                        }
+                }
+            }
+        }
+    }
 
     private void init() {
         x = new double[columns * lines * columnsIn * linesIn * compCount];
