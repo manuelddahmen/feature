@@ -82,7 +82,7 @@ public class Main {
                     linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
                     PixM smoothedGrad = linear.getImages()[2]; //.applyFilter(new GaussFilterPixM(4, sigma));
                     int itereAngleGrad = 12;
-                    M3 filter3 = new AfterGradientBeforeExtemum(itereAngleGrad).filter(new M3(smoothedGrad, 1, 1));
+                    M3 filter3 = new AfterGradientBeforeExtremum(itereAngleGrad).filter(new M3(smoothedGrad, 1, 1));
 
                     work(directory, pixMOriginal.getImage(), s + "/original.jpg");
 
