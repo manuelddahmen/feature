@@ -13,7 +13,8 @@ public class AfterGradientBeforeExtemum extends FilterMatPixM {
         this.angles = angleIterations;
     }
     @Override
-    public M3 filter(M3 original) {
+    public M3 filter(M3 maximumAndGradient00m01gx02gy) {
+        M3 original = maximumAndGradient00m01gx02gy;
         /* Choisir les points filtrés min (noirs //ou monochromes -- toutes ou  composantes annulés)
          * et repérer les zones par régions (r,theta)
          * Réunir les zones par valeur et proximité.
