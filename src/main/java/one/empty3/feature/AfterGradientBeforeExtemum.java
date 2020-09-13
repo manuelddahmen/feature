@@ -29,7 +29,7 @@ public class AfterGradientBeforeExtemum extends FilterMatPixM {
         int ij = 0;
         double itere = angles;
 
-        M3 orientations = new PixM(original.columns, original.lines,
+        M3 orientations = new M3(original.columns, original.lines,
                                   1, 1);
 
         double angle = 0;
