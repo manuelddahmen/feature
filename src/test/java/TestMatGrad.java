@@ -42,6 +42,10 @@ public class TestMatGrad {
                       3, 2);
      PixM pext = le.filter(new M3(imagesMatrix[0][0], 1, 1)).getImagesMatrix()[0][0];
      
+      AfterGradientBeforeExtrema a 
+        = new AfterGradientBeforeExtrema();
+      M3 anglesTangente = new M3(pext, imagesMatrix[0][0], imagesMatrix[1][0]);
+     
      
         WriteFile.writeNext(file.getName()+"/image reduite", pixMOriginal.normalize(0.,1.).getImage());
             WriteFile.writeNext(file.getName()+"/image gradient gx", imagesMatrix[0][0].normalize(0.,1.).getImage());
@@ -50,6 +54,7 @@ public class TestMatGrad {
       WriteFile.writeNext(file.getName()+"/image gradient phase y", imagesMatrix[1][1].normalize(0.,1.).getImage());
    WriteFile.writeNext(file.getName()+"/image gradients dot", smoothedGrad.normalize(0.,1.).getImage());
      WriteFile.writeNext(file.getName()+"/image extrema", pext.normalize(0.,1.).getImage());
+     WriteFile.writeNext(file.getName()+"/image angles", anglesTangente.getImagesMatrix()[0][0].normalize(0.,1.).getImage());
      
      System.gc();
       }
