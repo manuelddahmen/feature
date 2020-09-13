@@ -46,7 +46,7 @@ public class TestMatGrad {
         = new AfterGradientBeforeExtremum(17);
       M3 anglesTangente = a.filter(new M3(
         new M3[][] {{
-            pext, imagesMatrix[0][0], imagesMatrix[1][0]);
+            pext, imagesMatrix[0][0], imagesMatrix[1][0]
         }}));
      
         WriteFile.writeNext(file.getName()+"image reduite/", pixMOriginal.normalize(0.,1.).getImage());
