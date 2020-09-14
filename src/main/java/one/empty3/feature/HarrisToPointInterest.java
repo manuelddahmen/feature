@@ -1,7 +1,8 @@
 package one.empty3.feature;
 
 public class HarrisToPointInterest extends FilterPixM {
-     // nabla
+    
+ // nabla
      // sobel x sobel y
      // ou gxgx gxgy 
      //    gygx gygy
