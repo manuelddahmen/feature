@@ -19,7 +19,7 @@ public class SizedGradient extends FilterPixM {
     public Point2D xy(Point2D p,
       double dist) {
         double x = p.getX();
-        return new Point2D((x*2)/(x*x+1)*k
+        return new Point2D((x*2)/(x*x+1)*4
          p.getY()-dist));
     }
     public double formula(int i, int j) {
@@ -37,8 +37,8 @@ public class SizedGradient extends FilterPixM {
              vecX.getX(), vecX.getY(), 0.0,
              vecY.getX(), vecY.getY(), 0.0,
              0.0, 0.0, 1.0
-        ).mult(new Point2D(i, j);
-        return xy(p2);
+        ).mult(new Point2D(i, j, 0.0);
+        return xy(p2); 
     }
     @Override
     public double filter(double x, double y) {
