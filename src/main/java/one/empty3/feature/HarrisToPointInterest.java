@@ -14,5 +14,6 @@ public class HarrisToPointInterest extends FilterPixM {
      public PixM filter(double x, double y) {
          //GradientFilter gf = new GradientFilter();
          //PixM gx = 
+         return null;
      }
 }
