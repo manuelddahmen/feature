@@ -14,14 +14,31 @@ public class SizedGradient extends FilterPixM {
     private void fill() {
 
     }
+
+
+    public Point2D xy(Point2D p,
+      double dist) {
+        double x = p.getX();
+        return new Point2D((x*2)/(x*x+1)*k
+         p.getY()-dist));
+    }
     public double formula(int i, int j) {
         double d = Math.sqrt(i*i+j*j);
-        double angle =  Math.atan (j/i*1.0)
-        Point2D vec = new Point2D(
+        double angle =  Math.atan (1.0*j/i);
+        Point2D vecX = new Point2D(
            d*Math.cos(2*Math.PI*angle), 
            d*Math.sin(2*Math.PI*angle)
         );
-        
+        Point2D vecY = new Point2D(
+           d*Math.sin(2*Math.PI*angle), 
+           - d*Math.cos(2*Math.PI*angle)
+        );
+        Point2D p2 = new Matrix33 (
+             vecX.getX(), vecX.getY(), 0.0,
+             vecY.getX(), vecY.getY(), 0.0,
+             0.0, 0.0, 1.0
+        ).mult(new Point2D(i, j);
+        return xy(p2);
     }
     @Override
     public double filter(double x, double y) {
