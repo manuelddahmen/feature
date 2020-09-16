@@ -1,5 +1,5 @@
 package one.empty3.feature;
-
+import one.empty3.library.Point2D;
 /*
 sobel. 3×3 ou plus. 1*2+1
 |p1 -p2| (/ n/n)?
@@ -8,7 +8,7 @@ public class SizedGradient extends FilterPixM {
     private double dist = 2.0;
 
     public SizedGradient(double dist) {
-        super((int)dist, (int)dist);
+       
         this.dist = dist;
     }
 
