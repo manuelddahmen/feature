@@ -8,7 +8,8 @@ public class SizedGradient extends FilterPixM {
     private double dist = 2.0;
 
     public SizedGradient(double dist) {
-        this.dist = dist
+        super((int)dist, (int)dist);
+        this.dist = dist;
     }
 
     private void fill() {
@@ -19,7 +20,7 @@ public class SizedGradient extends FilterPixM {
     public Point2D xy(Point2D p,
       double dist) {
         double x = p.getX();
-        return new Point2D((x*2)/(x*x+1)*4
+        return new Point2D((x*2)/(x*x+1)*4,
          p.getY()-dist));
     }
     public double formula(int i, int j) {
