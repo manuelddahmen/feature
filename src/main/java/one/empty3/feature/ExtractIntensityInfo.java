@@ -74,10 +74,12 @@ new File(dirOut)
        // String s = "outputFiles/Extracts/";
      //   new File(s).mkdirs();
      double min = 0.3;
-        for(double rMin = 3.0; rMin<9.0; rMin+= 0.5) {
-           for (min = 0.0; min <= 1.0; min += 0.1) {
-                BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
-                PixM pix2 = smoothedGrad.copy();
+        for(double rMin = 1.0; rMin<10; rMin*= 2;) {
+           //for (min = 0.0; min <= 1.0; min += 0.1) {
+               // BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
+               img3 = pix.getImage();
+
+ PixM pix2 = smoothedGrad.copy();
                 PixM out = new PixM(pix2.columns, pix2.lines);//??
                 Histogram2 histogram = new Histogram2(pix2);
                 
@@ -123,7 +125,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     Graphics graphics = img3.getGraphics();
                     graphics.setColor(color);
                     graphics.drawRect((int) (circle.x-10), (int) (circle.y-10), (int) (10), (int) (10));
-                    img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
+                    //img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
                
@@ -145,7 +147,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
 
 
                 System.gc();
-            }
+           // }
         }
     }
 
