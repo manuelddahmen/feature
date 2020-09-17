@@ -8,7 +8,7 @@ public class SizedGradient extends FilterPixM {
     private double dist = 2.0;
 
     public SizedGradient(double dist) {
-       
+       super((int)dist, (int)dist);
         this.dist = dist;
     }
 
