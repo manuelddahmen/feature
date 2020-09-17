@@ -82,10 +82,7 @@ new File(dirOut)
                 
                     List<Histogram2.Circle> pointsOfInterest = histogram.getPointsOfInterest(rMin);
 
-                Color[] colors = new Color[histogram.numLevels];
-
-                for (int i = 0; i < colors.length; i++) {
-                    colors[i] = Colors.random();
+                
 
                 }
 
@@ -119,13 +116,18 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     out.setCompNo(2);
                     out.set((int) circle.x, (int) circle.y, circle.r) ;
 
-                    Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*histogram.numLevels)];
-                   // Graphics graphics = img3.getGraphics();
+                         // Graphics graphics = img3.getGraphics();
                    // graphics.setColor(color);
                     //graphics.drawRect((int) (circle.x), (int) (circle.y), (int) (1), (int) (1));
                     img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
+               
+               Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*histogram.numLevels)];
+                for (int i = 0; i < colors.length; i++) {
+                    colors[i] = Colors.random();
+                    
+                }
             out.normalize(0.0,1.0);
                 
                     //File outputFile = new File(dirOut
