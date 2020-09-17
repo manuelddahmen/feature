@@ -53,7 +53,8 @@ new File(dirOut)
              //   GradientFilter gradientMask = new GradientFilter(image1.getWidth(), image1.getHeight());
                 PixM pixMOriginal = pix;
 
-    
+                BufferedImage img3 = pix.getImage();
+                 
 
                 GradientFilter gradientMask = new GradientFilter(pixMOriginal.columns, pixMOriginal.lines);
                 M3 imgForGrad = new M3( pixMOriginal,
@@ -118,10 +119,10 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     out.set((int) circle.x, (int) circle.y, circle.i) ;
                     out.setCompNo(2);
                     out.set((int) circle.x, (int) circle.y, circle.r) ;
- Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*histogram.numLevels)];
-                         // Graphics graphics = img3.getGraphics();
-                   // graphics.setColor(color);
-                    //graphics.drawRect((int) (circle.x), (int) (circle.y), (int) (1), (int) (1));
+                    Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*histogram.numLevels)];
+                    Graphics graphics = img3.getGraphics();
+                    graphics.setColor(color);
+                    graphics.drawRect((int) (circle.x-10), (int) (circle.y-10), (int) (10), (int) (10));
                     img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
