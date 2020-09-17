@@ -1,5 +1,5 @@
 package one.empty3.feature;
-import one.empty3.library.Point2D;
+import one.empty3.library.Point3D;
 /*
 sobel. 3×3 ou plus. 1*2+1
 |p1 -p2| (/ n/n)?
@@ -21,7 +21,7 @@ public class SizedGradient extends FilterPixM {
       double dist) {
         double x = p.getX();
         return new Point3D((x*2)/(x*x+1)*4,
-         p.getY()-dist);
+         p.getY()-dist, 0);
     }
     public double formula(int i, int j) {
         double d = Math.sqrt(i*i+j*j);
