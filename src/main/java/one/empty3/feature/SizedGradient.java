@@ -30,9 +30,9 @@ public class SizedGradient extends FilterPixM {
            d*Math.cos(2*Math.PI*angle), 
            d*Math.sin(2*Math.PI*angle), 0.0
         );
-        Point3D vecY = new Point2D(
+        Point3D vecY = new Point3D(
            d*Math.sin(2*Math.PI*angle), 
-           - d*Math.cos(2*Math.PI*angle)
+           - d*Math.cos(2*Math.PI*angle), 0.0
         );
         Point3D p2 = new Matrix33 (new double[]{
              vecX.getX(), vecX.getY(), 0.0,
@@ -43,8 +43,8 @@ public class SizedGradient extends FilterPixM {
     }
     @Override
     public double filter(double x, double y) {
-       
-      
+       int count = 0.0;
+      double avg =0.0;
         // For for
         // ±± (x*2)/(x*x+1)*k
         for(int i=-avg; i<avg; i++)
