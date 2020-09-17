@@ -102,7 +102,10 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                 }).forEach(circle -> {
                     circle.i = (circle.i - iSum[1] )/(iSum[2]-iSum[1]);
                 });
-            
+            Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*histogram.numLevels)];
+                for (int i = 0; i < colors.length; i++) 
+                    colors[i] = Colors.random();
+                    
                 double finalMin = min;
                 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
@@ -123,11 +126,8 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
 
                 });
                
-               Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*histogram.numLevels)];
-                for (int i = 0; i < colors.length; i++) {
-                    colors[i] = Colors.random();
-                    
-                }
+               
+                
             out.normalize(0.0,1.0);
                 
                     //File outputFile = new File(dirOut
