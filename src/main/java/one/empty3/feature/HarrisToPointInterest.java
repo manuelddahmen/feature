@@ -12,9 +12,9 @@ public class HarrisToPointInterest extends FilterPixM {
      // m(p) at ij
      // localextrema filter
      // !=0 => points of interest
-     public PixM filter(double x, double y) {
+     public double filter(double x, double y) {
          //GradientFilter gf = new GradientFilter();
          //PixM gx = 
-         return null;
+         return 0.0;
      }
 }
