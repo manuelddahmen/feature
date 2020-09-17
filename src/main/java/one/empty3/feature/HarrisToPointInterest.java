@@ -15,8 +15,8 @@ public class HarrisToPointInterest extends FilterPixM {
      // localextrema filter
      // !=0 => points of interest
      public void init(PixM i) {
-         GradientFilter gf  = new GradientFilter(1, 1.2);
-         M3 mat2x2n = i.applyFilter(gf);
+         //GradientFilter gf  = new GradientFilter(1, 1.2);
+         //M3 mat2x2n = i.applyFilter(gf);
      }
      public double filter(double x, double y) {
          //GradientFilter gf = new GradientFilter();
