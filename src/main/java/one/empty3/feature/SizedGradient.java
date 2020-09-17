@@ -43,8 +43,9 @@ public class SizedGradient extends FilterPixM {
     }
     @Override
     public double filter(double x, double y) {
-       int count = 0.0;
-       int avg =0.0;
+       int count = 0;
+       int avg =0
+      ;
         double dxy =0.0;
         // For for
         // ±± (x*2)/(x*x+1)*k
