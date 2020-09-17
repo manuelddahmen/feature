@@ -17,7 +17,7 @@ public class SizedGradient extends FilterPixM {
     }
 
 
-    public Point3D xy(Point2D p,
+    public Point3D xy(Point3D p,
       double dist) {
         double x = p.getX();
         return new Point3D((x*2)/(x*x+1)*4,
