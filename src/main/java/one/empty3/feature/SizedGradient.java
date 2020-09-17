@@ -1,5 +1,5 @@
 package one.empty3.feature;
-import one.empty3.library.Point3D;
+import one.empty3.library.*;
 /*
 sobel. 3×3 ou plus. 1*2+1
 |p1 -p2| (/ n/n)?
