@@ -1,7 +1,8 @@
 package one.empty3.feature;
 
 public class HarrisToPointInterest extends FilterPixM {
-    public HarrisToPointInterest() {
+    public HarrisToPointInterest(int c, int l) {
+        super(c, l);
     }
  // nabla
      // sobel x sobel y
