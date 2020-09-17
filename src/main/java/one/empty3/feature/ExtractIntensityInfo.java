@@ -119,7 +119,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     out.setCompNo(2);
                     out.set((int) circle.x, (int) circle.y, circle.r) ;
 
-                    Color color = colors[(int) (circle.i*histogram.numLevels)];
+                    Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*histogram.numLevels)];
                    // Graphics graphics = img3.getGraphics();
                    // graphics.setColor(color);
                     //graphics.drawRect((int) (circle.x), (int) (circle.y), (int) (1), (int) (1));
