@@ -74,7 +74,7 @@ new File(dirOut)
        // String s = "outputFiles/Extracts/";
      //   new File(s).mkdirs();
      double min = 0.3;
-        for(double rMin = 1.0; rMin<10; rMin*= 2;) {
+       // for(double rMin = 1.0; rMin<10; rMin*= 2.) {
            //for (min = 0.0; min <= 1.0; min += 0.1) {
                // BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
                img3 = pix.getImage();
