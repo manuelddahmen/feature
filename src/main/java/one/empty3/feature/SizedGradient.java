@@ -38,13 +38,14 @@ public class SizedGradient extends FilterPixM {
              vecX.getX(), vecX.getY(), 0.0,
              vecY.getX(), vecY.getY(), 0.0,
              0.0, 0.0, 1.0}
-        ).mult(new Point3D(i, j, 0.0));
+        ).mult(new Point3D((double)i,(double) j, 0.0));
         return xy(p2); 
     }
     @Override
     public double filter(double x, double y) {
        int count = 0.0;
-      double avg =0.0;
+       int avg =0.0;
+        double dxy =0.0;
         // For for
         // ±± (x*2)/(x*x+1)*k
         for(int i=-avg; i<avg; i++)
