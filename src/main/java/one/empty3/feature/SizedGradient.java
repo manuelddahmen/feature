@@ -34,7 +34,7 @@ public class SizedGradient extends FilterPixM {
            d*Math.sin(2*Math.PI*angle), 
            - d*Math.cos(2*Math.PI*angle)
         );
-        Point2D p2 = new Matrix33 (nee double[]{
+        Point2D p2 = new Matrix33 (new double[]{
              vecX.getX(), vecX.getY(), 0.0,
              vecY.getX(), vecY.getY(), 0.0,
              0.0, 0.0, 1.0}
