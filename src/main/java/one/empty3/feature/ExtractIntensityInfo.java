@@ -148,7 +148,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
 
                 System.gc();
            // }
-        }
+        
     }
 
     public static void main(String[] args) {
