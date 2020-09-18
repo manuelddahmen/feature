@@ -142,7 +142,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     File outputFile2 = new File(dirOut + "/1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
                     WriteFile.writeNext(out.normalize(0.,1.).getImage(), "out");
                     WriteFile.writeNext(read, "original");
-                    WriteFile.writeNext(img3, "result2");
+                    WriteFile.writeNext(img3[0], "result2");
                     
                    
 
