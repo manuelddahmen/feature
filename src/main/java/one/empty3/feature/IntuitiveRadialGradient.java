@@ -6,14 +6,17 @@ public class IntuitiveRadialGradient extends FilterPixM {
       private PixM pix;
       private int angles = 12;
 double rMaxPixel=2.0, rMaxDiff = 5.0;
+      private int angleCount = 2;
       public IntuitiveRadialGradient(PixM image) {
           super(image.getImage());
           this.pix = image;
       } 
 
-     public void setMax(double rMax, double rMax2) {
+     public void setMax(double rMax, double rMax2, int angleCount, int iterAngles) {
          rMaxPixel = rMax;
          rMaxDiff = rMax2;
+         angles = iterAngles;
+         angleCount = angleCount;
      } 
 
       public double filter (double x, double y) {
