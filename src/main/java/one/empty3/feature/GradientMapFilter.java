@@ -21,7 +21,9 @@ public class GradientMapFilter extends FilterPixM {
        super() ;
     }
 
+    public double filter(double x, double y) {
+        return 0.0;
+    } 
     
-    }
     
 }
