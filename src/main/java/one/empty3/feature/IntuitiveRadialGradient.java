@@ -2,6 +2,14 @@ public class IntuitiveRadialGradient extends FilterPixM {
       private PixM pix;
       private int angles = 12;
 double rMaxPixel=2.0, rMaxDiff = 5.0;
+      public IntuitiveRadialGradient(PixM image) {
+
+      } 
+
+     public void setMax(double rMax, double rMax2) {
+         rMaxPixel = rMax;
+         rMaxDiff = rMax2;
+     } 
 
       public double filter (double x, double y) {
          
