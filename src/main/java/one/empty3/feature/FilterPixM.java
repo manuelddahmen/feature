@@ -28,8 +28,9 @@ public abstract class FilterPixM extends PixM {
     public FilterPixM(BufferedImage image) {
         super(image);
     }
+    @Deprecated
 public FilterPixM(PixM image) {
-        super(image);
+        super(image.getImage());
     }
 
     public abstract double filter(double i, double i1);
