@@ -1,9 +1,10 @@
-public class IntuitiveRadialGradient extends PixM {
+public class IntuitiveRadialGradient extends FilterPixM {
       private PixM pix;
       private int angles = 12;
-      public double filter (double x, double y, 
-         double rMaxPixel, rMaxDiff) {
+double rMaxPixel=2; rMaxDiff = 10;
 
+      public double filter (double x, double y, 
+         
           double pixel = 0.0;
           double [] pixelExtAngular
              = new double[12] ;
