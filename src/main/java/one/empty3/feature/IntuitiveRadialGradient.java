@@ -48,7 +48,7 @@ this.pix = image;
                     eval=Math.sqrt(1.0*(x-i)*(x-i)+(y-j)*(y-j));
                   if(eval<=r2 && eval>= r1 && 
           Math.abs(Math.tan(-a1+Math.abs((y-j) /(x-i)) ))>=Math.tan(a1) && 
-          Math.abs(Math.tan(a2-Math.abs((y-j)) /(x-i)) )) <=Math.tan(a2)
+          Math.abs(Math.tan(a2-Math.abs((y-j) /(x-i)) )) <=Math.tan(a2)
                          ) {
                   sum+= pix.get(i, j) ;//*gauss? Derivate? 
                   count ++;
