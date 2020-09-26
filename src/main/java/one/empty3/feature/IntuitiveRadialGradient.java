@@ -3,7 +3,7 @@ public class IntuitiveRadialGradient extends FilterPixM {
       private int angles = 12;
 double rMaxPixel=2; rMaxDiff = 10;
 
-      public double filter (double x, double y, 
+      public double filter (double x, double y) {
          
           double pixel = 0.0;
           double [] pixelExtAngular
