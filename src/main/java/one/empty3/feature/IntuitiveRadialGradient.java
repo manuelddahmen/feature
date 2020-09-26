@@ -39,10 +39,11 @@ double rMaxPixel=2.0, rMaxDiff = 5.0;
    +(y-j)* (y-j) ))<=r2 & & eval>= r1 && 
           Math.abs(Math.tan(-a1+Math.abs((y-j) /(x-i)))>=Math.tan(a1)) && 
           Math.abs(Math.tan(a2-Math.abs((y-j)) /(x-i))) <=Math.tan(a2))
-) {
+      ) {
                   sum+= pix.get(i, j) ;//*gauss? Derivate? 
                   count ++;
                   dist += eval;
+         } 
          return sum/count;
     } 
 
