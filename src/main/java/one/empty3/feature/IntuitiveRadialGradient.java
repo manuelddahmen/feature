@@ -40,19 +40,21 @@ this.pix = image;
     } 
     public double arc (int x, int y, double r1, double r2, 
               double a1, double a2) {
-         double eval = 0.0; int count=0; double dist=0;
+        double eval = 0.0; 
+        int count=0; 
+        double dist=0;
         for(int i=x-r2; i<x+r2; i++)
               for(int j=x-r2; j<x+r2; j++) {
-                    eval=Math.sqrt((x-i)*(x-i)
-   +(y-j)* (y-j));
+                    eval=Math.sqrt(1.0*(x-i)*(x-i)+(y-j)*(y-j));
                   if((eval<=r2 & & eval>= r1 && 
           Math.abs(Math.tan(-a1+Math.abs((y-j) /(x-i)))>=Math.tan(a1)) && 
           Math.abs(Math.tan(a2-Math.abs((y-j)) /(x-i))) <=Math.tan(a2))
-      ) {
+                         ) {
                   sum+= pix.get(i, j) ;//*gauss? Derivate? 
                   count ++;
                   dist += eval;
-         } }
+                       } 
+                }
          return sum/count;
     } 
 
