@@ -15,10 +15,16 @@ sobel. 3×3 ou plus. 1*2+1
 */
 public class GradientMapFilter extends FilterPixM {
     private M3 map;
-    
-
+    private PixM gaussMap;
+    public double derivateX(int x, int y ) {
+        return 0.0;
+    } 
+    public double derivateY(int x, int y ) {
+        return 0.0;
+    } 
     public GradientMapFilter(PixM img, int [] sigmas) {
        super() ;
+       
     }
 
     public double filter(double x, double y) {
