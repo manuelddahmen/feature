@@ -49,8 +49,8 @@ double rMaxPixel=2.0, rMaxDiff = 5.0;
         double eval = 0.0; 
         int count=0; 
         double dist=0;
-        for(int i=x-r2; i<x+r2; i++)
-              for(int j=x-r2; j<x+r2; j++) {
+        for(double i=x-r2; i<x+r2; i++)
+              for(double j=x-r2; j<x+r2; j++) {
                     eval=Math.sqrt(1.0*(x-i)*(x-i)+(y-j)*(y-j));
                   if(eval<=r2 && eval>= r1 && 
           Math.abs(Math.tan(-a1+Math.abs((y-j) /(x-i)) ))>=Math.tan(a1) && 
