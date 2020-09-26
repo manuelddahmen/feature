@@ -42,7 +42,7 @@ this.pix = image;
               angle)) 
           .mult(r);
     } 
-    public double arc (int x, int y, double r1, double r2, 
+    public double arc (double x, double y, double r1, double r2, 
               double a1, double a2) {
         double eval = 0.0; 
         int count=0; 
