@@ -1,6 +1,10 @@
 package one.empty3.feature;
 import one.empty3.library.*;
 /*
+
+Sum [x+i, y+j, dist<sizeK] (I ij *
+    gauss derivate ij) 
+
 sobel. 3×3 ou plus. 1*2+1
 |p1 -p2| (/ n/n)?
 */
