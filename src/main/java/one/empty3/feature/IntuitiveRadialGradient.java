@@ -48,7 +48,7 @@ double rMaxPixel=2.0, rMaxDiff = 5.0;
               double a1, double a2) {
         double eval = 0.0; 
         int count=0; 
-        double sum;
+        double sum = 0.0;
         double dist=0;
         for(double i=x-r2; i<x+r2; i++)
               for(double j=x-r2; j<x+r2; j++) {
