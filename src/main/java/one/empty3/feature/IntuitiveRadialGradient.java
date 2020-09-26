@@ -37,13 +37,10 @@ double rMaxPixel=2.0; rMaxDiff = 5.0;
               for(int j=x-r2; j<x+r2; j++)
                   if((eval=Math.sqrt((x-i)*(x-i)
    +(y-j)* (y-j) ))<=r2 & & eval>= r1) {
-                  sum+= get(i, j) ;//*gauss? Derivate? 
+                  sum+= pix.get(i, j) ;//*gauss? Derivate? 
                   count ++;
                   dist += eval;
          return sum/count;
-     } 
-      public double avgPixXY(int x, int y) {
-          
-      } 
+    } 
 
 } 
