@@ -28,6 +28,9 @@ public abstract class FilterPixM extends PixM {
     public FilterPixM(BufferedImage image) {
         super(image);
     }
+public FilterPixM(PixM image) {
+        super(image);
+    }
 
     public abstract double filter(double i, double i1);
 
