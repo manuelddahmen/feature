@@ -36,11 +36,13 @@ public class GradientMapFilter extends FilterPixM {
         return 0.0;
     } 
     public GradientMapFilter(PixM img, int sigmas) {
+       gradient = new PixM[sigmas] ;
        super(img.columns, img.lines) ;
        this.img = img;
        for(int i=0; i<sigmas; i++) {
-           GradientFilter gf = new GradientFilter(5, sigma[i] );
+           GradientFilter gf = new GradientFilter(11, 0.6+0.2*sigmas);
            gradient [i] = img.applyFilter(gf);
+           
       } 
     }
 
