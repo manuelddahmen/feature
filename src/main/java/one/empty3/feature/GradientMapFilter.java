@@ -1,5 +1,5 @@
 package one.empty3.feature;
-import one.empty3.library.*;
+//import one.empty3.library.*;
 /*
 
 Sum [x+i, y+j, dist<sizeK] (I ij *
@@ -13,6 +13,7 @@ sobel. 3×3 ou plus. 1*2+1
 = M3 cols, lines, sigmas
  Map of vectors. 
 */
+/*
 public class GradientMapFilter extends FilterPixM {
     private M3 map;
     private PixM gaussMap;
@@ -51,3 +52,4 @@ public class GradientMapFilter extends FilterPixM {
     
     
 }
+*/
