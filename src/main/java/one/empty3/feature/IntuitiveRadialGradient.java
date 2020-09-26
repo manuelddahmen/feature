@@ -1,5 +1,7 @@
 package one.empty3.feature;
 
+impott one.empty3.library.Point3D;
+
 public class IntuitiveRadialGradient extends FilterPixM {
       private PixM pix;
       private int angles = 12;
