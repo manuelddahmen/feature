@@ -29,7 +29,7 @@ double rMaxPixel=2.0, rMaxDiff = 5.0;
           for(int i=0; i<angles; i++) {
             double v =  arc ((double)x, (double)y, rMaxPixel, rMaxDiff, 
               2*Math.PI*i/angles, 2*Math.PI*(i+1)/angles );
-            if(Math.abs(v-vp) <vFarApprox) {
+            if(Math.abs(v-vp) <vFarApprox) ){
                vfarApprox =
                   Math.abs(v-vp);
                angle = 2*Math.PI*(i+0.5)/angles;
@@ -56,7 +56,7 @@ double rMaxPixel=2.0, rMaxDiff = 5.0;
           Math.abs(Math.tan(-a1+Math.abs((y-j) /(x-i)) ))>=Math.tan(a1) && 
           Math.abs(Math.tan(a2-Math.abs((y-j) /(x-i)) )) <=Math.tan(a2)
                          ) {
-                  sum+= pix.get(i, j) ;//*gauss? Derivate? 
+                  sum+= pix.get((int)i, (int)j) ;//*gauss? Derivate? 
                   count ++;
                   dist += eval;
                        } 
