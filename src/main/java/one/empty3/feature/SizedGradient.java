@@ -7,6 +7,11 @@ Sum [x+i, y+j, dist<sizeK] (I ij *
 
 sobel. 3×3 ou plus. 1*2+1
 |p1 -p2| (/ n/n)?
+
+
+ Somme pondérée Gradient(i, j) * dérivée gauss(x-i, y-j) 
+= M3 cols, lines, sigmas
+ Map of vectors. 
 */
 public class SizedGradient extends FilterPixM {
     private double dist = 2.0;
