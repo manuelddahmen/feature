@@ -1,7 +1,7 @@
 public class IntuitiveRadialGradient extends FilterPixM {
       private PixM pix;
       private int angles = 12;
-double rMaxPixel=2; rMaxDiff = 10;
+double rMaxPixel=2.0; rMaxDiff = 5.0;
 
       public double filter (double x, double y) {
          
@@ -17,9 +17,11 @@ double rMaxPixel=2; rMaxDiff = 10;
             double v =  arc (x, y, rMaxPixel, rMaxDiff, 
               2*Math.PI*i/angles) ;
             if(Math.abs(v-vp) <vFarApprox)
-               vfarApprox = v;
+               vfarApprox =
+                  Math.abs(v-vp);
                angle = 2*Math.PI*(i+0.5)/angles;
           }
+          return angle;
       } 
     public Point2D pcircle(int x, int y, 
               double angle, double r) {
