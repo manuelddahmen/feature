@@ -27,8 +27,8 @@ double rMaxPixel=2.0, rMaxDiff = 5.0;
           double vfarApprox = 400000;
           double angle =-1;
           for(int i=0; i<angles; i++) {
-            double v =  arc (x, y, rMaxPixel, rMaxDiff, 
-              2*Math.PI*i/angles) ;
+            double v =  arc ((doible)x, (double)y, rMaxPixel, rMaxDiff, 
+              2*Math.PI*i/angles, 2*Math.PI*(i+1)/angles ;
             if(Math.abs(v-vp) <vFarApprox) {
                vfarApprox =
                   Math.abs(v-vp);
