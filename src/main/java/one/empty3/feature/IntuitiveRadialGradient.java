@@ -36,7 +36,10 @@ double rMaxPixel=2.0; rMaxDiff = 5.0;
         for(int i=x-r2; i<x+r2; i++)
               for(int j=x-r2; j<x+r2; j++)
                   if((eval=Math.sqrt((x-i)*(x-i)
-   +(y-j)* (y-j) ))<=r2 & & eval>= r1) {
+   +(y-j)* (y-j) ))<=r2 & & eval>= r1 && 
+          Math.tan(a1)<(y-j) /(x-i) && 
+          Math.tan(a2)<(y-j) /(x-i)
+) {
                   sum+= pix.get(i, j) ;//*gauss? Derivate? 
                   count ++;
                   dist += eval;
