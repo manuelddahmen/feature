@@ -40,9 +40,8 @@ public class GradientMapFilter extends FilterPixM {
        super(img.columns, img.lines) ;
        this.img = img;
        for(int i=0; i<sigmas; i++) {
-           GradientFilter gf = new GradientFilter(11, 0.6+0.2*sigmas);
-           gradient [i] = img.applyFilter(gf);
-           
+           GradientFilter gf = new GradientFilter(5.*i/sigmas, 0.6+0.5*sigmas);
+           gradient[i] = img.applyFilter(gf);
       } 
     }
 
