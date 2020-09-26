@@ -1,3 +1,5 @@
+package one.empty3.feature;
+
 public class IntuitiveRadialGradient extends FilterPixM {
       private PixM pix;
       private int angles = 12;
