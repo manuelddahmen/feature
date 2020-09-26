@@ -35,9 +35,13 @@ public class GradientMapFilter extends FilterPixM {
     public double deltaGy(int x, int y) {
         return 0.0;
     } 
-    public GradientMapFilter(PixM img, int [] sigmas) {
-       super() ;
-       
+    public GradientMapFilter(PixM img, int sigmas) {
+       super(img.columns, img.lines) ;
+       this.img = img;
+       for(int i=0; i<sigmas; i++) {
+           GradientFilter gf = new GradientFilter(5, sigma[i] );
+           gradient [i] = img.applyFilter(gf);
+      } 
     }
 
     public double filter(double x, double y) {
