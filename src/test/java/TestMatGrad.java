@@ -54,7 +54,7 @@ public class TestMatGrad {
 
      PixM pix = smoothedGrad;
         IntuitiveRadialGradient i 
-         = new IntuitiveRadialGradient(2, 5, 2, 12);
+         = new IntuitiveRadialGradient(2., 5., 2, 12);
         PixM raf = i.filter(pix);
         WriteFile.writeNext(file.getName()+"image reduite", pixMOriginal.normalize(0.,1.).getImage());
             WriteFile.writeNext(file.getName()+"image gradient gx", imagesMatrix[0][0].normalize(0.,1.).getImage());
