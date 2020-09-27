@@ -67,7 +67,7 @@ logger.info("angles tangentes");
      PixM pix = smoothedGrad;
         IntuitiveRadialGradient i 
          = new IntuitiveRadialGradient(pix);
-     i.setMax(2., 5., 2, 12);
+     i.setMax(2., 5., 2, 4);
         PixM rad = pix.applyFilter(i);
      logger.info("radial orientation");
         WriteFile.writeNext(file.getName()+"image reduite", pixMOriginal.normalize(0.,1.).getImage());
