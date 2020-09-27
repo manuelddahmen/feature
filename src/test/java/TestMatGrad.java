@@ -48,7 +48,9 @@ logger.info("dot ootter product");
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
                       3, 2);
-     le.filter(smoothedGrad);
+     le.filter(new M3(smoothedGrad
+             .normalize(0.,1.).getImage()
+                      , 1, 1));
      logger.info("local maximum");
      
       AfterGradientBeforeExtremum a 
