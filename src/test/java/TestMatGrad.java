@@ -51,7 +51,9 @@ public class TestMatGrad {
             pext, imagesMatrix[0][0], imagesMatrix[1][0]
          }}
       ));
-     
+
+     PixM pix = smoothedGrad;
+
         WriteFile.writeNext(file.getName()+"image reduite", pixMOriginal.normalize(0.,1.).getImage());
             WriteFile.writeNext(file.getName()+"image gradient gx", imagesMatrix[0][0].normalize(0.,1.).getImage());
       WriteFile.writeNext(file.getName()+"image gradient gy", imagesMatrix[1][0].normalize(0.,1.).getImage());
