@@ -54,7 +54,7 @@ double rMaxPixel=2.0, rMaxDiff = 5.0;
         double sum = 0.0;
         double dist=0;
         for(double i=x-r2; i<x+r2; i++)
-              for(double j=x-r2; j<x+r2; j++) {
+              for(double j=y-r2; j<y+r2; j++) {
                     
                     eval=Math.sqrt(1.0*(x-i)*(x-i)+(y-j)*(y-j));
                   if(eval<=r2 && eval>= r1 && 
