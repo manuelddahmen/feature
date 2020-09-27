@@ -8,7 +8,7 @@ public class IntuitiveRadialGradient extends FilterPixM {
 double rMaxPixel=2.0, rMaxDiff = 5.0;
       private int angleCount = 2;
       public IntuitiveRadialGradient(PixM image) {
-          super(image.getImage());
+          super(image.normalize(0.,1.).getImage());
           this.pix = image;
       } 
 
