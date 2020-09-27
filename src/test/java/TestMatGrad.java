@@ -56,7 +56,7 @@ public class TestMatGrad {
         IntuitiveRadialGradient i 
          = new IntuitiveRadialGradient(pix);
      i.setMax(2., 5., 2, 12);
-        PixM raf = i.filter(pix);
+        PixM raf = pix.applyFilter(i);
         WriteFile.writeNext(file.getName()+"image reduite", pixMOriginal.normalize(0.,1.).getImage());
             WriteFile.writeNext(file.getName()+"image gradient gx", imagesMatrix[0][0].normalize(0.,1.).getImage());
       WriteFile.writeNext(file.getName()+"image gradient gy", imagesMatrix[1][0].normalize(0.,1.).getImage());
