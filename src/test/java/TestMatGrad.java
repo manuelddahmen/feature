@@ -44,6 +44,7 @@ logger.info("gradient computed");
                 linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
                 PixM smoothedGrad = linear.getImages()[2];
 logger.info("dot ootter product");
+      PixM pext = pixMOriginal;
      LocalExtrema le =
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
@@ -54,7 +55,7 @@ logger.info("dot ootter product");
      logger.info("local maximum");
      
       AfterGradientBeforeExtremum a 
-        = new AfterGradientBeforeExtremum(17);
+        = new AfterGradientBeforeExtremum(3);
       M3 anglesTangente = a.filter(new M3(
         
         new PixM[][]
