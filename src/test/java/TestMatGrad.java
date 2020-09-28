@@ -69,6 +69,15 @@ logger.info("dot outter product");
      logger.info("local maximum 5x5");
       
       
+      LocalExtrema le3 =
+         new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
+                      imagesMatrix[1][0].getLines(),
+                      19, 3);
+      PixM plext3 = le3.filter(new M3(pext,
+                      1, 1)
+            ).getImagesMatrix()[0][0].normalize(0.,1.);
+     logger.info("local maximum 5x5");
+      
       
       AfterGradientBeforeExtremum a 
         = new AfterGradientBeforeExtremum(3);
@@ -96,6 +105,7 @@ logger.info("angles tangentes");
      WriteFile.writeNext("angles"+file.getName(), anglesTangente.getImagesMatrix()[0][0].normalize(0.,1.).getImage());
      WriteFile.writeNext("radial grad"+file.getName(), rad.normalize(0.,1.).getImage());
       WriteFile.writeNext("extrema 5x5"+file.getName(), plext2.normalize(0.,1.).getImage());
+     WriteFile.writeNext("extrema 19x19"+file.getName(), plext3.normalize(0.,1.).getImage());
      System.gc();
       }
 
