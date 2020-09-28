@@ -54,6 +54,20 @@ logger.info("dot outter product");
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum");
      
+      
+      
+            PixM pext = pixMOriginal;
+     LocalExtrema le =
+    new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
+                      imagesMatrix[1][0].getLines(),
+                      5, 0);
+     PixM plext2 = le.filter(new M3(pext,
+                      1, 1)
+            ).getImagesMatrix()[0][0].normalize(0.,1.);
+     logger.info("local maximum 5x5");
+      
+      
+      
       AfterGradientBeforeExtremum a 
         = new AfterGradientBeforeExtremum(3);
       M3 anglesTangente = a.filter(new M3(
@@ -76,10 +90,10 @@ logger.info("angles tangentes");
       WriteFile.writeNext("gradient phase x"+file.getName(), imagesMatrix[0][1].normalize(0.,1.).getImage());
       WriteFile.writeNext("gradient phase y"+file.getName(), imagesMatrix[1][1].normalize(0.,1.).getImage());
    WriteFile.writeNext("gradients dot"+file.getName(), smoothedGrad.normalize(0.,1.).getImage());
-     WriteFile.writeNext("extrema"+file.getName(), plext.normalize(0.,1.).getImage());
+     WriteFile.writeNext("extrema 3x3"+file.getName(), plext.normalize(0.,1.).getImage());
      WriteFile.writeNext("angles"+file.getName(), anglesTangente.getImagesMatrix()[0][0].normalize(0.,1.).getImage());
      WriteFile.writeNext("radial grad"+file.getName(), rad.normalize(0.,1.).getImage());
-     
+      WriteFile.writeNext("extrema 5x5"+file.getName(), plext2.normalize(0.,1.).getImage());
      System.gc();
       }
 
