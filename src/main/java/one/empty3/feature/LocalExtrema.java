@@ -84,7 +84,6 @@ public class LocalExtrema extends FilterMatPixM {
                     }
                 }
             }
-        }
         //}
         return copy;
 
