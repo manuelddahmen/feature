@@ -48,7 +48,7 @@ logger.info("dot ootter product");
      LocalExtrema le =
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
-                      3, 2);
+                      3, 0);
      le.filter(new M3(smoothedGrad
              .normalize(0.,1.).getImage()
                       , 1, 1));
