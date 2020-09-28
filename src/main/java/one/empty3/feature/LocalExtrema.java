@@ -84,9 +84,8 @@ public class LocalExtrema extends FilterMatPixM {
                     }
                 }
             }
-        //}
+        }
         return copy;
-
     }
 
     private double lambda1dot2div1sum2(M3 original, int compNo, int i, int j) {
