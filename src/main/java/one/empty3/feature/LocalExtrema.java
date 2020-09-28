@@ -54,10 +54,11 @@ public class LocalExtrema extends FilterMatPixM {
             }
         }*/
         for(int c = 0; c< copy.getCompCount(); c++) {
-            copy.setCompNo(c);
+            
             original.setCompNo(c);
             for (int i = 0; i < original.columns; i++) {
                 for (int j = 0; j < original.lines; j++) {
+                    copy.setCompNo(c);
                     boolean isMaximum = true;
                     double maxLocal = original.getIntensity(i, j, 0, 0);
                     int countOut = 0;
@@ -74,6 +75,11 @@ public class LocalExtrema extends FilterMatPixM {
                         }
                         //}
                         if (countIn <= pointsCount) {
+                            copy.setCompNo(0);
+                            copy.set(i, j, 0, 0, 1);//1 au lieu value
+                            copy.setCompNo(1);
+                            copy.set(i, j, 0, 0, 1);//1 au lieu value
+                            copy.setCompNo(2);
                             copy.set(i, j, 0, 0, 1);//1 au lieu value
                         }
                     }
