@@ -341,9 +341,9 @@ public class M3 {
         if(c==4) {
             for(int c1=0; c1<3; c1++) {
                 setCompNo(c1);
-                I += get(i, j, ii, ij)/3;
+                I += Math.abs(get(i, j, ii, ij))/3;
             }
-
+            I = Math.sqrt(I);
         }
         else  {
             setCompNo(c);
@@ -356,4 +356,9 @@ public class M3 {
     public void resizeSubmatrix(int ii0, int ij0, int i2, int j2) {
 
     }
+    public double getIntensity(int column, int line, int ii, int ij) {
+        return get(column, line, ii, ij, 4) ;
+    }
+    
+    
 }
