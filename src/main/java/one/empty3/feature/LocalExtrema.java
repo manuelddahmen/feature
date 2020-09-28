@@ -39,49 +39,32 @@ public class LocalExtrema extends FilterMatPixM {
 
     @Override
     public M3 filter(M3 original) {
-        M3 copy = new M3(original.columns, original.lines, 1, 1);
-/*
-        for(int c=0; c< original.getCompCount(); c++) {
-            original.setCompNo(c);
-            for (int i = 0; i < columns; i++) {
-                for (int j = 0; j < lines; j++) {
-                    for (int ii = -1; ii < 1; ii++) {
-                        for (int ij = -1; ij < 1; ij++) {
-                            copy.set(i+ii, j+ij, 0, 0, lambda1dot2div1sum2(original, original.getCompNo(), i, j));
-                        }
-                    }
-                }
-            }
-        }*/
-        //for(int c = 0; c< copy.getCompCount(); c++) {
-            
-            //original.setCompNo(c);
-            for (int i = 0; i < original.columns; i++) {
-                for (int j = 0; j < original.lines; j++) {
+        M3 copy = new M3(original.columns, original.lines);
+        for (int i = 0; i < original.columns; i++) {
+            for (int j = 0; j < original.lines; j++) {
                     //copy.setCompNo(c);
                     //boolean isMaximum = true;
-                    double maxLocal = original.getIntensity(i, j, 0, 0);
+                double maxLocal = original.getIntensity(i, j, 0, 0);
                     int countOut = 0;
                     int countIn = 0;
-                    if(maxLocal>=threshold) {
+                if(maxLocal>=threshold) {
                         
-                        for (int ii = -neighbourSize / 2; ii <= neighbourSize / 2; ii++) {
-                            for (int ij = neighbourSize / 2; ij <= neighbourSize / 2; ij++) {
+                    for (int ii = -neighbourSize / 2; ii <= neighbourSize / 2; ii++) {
+                        for (int ij = neighbourSize / 2; ij <= neighbourSize / 2; ij++) {
                                 double v = original.getIntensity(i + ii, j + ij, 0, 0);
-                                if (v > maxLocal) {
+                            if (v > maxLocal) {
                                     countIn++;
-                                }
                             }
                         }
                     }
-                    if (countIn <= pointsCount) {
+                }
+                if (countIn <= pointsCount) {
                             copy.setCompNo(0);
                             copy.set(i, j, 0, 0, 1);//1 au lieu value
                             copy.setCompNo(1);
                             copy.set(i, j, 0, 0, 1);//1 au lieu value
                             copy.setCompNo(2);
                             copy.set(i, j, 0, 0, 1);//1 au lieu value
-                    }
                 }
             }
         }
