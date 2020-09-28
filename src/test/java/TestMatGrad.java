@@ -51,7 +51,7 @@ logger.info("dot ootter product");
                       3, 0);
      PixM plext = le.filter(new M3(smoothedGrad
              .normalize(0.,1.).getImage()
-                      , 1, 1));
+                      , 1, 1)).getImagesMatrix()[0][0];
      logger.info("local maximum");
      
       AfterGradientBeforeExtremum a 
