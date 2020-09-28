@@ -56,7 +56,9 @@ logger.info("dot outter product");
      
       
       
-            PixM pext = pixMOriginal;
+       
+      
+     pext = pixMOriginal;
      LocalExtrema le =
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
