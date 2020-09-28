@@ -68,7 +68,7 @@ logger.info("angles tangentes");
         IntuitiveRadialGradient i 
          = new IntuitiveRadialGradient(pix);
      i.setMax(2., 5., 2, 4);
-        PixM rad = pix.applyFilter(i);
+        PixM rad = i.filter(pix);
      logger.info("radial orientation");
         WriteFile.writeNext(file.getName()+"image reduite", pixMOriginal.normalize(0.,1.).getImage());
             WriteFile.writeNext(file.getName()+"image gradient gx", imagesMatrix[0][0].normalize(0.,1.).getImage());
