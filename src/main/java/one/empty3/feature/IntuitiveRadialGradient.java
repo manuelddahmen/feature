@@ -40,6 +40,30 @@ double rMaxPixel=2.0, rMaxDiff = 5.0;
           }
           return angle;
       } 
+      
+      
+
+    public PixM filter(PixM o) {
+        PixM c = new PixM(o.columns, o.lines);
+       
+        for (int comp = 0; comp < getCompCount(); comp++) {
+
+            setCompNo(comp);
+            c.setCompNo(comp);
+            
+
+
+            for (int i = 0; i < columns; i++) {
+                for (int j = 0; j < lines; j++) {
+                   
+                    c.set(i, j, filter(i, j));
+                }
+            }
+        }
+        return c;
+    }
+      
+      
     public Point2D pcircle(int x, int y, 
               double angle, double r) {
         return new Point2D(Math.cos(2*Math.PI*
