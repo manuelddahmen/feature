@@ -70,15 +70,15 @@ logger.info("angles tangentes");
      i.setMax(2., 5., 2, 4);
         PixM rad = i.filter(pix);
      logger.info("radial orientation");
-        WriteFile.writeNext(file.getName()+"image reduite", pixMOriginal.normalize(0.,1.).getImage());
-            WriteFile.writeNext(file.getName()+"image gradient gx", imagesMatrix[0][0].normalize(0.,1.).getImage());
-      WriteFile.writeNext(file.getName()+"image gradient gy", imagesMatrix[1][0].normalize(0.,1.).getImage());
-      WriteFile.writeNext(file.getName()+"image gradient phase x", imagesMatrix[0][1].normalize(0.,1.).getImage());
-      WriteFile.writeNext(file.getName()+"image gradient phase y", imagesMatrix[1][1].normalize(0.,1.).getImage());
-   WriteFile.writeNext(file.getName()+"image gradients dot", smoothedGrad.normalize(0.,1.).getImage());
-     WriteFile.writeNext(file.getName()+"image extrema", plext.normalize(0.,1.).getImage());
-     WriteFile.writeNext(file.getName()+"image angles", anglesTangente.getImagesMatrix()[0][0].normalize(0.,1.).getImage());
-     WriteFile.writeNext(file.getName()+"image radial grad", rad.normalize(0.,1.).getImage());
+        WriteFile.writeNext("reduite"+file.getName(), pixMOriginal.normalize(0.,1.).getImage());
+            WriteFile.writeNext("gradient gx"+file.getName(), imagesMatrix[0][0].normalize(0.,1.).getImage());
+      WriteFile.writeNext("gradient gy"+file.getName(), imagesMatrix[1][0].normalize(0.,1.).getImage());
+      WriteFile.writeNext("gradient phase x"+file.getName(), imagesMatrix[0][1].normalize(0.,1.).getImage());
+      WriteFile.writeNext("gradient phase y"+file.getName(), imagesMatrix[1][1].normalize(0.,1.).getImage());
+   WriteFile.writeNext("gradients dot"+file.getName(), smoothedGrad.normalize(0.,1.).getImage());
+     WriteFile.writeNext("extrema"+file.getName(), plext.normalize(0.,1.).getImage());
+     WriteFile.writeNext("angles"+file.getName(), anglesTangente.getImagesMatrix()[0][0].normalize(0.,1.).getImage());
+     WriteFile.writeNext("radial grad"+file.getName(), rad.normalize(0.,1.).getImage());
      
      System.gc();
       }
