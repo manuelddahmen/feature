@@ -42,16 +42,15 @@ logger.info("gradient computed");
                 Linear linear = new Linear(imagesMatrix[1][0], imagesMatrix[0][0],
                         new PixM(pixMOriginal.getColumns(), pixMOriginal.getLines()));
                 linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
-                PixM smoothedGrad = linear.getImages()[2];
-logger.info("dot ootter product");
+                PixM smoothedGrad = linear.getImages()[2].normalize(0.,1.);
+logger.info("dot outter product");
       PixM pext = pixMOriginal;
      LocalExtrema le =
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
                       3, 0);
-     PixM plext = le.filter(new M3(smoothedGrad
-             .normalize(0.,1.).getImage()
-                      , 1, 1)).getImagesMatrix()[0][0];
+     PixM plext = le.filter(new M3(pext,
+                      , 1, 1)).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum");
      
       AfterGradientBeforeExtremum a 
