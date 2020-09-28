@@ -59,11 +59,11 @@ logger.info("dot outter product");
        
       
      pext = pixMOriginal;
-     LocalExtrema le =
-    new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
+     LocalExtrema le2 =
+         new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
                       5, 0);
-     PixM plext2 = le.filter(new M3(pext,
+     PixM plext2 = le2.filter(new M3(pext,
                       1, 1)
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum 5x5");
