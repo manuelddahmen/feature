@@ -76,7 +76,7 @@ logger.info("dot outter product");
       PixM plext3 = le3.filter(new M3(pext,
                       1, 1)
             ).getImagesMatrix()[0][0].normalize(0.,1.);
-     logger.info("local maximum 5x5");
+     logger.info("local maximum 20x20");
       
       
       AfterGradientBeforeExtremum a 
