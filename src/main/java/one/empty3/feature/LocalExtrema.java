@@ -59,7 +59,7 @@ public class LocalExtrema extends FilterMatPixM {
             for (int i = 0; i < original.columns; i++) {
                 for (int j = 0; j < original.lines; j++) {
                     boolean isMaximum = true;
-                    double maxLocal = original.get(i, j, 0, 0);
+                    double maxLocal = original.getIntensity(i, j, 0, 0);
                     int countOut = 0;
                     int countIn = 0;
                     if(maxLocal>=threshold) {
