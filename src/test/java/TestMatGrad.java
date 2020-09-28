@@ -49,7 +49,7 @@ logger.info("dot ootter product");
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
                       3, 0);
-     le.filter(new M3(smoothedGrad
+     PixM plext = le.filter(new M3(smoothedGrad
              .normalize(0.,1.).getImage()
                       , 1, 1));
      logger.info("local maximum");
@@ -76,7 +76,7 @@ logger.info("angles tangentes");
       WriteFile.writeNext(file.getName()+"image gradient phase x", imagesMatrix[0][1].normalize(0.,1.).getImage());
       WriteFile.writeNext(file.getName()+"image gradient phase y", imagesMatrix[1][1].normalize(0.,1.).getImage());
    WriteFile.writeNext(file.getName()+"image gradients dot", smoothedGrad.normalize(0.,1.).getImage());
-     WriteFile.writeNext(file.getName()+"image extrema", pext.normalize(0.,1.).getImage());
+     WriteFile.writeNext(file.getName()+"image extrema", plext.normalize(0.,1.).getImage());
      WriteFile.writeNext(file.getName()+"image angles", anglesTangente.getImagesMatrix()[0][0].normalize(0.,1.).getImage());
      WriteFile.writeNext(file.getName()+"image radial grad", rad.normalize(0.,1.).getImage());
      
