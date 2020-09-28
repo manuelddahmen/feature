@@ -61,13 +61,13 @@ public class LocalExtrema extends FilterMatPixM {
                     boolean isMaximum = true;
                     double maxLocal = original.get(i, j, 0, 0);
                     int countOut = 0;
-                    int countIn = -1;
+                    int countIn = 0;
                     if(maxLocal>=threshold) {
                         //if (maxLocal > getThreshold()) {
                         for (int ii = -neighbourSize / 2; ii <= neighbourSize / 2; ii++) {
                             for (int ij = neighbourSize / 2; ij <= neighbourSize / 2; ij++) {
                                 double v = original.get(i + ii, j + ij, 0, 0);
-                                if (v >= maxLocal) {
+                                if (v > maxLocal) {
                                     countIn++;
                                 }
                             }
