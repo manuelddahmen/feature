@@ -39,7 +39,8 @@ public class LocalExtrema extends FilterMatPixM {
 
     @Override
     public M3 filter(M3 original) {
-        M3 copy = new M3(original.columns, original.lines);
+        M3 copy = new M3(original.columns, original.lines,
+                        1, 1);
         for (int i = 0; i < original.columns; i++) {
             for (int j = 0; j < original.lines; j++) {
                     //copy.setCompNo(c);
