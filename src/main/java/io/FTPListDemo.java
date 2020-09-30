@@ -36,7 +36,7 @@ public class FTPListDemo {
                 System.out.println("Connect failed");
                 return;
             }
- 
+ // reads settings.xml or prompts user/pass 
             boolean success = ftpClient.login(user, pass);
             showServerReply(ftpClient);
  
@@ -46,7 +46,7 @@ public class FTPListDemo {
             }
  
             // Lists files and directories
-            FTPFile[] files1 = ftpClient.listFiles("/public_ftp");
+            FTPFile[] files1 = ftpClient.listFiles("/empty3ds");
             printFileDetails(files1);
  
             // uses simpler methods
