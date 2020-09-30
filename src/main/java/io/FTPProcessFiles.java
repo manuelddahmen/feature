@@ -18,10 +18,11 @@ public class FTPProcessFiles {
          Properties p = new Properties("./settings.properties");
     }
     public static void main(String[] args) {
-        System.out.println("arg 0 : dir0 or ftp1");
-        System.out.println("arg 1 : one.empty3.io.ProcessFile");
-        System.out.println("arg 2 : dir0 or ftp1 output");
-    
+        System.out.println("arg 0 : dir0 or ftp1 dir path");
+        System.out.println("arg 1 : one.empty3.io.ProcessFile class");
+        System.out.println("arg 2 : dir0 or ftp1 dir output");
+        if(args.length<3)
+             System.exit(-1).
         Properties settings = settings();
         String server = settings.getString("server");
         int port = 21;
