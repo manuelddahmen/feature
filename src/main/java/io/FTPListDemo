@@ -16,7 +16,7 @@ import org.apache.commons.net.ftp.FTPReply;
 public class FTPListDemo {
  
     public static void main(String[] args) {
-        String server = "www.ftpserver.com";
+        String server = "www.empty3.one";
         int port = 21;
         String user = "username";
         String pass = "password";
