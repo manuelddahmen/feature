@@ -3,6 +3,7 @@ import java.util.Properties;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.nio.file.*;
  
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
@@ -21,8 +22,19 @@ public class FTPProcessFiles {
         System.out.println("arg 0 : dir0 or ftp1 dir path");
         System.out.println("arg 1 : one.empty3.io.ProcessFile class");
         System.out.println("arg 2 : dir0 or ftp1 dir output");
+        
         if(args.length<3)
              System.exit(-1).
+         Path path = null;
+         if(args[0].equals("0") {
+             Path path =  Path.of(args[0]);
+         } else if(args[0].equals("1")) {
+              Path.of(new URI(args[0]));
+         }
+            
+        if(path==null) {
+               System.exit(-1);
+        }
         Properties settings = settings();
         String server = settings.getString("server");
         int port = 21;
