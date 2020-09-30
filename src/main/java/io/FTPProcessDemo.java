@@ -13,9 +13,9 @@ import org.apache.commons.net.ftp.FTPReply;
  * on a FTP server using Apache Commons Net API.
  * @author www.codejava.net
  */
-public class FTPListDemo {
-    public Properties settings() {
-         Properties p = new Properties("./settings.xml");
+public class FTPProcessFiles {
+    public static Properties settings() {
+         Properties p = new Properties("./settings.properties");
     }
     public static void main(String[] args) {
         Properties settings = settings();
