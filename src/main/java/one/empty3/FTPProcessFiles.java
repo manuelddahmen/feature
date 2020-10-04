@@ -101,7 +101,7 @@ public class FTPProcessFiles {
             }
         }
     }
-    public void process(Object object){
+    public void process(FTPFile object){
     
     }
  
