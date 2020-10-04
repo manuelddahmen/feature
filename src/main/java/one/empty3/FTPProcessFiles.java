@@ -34,18 +34,6 @@ public class FTPProcessFiles {
         System.out.println("arg 1 : one.empty3.io.ProcessFile class");
         System.out.println("arg 2 : dir0 or ftp1 dir output");
         
-        if(args.length<3)
-             System.exit(-1);
-         Path path = null;
-         if(args[0].equals("0")) {
-             path =  Path.of(args[0]);
-         } else if(args[0].equals("1")) {
-          try {
-              Path.of(new URI(args[0]));
-           } catch(Exception ex) {
-           ex.printStackTrace();
-           }
-         }
             
         if(path==null) {
                System.exit(-1);
@@ -58,6 +46,18 @@ public class FTPProcessFiles {
         String directory = (String)settings.getProperty("directory");
         FTPClient ftpClient = new FTPClient();
  
+        if(args.length<3)
+             System.exit(-1);
+         Path path = null;
+         if(args[0].equals("0")) {
+             //path =  Path.of(args[0]);
+         } else if(args[0].equals("1")) {
+          try {
+              //Path.of(new URI(server+"/"+directory));
+           } catch(Exception ex) {
+           ex.printStackTrace();
+           }
+         }
         try {
  
             ftpClient.connect(server, port);
