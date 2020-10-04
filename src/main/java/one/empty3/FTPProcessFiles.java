@@ -18,8 +18,12 @@ import org.apache.commons.net.ftp.FTPReply;
 public class FTPProcessFiles {
     public static Properties settings() {
          Properties p = new Properties();
-         p.load(
-          new FileInputStream("./settings.properties"));
+         try {
+              p.load(
+                new FileInputStream("./settings.properties"));
+          } catch(Exception ex) {
+              ex.printStackTrace();
+          }
          return p;
     }
     public static void main(String[] args) {
