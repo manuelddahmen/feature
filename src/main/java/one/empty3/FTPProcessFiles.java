@@ -29,7 +29,7 @@ public class FTPProcessFiles {
              System.exit(-1);
          Path path = null;
          if(args[0].equals("0")) {
-             Path path =  Path.of(args[0]);
+             path =  Path.of(args[0]);
          } else if(args[0].equals("1")) {
               Path.of(new URI(args[0]));
          }
@@ -38,10 +38,10 @@ public class FTPProcessFiles {
                System.exit(-1);
         }
         Properties settings = settings();
-        String server = settings.get("server");
-        int port = Integer.parseInt(settings.get("port"));
-        String username = settings.get("username");
-        String password = settings.get("password");
+        String server = settings.getProperty("server");
+        int port = Integer.parseInt(settings.getProperty("port"));
+        String username = settings.getProperty("username");
+        String password = settings.getProperty("password");
  
         FTPClient ftpClient = new FTPClient();
  
