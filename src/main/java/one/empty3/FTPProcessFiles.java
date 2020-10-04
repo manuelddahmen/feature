@@ -24,9 +24,9 @@ public class FTPProcessFiles {
         System.out.println("arg 2 : dir0 or ftp1 dir output");
         
         if(args.length<3)
-             System.exit(-1).
+             System.exit(-1);
          Path path = null;
-         if(args[0].equals("0") {
+         if(args[0].equals("0")) {
              Path path =  Path.of(args[0]);
          } else if(args[0].equals("1")) {
               Path.of(new URI(args[0]));
