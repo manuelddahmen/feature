@@ -37,7 +37,11 @@ public class FTPProcessFiles {
          if(args[0].equals("0")) {
              path =  Path.of(args[0]);
          } else if(args[0].equals("1")) {
+          try {
               Path.of(new URI(args[0]));
+           } catch(Exception ex) {
+           ex.printStackTrace();
+           }
          }
             
         if(path==null) {
