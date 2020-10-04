@@ -55,7 +55,7 @@ public class FTPProcessFiles {
         int port = Integer.parseInt(settings.getProperty("port"));
         String username = (String)settings.getProperty("username");
         String password = (String)settings.getProperty("password");
- 
+        String directory = (String)settings.getProperty("directory");
         FTPClient ftpClient = new FTPClient();
  
         try {
