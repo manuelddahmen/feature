@@ -27,7 +27,7 @@ public class FTPProcessFiles {
          return p;
     }
     public static void main(String[] args) {
-        defaultProcess("1", "testMatGrad", "outputFtp");
+        defaultProcess(new String[]{"1", "testMatGrad", "outputFtp"});
     }
     public static void defaultProcess(String[] args) {
         System.out.println("arg 0 : dir0 or ftp1 dir path");
