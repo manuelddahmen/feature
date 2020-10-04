@@ -37,10 +37,10 @@ public class FTPProcessFiles {
                System.exit(-1);
         }
         Properties settings = settings();
-        String server = settings.getString("server");
-        int port = 21;
-        String user = settings.getString("username");
-        String pass = settings.getString("password");
+        String server = settings.get("server");
+        int port = Integer.parseInt(settings.get("port"));
+        String username = settings.get("username");
+        String password = settings.get("password");
  
         FTPClient ftpClient = new FTPClient();
  
@@ -55,7 +55,7 @@ public class FTPProcessFiles {
                 return;
             }
  // reads settings.xml or prompts user/pass 
-            boolean success = ftpClient.login(user, pass);
+            boolean success = ftpClient.login(username, password);
             showServerReply(ftpClient);
  
             if (!success) {
