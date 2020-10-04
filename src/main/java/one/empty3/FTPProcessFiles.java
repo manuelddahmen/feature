@@ -86,7 +86,7 @@ public class FTPProcessFiles {
             printFileDetails(files1);
  
             // uses simpler methods
-            String[] files2 = ftpClient.listNames();
+            String[] files2 = ftpClient.listNames(directory);
             printNames(files2);
  
  
