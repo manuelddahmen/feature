@@ -16,7 +16,8 @@ import org.apache.commons.net.ftp.FTPReply;
  */
 public class FTPProcessFiles {
     public static Properties settings() {
-         Properties p = new Properties("./settings.properties");
+         Properties p = new Properties(
+          new FileInputStream("./settings.properties"));
     }
     public static void main(String[] args) {
         System.out.println("arg 0 : dir0 or ftp1 dir path");
