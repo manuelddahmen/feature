@@ -82,6 +82,7 @@ public class FTPProcessFiles {
             showServerReply(ftpClient);
          
             FTPFile[] files1 = ftpClient.listFiles();
+          showServerReply(ftpClient);
             printFileDetails(files1);
  
             // uses simpler methods
