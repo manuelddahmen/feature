@@ -35,9 +35,9 @@ public class FTPProcessFiles {
         System.out.println("arg 2 : dir0 or ftp1 dir output");
         
             
-        if(path==null) {
-               System.exit(-1);
-        }
+       // if(path==null) {
+         //      System.exit(-1);
+      //  }
         Properties settings = settings();
         String server =(String) settings.getProperty("host");
         int port = Integer.parseInt(settings.getProperty("port"));
