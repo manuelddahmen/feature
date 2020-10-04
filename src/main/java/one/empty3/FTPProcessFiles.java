@@ -38,10 +38,10 @@ public class FTPProcessFiles {
                System.exit(-1);
         }
         Properties settings = settings();
-        String server = settings.getProperty("server");
+        String server =(String) settings.getProperty("server");
         int port = Integer.parseInt(settings.getProperty("port"));
-        String username = settings.getProperty("username");
-        String password = settings.getProperty("password");
+        String username = (String)settings.getProperty("username");
+        String password = (String)settings.getProperty("password");
  
         FTPClient ftpClient = new FTPClient();
  
