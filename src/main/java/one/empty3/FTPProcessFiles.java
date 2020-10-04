@@ -81,14 +81,14 @@ public class FTPProcessFiles {
             ftpClient.changeWorkingDirectory(directory);
             showServerReply(ftpClient);
          
-            FTPFile[] files1 = ftpClient.listFiles(directory);
+            FTPFile[] files1 = ftpClient.listFiles();
           showServerReply(ftpClient);
             printFileDetails(files1);
- 
+ /*
             // uses simpler methods
             String[] files2 = ftpClient.listNames(directory);
             printNames(files2);
- 
+ */
  
         } catch (IOException ex) {
             System.out.println("Oops! Something wrong happened");
