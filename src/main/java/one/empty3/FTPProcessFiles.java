@@ -1,4 +1,4 @@
-package one.empty3.io;
+package one.empty3;
 import java.util.Properties;
 import java.io.IOException;
 import java.text.DateFormat;
