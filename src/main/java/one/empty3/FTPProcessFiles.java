@@ -26,6 +26,9 @@ public class FTPProcessFiles {
           }
          return p;
     }
+    public void defaultProcess() {
+        main("1", "testMatGrad", "outputFtp");
+    }
     public static void main(String[] args) {
         System.out.println("arg 0 : dir0 or ftp1 dir path");
         System.out.println("arg 1 : one.empty3.io.ProcessFile class");
@@ -48,7 +51,7 @@ public class FTPProcessFiles {
                System.exit(-1);
         }
         Properties settings = settings();
-        String server =(String) settings.getProperty("server");
+        String server =(String) settings.getProperty("host");
         int port = Integer.parseInt(settings.getProperty("port"));
         String username = (String)settings.getProperty("username");
         String password = (String)settings.getProperty("password");
@@ -75,7 +78,7 @@ public class FTPProcessFiles {
             }
  
             // Lists files and directories
-            FTPFile[] files1 = ftpClient.listFiles("/empty3ds");
+            FTPFile[] files1 = ftpClient.listFiles(directory);
             printFileDetails(files1);
  
             // uses simpler methods
@@ -98,6 +101,10 @@ public class FTPProcessFiles {
             }
         }
     }
+    public void process(Object object){
+    
+    }
+ 
  
     private static void printFileDetails(FTPFile[] files) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -110,6 +117,8 @@ public class FTPProcessFiles {
             details += "\t\t" + dateFormater.format(file.getTimestamp().getTime());
  
             System.out.println(details);
+         
+            process(file);
         }
     }
  
