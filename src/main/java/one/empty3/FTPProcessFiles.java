@@ -78,7 +78,9 @@ public class FTPProcessFiles {
             }
  
             // Lists files and directories
-            FTPFile[] files1 = ftpClient.listFiles(directory);
+            ftpClient.listWorkingDirectory(directory
+);
+            FTPFile[] files1 = ftpClient.listFiles();
             printFileDetails(files1);
  
             // uses simpler methods
