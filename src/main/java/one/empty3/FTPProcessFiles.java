@@ -26,10 +26,10 @@ public class FTPProcessFiles {
           }
          return p;
     }
-    public void defaultProcess() {
-        main("1", "testMatGrad", "outputFtp");
-    }
     public static void main(String[] args) {
+        defaultProcess("1", "testMatGrad", "outputFtp");
+    }
+    public static void defaultProcess(String[] args) {
         System.out.println("arg 0 : dir0 or ftp1 dir path");
         System.out.println("arg 1 : one.empty3.io.ProcessFile class");
         System.out.println("arg 2 : dir0 or ftp1 dir output");
