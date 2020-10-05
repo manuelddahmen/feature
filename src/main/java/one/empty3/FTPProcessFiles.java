@@ -81,7 +81,7 @@ public class FTPProcessFiles {
             ftpClient.changeWorkingDirectory(directory);
             showServerReply(ftpClient);
          
-            FTPFile[] files1 = ftpClient.mListDir();
+            FTPFile[] files1 = ftpClient.mListDir(directory);
             showServerReply(ftpClient);
             printFileDetails(files1);
  /*
