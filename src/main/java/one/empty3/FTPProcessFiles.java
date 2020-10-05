@@ -73,6 +73,9 @@ public class FTPProcessFiles {
                 System.out.println("Could not login to the server");
                 return;
             }
+            
+            ftpClient.enterLocalPassiveMode();
+
  
             // Lists files and directories
             ftpClient.changeWorkingDirectory(directory);
