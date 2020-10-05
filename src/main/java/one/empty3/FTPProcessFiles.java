@@ -6,10 +6,7 @@ import java.text.SimpleDateFormat;
 import java.nio.file.*;
 import java.net.URI;
 import java.io.FileInputStream;
-import org.apache.commons.net.ftp.FTPClient;
-import org.apache.commons.net.ftp.FTPFile;
-import org.apache.commons.net.ftp.FTPReply;
- 
+import org.apache.commons.net.ftp.*;
 /**
  * An example program that demonstrates how to list files and directories
  * on a FTP server using Apache Commons Net API.
