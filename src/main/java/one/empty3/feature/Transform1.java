@@ -20,11 +20,10 @@ public class Transform1 extends ProcessFile {
     
     public boolean process(File in, File out)
     {
-   for(String fileStr :  new File("resources").list()) {
-     logger.info("start with " + fileStr);
-    if(!fileStr.endsWith(".jpg"))
-        continue;
-     File file = new File("resources/"+fileStr);
+   
+    if(!in.getName().endsWith(".jpg"))
+        return false;
+    File file = in;
     PixM pixMOriginal = null;
     try {
         pixMOriginal = PixM.getPixM(ImageIO.read(file), 500.0);
