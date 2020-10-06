@@ -121,16 +121,22 @@ public class FTPProcessFiles {
     public static void process(FTPFile object, String remote){
         if(object.isFile()) {
         try {
-                    fi.mkdirs();
+                    
         
         File fi = new File("input/"+remote);
         File fo = new File("output/"+remote);
+        
+            
+        fi.mkdirs();
+        fo.mkdirs();
+            
+            
         FileOutputStream fos =
             new FileOutputStream(fi.getAbsolutePath());
         
         ftpClient.retrieveFile(remote, fos);
         
-fo.mkdirs();
+
         processInstance.process(fi, fo);
         } catch(IOException ex) {
             ex.printStackTrace();
