@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.nio.file.*;
+import java.io.*;
 import java.net.URI;
 import java.io.FileInputStream;
 import org.apache.commons.net.ftp.*;
@@ -132,7 +133,7 @@ public class FTPProcessFiles {
         for (FTPFile file : files) {
             String filePath = directory+"/"+file.getName();
             
-            String remote = 
+            
             process(file, filePath);
         }
     }
