@@ -114,8 +114,8 @@ public class FTPProcessFiles {
         }
     }
     public static void process(FTPFile object, String remote){
-        File fi = new File("input"+remote);
-        File fo = new File("output"+remote);
+        File fi = new File("input/"+remote);
+        File fo = new File("output/"+remote);
         FileOutputStream fos =
             new FileOutputStream(fo);
         
