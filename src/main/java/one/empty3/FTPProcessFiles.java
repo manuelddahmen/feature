@@ -118,7 +118,7 @@ public class FTPProcessFiles {
         FileOutputStream fos =
             new FileOutputStream(fo);
         
-        ftpClient.retrieveFile(String remote, fo);
+        ftpClient.retrieveFile(String remote, fos);
         
         processInstance.process(fi, fo);
     }
