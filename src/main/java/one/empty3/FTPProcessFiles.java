@@ -111,12 +111,12 @@ public class FTPProcessFiles {
         }
     }
     public static void process(FTPFile object, String remote){
-        File fi = new File("input"+remote+"/"+object.getName()));
-        File fo = new File("output"+remote+"/"+object.getName()))
+        File fi = new File("input"+remote+"/"+object.getName());
+        File fo = new File("output"+remote+"/"+object.getName());
         FileOutputStream fos =
-            new FileOutputStream(f);
+            new FileOutputStream(fo);
         
-        ftpClient.retrieveFile(String remote, fos);
+        ftpClient.retrieveFile(String remote, fo);
         
         processInstance.process(fi, fo);
     }
