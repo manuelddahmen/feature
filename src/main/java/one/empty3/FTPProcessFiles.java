@@ -16,6 +16,7 @@ import one.empty3.io.ProcessFile;
 public class FTPProcessFiles {
     static ProcessFile processInstance;
     static String directoryOut;
+    static FTPClient ftpClient;
     public static Properties settings() {
          Properties p = new Properties();
          try {
@@ -48,7 +49,7 @@ public class FTPProcessFiles {
         String directoryOut = directory.substring(0, directory.lastIndexOf("/"));
         
         
-        FTPClient ftpClient = new FTPClient();
+        ftpClient = new FTPClient();
  
         if(args.length<3)
              System.exit(-1);
