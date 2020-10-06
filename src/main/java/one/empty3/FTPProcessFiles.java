@@ -141,10 +141,12 @@ public class FTPProcessFiles {
     private static void printFileDetails(FTPFile[] files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (FTPFile file : files) {
-            String filePath = directory+"/"+file.getName();
+            if(file.isFile()) {
+                String filePath = directory+"/"+file.getName();
             
             
-            process(file, filePath);
+                process(file, filePath);
+            }
         }
     }
  
