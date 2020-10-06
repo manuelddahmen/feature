@@ -118,7 +118,7 @@ public class FTPProcessFiles {
         File fi = new File("input/"+remote);
         File fo = new File("output/"+remote);
         FileOutputStream fos =
-            new FileOutputStream(fi);
+            new FileOutputStream(fi.getAbsolutePath());
         
         ftpClient.retrieveFile(remote, fos);
         
