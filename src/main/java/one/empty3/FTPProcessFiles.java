@@ -141,7 +141,9 @@ public class FTPProcessFiles {
     private static void printFileDetails(FTPFile[] files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (FTPFile file : files) {
-            if(file.isFile()) {
+            if(file.isFile() && !file.getName().equals(".")
+                 && !file.getName().equals("..")
+              ) {
                 String filePath = directory+"/"+file.getName();
             
             
