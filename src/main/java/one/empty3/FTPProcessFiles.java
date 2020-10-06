@@ -13,6 +13,7 @@ import org.apache.commons.net.ftp.*;
  * @author www.codejava.net
  */
 public class FTPProcessFiles {
+    static String directoryOut;
     public static Properties settings() {
          Properties p = new Properties();
          try {
@@ -41,6 +42,10 @@ public class FTPProcessFiles {
         String username = (String)settings.getProperty("username");
         String password = (String)settings.getProperty("password");
         String directory = (String)settings.getProperty("directory");
+       
+        String directoryOut = directory.substring(0, directory.lastIndexOf("/"));
+        
+        
         FTPClient ftpClient = new FTPClient();
  
         if(args.length<3)
@@ -73,7 +78,7 @@ public class FTPProcessFiles {
                 System.out.println("Could not login to the server");
                 return;
             }
-            
+             
             ftpClient.enterLocalPassiveMode();
 
  
@@ -83,7 +88,7 @@ public class FTPProcessFiles {
          
             FTPFile[] files1 = ftpClient.listFiles(directory);
             showServerReply(ftpClient);
-            printFileDetails(files1);
+            printFileDetails(files1,  directory);
  /*
             // uses simpler methods
             String[] files2 = ftpClient.listNames(directory);
@@ -105,8 +110,13 @@ public class FTPProcessFiles {
             }
         }
     }
-    public static void process(FTPFile object){
-    
+    public static void process(FTPFile object, String remote){
+        FileOutputStream fos =
+            new FileOutputStream(new File("output"+remote+"/"+object.getName()));
+        
+        ftpClient.retrieveFile(String remote, fos);
+        
+        processInstance.process();
     }
  
  
@@ -121,8 +131,8 @@ public class FTPProcessFiles {
             details += "\t\t" + dateFormater.format(file.getTimestamp().getTime());
  
             System.out.println(details);
-         
-            process(file);
+            String remote = 
+            process(file, directory);
         }
     }
  
