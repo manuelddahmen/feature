@@ -7,12 +7,14 @@ import java.nio.file.*;
 import java.net.URI;
 import java.io.FileInputStream;
 import org.apache.commons.net.ftp.*;
+import one.empty3.io.ProcessFile;
 /**
  * An example program that demonstrates how to list files and directories
  * on a FTP server using Apache Commons Net API.
  * @author www.codejava.net
  */
 public class FTPProcessFiles {
+    static ProcessFile processInstance;
     static String directoryOut;
     public static Properties settings() {
          Properties p = new Properties();
