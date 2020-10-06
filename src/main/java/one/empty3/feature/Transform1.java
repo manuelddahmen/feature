@@ -1,8 +1,8 @@
 package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
+import java.io.File;
 
-
-public abstract class Transform1 extends ProcessFile {
-
+public class Transform1 extends ProcessFile {
+    public void process(File in, File out){}
 }
