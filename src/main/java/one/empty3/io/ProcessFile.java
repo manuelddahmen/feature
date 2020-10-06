@@ -1,4 +1,4 @@
-package one.empty3.io.ProcessFile;
+package one.empty3.io;
 
 import java.io.File;
 
