@@ -14,7 +14,7 @@ public class Transform1 extends ProcessFile {
   static {
     logger 
 
-            = Logger.getLogger(TestMatGrad.class.getName()); 
+            = Logger.getLogger(Transform1.class.getName()); 
 
   }
     
@@ -29,7 +29,7 @@ public class Transform1 extends ProcessFile {
         pixMOriginal = PixM.getPixM(ImageIO.read(file), 500.0);
     } catch(Exception ex) {
         ex.printStackTrace();
-      continue;
+      return false;
        // assertTrue(false);
       
      }
