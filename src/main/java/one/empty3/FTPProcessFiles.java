@@ -129,7 +129,8 @@ public class FTPProcessFiles {
             
         fi.mkdirs();
         fo.mkdirs();
-            
+        fi.createNewFile();
+        fo.createNewFile();
             
         FileOutputStream fos =
             new FileOutputStream(fi.getAbsolutePath());
