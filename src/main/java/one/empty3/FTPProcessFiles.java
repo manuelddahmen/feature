@@ -121,6 +121,8 @@ public class FTPProcessFiles {
     public static void process(FTPFile object, String remote){
         if(object.isFile()) {
         try {
+                    fi.mkdirs();
+        
         File fi = new File("input/"+remote);
         File fo = new File("output/"+remote);
         FileOutputStream fos =
@@ -128,8 +130,7 @@ public class FTPProcessFiles {
         
         ftpClient.retrieveFile(remote, fos);
         
-        fi.mkdirs();
-        fo.mkdirs();
+fo.mkdirs();
         processInstance.process(fi, fo);
         } catch(IOException ex) {
             ex.printStackTrace();
