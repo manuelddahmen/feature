@@ -15,6 +15,9 @@ import one.empty3.io.ProcessFile;
  * @author www.codejava.net
  */
 public class FTPProcessFiles {
+    public static String getDirname(String s) {
+        return s.substring(0, s.lastIndexOf("/"));
+    }
     static ProcessFile processInstance;
     static String directoryOut;
     static FTPClient ftpClient;
@@ -127,8 +130,8 @@ public class FTPProcessFiles {
         File fo = new File("output/"+remote);
         
             
-        fi.mkdirs();
-        fo.mkdirs();
+        new File(getDirname(fi.getAbsolutePath())).mkdirs();
+        new File(getDirname(fo.getAbsolutePath())).mkdirs();
         fi.createNewFile();
         fo.createNewFile();
             
