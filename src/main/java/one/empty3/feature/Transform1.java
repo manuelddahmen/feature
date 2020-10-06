@@ -2,6 +2,10 @@ package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
 import java.io.File;
+import static org.junit.Assert.*;
+import javax.imageio.ImageIO;
+import one.empty3.feature.*;
+import java.util.logging.*; 
 
 public class Transform1 extends ProcessFile {
     
@@ -107,7 +111,7 @@ logger.info("angles tangentes");
      WriteFile.writeNext("radial grad"+file.getName(), rad.normalize(0.,1.).getImage());
       WriteFile.writeNext("extrema 5x5"+file.getName(), plext2.normalize(0.,1.).getImage());*/
      try {
-       ImageIO.write(out.getAbsolutePath(), "jpg", plext3.normalize(0.,1.).getImage());
+       ImageIO.write(out, "jpg", plext3.normalize(0.,1.).getImage());
      } catch (Exception ex){
          return false;
      }
