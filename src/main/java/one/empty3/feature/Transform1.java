@@ -1,5 +1,8 @@
 package one.empty3.feature;
 
-public class Transform1 {
+import one.empty3.io.ProcessFile;
+
+
+public abstract class Transform1 extends ProcessFile {
 
 }
