@@ -118,13 +118,13 @@ public class FTPProcessFiles {
         File fi = new File("input/"+remote);
         File fo = new File("output/"+remote);
         FileOutputStream fos =
-            new FileOutputStream(fo);
+            new FileOutputStream(fi);
         
         ftpClient.retrieveFile(remote, fos);
         
         fi.mkdirs();
         fo.mkdirs();
-        processInstance.process(fo, fi);
+        processInstance.process(fi, fo);
     }
  
  
