@@ -114,30 +114,26 @@ public class FTPProcessFiles {
         }
     }
     public static void process(FTPFile object, String remote){
-        File fi = new File("input"+remote+"/"+object.getName());
-        File fo = new File("output"+remote+"/"+object.getName());
+        File fi = new File("input"+remote);
+        File fo = new File("output"+remote);
         FileOutputStream fos =
             new FileOutputStream(fo);
         
-        ftpClient.retrieveFile(String remote, fos);
+        ftpClient.retrieveFile(remote, fos);
         
-        processInstance.process(fi, fo);
+        fi.mkdirs();
+        fo.mkdirs();
+        processInstance.process(fo, fi);
     }
  
  
-    private static void printFileDetails(FTPFile[] files) {
+    private static void printFileDetails(FTPFile[] files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (FTPFile file : files) {
-            String details = file.getName();
-            if (file.isDirectory()) {
-                details = "[" + details + "]";
-            }
-            details += "\t\t" + file.getSize();
-            details += "\t\t" + dateFormater.format(file.getTimestamp().getTime());
- 
-            System.out.println(details);
+            String filePath = directory+"/"+file.getName();
+            
             String remote = 
-            process(file, directory);
+            process(file, filePath);
         }
     }
  
