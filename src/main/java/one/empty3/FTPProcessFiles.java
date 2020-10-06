@@ -130,7 +130,7 @@ public class FTPProcessFiles {
         fi.mkdirs();
         fo.mkdirs();
         processInstance.process(fi, fo);
-        } catch(Exception ex) {
+        } catch(FileNotFoundException|IOException ex) {
             ex.printStackTrace();
         }
     }
