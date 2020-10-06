@@ -119,6 +119,7 @@ public class FTPProcessFiles {
         }
     }
     public static void process(FTPFile object, String remote){
+        if(object.isFile()) {
         try {
         File fi = new File("input/"+remote);
         File fo = new File("output/"+remote);
@@ -133,6 +134,7 @@ public class FTPProcessFiles {
         } catch(IOException ex) {
             ex.printStackTrace();
         }
+            }
     }
  
  
