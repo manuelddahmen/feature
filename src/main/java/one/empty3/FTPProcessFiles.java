@@ -29,7 +29,7 @@ public class FTPProcessFiles {
          return p;
     }
     public static void main(String[] args) {
-        defaultProcess(new String[]{"1", "testMatGrad", "outputFtp"});
+        defaultProcess(new String[]{"1", "one.empty3.feature.Tranform1", "outputFtp"});
     }
     public static void defaultProcess(String[] args) {
         System.out.println("arg 0 : dir0 or ftp1 dir path");
@@ -64,8 +64,12 @@ public class FTPProcessFiles {
            ex.printStackTrace();
            }
          }
+        
         try {
- 
+            Class classs = Class.forName(args[1]);
+            Object o = classs.newInstance();
+            if(o instanceof ProcessFile)
+                processInstance = (ProcessFile) o;
             ftpClient.connect(server, port);
             showServerReply(ftpClient);
  
