@@ -103,7 +103,7 @@ public class FTPProcessFiles {
             printNames(files2);
  */
  
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             System.out.println("Oops! Something wrong happened");
             ex.printStackTrace();
         } finally {
