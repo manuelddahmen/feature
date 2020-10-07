@@ -144,7 +144,7 @@ public class Histogram2 extends ProcessFile {
         PixM imageCoutours = new PixM(ImageIO.read(in));
         this.m = imageCoutours;
         BufferedImage file = m.getImage();
-        File directory = "";
+        
         int levels = 10; double min =0.0;
         double radiusIncr = 2;
         for (int i = 0; i < levels; i++) {
@@ -152,9 +152,9 @@ public class Histogram2 extends ProcessFile {
                 BufferedImage img  = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
-                Histogram2 histogram = new Histogram2(m);
+                
                 int finalI = i;
-                List<Circle> pointsOfInterest = histogram.getPointsOfInterest(levels);
+                List<Circle> pointsOfInterest = getPointsOfInterest(levels);
                 pointsOfInterest.stream().forEach(circle -> {
                     if (circle.i >= min && circle.r>0) {
                         Graphics graphics = img.getGraphics();
@@ -196,18 +196,16 @@ public class Histogram2 extends ProcessFile {
                 File fileToWrite3 = new File(directory.getAbsolutePath()
                         + "level"+ finalI + "_NEW_RGB.jpg");
                 fileToWrite.mkdirs();
+                ImageIO.write(img, "JPEG", out);
+                /*
                 ImageIO.write(img, "JPEG", fileToWrite);
                 ImageIO.write(img, "JPEG", fileToWrite2);
                 ImageIO.write(img, "JPEG", fileToWrite3);
-
+*/return true;
             } catch (IOException exception) {
                 exception.printStackTrace();
+                return false;
             }
         }
-    }
-
-    public static void main(String[] args) {
-        int levels = 10;
-        //testCircleSelect(new File("resources/vg1.jpg"), new File("resources/res/"), levels, 0.3, 2);
     }
 }
