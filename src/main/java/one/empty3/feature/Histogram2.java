@@ -13,7 +13,7 @@ import java.util.List;
  * radial density of region (x, y, r)
  * by mean or mean square or somewhat else. 
  */
-public class Histogram2 {
+public class Histogram2 extends ProcessFile {
     public final int numLevels = 5;
     private PixM m = null;
     private double[] max;
@@ -139,7 +139,7 @@ public class Histogram2 {
         return circles;
     }
 
-    public  void process(File in, File out) {
+    public  void processFile(File in, File out) {
 
         PixM imageCoutours = new PixM(ImageIO.read(in));
         this.m = imageCoutours;
