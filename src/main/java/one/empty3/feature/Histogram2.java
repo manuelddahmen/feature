@@ -206,12 +206,12 @@ public class Histogram2 extends ProcessFile {
                 ImageIO.write(img, "JPEG", fileToWrite2);
                 ImageIO.write(img, "JPEG", fileToWrite3);
 */
-                return true;
-            } catch (IOException exception) {
-                exception.printStackTrace();
-                return false;
             }
-        }
-        return false;
+               
+       } catch (IOException exception) {
+            exception.printStackTrace();
+            return false;
+       }
+        return true;
     }
 }
