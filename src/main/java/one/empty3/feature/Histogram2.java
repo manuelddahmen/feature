@@ -1,5 +1,6 @@
 package one.empty3.feature;
 
+import one.empty3.io.ProcessFile;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
