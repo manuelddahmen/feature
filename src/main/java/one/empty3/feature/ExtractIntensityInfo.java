@@ -82,8 +82,8 @@ new File(dirOut)
 
  PixM pix2 = smoothedGrad.copy();
                 PixM out = new PixM(pix2.columns, pix2.lines);//??
-                Histogram2 histogram = new Histogram2(pix2);
-                
+                Histogram2 histogram = new Histogram2();
+                histogram.setM(pix2);
                     List<Histogram2.Circle> pointsOfInterest = histogram.getPointsOfInterest(rMin);
 
                 
