@@ -199,18 +199,19 @@ public class Histogram2 extends ProcessFile {
                         + "level"+ finalI + "_NEW.jpg");
                 File fileToWrite3 = new File(directory.getAbsolutePath()
                         + "level"+ finalI + "_NEW_RGB.jpg");
-                fileToWrite.mkdirs();
+                //fileToWrite.mkdirs();
                 ImageIO.write(img, "JPEG", out);
                 /*
                 ImageIO.write(img, "JPEG", fileToWrite);
                 ImageIO.write(img, "JPEG", fileToWrite2);
                 ImageIO.write(img, "JPEG", fileToWrite3);
-*/return true;
+*/
+                return true;
             } catch (IOException exception) {
                 exception.printStackTrace();
                 return false;
             }
         }
-        retirn false;
+        return false;
     }
 }
