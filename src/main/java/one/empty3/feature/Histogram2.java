@@ -141,7 +141,7 @@ public class Histogram2 extends ProcessFile {
     }
 
     public boolean process(File in, File out) {
-        File directory = newFile(out.getParent());
+        File directory = new File(out.getParent());
         PixM imageCoutours = new PixM(ImageIO.read(in));
         this.m = imageCoutours;
         BufferedImage file = m.getImage();
