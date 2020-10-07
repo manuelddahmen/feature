@@ -140,8 +140,8 @@ public class Histogram2 extends ProcessFile {
         return circles;
     }
 
-    public  void processFile(File in, File out) {
-        String directory = out.getParent();
+    public boolean process(File in, File out) {
+        File directory = newFile(out.getParent());
         PixM imageCoutours = new PixM(ImageIO.read(in));
         this.m = imageCoutours;
         BufferedImage file = m.getImage();
