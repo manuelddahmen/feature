@@ -47,8 +47,8 @@ public class Histogram2 {
      *
      * @param imageCoutours image to histogram
      */
-    public Histogram2(PixM imageCoutours) {
-        this.m = imageCoutours;
+    
+    public Histogram2(){
 
 
         min = new double[numLevels];
@@ -59,8 +59,8 @@ public class Histogram2 {
             max[i] = 1.0*(i+1)/ numLevels;
         }
 
-    }
 
+}
     public void makeHistogram(double r) {
 
     }
@@ -139,15 +139,22 @@ public class Histogram2 {
         return circles;
     }
 
-    public static void testCircleSelect(BufferedImage file, File directory, int levels, double min, double radiusIncr) {
+    public  void process(File in, File out) {
+
+        PixM imageCoutours = new PixM(ImageIO.read(in));
+        this.m = imageCoutours;
+        BufferedImage file = m.getImage();
+        File directory = "";
+        int levels = 10; double min =0.0;
+        double radiusIncr = 2;
         for (int i = 0; i < levels; i++) {
             try {
                 BufferedImage img  = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
-                Histogram2 histogram = new Histogram2(new PixM(img));
+                Histogram2 histogram = new Histogram2(m);
                 int finalI = i;
-                List<Circle> pointsOfInterest = histogram.getPointsOfInterest(10);
+                List<Circle> pointsOfInterest = histogram.getPointsOfInterest(levels);
                 pointsOfInterest.stream().forEach(circle -> {
                     if (circle.i >= min && circle.r>0) {
                         Graphics graphics = img.getGraphics();
