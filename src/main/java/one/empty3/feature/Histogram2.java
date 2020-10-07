@@ -43,7 +43,9 @@ public class Histogram2 extends ProcessFile {
     }
 
     //private final int[][][] levels;
-
+    public void setM(PixM m2) {
+        this.m = m2;
+    }
     /***
      *
      * @param imageCoutours image to histogram
