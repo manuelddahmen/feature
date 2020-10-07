@@ -143,6 +143,7 @@ public class Histogram2 extends ProcessFile {
     }
 
     public boolean process(File in, File out) {
+      try {
         File directory = new File(out.getParent());
         PixM imageCoutours = new PixM(ImageIO.read(in));
         this.m = imageCoutours;
@@ -151,7 +152,7 @@ public class Histogram2 extends ProcessFile {
         int levels = 10; double min =0.0;
         double radiusIncr = 2;
         for (int i = 0; i < levels; i++) {
-            try {
+            
                 BufferedImage img  = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
@@ -210,5 +211,6 @@ public class Histogram2 extends ProcessFile {
                 return false;
             }
         }
+        retirn false;
     }
 }
