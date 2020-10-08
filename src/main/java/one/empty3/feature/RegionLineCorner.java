@@ -57,10 +57,7 @@ public class RegionLineCorner extends ProcessFile {
     public void setM(PixM m2) {
         this.m = m2;
     }
-    /***
-     *
-     * @param imageCoutours image to histogram
-     */
+
     
     public RegionLineCorner(){
 
