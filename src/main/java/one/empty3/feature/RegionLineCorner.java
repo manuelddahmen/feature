@@ -214,15 +214,15 @@ public class RegionLineCorner extends ProcessFile {
                 double de2 = computeAvg(out);
                 //    if de2 < de1
                 //        cancel move 1
-                      if(d2>de1) {
+                if(de2>de1) {
                           // revert
                           out.get(i2).remove(c);
                           out.get(i).add(c);
                           
-                      } else {
+                } else {
                           
-                      }
-                   
+                }
+               
                    de1 = computeAvg(out);
                     
                     if(newlist) {
