@@ -40,6 +40,12 @@ public class RegionLineCorner extends ProcessFile {
                     ", i=" + i +
                     '}';
         }
+        @Override
+        public Object clone() {
+            Circle c = new Circle (x, y, r);
+            c.i =i;
+            return i;
+        }
     }
 
     //private final int[][][] levels;
@@ -165,7 +171,18 @@ public class RegionLineCorner extends ProcessFile {
     
     
     public double computeAvg(List<Circle> circles) {
-         return 0.0;
+         double error = 0.0;
+         for(int i=0; i<circles.size(); i++) {
+             double din = 0.0;
+             for(int j=0; j<circles.get(i).size(); j++) {
+                din += distance(circles.get(i).get(j), 
+                           circles.get(i).
+                                get((j+1)%circles.get(i).size());
+             }
+             if (din>0.0)
+                 error+=1.0;
+         }
+         return error;
     }
     
     
