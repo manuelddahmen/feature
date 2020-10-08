@@ -48,7 +48,7 @@ public class Histogram2 extends ProcessFile {
     }
     /***
      *
-     * @param imageCoutours image to histogram
+     * 
      */
     
     public Histogram2(){
