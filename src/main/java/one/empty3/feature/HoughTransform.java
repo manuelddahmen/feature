@@ -117,7 +117,7 @@ public class HoughTransform extends Thread {
  
     } 
  
-    /** 
+    /*
      * Initialises the hough array. Called by the constructor so you don't need to call it 
      * yourself, however you can use it to reset the transform if you want to plug in another 
      * image (although that image must have the same width and height) 
@@ -150,7 +150,7 @@ public class HoughTransform extends Thread {
         } 
     } 
  
-    /** 
+    /*
      * Adds points from an image. The image is assumed to be greyscale black and white, so all pixels that are 
      * not black are counted as edges. The image should have the same dimensions as the one passed to the constructor. 
      */ 
@@ -193,7 +193,7 @@ public class HoughTransform extends Thread {
         numPoints++; 
     } 
  
-    /** 
+    /*
      * Once points have been added in some way this method extracts the lines and returns them as a Vector 
      * of HoughLine objects, which can be used to draw on the 
      * 
