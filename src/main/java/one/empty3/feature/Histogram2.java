@@ -171,6 +171,7 @@ public class Histogram2 extends ProcessFile {
                         img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
                     }
                 });
+            /*
                 pointsOfInterest.sort(new Comparator<Circle>() {
                     @Override
                     public int compare(Circle o1, Circle o2) {
@@ -182,7 +183,13 @@ public class Histogram2 extends ProcessFile {
                         return 0;
                     }
                 });
-
+*/
+            // grouper les points par similarites et distances
+            double diff =1.0;
+            double epsilon;
+            while(diff>epsilon) {
+                
+            }
                 File fileToWrite = new File(directory.getAbsolutePath()
                         + "level"+ finalI + ".jpg");
                 File fileToWrite2 = new File(directory.getAbsolutePath()
