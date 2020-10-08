@@ -46,6 +46,11 @@ public class RegionLineCorner extends ProcessFile {
             c.i =i;
             return i;
         }
+        
+        public double dist(Circle c) {
+            return Math.sqrt((x-c.x)*(x-c.x)+
+                             (y-c.y)*(y-c.y));
+        }
     }
 
     //private final int[][][] levels;
