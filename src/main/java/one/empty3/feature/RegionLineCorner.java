@@ -121,7 +121,7 @@ public class RegionLineCorner extends ProcessFile {
         double incrx = c2.x-c1.x;
         double incry = c2.y-c1.y;
         // parcourir jusqu a c2.
-        double iAvg;
+        double iAvg =0.0;
         while(c2.dist(ci)>0.0) {
             iAvg += level(ci).i;
             
