@@ -28,7 +28,7 @@ public class Histogram2 extends ProcessFile {
             this.x = x;
             this.y = y;
             this.r = r;
-
+            i = 0.0;
         }
 
         @Override
@@ -174,21 +174,11 @@ public class Histogram2 extends ProcessFile {
                 pointsOfInterest.sort(new Comparator<Circle>() {
                     @Override
                     public int compare(Circle o1, Circle o2) {
-                        double v = o1.y - o1.y;
+                        double v = o2.r - o1.r;
                         if(v<0)
                              return -1;
                         if(v>0)
                              return 1;
-                        if(v==0)
-                        {
-                            double v1 = o1.x - o1.x;
-                            if(v1<0)
-                                return -1;
-                            if(v1>0)
-                                return 1;
-                            if(v1==0)
-                                return 0;
-                        }
                         return 0;
                     }
                 });
