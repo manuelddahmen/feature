@@ -99,7 +99,10 @@ public class RegionLineCorner extends ProcessFile {
     public double nPoints(int x, int y, int w, int h) {
         return 0.0;
     }
-
+    public PixM reconstruct(List<List<Circle>> circle) {
+        PixM rec = m.copy();
+        return rec;
+    }
 
     public List<Circle> getPointsOfInterest(double rMin0) {
         ArrayList<Circle> circles;
