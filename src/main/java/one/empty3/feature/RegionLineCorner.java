@@ -177,7 +177,7 @@ public class RegionLineCorner extends ProcessFile {
              for(int j=0; j<circles.get(i).size(); j++) {
                 din += distance(circles.get(i).get(j), 
                            circles.get(i).
-                                get((j+1)%circles.get(i).size());
+                                get((j+1)%circles.get(i).size()));
              }
              if (din>0.0)
                  error+=1.0;
