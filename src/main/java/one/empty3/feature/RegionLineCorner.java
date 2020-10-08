@@ -123,7 +123,7 @@ public class RegionLineCorner extends ProcessFile {
         // parcourir jusqu a c2.
         double iAvg =0.0;
         while(c2.dist(ci)>0.0) {
-            iAvg += level(ci).i;
+            iAvg += getLevel(ci).i;
             
             
             ci.x = ci.x + incrx/10;
@@ -175,7 +175,7 @@ public class RegionLineCorner extends ProcessFile {
     }
     
     
-    public double computeAvg(List<Circle> circles) {
+    public double computeAvg(List<List<Circle>> circles) {
          double error = 0.0;
          for(int i=0; i<circles.size(); i++) {
              double din = 0.0;
@@ -194,7 +194,7 @@ public class RegionLineCorner extends ProcessFile {
     public List<List<Circle>> group(List<Circle> circles) {
         List<List<Circle>> out = new ArrayList<>();
         out.add(circles);
-        double de1 = computeAvg(circles);
+        double de1 = computeAvg(out);
         for(int i=0; i<out.size(); i++)
             for(int j=0; j<out.get(i).size(); j++) {
                 boolean newlist=false;
@@ -209,7 +209,7 @@ public class RegionLineCorner extends ProcessFile {
                 out.get(i).remove(c);
                 out.get(i2).add(c);
                 //recompute de
-                double de2 = computeAvg(circles);
+                double de2 = computeAvg(out);
                 //    if de2 < de1
                 //        cancel move 1
                       if(d2>de1) {
@@ -221,7 +221,7 @@ public class RegionLineCorner extends ProcessFile {
                           
                       }
                    
-                   de1 = computeAvg(circles);
+                   de1 = computeAvg(out);
                     
                     if(newlist) {
                        break;
