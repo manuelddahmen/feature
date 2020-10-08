@@ -195,7 +195,9 @@ public class RegionLineCorner extends ProcessFile {
         List<List<Circle>> out = new ArrayList<>();
         out.add(circles);
         double de1 = computeAvg(out);
-        for(int i=0; i<out.size(); i++)
+        while(de1>0.0) {
+          for(int i=0; i<out.size(); i++) {
+            
             for(int j=0; j<out.get(i).size(); j++) {
                 boolean newlist=false;
                 for(int i2=0; i2<=out.size(); i2++){
@@ -232,7 +234,8 @@ public class RegionLineCorner extends ProcessFile {
                     /// clear empty lists
             }
                 
-                
+          }
+        }
         return out;
     
     }
