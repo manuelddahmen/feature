@@ -141,21 +141,51 @@ public class RegionLineCorner extends ProcessFile {
         
         return circles;
     }
+    
+    
+    public double computeAvg(List<Circle> circles) {
+         return 0.0;
+    }
+    
+    
     public List<List<Circle>> group(List<Circle> circles) {
         List<List<Circle>> out = new ArrayList<>();
         out.add(circles);
+        double de1 = computeAvg(cicles);
         for(int i=0; i<out.size(); i++)
             for(int j=0; j<out.get(i).size(); j++) {
-                //move i,j -> i2
+                
+                for(int i2=0; i2<=out.size(); i2++){
+                    //move i,j -> i2
+                if(i2==out.size())
+                    //move to new list i2
+                    out.add(new ArrayList<>());
+                Circle c = out.get(i).get(j);
+                out.get(i).remove(c);
+                out.get(i2).add(c);
                 //recompute de
+                double de2 = computeAvg(circles);
                 //    if de2 < de1
                 //        cancel move 1
-                
-                //move to new list i
-                //    recompute de
+                      if(d2>de1) {
+                          // revert
+                          out.get(i2).remove(c);
+                          out.get(i).add(c);
+                          
+                      } else {
+                          
+                      }
+                   if(i2>out.size()) {
+                       break;
+                   }
+                   de1 = computeAvg(circles);
                 //    if de3 < de
                 //        cancel create 1
+                }
+                    /// clear empty lists
             }
+                
+                
         return out;
     
     }
