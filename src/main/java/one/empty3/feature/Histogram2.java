@@ -141,7 +141,13 @@ public class Histogram2 extends ProcessFile {
         
         return circles;
     }
-
+    public List<List<Circle>> group(List<Circle>) {
+        List<List<Circle>> out = new ArrayList<>();
+        
+        
+        return out;
+    
+    }
     public boolean process(File in, File out) {
       try {
         File directory = new File(out.getParent());
@@ -185,11 +191,7 @@ public class Histogram2 extends ProcessFile {
                 });
 */
             // grouper les points par similarites et distances
-            double diff =1.0;
-            double epsilon;
-            while(diff>epsilon) {
-                
-            }
+            group(pointsOfInterest);
                 File fileToWrite = new File(directory.getAbsolutePath()
                         + "level"+ finalI + ".jpg");
                 File fileToWrite2 = new File(directory.getAbsolutePath()
