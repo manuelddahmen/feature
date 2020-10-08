@@ -141,7 +141,7 @@ public class Histogram2 extends ProcessFile {
         
         return circles;
     }
-    public List<List<Circle>> group(List<Circle>) {
+    public List<List<Circle>> group(List<Circle> circles) {
         List<List<Circle>> out = new ArrayList<>();
         
         
