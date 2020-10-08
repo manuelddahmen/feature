@@ -67,7 +67,7 @@ public class RegionLineCorner extends ProcessFile {
     public void makeHistogram(double r) {
 
     }
-    public Circle getLevel(Histogram2.Circle c) {
+    public Circle getLevel(Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -175,12 +175,14 @@ public class RegionLineCorner extends ProcessFile {
         double de1 = computeAvg(cicles);
         for(int i=0; i<out.size(); i++)
             for(int j=0; j<out.get(i).size(); j++) {
-                
+                boolean newlist=false;
                 for(int i2=0; i2<=out.size(); i2++){
                     //move i,j -> i2
-                if(i2==out.size())
+                if(i2==out.size()) {
                     //move to new list i2
                     out.add(new ArrayList<>());
+                    newlist = true;
+                }
                 Circle c = out.get(i).get(j);
                 out.get(i).remove(c);
                 out.get(i2).add(c);
@@ -199,7 +201,7 @@ public class RegionLineCorner extends ProcessFile {
                    
                    de1 = computeAvg(circles);
                     
-                    if(i2==out.size()) {
+                    if(newlist) {
                        break;
                    }
                 //    if de3 < de
