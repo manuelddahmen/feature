@@ -103,7 +103,25 @@ public class RegionLineCorner extends ProcessFile {
         PixM rec = m.copy();
         return rec;
     }
-
+    public double distance(Circle c1, Circle c2) {
+        // ecart moyen et c r1->r2 sur le chemin
+        // entre les deux et c i1-i2 < ecart moyen
+        Circle ci = (Circle) c1.clone();
+        double incrx = c2.x-c1.x;
+        double incry = c2.y-c1.y;
+        // parcourir jusqu a c2.
+        double iAvg;
+        while(c2.dist(ci)>0.0) {
+            iAvg += level(ci).i;
+            
+            
+            c.x = ci.x + incrx/10;
+            c.y = ci.y + incry/10;
+        }
+        if(Math.abs(iAvg)/10<Math.abs(c1.i-c2.i)*2)
+            return 0.0;
+        return 1.0;
+    }
     public List<Circle> getPointsOfInterest(double rMin0) {
         ArrayList<Circle> circles;
         circles = new ArrayList<>();
