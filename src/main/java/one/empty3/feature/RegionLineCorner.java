@@ -175,10 +175,12 @@ public class RegionLineCorner extends ProcessFile {
                       } else {
                           
                       }
-                   if(i2>out.size()) {
+                   
+                   de1 = computeAvg(circles);
+                    
+                    if(i2==out.size()) {
                        break;
                    }
-                   de1 = computeAvg(circles);
                 //    if de3 < de
                 //        cancel create 1
                 }
