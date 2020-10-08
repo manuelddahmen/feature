@@ -46,11 +46,7 @@ public class Histogram {
 
     //private final int[][][] levels;
 
-    /***
-     *
-     * @param image image to histogram
-     * @param levels 0..n exemple = level[i][x][y] = number of points of intensity ((i/n), (i+1)/n)
-     */
+
     public Histogram(PixM image, int levels, double min, double radiusIncr, double levelMin) {
         this.diffLevel = 1.0 / levels;
         this.min = min;
