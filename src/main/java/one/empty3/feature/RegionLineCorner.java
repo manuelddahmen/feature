@@ -141,10 +141,21 @@ public class RegionLineCorner extends ProcessFile {
         
         return circles;
     }
-    public List<List<Circle>> group(List<Circle>) {
+    public List<List<Circle>> group(List<Circle> circles) {
         List<List<Circle>> out = new ArrayList<>();
-        
-        
+        out.add(circles);
+        for(int i=0; i<out.size(); i++)
+            for(int j=0; j<out.get(i).size(); j++) {
+                //move i,j -> i2
+                //recompute de
+                //    if de2 < de1
+                //        cancel move 1
+                
+                //move to new list i
+                //    recompute de
+                //    if de3 < de
+                //        cancel create 1
+            }
         return out;
     
     }
