@@ -44,7 +44,7 @@ public class RegionLineCorner extends ProcessFile {
         public Object clone() {
             Circle c = new Circle (x, y, r);
             c.i =i;
-            return i;
+            return c;
         }
         
         public double dist(Circle c) {
