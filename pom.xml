@@ -94,6 +94,7 @@
                     <skipTests>false</skipTests>
                     <forkMode>once</forkMode>
                     <argLine>-Xms4000m -Xmx4000m</argLine>
+                     <skipTests>true</skipTests>
                 </configuration>
             </plugin>
             <plugin>
