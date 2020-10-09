@@ -239,7 +239,7 @@ public class RegionLineCorner extends ProcessFile {
     public boolean process(File in, File out) {
       try {
         File directory = new File(out.getParent());
-        PixM imageCoutours = new PixM(ImageIO.read(in));
+        PixM imageCoutours = PixM.getPixM(ImageIO.read(in));
         this.m = imageCoutours;
         BufferedImage file = m.getImage();
         
