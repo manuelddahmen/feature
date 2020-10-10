@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
-
+import one.empty3.library.colorcomp;
 /*** 
  * radial density of region (x, y, r)
  * by mean or mean square or somewhat else. 
