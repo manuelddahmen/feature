@@ -193,7 +193,7 @@ public class RegionLineCorner extends ProcessFile {
         out.add(circles);
         double de1 = computeAvg(out);
 int nit = 0;
-        while(de1>0.0 && nit<10000000) {
+        while(de1>0.0 && nit<10000) {
           for(int i=0; i<out.size(); i++) {
             
             for(int j=0; j<out.get(i).size(); j++) {
@@ -273,7 +273,7 @@ nit++;
             // petits cercles successifs entoures 
             // de grands ou plus grands cercles = 
             // coins, corners et possibles features.
-                pointsOfInterest.sort(new Comparator<Circle>() {
+               /* pointsOfInterest.sort(new Comparator<Circle>() {
                     @Override
                     public int compare(Circle o1, Circle o2) {
                         double v = o2.r - o1.r;
@@ -283,7 +283,7 @@ nit++;
                              return 1;
                         return 0;
                     }
-                });
+                });*/
             Graphics g = img4.getGraphics();
             // grouper les points par similarites et distances
             List<List<Circle>> circles = group(pointsOfInterest);
@@ -291,7 +291,7 @@ nit++;
                      Color color = Colors.random();
                       for(Circle c : lc) {
                           
-   }          img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
+   }          img4.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
               
 }
                 File fileToWrite = new File(directory.getAbsolutePath()
@@ -301,7 +301,7 @@ nit++;
                 File fileToWrite3 = new File(directory.getAbsolutePath()
                         + "level"+ finalI + "_NEW_RGB.jpg");
                 //fileToWrite.mkdirs();
-                ImageIO.write(img, "JPEG", out);
+                ImageIO.write(img4, "JPEG", out);
                 /*
                 ImageIO.write(img, "JPEG", fileToWrite);
                 ImageIO.write(img, "JPEG", fileToWrite2);
