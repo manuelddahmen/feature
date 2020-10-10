@@ -57,7 +57,7 @@ public class RegionLineCorner extends ProcessFile {
     public void setM(PixM m2) {
         this.m = m2;
     }
-
+    
     
     public RegionLineCorner(){
 
@@ -291,7 +291,7 @@ nit++;
                      Color color = Colors.random();
                       for(Circle c : lc) {
                           
-                          img4.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
+                          img4.setRGB((int) (c.x), (int) (c.y), color.getRGB());
                       }
                   }
                 File fileToWrite = new File(directory.getAbsolutePath()
