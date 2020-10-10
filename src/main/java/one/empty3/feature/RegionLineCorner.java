@@ -252,6 +252,7 @@ nit++;
                 BufferedImage img  = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+                BufferedImage img4 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 
                 int finalI = i;
                 List<Circle> pointsOfInterest = getPointsOfInterest(levels);
@@ -283,11 +284,15 @@ nit++;
                         return 0;
                     }
                 });
+            Graphics g = img4.getGraphics();
             // grouper les points par similarites et distances
             List<List<Circle>> circles = group(pointsOfInterest);
-                 for(List<Cirvle> lc : circles){
+                 for(List<Circle> lc : circles){
+                     Color color = Colors.random();
                       for(Circle c : lc) {
-   }
+                          
+   }          img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
+              
 }
                 File fileToWrite = new File(directory.getAbsolutePath()
                         + "level"+ finalI + ".jpg");
