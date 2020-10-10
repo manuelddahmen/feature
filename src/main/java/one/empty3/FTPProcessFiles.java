@@ -45,7 +45,7 @@ public class FTPProcessFiles {
          return p;
     }
     public static void main(String[] args) {
-        defaultProcess(new String[]{"1", "one.empty3.feature.RegionLineCorner", "outputFtp"});
+        defaultProcess(new String[]{"settings.properties"});
     }
     public static void defaultProcess(String[] args) {
         System.out.println("arg 0 : dir0 or ftp1 dir path");
@@ -57,7 +57,7 @@ public class FTPProcessFiles {
          //      System.exit(-1);
       //  }
         
-        Properties set = defProcess(arg[0]);
+       // Properties set = defProcess(args[0]);
         
         Properties settings = settings();
         String server =(String) settings.getProperty("host");
@@ -162,8 +162,10 @@ public class FTPProcessFiles {
               ) {
                 String filePath = directory+"/"+file.getName();
                 
-               Logger.getLogger(this.getClass()).info(file.getName());
-            
+               //Logger.getLogger(getClass()).info(file.getName());
+                System.out.println(file.getName());
+                
+                
                 process(file, filePath);
             }
         }
