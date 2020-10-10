@@ -291,9 +291,9 @@ nit++;
                      Color color = Colors.random();
                       for(Circle c : lc) {
                           
-   }          img4.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
-              
-}
+                          img4.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
+                      }
+                  }
                 File fileToWrite = new File(directory.getAbsolutePath()
                         + "level"+ finalI + ".jpg");
                 File fileToWrite2 = new File(directory.getAbsolutePath()
