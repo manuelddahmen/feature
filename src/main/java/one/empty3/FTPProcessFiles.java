@@ -9,6 +9,8 @@ import java.net.URI;
 import java.io.FileInputStream;
 import org.apache.commons.net.ftp.*;
 import one.empty3.io.ProcessFile;
+import java.util.logging.Logger;
+
 /**
  * An example program that demonstrates how to list files and directories
  * on a FTP server using Apache Commons Net API.
@@ -156,7 +158,8 @@ public class FTPProcessFiles {
                  && !file.getName().equals("..")
               ) {
                 String filePath = directory+"/"+file.getName();
-            
+                
+               Logger.getLogger(this.getClass()).info(file.getName());
             
                 process(file, filePath);
             }
