@@ -165,7 +165,7 @@ public class RegionLineCorner extends ProcessFile {
                 }
 
             }
-        }
+        
 
         
         return circles;
