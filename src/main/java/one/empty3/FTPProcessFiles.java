@@ -33,6 +33,17 @@ public class FTPProcessFiles {
           }
          return p;
     }
+    
+    public static defProcess(InputStream is) {
+        Properties p = new Properties();
+        p.load(is);
+        try {
+              p.load(is);
+          } catch(Exception ex) {
+              ex.printStackTrace();
+          }
+         return p;
+    }
     public static void main(String[] args) {
         defaultProcess(new String[]{"1", "one.empty3.feature.RegionLineCorner", "outputFtp"});
     }
@@ -45,33 +56,25 @@ public class FTPProcessFiles {
        // if(path==null) {
          //      System.exit(-1);
       //  }
+        
+        Properties set = defProcess(arg[0]);
+        
         Properties settings = settings();
         String server =(String) settings.getProperty("host");
         int port = Integer.parseInt(settings.getProperty("port"));
         String username = (String)settings.getProperty("username");
         String password = (String)settings.getProperty("password");
         String directory = (String)settings.getProperty("directory");
-       
+        String classname = (String)settings.getProperty("classname");
         String directoryOut = directory.substring(0, directory.lastIndexOf("/"));
         
         
         ftpClient = new FTPClient();
  
-        if(args.length<3)
-             System.exit(-1);
-         Path path = null;
-         if(args[0].equals("0")) {
-             //path =  Path.of(args[0]);
-         } else if(args[0].equals("1")) {
-          try {
-              //Path.of(new URI(server+"/"+directory));
-           } catch(Exception ex) {
-           ex.printStackTrace();
-           }
-         }
-        
         try {
-            Class classs = Class.forName(args[1]);
+            Class classs = Class.forName(
+                classname
+            );
             Object o = classs.newInstance();
             if(o instanceof ProcessFile)
                 processInstance = (ProcessFile) o;
