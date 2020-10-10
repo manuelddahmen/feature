@@ -163,7 +163,6 @@ public class RegionLineCorner extends ProcessFile {
                         circles.add(level);
                     }
                 }
-
             }
         
 
