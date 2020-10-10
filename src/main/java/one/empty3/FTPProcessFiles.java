@@ -34,7 +34,7 @@ public class FTPProcessFiles {
          return p;
     }
     
-    public static Properties defProcess(InputStream is) {
+    public static Properties defProcess(FileInputStream is) {
         Properties p = new Properties();
         p.load(is);
         try {
