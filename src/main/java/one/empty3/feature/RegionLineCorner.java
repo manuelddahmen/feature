@@ -192,7 +192,8 @@ public class RegionLineCorner extends ProcessFile {
         List<List<Circle>> out = new ArrayList<>();
         out.add(circles);
         double de1 = computeAvg(out);
-        while(de1>0.0) {
+int nit = 0;
+        while(de1>0.0 && nit<10000000) {
           for(int i=0; i<out.size(); i++) {
             
             for(int j=0; j<out.get(i).size(); j++) {
@@ -232,6 +233,7 @@ public class RegionLineCorner extends ProcessFile {
             }
                 
           }
+nit++;
         }
         return out;
     
@@ -282,7 +284,11 @@ public class RegionLineCorner extends ProcessFile {
                     }
                 });
             // grouper les points par similarites et distances
-            group(pointsOfInterest);
+            List<List<Circle>> circles = group(pointsOfInterest);
+                 for(List<Cirvle> lc : circles){
+                      for(Circle c : lc) {
+   }
+}
                 File fileToWrite = new File(directory.getAbsolutePath()
                         + "level"+ finalI + ".jpg");
                 File fileToWrite2 = new File(directory.getAbsolutePath()
