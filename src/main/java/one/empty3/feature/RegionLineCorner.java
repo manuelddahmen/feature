@@ -255,7 +255,10 @@ nit++;
                 
                 int finalI = i;
                 List<Circle> pointsOfInterest = getPointsOfInterest(levels);
-                pointsOfInterest.stream().forEach(circle -> {
+                
+            /*
+            
+            pointsOfInterest.stream().forEach(circle -> {
                     if (circle.i >= min && circle.r>0) {
                         Graphics graphics = img.getGraphics();
                         graphics.setColor(Color.WHITE);
@@ -266,7 +269,7 @@ nit++;
                         graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
                         img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
                     }
-                });
+                });*/
             // grands;cercles = grandes iles les separer
             // verifier les distances et constantes i
             // petits cercles successifs entoures 
