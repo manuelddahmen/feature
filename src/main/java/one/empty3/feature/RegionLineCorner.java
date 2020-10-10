@@ -192,7 +192,7 @@ public class RegionLineCorner extends ProcessFile {
         out.add(circles);
         double de1 = computeAvg(out);
 int nit = 0;
-        while(de1>0.0 && nit<10000) {
+        while(de1>0.0 && nit<1000) {
           for(int i=0; i<out.size(); i++) {
             
             for(int j=0; j<out.get(i).size(); j++) {
