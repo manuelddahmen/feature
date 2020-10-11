@@ -18,7 +18,10 @@ import java.util.logging.Logger;
  */
 public class FTPProcessFiles {
     static String classname;
-    public static String dirin ="";
+    public static String currentDirin ="";
+    public static String currentDirout ="";
+    public static String currentFileName ="";
+
     public static String getDirname(String s) {
         return s.substring(0, s.lastIndexOf("/"));
     }
@@ -77,9 +80,11 @@ public class FTPProcessFiles {
         String [] classnamesArr = classnames.split(",");
       try {  
           int i=0;
+          currentDirin = "":
+          
         for (String classname2 : classnamesArr) {
             classname = classname2;
-            
+            currentDirout = "output/"+classname+"/";
             Class classs = Class.forName(
                 classname
             );
@@ -117,7 +122,7 @@ public class FTPProcessFiles {
             
                  printFileDetails(files1,  directory);
             } else {
-                printFileDetails(new File(dirin).list(),  directory);
+                printFileDetails(new File(currentDirin).list(),  currentDirin);
             }
  /*
             // uses simpler methods
@@ -125,6 +130,10 @@ public class FTPProcessFiles {
             printNames(files2);
  */
             i++;
+            
+            
+            currentDirin = currentDirout:
+            
             }
         } catch (Exception ex) {
             System.out.println("Oops! Something wrong happened");
@@ -146,8 +155,8 @@ public class FTPProcessFiles {
         try {
                     
         
-        File fi = new File("input/"+remote);
-        File fo = new File("output/"+remote);
+        File fi = File(currentDirin+"/"+object.getName());
+        File fo = new File(currentDirout+"/"+object.getName());
         
             
         new File(getDirname(fi.getAbsolutePath())).mkdirs();
@@ -176,13 +185,13 @@ public class FTPProcessFiles {
         
         
     }
- public static void process(File object, String dirout){
+ public static void process(File object){
         if(object.isFile()) {
         try {
                     
         
         File fi = object;
-        File fo = new File(dirout+"/"+object.getName());
+        File fo = new File(currentDirout+"/"+object.getName());
         
             
         new File(getDirname(fi.getAbsolutePath())).mkdirs();
@@ -210,13 +219,13 @@ public class FTPProcessFiles {
             if(file.isFile() && !file.getName().equals(".")
                  && !file.getName().equals("..")
               ) {
-                String filePath = directory+"/"+classname+"/"+file.getName();
-                
+                String filePath ="";
+                String remoteFile = ditectory+"/"+file.getName();
                //Logger.getLogger(getClass()).info(file.getName());
-                System.out.println(file.getName());
+                System.out.println(file.getName(), remoteFile);
                 
                 
-                process(file, filePath);
+                process(file);
             }
         }
     }
