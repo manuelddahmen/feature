@@ -1,6 +1,6 @@
 package one.empty3.feature;
 
-public class HarrisToPointInterest extends FilterMatPixM {
+public class HarrisToPointInterest extends FilterPixM {
     private M3 m;
     public HarrisToPointInterest(int c, int l) {
         super(c, l);
