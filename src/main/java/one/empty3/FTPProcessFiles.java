@@ -74,9 +74,9 @@ public class FTPProcessFiles {
  
         
         String [] classnamesArr = classnames.split(",");
-        
+      try {  
         for (String classname : classnamesArr) {
-        try {
+        
             Class classs = Class.forName(
                 classnames
             );
