@@ -73,7 +73,7 @@ public class FTPProcessFiles {
         ftpClient = new FTPClient();
  
         
-        String [] classnamesArr = classnames.split",");
+        String [] classnamesArr = classnames.split(",");
         
         for (String classname : classnamesArr) {
         try {
@@ -121,7 +121,6 @@ public class FTPProcessFiles {
             String[] files2 = ftpClient.listNames(directory);
             printNames(files2);
  */
- }
         } catch (Exception ex) {
             System.out.println("Oops! Something wrong happened");
             ex.printStackTrace();
