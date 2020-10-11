@@ -33,9 +33,9 @@ public class FeatureDescriptor extends PixM  {
 
     for(File file : set) {
      try {
-     fd.setPixM(new PixM(ImageIO.read(file)));
+      PixM pm = new PixM(ImageIO.read(file)));
      for(FeatureDescriptor f : fd) {
-       
+       f.setPixM(pm);
        for(int i=0; i<poi.size(); i++) {
             double de = deltaEnergy((int)(poi.get(i).getX(), (int)(poi.get(i).getY()));
             if(de<0.5) {
