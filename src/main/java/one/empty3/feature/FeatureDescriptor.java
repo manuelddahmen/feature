@@ -27,6 +27,6 @@ public class FeatureDescriptor extends PixM  {
       return 1.0;
   }
   public double filter(double x, double y) {
-     
+     return 0.0;
   }
 }
