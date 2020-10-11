@@ -85,7 +85,7 @@ public class FTPProcessFiles {
                 processInstance = (ProcessFile) o;
             
             if(i==0) {
-            ftpClient.connect(server, port);
+              ftpClient.connect(server, port);
             showServerReply(ftpClient);
  
             int replyCode = ftpClient.getReplyCode();
@@ -121,6 +121,7 @@ public class FTPProcessFiles {
             String[] files2 = ftpClient.listNames(directory);
             printNames(files2);
  */
+            }
         } catch (Exception ex) {
             System.out.println("Oops! Something wrong happened");
             ex.printStackTrace();
