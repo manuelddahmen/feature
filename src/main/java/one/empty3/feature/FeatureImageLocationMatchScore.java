@@ -9,4 +9,5 @@ public class FeatureImageLocationMatchScore {
   private int y;
   private File image;
   private double deltaEnergy;
+  
 }
