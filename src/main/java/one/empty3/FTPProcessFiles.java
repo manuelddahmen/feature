@@ -117,7 +117,7 @@ public class FTPProcessFiles {
             
                  printFileDetails(files1,  directory);
             } else {
-                printFileDetails(dirin.list(),  directory);
+                printFileDetails(new File(dirin).list(),  directory);
             }
  /*
             // uses simpler methods
