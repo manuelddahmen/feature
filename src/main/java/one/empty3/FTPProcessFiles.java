@@ -177,7 +177,7 @@ public class FTPProcessFiles {
             
             
             
-        dirin = (fo.getParent());
+       // dirin = (fo.getParent());
         } catch(IOException ex) {
             ex.printStackTrace();
         }
@@ -206,7 +206,7 @@ public class FTPProcessFiles {
         processInstance.process(fi, fo);
             
             
-        dirin = (fo.getParent());
+     //   dirin = (fo.getParent());
         } catch(IOException ex) {
             ex.printStackTrace();
         }
@@ -220,9 +220,9 @@ public class FTPProcessFiles {
                  && !file.getName().equals("..")
               ) {
                 String filePath ="";
-                String remoteFile = ditectory+"/"+file.getName();
+                String remoteFile = directory+"/"+file.getName();
                //Logger.getLogger(getClass()).info(file.getName());
-                System.out.println(file.getName(), remoteFile);
+                System.out.println(file.getName() + " "+ remoteFile);
                 
                 
                 process(file);
