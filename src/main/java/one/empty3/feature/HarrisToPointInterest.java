@@ -35,15 +35,18 @@ public class HarrisToPointInterest extends FilterPixM {
      }
     
     public List<Point3D> getPoi() {
+        LocalExtrema le = new LocalExtrema(m.columns,
+                    lines, 3, 0);
+        PixM m2 = le.filter(new M3(m, 1, 1)).getImahesMatrix()[0][0];
         List<Point3D> poi = new ArrayList<>();
         for(int i=0; i<columns; i++)
             for(int j=0; j<lines; j++)
-                if(m.get(i,j)!=0 && !Double.isNaN( m.get(i,j))
-                    && !Double.isInfinite(m.get(i,j)))
+                if(m2.get(i,j)!=0 && !Double.isNaN( m2.get(i,j))
+                    && !Double.isInfinite(m2.get(i,j)))
                     poi.add(new Point3D(
                        (double) i,
                        (double) j,
-                       m.get(i, j)
+                       m2.get(i, j)
                     ));
         return poi;
     }
