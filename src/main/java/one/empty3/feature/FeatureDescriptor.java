@@ -6,6 +6,9 @@ import java.util.*;
 import java.io.File;
 
 public class FeatureDescriptor extends PixM  {
+  
+  
+  
   private PixM m;
   private PixM pi;
   private List<Point3D> poi;
@@ -65,4 +68,11 @@ public class FeatureDescriptor extends PixM  {
  
      return 0.0;
   }
+  
+  
+  public static double[][][] getFeatureSampleDescr(int mSize,
+          double max, double[][] anglesIntensitiesRatio) {
+    double[][][] m = new double [anglesIntensities.length][mSize][mSize];
+        return m;
+    }
 }
