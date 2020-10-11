@@ -225,7 +225,7 @@ public class FTPProcessFiles {
                 System.out.println(file.getName() + " "+ remoteFile);
                 
                 
-                process(file);
+                process(file, directory);
             }
         }
     }
