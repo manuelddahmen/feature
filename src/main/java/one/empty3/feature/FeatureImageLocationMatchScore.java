@@ -4,7 +4,8 @@ import java.io.File;
 
 public class FeatureImageLocationMatchScore {
 // matrix size, matrix values, thresoldused, x, y, imageLocation, deltaE??
-  private sizeSquare = 3;
+  private int sizeSquare = 3;
+  private int componentSize;
   private PixM values;
   private double thresoldused = 0.5;
   private int x ;
