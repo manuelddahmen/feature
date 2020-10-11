@@ -55,7 +55,7 @@ public class FeatureDescriptor extends PixM  {
              
  
   public double deltaEnergy(int i, int j) {
-      return m.getColorsRegion(i-columns/2, j-lines/2, columns, lines, columns, lines).distance(this);
+      return pi.getColorsRegion(i-columns/2, j-lines/2, columns, lines, columns, lines).distance(this);
   }
   
   
