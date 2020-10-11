@@ -2,7 +2,7 @@ package one.empty3.feature;
 
 import one.empty3.library.Point3D;
 import java.util.*;
-
+import java.io.File;
 
 public class FeatureDescriptor extends PixM  {
   private PixM m;
@@ -16,8 +16,8 @@ public class FeatureDescriptor extends PixM  {
   }
   public void setPixM(PixM m) {
       this.m = m;
-      HarrisToPointsInterest h = new HarrisToPointsIntetest();
-      pi = m.applyFilter(h);;
+      HarrisToPointInterest h = new HarrisToPointInterest();
+      pi = m.applyFilter(h);
       poi = h.getPoi();
   }
   
