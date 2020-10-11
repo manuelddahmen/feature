@@ -43,7 +43,7 @@ public class FeatureDescriptor extends PixM  {
             }
        }
       }
-     } catch(IOException ex) 
+     } catch(Exception ex) 
                                     {
        ex.printStackTrace();
                                     }
