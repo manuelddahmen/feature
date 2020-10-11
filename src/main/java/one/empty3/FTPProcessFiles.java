@@ -75,6 +75,7 @@ public class FTPProcessFiles {
         
         String [] classnamesArr = classnames.split(",");
       try {  
+          int i=0;
         for (String classname : classnamesArr) {
         
             Class classs = Class.forName(
@@ -121,6 +122,7 @@ public class FTPProcessFiles {
             String[] files2 = ftpClient.listNames(directory);
             printNames(files2);
  */
+            i++;
             }
         } catch (Exception ex) {
             System.out.println("Oops! Something wrong happened");
@@ -158,12 +160,16 @@ public class FTPProcessFiles {
         
 
         processInstance.process(fi, fo);
+            
+            
+            
+        dirin = (fo.getParent());
         } catch(IOException ex) {
             ex.printStackTrace();
         }
             }
         
-        dirin = (fo.getParent());
+        
     }
  public static void process(File object, String dirout){
         if(object.isFile()) {
