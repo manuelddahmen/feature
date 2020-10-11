@@ -5,8 +5,8 @@ public class FeatureImageLocationMatchScore {
   private sizeSquare = 3;
   private PixM values;
   private double thresoldused = 0.5;
-  int x ;
-  int y;
-  File image;
-  double deltaEnergy;
+  private int x ;
+  private int y;
+  private File image;
+  private double deltaEnergy;
 }
