@@ -161,6 +161,9 @@ public class FTPProcessFiles {
             
         new File(getDirname(fi.getAbsolutePath())).mkdirs();
         new File(getDirname(fo.getAbsolutePath())).mkdirs();
+            
+            Logger.getLogger(FTPProcessFiles.class.getName()).info("fi"+fi.getAbsolutePath());
+            Logger.getLogger(FTPProcessFiles.class.getName()).info("fo"+fo.getAbsolutrPath());                                 
         fi.createNewFile();
         fo.createNewFile();
             
