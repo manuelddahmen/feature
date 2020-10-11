@@ -16,7 +16,8 @@ public class FeatureDescriptor extends PixM  {
   }
   public void setPixM(PixM m) {
       this.m = m;
-      HarrisToPointInterest h = new HarrisToPointInterest();
+      HarrisToPointInterest h = new HarrisToPointInterest(
+      m.columns, m.lines);
       pi = m.applyFilter(h);
       poi = h.getPoi();
   }
