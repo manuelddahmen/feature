@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Logger;
 import one.empty3.library.core.lighting.Colors;
 /*** 
  * radial density of region (x, y, r)
