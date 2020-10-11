@@ -17,14 +17,14 @@ public class FeatureDescriptor extends PixM  {
   public void setPixM(PixM m) {
       this.m = m;
       HarrisToPointInterest h = new HarrisToPointInterest(
-      m.columns, m.lines);
+          m.columns, m.lines);
       pi = m.applyFilter(h);
       poi = h.getPoi();
   }
   // table line
   // featuredescriptor, image, imagelocation, matchscore* 
   // *e min
-  public  List<FeatureImageLocationMatchScore> (FeatureDescriptor[], 
+  public  List<FeatureImageLocationMatchScore> matchesAll(FeatureDescriptor[], 
             List<Point3D> poi
                                   ){
   
