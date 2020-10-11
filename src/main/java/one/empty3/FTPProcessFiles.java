@@ -222,7 +222,7 @@ public class FTPProcessFiles {
                 String filePath ="";
                 String remoteFile = directory+"/"+file.getName();
                //Logger.getLogger(getClass()).info(file.getName());
-                System.out.println(file.getName() + " "+ remoteFile);
+                System.out.println(file.getName() + " "+ remote);
                 
                 
                 process(file, directory);
