@@ -25,7 +25,7 @@ public class HarrisToPointInterest extends FilterPixM {
      }
      public double filter(double x, double y) {
          int i=(int)x, j=(int)y;
-         double gxgx, gxgy, gygx, gygy;
+         //double gxgx, gxgy, gygx, gygy;
          double gpgx = m.get(i+1, j,0,0)-m.get(i,j,0,0);
          double gpgy = m.get(i, j+1,0,0)-m.get(i,j,0,0);
          double gpgx1 = m.get(i, j,0,0)-m.get(i-1,j,0,0);
