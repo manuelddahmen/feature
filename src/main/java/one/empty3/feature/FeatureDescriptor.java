@@ -37,7 +37,7 @@ public class FeatureDescriptor extends PixM  {
      for(FeatureDescriptor f : fd) {
        f.setPixM(pm);
        for(int i=0; i<poi.size(); i++) {
-            double de = deltaEnergy((int)(poi.get(i).getX()), (int)(poi.get(i).getY()));
+            double de = deltaEnergy((int)(float)(poi.get(i).getX()), (int)(float)(poi.get(i).getY()));
             if(de<0.5) {
                 poi.add(new FeatureImageLocationMatchScore());
             }
