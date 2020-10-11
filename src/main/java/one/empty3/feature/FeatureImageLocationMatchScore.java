@@ -1,5 +1,7 @@
 package one.empty3.feature;
 
+import java.io.File;
+
 public class FeatureImageLocationMatchScore {
 // matrix size, matrix values, thresoldused, x, y, imageLocation, deltaE??
   private sizeSquare = 3;
