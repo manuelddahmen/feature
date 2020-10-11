@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * @author www.codejava.net
  */
 public class FTPProcessFiles {
+    static String classname;
     public static String dirin ="";
     public static String getDirname(String s) {
         return s.substring(0, s.lastIndexOf("/"));
@@ -76,10 +77,10 @@ public class FTPProcessFiles {
         String [] classnamesArr = classnames.split(",");
       try {  
           int i=0;
-        for (String classname : classnamesArr) {
+        for (classname : classnamesArr) {
         
             Class classs = Class.forName(
-                classnames
+                classname
             );
             Object o = classs.newInstance();
             if(o instanceof ProcessFile)
