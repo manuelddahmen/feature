@@ -9,7 +9,7 @@ public class FeatureDescriptor extends PixM  {
   private PixM pi;
   private List<Point3D> poi;
   public FeatureDescriptor() {
-      super(5,5);
+      super(3,3);
   }
   public boolean setDescription(double[][] values) {
       return true;
