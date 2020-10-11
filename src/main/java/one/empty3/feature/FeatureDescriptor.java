@@ -1,6 +1,7 @@
 package one.empty3.feature;
 
 import one.empty3.library.Point3D;
+import javax.imageio.ImageIO;
 import java.util.*;
 import java.io.File;
 
@@ -37,7 +38,7 @@ public class FeatureDescriptor extends PixM  {
      for(FeatureDescriptor f : fd) {
        f.setPixM(pm);
        for(int i=0; i<poi.size(); i++) {
-            double de = f.deltaEnergy((int)(float)(poi.get(i).getX()), (int)(float)(poi.get(i).getY()));
+            double de = f.deltaEnergy((int)(double)(poi.get(i).getX()), (int)(double)(poi.get(i).getY()));
             if(de<0.5) {
                 l.add(new FeatureImageLocationMatchScore());
             }
