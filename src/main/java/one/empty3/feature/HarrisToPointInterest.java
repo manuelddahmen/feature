@@ -1,5 +1,8 @@
 package one.empty3.feature;
 
+import one.empty3.library.Point3D;
+
+
 public class HarrisToPointInterest extends FilterPixM {
     private PixM m;
     public HarrisToPointInterest(int c, int l) {
@@ -30,4 +33,10 @@ public class HarrisToPointInterest extends FilterPixM {
          
          return (gxgx+gygy)/(gxgx*gygy-gxgy*gygx);
      }
+    
+    public List<Point3D> getPoi() {
+        List<Point3D> poi = new ArrayList<>();
+        
+        return poi;
+    }
 }
