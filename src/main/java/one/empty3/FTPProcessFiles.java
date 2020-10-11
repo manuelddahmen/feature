@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class FTPProcessFiles {
     static String classname;
-    public static String currentDirin ="empty3/feature/input";
+    public static String currentDirin ="input/0";
     public static String currentDirout ="";
     public static String currentFileName ="";
 
@@ -84,7 +84,7 @@ public class FTPProcessFiles {
           
         for (String classname2 : classnamesArr) {
             classname = classname2;
-            currentDirout = "output/"+classname+"/";
+            currentDirout = "./output/"+classname+"/";
             Class classs = Class.forName(
                 classname
             );
@@ -228,7 +228,7 @@ public class FTPProcessFiles {
                 //System.out.println(file.getName() + " "+ remote);
                 
                 
-                process(file, directory);
+                process(file, remoteFile);
             }
         }
     }
