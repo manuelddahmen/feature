@@ -61,7 +61,7 @@ public class RegionLineCorner extends ProcessFile {
     
     
     public RegionLineCorner(){
-        rMin0 = 1;
+        
 
         min = new double[numLevels];
         max = new double[numLevels];
