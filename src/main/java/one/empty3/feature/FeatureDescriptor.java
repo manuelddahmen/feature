@@ -28,17 +28,33 @@ public class FeatureDescriptor extends PixM  {
   // table line
   // featuredescriptor, image, imagelocation, matchscore* 
   // *e min
-  public  List<FeatureImageLocationMatchScore> matchesAll(FeatureDescriptor[] fd, 
-            List<Point3D> poi
-                                  ){
-       List<FeatureImageLocationMatchScore> l = new ArrayList<>();
+  public  List<FeatureImageLocationMatchScore> matchesAll(FeatureDescriptor[] fd, File [] set){
+    List<FeatureImageLocationMatchScore> l = new ArrayList<>();
+
+    for(File file : set) {
+     try {
+     fd.setPixM(new PixM(ImageIO.read(file)));
+     for(FeatureDescriptor f : fd) {
+       
+       for(int i=0; i<poi.size(); i++) {
+            double de = deltaEnergy((int)(poi.get(i).getX(), (int)(poi.get(i).getY()));
+            if(de<0.5) {
+                poi.add(new FeatureImageLocationMatchScore());
+            }
+       }
+      }
+     } catch(IOException ex) 
+                                    {
+       ex.printStackTrace();
+                                    }
+    }
        return l;
       
   }
              
  
-  public double distance(FeatureDescriptor b, PixM set, int i, int j) {
-      return set.getColorsRegion(i-columns/2, j-lines/2, columns, lines, columns, lines).distance(this);
+  public double deltaEnergy(int i, int j) {
+      return m.getColorsRegion(i-columns/2, j-lines/2, columns, lines, columns, lines).distance(this);
   }
   
   
