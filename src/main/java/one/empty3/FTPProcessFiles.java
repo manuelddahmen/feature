@@ -155,7 +155,7 @@ public class FTPProcessFiles {
         try {
                     
         
-        File fi = File(currentDirin+"/"+object.getName());
+        File fi = new File(currentDirin+"/"+object.getName());
         File fo = new File(currentDirout+"/"+object.getName());
         
             
@@ -244,7 +244,7 @@ public class FTPProcessFiles {
                 System.out.println(file.getName());
                 
                 
-                process(file, filePath);
+                process(file);
             }
         }
     }
