@@ -38,7 +38,7 @@ public class FeatureDescriptor extends PixM  {
              
  
   public double distance(FeatureDescriptor b, PixM set, int i, int j) {
-      return set.getColorsRegion(i-columns/2, j-lines/2).distance(this);
+      return set.getColorsRegion(i-columns/2, j-lines/2, columns, lines, columns, lines).distance(this);
   }
   
   
