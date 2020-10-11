@@ -265,6 +265,34 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         }
         return pixM;
     }
+    
+    
+    
+    public double distance(PixM p2) {
+        double d =0.0;
+        
+        
+        double div = 1.0;
+        double columns2 = 1.0 * columns / div;
+        double lines2 = 1.0 * lines / div;
+        double cli2 = 1.0 * 1 / div;
+        PixM pixM = new PixM((int) (columns2), ((int) lines2));
+        for (int c = 0; c < getCompCount(); c++) {
+            setCompNo(c);
+            pixM.setCompNo(c);
+            for (int i = 0; i < (int) columns2; i++)
+                for (int j = 0; j < (int) lines2; j++) {
+                    double m = mean((int) (i * div), (int) (j * div), (int) (cli2 * div),
+                            (int) (cli2 * div));
+                    double m2 = p2.mean((int) (i * div), (int) (j * div), (int) (cli2 * div),
+                            (int) (cli2 * div));
+                    d+= Math.abs(m-m2);
+                }
+        }
+        return d/columns/lines;
+    }
+    
+    
     public void colorsRegion(int x, int y, int w, int h, double[] comps) {
          for(int i=x; i<x+w; i++)
               for(int j=y; j<y+h; j++)
