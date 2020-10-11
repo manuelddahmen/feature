@@ -27,8 +27,9 @@ public class FeatureDescriptor extends PixM  {
   public  List<FeatureImageLocationMatchScore> matchesAll(FeatureDescriptor[], 
             List<Point3D> poi
                                   ){
-  
-  
+       List<FeatureImageLocationMatchScore> l = new ArrayList<>();
+       return l;
+      
   }
              
  
