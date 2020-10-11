@@ -21,12 +21,26 @@ public class FeatureDescriptor extends PixM  {
       pi = m.applyFilter(h);
       poi = h.getPoi();
   }
+  // table line
+  // featuredescriptor, image, imagelocation, matchscore* 
+  // *e min
+  public  List<FeatureImageLocationMatchScore> (FeatureDescriptor[], 
+            List<Point3D> poi
+                                  ){
   
   
+  }
+             
+ 
   public double distance(FeatureDescriptor b, File [] set) {
       return 1.0;
   }
+  
+  
   public double filter(double x, double y) {
+    
+    
+ 
      return 0.0;
   }
 }
