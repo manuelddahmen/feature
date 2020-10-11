@@ -12,6 +12,10 @@ public class FeatureDescriptor extends PixM  {
       super(3,3);
   }
   public boolean setDescription(double[][] values) {
+    for(int i=0; i<lines; i++)
+      for(int j=0; j<columns; j++)
+        set(i, j, values[i][j]);
+        
       return true;
   }
   public void setPixM(PixM m) {
@@ -33,8 +37,8 @@ public class FeatureDescriptor extends PixM  {
   }
              
  
-  public double distance(FeatureDescriptor b, File [] set) {
-      return 1.0;
+  public double distance(FeatureDescriptor b, PixM set, int i, int j) {
+      return set.getColorsRegion(i-columns/2, j-lines/2).distance(this);
   }
   
   
