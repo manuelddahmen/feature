@@ -17,6 +17,7 @@ import java.util.logging.Logger;
  * @author www.codejava.net
  */
 public class FTPProcessFiles {
+    public static String dirin ="";
     public static String getDirname(String s) {
         return s.substring(0, s.lastIndexOf("/"));
     }
@@ -65,19 +66,25 @@ public class FTPProcessFiles {
         String username = (String)settings.getProperty("username");
         String password = (String)settings.getProperty("password");
         String directory = (String)settings.getProperty("directory");
-        String classname = (String)settings.getProperty("classname");
+        String classnames = (String)settings.getProperty("classname");
         String directoryOut = directory.substring(0, directory.lastIndexOf("/"));
         
         
         ftpClient = new FTPClient();
  
+        
+        String [] classnamesArr = classnames.split",");
+        
+        for (String classname : classnamesArr) {
         try {
             Class classs = Class.forName(
-                classname
+                classnames
             );
             Object o = classs.newInstance();
             if(o instanceof ProcessFile)
                 processInstance = (ProcessFile) o;
+            
+            if(i==0) {
             ftpClient.connect(server, port);
             showServerReply(ftpClient);
  
@@ -104,13 +111,17 @@ public class FTPProcessFiles {
          
             FTPFile[] files1 = ftpClient.listFiles(directory);
             showServerReply(ftpClient);
-            printFileDetails(files1,  directory);
+            
+                 printFileDetails(files1,  directory);
+            } else {
+                printFileDetails(dirin.list(),  directory);
+            }
  /*
             // uses simpler methods
             String[] files2 = ftpClient.listNames(directory);
             printNames(files2);
  */
- 
+ }
         } catch (Exception ex) {
             System.out.println("Oops! Something wrong happened");
             ex.printStackTrace();
@@ -151,8 +162,33 @@ public class FTPProcessFiles {
             ex.printStackTrace();
         }
             }
+        
+        dirin = (fo.getParent());
     }
- 
+ public static void process(File object, String dirout){
+        if(object.isFile()) {
+        try {
+                    
+        
+        File fi = object;
+        File fo = new File(dirout+"/"+object.getName());
+        
+            
+        new File(getDirname(fi.getAbsolutePath())).mkdirs();
+        new File(getDirname(fo.getAbsolutePath())).mkdirs();
+        fi.createNewFile();
+        fo.createNewFile();
+            
+        
+        processInstance.process(fi, fo);
+            
+            
+        dirin = (fo.getParent());
+        } catch(IOException ex) {
+            ex.printStackTrace();
+        }
+            }
+    }
  
     private static void printFileDetails(FTPFile[] files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -160,7 +196,7 @@ public class FTPProcessFiles {
             if(file.isFile() && !file.getName().equals(".")
                  && !file.getName().equals("..")
               ) {
-                String filePath = directory+"/"+file.getName();
+                String filePath = directory+"/"+classname+"/"+file.getName();
                 
                //Logger.getLogger(getClass()).info(file.getName());
                 System.out.println(file.getName());
@@ -170,7 +206,24 @@ public class FTPProcessFiles {
             }
         }
     }
+            
  
+    private static void printFileDetails(File[] files, String directory) {
+        DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        for (File file : files) {
+            if(file.isFile() && !file.getName().equals(".")
+                 && !file.getName().equals("..")
+              ) {
+                String filePath = directory+"/"+classname+"/"+file.getName();
+                
+               //Logger.getLogger(getClass()).info(file.getName());
+                System.out.println(file.getName());
+                
+                
+                process(file, filePath);
+            }
+        }
+    }
     private static void printNames(String files[]) {
         if (files != null && files.length > 0) {
             for (String aFile: files) {
