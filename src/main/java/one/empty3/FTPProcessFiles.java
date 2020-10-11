@@ -18,7 +18,7 @@ import java.util.logging.Logger;
  */
 public class FTPProcessFiles {
     static String classname;
-    public static String currentDirin ="";
+    public static String currentDirin ="input/";
     public static String currentDirout ="";
     public static String currentFileName ="";
 
