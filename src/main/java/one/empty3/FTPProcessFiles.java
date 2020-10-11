@@ -160,8 +160,11 @@ public class FTPProcessFiles {
         
         ftpClient.retrieveFile(remote, fos);
         
-
-        processInstance.process(fi, fo);
+        Logger.getLogger(FTPProcessFile.class).info("file  in : "+fi.getAbsolutePath());
+        Logger.getLogger(FTPProcessFile.class).info("file out : "+fo.getAbsolutePath());
+        Logger.getLogger(FTPProcessFile.class).info("process  : "+processInstance.getClass());
+            
+            processInstance.process(fi, fo);
             
             
             
