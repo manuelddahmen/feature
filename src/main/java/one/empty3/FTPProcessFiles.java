@@ -80,7 +80,7 @@ public class FTPProcessFiles {
         String [] classnamesArr = classnames.split(",");
       try {  
           int i=0;
-          currentDirin = "";
+          //currentDirin = "";
           
         for (String classname2 : classnamesArr) {
             classname = classname2;
