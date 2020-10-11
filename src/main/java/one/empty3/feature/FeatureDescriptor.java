@@ -72,7 +72,7 @@ public class FeatureDescriptor extends PixM  {
   
   public static double[][][] getFeatureSampleDescr(int mSize,
           double max, double[][] anglesIntensitiesRatio) {
-    double[][][] m = new double [anglesIntensities.length][mSize][mSize];
+    double[][][] m = new double [anglesIntensitiesRatio.length][mSize][mSize];
         return m;
     }
 }
