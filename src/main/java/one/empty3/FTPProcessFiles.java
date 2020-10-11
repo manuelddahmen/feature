@@ -162,7 +162,7 @@ public class FTPProcessFiles {
         
         Logger.getLogger(FTPProcessFiles.class.getName()).info("file  in : "+fi.getAbsolutePath());
         Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : "+fo.getAbsolutePath());
-        Logger.getLogger(FTPProcessFiles.class.getName()).info("process  : "+processInstance.getClass().getName());
+        Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : "+processInstance.getClass().getName());
             
             processInstance.process(fi, fo);
             
@@ -189,6 +189,9 @@ public class FTPProcessFiles {
         new File(getDirname(fo.getAbsolutePath())).mkdirs();
         fi.createNewFile();
         fo.createNewFile();
+            Logger.getLogger(FTPProcessFiles.class.getName()).info("file  in : "+fi.getAbsolutePath());
+        Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : "+fo.getAbsolutePath());
+        Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : "+processInstance.getClass().getName());
             
         
         processInstance.process(fi, fo);
