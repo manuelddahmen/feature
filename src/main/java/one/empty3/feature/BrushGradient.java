@@ -10,7 +10,7 @@ public class BrushGradient extends FilterPixM {
         double i, j;
         double a=1.0, b=1.0, c=0.0, d=0.0, e=1.0, g=1.0;
         double f = 0.0;
-        double val =-15.0;
+        double val =15.0;
         for(i=-val; i<val; i++) {
             for(j=-val; j<val; j++) {
           f+= new Point3D (
