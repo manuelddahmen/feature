@@ -1,7 +1,9 @@
 package one.empty3.feature ;
 
 import one.empty3.library.Point3D ;
-
+/***
+Le pinceau manchot. 
+**/
 public class BrushGradient extends FilterPixM {
     double angle = 0.0;
     double length = 1.0;
