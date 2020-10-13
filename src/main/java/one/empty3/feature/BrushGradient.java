@@ -13,14 +13,14 @@ public class BrushGradient extends FilterPixM {
         double val =-15.0;
         for(i=-val; i<val; i++) {
             for(j=-val; j<val; j++) {
-            new Point3D (
+          f+= new Point3D (
            c+b*Math.cos(a*Math.atan(j/i)+d),
            c+b*Math.sin(a*Math.atan (j/i)+d), 
            0.0
         ).mult(e*Math.sqrt(i*i+j*j)
            / (i*i+j*j+1.0) *
            Math.exp(-(i*i+j*j)*g)
-        );
+        ).norme();
        } 
            } 
         return f;
