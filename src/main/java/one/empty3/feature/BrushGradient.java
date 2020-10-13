@@ -8,7 +8,7 @@ public class BrushGradient extends FilterPixM {
     public double filter(double x, 
           double y) {
         double i, j;
-        double a, b, c, d, e, g;
+        double a=1.0, b=1.0, c=0.0, d=0.0, e=1.0, g=1.0;
         double f = new Point3D (
            c+b*Math.cos(a*Math.atan(j/i)+d),
            c+b*Math.sin(a*Math.atan (j/i)+d), 
