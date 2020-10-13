@@ -9,7 +9,11 @@ public class BrushGradient extends FilterPixM {
           double y) {
         double i, j;
         double a=1.0, b=1.0, c=0.0, d=0.0, e=1.0, g=1.0;
-        double f = new Point3D (
+        double f = 0.0;
+        double val =-15.0;
+        for(i=-val; i<val; i++) {
+            for(ij=-val; j<val; j++) {
+            new Point3D (
            c+b*Math.cos(a*Math.atan(j/i)+d),
            c+b*Math.sin(a*Math.atan (j/i)+d), 
            0.0
@@ -17,7 +21,8 @@ public class BrushGradient extends FilterPixM {
            / (i*i+j*j+1.0) *
            Math.exp(-(i*i+j*j)*g)
         );
-        
+       } 
+           } 
         return f;
     } 
 } 
