@@ -30,7 +30,7 @@ public class BrushGradient extends FilterPixM {
             for(j=-val; j<val; j++) {
           f+= new Point3D (
            c+b*Math.cos(a*Math.atan(j/i)+d),
-           c+b*Math.sin(h*Math.atan (j/i)+d), 
+           c+b*Math.cos(h*Math.atan (j/i)+d), 
            0.0
         ).mult(
               m.get((int)(x+i), (int) (y+j) )*
