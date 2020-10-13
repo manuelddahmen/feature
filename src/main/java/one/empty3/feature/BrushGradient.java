@@ -20,9 +20,9 @@ public class BrushGradient extends FilterPixM {
         ).mult(e*Math.sqrt(i*i+j*j)
            / (i*i+j*j+1.0) *
            Math.exp(-(i*i+j*j)*g)
-        ).norme();
+        ).dot(new Point3D(i, j, 0).norme1() );
        } 
            } 
-        return f;
+        return f/val/val;
     } 
 } 
