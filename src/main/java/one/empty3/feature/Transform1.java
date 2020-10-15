@@ -83,22 +83,23 @@ logger.info("dot outter product");
      logger.info("local maximum 20x20");
       
       
-      AfterGradientBeforeExtremum a 
-        = new AfterGradientBeforeExtremum(3);
-      M3 anglesTangente = a.filter(new M3(
+  //    AfterGradientBeforeExtremum a 
+  //      = new AfterGradientBeforeExtremum(3);
+     
+  //      M3 anglesTangente = a.filter(new M3(
         
-        new PixM[][]
-         {{
-            pext, imagesMatrix[0][0], imagesMatrix[1][0]
-         }}
-      ));
-logger.info("angles tangentes");
-     PixM pix = smoothedGrad;
-        IntuitiveRadialGradient i 
-         = new IntuitiveRadialGradient(pix);
-     i.setMax(2., 5., 2, 4);
-        PixM rad = i.filter(pix);
-     logger.info("radial orientation");
+   //     new PixM[][]
+    //     {{
+    //        pext, imagesMatrix[0][0], imagesMatrix[1][0]
+   //      }}
+   //   ));
+//logger.info("angles tangentes");
+     //PixM pix = smoothedGrad;
+      //  IntuitiveRadialGradient i 
+      //   = new IntuitiveRadialGradient(pix);
+   //  i.setMax(2., 5., 2, 4);
+     ///   PixM rad = i.filter(pix);
+  //   logger.info("radial orientation");
         /*WriteFile.writeNext("reduite"+file.getName(), pixMOriginal.normalize(0.,1.).getImage());
             WriteFile.writeNext("gradient gx"+file.getName(), imagesMatrix[0][0].normalize(0.,1.).getImage());
       WriteFile.writeNext("gradient gy"+file.getName(), imagesMatrix[1][0].normalize(0.,1.).getImage());
