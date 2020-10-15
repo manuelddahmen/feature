@@ -10,7 +10,7 @@ public class BrushGradient extends FilterPixM {
     double large = 1.0;
     PixM m;
     public BrushGradient(PixM p) {
-        this.m = p
+        this.m = p;
     } 
     public void setData(double angle, double
              length, double large) {
