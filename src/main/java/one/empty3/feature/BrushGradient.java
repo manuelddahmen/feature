@@ -10,6 +10,7 @@ public class BrushGradient extends FilterPixM {
     double large = 1.0;
     PixM m;
     public BrushGradient(PixM p) {
+        super(p.columns, p.lines);
         this.m = p;
     } 
     public void setData(double angle, double
@@ -41,7 +42,7 @@ public class BrushGradient extends FilterPixM {
 
            / (i*i+j*j+1.0) *
            Math.exp(-(i*i+j*j)*g)
-        ).dot(new Point3D(i, j, 0).norme1() );
+        ).dot(new Point3D(i, j, 0.0).norme1() );
        } 
            } 
         return f/val/val;
