@@ -219,6 +219,7 @@ public class FTPProcessFiles {
     private static void printFileDetails(FTPFile[] files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (FTPFile file : files) {
+            
             if(file.isFile() && !file.getName().equals(".")
                  && !file.getName().equals("..")
               ) {
@@ -237,7 +238,7 @@ public class FTPProcessFiles {
     private static void printFileDetails(String[] files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (String f : files) {
-            File file = new File(f);
+            File file = new File(directory +"/" +f);
             if(file.isFile() && !file.getName().equals(".")
                  && !file.getName().equals("..")
               ) {
