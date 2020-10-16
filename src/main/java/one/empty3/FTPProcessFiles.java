@@ -251,12 +251,12 @@ public class FTPProcessFiles {
                 
                 
                 process(file);
+            } else {
+                System.out.println("error file in not found");
+                System.exit(-1);
             }
         }
-        else {
-            System.out.println("error file in not found");
-            System.exit(-1);
-        }
+        
     }
     private static void printNames(String files[]) {
         if (files != null && files.length > 0) {
