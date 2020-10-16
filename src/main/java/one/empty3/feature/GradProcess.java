@@ -19,7 +19,13 @@
       
      }
       
-     // GradientFilter gf = new GradientFilter (
-      //      2, 1.2) ;
-      // contours?
+     GradientFilter gf = new GradientFilter (2, 2);
+      
+      PixM r = gf.filter(new M3(PixM Original, 1, 1) , 2, 2)).getImagesMatrix()[0][0] ;
+           try {
+       ImageIO.write( r.getImage(), "jpg", out);
+     } catch (Exception ex){
+         return false;
+     }
+     return true;
     } 
