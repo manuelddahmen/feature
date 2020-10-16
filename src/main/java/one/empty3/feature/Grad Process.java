@@ -18,4 +18,8 @@
        // assertTrue(false);
       
      }
+      
+     // GradientFilter gf = new GradientFilter (
+      //      2, 1.2) ;
+      // contours?
     } 
