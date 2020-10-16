@@ -88,6 +88,8 @@ public class FTPProcessFiles {
             Class classs = Class.forName(
                 classname
             );
+            
+            Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
             Object o = classs.newInstance();
             if(o instanceof ProcessFile)
                 processInstance = (ProcessFile) o;
