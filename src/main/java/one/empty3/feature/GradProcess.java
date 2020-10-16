@@ -1,5 +1,15 @@
    package one.empty3.feature ;
-   
+   import one.empty3.io.ProcessFile;
+
+import java.io.File;
+
+import static org.junit.Assert.*;
+
+import javax.imageio.ImageIO;
+
+import one.empty3.feature.*;
+
+import java.util.logging.*; 
    
    public class GradProcess {
    
