@@ -21,7 +21,7 @@
       
      GradientFilter gf = new GradientFilter (2, 2);
       
-      PixM r = gf.filter(new M3(PixM Original, 1, 1) , 2, 2)).getImagesMatrix()[0][0] ;
+      PixM r = gf.filter(new M3(PixMOriginal, 1, 1)).getImagesMatrix()[0][0] ;
            try {
        ImageIO.write( r.normalize(0.0, 1.0). getImage(), "jpg", out);
      } catch (Exception ex){
