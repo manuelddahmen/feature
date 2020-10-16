@@ -23,7 +23,7 @@
       
       PixM r = gf.filter(new M3(PixM Original, 1, 1) , 2, 2)).getImagesMatrix()[0][0] ;
            try {
-       ImageIO.write( r.getImage(), "jpg", out);
+       ImageIO.write( r.normalize(0.0, 1.0). getImage(), "jpg", out);
      } catch (Exception ex){
          return false;
      }
