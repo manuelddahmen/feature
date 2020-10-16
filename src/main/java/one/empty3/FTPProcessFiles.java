@@ -124,6 +124,7 @@ public class FTPProcessFiles {
             
                  printFileDetails(files1,  directory);
             } else {
+                System.out.println("I>0 clase de traitement"+classs.toString()+" : "+currentDirin);
                 printFileDetails(new File(currentDirin).list(),  currentDirin);
             }
  /*
