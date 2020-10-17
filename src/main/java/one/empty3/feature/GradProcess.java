@@ -28,7 +28,7 @@ import java.util.logging.*;
        // assertTrue(false);
       
      }
-     M3 pattern = new M3(pixMOriginal, pixMOriginal,
+     M3 p = new M3(pixMOriginal.columns, pixMOriginal.lines,
                          2, 2);
      PixM p = new PixM(3,3);
      p.colorsRegion(0,0,3,3,
