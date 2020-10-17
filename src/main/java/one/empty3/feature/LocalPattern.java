@@ -40,13 +40,13 @@ public class LocalPattern extends FilterMatPixM {
 
                     int countIn = 0;
 
-                for(int s = 0; s<1; s++) {
+                for(int s = 0; s<sr.columnsIn; s++) {
 
                         
 
-                    for (int ii = - sr.columnsIn/2; ii <= sr.linesIn; ii++) {
+                    for (int ii = - sr.columns/2; ii <= sr.columns; ii++) {
 
-                        for (int ij = - sr.linesIn / 2; ij <= sr.linesIn / 2; ij++) {
+                        for (int ij = - sr.lines/ 2; ij <= sr.lines / 2; ij++) {
 
                                 double v = original.get(i + ii, j + ij, 0, 0);
 
@@ -63,7 +63,7 @@ public class LocalPattern extends FilterMatPixM {
 
                 
 
-                if (countIn == copy.columnsIn*copy.linesIn/2) {
+                if (countIn == sr.lines*sr.columns/2) {
 
                             copy.setCompNo(0);
 
