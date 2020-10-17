@@ -2,7 +2,7 @@ package one.empty3.feature ;
 
 public class LocalPattern extends FilterMatPixM {
    private M3 sr ;
-    
+    public static String formulaXvLogical = "x==v" ;
     /***
         Ligne 1 searchPattern value = x [0,1] 
            - 1 : ignore 
@@ -39,7 +39,7 @@ public class LocalPattern extends FilterMatPixM {
 
                     int countIn = 0;
 
-                if(maxLocal>=threshold) {
+                {
 
                         for(int s = 0; s<1; s++) {
 
