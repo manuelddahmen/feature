@@ -63,7 +63,7 @@ public class LocalPattern extends FilterMatPixM {
 
                 
 
-                if (countIn == sr.lines*sr.columns/2) {
+                if (countIn == sr.lines*sr.columns) {
 
                             copy.setCompNo(0);
 
