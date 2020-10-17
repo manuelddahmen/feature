@@ -17,7 +17,7 @@ public class LocalPattern extends FilterMatPixM {
     } 
     /***
     */
-    public PixM match(
+    public M3 filter(
            
            M3 original
            ) {
