@@ -11,7 +11,7 @@ public class LocalPattern extends FilterMatPixM {
        
     */
     public LocalPattern (M3 searchReplace) {
-        super(searchReplace.columns, searchReplace.lines, 1,1) ;
+       // super(searchReplace.columns, searchReplace.lines, 1,1) ;
         this.sr = searchReplace ;
           
     } 
