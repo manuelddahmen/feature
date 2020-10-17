@@ -33,7 +33,7 @@ import java.util.logging.*;
      PixM p = new PixM(3,3);
      p.colorsRegion(0,0,3,3,
                    new double[]{
-                      1.0,1.0,1.0
+                      1.0,1.0,1.0,
                       1.0,1.0,1.0,
                       1.0,1.0,1.0
                                }
