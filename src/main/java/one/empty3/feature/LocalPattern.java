@@ -39,9 +39,9 @@ public class LocalPattern extends FilterMatPixM {
 
                     int countIn = 0;
 
-                {
+                for(int s = 0; s<1; s++) {
 
-                        for(int s = 0; s<1; s++) {
+                        
 
                     for (int ii = - sr.columnsIn/2; ii <= sr.linesIn; ii++) {
 
