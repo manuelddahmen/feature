@@ -41,16 +41,16 @@ public class LocalPattern extends FilterMatPixM {
 
                 if(maxLocal>=threshold) {
 
-                        
+                        for(int s = 0; s<1; s++) {
 
-                    for (int ii = - sr.columns/2; ii <= sr.lines; ii++) {
+                    for (int ii = - sr.columnsIn/2; ii <= sr.linesIn; ii++) {
 
-                        for (int ij = sr.lines / 2; ij <= sr.lines / 2; ij++) {
+                        for (int ij = - sr.linesIn / 2; ij <= sr.linesIn / 2; ij++) {
 
-                                double v = original.getIntensity(i + ii, j + ij, 0, 0);
+                                double v = original.get(i + ii, j + ij, 0, 0);
 
-                            if (sr.get(ii+sr.columns/2, ij+sr.lines/2, ii, ij)
-                               == original.get(i, j, i+ii, j+ij)) {
+                            if (sr.get(ii+sr.columns/2, ij+sr.lines/2, 0, s)
+                               == v)) {
 
                                     countIn++;
 
@@ -62,7 +62,7 @@ public class LocalPattern extends FilterMatPixM {
 
                 }
 
-                if (countIn <= pointsCount) {
+                if (countIn == columnsIn*linesIn) {
 
                             copy.setCompNo(0);
 
