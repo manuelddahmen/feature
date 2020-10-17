@@ -3,7 +3,8 @@ package one.empty3.feature ;
 public class LocalPattern extends FilterMatPixM {
    private M3 sr ;
     public static String formulaXvLogical = "count(x==v)==columns()*lines()/2" ;
-    /***
+    /*
+   
         Ligne 1 searchPattern value = x [0,1] 
            - 1 : ignore 
         Ligne 2 replacePattern value x' [0,1] 
