@@ -29,7 +29,7 @@ import java.util.logging.*;
       
      }
       
-     GradientFilter gf = new GradientFilter (2, 2);
+     LocalExtrema gf = new LocalExtrema (3, 0);
       
       PixM r = gf.filter(new M3(pixMOriginal, 1, 1)).getImagesMatrix()[0][0] ;
            try {
