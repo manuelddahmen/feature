@@ -30,7 +30,7 @@ import java.util.logging.*;
      }
       
      LocalExtrema gf = new LocalExtrema (pixMOriginal.columns, pixMOriginal.lines,
-                                         3, 0);
+                                         3, 2);
       
       PixM r = gf.filter(new M3(pixMOriginal, 1, 1)).getImagesMatrix()[0][0] ;
            try {
