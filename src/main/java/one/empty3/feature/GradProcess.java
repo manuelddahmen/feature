@@ -31,7 +31,7 @@ import java.util.logging.*;
       
      }
      M3 p = new M3(pixMOriginal.columns, pixMOriginal.lines,
-                         2, 1);
+                         2, 2);
      PixM p1 = new PixM(3,3);
      p1.colorsRegion(0,0,3,3,
                    new double[]{
