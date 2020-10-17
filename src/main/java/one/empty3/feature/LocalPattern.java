@@ -50,7 +50,7 @@ public class LocalPattern extends FilterMatPixM {
                                 double v = original.get(i + ii, j + ij, 0, 0);
 
                             if (sr.get(ii+sr.columns/2, ij+sr.lines/2, 0, s)
-                               == v)) {
+                               == v) {
 
                                     countIn++;
 
