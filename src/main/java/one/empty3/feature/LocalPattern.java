@@ -9,7 +9,7 @@ public class LocalPattern extends FilterMatPixM {
        
     */
     public LocalPattern (M3 searchReplace) {
-        super(n, n) ;
+        super(searchReplace.columnsIn, searchReplace.linesIn) ;
     } 
     /***
     */
