@@ -11,7 +11,7 @@ public class LocalPattern extends FilterMatPixM {
        
     */
     public LocalPattern (M3 searchReplace) {
-        super(searchReplace.columnsIn, searchReplace.linesIn) ;
+        super(searchReplace.columns, searchReplace.lines) ;
         this.sr = searchReplace ;
           
     } 
@@ -43,13 +43,14 @@ public class LocalPattern extends FilterMatPixM {
 
                         
 
-                    for (int ii = -neighbourSize / 2; ii <= neighbourSize / 2; ii++) {
+                    for (int ii = - sr.columns/2; ii <= sr.lines; ii++) {
 
-                        for (int ij = neighbourSize / 2; ij <= neighbourSize / 2; ij++) {
+                        for (int ij = sr.lines / 2; ij <= sr.lines / 2; ij++) {
 
                                 double v = original.getIntensity(i + ii, j + ij, 0, 0);
 
-                            if (v > maxLocal) {
+                            if (sr.get(ii+sr.columns/2, ij+sr.lines/2, ii, ij)
+                               == original.get(i, j, i+ii, j+ij)) {
 
                                     countIn++;
 
