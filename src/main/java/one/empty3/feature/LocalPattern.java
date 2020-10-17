@@ -86,6 +86,6 @@ public class LocalPattern extends FilterMatPixM {
         
         
         
-        return mat;
+        
     } 
 } 
