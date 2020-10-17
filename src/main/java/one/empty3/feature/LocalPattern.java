@@ -60,7 +60,7 @@ public class LocalPattern extends FilterMatPixM {
 
                     }
 
-                }
+                
 
                 if (countIn == copy.columnsIn*copy.linesIn/2) {
 
@@ -75,7 +75,7 @@ public class LocalPattern extends FilterMatPixM {
                             copy.setCompNo(2);
 
                             copy.set(i, j, 0, 0, 1);//1 au lieu value
-
+                   }
                 }
 
             }
