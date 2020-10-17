@@ -31,7 +31,13 @@ import java.util.logging.*;
      M3 pattern = new M3(pixMOriginal, pixMOriginal,
                          2, 2);
      PixM p = new PixM(3,3);
-     p.setColorsRegion(0,0,3,3,1.0);
+     p.colorsRegion(0,0,3,3,
+                   new double[]{
+                      1.0,1.0,1.0
+                      1.0,1.0,1.0,
+                      1.0,1.0,1.0
+                               }
+                   );
      pattern.setMatrix(0,0,p);
     // pattern.setColorsRegion(0,1,0,3,3,0.0);
      LocalPattern gf = new LocalPattern(pixMOriginal.columns, pixMOriginal.lines,
