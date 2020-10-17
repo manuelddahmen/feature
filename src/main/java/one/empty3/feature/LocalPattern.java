@@ -88,4 +88,15 @@ public class LocalPattern extends FilterMatPixM {
         
         
     } 
+   
+   
+    @Override
+    public void element(M3 source, M3 copy, int i, int j, int ii, int ij) {
+
+    }
+
+    @Override
+    public M3 norm(M3 m3, M3 copy) {
+        return m3.copy();
+    }
 } 
