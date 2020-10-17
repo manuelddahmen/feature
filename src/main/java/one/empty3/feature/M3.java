@@ -308,7 +308,7 @@ public class M3 {
         return this;
     }
 
-    private void setMatrix(int ii, int ij, PixM matrix) {
+    public void setMatrix(int ii, int ij, PixM matrix) {
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
                 for (int c = 0; c < getCompCount(); c++) {
@@ -321,7 +321,7 @@ public class M3 {
 
     }
 
-    private PixM getMatrix(int ii, int ij) {
+    public PixM getMatrix(int ii, int ij) {
         PixM matrix = new PixM(columns, lines);
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
