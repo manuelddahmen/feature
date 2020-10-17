@@ -21,7 +21,7 @@ public class LocalPattern extends FilterMatPixM {
            
            M3 original
            ) {
-         copy = new M3(original.columns, original.lines,
+        M3 copy = new M3(original.columns, original.lines,
 
                         1, 1);
 
