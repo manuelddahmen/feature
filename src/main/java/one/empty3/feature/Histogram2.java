@@ -15,7 +15,7 @@ import java.util.List;
  * by mean or mean square or somewhat else. 
  */
 public class Histogram2 extends ProcessFile {
-    public final int numLevels = 10;
+    public int numLevels = 10;
     private PixM m = null;
     private double[] max;
     private double[] min;
