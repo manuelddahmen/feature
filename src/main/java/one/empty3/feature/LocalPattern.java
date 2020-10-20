@@ -35,7 +35,7 @@ public class LocalPattern extends FilterMatPixM {
                     //boolean isMaximum = true;
                 double v = 0.;
                 double maxLocal = original.getIntensity(i, j, 0, 0);
-
+//v = maxLocal;
                     int countOut = 0;
 
                     int countIn = 0;
@@ -63,19 +63,19 @@ public class LocalPattern extends FilterMatPixM {
 
                 
 
-                if (countIn == sr.lines*sr.columns) {
+                if (countIn == sr.lines*sr.columns/2.0) {
 
                             copy.setCompNo(0);
 
-                            copy.set(i, j, 0, 0, v);//1 au lieu value
+                            copy.set(i, j, 0, 0, 1.0);//1 au lieu value
 
                             copy.setCompNo(1);
 
-                            copy.set(i, j, 0, 0, v);//1 au lieu value
+                            copy.set(i, j, 0, 0, 1.0);//1 au lieu value
 
                             copy.setCompNo(2);
 
-                            copy.set(i, j, 0, 0, v);//1 au lieu value
+                            copy.set(i, j, 0, 0, 1.0);//1 au lieu value
                    }
                 }
 
