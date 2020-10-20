@@ -137,8 +137,8 @@ public class Histogram2 extends ProcessFile {
                     }
                 }
 
-            }
- //       }
+             }
+        }
 
         
         return circles;
