@@ -15,7 +15,7 @@ import java.util.List;
  * by mean or mean square or somewhat else. 
  */
 public class Histogram2 extends ProcessFile {
-    public final int numLevels = 5;
+    public final int numLevels = 10;
     private PixM m = null;
     private double[] max;
     private double[] min;
@@ -51,7 +51,7 @@ public class Histogram2 extends ProcessFile {
      * 
      */
     
-    public Histogram2(){
+    public Histogram2(int numLevel){
 
 
         min = new double[numLevels];
@@ -107,20 +107,22 @@ public class Histogram2 extends ProcessFile {
 
         // Classer les points par intensité et rayon
 
-//        for(double intensity=1.0; intensity>=0.4; intensity-=0.1) {
+        for(double intensity=1.0; intensity>=0.0; intensity-=0.1) {
             for(int i=0; i<m.columns; i++) {
                 for(int j=0; j<m.lines; j++) {
                     double rMin = rMin0;
                     Circle level = getLevel(new Circle(i, j, rMin));
-                    level.i = 0;
+                    level.i = intensity;
                     getLevel(level);
                     //int index = Math.max(((int) (level.i * numLevels)), 0);
                     //index = Math.min(numLevels-1, index);
                     double iOrigin = getLevel(level).i;
+                    
                     double maxI = max[1];
                     double minI = min[0];
-                    
-                    while(level.i>iOrigin-maxI &&level.i<iOrigin+maxI && rMin<Math.max(m.columns, m.lines)) {
+                    final int 
+                        index0 = (int)(level.i*numLevels);
+                    while(level.i>min[index0]-maxI &&level.i<max[index0] && rMin<Math.max(m.columns, m.lines)) {
 
                         rMin*= 1.3;
                         //index = Math.max(((int) (level.i * numLevels)), 0);
@@ -129,7 +131,7 @@ public class Histogram2 extends ProcessFile {
                         //minI = min[index];
                         getLevel(level);
                     }
-                    level.r = rMin;
+                    //level.r = rMin;
                     if(level.r>=1) {
                         circles.add(level);
                     }
