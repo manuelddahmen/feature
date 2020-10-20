@@ -120,13 +120,13 @@ public class Histogram2 extends ProcessFile {
                     getLevel(level);
                     //int index = Math.max(((int) (level.i * numLevels)), 0);
                     //index = Math.min(numLevels-1, index);
-                    double iOrigin = getLevel(level).i;
+                    double iOrigin = intensity;
                     
                     double maxI = max[1];
                     double minI = min[0];
                     final int 
-                        index0 = (int)(level.i*numLevels);
-                    while(level.i>min[index0]-maxI &&level.i<max[index0] && rMin<Math.max(m.columns, m.lines)) {
+                        index0 = (int)(intensity*numLevels);
+                    while(level.i>=0&&level.i<1.0&&level.i>min[index0]-maxI &&level.i<max[index0] && rMin<Math.max(m.columns, m.lines)) {
 
                         rMin*= 1.3;
                         //index = Math.max(((int) (level.i * numLevels)), 0);
