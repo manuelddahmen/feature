@@ -51,7 +51,7 @@ public class Histogram2 extends ProcessFile {
      * 
      */
     
-    public Histogram2(int numLevel){
+    public Histogram2(int numLevels){
 
 
         min = new double[numLevels];
@@ -169,7 +169,7 @@ public class Histogram2 extends ProcessFile {
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 
-                int finalI = i;
+                
                 List<Circle> pointsOfInterest = getPointsOfInterest(4.0);
                 pointsOfInterest.stream().forEach(circle -> {
                     if (circle.i >= min && circle.r>1.0) {
@@ -199,14 +199,14 @@ public class Histogram2 extends ProcessFile {
                         return 0;
                     }
                 });
-            // grouper les points par similarites et distances
-            group(pointsOfInterest);
+                // grouper les points par similarites et distances
+                group(pointsOfInterest);
                 File fileToWrite = new File(directory.getAbsolutePath()
-                        + "level"+ finalI + ".jpg");
+                        + "level" + ".jpg");
                 File fileToWrite2 = new File(directory.getAbsolutePath()
-                        + "level"+ finalI + "_NEW.jpg");
+                        + "level"+ "_NEW.jpg");
                 File fileToWrite3 = new File(directory.getAbsolutePath()
-                        + "level"+ finalI + "_NEW_RGB.jpg");
+                        + "level"+ "_NEW_RGB.jpg");
                 //fileToWrite.mkdirs();
                 ImageIO.write(img, "JPEG", out);
                 /*
