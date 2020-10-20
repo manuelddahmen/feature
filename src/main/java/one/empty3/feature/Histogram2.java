@@ -61,9 +61,13 @@ public class Histogram2 extends ProcessFile {
             min[i] = 1.0*i/ numLevels;
             max[i] = 1.0*(i+1)/ numLevels;
         }
-
+      this.numLevels = numLevels;
 
 }
+    public Histogram2() {
+        this(15);
+    
+    }
     public void makeHistogram(double r) {
 
     }
