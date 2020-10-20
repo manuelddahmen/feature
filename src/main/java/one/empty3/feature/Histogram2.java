@@ -131,7 +131,7 @@ public class Histogram2 extends ProcessFile {
                         //minI = min[index];
                         getLevel(level);
                     }
-                    //level.r = rMin;
+                    level.r /= 1.3;
                     if(level.r>=1) {
                         circles.add(level);
                     }
@@ -159,16 +159,16 @@ public class Histogram2 extends ProcessFile {
         
         int levels = 10; double min =0.0;
         double radiusIncr = 2;
-        for (int i = 0; i < levels; i++) {
+       
             
                 BufferedImage img  = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 
                 int finalI = i;
-                List<Circle> pointsOfInterest = getPointsOfInterest(levels);
+                List<Circle> pointsOfInterest = getPointsOfInterest(4.0);
                 pointsOfInterest.stream().forEach(circle -> {
-                    if (circle.i >= min && circle.r>0) {
+                    if (circle.i >= min && circle.r>1.0) {
                         Graphics graphics = img.getGraphics();
                         graphics.setColor(Color.WHITE);
                         graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
@@ -210,7 +210,7 @@ public class Histogram2 extends ProcessFile {
                 ImageIO.write(img, "JPEG", fileToWrite2);
                 ImageIO.write(img, "JPEG", fileToWrite3);
 */
-            }
+            
                
        } catch (IOException exception) {
             exception.printStackTrace();
