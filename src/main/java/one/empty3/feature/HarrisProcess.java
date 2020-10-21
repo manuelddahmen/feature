@@ -14,7 +14,9 @@ import one.empty3.library.core.lighting.Colors;
 public class HarrisProcess extends ProcessFile {
      PixM m;
      
-     public HarrisProcess (){}
+     public HarrisProcess (){
+         super(2,2);
+     }
      
      public boolean process(File in, File out) {
        try {
