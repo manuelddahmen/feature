@@ -34,7 +34,7 @@ public class HarrisProcess extends ProcessFile {
            ImageIO.write(m2.getImage(), "JPEG", out);
            
            return true;
-      } catch() {
+      } catch(Exception ex) {
            ex.printStackTrace();
       }
           
