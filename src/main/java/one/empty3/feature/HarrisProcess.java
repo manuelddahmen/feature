@@ -15,7 +15,7 @@ public class HarrisProcess extends ProcessFile {
      public HarrisProcess (){}
      
      public boolean process(File in, File out) {
-      try {
+       try {
         
         
            PixM imageCoutours = PixM.getPixM(ImageIO.read(in), 500.0);
@@ -33,10 +33,11 @@ public class HarrisProcess extends ProcessFile {
         
            ImageIO.write(m2.getImage(), "JPEG", out);
            
-           
+           return true;
       } catch() {
            ex.printStackTrace();
       }
           
-
-} 
+      return false;
+    } 
+}
