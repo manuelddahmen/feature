@@ -200,7 +200,7 @@ public class Histogram3 extends ProcessFile {
                     if (circle.i > minimumI && circle.r>img.getWidth()/10) {
                         Graphics graphics = img2.getGraphics();
                         graphics.setColor(Color.RED);
-                        graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.x+circle.r * 2), (int) (circle.y+circle.r * 2));
+                        graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (2*circle.r), (int) (2*circle.r));
                         ;
                     }
                 });
