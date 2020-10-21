@@ -200,6 +200,16 @@ public class Histogram3 extends ProcessFile {
                         return 0;
                     }
                 });
+          
+          
+          pointsOfInterest.stream().forEach(circle -> {
+                    if (circle.i >= min && circle.r>img.getWidth()/10) {
+                        Graphics graphics = img.getGraphics();
+  
+                        graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
+                        ;
+                    }
+                });
                 // grouper les points par similarites et distances
               /*  group(pointsOfInterest);
                 File fileToWrite = new File(directory.getAbsolutePath()
@@ -209,7 +219,7 @@ public class Histogram3 extends ProcessFile {
                 File fileToWrite3 = new File(directory.getAbsolutePath()
                         + "level"+ "_NEW_RGB.jpg");
                 //fileToWrite.mkdirs();*/
-                ImageIO.write(img3, "JPEG", out);
+                ImageIO.write(img, "JPEG", out);
                 /*
                 ImageIO.write(img, "JPEG", fileToWrite);
                 ImageIO.write(img, "JPEG", fileToWrite2);
