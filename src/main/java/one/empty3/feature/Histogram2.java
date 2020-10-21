@@ -61,7 +61,7 @@ public class Histogram2 extends ProcessFile {
             min[i] = 1.0*i/ numLevels;
             max[i] = 1.0*(i+1)/ numLevels;
         }
-      this.numLevels = numLevels-1;
+      this.numLevels = numLevels;
 
 }
     public Histogram2() {
@@ -125,7 +125,7 @@ public class Histogram2 extends ProcessFile {
                     double maxI = max[1];
                     double minI = min[0];
                     final int 
-                        index0 = (int)(intensity*numLevels);
+                        index0 = (int)(intensity*(numLevels-1));
                     while(level.i>=0&&level.i<=1.0&&level.i>min[index0]-maxI &&level.i<max[index0] && rMin<Math.max(m.columns, m.lines)) {
 
                         rMin*= 1.3;
