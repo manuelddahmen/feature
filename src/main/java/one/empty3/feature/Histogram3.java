@@ -137,7 +137,7 @@ public class Histogram3 extends ProcessFile {
                         getLevel(level);
                     }
                     level.r /= 1.3;
-                    if(level.r>1) {
+                    if(level.r>rMin0) {
                         circles.add(level);
                     }
                 }
