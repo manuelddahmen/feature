@@ -26,7 +26,7 @@ public class HarrisProcess extends ProcessFile {
         
            PixM  m2 = new PixM(m.columns, m.lines);
            
-           HarrisToPointsOfInterest h = new HarrisToPointsOfInterest();
+           HarrisToPointInterest h = new HarrisToPointInterest();
            
            m2 = m.applyFilter(h);
            
