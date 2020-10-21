@@ -54,16 +54,16 @@ public class Histogram3 extends ProcessFile {
     public Histogram3(int numLevels){
         
 
-        min = new double[numLevels];
-        max = new double[numLevels];
+      min = new double[numLevels];
+      max = new double[numLevels];
 
-        for(int i = 0; i< numLevels; i++) {
-            min[i] = 1.0*i/ numLevels;
-            max[i] = 1.0*(i+1)/ numLevels;
+      for(int i = 0; i< numLevels; i++) {
+          min[i] = 1.0*i/ numLevels;
+          max[i] = 1.0*(i+1)/ numLevels;
         }
       this.numLevels = numLevels;
-      min = 1.0/numLevels;
-}
+      minimumI = 1.0/numLevels;
+    }
     public Histogram3() {
         this(4);
     
