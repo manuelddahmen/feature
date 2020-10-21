@@ -19,7 +19,7 @@ public class Histogram3 extends ProcessFile {
     private PixM m = null;
     private double[] max;
     private double[] min;
-    private double min = 0.1;
+    private double minimumI = 0.1;
     public class Circle {
         public double x, y, r;
         public double i;
@@ -162,7 +162,7 @@ public class Histogram3 extends ProcessFile {
         this.m = imageCoutours;
         BufferedImage file = m.getImage();
         
-        int levels = 3; double min =0.4;
+     
         double radiusIncr = 2;
        
             
@@ -171,9 +171,9 @@ public class Histogram3 extends ProcessFile {
                 BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 
                 
-                List<Circle> pointsOfInterest = getPointsOfInterest(4.0);
+                List<Circle> pointsOfInterest = getPointsOfInterest(radiusIncr);
                 pointsOfInterest.stream().forEach(circle -> {
-                    if (circle.i >= min && circle.r>5.0) {
+                    if (circle.i >= minimumI && circle.r>radiusIncr) {
                         Color color = new Color((float) circle.i, 0f, (float) (circle.i / circle.r));
                         img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
                     }
@@ -197,7 +197,7 @@ public class Histogram3 extends ProcessFile {
           
           
           pointsOfInterest.stream().forEach(circle -> {
-                    if (circle.i >= min && circle.r>img.getWidth()/10) {
+                    if (circle.i >= minimumI && circle.r>img.getWidth()/10) {
                         Graphics graphics = img2.getGraphics();
   
                         graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.x+circle.r * 2), (int) (circle.y+circle.r * 2));
