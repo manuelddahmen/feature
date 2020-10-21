@@ -124,7 +124,7 @@ public class Histogram2 extends ProcessFile {
                     
                     double maxI = max[1];
                     double minI = min[0];
-                    final int 
+                    int 
                         index0 = (int)(intensity*(numLevels-1));
                     if(index0<0) index0 = 0;
                     if(index0<=min.length) index0 = min.length-1;
