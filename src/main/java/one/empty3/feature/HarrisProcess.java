@@ -12,17 +12,15 @@ import java.util.List;
 import java.util.logging.Logger;
 import one.empty3.library.core.lighting.Colors;
 public class HarrisProcess extends ProcessFile {
+     PixM m;
+     
      public HarrisProcess (){}
      
      public boolean process(File in, File out) {
        try {
         
         
-           PixM imageCoutours = PixM.getPixM(ImageIO.read(in), 500.0);
-        
-           this.m = imageCoutours;
-        
-           BufferedImage img = m.getImage();
+           PixM m = PixM.getPixM(ImageIO.read(in), 500.0);
         
            PixM  m2 = new PixM(m.columns, m.lines);
            
