@@ -19,7 +19,7 @@ public class Histogram3 extends ProcessFile {
     private PixM m = null;
     private double[] max;
     private double[] min;
-
+    private double min = 0.1;
     public class Circle {
         public double x, y, r;
         public double i;
@@ -62,10 +62,10 @@ public class Histogram3 extends ProcessFile {
             max[i] = 1.0*(i+1)/ numLevels;
         }
       this.numLevels = numLevels;
-
+      min = 1.0/numLevels;
 }
     public Histogram3() {
-        this(15);
+        this(4);
     
     }
     public void makeHistogram(double r) {
@@ -200,7 +200,7 @@ public class Histogram3 extends ProcessFile {
                     if (circle.i >= min && circle.r>img.getWidth()/10) {
                         Graphics graphics = img2.getGraphics();
   
-                        graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
+                        graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.x+circle.r * 2), (int) (circle.y+circle.r * 2));
                         ;
                     }
                 });
@@ -213,7 +213,7 @@ public class Histogram3 extends ProcessFile {
                 File fileToWrite3 = new File(directory.getAbsolutePath()
                         + "level"+ "_NEW_RGB.jpg");
                 //fileToWrite.mkdirs();*/
-                ImageIO.write(img3, "JPEG", out);
+                ImageIO.write(img2, "JPEG", out);
                 /*
                 ImageIO.write(img, "JPEG", fileToWrite);
                 ImageIO.write(img, "JPEG", fileToWrite2);
