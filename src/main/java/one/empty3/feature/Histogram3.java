@@ -15,7 +15,7 @@ import java.util.List;
  * 
  */
 public class Histogram3 extends ProcessFile {
-    private int numLevels = 10;
+    private int numLevels = 3;
     private PixM m = null;
     private double[] max;
     private double[] min;
@@ -162,7 +162,7 @@ public class Histogram3 extends ProcessFile {
         this.m = imageCoutours;
         BufferedImage file = m.getImage();
         
-        int levels = 10; double min =0.4;
+        int levels = 3; double min =0.4;
         double radiusIncr = 2;
        
             
@@ -173,7 +173,7 @@ public class Histogram3 extends ProcessFile {
                 
                 List<Circle> pointsOfInterest = getPointsOfInterest(4.0);
                 pointsOfInterest.stream().forEach(circle -> {
-                    if (circle.i >= min && circle.r>1.0) {
+                    if (circle.i >= min && circle.r>5.0) {
                         Color color = new Color((float) circle.i, 0f, (float) (circle.i / circle.r));
                         img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
                     }
@@ -198,7 +198,7 @@ public class Histogram3 extends ProcessFile {
           
           pointsOfInterest.stream().forEach(circle -> {
                     if (circle.i >= min && circle.r>img.getWidth()/10) {
-                        Graphics graphics = img.getGraphics();
+                        Graphics graphics = img2.getGraphics();
   
                         graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
                         ;
@@ -213,7 +213,7 @@ public class Histogram3 extends ProcessFile {
                 File fileToWrite3 = new File(directory.getAbsolutePath()
                         + "level"+ "_NEW_RGB.jpg");
                 //fileToWrite.mkdirs();*/
-                ImageIO.write(img, "JPEG", out);
+                ImageIO.write(img3, "JPEG", out);
                 /*
                 ImageIO.write(img, "JPEG", fileToWrite);
                 ImageIO.write(img, "JPEG", fileToWrite2);
