@@ -126,6 +126,8 @@ public class Histogram2 extends ProcessFile {
                     double minI = min[0];
                     final int 
                         index0 = (int)(intensity*(numLevels-1));
+                    if(index0<0) index0 = 0;
+                    if(index0<=min.length) index0 = min.length-1;
                     while(level.i>=0&&level.i<=1.0&&level.i>min[index0]-maxI &&level.i<max[index0] && rMin<Math.max(m.columns, m.lines)) {
 
                         rMin*= 1.3;
