@@ -52,7 +52,7 @@ public class Histogram2 extends ProcessFile {
      */
     
     public Histogram2(int numLevels){
-        numLevels;
+        
 
         min = new double[numLevels];
         max = new double[numLevels];
