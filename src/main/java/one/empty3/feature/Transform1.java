@@ -111,7 +111,7 @@ logger.info("dot outter product");
      WriteFile.writeNext("radial grad"+file.getName(), rad.normalize(0.,1.).getImage());
       WriteFile.writeNext("extrema 5x5"+file.getName(), plext2.normalize(0.,1.).getImage());*/
      try {
-       ImageIO.write( plext.normalize(0.,1.).getImage(), "jpg", out);
+       ImageIO.write( plext.getImage(), "jpg", out);
      } catch (Exception ex){
          return false;
      }
