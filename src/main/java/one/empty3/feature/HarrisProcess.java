@@ -14,8 +14,8 @@ import one.empty3.library.core.lighting.Colors;
 public class HarrisProcess extends ProcessFile {
      PixM m;
      
-     public HarrisProcess (){
-         super(2,2);
+     public HarrisProcess () {
+         
      }
      
      public boolean process(File in, File out) {
@@ -26,7 +26,7 @@ public class HarrisProcess extends ProcessFile {
         
            PixM  m2 = new PixM(m.columns, m.lines);
            
-           HarrisToPointInterest h = new HarrisToPointInterest();
+           HarrisToPointInterest h = new HarrisToPointInterest(2, 2);
            
            m2 = m.applyFilter(h);
            
