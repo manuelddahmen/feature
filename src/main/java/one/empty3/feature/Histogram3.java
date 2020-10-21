@@ -71,7 +71,7 @@ public class Histogram3 extends ProcessFile {
     public void makeHistogram(double r) {
 
     }
-    public Circle getLevel(Histogram2.Circle c) {
+    public Circle getLevel(Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
