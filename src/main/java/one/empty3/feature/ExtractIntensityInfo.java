@@ -82,7 +82,7 @@ new File(dirOut)
 
  PixM pix2 = smoothedGrad.copy();
                 PixM out = new PixM(pix2.columns, pix2.lines);//??
-                Histogram2 histogram = new Histogram2();
+                Histogram2 histogram = new Histogram2(15);
                 histogram.setM(pix2);
                     List<Histogram2.Circle> pointsOfInterest = histogram.getPointsOfInterest(rMin);
 
@@ -106,7 +106,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                 }).forEach(circle -> {
                     circle.i = (circle.i - iSum[1] )/(iSum[2]-iSum[1]);
                 });
-           Color[] colors= new Color[histogram.numLevels];
+           Color[] colors= new Color[15];
                 for (int i = 0; i < colors.length; i++) 
                     colors[i] = Colors.random();
                     
@@ -122,7 +122,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     out.set((int) circle.x, (int) circle.y, circle.i) ;
                     out.setCompNo(2);
                     out.set((int) circle.x, (int) circle.y, circle.r) ;
-                    Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*histogram.numLevels)];
+                    Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*15)];
                     Graphics graphics = img3[0].getGraphics();
                     graphics.setColor(color);
                     graphics.drawRect((int) (circle.x-10), (int) (circle.y-10), (int) (10), (int) (10));
