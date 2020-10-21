@@ -162,7 +162,7 @@ public class Histogram3 extends ProcessFile {
         this.m = imageCoutours;
         BufferedImage file = m.getImage();
         
-        int levels = 10; double min =0.0;
+        int levels = 10; double min =0.4;
         double radiusIncr = 2;
        
             
