@@ -46,3 +46,12 @@ Features' matching
 
 Base de données à mettre au point.
 Circle. Circle r i dist/ cri
+
+# ./settings.properties
+username=user98
+password=ghhyvj
+host=ftp.example.net
+port=21
+directory=/myimages/selection/input
+classname=one.empty3.feature.Transform1,one.empty3.feature.Histogram2,one.empty3.feature.GradProcess
+
