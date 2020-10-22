@@ -79,11 +79,11 @@ public class Histogram3 extends ProcessFile {
         //  return c;
         int count = 0;
         double intensity = 0.0;
-        for (double i = c.x-c.r; i <= c.x+c.r; i++) {
-            for (double j = c.y-c.r; j <= c.y+c.r; j++) {
-                if (Math.sqrt((i-c.x-c.r/2) * (i-c.x-c.r/2) + (j-c.y-c.r/2) * ( j-c.y-c.r/2)) <= c.r*c.r
-                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.y+c.r<m.lines) {
-                    intensity += m.getIntensity((int) i, (int) j);
+        for (double i = -c.r; i <= c.r; i++) {
+            for (double j = -c.r; j <= c.r; j++) {
+                if (Math.sqrt((i) * (i) + (j) * ( j)) <= c.r*c.r
+                        && c.x-i>=0 && c.y-j>=0 && c.x+i<m.columns && c.y+j<m.lines) {
+                    intensity += m.getIntensity((int)( c.x+i), (int) (c.y+j));
                     count++;
                 }
             }
