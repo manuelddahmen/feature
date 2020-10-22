@@ -80,7 +80,7 @@ public class Histogram3 extends ProcessFile {
         double intensity = 0.0;
         for (double i = c.x-c.r; i <= c.x+c.r; i++) {
             for (double j = c.y-c.r; j <= c.y+c.r; j++) {
-                if (Math.sqrt((i-c.x) * (i-c.x) + (j-c.y) * ( j-c.y)) <= c.r*c.r
+                if (Math.sqrt((i-c.x-c.r/2) * (i-c.x-c.r/2) + (j-c.y-c.r/2) * ( j-c.y-c.r/2)) <= c.r*c.r
                         && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.y+c.r<m.lines) {
                     intensity += m.getIntensity((int) i, (int) j);
                     count++;
