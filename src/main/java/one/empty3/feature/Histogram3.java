@@ -163,21 +163,13 @@ public class Histogram3 extends ProcessFile {
         BufferedImage file = m.getImage();
         
      
-        double radiusIncr = 2;
+        double radiusIncr = 4;
        
             
                 BufferedImage img  = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
-                BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 
                 
-                List<Circle> pointsOfInterest = getPointsOfInterest(radiusIncr);
-                pointsOfInterest.stream().forEach(circle -> {
-                    if (circle.i >= minimumI && circle.r>radiusIncr) {
-                        Color color = new Color((float) circle.i, 0f, (float) (circle.i / circle.r));
-                        img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
-                    }
-                });
             // grands;cercles = grandes iles les separer
             // verifier les distances et constantes i
             // petits cercles successifs entoures 
