@@ -20,6 +20,7 @@ public class Histogram3 extends ProcessFile {
     private double[] max;
     private double[] min;
     private double minimumI = 0.1;
+    public double rFact = 2.0;
     public class Circle {
         public double x, y, r;
         public double i;
@@ -126,10 +127,10 @@ public class Histogram3 extends ProcessFile {
                     //if(index0<=min.length) index0 = min.length-1;
                     while(level.i>=0&&level.i<1.0&&level.i>=min[index0] &&level.i<max[index0] && rMin<Math.max(m.columns, m.lines)) {
 
-                        level.r*= 1.3;
+                        level.r*= rFact;
                         getLevel(level);
                     }
-                    level.r /= 1.3;
+                    level.r /= rFact;
                     if(level.r>rMin0) {
                         circles.add(level);
                     }
