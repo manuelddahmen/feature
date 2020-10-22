@@ -111,7 +111,7 @@ public class Histogram3 extends ProcessFile {
 
         // Classer les points par intensité et rayon
 
-        for(double intensity=1.0; intensity>=0.0; intensity-=0.1) {
+       // for(double intensity=1.0; intensity>=0.0; intensity-=0.1) {
             for(int i=0; i<m.columns; i++) {
                 for(int j=0; j<m.lines; j++) {
                     double rMin = rMin0;
@@ -127,7 +127,7 @@ public class Histogram3 extends ProcessFile {
                         index0 = (int)(intensity*(numLevels-1));
                     //if(index0<0) index0 = 0;
                     //if(index0<=min.length) index0 = min.length-1;
-                    while(level.i>=0&&level.i<1.0&&level.i>=min[index0] &&level.i<max[index0] && rMin<Math.max(m.columns, m.lines)) {
+                    while(level.i>=0&&level.i<1.0&&/*level.i>=min[index0] &&level.i<max[index0] && */rMin<Math.max(m.columns, m.lines)) {
 
                         rMin*= 1.3;
                         //index = Math.max(((int) (level.i * numLevels)), 0);
@@ -142,7 +142,7 @@ public class Histogram3 extends ProcessFile {
                     }
                 }
 
-             }
+          //   }
         }
 
         
