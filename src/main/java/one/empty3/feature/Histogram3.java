@@ -119,7 +119,7 @@ public class Histogram3 extends ProcessFile {
                    // level.i = intensity;
                     //int index = Math.max(((int) (level.i * numLevels)), 0);
                     //index = Math.min(numLevels-1, index);
-                    double iOrigin = intensity;
+                    double iOrigin = level.i;
                     
                     double maxI = max[1];
                     double minI = min[0];
