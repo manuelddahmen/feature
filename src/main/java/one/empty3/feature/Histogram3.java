@@ -169,7 +169,7 @@ public class Histogram3 extends ProcessFile {
                 BufferedImage img  = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 
-                
+                pointsOfInterest = getPointsOfInterest(4.0);
             // grands;cercles = grandes iles les separer
             // verifier les distances et constantes i
             // petits cercles successifs entoures 
