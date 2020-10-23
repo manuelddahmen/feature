@@ -177,7 +177,7 @@ public class Histogram3 extends ProcessFile {
                              return -1;
                         if(v>0)
                              return 1;
-                        return o2.i - o2.i;
+                        return Math.sign(o2.i - o2.i);
                     }
                 });
           
