@@ -125,7 +125,7 @@ public class Histogram3 extends ProcessFile {
                         index0 = (int)(level.i*(numLevels-1));
                     //if(index0<0) index0 = 0;
                     //if(index0<=min.length) index0 = min.length-1;
-                    while(level.i>=iMin&&level.i>=iOrigin-1.0/numLevels&&level.i<=iOrigin+1.0/numLevels && rMin<Math.max(m.columns, m.lines)) {
+                    while(level.i>=iMin&&level.i>=iOrigin-1.0/numLevels&&level.i<=iOrigin+1.0/numLevels && level.r<Math.max(m.columns, m.lines)) {
 
                         level.r*= rFact;
                         getLevel(level);
