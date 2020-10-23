@@ -169,7 +169,10 @@ public class Histogram3 extends ProcessFile {
             // petits cercles successifs entoures 
             // de grands ou plus grands cercles = 
             // coins, corners et possibles features.
-                pointsOfInterest.sort(new Comparator<Circle>() {
+                
+          Sysyem.out.println("getPointsOfInterest ");
+          
+          pointsOfInterest.sort(new Comparator<Circle>() {
                     @Override
                     public int compare(Circle o1, Circle o2) {
                         double v = o2.r - o1.r;
@@ -181,6 +184,7 @@ public class Histogram3 extends ProcessFile {
                     }
                 });
           
+          Sysyem.out.println("draw ");
           
           pointsOfInterest.stream().forEach(circle -> {
                     if (circle.i > minimumI && circle.r>img.getWidth()/10) {
