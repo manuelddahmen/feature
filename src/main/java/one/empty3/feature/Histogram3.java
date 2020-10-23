@@ -66,7 +66,7 @@ public class Histogram3 extends ProcessFile {
       minimumI = 0.0;
     }
     public Histogram3() {
-        this(10);
+        this(5);
     
     }
     public void makeHistogram(double r) {
@@ -125,7 +125,7 @@ public class Histogram3 extends ProcessFile {
                         index0 = (int)(level.i*(numLevels-1));
                     //if(index0<0) index0 = 0;
                     //if(index0<=min.length) index0 = min.length-1;
-                    while(level.i>=0&&level.i<=1.0 && rMin<Math.max(m.columns, m.lines)) {
+                    while(level.i>=iOrigin-1.0/numLevels&&level.i<=iOrigin+1.0/numLevels && rMin<Math.max(m.columns, m.lines)) {
 
                         level.r*= rFact;
                         getLevel(level);
