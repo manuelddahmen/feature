@@ -106,7 +106,7 @@ public class Histogram3 extends ProcessFile {
     }
 
 
-    public List<Circle> getPointsOfInterest(double rMin0) {
+    public List<Circle> getPointsOfInterest(double rMin0, double iMin) {
         ArrayList<Circle> circles;
         circles = new ArrayList<>();
 
@@ -125,7 +125,7 @@ public class Histogram3 extends ProcessFile {
                         index0 = (int)(level.i*(numLevels-1));
                     //if(index0<0) index0 = 0;
                     //if(index0<=min.length) index0 = min.length-1;
-                    while(level.i>=iOrigin-1.0/numLevels&&level.i<=iOrigin+1.0/numLevels && rMin<Math.max(m.columns, m.lines)) {
+                    while(level.i>=iMin&&level.i>=iOrigin-1.0/numLevels&&level.i<=iOrigin+1.0/numLevels && rMin<Math.max(m.columns, m.lines)) {
 
                         level.r*= rFact;
                         getLevel(level);
@@ -163,7 +163,7 @@ public class Histogram3 extends ProcessFile {
                 BufferedImage img  = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 List<Circle> pointsOfInterest;
-                pointsOfInterest = getPointsOfInterest(4.0);
+                pointsOfInterest = getPointsOfInterest(4.0, 0.25);
             // grands;cercles = grandes iles les separer
             // verifier les distances et constantes i
             // petits cercles successifs entoures 
