@@ -10,8 +10,8 @@
     <name>FeaturesManager</name>
     <groupId>one.empty3</groupId>
     <artifactId>features</artifactId>
-    <version>2020.4-SNAPSHOT</version>
-    <description>FeaturesManager</description>
+    <version>2020.4</version>
+    <description>Features Manager</description>
     <packaging>jar</packaging>
     <url>https://github.com/manuelddahmen/feature</url>
 
