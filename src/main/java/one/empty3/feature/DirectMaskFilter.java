@@ -22,37 +22,37 @@ public class DirectMaskFilter {
         for(int i=0;i<m1.columns; i++)
             for(int j=0; j<m1.lines; j++){
                 AlgebricTree tree = treeA[c];
-        tree.setVariable("p1x",(double) i);
-        tree.setVariable("p2x",(double) i);
-        tree.setVariable("p1y", (double)j);
-        tree.setVariable("p2y", (double)j);
+        tree.setParameter("p1x",(double) i);
+        tree.setParameter("p2x",(double) i);
+        tree.setParameter("p1y", (double)j);
+        tree.setParameter("p2y", (double)j);
         
         m1.setCompNo(0);
-        tree.setVariable("c1r", m1.get(i,j));
+        tree.setParameter("c1r", m1.get(i,j));
         m1.setCompNo(1);
-        tree.setVariable("c1g", m1.get(i,j));
+        tree.setParameter("c1g", m1.get(i,j));
         m1.setCompNo(2);
-        tree.setVariable("c1b", m1.get(i,j));
+        tree.setParameter("c1b", m1.get(i,j));
         m2.setCompNo(0);
-        tree.setVariable("c2r", m2.get(i,j));
+        tree.setParameter("c2r", m2.get(i,j));
         m2.setCompNo(1);
         tree.setVariable("c2g", m2.get(i,j));
         m2.setCompNo(2);
-        tree.setVariable("c2b", m2.get(i,j));
+        tree.setParameter("c2b", m2.get(i,j));
         m1.setCompNo(3);
-        tree.setVariable("c1a", m1.get(i,j));
+        tree.setParameter("c1a", m1.get(i,j));
         m2.setCompNo(3);
-        tree.setVariable("c2a", m2.get(i,j));
+        tree.setParameter("c2a", m2.get(i,j));
         
-        tree.setVariable("w", (double)m1.getColumns());
+        tree.setParameter("w", (double)m1.getColumns());
      
-        tree.setVariable("h", (double)m1.getLines
+        tree.setParameter("h", (double)m1.getLines
                          
                         ());
        
-        tree.setVariable("ww", (double)m2.getColumns());
+        tree.setParameter("ww", (double)m2.getColumns());
      
-        tree.setVariable("wh", (double)m2.getLines());
+        tree.setParameter("wh", (double)m2.getLines());
                 
         try {
                 tree.construct();
