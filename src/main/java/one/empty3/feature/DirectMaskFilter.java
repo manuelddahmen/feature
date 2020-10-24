@@ -58,11 +58,16 @@ public class DirectMaskFilter {
                 double value = (double)(Double)(tree.eval());
                 m3.setCompNo(c);
                 m3.set(i,j,value);
-         } catch() {ex.printStackTrace();}
+         } catch(Exception ex) {
+            ex.printStackTrace();
         }
        }
-       }
-        return m3;
-    } 
+      }
+     
+        
+    return m3;
+   
+} 
+
 
 }
