@@ -1,4 +1,7 @@
 package one.empty3.feature ;
+
+import one.empty3.library.core.raytracer.tree.*;
+
 public class DirectMaskFilter {
     PixM m1; PixM m2;
     public DirectMaskFilter(PixM m1, PixM m2)
