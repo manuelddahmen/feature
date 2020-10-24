@@ -58,8 +58,8 @@ public class LocalExtrema extends FilterMatPixM {
                             }
                         }
                     }
-                }
-                if (countIn <= pointsCount) {
+                
+                if (countIn < pointsCount  ) {
                             copy.setCompNo(0);
                             copy.set(i, j, 0, 0, 1);//1 au lieu value
                             copy.setCompNo(1);
@@ -67,6 +67,7 @@ public class LocalExtrema extends FilterMatPixM {
                             copy.setCompNo(2);
                             copy.set(i, j, 0, 0, 1);//1 au lieu value
                 }
+              }
             }
         }
         return copy;
