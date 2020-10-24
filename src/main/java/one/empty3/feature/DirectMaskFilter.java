@@ -17,7 +17,7 @@ public class DirectMaskFilter {
         PixM m3 = new PixM(m1.columns, m1.lines);
         AlgebricTree [] treeA = new AlgebricTree[formulaColorComps];
         for(int c=0; c<formulaColorComps.length; c++) {
-            tree[c] = new AlgebricTree (formulaColorComps[c]) ;
+            treeA[c] = new AlgebricTree (formulaColorComps[c]) ;
         
         for(int i=0;m1.columns; i++)
             for(int j=0; j<m1.lines; j++){
