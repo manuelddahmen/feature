@@ -61,7 +61,7 @@ public class DirectMaskFilter {
          } catch() {ex.printStackTrace();}
         }
        }
-        
+       }
         return m3;
     } 
 
