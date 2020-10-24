@@ -13,7 +13,7 @@ public class DirectMaskFilter {
     /* (M3.p =) = p1x, p1y, 
     
 , p2x, p2y,c1r,c2g b a, w, h, ww, wh */
-    public void applyOperator(String [] formulaColorComps) {
+    public PixM applyOperator(String [] formulaColorComps) {
         PixM m3 = new PixM(m1.columns, m1.lines);
         AlgebricTree [] treeA = new AlgebricTree[formulaColorComps.length];
         for(int c=0; c<formulaColorComps.length; c++) {
@@ -36,7 +36,7 @@ public class DirectMaskFilter {
         m2.setCompNo(0);
         tree.setParameter("c2r", m2.get(i,j));
         m2.setCompNo(1);
-        tree.setVariable("c2g", m2.get(i,j));
+        tree.setParameter("c2g", m2.get(i,j));
         m2.setCompNo(2);
         tree.setParameter("c2b", m2.get(i,j));
         m1.setCompNo(3);
