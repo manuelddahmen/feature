@@ -52,7 +52,7 @@ logger.info("dot outter product");
      LocalExtrema le =
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
-                      3, 0);
+                      3, 2);
      PixM plext = le.filter(new M3(pext,
                       1, 1)
             ).getImagesMatrix()[0][0].normalize(0.,1.);
@@ -65,23 +65,27 @@ logger.info("dot outter product");
      pext = pixMOriginal;
      LocalExtrema le2 =
          new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
-                      imagesMatrix[1][0].getLines(),
+                    imagesMatrix[1][0].getLines(),
                       5, 0);
      PixM plext2 = le2.filter(new M3(pext,
                       1, 1)
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum 5x5");
       
-      
+      /*
       LocalExtrema le3 =
          new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
-                      19, 3);
+                      19
+                           , 3);
       PixM plext3 = le3.filter(new M3(pext,
                       1, 1)
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum 20x20");
+      */
       
+      
+     
       
   //    AfterGradientBeforeExtremum a 
   //      = new AfterGradientBeforeExtremum(3);
