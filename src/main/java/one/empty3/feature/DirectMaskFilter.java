@@ -16,13 +16,38 @@ public class DirectMaskFilter {
     public void applyOperator(String formula) {
         AlgebricTree tree = new AlgebricTree (formula) ;
         
+        
+        
+        for(int i=0;m1.columns; i++)
+            for(int j=0; j<m1.lines; j++){
         tree.setVariable("p1x", i);
         tree.setVariable("p2x", i);
         tree.setVariable("p1y", j);
         tree.setVariable("p2y", j);
+        
         m1.setCompNo(0);
         tree.setVariable("c1r", m1.get(i,j));
-        /*...*/
+        m1.setCompNo(1);
+        tree.setVariable("c1g", m1.get(i,j));
+        m1.setCompNo(2);
+        tree.setVariable("c1b", m1.get(i,j));
+        m2.setCompNo(0);
+        tree.setVariable("c2r", m2.get(i,j));
+        m2.setCompNo(1);
+        tree.setVariable("c2g", m2.get(i,j));
+        m2.setCompNo(2);
+        tree.setVariable("c2b", m2.get(i,j));
+        m1.setCompNo(3);
+        tree.setVariable("c1a", m1.get(i,j));
+        m2.setCompNo(3);
+        tree.setVariable("c2a", m2.get(i,j));
+     
+                tree.construct();
+                
+                double value = (double)(Double)(tree.eval());
+                
+                
+         }
     } 
 
 }
