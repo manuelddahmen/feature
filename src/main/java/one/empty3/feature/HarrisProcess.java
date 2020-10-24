@@ -30,6 +30,9 @@ public class HarrisProcess extends ProcessFile {
            
            m2 = m.applyFilter(h);
            
+            LocalExtrema le = new LocalExtrema(3, 1);
+            
+            m2 = le.filter(new M3(m2, 1, 1) ).getImagesMatrix () [0] [0] ;
         
            ImageIO.write(m2.getImage(), "JPEG", out);
            
