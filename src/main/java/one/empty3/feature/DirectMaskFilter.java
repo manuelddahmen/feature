@@ -15,17 +15,17 @@ public class DirectMaskFilter {
 , p2x, p2y,c1r,c2g b a, w, h, ww, wh */
     public void applyOperator(String [] formulaColorComps) {
         PixM m3 = new PixM(m1.columns, m1.lines);
-        AlgebricTree [] treeA = new AlgebricTree[formulaColorComps];
+        AlgebricTree [] treeA = new AlgebricTree[formulaColorComps.length];
         for(int c=0; c<formulaColorComps.length; c++) {
             treeA[c] = new AlgebricTree (formulaColorComps[c]) ;
         
-        for(int i=0;m1.columns; i++)
+        for(int i=0;i<m1.columns; i++)
             for(int j=0; j<m1.lines; j++){
                 AlgebricTree tree = treeA[c];
-        tree.setVariable("p1x", i);
-        tree.setVariable("p2x", i);
-        tree.setVariable("p1y", j);
-        tree.setVariable("p2y", j);
+        tree.setVariable("p1x",(double) i);
+        tree.setVariable("p2x",double) i);
+        tree.setVariable("p1y", double)j);
+        tree.setVariable("p2y", double)j);
         
         m1.setCompNo(0);
         tree.setVariable("c1r", m1.get(i,j));
@@ -44,15 +44,15 @@ public class DirectMaskFilter {
         m2.setCompNo(3);
         tree.setVariable("c2a", m2.get(i,j));
         
-        tree.setVariable("w", m1.getColumns());
+        tree.setVariable("w", double)m1.getColumns());
      
-        tree.setVariable("h", m1.getLines
+        tree.setVariable("h", double)m1.getLines
                          
                         ());
        
-        tree.setVariable("ww", m2.getColumns());
+        tree.setVariable("ww", double)m2.getColumns());
      
-        tree.setVariable("wh", m2.getLines());
+        tree.setVariable("wh", double)m2.getLines());
                 
         try {
                 tree.construct();
