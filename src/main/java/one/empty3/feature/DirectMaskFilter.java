@@ -60,7 +60,7 @@ public class DirectMaskFilter {
                 double value = (double)(Double)(tree.eval());
                 m3.setCompNo(c);
                 m3.set(i,j,value);
-         } catch(Exception|AlgebraicSyntaxFormulaException ex) {
+         } catch(AlgebraicSyntaxFormulaException ex) {
             ex.printStackTrace();
         }
        }
