@@ -1,4 +1,4 @@
-Package one.empty3.feature ;
+package one.empty3.feature ;
 public class DirectMaskFilter {
     PixM m1; PixM m2;
     public DirectMaskFilter(PixM m1, PixM m2)
