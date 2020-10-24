@@ -9,9 +9,17 @@ public class DirectMaskFilter {
     }
     /* (M3.p =) = p1x, p1y, 
     
-, p2x, p2y, p1, p2, c0,c1,c2,alpha, */
+, p2x, p2y, p1, p2,,c1r,c2g ,a1, */
     public void applyOperator(String formula) {
+        AlgebricTree tree = new AlgebricTree (formula) ;
         
+        tree.setVariable("p1x", i);
+        tree.setVariable("p2x", i);
+        tree.setVariable("p1y", j);
+        tree.setVariable("p2y", j);
+        m1.setCompNo(0);
+        tree.setVariable("c1r", m1.get(i,j));
+        /*...*/
     } 
 
 }
