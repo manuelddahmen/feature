@@ -46,11 +46,13 @@ public class DirectMaskFilter {
         
         tree.setVariable("w", m1.getColumns());
      
-        tree.setVariable("h", m1.getHeight());
+        tree.setVariable("h", m1.getLines
+                         
+                        ());
        
         tree.setVariable("ww", m2.getColumns());
      
-        tree.setVariable("wh", m2.getHeight());
+        tree.setVariable("wh", m2.getLines());
                 
         try {
                 tree.construct();
