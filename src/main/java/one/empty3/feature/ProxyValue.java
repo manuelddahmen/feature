@@ -5,7 +5,7 @@ import java.io.File ;
 import one.empty3.library.Point3D;
 import one.empty3.io.ProcessFile;
 
-public class Proxy Value extends ProcessFile {
+public class ProxyValue extends ProcessFile {
 
     public boolean process (File in, File out) {
         
@@ -39,7 +39,7 @@ public class Proxy Value extends ProcessFile {
                     }
                   }
                 
-          }
+          
     
     
     try {
