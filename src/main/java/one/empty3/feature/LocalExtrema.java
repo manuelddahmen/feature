@@ -61,7 +61,7 @@ public class LocalExtrema extends FilterMatPixM {
                 
                 
                     
-                    if (isSetMin()&&pointIn >= pointsCount ) {
+                    if (isSetMin()&&countIn >= pointsCount ) {
                             copy.setCompNo(0);
                             copy.set(i, j, 0, 0, 1);//1 au lieu value
                             copy.setCompNo(1);
