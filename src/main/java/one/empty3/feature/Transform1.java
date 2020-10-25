@@ -52,8 +52,8 @@ logger.info("dot outter product");
      LocalExtrema le =
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
-                      3, 2);
-        le.setSetMin(true);
+                      3, 1);
+        le.setSetMin(false);
      PixM plext = le.filter(new M3(pext,
                       1, 1)
             ).getImagesMatrix()[0][0].normalize(0.,1.);
