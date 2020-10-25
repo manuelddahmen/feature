@@ -87,7 +87,7 @@ public class ProxyValue extends ProcessFile {
         return null;
     }
     
-    public double [] colors (PixM m1, int i, int j,
+    public void colors (PixM m1, int i, int j,
                             PixM m2) {
         for(int c = 0; c<4; c++) {
         
