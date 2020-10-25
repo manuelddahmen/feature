@@ -30,19 +30,21 @@ public class ProxyValue extends ProcessFile {
          for (int i = 0; i < original.columns; i++)
 
                 for (int j = 0; j < original.lines; j++)
-                  if(original.getIntensity(i,j)>0.5){
+                  
                         
                     
                     for (int c = 0; c < 4; c++) {
                         original.setCompNo(c);
-                        Point3D p = searchFromTo(original, i, j, 0.5, 1.0);
-                        if(p!=null) {
-                             copy.set(i, j, p.getZ());
-                        }
+                        if(original.get(i,j)>0.5){
+                         
+                         Point3D p = searchFromTo(original, i, j, 0.5, 1.0);
+                         if(p!=null) {
+                              copy.set(i, j, p.getZ());
+                         }
                            
                        
+                        }
                     }
-                  }
                 
           
     
