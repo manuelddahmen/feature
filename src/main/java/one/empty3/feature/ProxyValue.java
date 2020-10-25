@@ -71,7 +71,7 @@ public class ProxyValue extends ProcessFile {
                         p = new Point3D(i+i2, j-j2, original.get(i-i2,j-j2));
                     }
                 
-                ifp!=null)
+                if(p!=null)
                     return p;
              }
           
