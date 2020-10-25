@@ -4,6 +4,10 @@ package one.empty3.feature ;
 import java.io.File ;
 import one.empty3.library.Point3D;
 import one.empty3.io.ProcessFile;
+import static org.junit.Assert.*;
+import javax.imageio.ImageIO;
+import one.empty3.feature.*;
+import java.util.logging.*; 
 
 public class ProxyValue extends ProcessFile {
 
@@ -59,8 +63,8 @@ public class ProxyValue extends ProcessFile {
     public Point3D searchFromTo(
            PixM original, int i, int j, double min, double value) {
         Point3D p = null;
-        for(int i2=0; j2<original.columns/2; i2++)
-            for(int j2=0; j2<original.columns/2; j2++)
+        for(double i2=0; j2<original.columns/2; i2++)
+            for(double j2=0; j2<original.columns/2; j2++)
                 { 
                     if(original.get(i+i2, j+j2)>= min) {
                         p = new Point3D(i-i2, j-j2, original.get(i-i2,j-j2));
