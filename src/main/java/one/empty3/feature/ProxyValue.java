@@ -53,7 +53,7 @@ public class ProxyValue extends ProcessFile {
         return true;
     } 
     public Point3D searchFromTo(
-           PixM original, int i, int j, double min, value) {
+           PixM original, int i, int j, double min, double value) {
         Point3D p = null;
         for(int i2=0; j2<original.columns/2; i2++)
             for(int j2=0; j2<original.columns/2; j2++)
@@ -74,7 +74,7 @@ public class ProxyValue extends ProcessFile {
                 ifp!=null)
                     return p;
              }
-          }
+          
         
         return null;
     }
