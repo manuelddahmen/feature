@@ -54,15 +54,17 @@ public class LocalExtrema extends FilterMatPixM {
                     for (int ii = -neighbourSize / 2; ii <= neighbourSize / 2; ii++) {
                         for (int ij = neighbourSize / 2; ij <= neighbourSize / 2; ij++) {
                                 double v = original.getIntensity(i + ii, j + ij, 0, 0);
-                            if (v >= maxLocal) {
+                            if (v < maxLocal) {
                                     countIn++;
                             }
+                            else 
+                                countOut ++;
                         }
                     }
                 
                 
                     
-                    if (isSetMin()&&countIn >= pointsCount ) {
+                    if (isSetMin()&&countIn >= pointsCount && countOut == 0) {
                             copy.setCompNo(0);
                             copy.set(i, j, 0, 0, 1);//1 au lieu value
                             copy.setCompNo(1);
