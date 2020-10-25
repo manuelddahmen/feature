@@ -113,7 +113,7 @@ public class LocalExtrema extends FilterMatPixM {
     public boolean isSetMin() {
         return setMin;
     }
-    public  setSetMin(boolean b) {
+    public void setSetMin(boolean b) {
         this.setMin = b;
     }
 }
