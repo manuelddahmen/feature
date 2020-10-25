@@ -32,7 +32,7 @@ public class HarrisToPointInterest extends FilterPixM {
          double gxgy = gpgx1-gpgy;
          double gygy = gpgy1-gpgy;
          
-         return (gxgx+gygy)/(gxgx*gygy-gxgy*gygx);
+         return (gxgx*gygy-gxgy*gygx)/(gxgx*gygy);
      }
     
     public List<Point3D> getPoi() {
