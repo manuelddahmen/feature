@@ -96,6 +96,6 @@ public class ProxyValue extends ProcessFile {
             
             m2.set(i, j, m1.get(i,j));
         }
-        m2.setCompNo(c);
+       
     }
 } 
