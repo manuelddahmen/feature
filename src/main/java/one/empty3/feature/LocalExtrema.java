@@ -65,20 +65,19 @@ public class LocalExtrema extends FilterMatPixM {
                 
                     
                     if (isSetMin()&&countIn >= pointsCount && countOut == 0) {
-                            copy.setCompNo(0);
-                            copy.set(i, j, 0, 0, 1);//1 au lieu value
-                            copy.setCompNo(1);
-                            copy.set(i, j, 0, 0, 1);//1 au lieu value
-                            copy.setCompNo(2);
-                            copy.set(i, j, 0, 0, 1);//1 au lieu value
-                } else 
-                        if (countIn < pointsCount ) {
-                            copy.setCompNo(0);
-                            copy.set(i, j, 0, 0, 1);//1 au lieu value
-                            copy.setCompNo(1);
-                            copy.set(i, j, 0, 0, 1);//1 au lieu value
-                            copy.setCompNo(2);
-                            copy.set(i, j, 0, 0, 1);//1 au lieu value
+                            copy.setCompNo(0);original.setCompNo(0);
+                            copy.set(i, j, 0, 0, original.get(i,j,0,0));//1 au lieu value
+                            copy.setCompNo(1);original.setCompNo(1);
+                            copy.set(i, j, 0, 0, original.get(i,j,0,0)));//1 au lieu value
+                            copy.setCompNo(2);original.setCompNo(2);
+                            copy.set(i, j, 0, 0, original.get(i,j,0,0)));//1 au lieu value
+                } else if (countIn < pointsCount ) {
+                            copy.setCompNo(0);original.setCompNo(0);
+                            copy.set(i, j, 0, 0, original.get(i,j,0,0)));//1 au lieu value
+                            copy.setCompNo(1);original.setCompNo(1);
+                            copy.set(i, j, 0, 0, original.get(i,j,0,0)));//1 au lieu value
+                            copy.setCompNo(2);original.setCompNo(2);
+                            copy.set(i, j, 0, 0, original.get(i,j,0,0)));//1 au lieu value
                 }
               }
             }
