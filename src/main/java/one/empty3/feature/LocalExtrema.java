@@ -107,7 +107,7 @@ public class LocalExtrema extends FilterMatPixM {
         this.threshold = threshold;
     }
     
-    public boolean isSetMax() {
+    public boolean isSetMin() {
         return true;
     }
 }
