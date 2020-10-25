@@ -30,10 +30,10 @@ public class HarrisProcess extends ProcessFile {
            
            m2 = m.applyFilter(h);
            
-          LocalExtrema le = new LocalExtrema(m2.columns, m2.lines, 3, 0);
+          LocalExtrema le = new LocalExtrema(m2.columns, m2.lines, 3, 9);
             
           //m2 = le.filter(new M3(m2, 1, 1) ).getImagesMatrix () [0] [0] ;
-        le = new LocalExtrema(m2.columns, m2.lines, 3, 6);
+        le = new LocalExtrema(m2.columns, m2.lines, 3, 9);
             
           m2 = le.filter(new
             M3(m2, 1, 1) ).getImagesMatrix () [0] [0] ;
