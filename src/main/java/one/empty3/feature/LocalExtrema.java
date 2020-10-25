@@ -5,6 +5,7 @@ import org.apache.poi.hssf.util.HSSFColor;
 import java.util.ArrayList;
 
 public class LocalExtrema extends FilterMatPixM {
+    private boolean setMin = false;
     private final int pointsCount;
     private final int neighbourSize;
     protected double sub[];
@@ -108,6 +109,9 @@ public class LocalExtrema extends FilterMatPixM {
     }
     
     public boolean isSetMin() {
-        return true;
+        return setMin;
+    }
+    public  setSetMin(boolean b) {
+        this.setMin = b;
     }
 }
