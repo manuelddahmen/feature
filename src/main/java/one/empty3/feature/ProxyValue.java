@@ -67,7 +67,7 @@ public class ProxyValue extends ProcessFile {
         int [] incr = new int[]{
                                  1,1,1,-1,
                                 -1,-1,1,-1};
-        for(int k=0; k<original.columns*original.lines;k++)
+     /*   for(int k=0; k<original.columns*original.lines;k++)
                 { 
             
               int [] k1 = new int[] {incr[(k/2)%8], 
@@ -75,8 +75,16 @@ public class ProxyValue extends ProcessFile {
                 i2+= k1[0];
                 j2 += k1[1];
             
-           
+           */
+        for(int l=1; l<original.columns; l++)
+          for(int i3=0; i3<l; l++) {
+            for(int j3 = 0; j3<l; l++) {
+                i2 = i -l/2 + i3;
+                j2 = j - l/2 + j3;
                 p = null;
+                if(i2==i&&j2==j
+                  )
+                    continue;
                 if(original.getIntensity(i2, j2)>= min) {
                         p = new Point3D((double)i2, (double) j2, original.get(i2,j2));
                     }
@@ -88,7 +96,7 @@ public class ProxyValue extends ProcessFile {
                } else {
                    
                 }
-             }
+            // }
           
        // System.out.println("error not found");
         return;
