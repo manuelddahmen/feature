@@ -35,9 +35,9 @@ public class ProxyValue extends ProcessFile {
                         
                     
                  
-                        if(original.getIntensity(i,j)<0.3){
+                        if(original.getIntensity(i,j)<0.4){
                          
-                         searchFromTo(original, copy, i, j, 0.3, 1.0);
+                         searchFromTo(original, copy, i, j, 0.6, 1.0);
                          p++;
                
                     }
