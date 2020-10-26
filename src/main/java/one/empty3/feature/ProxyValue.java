@@ -91,7 +91,7 @@ public class ProxyValue extends ProcessFile {
                             PixM m2) {
         for(int c = 0; c<4; c++) {
         
-             m1.setCompNo(c);
+            m1.setCompNo(c);
             m2.setCompNo(c);
             
             m2.set(i, j, m1.get(i,j));
