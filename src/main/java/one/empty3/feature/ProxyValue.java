@@ -68,7 +68,7 @@ public class ProxyValue extends ProcessFile {
                 { 
                 Point3D p = null;
                 if(original.getIntensity(i+i2, j+j2)>= min) {
-                        p = new Point3D(1.*i-i2, 1.*j-j2, original.get(i-i2,j-j2));
+                        p = new Point3D(1.*i+i2, 1.*j+j2, original.get(i+i2,j+j2));
                     }
                 if(original.getIntensity(i+i2, j-j2)>= min) {
                         p = new Point3D(1.*i+i2, 1.*j-j2, original.get(i+i2,j-j2));
@@ -77,7 +77,7 @@ public class ProxyValue extends ProcessFile {
                         p = new Point3D(1.*i-i2, 1.*j+j2, original.get(i-i2,j+j2));
                     }
                 if(original.getIntensity(i-i2, j-j2)>= min) {
-                        p = new Point3D(1.*i+i2, 1.*j-j2, original.get(i-i2,j-j2));
+                        p = new Point3D(1.*i-i2, 1.*j-j2, original.get(i-i2,j-j2));
                     }
                 
                 if(p!=null)
