@@ -248,16 +248,15 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
     
     
     public PixM copy() {
-        double div = 1.0;
-        double columns2 = 1.0 * columns / div;
-        double lines2 = 1.0 * lines / div;
-        double cli2 = 1.0 * 1 / div;
-        PixM pixM = new PixM((int) (columns2), ((int) lines2));
+        
+     
+       
+        PixM pixM = new PixM(columns, lines);
         for (int c = 0; c < getCompCount(); c++) {
             setCompNo(c);
             pixM.setCompNo(c);
-            for (int i = 0; i < (int) columns2; i++)
-                for (int j = 0; j < (int) lines2; j++) {
+            for (int i = 0; i < (int) columns; i++)
+                for (int j = 0; j < (int) lines; j++) {
                     //double m = mean((int) (i * div), (int) (j * div), (int) (cli2 * div),
                     //        (int) (cli2 * div));
                     pixM.set(i, j, get(i, j));
