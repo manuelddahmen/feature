@@ -26,6 +26,7 @@ public class ProxyValue extends ProcessFile {
        // assertTrue(false);
       
      }
+        int p=0;
         PixM copy = original.copy();
          for (int i = 0; i < original.columns; i++)
 
@@ -37,7 +38,7 @@ public class ProxyValue extends ProcessFile {
                         if(original.getIntensity(i,j)<0.3){
                          
                          searchFromTo(original, copy, i, j, 0.3, 1.0);
-                         
+                         p++;
                
                     }
                 
@@ -51,7 +52,8 @@ public class ProxyValue extends ProcessFile {
         return false;
      }
        
-       System.gc();
+       
+        System.out.println("point "+ p);
      
         return true;
     } 
