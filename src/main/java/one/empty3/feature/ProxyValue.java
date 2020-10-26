@@ -94,7 +94,7 @@ public class ProxyValue extends ProcessFile {
     
     public void copyPixel(PixM m1, int i, int j,
                             PixM m2, int i2, int j2) {
-        for(int c = 0; c<4; c++) {
+        for(int c = 0; c<3; c++) {
         
             m1.setCompNo(c);
             m2.setCompNo(c);
