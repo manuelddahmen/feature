@@ -35,9 +35,9 @@ public class ProxyValue extends ProcessFile {
                         
                     
                  
-                        if(original.getIntensity(i,j)<0.4){
+                        if(original.getIntensity(i,j)<0.1){
                          
-                         searchFromTo(original, copy, i, j, 0.6, 1.0);
+                         searchFromTo(original, copy, i, j, 0.2, 1.0);
                          p++;
                
                     }
@@ -74,6 +74,8 @@ public class ProxyValue extends ProcessFile {
                                      incr[(k/2+1)%8]};
                 i2+= k1[0];
                 j2 += k1[1];
+            
+           
                 p = null;
                 if(original.getIntensity(i2, j2)>= min) {
                         p = new Point3D((double)i2, (double) j2, original.get(i2,j2));
@@ -88,7 +90,7 @@ public class ProxyValue extends ProcessFile {
                 }
              }
           
-        System.out.println("error not found");
+       // System.out.println("error not found");
         return;
     }
     
