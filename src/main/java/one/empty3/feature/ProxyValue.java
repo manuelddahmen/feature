@@ -70,7 +70,8 @@ public class ProxyValue extends ProcessFile {
         for(int k=0; k<original.columns*original.lines;k++)
                 { 
             
-              int [] k1 = new int[] {incr[k%4]*(k/4), incr[(k+1)%4]*(1+k/4)};
+              int [] k1 = new int[] {incr[(k/2)%8], 
+                                     incr[(k/2+1)%8]};
                 p = null;
                 if(original.getIntensity(i+k1[0], j+k1[1])>= min) {
                         p = new Point3D(1.*i+k1[0], 1.*j+k1[1], original.get(i+i2,j+j2));
