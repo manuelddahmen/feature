@@ -39,7 +39,7 @@ public class ProxyValue extends ProcessFile {
                          Point3D p = searchFromTo(original, i, j, 0.3, 1.0);
                          if(p!=null) {
                               colors(original, (int)(double)(p.get(0)), 
-                                     (int)(double)(p.get(1)), copy);
+                                     (int)(double)(p.get(1)), copy, i, j);
                          }
                
                     }
@@ -90,13 +90,13 @@ public class ProxyValue extends ProcessFile {
     }
     
     public void colors (PixM m1, int i, int j,
-                            PixM m2) {
+                            PixM m2, int i2, int j2) {
         for(int c = 0; c<4; c++) {
         
             m1.setCompNo(c);
             m2.setCompNo(c);
             
-            m2.set(i, j, m1.get(i,j));
+            m2.set(i2, j2, m1.get(i,j));
         }
        
     }
