@@ -43,7 +43,7 @@ public class M {
             i+=get(column, line)*get(column, line);
 
         }
-        return Math.sqrt(i/3);
+        return i;
     }
 
     public int getCompNo() {
