@@ -81,11 +81,12 @@ public class ProxyValue extends ProcessFile {
                         p = new Point3D(1.*i-i2, 1.*j-j2, original.get(i-i2,j-j2));
                     }
                 
-                if(p!=null)
+                if(p!=null) {
                     return p;
+               }
              }
           
-        
+        System.out.println("error not found");
         return null;
     }
     
