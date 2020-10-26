@@ -38,7 +38,8 @@ public class ProxyValue extends ProcessFile {
                          
                          Point3D p = searchFromTo(original, i, j, 0.3, 1.0);
                          if(p!=null) {
-                              colors(original, i, j, copy);
+                              colors(original, (int)(double)(p.get(0)), 
+                                     (int)(double)(p.get(1)), copy);
                          }
                
                     }
