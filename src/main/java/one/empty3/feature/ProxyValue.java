@@ -63,7 +63,7 @@ public class ProxyValue extends ProcessFile {
     public void searchFromTo(
            PixM original, PixM copy, int i, int j, double min, double value) {
         Point3D p = null;
-        int i2 =0, j2 = 0;
+        int i2 =i, j2 = j;
         int [] incr = new int[]{
                                  1,1,1,-1,
                                 -1,-1,1,-1};
@@ -72,9 +72,11 @@ public class ProxyValue extends ProcessFile {
             
               int [] k1 = new int[] {incr[(k/2)%8], 
                                      incr[(k/2+1)%8]};
+                i2+= k1[0];
+                j2 += k1[1];
                 p = null;
-                if(original.getIntensity(i+k1[0], j+k1[1])>= min) {
-                        p = new Point3D(1.*i+k1[0], 1.*j+k1[1], original.get(i+i2,j+j2));
+                if(original.getIntensity(i2, j2)>= min) {
+                        p = new Point3D((double)i2, (double) j2, original.get(i2,j2));
                     }
                 
                 if(p!=null) {
