@@ -258,9 +258,9 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
             pixM.setCompNo(c);
             for (int i = 0; i < (int) columns2; i++)
                 for (int j = 0; j < (int) lines2; j++) {
-                    double m = mean((int) (i * div), (int) (j * div), (int) (cli2 * div),
-                            (int) (cli2 * div));
-                    pixM.set(i, j, m);
+                    //double m = mean((int) (i * div), (int) (j * div), (int) (cli2 * div),
+                    //        (int) (cli2 * div));
+                    pixM.set(i, j, get(i, j));
                 }
         }
         return pixM;
