@@ -36,10 +36,9 @@ public class ProxyValue extends ProcessFile {
                  
                         if(original.getIntensity(i,j)<0.3){
                          
-                         Point3D p = searchFromTo(original, i, j, 0.3, 1.0);
+                         searchFromTo(original, copy, i, j, 0.3, 1.0);
                          if(p!=null) {
-                              colors(original, (int)(double)(p.get(0)), 
-                                     (int)(double)(p.get(1)), copy, i, j);
+                              
                          }
                
                     }
@@ -61,12 +60,13 @@ public class ProxyValue extends ProcessFile {
         
         
         
-    public Point3D searchFromTo(
-           PixM original, int i, int j, double min, double value) {
+    public void searchFromTo(
+           PixM original, PixM copy, int i, int j, double min, double value) {
         Point3D p = null;
-        for(int i2=0; i2<original.columns/2; i2++)
-            for(int j2=0; j2<original.lines/2; j2++)
+        for(int i2=1; i2<original.columns/2; i2++)
+            for(int j2=1; j2<original.lines/2; j2++)
                 { 
+                
                 p = null;
                 if(original.getIntensity(i+i2, j+j2)>= min) {
                         p = new Point3D(1.*i+i2, 1.*j+j2, original.get(i+i2,j+j2));
@@ -82,15 +82,19 @@ public class ProxyValue extends ProcessFile {
                     }
                 
                 if(p!=null) {
-                    return p;
-               }
+                     copyPixel(original, (int)(double)(p.get(0)), 
+                                     (int)(double)(p.get(1)), copy, i, j);
+                    return;
+               } else {
+                   
+                }
              }
           
         System.out.println("error not found");
-        return null;
+        return;
     }
     
-    public void colors (PixM m1, int i, int j,
+    public void copyPixel(PixM m1, int i, int j,
                             PixM m2, int i2, int j2) {
         for(int c = 0; c<4; c++) {
         
