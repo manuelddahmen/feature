@@ -71,17 +71,24 @@ public class FTPProcessFiles {
         String password = (String)settings.getProperty("password");
         String directory = (String)settings.getProperty("directory");
         String classnames = (String)settings.getProperty("classname");
+        String class0 = (String)settings.getProperty("class0");
         String directoryOut = directory.substring(0, directory.lastIndexOf("/"));
         
         
         ftpClient = new FTPClient();
  
         
-        String [] classnamesArr = classnames.split(",");
+       
+        
       try {  
           int i=0;
           //currentDirin = "";
+          if(class0==null || class0.equals("")){}
+            else {
+                classnames = class0+classnames;
+            }
           
+           String [] classnamesArr = classnames.split(",");
         for (String classname2 : classnamesArr) {
             classname = classname2;
             currentDirout = "./output/"+classname+"/";
@@ -94,7 +101,7 @@ public class FTPProcessFiles {
             if(o instanceof ProcessFile)
                 processInstance = (ProcessFile) o;
             
-            if(i==0) {
+            if(i==0 && (class0==null || class0.equals("")) ){
               ftpClient.connect(server, port);
             showServerReply(ftpClient);
  
