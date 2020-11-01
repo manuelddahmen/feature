@@ -14,8 +14,7 @@ import java.util.function.Predicate;
 
 public class ExtractIntensityInfo extends
           ProcessFile {
-    static String dirout="." ;
-    String dirOut = null ;
+    int colorsLevels = 15;
 
       
               public ExtractIntensityInfo(){}
@@ -82,7 +81,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                 }).forEach(circle -> {
                     circle.i = (circle.i - iSum[1] )/(iSum[2]-iSum[1]);
                 });
-           Color[] colors= new Color[15];
+           Color[] colors= new Color[colorsLevels];
                 for (int i = 0; i < colors.length; i++) 
                     colors[i] = Colors.random();
                     
@@ -99,7 +98,8 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     pix.set((int) circle.x, (int) circle.y, circle.i) ;
                     pix.setCompNo(2);
                     pix.set((int) circle.x, (int) circle.y, circle.r) ;
-                    Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*15)];
+                    Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])
+                                               *colorsLevels-1)];
                     Graphics graphics = img3[0].getGraphics();
                     graphics.setColor(color);
                     graphics.drawRect((int) (circle.x-10), (int) (circle.y-10), (int) (10), (int) (10));
