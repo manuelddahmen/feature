@@ -53,7 +53,7 @@ public class FTPProcessFiles {
         defaultProcess(new String[]{"settings.properties"});
     }
     
-    public static void parseAndSet(ProcessFile processInstancs, List argCl){
+    public static void parseAndSet(ProcessFile processInstancs, List<Object> argCl){
          if(argCl.size()%3==0)
              {
              for(int i = 0; i<argCl.size(); i+=3) {
@@ -125,7 +125,7 @@ public class FTPProcessFiles {
             if(o instanceof ProcessFile)
                 processInstance = (ProcessFile) o;
             String arg = null;
-            List<String> argCl= new ArrayList();
+            List<Object> argCl= new ArrayList();
            if((arg=(String)(settings.getProperty(classname)))!=null) {
                String [] ar = arg.split(":");
                argCl.addAll(Arrays.asList(ar));
