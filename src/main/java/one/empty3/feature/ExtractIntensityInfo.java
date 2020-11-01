@@ -68,7 +68,7 @@ public class ExtractIntensityInfo extends
          
 
 
-               
+               isumtot[] =  new double []{0};
 double [] iSum = {0.0, 0.0, 1.0};
 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
@@ -76,6 +76,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                         iSum [0] += circle.i;
                         iSum[1] = Math.min(circle.i, iSum[1]);
                         iSum[2] = Math.max(circle.i, iSum[2]);
+                              isumtot += circle.i
                         return true;
                     }
                 }).forEach(circle -> {
@@ -89,21 +90,21 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
                     public boolean test(Histogram2.Circle circle) {
-                        return circle.i > finalMin;
+                        return circle.i > isumtot/pix.columns/pix.lines;
                     }
                 }).forEach(circle -> {
                     //System.out.println(circle.toString());
                     pix.setCompNo(0);
                 
-                    pix.set((int) circle.x, (int) circle.y, circle.i) ;
+                    pix.set((int) circle.x, (int) circle.y, 1.0) ;
                     pix.setCompNo(2);
                     pix.set((int) circle.x, (int) circle.y, circle.r) ;
                     Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])
                                                *colorsLevels-1)];
-                    Graphics graphics = img3[0].getGraphics();
+                  /*  Graphics graphics = img3[0].getGraphics();
                     graphics.setColor(color);
                     graphics.drawRect((int) (circle.x-10), (int) (circle.y-10), (int) (10), (int) (10));
-
+*/
                 });
                
                
