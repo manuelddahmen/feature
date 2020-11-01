@@ -61,6 +61,12 @@ public class FTPProcessFiles {
              String argValue= argDef[2];
             processInstance.invoke(argCl, argValue);
          }
+        try {}
+        catch (NoSuchMethodException,  
+            InvocationTargetException, IllegalAccessException }
+        Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
+        Object rv = m.invoke(processInstance);  
+        System.out.println(rv);  
     }
     
     public static void defaultProcess(String[] args) {
