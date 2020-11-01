@@ -61,7 +61,7 @@ public class FTPProcessFiles {
                  String param = (String)argCl.get(i);
          String propertyName= (String)argCl.get(i+1);
          String argValue= (String)argCl.get(i+2);
-         Method m =processInstance.class.getMethod("set"+ propertyName, new Object[]{argValue.getClass()});
+         Method m =processInstance.getClass().getMethod("set"+ propertyName, new Object[]{argValue.getClass()});
          m.invoke(processInstance, "set"+ propertyName,new Object[]{ argValue});
          /*
         try {
