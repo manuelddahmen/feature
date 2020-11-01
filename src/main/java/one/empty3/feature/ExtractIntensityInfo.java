@@ -18,7 +18,7 @@ public class ExtractIntensityInfo extends
     String dirOut = null ;
 
       
-               
+              public ExtractIntensityInfo(){}
         public void            
           process(File in, File out) {
             BufferedImage img=null;
@@ -106,7 +106,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                
                
                 
-            out.normalize(0.0,1.0);
+            pix.normalize(0.0,1.0);
                 
                     //
                                                
