@@ -60,7 +60,7 @@ public class FTPProcessFiles {
          String propertyName= argCl[1];
          String argValue= argCl[2];
          Method m =processInstance.getClass.getMethod("set"+ propertyName, new Object[]{argValue.getClass()});
-         m.invoke(processInstance "set"+ propertyName,new Object[]{ argValue});
+         m.invoke(processInstance, "set"+ propertyName,new Object[]{ argValue});
          /*
         try {
             Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
