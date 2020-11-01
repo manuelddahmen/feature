@@ -58,15 +58,18 @@ public class FTPProcessFiles {
              {
          Class argCl = Class.forname(argDef[0]);
          String propertyName argDef[1];
-             String argValue= argDef[2];
-            processInstance.invoke(argCl, argValue);
-         }
-        try {}
-        catch (NoSuchMethodException,  
-            InvocationTargetException, IllegalAccessException }
-        Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
+         String argValue= argDef[2];
+         processInstance.invoke(argCl, argValue);
+         /*
+        try {
+            Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
         Object rv = m.invoke(processInstance);  
         System.out.println(rv);  
+            }
+        catch (NoSuchMethodException,  
+            InvocationTargetException, IllegalAccessException 
+            }*/
+        }
     }
     
     public static void defaultProcess(String[] args) {
