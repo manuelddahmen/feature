@@ -68,7 +68,7 @@ public class ExtractIntensityInfo extends
          
 
 
-              double isumtot[] =  new double []{0};
+              double isumtot[] =  new double []{0,0};
 double [] iSum = {0.0, 0.0, 1.0};
 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
