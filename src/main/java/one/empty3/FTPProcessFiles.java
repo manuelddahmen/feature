@@ -53,12 +53,12 @@ public class FTPProcessFiles {
         defaultProcess(new String[]{"settings.properties"});
     }
     
-    public static void parseAndSet(ProcessFile processInstancs, String [] argDef){
-         if(argDef.length==3)
+    public static void parseAndSet(ProcessFile processInstancs, String [] argCl){
+         if(argCl.length%3==0)
              {
-         Class argCl = ClassLoader.forame(argDef[0]);
-         String propertyName= argDef[1];
-         String argValue= argDef[2];
+         Class argCl = Clas.forname(argCk[0]);
+         String propertyName= argCl[1];
+         String argValue= argCl[2];
          processInstance.invoke("set"+ propertyValue, argValue);
          /*
         try {
@@ -121,13 +121,13 @@ public class FTPProcessFiles {
             if(o instanceof ProcessFile)
                 processInstance = (ProcessFile) o;
             String arg = null;
-            List args = new ArrayList();
+            List argCl= new ArrayList();
            if((arg=(String)(settings.getProperty(classname)))!=null) {
                String [] ar = arg.split(":");
                ar =ar.split(":");
-               args.add(ar);
+               argCl.add(ar);
            }
-           parseAndSet(processInstancs, ar);
+           parseAndSet(processInstancs, argCl);
             if(i==0 && (class0==null || class0.equals("")) ){
               ftpClient.connect(server, port);
             showServerReply(ftpClient);
