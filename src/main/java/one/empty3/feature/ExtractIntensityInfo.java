@@ -114,7 +114,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                                                
                                                
                                                
-                    ImageIO.write (out.getImage(),
+                    ImageIO.write (pix.getImage(),
        "JPEG", out) ;
                     
                    
