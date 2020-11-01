@@ -12,46 +12,20 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class ExtractIntensityInfo {
+public class ExtractIntensityInfo extends
+    ProcessFile {
     static String dirout="." ;
     String dirOut = null ;
-    private 
-       
-File dir;
-    private File file;
-/*
-    public ExtractIntensityInfo(
-) {
-        if (file != null)
-            if (file.exists() && file.isDirectory())
-                this.dir = file;
-            else if (file.isFile())
-                this.file = file;
-    }*/
-public String dir() {
-    if(dirOut!=null) 
-        return dirOut;
-               
-                   
-                  dirOut = dirout
-+"outputFiles/Extracts/" 
-+System.currentTimeMillis()
-               ;
-new File(dirOut) 
-   . mkdirs() ;
-    return dirOut ;
-    
-   } 
-    public void stream(File f) throws IOException {
-        BufferedImage read = ImageIO.read(f);
 
-        PixM pix = PixM.getPixM(read, 500.0);
+      
+               
+        public void            
+          process(File in, File out) {
+   BufferedImage img = ImageIO.read(in)
+        PixM pix = PixM.getPixM(img, 500.0);
         
         
-        
-//                    image2 = getImageFromDir(filename2);
-             //   GradientFilter gradientMask = new GradientFilter(image1.getWidth(), image1.getHeight());
-                PixM pixMOriginal = pix;
+               PixM pixMOriginal = pix;
 
                 final BufferedImage[] img3 = new BufferedImage[]{ pix.getImage()};
                  
@@ -71,8 +45,8 @@ new File(dirOut)
                 linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
                 PixM smoothedGrad = linear.getImages()[2];
         
-       // String s = "outputFiles/Extracts/";
-     //   new File(s).mkdirs();
+       
+    
      double min = 0.3;
         double rMin = 2.0;
        // for(double rMin = 1.0; rMin<10; rMin*= 2.) {
@@ -90,7 +64,7 @@ new File(dirOut)
 
                 
 
-           String dirOut = dir() ;
+         
 
 
                
@@ -118,15 +92,15 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     }
                 }).forEach(circle -> {
                     //System.out.println(circle.toString());
-                    out.setCompNo(0);
-                    out.set((int) circle.x, (int) circle.y, circle.i) ;
-                    out.setCompNo(2);
-                    out.set((int) circle.x, (int) circle.y, circle.r) ;
+                    pix.setCompNo(0);
+                    o
+                    pix.set((int) circle.x, (int) circle.y, circle.i) ;
+                    pix.setCompNo(2);
+                    pix.set((int) circle.x, (int) circle.y, circle.r) ;
                     Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])*15)];
                     Graphics graphics = img3[0].getGraphics();
                     graphics.setColor(color);
                     graphics.drawRect((int) (circle.x-10), (int) (circle.y-10), (int) (10), (int) (10));
-                    //img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
 
                 });
                
@@ -134,56 +108,17 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                 
             out.normalize(0.0,1.0);
                 
-                    //File outputFile = new File(dirOut
+                    //
                                                
                                                
                                                
-                    //   + "/0test" + f.getName() + "min" + min + "+rMin"+rMin+".jpg");
-                    File outputFile2 = new File(dirOut + "/1test" + f.getName() + "min" + min + "rMin2_"+rMin+".jpg");
-                    WriteFile.writeNext(out.normalize(0.,1.).getImage(), "out");
-                    WriteFile.writeNext(read, "original");
-                    WriteFile.writeNext(img3[0], "result2");
+                    ImageIO.write (out.getImage(),
+       "JPEG", out) ;
                     
                    
 
 
-                System.gc();
-           // }
-        
-    }
+           
+} 
 
-    public static void main(String[] args) {
-        
-         /*
-        if (args.length > 1 && args[0] != null) {
-            dir = new File( args[0]) ;
-        
-            file = new File( args[1]) ;
-             }*/
-        try {
-            ExtractIntensityInfo extractIntensityInfo
-      = new ExtractIntensityInfo() ;
-            extractIntensityInfo.exec();
-        } catch (IOException exception) {
-            exception.printStackTrace();
-        }
-    }
-
-    public void exec() throws IOException {
-        if (dir == null)
-            dir = new File("resources/") ;
-        if (file == null) {
-            Arrays.stream(Objects.requireNonNull(dir.listFiles())).sequential().forEach(f -> {
-                try {
-                    if(f.getName().toLowerCase().endsWith(".jpg"))
-                         stream(f);
-                } catch (IOException exception) {
-                    exception.printStackTrace();
-                }
-            });
-        }
-        else
-            stream(file);
-    }
-
-}
+   } 
