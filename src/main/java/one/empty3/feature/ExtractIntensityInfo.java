@@ -76,7 +76,8 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                         iSum [0] += circle.i;
                         iSum[1] = Math.min(circle.i, iSum[1]);
                         iSum[2] = Math.max(circle.i, iSum[2]);
-                              isumtot[0] += circle.i
+                              isumtot[0] += circle.i;
+                              isumtot[1] += cricle.r;
                         return true;
                     }
                 }).forEach(circle -> {
