@@ -10,7 +10,7 @@ import java.io.FileInputStream;
 import org.apache.commons.net.ftp.*;
 import one.empty3.io.ProcessFile;
 import java.util.logging.Logger;
-
+java.lang.reflect.Method;
 /**
  * An example program that demonstrates how to list files and directories
  * on a FTP server using Apache Commons Net API.
@@ -59,8 +59,8 @@ public class FTPProcessFiles {
          Class param = Class.forname(argCl[0]);
          String propertyName= argCl[1];
          String argValue= argCl[2];
-        
-         Method.invoke(processInstance "set"+ propertyName,new Object[]{ argValue});
+         Method m =ProcessFile.class..getMethod("set"+ propertyName, new Object[]{argValue.getClass()]);
+         m.invoke(processInstance "set"+ propertyName,new Object[]{ argValue});
          /*
         try {
             Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
