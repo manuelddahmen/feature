@@ -57,7 +57,7 @@ public class FTPProcessFiles {
          if(argDef.length==3)
              {
          Class argCl = Class.forname(argDef[0]);
-         String propertyName argDef[1];
+         String propertyName= argDef[1];
          String argValue= argDef[2];
          processInstance.invoke(argCl, argValue);
          /*
