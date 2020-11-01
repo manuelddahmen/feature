@@ -21,7 +21,9 @@ public class ExtractIntensityInfo extends
                
         public void            
           process(File in, File out) {
-   BufferedImage img = ImageIO.read(in)
+            try {
+   BufferedImage img = ImageIO.read(in);
+                } catch(Exception rx){}
         PixM pix = PixM.getPixM(img, 500.0);
         
         
@@ -93,7 +95,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                 }).forEach(circle -> {
                     //System.out.println(circle.toString());
                     pix.setCompNo(0);
-                    o
+                
                     pix.set((int) circle.x, (int) circle.y, circle.i) ;
                     pix.setCompNo(2);
                     pix.set((int) circle.x, (int) circle.y, circle.r) ;
