@@ -139,7 +139,7 @@ public class FTPProcessFiles {
                argCl.addAll(Arrays.asList(ar));
            }
            parseAndSet(processInstance, argCl);
-            if(i==0 && (class0==null || class0.equals("")) ){
+            if(i==0 || (class0==null || class0.equals("")) ){
               ftpClient.connect(server, port);
             showServerReply(ftpClient);
  
