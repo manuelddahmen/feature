@@ -1,5 +1,5 @@
 package one.empty3;
-import java.util.Properties;
+import java.util.*;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -56,10 +56,10 @@ public class FTPProcessFiles {
     public static void parseAndSet(ProcessFile processInstancs, String [] argDef){
          if(argDef.length==3)
              {
-         Class argCl = Class.forname(argDef[0]);
+         Class argCl = ClassLoader.forame(argDef[0]);
          String propertyName= argDef[1];
          String argValue= argDef[2];
-         processInstance.invoke(argCl, argValue);
+         processInstance.invoke("set"+, argValue);
          /*
         try {
             Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
@@ -123,7 +123,7 @@ public class FTPProcessFiles {
             String arg = null;
             List args = new ArrayList();
            if((arg=(String)(settings.getProperty(classname)))!=null) {
-               String [] ar = arg.split(",");
+               String [] ar = arg.split(":");
                ar =ar.split(":");
                args.add(ar);
            }
