@@ -68,7 +68,7 @@ public class ExtractIntensityInfo extends
          
 
 
-               isumtot[] =  new double []{0};
+              double isumtot[] =  new double []{0};
 double [] iSum = {0.0, 0.0, 1.0};
 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
@@ -76,7 +76,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                         iSum [0] += circle.i;
                         iSum[1] = Math.min(circle.i, iSum[1]);
                         iSum[2] = Math.max(circle.i, iSum[2]);
-                              isumtot += circle.i
+                              isumtot[0] += circle.i
                         return true;
                     }
                 }).forEach(circle -> {
@@ -90,7 +90,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                 pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     @Override
                     public boolean test(Histogram2.Circle circle) {
-                        return circle.i > isumtot/pix.columns/pix.lines;
+                        return circle.i > isumtot[0]/pix.columns/pix.lines;
                     }
                 }).forEach(circle -> {
                     //System.out.println(circle.toString());
