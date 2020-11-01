@@ -52,6 +52,17 @@ public class FTPProcessFiles {
     public static void main(String[] args) {
         defaultProcess(new String[]{"settings.properties"});
     }
+    
+    public static void parseAndSet(ProcessFile processInstancs, String [] argDef){
+         if(argDef.length==3)
+             {
+         Class argCl = Class.forname(argDef[0]);
+         String propertyName argDef[1];
+             String argValue= argDef[2];
+            processInstance.invoke(argCl, argValue);
+         }
+    }
+    
     public static void defaultProcess(String[] args) {
         System.out.println("arg 0 : dir0 or ftp1 dir path");
         System.out.println("arg 1 : one.empty3.io.ProcessFile class");
@@ -100,7 +111,14 @@ public class FTPProcessFiles {
             Object o = classs.newInstance();
             if(o instanceof ProcessFile)
                 processInstance = (ProcessFile) o;
-            
+            String arg = null;
+            List args = new ArrayList();
+           if((arg=(String)(settings.getProperty(classname)))!=null) {
+               String [] ar = arg.split(",");
+               ar =ar.split(":");
+               args.add(ar);
+           }
+           parseAndSet(processInstancs, ar);
             if(i==0 && (class0==null || class0.equals("")) ){
               ftpClient.connect(server, port);
             showServerReply(ftpClient);
