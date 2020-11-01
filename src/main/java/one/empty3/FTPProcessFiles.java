@@ -56,10 +56,10 @@ public class FTPProcessFiles {
     public static void parseAndSet(ProcessFile processInstancs, String [] argCl){
          if(argCl.length%3==0)
              {
-         Class param = Class.forname(argCl[0]);
+         Class param = Class.forName(argCl[0]);
          String propertyName= argCl[1];
          String argValue= argCl[2];
-         Method m =processInstance.getClass.getMethod("set"+ propertyName, new Object[]{argValue.getClass()});
+         Method m =processInstance.class.getMethod("set"+ propertyName, new Object[]{argValue.getClass()});
          m.invoke(processInstance, "set"+ propertyName,new Object[]{ argValue});
          /*
         try {
@@ -127,7 +127,7 @@ public class FTPProcessFiles {
                String [] ar = arg.split(":");
                argCl.addAll(Arrays.asList(ar));
            }
-           parseAndSet(processInstancs, argCl);
+           parseAndSet(processInstance, argCl);
             if(i==0 && (class0==null || class0.equals("")) ){
               ftpClient.connect(server, port);
             showServerReply(ftpClient);
