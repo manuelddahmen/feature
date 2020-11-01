@@ -110,14 +110,17 @@ public class FTPProcessFiles {
       
         
       try {  
+          String  sep=""
           int i=0;
           //currentDirin = "";
-          if(class0==null || class0.equals("")){}
-            else {
+          if(class0==null || class0.equals("")){
+              sep=""; } else sep=",";
+          
+           {
                 classnames =(classnames !=null?
-                             classnames+",":"")
+                             classnames+sep:"")
                            
-                             +(class0==null?"":","+class0);
+                             +(class0==null?"":""+class0);
             }
           
            String [] classnamesArr = classnames.split(",");
