@@ -56,7 +56,7 @@ public class ExtractIntensityInfo extends
        // varier rMin et min
 
  PixM pix2 = smoothedGrad.copy();
-              pix2 = new PixM(pix2.columns, pix2.lines);//??
+              
                 Histogram2 histogram = new Histogram2(15);
                 histogram.setM(pix2);
                     List<Histogram2.Circle> pointsOfInterest = histogram.getPointsOfInterest(rMin);
@@ -76,12 +76,13 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                         iSum [0] += circle.i;
                         iSum[1] = Math.min(circle.i, iSum[1]);
                         iSum[2] = Math.max(circle.i, iSum[2]);
-                              isumtot[0] += circle.i;
-                              isumtot[1] += circle.r;
+                              
                         return true;
                     }
                 }).forEach(circle -> {
                     circle.i = (circle.i - iSum[1] )/(iSum[2]-iSum[1]);
+                   isumtot[0] += circle.i;
+                   isumtot[1] += circle.r;
                 });
            Color[] colors= new Color[colorsLevels];
                 for (int i = 0; i < colors.length; i++) 
@@ -95,11 +96,11 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                     }
                 }).forEach(circle -> {
                     //System.out.println(circle.toString());
-                    pix.setCompNo(0);
+                    pix2.setCompNo(0);
                 
-                    pix.set((int) circle.x, (int) circle.y, 1.0) ;
-                    pix.setCompNo(2);
-                    pix.set((int) circle.x, (int) circle.y, circle.r) ;
+                    pix2.set((int) circle.x, (int) circle.y, 1.0) ;
+                    pix2.setCompNo(2);
+                    pix2.set((int) circle.x, (int) circle.y, circle.r) ;
                     Color color = colors[(int) ((circle.i-iSum[1])/(iSum[2]-iSum[1])
                                                *colorsLevels-1)];
                   /*  Graphics graphics = img3[0].getGraphics();
@@ -110,7 +111,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
                
                
                 
-            pix.normalize(0.0,1.0);
+            pix2.normalize(0.0,1.0);
                 
                     //
                                                
