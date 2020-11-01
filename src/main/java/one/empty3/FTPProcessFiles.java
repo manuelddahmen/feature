@@ -53,12 +53,13 @@ public class FTPProcessFiles {
         defaultProcess(new String[]{"settings.properties"});
     }
     
-    public static void parseAndSet(ProcessFile processInstancs, String [] argCl){
-         if(argCl.length%3==0)
+    public static void parseAndSet(ProcessFile processInstancs, List argCl){
+         if(argCl.size()%3==0)
              {
-         Class param = Class.forName(argCl[0]);
-         String propertyName= argCl[1];
-         String argValue= argCl[2];
+             for(int i = 0; i<argCl.size(); i+=3)
+         Class param = Class.forName(argCl.get(i));
+         String propertyName= argCl.get(i+1);
+         String argValue= argCl.get(i+2);
          Method m =processInstance.class.getMethod("set"+ propertyName, new Object[]{argValue.getClass()});
          m.invoke(processInstance, "set"+ propertyName,new Object[]{ argValue});
          /*
@@ -70,6 +71,7 @@ public class FTPProcessFiles {
         catch (NoSuchMethodException,  
             InvocationTargetException, IllegalAccessException 
             }*/
+             }
         }
     }
     
