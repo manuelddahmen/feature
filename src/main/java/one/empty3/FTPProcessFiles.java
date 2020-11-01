@@ -53,7 +53,7 @@ public class FTPProcessFiles {
         defaultProcess(new String[]{"settings.properties"});
     }
     
-    public static void parseAndSet(ProcessFile processInstancs, List<Object> argCl){
+    public static void parseAndSet(ProcessFile processInstance, List<Object> argCl){
          if(argCl.size()%3==0)
              {
              for(int i = 0; i<argCl.size(); i+=3) {
