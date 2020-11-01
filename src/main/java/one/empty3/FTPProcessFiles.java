@@ -56,7 +56,7 @@ public class FTPProcessFiles {
     public static void parseAndSet(ProcessFile processInstancs, List argCl){
          if(argCl.size()%3==0)
              {
-             for(int i = 0; i<argCl.size(); i+=3)
+             for(int i = 0; i<argCl.size(); i+=3) {
          Class param = Class.forName(argCl.get(i));
          String propertyName= argCl.get(i+1);
          String argValue= argCl.get(i+2);
