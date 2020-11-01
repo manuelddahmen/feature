@@ -1,7 +1,7 @@
 package one.empty3.feature;
 
 import one.empty3.library.core.lighting.Colors;
-
+import one.empty3.io.ProcessFile;
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -21,9 +21,10 @@ public class ExtractIntensityInfo extends
                
         public void            
           process(File in, File out) {
-            try {
-   BufferedImage img = ImageIO.read(in);
-                } catch(Exception rx){}
+            BufferedImage img=null;
+         try {
+               img = ImageIO.read(in);
+         } catch(Exception rx){}
         PixM pix = PixM.getPixM(img, 500.0);
         
         
@@ -51,10 +52,7 @@ public class ExtractIntensityInfo extends
     
      double min = 0.3;
         double rMin = 2.0;
-       // for(double rMin = 1.0; rMin<10; rMin*= 2.) {
-           //for (min = 0.0; min <= 1.0; min += 0.1) {
-               // BufferedImage img3 = new BufferedImage(read.getWidth(), read.getHeight(), BufferedImage.TYPE_INT_RGB);
-               img3[0] = pix.getImage();
+       // varier rMin et min
 
  PixM pix2 = smoothedGrad.copy();
               pix2 = new PixM(pix2.columns, pix2.lines);//??
