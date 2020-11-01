@@ -107,14 +107,14 @@ public class FTPProcessFiles {
         ftpClient = new FTPClient();
  
         
-       
+      
         
       try {  
           int i=0;
           //currentDirin = "";
           if(class0==null || class0.equals("")){}
             else {
-                classnames = class0+(classnames==null?"":","+classnames;
+                classnames =classnames +(class0==null?"":","+class0);
             }
           
            String [] classnamesArr = classnames.split(",");
