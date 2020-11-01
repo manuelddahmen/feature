@@ -56,10 +56,10 @@ public class FTPProcessFiles {
     public static void parseAndSet(ProcessFile processInstancs, String [] argCl){
          if(argCl.length%3==0)
              {
-         Class argCl = Clas.forname(argCk[0]);
+         Class param = Clas.forname(argCl[0]);
          String propertyName= argCl[1];
          String argValue= argCl[2];
-         processInstance.invoke("set"+ propertyValue, argValue);
+         processInstance.invoke("set"+ propertyName, argValue);
          /*
         try {
             Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
@@ -121,11 +121,10 @@ public class FTPProcessFiles {
             if(o instanceof ProcessFile)
                 processInstance = (ProcessFile) o;
             String arg = null;
-            List argCl= new ArrayList();
+            List<String> argCl= new ArrayList();
            if((arg=(String)(settings.getProperty(classname)))!=null) {
                String [] ar = arg.split(":");
-               ar =ar.split(":");
-               argCl.add(ar);
+               argCl.addAll(ar);
            }
            parseAndSet(processInstancs, argCl);
             if(i==0 && (class0==null || class0.equals("")) ){
