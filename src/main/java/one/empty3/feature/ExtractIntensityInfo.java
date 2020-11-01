@@ -13,14 +13,16 @@ import java.util.Objects;
 import java.util.function.Predicate;
 
 public class ExtractIntensityInfo extends
-    ProcessFile {
+          ProcessFile {
     static String dirout="." ;
     String dirOut = null ;
 
       
               public ExtractIntensityInfo(){}
-        public void            
-          process(File in, File out) {
+    
+    
+    @Override
+        public boolean process(File in, File out) {
             BufferedImage img=null;
          try {
                img = ImageIO.read(in);
@@ -116,7 +118,7 @@ pointsOfInterest.stream().filter(new Predicate<Histogram2.Circle>() {
        "JPEG", out) ;
                     
                    
-
+return true;
 
            
 } 
