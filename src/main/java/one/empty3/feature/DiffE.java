@@ -92,8 +92,8 @@ public class DiffE {
                // try min diff
                // sort by importance or surgace
                // mapping
-        }
-           }
+        
+           
         for(int i=0; i<cij.r; i++)
            for(int j = 0 ; j< ci1.r; j++)
                dist[i][j]= cij.get(i)-ci1.get(j);
@@ -106,7 +106,8 @@ public class DiffE {
         
     
         dist[i][j].sort();
-           
+           }
+           }
     }
         
 }
