@@ -22,8 +22,8 @@ public class DiffE {
             a+=angle;
         }
        public Point2D get(double a, double r) {
-           return new Point2D(r*Math.cos(2*Math.PI*angle),
-                              r*Math.sin(2*Math.PI*angle));
+           return new Point2D(r*Math.cos(2*Math.PI*a),
+                              r*Math.sin(2*Math.PI*a));
        }
         public void variate(double x, double y,
                            double r, double rotate) {
