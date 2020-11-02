@@ -95,7 +95,7 @@ public class FTPProcessFiles {
       //  }
         
        // Properties set = defProcess(args[0]);
-        
+        try {
         Properties settings = settings();
         String server =(String) settings.getProperty("host");
         int port = Integer.parseInt(settings.getProperty("port"));
