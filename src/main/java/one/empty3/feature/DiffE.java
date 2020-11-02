@@ -74,7 +74,6 @@ public class DiffE {
                 }
 
             }
-}
         
     }
         
@@ -106,8 +105,8 @@ public class DiffE {
         
     
         dist[i][j].sort();
-           }
-           }
+           
+           
     }
         }
 }
