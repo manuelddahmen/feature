@@ -77,7 +77,7 @@ public class DiffE {
         
     }
         
-   
+   }
     //end class
     double[][][] scales = new double [20.][20.][40.];
     int tri = 100;
@@ -107,6 +107,7 @@ public class DiffE {
         dist[i][j].sort();
            
            
-    }
-        }
+    return dist;
+   }
+}
 }
