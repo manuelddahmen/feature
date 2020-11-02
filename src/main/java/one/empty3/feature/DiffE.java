@@ -78,12 +78,7 @@ public class DiffE {
         }
     
         } 
-    private PixM p1; private PixM p2;
-    public DiffPixM(PixM p1, PixM p2){
-        this.p1=p1;
-        
-        this.p2=p2;
-    }
+   
     
     double[][][] scales = new double [20][20][40];
     int tri = 100;
