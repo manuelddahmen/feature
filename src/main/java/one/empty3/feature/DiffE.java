@@ -6,7 +6,7 @@ public class DiffE {
         Circle ref;
         public void rotate(){}
         public double compare(ColorTransform cf){}
-        
+        public sort(Comparator.reverseOrder());
     }
     class Circle {
          PixM p;
