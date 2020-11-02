@@ -5,7 +5,7 @@ public class DiffE {
     class ColorTranform {
         Circle ref;
         public void rotate(){}
-        public double compare(ColorTransform cf){}
+        public double compare(double[] rbga){}
         
     }
     class Circle {
