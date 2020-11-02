@@ -30,19 +30,14 @@ public class DiffE {
             double pi = 0.0;
             for (double a = 0; a<r; a+= 1/r/2/Math.PI)
             
-            pi+= p.getIntensity((x+Math.cos(a)) ,()(y+Math.sin(a)));
+            pi+= m.getIntensity((x+Math.cos(a)) ,()(y+Math.sin(a)));
             return pi;
         }
         
         public int compareTo(Circle c2 ){
             return (int)(c2.r-c1.r);
         }
-        public void sort() {
-        sort(Comparator.reverseOrder());
-        }
         
-        
-    }
     
     public void sort(Double [] [] m) {
 
