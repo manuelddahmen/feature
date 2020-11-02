@@ -125,7 +125,7 @@ public class FTPProcessFiles {
                            
                              +(class0==null?"":""+class0);
             }
-          
+          if(i==0&&(class0==null || class0.rquals("") }
            String [] classnamesArr = classnames.split(",");
            for (String classname2 : classnamesArr) {
             classname = classname2;
@@ -147,7 +147,7 @@ public class FTPProcessFiles {
            parseAndSet(processInstance, argCl);
          
                
-               if(i==0&& class0==null)} {
+           
                 
                 
                 
