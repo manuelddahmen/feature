@@ -145,11 +145,9 @@ public class FTPProcessFiles {
                argCl.addAll(Arrays.asList(ar));
            }
            parseAndSet(processInstance, argCl);
-            if(i==0 || (class0==null || class0.equals("")) ){
-                
-                Class classs = Class.forName(
-                classname
-            );  
+         
+               
+               if(i==0&& class0==null)} {
                 
                 
                 
