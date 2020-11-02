@@ -102,7 +102,7 @@ public class FTPProcessFiles {
         String username = (String)settings.getProperty("username");
         String password = (String)settings.getProperty("password");
         String directory = (String)settings.getProperty("directory");
-        String classnames = (String)settings.getProperty("classname");
+       /* String*/ classnames = (String)settings.getProperty("classname");
         String class0 = (String)settings.getProperty("class0");
         String directoryOut = directory.substring(0, directory.lastIndexOf("/"));
         
