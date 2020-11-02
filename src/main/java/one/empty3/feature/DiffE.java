@@ -45,7 +45,7 @@ public class DiffE {
         }
         
     }
-    public void sort(int [] [] m) {
+    public void sort(double [] [] m) {
 
         // loop for rows of matrix
 
@@ -69,7 +69,7 @@ public class DiffE {
 
                         // swapping of elements
 
-                        int t = m[i][k];
+                        double t = m[i][k];
 
                         m[i][k] = m[i][k + 1];
 
