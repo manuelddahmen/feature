@@ -1,5 +1,7 @@
 package one.empty3.feature ;
 
+import one.empty3.library.Point2D;
+import java.awt.Color;
 
 public class DiffE {
     class ColorTranform {
