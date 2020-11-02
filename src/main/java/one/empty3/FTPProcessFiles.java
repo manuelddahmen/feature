@@ -146,6 +146,13 @@ public class FTPProcessFiles {
            }
            parseAndSet(processInstance, argCl);
             if(i==0 || (class0==null || class0.equals("")) ){
+                
+                Class classs = Class.forName(
+                classname
+            );  
+                
+                
+                
               ftpClient.connect(server, port);
             showServerReply(ftpClient);
  
@@ -175,6 +182,8 @@ public class FTPProcessFiles {
             
                  printFileDetails(files1,  directory);
             } else {
+                
+                
                 System.out.println("I>0 clase de traitement"+classs.toString()+" : "+currentDirin);
                 printFileDetails(new File(currentDirin).list(),  currentDirin);
             }
