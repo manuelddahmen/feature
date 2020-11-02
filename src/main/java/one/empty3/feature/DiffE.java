@@ -30,7 +30,7 @@ public class DiffE {
             double pi = 0.0;
             for (double a = 0; a<r; a+= 1/r/2/Math.PI)
             
-            pi+= m.getIntensity((x+Math.cos(a)) ,()(y+Math.sin(a)));
+            pi+= m.getIntensity((int)(x+Math.cos(a)) ,(int)(y+Math.sin(a)));
             return pi;
         }
         
