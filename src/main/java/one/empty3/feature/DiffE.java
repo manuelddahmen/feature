@@ -59,7 +59,7 @@ public class DiffE {
             
         }
     
-        dist[i][j]sort
+        dist[i][j].sort();
            
     }
 }
