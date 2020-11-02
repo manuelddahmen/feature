@@ -11,7 +11,8 @@ public class DiffE {
     class Circle {
          PixM p;
         double x, y, r, a;
-            public Circle(m,x,y,r)
+            public Circle(PixM m,double x,double
+                          y, double r)
             {
         p=m; this.x=x;this.y=y;this.r=r;
         }
@@ -27,7 +28,7 @@ public class DiffE {
         }
         public double get(double r) {
             double pi = 0.0;
-            for (a = 0; a<r; a+= 1/r/2/Math.PI)
+            for (double a = 0; a<r; a+= 1/r/2/Math.PI)
             
             pi+= p.getIntensity(x+Math.cos(a) y+Math.sin(a));
             return pi;
@@ -80,7 +81,7 @@ public class DiffE {
             }
 
         }
-        return m;
+    
         } 
     private PixM p1, PixM p2;
     public DiffE(PixM p1, PixM p2){
