@@ -80,15 +80,15 @@ public class DiffE {
         
    
     
-    double[][][] scales = new double [20][20][40];
+    double[][][] scales = new double [20.][20.][40.];
     int tri = 100;
     public double[][] dist(PixM p1, PixM p2) {
        double dist [] = new double[20*20];
        for(int g=0; g<p1.columns*p1.lines;  g++) {
            for(int h=0; h<p1.columns*p1.lines;  h++) {
-       Circle cij = new Circle(p1, g*p1,columns/20, h*p1.lines/20, 20);
-       Circle ci1 = new Circle(p2, g*p2,columnns/20, h*p2.lines/20, 20);  
-       Circle cir = new Circle(p2, g*r*p2,columns/20, h*r*p2.lines/20, 20);  
+       Circle cij = new Circle(p1, g*p1,columns/20., 1.*h*p1.lines/20, 20);
+       Circle ci1 = new Circle(p2, g*p2,columnns/20., 1.*h*p2.lines/20, 20);  
+       Circle cir = new Circle(p2, g*r*p2,columns/20., 1.*h*r*p2.lines/20, 20);  
                // try min diff
                // sort by importance or surgace
                // mapping
@@ -99,7 +99,7 @@ public class DiffE {
                dist[i][j]= cij.get(i)-ci1.get(j);
             
         
-    for(int i=0; i<cij.r; i++)
+    for(int i=0; i<cij.r; i++)p
            for(int j = 0 ; j< cir.r; j++)
                dist[i][j]= cij.get(i)-cir.get(j);
             
