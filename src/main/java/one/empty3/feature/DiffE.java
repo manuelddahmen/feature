@@ -79,12 +79,12 @@ public class DiffE {
     
         } 
     private PixM p1, PixM p2;
-    public DiffE(PixM p1, PixM p2){
+    public DiffPixM(PixM p1, PixM p2){
         this.p1=p1;
         
         this.p2=p2;
     }
-    variation xyr
+    
     double[][][] scales = new double [20][20][40];
     int try = 100;
     public double[][] dist(PixM p1) {
