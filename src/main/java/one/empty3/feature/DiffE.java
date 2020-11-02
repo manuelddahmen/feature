@@ -18,6 +18,14 @@ public class DiffE {
                            double r, double rotate) {
             
         }
+        public double get(double r) {
+            double pi = 0.0;
+            for (a = 0; a<r; a+= 1/r/2/Math.PI)
+            
+            pi+= p.getIntensity(x+Math.cos(a) y+Math.sin(a));
+            return pi;
+        }
+        
         
     }
     private PixM p1, PixM p2;
@@ -29,8 +37,12 @@ public class DiffE {
     
     public double dist(ColorTransform cf
     ) {
+       dist =0.0;
        Circle cij = new Circle(p1, p1,colums/20, p.lines/20, 20);
        Circle ci1 = new Circle(p1, p1,colums/20, p.lines/20, 20);  
-    
+       for(int i=0; i<cij.r; i++)
+           for(int j = 0 ; j< ci1.r; j++)
+               dist+= cij.get(i)-ci1.get(j);
+        return dist;
     }
 }
