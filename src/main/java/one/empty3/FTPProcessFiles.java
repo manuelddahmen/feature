@@ -17,6 +17,10 @@ import java.lang.reflect.Method;
  * @author www.codejava.net
  */
 public class FTPProcessFiles {
+    public static String classnames;
+        
+       
+        
     public static String currentDirin ="input/0";
     public static String currentDirout ="";
     public static String currentFileName ="";
