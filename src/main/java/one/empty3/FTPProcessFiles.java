@@ -134,7 +134,7 @@ public class FTPProcessFiles {
             );
                
                
-          if(i==0&&(class0==null || class0.equals(""))){
+          if(i==0/*&&(class0==null || class0.equals(""))*/){
            
             
             Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
