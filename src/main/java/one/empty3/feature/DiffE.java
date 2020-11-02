@@ -83,7 +83,7 @@ public class DiffE {
     double[][][] scales = new double [20][20][40];
     int tri = 100;
     public double[][] dist(PixM p1, PixM p2) {
-       dist [] = new double[20*20];
+       double dist [] = new double[20*20];
        for(int g=0; g<p1.columns*p1.lines;  g++) {
            for(int h=0; h<p1.columns*p1.lines;  h++) {
        Circle cij = new Circle(p1, g*p1,colums/20, h*p1.lines/20, 20);
@@ -94,12 +94,12 @@ public class DiffE {
            for(int j = 0 ; j< ci1.r; j++)
                dist[i][j]= cij.get(i)-ci1.get(j);
             
-        }
+        
     for(int i=0; i<cij.r; i++)
            for(int j = 0 ; j< cir.r; j++)
                dist[i][j]= cij.get(i)-cir.get(j);
             
-        }
+        
     
         dist[i][j].sort();
            
