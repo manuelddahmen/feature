@@ -124,14 +124,18 @@ public class FTPProcessFiles {
                              classnames+sep:"")
                            
                              +(class0==null?"":""+class0);
-          if(i==0&&(class0==null || class0.equals(""))){
-           String [] classnamesArr = classnames.split(",");
+            
+            String [] classnamesArr = classnames.split(",");
            for (String classname2 : classnamesArr) {
             classname = classname2;
             currentDirout = "./output/"+classname+"/";
             Class classs = Class.forName(
                 classname
             );
+               
+               
+          if(i==0&&(class0==null || class0.equals(""))){
+           
             
             Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
             Object o = classs.newInstance();
