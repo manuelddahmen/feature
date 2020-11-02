@@ -78,7 +78,7 @@ public class DiffE {
         }
     
         } 
-    private PixM p1, PixM p2;
+    private PixM p1; private PixM p2;
     public DiffPixM(PixM p1, PixM p2){
         this.p1=p1;
         
@@ -86,7 +86,7 @@ public class DiffE {
     }
     
     double[][][] scales = new double [20][20][40];
-    int try = 100;
+    int tri = 100;
     public double[][] dist(PixM p1) {
        dist [] = new double[20*20] {0.0};
        for(int g=0; g<p1.columns*p1.lines;  g++) {
