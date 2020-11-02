@@ -6,7 +6,7 @@ public class DiffE {
         Circle ref;
         public void rotate(){}
         public double compare(ColorTransform cf){}
-        public sort(Comparator.reverseOrder());
+        
     }
     class Circle {
          PixM p;
@@ -32,6 +32,9 @@ public class DiffE {
         
         public int compareTo(Circle c2 ){
             return (int)(c2.r-c1.r);
+        }
+        public void sort() {
+        sort(Comparator.reverseOrder());
         }
         
         
