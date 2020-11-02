@@ -10,7 +10,7 @@ public class DiffE {
     }
     class Circle {
          PixM p;
-        double x, y, r
+        double x, y, r, a;
             public Circle(m,x,y,r)
             {
         p=m; this.x=x;this.y=y;this.r=r;
@@ -20,7 +20,10 @@ public class DiffE {
         }
         public void variate(double x, double y,
                            double r, double rotate) {
-            
+            this.x+= x;
+            this.y+= y;
+            this.r+= r;
+            this.a+= rotate;
         }
         public double get(double r) {
             double pi = 0.0;
