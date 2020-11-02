@@ -34,13 +34,15 @@ public class DiffE {
         
         this.p2=p2;
     }
-    
+    variation xyr
+    double[][][] scales = new double [20][20][40];
     public double[][] dist(PixM p1
     ) {
        dist [] = new double[20*20] {0.0};
        for(int g=0; g<p1.columns*p1.lines;  g++)
-       Circle cij = new Circle(p1, p1,colums/20, p.lines/20, 20);
-       Circle ci1 = new Circle(p2, p1,colums/20, p.lines/20, 20);  
+           for(int h=0; h<p1.columns*p1.lines;  h++)
+       Circle cij = new Circle(p1, p1,colums/20, p1.lines/20, 20);
+       Circle ci1 = new Circle(p2, p2,colums/20, p2.lines/20, 20);  
        for(int i=0; i<cij.r; i++)
            for(int j = 0 ; j< ci1.r; j++)
                dist[i][j]= cij.get(i)-ci1.get(j);
