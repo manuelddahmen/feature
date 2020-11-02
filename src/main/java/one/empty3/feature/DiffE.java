@@ -104,12 +104,12 @@ public class DiffE {
            
         for(int i=0; i<cij.r; i++)
            for(int j = 0 ; j< ci1.r; j++)
-               dist[i][j]= cij.get(i)-ci1.get(j);
+               dist[i][j]= cij.r-ci1.r;
             
         
     for(int i=0; i<cij.r; i++)
            for(int j = 0 ; j< cir.r; j++)
-               dist[i][j]= cij.get(i)-cir.get(j);
+               dist[i][j]= cij.r-cir.r;
             
               }
            }
