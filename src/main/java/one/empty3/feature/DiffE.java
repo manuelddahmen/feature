@@ -30,7 +30,7 @@ public class DiffE {
             double pi = 0.0;
             for (double a = 0; a<r; a+= 1/r/2/Math.PI)
             
-            pi+= m.getIntensity((int)(x+Math.cos(a)) ,(int)(y+Math.sin(a)));
+            pi+= m.getIntensity((int)(Math.cos(a)) ,(int)(Math.sin(a)));
             return pi;
         }
         
@@ -86,9 +86,9 @@ public class DiffE {
        double dist [] = new double[20*20];
        for(int g=0; g<p1.columns*p1.lines;  g++) {
            for(int h=0; h<p1.columns*p1.lines;  h++) {
-       Circle cij = new Circle(p1, g*p1,colums/20, h*p1.lines/20, 20);
-       Circle ci1 = new Circle(p2, g*p2,colums/20, h*p2.lines/20, 20);  
-       Circle cir = new Circle(p2, g*r*p2,colums/20, h*r*p2.lines/20, 20);  
+       Circle cij = new Circle(p1, g*p1,columns/20, h*p1.lines/20, 20);
+       Circle ci1 = new Circle(p2, g*p2,columnns/20, h*p2.lines/20, 20);  
+       Circle cir = new Circle(p2, g*r*p2,columns/20, h*r*p2.lines/20, 20);  
                // try min diff
                // sort by importance or surgace
                // mapping
