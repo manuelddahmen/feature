@@ -39,7 +39,7 @@ public class DiffE {
         }
         
     
-    public void sort(double [] [] m) {
+    public void sort(int [] [] m) {
 
         // loop for rows of matrix
 
