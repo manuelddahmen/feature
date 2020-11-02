@@ -17,7 +17,6 @@ import java.lang.reflect.Method;
  * @author www.codejava.net
  */
 public class FTPProcessFiles {
-    static String classname;
     public static String currentDirin ="input/0";
     public static String currentDirout ="";
     public static String currentFileName ="";
@@ -110,7 +109,7 @@ public class FTPProcessFiles {
       
         
       try {  
-          String  sep=""
+          String  sep="";
           int i=0;
           //currentDirin = "";
           if(class0==null || class0.equals("")){
@@ -124,7 +123,7 @@ public class FTPProcessFiles {
             }
           
            String [] classnamesArr = classnames.split(",");
-        for (String classname2 : classnamesArr) {
+           for (String classname2 : classnamesArr) {
             classname = classname2;
             currentDirout = "./output/"+classname+"/";
             Class classs = Class.forName(
