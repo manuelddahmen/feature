@@ -74,7 +74,7 @@ public class DiffE {
                 }
 
             }
-
+}
         
     }
         
@@ -88,7 +88,7 @@ public class DiffE {
            for(int h=0; h<p1.columns*p1.lines;  h++) {
        Circle cij = new Circle(p1, g*p1,columns/20., 1.*h*p1.lines/20, 20);
        Circle ci1 = new Circle(p2, g*p2,columnns/20., 1.*h*p2.lines/20, 20);  
-       Circle cir = new Circle(p2, g*r*p2,columns/20., 1.*h*r*p2.lines/20, 20);  
+       Circle cir = new Circle(p2, g*r*p2,columns/20., 1.*h*r*p2._lines/20, 20);  
                // try min diff
                // sort by importance or surgace
                // mapping
@@ -109,5 +109,5 @@ public class DiffE {
            }
            }
     }
-        
+        }
 }
