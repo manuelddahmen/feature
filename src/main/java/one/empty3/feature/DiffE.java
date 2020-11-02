@@ -9,9 +9,9 @@ public class DiffE {
         
     }
     class Circle {
-         PixM p;
+        PixM p;
         double x, y, r, a;
-            public Circle(PixM m,double x,double
+        public Circle(PixM m,double x,double
                           y, double r)
             {
         p=m; this.x=x;this.y=y;this.r=r;
@@ -30,7 +30,7 @@ public class DiffE {
             double pi = 0.0;
             for (double a = 0; a<r; a+= 1/r/2/Math.PI)
             
-            pi+= p.getIntensity(x+Math.cos(a) y+Math.sin(a));
+            pi+= p.getIntensity((x+Math.cos(a)) ,()(y+Math.sin(a)));
             return pi;
         }
         
