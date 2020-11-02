@@ -107,7 +107,7 @@ public class DiffE {
         dist[i][j].sort();
            
            
-    return dist;
-   }
-}
-}
+        return dist;
+      }// end method
+   }//end class
+}// end class
