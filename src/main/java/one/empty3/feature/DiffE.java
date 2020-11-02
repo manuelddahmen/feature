@@ -35,14 +35,18 @@ public class DiffE {
         this.p2=p2;
     }
     
-    public double dist(ColorTransform cf
+    public double[][] dist(PixM p1
     ) {
-       dist =0.0;
+       dist [] = new double[20*20] {0.0};
+       for(int g=0; g<p1.columns*p1.lines;  g++)
        Circle cij = new Circle(p1, p1,colums/20, p.lines/20, 20);
-       Circle ci1 = new Circle(p1, p1,colums/20, p.lines/20, 20);  
+       Circle ci1 = new Circle(p2, p1,colums/20, p.lines/20, 20);  
        for(int i=0; i<cij.r; i++)
            for(int j = 0 ; j< ci1.r; j++)
-               dist+= cij.get(i)-ci1.get(j);
+               dist[i][j]= cij.get(i)-ci1.get(j);
+      
+        }
+    
         return dist;
     }
 }
