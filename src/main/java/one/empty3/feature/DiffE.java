@@ -45,8 +45,9 @@ public class DiffE {
         }
         public double dist(Circle b) {
             for(int i = - r; i<r;i++) 
-                diff += p.get(b.x, b.y).moins(
-                   p(x, y);
+                Point3D diff += m.getRgb(b.x. b.y) .
+               . moins(m.getRGB(x,y);
+p(x, y). texture().colorAt(0.5, 0.5;
             return diff; // attention red
                          
         } 
