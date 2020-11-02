@@ -43,7 +43,13 @@ public class DiffE {
         public int compareTo(Circle c2 ){
             return (int)(r-c2.r);
         }
-        
+        public double dist(Circle b) {
+            for(int i = - r; i<r;i++) 
+                diff += p.get(b.x, b.y).moins(
+                   p(x, y);
+            return diff; // attention red
+                         
+        } 
     }
     public void sort(double [] [] m) {
 
