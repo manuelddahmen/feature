@@ -19,6 +19,10 @@ public class DiffE {
         public void rotate(double angle) {
             a+=angle;
         }
+       public Point2D get(double a, double r) {
+           return new Point2D(r*Math.cos(2*Math.PI*angle),
+                              r*Math.sin(2*Math.PI*angle));
+       }
         public void variate(double x, double y,
                            double r, double rotate) {
             this.x+= x;
@@ -38,7 +42,7 @@ public class DiffE {
             return (int)(r-c2.r);
         }
         
-    
+    }
     public void sort(int [] [] m) {
 
         // loop for rows of matrix
@@ -77,9 +81,9 @@ public class DiffE {
         
     }
         
-   }
+   
     //end class
-    double[][][] scales = new double [20.][20.][40.];
+    double[][][] scales = new double [20][20][40];
     int tri = 100;
     public double[][] dist(PixM p1, PixM p2) {
        double dist [] = new double[20*20];
@@ -91,8 +95,9 @@ public class DiffE {
                // try min diff
                // sort by importance or surgace
                // mapping
-        }
            }
+       }
+    
         
            
         for(int i=0; i<cij.r; i++)
@@ -106,10 +111,10 @@ public class DiffE {
             
         
     
-        dist[i][j].sort();
+       // dist[i][j].sort();
            
            
-        return dist;
+        //return dist;
       }// end method
-   }//end class
+   //end class
 }// end class
