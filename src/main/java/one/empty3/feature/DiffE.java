@@ -35,7 +35,7 @@ public class DiffE {
         }
         
         public int compareTo(Circle c2 ){
-            return (int)(c2.r-c1.r);
+            return (int)(r-c2.r);
         }
         
     
