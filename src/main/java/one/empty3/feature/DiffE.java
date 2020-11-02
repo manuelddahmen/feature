@@ -99,7 +99,7 @@ public class DiffE {
                dist[i][j]= cij.get(i)-ci1.get(j);
             
         
-    for(int i=0; i<cij.r; i++)p
+    for(int i=0; i<cij.r; i++)
            for(int j = 0 ; j< cir.r; j++)
                dist[i][j]= cij.get(i)-cir.get(j);
             
