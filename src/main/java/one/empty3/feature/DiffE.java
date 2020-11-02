@@ -75,11 +75,11 @@ public class DiffE {
 
             }
 
-        }
+        
     }
         
    
-    }//end class
+    //end class
     double[][][] scales = new double [20.][20.][40.];
     int tri = 100;
     public double[][] dist(PixM p1, PixM p2) {
