@@ -119,12 +119,12 @@ public class FTPProcessFiles {
           if(class0==null || class0.equals("")){
               sep=""; } else sep=",";
           
-           {
+     catch(Exception ex)  {
                 classnames =(classnames !=null?
                              classnames+sep:"")
                            
                              +(class0==null?"":""+class0);
-            }
+      }
           if(i==0&&(class0==null || class0.equals(""))
            String [] classnamesArr = classnames.split(",");
            for (String classname2 : classnamesArr) {
