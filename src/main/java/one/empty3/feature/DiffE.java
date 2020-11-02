@@ -91,6 +91,8 @@ public class DiffE {
                // try min diff
                // sort by importance or surgace
                // mapping
+        }
+           }
         
            
         for(int i=0; i<cij.r; i++)
