@@ -76,13 +76,13 @@ public class DiffE {
             }
 
         }
-    
+    }
         
    
     
     double[][][] scales = new double [20][20][40];
     int tri = 100;
-    public double[][] dist(PixM p1) {
+    public double[][] dist(PixM p1, PixM p2) {
        dist [] = new double[20*20];
        for(int g=0; g<p1.columns*p1.lines;  g++) {
            for(int h=0; h<p1.columns*p1.lines;  h++) {
