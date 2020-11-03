@@ -105,12 +105,19 @@ public class DiffE {
                di1 = cij.dist(ci1)
                di2 = ci1.dist(cir);
                // sort by importance or surgace
-               sort(cij);
+               intsort(cij);
                sort(ci1) ;
                // mapping
                
-       
-    
+       int sort=0;
+       while(int i<cil.length) {
+           while(int j<cil[i].length) {
+               double rMin = sort[i][j];
+               if(cil.getIntensity(i,j)==sort[i][j];
+                  
+           }
+       }
+           
         
            
         for(int i=0; i<cij.r; i++)
@@ -124,6 +131,8 @@ public class DiffE {
             
               }
            }
+        
+        
     
        // dist[i][j].sort();
            
