@@ -11,6 +11,7 @@ import org.apache.commons.net.ftp.*;
 import one.empty3.io.ProcessFile;
 import java.util.logging.Logger;
 import java.lang.reflect.Method;
+import org.json.*;
 /**
  * An example program that demonstrates how to list files and directories
  * on a FTP server using Apache Commons Net API.
@@ -35,18 +36,28 @@ public class FTPProcessFiles {
     static String directoryOut;
     
     
-    /*
-    import org.json.*;
+    public void defProcess (String file) {} 
+    
 
-String jsonString = ... ; //assign your JSON String here
+String jsonString = file.getContents(); //assign your JSON String here
 JSONObject obj = new JSONObject(jsonString);
-String pageName = obj.getJSONObject("pageInfo").getString("pageName");
+if(String in = obj.getJSONObject("in")) {
+       if(in.getString("directory")!=null){
+         File dir = new File(in.getString("directory)) ;
+       }
+       if(in.getString("file" )){}
+        if(in.getString("json" )){}
+      if(in.getString("ftpjson" )){}
+     if(in.getString("ftpdirectory" )){}
+} 
+   
+    String pageName = obj.getJSONObject("pageInfo").getString("pageName");
 
-JSONArray arr = obj.getJSONArray("posts");
+JSONArray filters = obj.getJSONArray("filters");
 for (int i = 0; i < arr.length(); i++)
 {
-    String post_id = arr.getJSONObject(i).getString("post_id");
-    ......
+    String post_id = arr.getJSONObject(i).getString("class");
+    
 }
     */
     static FTPClient ftpClient;
