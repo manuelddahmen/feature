@@ -28,9 +28,31 @@ public class FTPProcessFiles {
     public static String getDirname(String s) {
         return s.substring(0, s.lastIndexOf("/"));
     }
+    
+    
+    
     static ProcessFile processInstance;
     static String directoryOut;
+    
+    
+    /*
+    import org.json.*;
+
+String jsonString = ... ; //assign your JSON String here
+JSONObject obj = new JSONObject(jsonString);
+String pageName = obj.getJSONObject("pageInfo").getString("pageName");
+
+JSONArray arr = obj.getJSONArray("posts");
+for (int i = 0; i < arr.length(); i++)
+{
+    String post_id = arr.getJSONObject(i).getString("post_id");
+    ......
+}
+    */
     static FTPClient ftpClient;
+    
+    
+    
     public static Properties settings() {
          Properties p = new Properties();
          try {
@@ -41,7 +63,15 @@ public class FTPProcessFiles {
           }
          return p;
     }
-    
+    /*
+        try {
+            Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
+        Object rv = m.invoke(processInstance);  
+        System.out.println(rv);  
+            }
+        catch (NoSuchMethodException,  
+            InvocationTargetException, IllegalAccessException 
+            }*/
     public static Properties defProcess(
                                      InputStream is) {
         Properties p = new Properties();
@@ -53,7 +83,11 @@ public class FTPProcessFiles {
          return p;
     }
     public static void main(String[] args) {
-        defaultProcess(new String[]{"settings.properties"});
+        if(args[0].endsWith(".properties"))
+            loadArgsProps(arg[0]);
+        if(args[0].endsWith(".json"))
+            loadArgsJson(arg[0])
+            
     }
     
     public static void parseAndSet(ProcessFile processInstance, List<Object> argCl){
@@ -71,20 +105,12 @@ public class FTPProcessFiles {
                      {
                  ex.printStackTrace();
                  }
-         /*
-        try {
-            Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
-        Object rv = m.invoke(processInstance);  
-        System.out.println(rv);  
-            }
-        catch (NoSuchMethodException,  
-            InvocationTargetException, IllegalAccessException 
-            }*/
+         
              }
         }
     }
     
-    public static void defaultProcess(String[] args) {
+    public static void defaultProcess() {
         System.out.println("arg 0 : dir0 or ftp1 dir path");
         System.out.println("arg 1 : one.empty3.io.ProcessFile class");
         System.out.println("arg 2 : dir0 or ftp1 dir output");
