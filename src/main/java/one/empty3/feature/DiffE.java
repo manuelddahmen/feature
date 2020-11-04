@@ -47,7 +47,7 @@ private int sizeElement = 20;
         }
         else {
             c.i = 0.0;
-            c.r = 0.0);
+            c.r = 0.0;
         } 
        public Point2D get(double a, double r) {
            return new Point2D(r*Math.cos(2*Math.PI*a),
