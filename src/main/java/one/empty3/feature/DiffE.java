@@ -22,6 +22,33 @@ private int sizeElement = 20;
         public void rotate(double angle) {
             a+=angle;
         }
+        public double get(double r, double g, double b){
+           return Math.sqrt(r*r+g*g+b*b);
+            }
+               public Circle getLevel(Histogram2.Circle c) {
+        // I mean. Parcourir le cercle
+        // mesurer I / numPoints
+        // for(int i=Math.sqrt()
+        //  return c;
+        int count = 0;
+        double intensity = 0.0;
+        for (double i = c.x-c.r; i <= c.x+c.r; i++) {
+            for (double j = c.y-c.r; j <= c.y+c.r; j++) {
+                if (Math.sqrt((i-c.x) * (i-c.x) + (j-c.y) * ( j-c.y)) <= c.r*c.r
+                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.y+c.r<m.lines) {
+                    intensity += m.getIntensity((int) i, (int) j);
+                    count++;
+                }
+            }
+        }
+
+        if(count>0) {
+            c.i = intensity / count;
+        }
+        else {
+            c.i = 0.0;
+            c.r =);
+        }
        public Point2D get(double a, double r) {
            return new Point2D(r*Math.cos(2*Math.PI*a),
                               r*Math.sin(2*Math.PI*a));
@@ -45,9 +72,9 @@ private int sizeElement = 20;
             return (int)(r-c2.r);
         }
         public double dist(Circle b) {
-            for(int i = - r; i<r;i++) 
+            for(int i = -b.x+ b.r; i<b.y+b.r;i++) 
                 diff += m.getRgb(b.x. b.y) .
-               . moins(m.getRGB(x,y);
+               . moins(m.getRgb(x,y);
 
             return diff; // attention red
                          
