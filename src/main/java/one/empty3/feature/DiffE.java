@@ -1,9 +1,9 @@
 package one.empty3.feature ;
 
-import one.empty3.library.Point2D;
+import one.empty3.library.Vec;
 import java.awt.Color;
 
-public class DiffE {
+public class DiffE extends ProcessFile {
 private int sizeElement = 20;
     class ColorTranform {
         Circle ref;
@@ -93,12 +93,13 @@ private int sizeElement = 20;
     }
         
     int tri = 100;
-    public double[][] dist(PixM p1, PixM p2) {
-      [] [] [] circles = new  Circle[] [] [] 
+    public boolean provess(File in,File out) {
+List<Point> candidate = new ArrayList() ;
+      [] [] [] circles = new  Circle[elementSize ] [elementSize ] [2] ;
        for(double g=0; g<p1.columns;  g++) {
            for(int h=0; h<p1.lines;  h++) {
-       Circle cij = new Circle(p1, g*p1.columns/elementSize., 1.*h*p1.lines/elementSize,, elementSize);
-       Circle ci1 = new Circle(p2, g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
+       Circle cij[g][h] [1]= new Circle(p1, g*p1.columns/elementSize., 1.*h*p1.lines/elementSize,, elementSize);
+       Circle ci1 =[g][h] [0] =new Circle(p2, g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
        Circle cir = new Circle(p2, g*r*p2.columns/elementSize, 1.*h*r*p2.lines, elementSize, elementSize);
                                
        double[] [] di1, di2;
@@ -109,26 +110,29 @@ private int sizeElement = 20;
                // mapping
                
        int sort=0;
-       while(int i<cil.length) {
-           while(int j<cil[i].length) {
+       while(int i<cir.length) {
+           while(int j<cir[i].length) {
                double rMin = sort[i][j];
-               if(cil.getIntensity(i,j)==sort[i][j];
-                  
+                
            }
-       }
+       }/*
        for(int i1=0; i1<p2.columns ; i1++) 
           for(int j1=0; j1<p2.lines ; j1++) {
 for(int i2=0; i1<p2.columns ; i2++) 
-
+   
           for(int j2=0; j2<p2.lines ; j2++) {
+if(level(cir) ==level(ci1) {
+pix.rcolorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
+} 
+
 }
 
 
 
 
         // try min diff
-               di1 = cij.(ci1)
-               di2 = ci1.dist(cir);
+               di1 = cij.dist(ci1);
+               di2 = cir.dist(ci1);
            
         for(int i=0; i<cij.r; i++)
            for(int j = 0 ; j< ci1.r; j++)
@@ -142,11 +146,20 @@ for(int i2=0; i1<p2.columns ; i2++)
               }
            }
         
-        
-    
-       // dist[i][j].sort();
-           
-           
+        */
+    candidates. forEach(vec - > {
+       pix2 = setnCompNo(0) ;
+pix2. set(vec.get(2), vec.get(3), rij) ;
+           pix2 = setnCompNo(1) ;
+pix2.set(vec.get(2))
+           pix2 = setnCompNo(2) ;
+pix1. set(di1) ) ;
+pix1= setnCompNo(0) ;
+pix1. set(di1) ) ;
+           pix1= setnCompNo(1) ;
+pix1. set(di1) ) 
+           pix1= setnCompNo(2) ;
+pix1. set(di1) )  ;
         //return dist;
       }// end method
    //end class
