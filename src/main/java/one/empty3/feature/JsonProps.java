@@ -129,6 +129,6 @@ public Circle getLevel(Histogram2.Circle c) {
         else {
             c.i = 0.0;
             c.r = 0;
-}}😎*/
-*[
-    M
+
+*/
+    
