@@ -1,5 +1,5 @@
 package one.empty3.feature ;
-
+/*
 import one.empty3.io.ProcessFile ;
 import java.io.File ;
 public class Compare extends ProcessFile {
@@ -9,3 +9,4 @@ PixM p2 = PixM.getPixM() ;
 new DiffE().dist(p, p2)
 } 
 } 
+*/
