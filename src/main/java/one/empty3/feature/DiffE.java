@@ -93,7 +93,7 @@ private int sizeElement = 20;
     }
         
     int tri = 100;
-    public boolean provess(File in,File out) {
+    public boolean process(File in,File out) {
 List<Point> candidate = new ArrayList() ;
       [] [] [] circles = new  Circle[elementSize ] [elementSize ] [2] ;
        for(double g=0; g<p1.columns;  g++) {
@@ -105,8 +105,12 @@ List<Point> candidate = new ArrayList() ;
        double[] [] di1, di2;
                
                // sort by importance or surgace
-               
-              
+       try {
+        
+        
+           PixM p1 = PixM.getPixM(ImageIO.read(in), 500.0);
+           PixM p2 = PixM.getPixM(ImageIO.read(out), 500.0);
+        
                // mapping
                
        int sort=0;
@@ -163,4 +167,13 @@ pix1. set(di1) )  ;
         //return dist;
       }// end method
    //end class
+e
+ImageIO.write(m2.getImage(), "JPEG", out);
+           ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
+           return true;
+      } catch(Exception ex) {
+           ex.printStackTrace();
+      }
+          
+      return false;
 }// end class
