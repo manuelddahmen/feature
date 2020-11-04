@@ -5,21 +5,18 @@ public class JsonProps {
 String jsonString = file.getContents(); //assign your JSON String here
 JSONObject obj = new JSONObject(jsonString);
 if(String in = obj.getJSONObject("in")) {
-       if(in.getString("directory")!=null){
-         File dir = new File(in.getString("directory")) ;
-       }
-       if(in.getString("file" )){}
-        if(in.getString("json" )){}
-      if(in.getString("ftpjson" )){}
-     if(in.getString("ftpdirectory" )){}
-} 
-   
-    String pageName = obj.getJSONObject("pageInfo").getString("pageName");
-
-JSONArray filters = obj.getJSONArray("filters");
-for (int i = 0; i < arr.length(); i++)
+      JSONObject filters = obj.getJSONArray("filter");
+for (int i = 0; i < filter.length(); i++)
 {
-    String post_id = arr.getJSONObject(i).getString("class");
-    
+    String classname = arr.getJSONObject(i).getString("class");
+    for (int i=0;i<filter.get(i); i++);
+         {
+for(int j = 0; i<filter.get(i).names().length(); j++){
+    System.out.println(i+" "+j "key = " + filters.get(i).names().getString(j) + " value = " + filter.get(jobject.names().getString(i)));
 }
+         
+       }
+      
+
+
 }
