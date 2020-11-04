@@ -94,7 +94,7 @@ private int sizeElement = 20;
         
     int tri = 100;
     public double[][] dist(PixM p1, PixM p2) {
-       
+      [] [] [] circles = new  Circle[] [] [] 
        for(double g=0; g<p1.columns;  g++) {
            for(int h=0; h<p1.lines;  h++) {
        Circle cij = new Circle(p1, g*p1.columns/elementSize., 1.*h*p1.lines/elementSize,, elementSize);
@@ -102,12 +102,10 @@ private int sizeElement = 20;
        Circle cir = new Circle(p2, g*r*p2.columns/elementSize, 1.*h*r*p2.lines, elementSize, elementSize);
                                
        double[] [] di1, di2;
-               // try min diff
-               di1 = cij.dist(ci1)
-               di2 = ci1.dist(cir);
+               
                // sort by importance or surgace
-               intsort(cij);
-               sort(ci1) ;
+               
+              
                // mapping
                
        int sort=0;
@@ -118,8 +116,19 @@ private int sizeElement = 20;
                   
            }
        }
-           
-        
+       for(int i1=0; i1<p2.columns ; i1++) 
+          for(int j1=0; j1<p2.lines ; j1++) {
+for(int i2=0; i1<p2.columns ; i2++) 
+
+          for(int j2=0; j2<p2.lines ; j2++) {
+}
+
+
+
+
+        // try min diff
+               di1 = cij.(ci1)
+               di2 = ci1.dist(cir);
            
         for(int i=0; i<cij.r; i++)
            for(int j = 0 ; j< ci1.r; j++)
