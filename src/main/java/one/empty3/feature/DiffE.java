@@ -75,14 +75,21 @@ private int sizeElement = 20;
             return (int)(r-c2.r);
         }
         public double dist(Circle b) {
+           
             Point3D diff = new Point3D();
-            for(int i = -b.x+ b.r; i<b.y+b.r;i++) 
+            for(int i = -b.x+ b.r; i<b.y+b.r;i++)
+                Poiny4D cols =new Point3D(getRgb((int)(i). (int)(j)), 0).getIntensiyy();
+                new Point3D(getRgb((int)(i). (int)(j)), 0).getIntensiyy();
+                   diff .= diff.plus(cols);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
-                   diff .= diff.plus(p.getRgb((int)(i). (int)(j),0);
+                    
+                                            
+                   diff .= diff.plus(p),0);
                . moins(p.getRgb((int)p.x,(int)p.y,0);
                 }
-            return diff; // attention red
-                         
+     
+                       return diff; // attention red
+                
         } 
 } 
 public Circle getLevel(Circle c) {
