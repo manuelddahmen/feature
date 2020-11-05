@@ -31,7 +31,7 @@ public class PixM extends M {
             }
         }
     }
-public double [] getRgb(int i, int j) {
+public Point3D getRgb(int i, int j) {
     setCompNo(0);
     double d =get(i,j)*Math.exp(2, 16);
        setCompNo(1);
