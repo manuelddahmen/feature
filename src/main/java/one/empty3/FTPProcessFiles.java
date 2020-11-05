@@ -41,7 +41,7 @@ public class FTPProcessFiles {
 
 String jsonString = file.getContents(); //assign your JSON String here
 JSONObject obj = new JSONObject(jsonString);
-if(JSONObject in : obj.getJSONObject("filters"));
+for(JSONObject in : obj.getJSONObject("filters"));
        if(in.getString("directory")!=null){
          File dir = new File(in.getString("directory")) ;
        }
@@ -49,8 +49,8 @@ if(JSONObject in : obj.getJSONObject("filters"));
         if(in.getString("json" )){}
       if(in.getString("ftpjson" )){}
      if(in.getString("ftpdirectory" )){}
-        JSONObject filter : in.getJSONArray("filters");
-for (int i = 0; i < filter.length(); i++)
+        for(JSONObject filter : in.getJSONArray("filters")) {
+
 
 
     String post_id = arr.getJSONObject(i).getString("class")
