@@ -53,12 +53,12 @@ for(JSONObject in : obj.getJSONObject("filters"));
 
 
 
-    String post_id = arr.getJSONObject(i).getString("class")
+    String post_id = arr.getJSONObject(i).getString("class");
 
 
     
     }
-    
+    }
     static FTPClient ftpClient;
     
     
