@@ -73,7 +73,7 @@ private int sizeElement = 20;
             return (int)(r-c2.r);
         }
         public double dist(Circle b) {
-            Point3D diff = diff=0.0;
+            Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++) 
                 diff = diff.plus(m.getRgb((int)b.x. (int)b.y)
                . moins(m.getRgb((int)x,(int)y));
@@ -106,6 +106,7 @@ public Circle getLevel(Circle c) {
         else {
             c.i = 0.0;
             c.r = 0;
+        }
     }
     public void sort(double [] [] m) {
 
