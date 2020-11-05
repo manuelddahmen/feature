@@ -239,15 +239,15 @@ pix.rcolorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
         
         
     candidates. forEach(vec - > {
-       pix2 = setnCompNo(0) ;
-pix2. set(vec.get(2), vec.get(3), rij) ;
-           pix2 = setnCompNo(1) ;
+       pix2.setCompNo(0) ;
+pix2.set(vec.get(2), vec.get(3), rij) ;
+           pix2 = setCompNo(1) ;
 pix2.set(vec.get(2))
-           pix2 = setnCompNo(2) ;
+           pix2 = setCompNo(2) ;
+pix1.set(di1) ) ;
+pix1.setnCompNo(0) ;
 pix1. set(di1) ) ;
-pix1= setnCompNo(0) ;
-pix1. set(di1) ) ;
-           pix1= setnCompNo(1) ;
+           pix1= setCompNo(1) ;
 pix1. set(di1) ) 
            pix1= setnCompNo(2) ;
 pix1. set(di1) )  ;
