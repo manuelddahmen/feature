@@ -74,10 +74,10 @@ private int sizeElement = 20;
         }
         public double dist(Circle b) {
             for(int i = -b.x+ b.r; i<b.y+b.r;i++) 
-                diff += m.getRgb(b.x. b.y) .
-               . moins(m.getRgb(x,y);
+                diff += m.getRgb((int)b.x. (int)b.y) .
+               . moins((int)m.getRgb(x,y);
 
-            return diff; // attention red
+            return diff.norm(); // attention red
                          
         } 
 
