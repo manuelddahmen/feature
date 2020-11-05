@@ -36,12 +36,12 @@ public class FTPProcessFiles {
     static String directoryOut;
     
     
-    public void defProcess (String file) {
+    public void loadArgsJson(String file) {
     
 
 String jsonString = file.getContents(); //assign your JSON String here
 JSONObject obj = new JSONObject(jsonString);
-if(String in = obj.getJSONObject("in")) {
+if(String in = obj.getJSONObject("in"));
        if(in.getString("directory")!=null){
          File dir = new File(in.getString("directory")) ;
        }
@@ -97,7 +97,7 @@ for (int i = 0; i < arr.length(); i++)
         if(args[0].endsWith(".properties"))
             loadArgsProps(arg[0]);
         if(args[0].endsWith(".json"))
-            loadArgsJson(arg[0])
+            loadArgsJson(arg[0]);
             
     }
     
