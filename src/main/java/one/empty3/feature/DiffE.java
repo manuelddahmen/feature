@@ -71,8 +71,8 @@ private int sizeElement = 20;
             return pi;
         }
         
-        public int compareTo(Circle c2 )
-            return (int)(r-c2.r);
+        public double compareTo(Circle c2 )
+            return (r-c2.r);
         }
         public double dist(Circle b) {
             Point3D diff = new Point3D();
