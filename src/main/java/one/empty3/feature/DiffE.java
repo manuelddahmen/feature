@@ -149,11 +149,14 @@ public Circle getLevel(Circle c) {
         
     
     public boolean process(File in,File out) {
+        Circle cij[g][h] [1] = = new Circle[2][elementSize][elementSize];
+       Circle ci1 =[g][h] [0] =new Circle[2][elementSize][elementSize];
+       Circle cir = new
 List<Point> candidate = new ArrayList() ;
       [] [] [] circles = new  Circle[elementSize ] [elementSize ] [2] ;
        for(double g=0; g<p1.columns;  g++) {
            for(int h=0; h<p1.lines;  h++) {
-       Circle cij[g][h] [1]= new Circle(p1, g*p1.columns/elementSize., 1.*h*p1.lines/elementSize,, elementSize);
+       Circle cij[g][h] [1]
        Circle ci1 =[g][h] [0] =new Circle(p2, g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
        Circle cir = new Circle(p2, g*r*p2.columns/elementSize, 1.*h*r*p2.lines, elementSize, elementSize);
                                
