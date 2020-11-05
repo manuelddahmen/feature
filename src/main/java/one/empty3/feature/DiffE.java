@@ -2,7 +2,7 @@ package one.empty3.feature ;
 
 import one.empty3.library.*;
 import java.awt.Color;
-
+import java.io.File;
 public class DiffE extends ProcessFile {
 private int sizeElement = 20;
     class ColorTranform {
@@ -147,7 +147,7 @@ public Circle getLevel(Circle c) {
         
     }
         
-    int tri = 100;
+    
     public boolean process(File in,File out) {
 List<Point> candidate = new ArrayList() ;
       [] [] [] circles = new  Circle[elementSize ] [elementSize ] [2] ;
