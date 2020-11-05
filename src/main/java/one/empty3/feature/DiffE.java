@@ -127,7 +127,6 @@ public Circle getLevel(Circle c) {
                 // loop for comparison and swapping
 
                 for (int k = 0; k < m[i].length - j - 1; k++) {
-cand
                     if (m[i][k] > m[i][k + 1]) {
 
  
