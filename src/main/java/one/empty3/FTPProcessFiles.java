@@ -54,12 +54,12 @@ if(JSONObject in = obj.getJSONObject("in"));
     String pageName = obj.getJSONObject("pageInfo").getString("pageName");
 
 JSONArray filters = obj.getJSONArray("filters");
-for (int i = 0; i < arr.length(); i++)
+for (int i = 0; i < filters.length(); i++)
 {
     String post_id = arr.getJSONObject(i).getString("class");
     
-}
     }
+    <
     static FTPClient ftpClient;
     
     
