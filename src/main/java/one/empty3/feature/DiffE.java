@@ -81,7 +81,7 @@ private int sizeElement = 20;
             return diff.norm(); // attention red
                          
         } 
-
+} 
 public Circle getLevel(Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
