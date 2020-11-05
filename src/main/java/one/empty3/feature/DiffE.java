@@ -78,10 +78,10 @@ private int sizeElement = 20;
             Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++) 
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
-                   diff = diff.getElem().plus(p.getRgb((int)(i). (int)(j),0);
+                   diff .= diff.plus(p.getRgb((int)(i). (int)(j),0);
                . moins(p.getRgb((int)p.x,(int)p.y,0);
                 }
-            return diff.norm1(); // attention red
+            return diff; // attention red
                          
         } 
 } 
