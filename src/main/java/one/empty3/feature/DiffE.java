@@ -44,6 +44,7 @@ private int sizeElement = 20;
 
         if(count>0) {
             c.i = intensity / count;
+            
         }
         else {
             c.i = 0.0;
@@ -96,6 +97,7 @@ public Circle getLevel(Circle c) {
                         && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.y+c.r<m.lines) {
                     intensity += m.getIntensity((int) i, (int) j);
                     count++;
+                    
                 }
             }
         }
@@ -125,7 +127,7 @@ public Circle getLevel(Circle c) {
                 // loop for comparison and swapping
 
                 for (int k = 0; k < m[i].length - j - 1; k++) {
-
+cand
                     if (m[i][k] > m[i][k + 1]) {
 
  
@@ -160,7 +162,8 @@ List<Point> candidate = new ArrayList() ;
        Circle ci1 =[g][h] [0] =new Circle(p2, g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
        Circle cir = new Circle(p2, g*r*p2.columns/elementSize, 1.*h*r*p2.lines, elementSize, elementSize);
                                
-       double[] [] di1, di2;
+       }
+           }
                
                // sort by importance or surgace
        try {
@@ -177,7 +180,12 @@ List<Point> candidate = new ArrayList() ;
                double rMin = sort[i][j];
                 
            }
-       }/*
+       }
+           
+             for(double g=0; g<p1.columns;  g++) {
+           for(int h=0; h<p1.lines;  h++) {
+              
+           
        for(int i1=0; i1<p2.columns ; i1++) 
           for(int j1=0; j1<p2.lines ; j1++) {
 for(int i2=0; i1<p2.columns ; i2++) 
@@ -202,13 +210,14 @@ pix.rcolorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
             
         
     for(int i=0; i<cij.r; i++)
-           for(int j = 0 ; j< cir.r; j++)
+           for(int j1 = 0 ; j1< cir.r; j1++)
                dist[i][j]= cij.r-cir.r;
-            
+            if(dist<10)
+               candidates.add(new Vec(i,j,i1,j1));
               }
            }
         
-        */
+        
     candidates. forEach(vec - > {
        pix2 = setnCompNo(0) ;
 pix2. set(vec.get(2), vec.get(3), rij) ;
