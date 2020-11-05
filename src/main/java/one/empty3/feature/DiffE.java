@@ -11,8 +11,7 @@ private int sizeElement = 20;
         public double compare(double[] rbga){}
         
     }
-    class Circle {
-        PixM p;
+    class Circle }
         double x, y, r, a;
         public Circle(PixM m,double x,double
                           y, double r)
@@ -151,6 +150,25 @@ public Circle getLevel(Circle c) {
         
     
     public boolean process(File in,File out) {
+        
+        
+        
+    if(!in.getName().endsWith(".jpg"))
+        return false;
+    File file = in;
+    PixM original = null;
+        
+    try {
+        original = PixM.getPixM(ImageIO.read(in), 500.0);
+        originalmodifie = nee BufferedImage(500,500,0);
+        m2 = oroginal;
+    } catch(Exception ex) {
+        ex.printStackTrace();
+      return false;
+       // assertTrue(false);
+      
+     }
+        
         Circle cij[g][h] [1] = = new Circle[2][elementSize][elementSize];
        Circle ci1 =[g][h] [0] =new Circle[2][elementSize][elementSize];
        Circle cir = new
