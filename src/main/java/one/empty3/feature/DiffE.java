@@ -8,15 +8,17 @@ private int sizeElement = 20;
     class ColorTranform {
         Circle ref;
         public void rotate(){}
+        PixM p;
         public double compare(double[] rbga){}
         
     }
-    class Circle }
+    class Circle {
         double x, y, r, a;
         public Circle(PixM m,double x,double
                           y, double r)
             {
-        p=m; this.x=x;this.y=y;this.r=r;
+            this.p=p;
+        this.x=x;this.y=y;this.r=r;
         }
         public void rotate(double angle) {
             a+=angle;
@@ -35,7 +37,7 @@ private int sizeElement = 20;
             for (double j = c.y-c.r; j <= c.y+c.r; j++) {
                 if (Math.sqrt((i-c.x) * (i-c.x) + (j-c.y) * ( j-c.y)) <= c.r*c.r
                         && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.y+c.r<m.lines) {
-                    intensity += m.getIntensity((int) i, (int) j);
+                    intensity += p.getIntensity((int) i, (int) j);
                     count++;
                 }
             }
