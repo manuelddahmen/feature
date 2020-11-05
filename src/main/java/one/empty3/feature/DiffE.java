@@ -77,7 +77,7 @@ private int sizeElement = 20;
             for(int i = -b.x+ b.r; i<b.y+b.r;i++) 
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                    diff = diff.plus(m.getRgb((int)(i). (int)(j)))
-               . moins(p.getRgb((int)i,(int)jp);
+               . moins(p.getRgb((int)p.x,(int)p.y);
                 }
             return diff.norm(); // attention red
                          
