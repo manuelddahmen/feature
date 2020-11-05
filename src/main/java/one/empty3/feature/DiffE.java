@@ -51,7 +51,8 @@ private int sizeElement = 20;
             c.i = 0.0;
             c.r = 0.0;
         } 
-                   }
+}
+        }
        public Point2D get(double a, double r) {
            return new Point2D(r*Math.cos(2*Math.PI*a),
                               r*Math.sin(2*Math.PI*a));
@@ -78,7 +79,7 @@ private int sizeElement = 20;
            
             Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Poiny4D cols =new Point3D(getRgb((int)(i). (int)(j)), 0).getIntensiyy();
+                Poiny3D cols =new Point3D(getRgb((int)(i). (int)(j)), 0).getIntensiyy();
                 new Point3D(getRgb((int)(i). (int)(j)), 0).getIntensiyy();
                    diff .= diff.plus(cols);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
