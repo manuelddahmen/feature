@@ -75,7 +75,7 @@ private int sizeElement = 20;
         public double dist(Circle b) {
             Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++) 
-                diff = diff.plus(m.getRgb((int)b.x. (int)b.y)
+                diff = diff.plus(m.getRgb((int)(b.x). (int)(b.y))
                . moins(p.getRgb((int)x,(int)y));
 
             return diff.norm(); // attention red
