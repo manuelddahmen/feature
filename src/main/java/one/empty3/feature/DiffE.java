@@ -72,9 +72,7 @@ private int sizeElement = 20;
             return pi;
         }
         
-        public int compareTo(Circle c2 )
-            return (int)(r-c2.r);
-        }
+       
         public double dist(Circle b) {
            
             Point3D diff = new Point3D();
@@ -85,8 +83,9 @@ private int sizeElement = 20;
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
                                             
-                   diff .= diff.plus(p),0);
-               . moins(p.getRgb((int)p.x,(int)p.y,0);
+                   diff += diff.plus(P.n(b.x,b.y, b.i))-
+                    m.mesn(b.x-b.r, by-r, by+t));
+               .
                 }
      
                        return diff; // attention red
