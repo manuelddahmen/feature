@@ -31,7 +31,14 @@ public class PixM extends M {
             }
         }
     }
-
+public double [] getRgb(int i, int j) {
+    setCompNo(0);
+    double d =get(i,j)*Math.exp(2, 16);
+       setCompNo(1);
+    d+= get(i,j)*Math.exp(2, 8)
+           setCompNo(2);
+    d+= get(i,j)*Math.exp(2, 1)
+}
 public static PixM getPixM(BufferedImage image, double maxRes) {
         System.out.println("pixm resampling init"+image.getWidth()+" "+image.getHeight()+" - " + maxRes);
     
