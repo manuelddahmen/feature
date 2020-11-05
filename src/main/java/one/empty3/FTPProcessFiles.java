@@ -41,7 +41,7 @@ public class FTPProcessFiles {
 
 String jsonString = file.getContents(); //assign your JSON String here
 JSONObject obj = new JSONObject(jsonString);
-if(String in = obj.getJSONObject("in"));
+if(JSONObject in = obj.getJSONObject("in"));
        if(in.getString("directory")!=null){
          File dir = new File(in.getString("directory")) ;
        }
