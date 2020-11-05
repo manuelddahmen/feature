@@ -119,6 +119,7 @@ public Circle getLevel(Circle c) {
             c.r = 0;
         }
     }
+    }
     public void sort(double [] [] m) {
 
         // loop for rows of matrix
@@ -170,7 +171,7 @@ public Circle getLevel(Circle c) {
     try {
         original = PixM.getPixM(ImageIO.read(in), 500.0);
         originalmodifie = nee BufferedImage(500,500,0);
-        m2 = oroginal;
+        m2 = original;
     } catch(Exception ex) {
         ex.printStackTrace();
       return false;
