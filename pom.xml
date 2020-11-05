@@ -303,11 +303,11 @@
             <id>myrepo</id>
             <url>https://empty3.one/downloads/maven</url>
         </repository>
-        <repository>
+        <!--repository>
             <id>mvn-r</id>
             <name>mvn r</name>
             <url>http://mvnrepository.com/maven</url>
-        </repository>
+        </repository>-->
         <repository>
             <id>spring io</id>
             <url>https://repo.spring.io/plugins-release/</url>
