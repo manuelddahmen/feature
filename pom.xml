@@ -7,11 +7,11 @@
 
     <modelVersion>4.0.0</modelVersion>
 
-    <name>FeaturesManager</name>
+    <name>feature</name>
     <groupId>one.empty3</groupId>
     <artifactId>features</artifactId>
-    <version>2020.4.1-SNAPSHOT</version>
-    <description>Features Manager</description>
+    <version>2020.4.2-SNAPSHOT</version>
+    <description>feature</description>
     <packaging>jar</packaging>
     <url>https://github.com/manuelddahmen/feature</url>
 
