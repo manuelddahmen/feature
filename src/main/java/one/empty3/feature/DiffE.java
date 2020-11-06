@@ -70,7 +70,8 @@ private int sizeElement = 20;
             double pi = 0.0;
             for (double a = 0; a<r; a+= 1/r/2/Math.PI) {
             
-            pi+= m.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
+            pi+= m1.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
+                }
             return pi;
         }
         
@@ -79,14 +80,14 @@ private int sizeElement = 20;
            
             Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Point4D cols =new Point3D(p2.getRgb((int)(i). (int)(j)), 0).normr(););
+                Vec cols =new Vec(p2.getRgb((int)(i). (int)(j)), 0).norme(););
                 new Point3D(p1.getRgb((int)(i). (int)(j)), 0).norme();
                    diff =diff.plus(cols);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
                                             
-                   diff += diff.plus(P.n(b.x,b.y, b.i))-
-                    m.mesn(b.x-b.r, by-r, by+t));
+                   diff = diff.plus(P.n(b.x,b.y, b.i))moins(
+                    m.mean(b.x-b.r, b.y-r, b.y+t));
                .
                 }
      
@@ -106,7 +107,7 @@ public Circle getLevel(Circle c) {
             for (double j = c.y-c.r; j <= c.y+c.r; j++) {
                 if (Math.sqrt((i-c.x) * (i-c.x) + (j-c.y) * ( j-c.y)) <= c.r*c.r
                         && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.y+c.r<m.lines) {
-                    intensity += m.getIntensity((int) i, (int) j);
+                    intensity += m1.getIntensity((int) i, (int) j);
                     count++;
                     
                 }
@@ -120,8 +121,9 @@ public Circle getLevel(Circle c) {
             c.i = 0.0;
             c.r = 0;
         }
+    retutn c;
     }
-    }
+    
     public void sort(double [] [] m) {
 
         // loop for rows of matrix
