@@ -9,7 +9,7 @@ private int sizeElement = 20;
         Circle ref;
         public void rotate(){}
         PixM p;
-        public double compare(double[] rbga){}
+        public double compare(double[] )rbga){}
         
     }
     class Circle {
@@ -17,7 +17,7 @@ private int sizeElement = 20;
         public Circle(PixM m,double x,double
                           y, double r)
             {
-            this.p=p;
+            this.p=m;
         this.x=x;this.y=y;this.r=r;
         }
         public void rotate(double angle) {
