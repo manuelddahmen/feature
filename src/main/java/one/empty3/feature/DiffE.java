@@ -70,7 +70,7 @@ private int sizeElement = 20;
             double pi = 0.0;
             for (double a = 0; a<r; a+= 1/r/2/Math.PI) {
             
-            pi+= m.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));}
+            pi+= m.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
             return pi;
         }
         
