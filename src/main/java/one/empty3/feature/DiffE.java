@@ -9,15 +9,17 @@ private int sizeElement = 20;
         Circle ref;
         public void rotate(){}
         PixM p;
-        public double compare(double[] )rbga){}
+        public double compare(double[] rbga){}
         
     }
+    PixM p1,p2
     class Circle {
         double x, y, r, a;
+       
         public Circle(PixM m,double x,double
                           y, double r)
             {
-            this.p=m;
+           
         this.x=x;this.y=y;this.r=r;
         }
         public void rotate(double angle) {
@@ -77,8 +79,8 @@ private int sizeElement = 20;
            
             Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Poiny3D cols =new Point3D(getRgb((int)(i). (int)(j)), 0).getIntensiyy();
-                new Point3D(getRgb((int)(i). (int)(j)), 0).getIntensiyy();
+                Poiny3D cols =new Point3D(p2.getRgb((int)(i). (int)(j)), 0).getIntensity();
+                new Point3D(p1.getRgb((int)(i). (int)(j)), 0).getIntensiyy();
                    diff .= diff.plus(cols);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
