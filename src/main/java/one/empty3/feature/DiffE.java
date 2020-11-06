@@ -79,9 +79,9 @@ private int sizeElement = 20;
            
             Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Poiny3D cols =new Point3D(p2.getRgb((int)(i). (int)(j)), 0).getIntensity();
-                new Point3D(p1.getRgb((int)(i). (int)(j)), 0).getIntensiyy();
-                   diff .= diff.plus(cols);
+                Point4D cols =new Point3D(p2.getRgb((int)(i). (int)(j)), 0).normr(););
+                new Point3D(p1.getRgb((int)(i). (int)(j)), 0).norme();
+                   diff =diff.plus(cols);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
                                             
