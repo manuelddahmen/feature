@@ -160,7 +160,7 @@ public Circle getLevel(Circle c) {
             }
         }
         
-    }
+    
         
     
     public boolean process(File in,File out) {
