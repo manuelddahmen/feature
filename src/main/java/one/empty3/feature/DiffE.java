@@ -12,7 +12,7 @@ private int sizeElement = 20;
         public double compare(double[] rbga){}
         
     }
-    PixM p1,p2
+    PixM p1; PixM p2.
     class Circle {
         double x, y, r, a;
        
@@ -22,13 +22,13 @@ private int sizeElement = 20;
            
         this.x=x;this.y=y;this.r=r;
         }
-        public void rotate(double angle) {
+        public void rotate(double angle) {l
             a+=angle;
         }
         public double get(double r, double g, double b){
            return Math.sqrt(r*r+g*g+b*b);
             }
-               public Circle getLevel(Histogram2.Circle c) {
+         public Circle getLevel(Histogram2.Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -53,8 +53,13 @@ private int sizeElement = 20;
             c.i = 0.0;
             c.r = 0.0;
         } 
-}
-        }
+        retutn c.r/c.i
+         '}
+        
+         
+         
+         
+        
        public Point2D get(double a, double r) {
            return new Point2D(r*Math.cos(2*Math.PI*a),
                               r*Math.sin(2*Math.PI*a));
@@ -70,9 +75,10 @@ private int sizeElement = 20;
             double pi = 0.0;
             for (double a = 0; a<r; a+= 1/r/2/Math.PI) {
             
-            pi+= m1.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
+            pi+= p1i.getIntensity((int)(r*Math.ca)) ,(int)(r*Math.sin(a)));
                 }
-            return pi;
+            return p2i
+                
         }
         
        
@@ -80,13 +86,13 @@ private int sizeElement = 20;
            
             Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Vec cols =new Vec(p2.getRgb((int)(i). (int)(j)), 0).norme(););
+                Vec cols =new Vec(p2.getRgb((int)(i). (int)(j)), 0).norme());
                 new Point3D(p1.getRgb((int)(i). (int)(j)), 0).norme();
                    diff =diff.plus(cols);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
                                             
-                   diff = diff.plus(P.n(b.x,b.y, b.i))moins(
+                   diff = diff.plus(P.n(b.x,b.y, b.i)).moins(
                     m.mean(b.x-b.r, b.y-r, b.y+t));
                .
                 }
@@ -121,7 +127,7 @@ public Circle getLevel(Circle c) {
             c.i = 0.0;
             c.r = 0;
         }
-    retutn c;
+    return c;
     }
     
     public void sort(double [] [] m) {
@@ -153,10 +159,10 @@ public Circle getLevel(Circle c) {
 
                         m[i][k + 1] = t;
 
-                    
+                    }
 
                 }
-              }
+   6           }
             }
         }
         
@@ -173,16 +179,16 @@ public Circle getLevel(Circle c) {
     PixM original = null;
         
     try {
-        original = PixM.getPixM(ImageIO.read(in), 500.0);
-        originalmodifie = nee BufferedImage(500,500,0);
-        m2 = original;
+        p1 = PixM.getPixM(ImageIO.read(in), 500.0);
+        originalmodifie = nez BufferedImage(500,500,0);
+        //m2 = original;
     } catch(Exception ex) {
         ex.printStackTrace();
       return false;
        // assertTrue(false);
       
      }
-        
+        public =void lpp(){
         Circle cij[g][h] [1] = = new Circle[2][elementSize][elementSize];
        Circle ci1 =[g][h] [0] =new Circle[2][elementSize][elementSize];
        Circle cir = new
