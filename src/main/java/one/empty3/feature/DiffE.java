@@ -58,7 +58,7 @@ private int sizeElement = 20;
         return c.r/c.i;
      }
         
-         
+         -
          
          
         
@@ -89,9 +89,9 @@ private int sizeElement = 20;
             double diff = -0.0;
               
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Point3D a = p2.getRgb((int)i. (int)j)).
+                Point3D a = p1.getRgb((int)i. (int)j)).
                 moins(p1.getRgb((int)i (int)j)).norme();
-                   diff = a;
+                diff += a;
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
                    
@@ -101,7 +101,7 @@ private int sizeElement = 20;
                .+*/
                 }
      
-                       return diff; // attention red
+                 return diff; // attention red
                 
         } 
 
@@ -129,7 +129,7 @@ public Circle getLevel(Circle c) {
         }
         else {
             c.i = 0.0;
-            c.r = 0;
+            c.r = 0.0;
         }
     return c;
     }
