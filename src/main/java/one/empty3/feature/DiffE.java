@@ -55,7 +55,7 @@ private int sizeElement = 20;
             c.i = 0.0;
             c.r = 0.0;
         } 
-        return c.r/c.i
+        return c.r/c.i;
      }
         
          
@@ -88,14 +88,14 @@ private int sizeElement = 20;
            
             Point3D diff = new Point3D()
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Point3D cols =new Point3D(p2.getRgb((int)(i). (int)(j))).norme());
-                new Point3D(p1.getRgb((int)(i). (int)(j))).norme();
-                   diff =diff.plus(cols);
+                Point3D cols =new Point3D(p2.getRgb((int)(i)o. (int)(j)),0.0).norme());
+                Point3D moins =new Point3D(p1.getRgb((int)(i). (int)(j))).norme();
+                   diff =cols.moins(moins);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
                                             
                    diff = diff.plus(P.n(b.x,b.y, b.i)).moins(
-                    m.mean(b.x-b.r, b.y-r, b.y+t));
+                    p1.mean(b.x-b.r, b.y-r, b.y+t));
                .
                 }
      
