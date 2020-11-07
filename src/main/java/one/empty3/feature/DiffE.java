@@ -153,7 +153,7 @@ public Circle getLevel(Circle c) {
 
                         m[i][k + 1] = t;
 
-                    }
+                    
 
                 }
               }
