@@ -267,19 +267,19 @@ public void writeEnds(){
            
         
         
-    candidates. forEach(vec - > {
+    candidates. forEach(Cirvle c -> {
        pix2.setCompNo(0) ;
-pix2.set(vec.get(2), vec.get(3), rij) ;
+pix2.set(i,j, rij) ;
            pix2 = setCompNo(1) ;
-pix2.set(vec.get(2))
+pix2.set(i,j,
            pix2 = setCompNo(2) ;
 pix1.set(di1) ) ;
 pix1.setnCompNo(0) ;
-pix1. set(di1) ) ;
+pix1. set(i,j,di1) ) ;
            pix1= setCompNo(1) ;
-pix1. set(di1) ) 
+pix1. set(i,j,di1) ) 
            pix1= setnCompNo(2) ;
-pix1. set(di1) )  ;
+pix1. set(i,j,di1) )  ;
         //return dist;
       }// end method
    //end class
