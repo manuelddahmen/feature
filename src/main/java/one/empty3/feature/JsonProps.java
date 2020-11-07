@@ -86,7 +86,11 @@ public Circle getLevel(Histogram2.Circle c) {
         }
         else {
             c.i = 0.0;
-            c.r = 0;public Circle getLevel(Histogram2.Circle c) {
+            c.r = 0;
+            }
+            return c;
+            }
+            public Circle getLevel(Histogram2.Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -109,7 +113,9 @@ public Circle getLevel(Histogram2.Circle c) {
         else {
             c.i = 0.0;
             c.r = 0;
-}}
+}
+return c.i
+}
 
 public Circle getLevel(Histogram2.Circle c) {
         // I mean. Parcourir le cercle
