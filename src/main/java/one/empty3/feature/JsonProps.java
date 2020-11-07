@@ -61,7 +61,10 @@ public Circle getLevel(Histogram2.Circle c) {
         }
         else {
             c.i = 0.0;
-            c.r = 0;public Circle getLevel(Histogram2.Circle c) {
+            c.r = 0;
+            
+            
+            public Circle getLevel(Histogram2.Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -88,7 +91,7 @@ public Circle getLevel(Histogram2.Circle c) {
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
         //  return c;
-        int count = 0;
+        count = 0;
         double intensity = 0.0;
         for (double i = c.x-c.r; i <= c.x+c.r; i++) {
             for (double j = c.y-c.r; j <= c.y+c.r; j++) {
@@ -106,7 +109,9 @@ public Circle getLevel(Histogram2.Circle c) {
         else {
             c.i = 0.0;
             c.r = 0;
-}}public Circle getLevel(Histogram2.Circle c) {
+}}
+
+public Circle getLevel(Histogram2.Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
