@@ -30,7 +30,7 @@ private int sizeElement = 20;
         public double get(double r, double g, double b){
            return Math.sqrt(r*r+g*g+b*b);
             }
-         public Circle getLevel(Circle c,Histogram2.Circle c) {
+         public double getLevel(Circle c,Histogram2.Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -88,7 +88,7 @@ private int sizeElement = 20;
            
             Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Point3D cols =new Vec(p2.getRgb((int)(i). (int)(j))).norme());
+                Point3D cols =new Point3D(p2.getRgb((int)(i). (int)(j))).norme());
                 new Point3D(p1.getRgb((int)(i). (int)(j))).norme();
                    diff =diff.plus(cols);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
