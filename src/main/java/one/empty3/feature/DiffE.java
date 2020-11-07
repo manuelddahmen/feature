@@ -68,7 +68,6 @@ private int sizeElement = 20;
                 Point3D a = p1.getRgb((int)i. (int)j)).
                 moins(p1.getRgb((int)i (int)j)).norme();
                 diff += a;
-                
                    
                     /*
                    diff = diff.plus(P.n(b.x,b.oy, b.i)).moins(
