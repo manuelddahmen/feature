@@ -86,17 +86,19 @@ private int sizeElement = 20;
        
         public double dist(Circle b) {
            
-            Point3D diff = Point3D.n(0,0,0)
+            Point3D diff = Point3D.n(0,0,0);
+              
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Point3D cols =new Point3D(p2.getRgb((int)i. (int)j)).norme());
-                Point3D moins =new Point3D(p1.getRgb((int)i (int)j)).norme();
+                double ls =new Point3D(p2.getRgb((int)i. (int)j),0.).norme());
+                double ml moins =new Point3D(p1.getRgb((int)i (int)j)).norme();
                    diff =cols.moins(moins);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
-                                            
+                    diff+= ls-ml;
+                    /*
                    diff = diff.plus(P.n(b.x,b.y, b.i)).moins(
-                    p1.mean(b.x-b.r, b.y-r, b.y+t));
-               .
+                    p1.mean(b.x-b.r, b.y-r, b.y+t());
+               .+*/
                 }
      
                        return diff; // attention red
