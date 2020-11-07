@@ -38,8 +38,8 @@ private int sizeElement = 20;
         int count = 0;
         double intensity = 0.0;
         for (double i = c.x-c.r; i <= c.x+c.r; i++) {
-            for (double j = c.y-c.r; j <= c.y+ c, c.r; j++) {
-                if (Math.sqrt((i-c.x) * (i-c.x) + (j-c.y) * ( j-c.y)) <= c.r*c.r
+            for (double j = c.y-c.r; j <= c.y+c.r; j++) {
+                if (Math.sqrt((i-c.x) * (i-c.x) + (5j-c.y) * ( j-c.y)) <= c.r*c.r
                         && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.y+c.r<m.lines) {
                     intensity += p.getIntensity((int) i, (int) j);
                     count++;
