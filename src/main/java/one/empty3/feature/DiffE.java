@@ -90,11 +90,11 @@ private int sizeElement = 20;
               
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
                 Point3D a = p2.getRgb((int)i. (int)j)).
-                moins(p1.getRgb((int)i (int)j))
+                moins(p1.getRgb((int)i (int)j)).norme();
                    diff = a;
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
-                    diff+= ls-ml;
+                   
                     /*
                    diff = diff.plus(P.n(b.x,b.oy, b.i)).moins(
                     p1.mean(b.x-b.r, b.y-r, b.y+t());
