@@ -4,10 +4,10 @@ import one.empty3.library.*;
 import java.awt.Color;
 import java.io.File;
 public class DiffE extends ProcessFile {
-    PixM p1; PixM p2.
+    PixM p1; PixM p2;
 private int sizeElement = 20;
     class ColorTranform {
-        Circle ref;
+        Circle c;
         public void rotate(){}
         PixM p;
         public double compare(double[] rbga){}
