@@ -108,7 +108,7 @@ public Circle getLevel(Circle c) {
         }
     return c;
     }
-    
+ }
     public void sort(double [] [] m) {
 
         // loop for rows of matrix
@@ -158,8 +158,8 @@ public Circle getLevel(Circle c) {
     PixM original = null;
         
     try {
-        p1 = PixM.getPixM(ImageIO.read(in), 500.0);
-        originalmodifie = new BufferedImage(500,500,0);
+       
+        
         //m2 = original;
         writeEnd();
     } catch(Exception ex) {
@@ -189,13 +189,13 @@ List<Point> candidate = new ArrayList() ;
         
         
                // sort by importance or surgace
-       try {
+    
     
          
- ImagrIO.write(m2, 500.0);
+ ImagrIO.write(m2.getImage(), "jpeg", out);
         
                // mapping
-               
+               </*
        int sort=0;
        while(int i<cir.length) {
            while(int j<cir[i].length) {
@@ -270,5 +270,5 @@ ImageIO.write(m2.getImage(), "JPEG", out);
           et
       return false.
      }
-                       
+            */           
 }// end class
