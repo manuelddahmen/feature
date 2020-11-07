@@ -191,18 +191,23 @@ List<Point> candidate = new ArrayList() ;
        for(double g=0; g<p1.columns;  g++) {
            for(int h=0; h<p1.lines;  h++) {
        Circle cij[g][h] [1]
-       Circle ci1 =[g][h] [0] =new Circle(p2, g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
-       Circle cir = new Circle(p2, g*r*p2.columns/elementSize, 1.*h*r*p2.lines, elementSize, elementSize);
+       Circle cir[g][h] [0] =new Circle(p2, g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
+
                                
        }
-           }
-               
+           
+
+       
+
+        
+        
+        
                // sort by importance or surgace
        try {
+        :(
         
-        
-           PixM p1 = PixM.getPixM(ImageIO.read(in), 500.0);
-           PixM p2 = PixM.getPixM(ImageIO.read(out), 500.0);
+           PixM p1 = <activeProfile>env-test</activeProfile>
+  </activeProfiles>ImageIO.read(out), 500.0);
         
                // mapping
                
@@ -221,12 +226,12 @@ List<Point> candidate = new ArrayList() ;
        for(int i1=0; i1<p2.columns ; i1++) 
           for(int j1=0; j1<p2.lines ; j1++) {
 for(int i2=0; i1<p2.columns ; i2++) 
-   /*
+   
           for(int j2=0; j2<p2.lines ; j2++) {
 if(level(cir) ==level(ci1) {
 pix.rcolorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
 } 
-*/
+
 }
 
 
