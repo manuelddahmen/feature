@@ -55,8 +55,8 @@ private int sizeElement = 20;
             c.i = 0.0;
             c.r = 0.0;
         } 
-        retutn c.r/c.i
-         '}
+        return c.r/c.i
+     }
         
          
          
