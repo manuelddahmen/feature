@@ -88,8 +88,8 @@ private int sizeElement = 20;
            
             Point3D diff = Point3D.n(0,0,0)
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Point3D cols =new Point3D(p2.getRgb((int)(i)i. (int)(j))).norme());
-                Point3D moins =new Point3D(p1.getRgb((int)(i). (int)(j))).norme();
+                Point3D cols =new Point3D(p2.getRgb((int)i. (int)j)).norme());
+                Point3D moins =new Point3D(p1.getRgb((int)i (int)j)).norme();
                    diff =cols.moins(moins);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
