@@ -77,7 +77,7 @@ private int sizeElement = 20;
             
             pi+= p1i.getIntensity((int)(r*Math.ca)) ,(int)(r*Math.sin(a)));
                 }
-            return p2i
+            return pi;
                 
         }
         
