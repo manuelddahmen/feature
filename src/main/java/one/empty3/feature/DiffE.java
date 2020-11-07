@@ -166,7 +166,7 @@ public Circle getLevel(Circle c) {
                     }
 
                 }
-   6           }
+          }
             }
         }
         
@@ -184,7 +184,7 @@ public Circle getLevel(Circle c) {
         
     try {
         p1 = PixM.getPixM(ImageIO.read(in), 500.0);
-        originalmodifie = nez BufferedImage(500,500,0);
+        originalmodifie = new BufferedImage(500,500,0);
         //m2 = original;
         writeEnd();
     } catch(Exception ex) {
@@ -286,13 +286,13 @@ pix1. set(di1) )  ;
 
 ImageIO.write(m2.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
-           ImageIO.write(pix1.getImage(), "JPEG", new File(out.getParent()+4+"jpg"));
-           ImageIO.write(pix2.getImage(), "JPEG", new File(out.getParent()+5+"jpg"));
+           
+           //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
            return true;
       } catch(Exception ex) {
            ex.printStackTrace();
       }
-          
+          et
       return false.
      }
                        
