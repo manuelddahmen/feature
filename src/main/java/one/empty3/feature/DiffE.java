@@ -1,6 +1,7 @@
 package one.empty3.feature ;
 
 import one.empty3.library.*;
+import one.empty3.library.shader.Vec;
 import java.awt.Color;
 import java.io.File;
 public class DiffE extends ProcessFile {
@@ -87,8 +88,8 @@ private int sizeElement = 20;
            
             Point3D diff = new Point3D();
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                Vec cols =new Vec(p2.getRgb((int)(i). (int)(j)), 0).norme());
-                new Point3D(p1.getRgb((int)(i). (int)(j)), 0).norme();
+                Point3D cols =new Vec(p2.getRgb((int)(i). (int)(j))).norme());
+                new Point3D(p1.getRgb((int)(i). (int)(j))).norme();
                    diff =diff.plus(cols);
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
