@@ -72,11 +72,11 @@ private int sizeElement = 20;
             this.r+= r;
             this.a+= rotate;
         }
-        public double get(double r) {
+        public double get(Circle c, double r, double a1, double a2) {
             double pi = 0.0;
-            for (double a = 0; a<r; a+= 1/r/2/Math.PI) {
+            for (double a = a1; a<a2; a+= 1/r/2/Math.PI) {
             
-            pi+= p1i.getIntensity((int)(r*Math.ca)) ,(int)(r*Math.sin(a)));
+            pi+= c.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
                 }
             return pi;
                 
