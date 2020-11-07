@@ -3,7 +3,8 @@ package one.empty3.feature ;
 import one.empty3.library.*;
 import java.awt.Color;
 import java.io.File;
-public class DiffE extends ProcessFile {
+public class DiffE extends ProcessFile }
+    PixM p1; PixM p2.
 private int sizeElement = 20;
     class ColorTranform {
         Circle ref;
@@ -12,7 +13,7 @@ private int sizeElement = 20;
         public double compare(double[] rbga){}
         
     }
-    PixM p1; PixM p2.
+    
     class Circle {
         double x, y, r, a;
        
@@ -22,7 +23,7 @@ private int sizeElement = 20;
            
         this.x=x;this.y=y;this.r=r;
         }
-        public void rotate(double angle) {l
+        public void rotate(double angle) {
             a+=angle;
         }
         public double get(double r, double g, double b){
