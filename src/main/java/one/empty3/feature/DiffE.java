@@ -210,10 +210,9 @@ List<Point> candidate = new ArrayList() ;
         
                // sort by importance or surgace
        try {
-        :(
-        
-           PixM p1 = <activeProfile>env-test</activeProfile>
-  </activeProfiles>ImageIO.read(out), 500.0);
+    
+         
+ ImageIO.write(m2, 500.0);
         
                // mapping
                
@@ -277,9 +276,11 @@ pix1. set(di1) )  ;
         //return dist;
       }// end method
    //end class
-e
+
 ImageIO.write(m2.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
+           ImageIO.write(pix1.getImage(), "JPEG", new File(out.getParent()+4+"jpg"));
+           ImageIO.write(pix2.getImage(), "JPEG", new File(out.getParent()+5+"jpg"));
            return true;
       } catch(Exception ex) {
            ex.printStackTrace();
