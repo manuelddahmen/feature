@@ -89,9 +89,9 @@ private int sizeElement = 20;
             double diff = -0.0;
               
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                double d = new Point3D(p2.getRgb((int)i. (int)j)).
+                Point4D a = p2.getRgb((int)i. (int)j)).
                 moins(new Point3D(p1.getRgb((int)i (int)j)
-                   diff = diff.plus(d);
+                   diff = a;
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
                     diff+= ls-ml;
