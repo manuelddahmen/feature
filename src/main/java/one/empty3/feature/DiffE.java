@@ -184,25 +184,26 @@ public Circle getLevel(Circle c) {
         p1 = PixM.getPixM(ImageIO.read(in), 500.0);
         originalmodifie = nez BufferedImage(500,500,0);
         //m2 = original;
+        writeEnd();
     } catch(Exception ex) {
         ex.printStackTrace();
       return false;
        // assertTrue(false);
       
      }
-        public =void lpp(){
+    public =void lpp(){
         Circle cij[g][h] [1] = = new Circle[2][elementSize][elementSize];
        Circle ci1 =[g][h] [0] =new Circle[2][elementSize][elementSize];
        Circle cir = new
 List<Point> candidate = new ArrayList() ;
       [] [] [] circles = new  Circle[elementSize ] [elementSize ] [2] ;
-       for(double g=0; g<p1.columns;  g++) {
+       for(int  g=0; g<p1.columns;  g++) {
            for(int h=0; h<p1.lines;  h++) {
-       Circle cij[g][h] [1]
+       
        Circle cir[g][h] [0] =new Circle(p2, g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
 
                                
-       }
+    }
            
 
        
@@ -242,7 +243,7 @@ pix.rcolorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
 }
 
 
-
+publiv voof writeEnds(){
 
         // try min diff
                di1 = cij.dist(ci1);
@@ -288,5 +289,7 @@ ImageIO.write(m2.getImage(), "JPEG", out);
            ex.printStackTrace();
       }
           
-      return false;
+      return false.
+     }
+                       
 }// end class
