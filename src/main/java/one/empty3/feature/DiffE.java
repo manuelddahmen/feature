@@ -215,7 +215,7 @@ List<Point> candidate = new ArrayList() ;
        try {
     
          
- ImageIO.write(m2, 500.0);
+ ImagrIO.write(m2, 500.0);
         
                // mapping
                
@@ -239,11 +239,13 @@ for(int i2=0; i1<p2.columns ; i2++)
 if(level(cir) ==level(ci1) {
 pix.rcolorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
 } 
-
+}
+   }
+   }
 }
 
 
-publiv voof writeEnds(){
+public void writeEnds(){
 
         // try min diff
                di1 = cij.dist(ci1);
