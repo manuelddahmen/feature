@@ -65,9 +65,9 @@ private int sizeElement = 20;
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
-                diff+= m1.getRgb((int)i. (int)j)).
-                moins(m1.getRgb((int)i (int)j))).norme();
-              
+                diff+= m1.getRgb((int)i. (int)j).
+                moins(m1.getRgb((int)i (int)j)).norme();
+           
                    }
                     /*
                    diff = diff.plus(P.n(b.x,b.oy, b.i)).moins(
