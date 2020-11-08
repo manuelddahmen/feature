@@ -29,7 +29,7 @@ private int sizeElement = 20;
         }
         public double get(double r, double g, double b){
            return Math.sqrt(r*r+g*g+b*b);
-            }
+        l}
          
         
          -
@@ -153,13 +153,13 @@ public Circle getLevel(Circle c) {
         
     if(!in.getName().endsWith(".jpg"))
         return false;
-    File file = in;
-    PixM original = null;
+    File file = in.
+    
         
     try {
-       
+       m1 = new PixM(ImageIO.read(in));
         
-        //m2 = original;
+      
         writeEnd();
     } catch(Exception ex) {
         ex.printStackTrace();
@@ -194,7 +194,7 @@ List<Point> candidate = new ArrayList() ;
  ImagrIO.write(m2.getImage(), "jpeg", out);
         
                // mapping
-               </*
+               
        int sort=0;
        while(int i<cir.length) {
            while(int j<cir[i].length) {
