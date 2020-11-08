@@ -29,7 +29,7 @@ private int sizeElement = 20;
         }
         public double get(double r, double g, double b){
            return Math.sqrt(r*r+g*g+b*b);
-        l}
+        }
          
         
          -
@@ -65,7 +65,7 @@ private int sizeElement = 20;
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
-                Point3D a = p1.getRgb((int)i. (int)j)).
+                Point3D a = m1.getRgb((int)i. (int)j)).
                 moins(p1.getRgb((int)i (int)j)).norme();
                 diff += a;
                    
