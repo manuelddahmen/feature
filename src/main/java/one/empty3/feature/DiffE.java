@@ -170,13 +170,13 @@ public Circle getLevel(Circle c) {
     public void lpp(){
         Circle cij[g][h] [1] = = new Circle[2][elementSize][elementSize];
        Circle ci1 =[g][h] [0] =new Circle[2][elementSize][elementSize];
-       Circle cir = new
+       
 List<Point> candidate = new ArrayList() ;
       [] [] [] circles = new  Circle[elementSize ] [elementSize ] [2] ;
        for(int  g=0; g<p1.columns;  g++) {
            for(int h=0; h<p1.lines;  h++) {
        
-       Circle cir[g][h] [0] =new Circle(p2, g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
+       Circle cir[g][h] [0] =new Circle(g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
 
                                
     
@@ -213,7 +213,7 @@ for(int i2=0; i1<p2.columns ; i2++)
    
           for(int j2=0; j2<p2.lines ; j2++) {
 if(level(cir) ==level(ci1) {
-pix.rcolorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
+p2.colorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
 } 
 }
    }
@@ -242,11 +242,11 @@ public void writeEnds(){
         
         
     candidates. forEach( c -> {
-       pix2.setCompNo(0) ;
-pix2.set(i,j, rij) ;
-           pix2 = setCompNo(1) ;
-pix2.set(i,j,
-           pix2 = setCompNo(2) ;
+       pix2.setCompNo(0);
+        p2.set(i,j, rij) ;
+           p2= setCompNo(1);
+        p2.set(i,j,rij
+   p2.setCompNo(2) ;/*
 pix1.set(di1) ) ;
 pix1.setnCompNo(0) ;
 pix1. set(i,j,di1) ) ;
@@ -256,9 +256,9 @@ pix1. set(i,j,di1) )
 pix1. set(i,j,di1) )  ;
         //return dist;
       }// end method
-   //end class
-
-ImageIO.write(m2.getImage(), "JPEG", out);
+   //end class*/
+]);
+ImageIO.write(p1.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
@@ -266,7 +266,7 @@ ImageIO.write(m2.getImage(), "JPEG", out);
       } catch(Exception ex) {
            ex.printStackTrace();
       }
-          et
+         
       return false.
      }
             */           
