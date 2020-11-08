@@ -5,7 +5,7 @@ import one.empty3.library.shader.Vec;
 import java.awt.Color;
 import java.io.File;
 public class DiffE extends ProcessFile {
-    PixM p1; PixM p2;
+    PixM m1; PixM m2;
 private int sizeElement = 20;
     class ColorTranform {
         Circle c;
@@ -167,7 +167,7 @@ public Circle getLevel(Circle c) {
        // assertTrue(false);
       
      }
-    public =void lpp(){
+    public void lpp(){
         Circle cij[g][h] [1] = = new Circle[2][elementSize][elementSize];
        Circle ci1 =[g][h] [0] =new Circle[2][elementSize][elementSize];
        Circle cir = new
@@ -179,7 +179,7 @@ List<Point> candidate = new ArrayList() ;
        Circle cir[g][h] [0] =new Circle(p2, g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
 
                                
-    }
+    
            
 
        
@@ -241,7 +241,7 @@ public void writeEnds(){
            
         
         
-    candidates. forEach(Cirvle c -> {
+    candidates. forEach( c -> {
        pix2.setCompNo(0) ;
 pix2.set(i,j, rij) ;
            pix2 = setCompNo(1) ;
