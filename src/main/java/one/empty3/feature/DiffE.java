@@ -107,7 +107,7 @@ public Circle getLevel(Circle c) {
         }
     return c;
     }
- }
+ 
     public void sort(double [] [] m) {
 
         // loop for rows of matrix
@@ -140,7 +140,7 @@ public Circle getLevel(Circle c) {
                     }
 
                   }
-               }
+               
            
         
      
@@ -218,7 +218,7 @@ p2.colorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
 }
    }
    }
-}
+
 
 
 public void writeEnds(){
