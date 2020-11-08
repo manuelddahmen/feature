@@ -65,15 +65,15 @@ private int sizeElement = 20;
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
-         t      diff+= m1.getRgb((int)i. (int)j)).
+                diff+= m1.getRgb((int)i. (int)j)).
                 moins(m1.getRgb((int)i (int)j))).norme();
               
-                   
+                   }
                     /*
                    diff = diff.plus(P.n(b.x,b.oy, b.i)).moins(
                     p1.mean(b.x-b.r, b.y-r, b.y+t());
                .+*/
-                }
+                
      
                  return diff; // attention red
                 
