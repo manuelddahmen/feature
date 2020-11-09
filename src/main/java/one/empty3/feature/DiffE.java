@@ -160,7 +160,7 @@ public Circle getLevel(Circle c) {
     
         
     try {
-       m1 = new PixM(ImageIO.read(in));
+    
         
       
         writeEnd();
@@ -193,7 +193,7 @@ List<Point> candidate = new ArrayList() ;
         
         
                // sort by importance or surgace
-    
+    p1=m1;p2=m2;
     
          
  ImagrIO.write(m2.getImage(), "jpeg", out);
