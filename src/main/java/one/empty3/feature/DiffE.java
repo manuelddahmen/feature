@@ -201,9 +201,9 @@ List<Point> candidate = new ArrayList() ;
         
                // mapping
                
-       int sort=0;int i=0;
-       while(i<c'length) {
-           while(int j<c[i].length) {
+       int sort=0;int i=0;int j=0;
+       while(i<c.length) {
+           while(j<c[i].length) {
                double rMin = sort[i][j];
                 
            }
@@ -241,7 +241,7 @@ public void writeEnds(){
     for(int i=0; i<cij.r; i++)
            for(int j1 = 0 ; j1< cir.r; j1++)
                dist[i][j]= cij.r-cir.r;
-            if(dist<10)
+            if(dist[i]{j]<10)
                candidates.add(new Vec(i,j,i1,j1));
               
            
@@ -253,13 +253,13 @@ public void writeEnds(){
            p2= setCompNo(1);
         p2.set(i,j,rij
    p2.setCompNo(2) ;
-p1.set(di1) ) ;
+p1.set(di1);
 p1.setnCompNo(0) ;
-p1. set(i,j,di1) ) ;
+p1. set(i,j,di1);
            pix1= setCompNo(1) ;
-p1. set(i,j,di1) ) 
+p1. set(i,j,di1);
            pix1= setnCompNo(2) ;
-p1. set(i,j,di1) )  ;
+p1. set(i,j,di1);
         //return dist;
       }// end method
    //end class*/
