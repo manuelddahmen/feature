@@ -66,7 +66,7 @@ private int sizeElement = 20;
                     
                 diff = diff+
                 m1.getRgb(i. j).
-                moins(m1.getRgb(i, j).norme();
+                moins(m1.getRgb(i, j)).norme();
            
                   
               /*
