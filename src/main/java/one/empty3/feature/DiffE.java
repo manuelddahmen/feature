@@ -56,7 +56,6 @@ private int sizeElement = 20;
             return pi;
                 
         }
-public class utils{
        
         public double dist(Circle b) {
            
@@ -65,8 +64,8 @@ public class utils{
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
-                double diff =
-                    part+= m1.getRgb((int)i. (int)j).
+                double diff +=
+                m1.getRgb((int)i. (int)j).
                 moins(m1.getRgb((int)i (int)j)).norme();
            
                   
