@@ -156,7 +156,7 @@ public Circle getLevel(Circle c) {
         
     if(!in.getName().endsWith(".jpg"))
         return false;
-    File file = in.
+    File file = in;
     
         
     try {
@@ -167,7 +167,7 @@ public Circle getLevel(Circle c) {
     } catch(Exception ex) {
         ex.printStackTrace();
       return false;
-       // assertTrue(false);
+    
       
      }
     public void lpp(){
