@@ -261,7 +261,7 @@ p1. set(i,j,di1);
            pix1= setnCompNo(2) ;
 p1. set(i,j,di1);
         //return dist;
-      }// end method
+      });// end method
    //end class*/
 ]);
     try{
@@ -274,7 +274,7 @@ ImageIO.write(p1.getImage(), "JPEG", out);
            ex.printStackTrace();
       }
          
-      return false.
-     }
+      
+   
              
 }// end class
