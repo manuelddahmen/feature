@@ -61,12 +61,12 @@ private int sizeElement = 20;
            
             double diff = 0.0;
               
-            for(int i = -b.x+ b.r; i<b.y+b.r;i++)
-                for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
+            for(int i = (int)(-b.x+ b.r); i<b.y+b.r;i++)
+                for(int j=(int)( -b.x+ b.r); j<b.y+b.r; j++) {
                     
                 diff = diff+
-                m1.getRgb((int)i. (int)j).
-                moins(m1.getRgb((int)i (int)j)).norme();
+                m1.getRgb(i. j).
+                moins(m1.getRgb(i, j).norme();
            
                   
               /*
