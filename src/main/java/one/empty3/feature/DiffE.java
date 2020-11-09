@@ -250,7 +250,7 @@ public void writeEnds(){
         p2=m2;p1=m1;
         
     candidates. forEach( c -> {
-       pix2.setCompNo(0);
+       p2.setCompNo(0);
         p2.set(i,j, rij) ;
            p2= setCompNo(1);
         p2.set(i,j,rij);
@@ -266,7 +266,7 @@ p1. set(i,j,di1);
       });// end method
      
        
-    ;
+    
     try{
 ImageIO.write(p1.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
