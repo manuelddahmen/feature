@@ -177,7 +177,7 @@ public Circle getLevel(Circle c) {
        
 List<Point> candidate = new ArrayList() ;
          Circle [] [] [] c= new  Circle[elementSize ] [elementSize ] [2] ;
-       double [][] dist =mew double[m1.columns][m1.lines]
+       double [][] dist = new double[m1.columns][m1.lines]
        for(int  g=0;m1.columns;  g++) {
            for(int h=0; h<m1.lines;  h++) {
        
