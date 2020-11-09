@@ -64,7 +64,7 @@ private int sizeElement = 20;
             for(int i = -b.x+ b.r; i<b.y+b.r;i++)
                 for(int j= -b.x+ b.r; j<b.y+b.r; j++) {
                     
-                diff +=
+                diff = diff+
                 m1.getRgb((int)i. (int)j).
                 moins(m1.getRgb((int)i (int)j)).norme();
            
@@ -74,7 +74,7 @@ private int sizeElement = 20;
                     p1.mean(b.x-b.r, b.y-r, b.x+b.i, b.y+b.i).norme();
                        
                        */
-                       diff= diff + part;
+                    
                }
                 
      
