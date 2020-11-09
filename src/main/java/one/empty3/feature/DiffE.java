@@ -56,7 +56,7 @@ private int sizeElement = 20;
             return pi;
                 
         }
-        
+public class utils{
        
         public double dist(Circle b) {
            
@@ -146,7 +146,7 @@ public Circle getLevel(Circle c) {
         
      
     
-        
+        }
     
     public boolean process(File in,File out) {
         
