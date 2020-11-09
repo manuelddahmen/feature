@@ -177,7 +177,7 @@ public Circle getLevel(Circle c) {
        
 List<Vec> candidate = new ArrayList<>() ;
          Circle [] [] [] c= new  Circle[elementSize ] [elementSize ] [2] ;
-       double [][] dist = new double[m1.columns][m1.lines]
+       double [][] dist = new double[m1.columns][m1.lines];
        for(int  g=0;m1.columns;  g++) {
            for(int h=0; h<m1.lines;  h++) {
        
@@ -262,8 +262,9 @@ p1. set(i,j,di1);
 p1. set(i,j,di1);
         //return dist;
       });// end method
-   //end class*/
-]);
+     
+       
+    ;
     try{
 ImageIO.write(p1.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
