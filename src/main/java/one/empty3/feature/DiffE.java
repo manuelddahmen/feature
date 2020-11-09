@@ -241,7 +241,7 @@ public void writeEnds(){
     for(int i=0; i<cij.r; i++)
            for(int j1 = 0 ; j1< cir.r; j1++)
                dist[i][j]= cij.r-cir.r;
-               if(dist[i]{j]<10.0)
+               if(dist[i][j]<10.0)
                    candidates.add(new Vec(i,j,i1,j1));
               
            
