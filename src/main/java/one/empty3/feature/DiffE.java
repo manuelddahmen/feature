@@ -218,7 +218,7 @@ List<Point> candidate = new ArrayList() ;
 for(int i2=0; i1<p2.columns ; i2++) {
    
           for(int j2=0; j2<p2.lines ; j2++) {
-if(level(cir) ==level(ci1) {
+if(level(cir) ==level(cir) {
 p2.colorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
 } 
 }
@@ -241,7 +241,7 @@ public void writeEnds(){
     for(int i=0; i<cij.r; i++)
            for(int j1 = 0 ; j1< cir.r; j1++)
                dist[i][j]= cij.r-cir.r;
-            if(dist[i]{j]<10)
+            if(dist[i]{j]<10.0)
                candidates.add(new Vec(i,j,i1,j1));
               
            
