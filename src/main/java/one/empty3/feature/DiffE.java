@@ -219,7 +219,7 @@ for(int i2=0; i1<p2.columns ; i2++) {
    
           for(int j2=0; j2<p2.lines ; j2++) {
 if(level(cir) ==level(cir) {
-p2.colorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
+p2.colorsRegion(i1, j1, j1-i1,j1-i1, Color. Red) ;
 } 
 }
    }
