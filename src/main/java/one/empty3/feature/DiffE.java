@@ -251,7 +251,7 @@ public void writeEnds(){
        pix2.setCompNo(0);
         p2.set(i,j, rij) ;
            p2= setCompNo(1);
-        p2.set(i,j,rij
+        p2.set(i,j,rij);
    p2.setCompNo(2) ;
 p1.set(di1);
 p1.setnCompNo(0) ;
@@ -276,5 +276,5 @@ ImageIO.write(p1.getImage(), "JPEG", out);
          
       return false.
      }
-            */           
+             
 }// end class
