@@ -218,7 +218,7 @@ List<Vec> candidate = new ArrayList<>() ;
 for(int i2=0; i1<p2.columns ; i2++) {
    
           for(int j2=0; j2<p2.lines ; j2++) {
-if(level(cil) ==level(cir) {
+if(level(cil) ==level(cir)) {
 p2.colorsRegion(i1, j1, j1-i1,j1-i1, Color. Red) ;
 } 
 }
