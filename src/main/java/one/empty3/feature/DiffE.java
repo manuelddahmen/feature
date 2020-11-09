@@ -210,9 +210,9 @@ List<Point> candidate = new ArrayList() ;
            for(int h=0; h<p1.lines;  h++) {
               
            
-       for(int i1=0; i1<p2.columns ; i1++) 
+       for(int i1=0; i1<p2.columns ; i1++) {
           for(int j1=0; j1<p2.lines ; j1++) {
-for(int i2=0; i1<p2.columns ; i2++) 
+for(int i2=0; i1<p2.columns ; i2++) {
    
           for(int j2=0; j2<p2.lines ; j2++) {
 if(level(cir) ==level(ci1) {
@@ -221,7 +221,7 @@ p2.colorsRegion(i1, j1, j1-j1, j1-i1, Color. Red) ;
 }
    }
    }
-
+}}}}}}
 
 
 public void writeEnds(){
