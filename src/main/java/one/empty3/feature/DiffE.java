@@ -177,7 +177,7 @@ public Circle getLevel(Circle c) {
        
 List<Point> candidate = new ArrayList() ;
          Circle [] [] [] c= new  Circle[elementSize ] [elementSize ] [2] ;
-       
+       double [][] dist =mew double[m1.columns][m1.lines]
        for(int  g=0;m1.columns;  g++) {
            for(int h=0; h<m1.lines;  h++) {
        
@@ -241,8 +241,8 @@ public void writeEnds(){
     for(int i=0; i<cij.r; i++)
            for(int j1 = 0 ; j1< cir.r; j1++)
                dist[i][j]= cij.r-cir.r;
-            if(dist[i]{j]<10.0)
-               candidates.add(new Vec(i,j,i1,j1));
+               if(dist[i]{j]<10.0)
+                   candidates.add(new Vec(i,j,i1,j1));
               
            
         p2=m2;p1=m1;
