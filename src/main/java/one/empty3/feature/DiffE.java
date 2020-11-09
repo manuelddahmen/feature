@@ -264,6 +264,7 @@ p1. set(i,j,di1) )  ;
       }// end method
    //end class*/
 ]);
+    try{
 ImageIO.write(p1.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
