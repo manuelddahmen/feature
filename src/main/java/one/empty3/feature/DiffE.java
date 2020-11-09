@@ -69,11 +69,14 @@ public class utils{
                     diff+= m1.getRgb((int)i. (int)j).
                 moins(m1.getRgb((int)i (int)j)).norme();
            
-                   }
-                    /*
+                  
+              
                    diff = diff.plus(P.n(b.x,b.oy, b.i)).moins(
-                    p1.mean(b.x-b.r, b.y-r, b.y+t());
-               .+*/
+                    p1.mean(b.x-b.r, b.y-r, b.x+b.i, b.y+b.i);
+                       
+                       
+                       diff= diff + part;
+               }
                 
      
                  return diff; // attention red
