@@ -5,6 +5,8 @@ import one.empty3.library.shader.Vec;
 import java.awt.Color;
 import java.io.File;
 import java.awt.Point;
+import java.util.*;
+
 public class DiffE extends ProcessFile {
     PixM m1; PixM m2;
 private int sizeElement = 20;
@@ -52,8 +54,8 @@ private int sizeElement = 20;
             double pi = 0.0;
             for (double a = a1; a<a2; a+= 1/r/2/Math.PI) {
             
-            pi+= c.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
-                }
+                pi+= c.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
+            }
             return pi;
                 
         }
