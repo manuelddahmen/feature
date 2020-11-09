@@ -166,7 +166,7 @@ public Circle getLevel(Circle c) {
         writeEnd();
     } catch(Exception ex) {
         ex.printStackTrace();
-      return false;
+     
     
       
      }
@@ -200,9 +200,9 @@ List<Point> candidate = new ArrayList() ;
         
                // mapping
                
-       int sort=0;
-       while(int i<cir.length) {
-           while(int j<cir[i].length) {
+       int sort=0;int i=0;
+       while(i<c'length) {
+           while(int j<c[i].length) {
                double rMin = sort[i][j];
                 
            }
@@ -244,21 +244,21 @@ public void writeEnds(){
                candidates.add(new Vec(i,j,i1,j1));
               
            
-        
+        p2=m2;p1=m1;
         
     candidates. forEach( c -> {
        pix2.setCompNo(0);
         p2.set(i,j, rij) ;
            p2= setCompNo(1);
         p2.set(i,j,rij
-   p2.setCompNo(2) ;/*
-pix1.set(di1) ) ;
-pix1.setnCompNo(0) ;
-pix1. set(i,j,di1) ) ;
+   p2.setCompNo(2) ;
+p1.set(di1) ) ;
+p1.setnCompNo(0) ;
+p1. set(i,j,di1) ) ;
            pix1= setCompNo(1) ;
-pix1. set(i,j,di1) ) 
+p1. set(i,j,di1) ) 
            pix1= setnCompNo(2) ;
-pix1. set(i,j,di1) )  ;
+p1. set(i,j,di1) )  ;
         //return dist;
       }// end method
    //end class*/
