@@ -274,7 +274,8 @@ ImageIO.write(p1.getImage(), "JPEG", out);
       } catch(Exception ex) {
            ex.printStackTrace();
       }
-         
+  }
+}
       
    
              
