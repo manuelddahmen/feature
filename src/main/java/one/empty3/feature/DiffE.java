@@ -4,6 +4,7 @@ import one.empty3.library.*;
 import one.empty3.library.shader.Vec;
 import java.awt.Color;
 import java.io.File;
+import java.awt.Point;
 public class DiffE extends ProcessFile {
     PixM m1; PixM m2;
 private int sizeElement = 20;
