@@ -38,7 +38,7 @@ public class FTPProcessFiles {
     
     public void loadArgsJson(String file) {
     
-[(
+/*
 String jsonString = file.getContents(); //assign your JSON String here
 JSONObject obj = new JSONObject(jsonString);
 for(JSONObject in : obj.getJSONObject("filters"));
