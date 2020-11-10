@@ -11,7 +11,7 @@ public class DiffE extends ProcessFile {
     PixM m1; PixM m2;
 private int sizeElement = 20;
     class ColorTranform {
-        Circle c;
+        
         public void rotate(){}
         PixM p;
         public double compare(double[] rbga){}
