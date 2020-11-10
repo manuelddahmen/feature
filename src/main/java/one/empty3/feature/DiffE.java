@@ -52,8 +52,9 @@ private int sizeElement = 20;
         }
         public double getIntensity(int i, int j) {
             double count;
-            for(int i0=i-r; i0<i+r; i0++)
-                for(int j0=i-r;j0<i+r; j0++)
+         for(int
+ i0=i-r; i0<i+r; i0++)
+                for( j0=i-r;j0<i+r; j0++)
                     ii+= r;
             return count/ii;
        }
