@@ -11,7 +11,7 @@ import org.apache.commons.net.ftp.*;
 import one.empty3.io.ProcessFile;
 import java.util.logging.Logger;
 import java.lang.reflect.Method;
-import org.json.*;
+//import org.json.*;
 /**
  * An example program that demonstrates how to list files and directories
  * on a FTP server using Apache Commons Net API.
@@ -38,7 +38,7 @@ public class FTPProcessFiles {
     
     public void loadArgsJson(String file) {
     
-
+[(
 String jsonString = file.getContents(); //assign your JSON String here
 JSONObject obj = new JSONObject(jsonString);
 for(JSONObject in : obj.getJSONObject("filters"));
@@ -58,7 +58,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
 
     
     }
-    }
+    }*/
     static FTPClient ftpClient;
     
     
