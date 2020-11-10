@@ -51,7 +51,7 @@ private int sizeElement = 20;
             this.a+= rotate;
         }
         public double getIntensity(int i, int j) {
-            double count;
+            double count=0';
          for(int
  i0=i-r; i0<i+r; i0++)
                 for( j0=i-r;j0<i+r; j0++) {                  count +=1  ii+= r;}
@@ -285,7 +285,7 @@ p1. set(i,j,di1);
             
   
             
- public viid  Write2() {
+ public void Write2() {
           
        try{
 ImageIO.write(p1.getImage(), "JPEG", out);
