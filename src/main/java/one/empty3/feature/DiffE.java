@@ -40,8 +40,9 @@ private int sizeElement = 20;
          
         
        public Point2D get(double a, double r) {
-           return new Point2D(r*Math.cos(2*Math.PI*a),
+          n =new Point2D(r*Math.cos(2*Math.PI*a),
                               r*Math.sin(2*Math.PI*a));
+          teturn n;
        }
         public void variate(double x, double y,
                            double r, double rotate) {
