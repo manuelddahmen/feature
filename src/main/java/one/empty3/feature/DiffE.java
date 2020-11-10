@@ -264,13 +264,14 @@ public void writeEnds(){
         p2.set(i,j, rij) ;
            p2.setCompNo(1);
         p2.set(i,j,rij);
-   p2.setCompNo(2) ;
+   p2.setCompNo(2) 
+     ;
 p1.set(di1);
 p1.setCompNo(0) ;
 p1. set(i,j,di1);
            pix1.setCompNo(1) ;
 p1. set(i,j,di1);
-           pix1.setnCompNo(2) ;
+ p1.setCompNo(2);
 p1. set(i,j,di1);
         //return dist;
       });// end method
