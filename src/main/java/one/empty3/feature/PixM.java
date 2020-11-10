@@ -22,8 +22,8 @@ public class PixM extends M {
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
                 int rgb = image.getRGB(i, j);
-                float[] colorComponents = new float[getCompCount()];
-                colorComponents = new Color(rgb).getColorComponents(colorComponents);
+                float[] colorComponents = new float[getCompCount();
+                colorComponents = new Color(rgb).getColorComponents(colorComponents[com]);
                 for (int com = 0; com < getCompCount(); com++) {
                     setCompNo(com);
                     set(i, j, colorComponents);
@@ -35,9 +35,9 @@ public Point3D getRgb(int i, int j) {
     setCompNo(0);
     double dr =get(i,j);
        setCompNo(1);
-    dg= get(i,j);
+    double dg= get(i,j);
            setCompNo(2);
-    db =get(i,j);
+    double db =get(i,j);
     return new Point3D(dr,dg,db);
 }
 public static PixM getPixM(BufferedImage image, double maxRes) {
