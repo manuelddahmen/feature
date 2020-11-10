@@ -26,7 +26,7 @@ public class PixM extends M {
                 colorComponents = new Color(rgb).getColorComponents(colorComponents);
                 for (int com = 0; com < getCompCount(); com++) {
                     setCompNo(com);
-                    set(i, j, colorComponents);
+                    set(i, j, colorComponents[com]);
                 }
             }
         }
