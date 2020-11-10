@@ -199,7 +199,7 @@ List<Vec> candidate = new ArrayList<>() ;
     p1=m1;p2=m2;
     
          
- ImagrIO.write(m2.getImage(), "jpeg", out);
+ ImageIO.write(m2.getImage(), "jpeg", out);
         
                // mapping
                
