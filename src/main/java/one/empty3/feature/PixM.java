@@ -22,7 +22,7 @@ public class PixM extends M {
         for (int i = 0; i < image.getWidth(); i++) {
             for (int j = 0; j < image.getHeight(); j++) {
                 int rgb = image.getRGB(i, j);
-                float[] colorComponents = new float[getCompCount();
+                float[] colorComponents = new float[getCompCount()];
                 colorComponents = new Color(rgb).getColorComponents(colorComponents[com]);
                 for (int com = 0; com < getCompCount(); com++) {
                     setCompNo(com);
