@@ -57,8 +57,8 @@ for(JSONObject in : obj.getJSONObject("filters"));
 
 
     
-    }
     }*/
+    }
     static FTPClient ftpClient;
     
     
