@@ -35,7 +35,7 @@ private int sizeElement = 20;
         }
          
         
-    }
+    
          
          
         
@@ -66,7 +66,7 @@ private int sizeElement = 20;
             return pi;
                 
         }
-       
+       }
         public double dist(Circle b) {
            
             double diff = 0.0;
