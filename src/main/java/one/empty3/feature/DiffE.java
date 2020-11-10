@@ -50,6 +50,13 @@ private int sizeElement = 20;
             this.r+= r;
             this.a+= rotate;
         }
+        public double getIntensity(int i, int j) {
+            double count;
+            for(int i0=i-r; i0<i+r; i-++)
+                for(int j0=i-r;j0<i+r; i++)
+                    ii+= r;
+            return count/ii;
+       }
         public double get(Circle c, double r, double a1, double a2) {
             double pi = 0.0;
             for (double a = a1; a<a2; a+= 1/r/2/Math.PI) {
