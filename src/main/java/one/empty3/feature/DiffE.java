@@ -55,7 +55,9 @@ private int sizeElement = 20;
          for(int
  i0=i-r; i0<i+r; i0++)
                 for( j0=i-r;j0<i+r; j0++) {                  count +=1  ii+= r;}
-            return count/ii;
+            return 
+         double t  +=count/ii;
+         return t;
        }
         public double get(Circle c, double r, double a1, double a2) {
             double pi = 0.0;
