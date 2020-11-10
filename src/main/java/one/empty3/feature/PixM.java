@@ -1,5 +1,5 @@
 package one.empty3.feature;
-impott one.empty3.library.Point3D;
+import one.empty3.library.Point3D;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.PrimitiveIterator;
