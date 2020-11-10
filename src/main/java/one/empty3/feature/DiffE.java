@@ -8,18 +8,18 @@ import java.awt.Point;
 import java.util.*;
 
 public class DiffE extends ProcessFile {
-    PixM m1; PixM m2;
+   private PixM m1; private PixM m2;
 private int sizeElement = 20;
     class ColorTranform {
         
         public void rotate(){}
-        PixM p;
         public double compare(double[] rbga){}
         
     }
     
     class Circle {
-        double x, y, r, a;
+        
+ double x, y, r, a;
        
         public Circle(PixM m,double x,double
                           y, double r)
@@ -54,8 +54,7 @@ private int sizeElement = 20;
             double count;
          for(int
  i0=i-r; i0<i+r; i0++)
-                for( j0=i-r;j0<i+r; j0++)
-                    ii+= r;
+                for( j0=i-r;j0<i+r; j0++) {                  count +=1  ii+= r;}
             return count/ii;
        }
         public double get(Circle c, double r, double a1, double a2) {
@@ -163,14 +162,14 @@ public Circle getLevel(Circle c) {
     
     public boolean process(File in,File out) {
         
-        
+        try {
         
     if(!in.getName().endsWith(".jpg"))
         return false;
     File file = in;
     
         
-    try {
+    
     
         
       
@@ -275,7 +274,20 @@ p1. set(i,j,di1);
      
        
     
-    try{
+    
+        
+        
+            
+            
+         
+            
+            
+            
+  
+            
+ public viid  Write2() {
+          
+       try{
 ImageIO.write(p1.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
@@ -284,6 +296,7 @@ ImageIO.write(p1.getImage(), "JPEG", out);
       } catch(Exception ex) {
            ex.printStackTrace();
       }
+    }
   }
 }
       
