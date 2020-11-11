@@ -300,12 +300,7 @@ p1. set(i,j,di1);
             
             
          
-            
-            
-            
-  
-            
- public void Write2() {
+     
           
        try{
 ImageIO.write(m2.getImage(), "JPEG", out);
@@ -317,8 +312,8 @@ ImageIO.write(m2.getImage(), "JPEG", out);
            ex.printStackTrace();
       }
     
-  }
-
+  
+}
     
    
             
