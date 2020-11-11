@@ -63,7 +63,7 @@ private int sizeElement = 20;
  double t= 0.0;
          for(
  i0=i-r; i0<i+r; i0++)
-                for( j0=i-r;j0<i+r; j0++) {                  count +=1  ii+= r;}
+                for( j0=i-r;j0<i+r; j0++) {                  count +=1 ; ii+= r;}
             
                
                
