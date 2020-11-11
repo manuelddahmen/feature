@@ -171,7 +171,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
                
                
           if(i==0/*&&(class0==null || class0.equals(""))*/){
-           
+             System.out.println("download from ftp"+classes[i]);
             
             Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
             Object o = classs.newInstance();
@@ -219,7 +219,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
             
                  printFileDetails(files1,  directory);
             } else {
-                
+                System.out.println("egfect"+class.toString();
                 
                 System.out.println("I>0 clase de traitement"+classs.toString()+" : "+currentDirin);
                 printFileDetails(new File(currentDirin).list(),  currentDirin);
