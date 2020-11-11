@@ -311,7 +311,7 @@ ImageIO.write(m2.getImage(), "JPEG", out);
       } catch(Exception ex) {
            ex.printStackTrace();
       }
-    
+    }
   
 }
     
