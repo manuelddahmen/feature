@@ -1,5 +1,6 @@
 package one.empty3.feature;
 import one.empty3.library.Point3D;
+import one.empty3.library.shader.Vec;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.PrimitiveIterator;
@@ -38,7 +39,7 @@ public Point3D getRgb(int i, int j) {
     double dg= get(i,j);
            setCompNo(2);
     double db =get(i,j);
-    return new Point3D(dr,dg,db);
+    return new Vec(dr,dg,db);
 }
 public static PixM getPixM(BufferedImage image, double maxRes) {
         System.out.println("pixm resampling init"+image.getWidth()+" "+image.getHeight()+" - " + maxRes);
