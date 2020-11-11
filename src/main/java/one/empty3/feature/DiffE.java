@@ -3,7 +3,7 @@ import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
 import one.empty3.library.shader.Vec;
 import java.awt.Color;
-import java.io.File;
+^import java.io.File;
 import java.awt.Point;
 import java.util.*;
 
@@ -60,12 +60,20 @@ private int sizeElement = 20;
               
               
               
-   
+ double t= 0.0;
          for(
  i0=i-r; i0<i+r; i0++)
                 for( j0=i-r;j0<i+r; j0++) {                  count +=1  ii+= r;}
-            return 
-         double t  +=count/ii;
+            
+               
+               
+               
+               
+               
+               
+               
+               
+               t  +=count/ii;
          return t;
        }
         public double get(Circle c, double r, double a1, double a2) {
