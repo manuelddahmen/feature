@@ -52,8 +52,16 @@ private int sizeElement = 20;
             this.a+= rotate;
         }
         public double getIntensity(int i, int j) {
-            double count=0';
-         for(int
+            double count=0.0;
+         double
+            i0, j0;
+            
+              
+              
+              
+              
+   
+         for(
  i0=i-r; i0<i+r; i0++)
                 for( j0=i-r;j0<i+r; j0++) {                  count +=1  ii+= r;}
             return 
