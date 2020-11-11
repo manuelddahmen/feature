@@ -3,7 +3,7 @@ import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
 import one.empty3.library.shader.Vec;
 import java.awt.Color;
-^import java.io.File;
+import java.io.File;
 import java.awt.Point;
 import java.util.*;
 
