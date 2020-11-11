@@ -95,7 +95,7 @@ private int sizeElement = 20;
                     
                 diff = diff+
                 diff +=new Vec(m1.getRgb(i. j), Vec(0.0)).norme();
-               diff -= moins(new Vec(m1.getRgb(i, j),new Vec(0.0)).norme()
+               diff -= moins(new Vec(m1.getRgb(i, j),new Vec(0.0)).norme();
              
            
                   
