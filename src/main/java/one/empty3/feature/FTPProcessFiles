@@ -22,9 +22,9 @@ public class FTPProcessFiles {
         
        
         
-    public static String currentDirin ="input/0";
-    public static String currentDirout ="";
-    public static String currentFileName ="";
+    
+    
+    public static String directory =;
 
     public static String getDirname(String s) {
         return s.substring(0, s.lastIndexOf("/"));
@@ -140,7 +140,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
         String directory = (String)settings.getProperty("directory");
        /* String*/ classnames = (String)settings.getProperty("classname");
         String class0 = (String)settings.getProperty("class0");
-        String directoryOut = directory.substring(0, directory.lastIndexOf("/"));
+        String directoryOut = directory;
         
         
         ftpClient = new FTPClient();
@@ -232,7 +232,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
             i++;
             
             
-            currentDirin = currentDirout;
+           // currentDirin = currentDirout;
             
             }
         } catch (Exception ex) {
@@ -255,7 +255,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
         try {
                     
         
-        File fi = new File(currentDirin+"/"+object.getName());
+        File fi = new File(currentDirout+"/"+object.getName());
         File fo = new File(currentDirout+"/"+object.getName());
         
             
