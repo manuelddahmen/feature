@@ -123,7 +123,7 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
                     c.set(i, j, c.get(i, j) / sum);
                 }
             }
-        }
+        
         return c;
     }
 
