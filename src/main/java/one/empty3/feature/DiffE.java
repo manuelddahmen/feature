@@ -180,13 +180,7 @@ public Circle getLevel(Circle c) {
     
         }
     
-    public boolean process(File in,File out) {
-        
-        try {
-        
-    if(!in.getName().endsWith(".jpg"))
-        return false;
-    File file = in;
+    
     
         
     
@@ -259,19 +253,7 @@ p2.colorsRegion(i1, j1, j1-i1,j1-i1, Color. Red) ;
 public void writeEnds(){
 
         // try min diff
-               di1 = cij.dist(ci1);
-               di2 = cir.dist(ci1);
-           
-        for(int i=0; i<cij.r; i++)
-           for(int j = 0 ; j< ci1.r; j++)
-               dist[i][j]= cij.r-ci1.r;
-            
-        
-    for(int i=0; i<cij.r; i++)
-           for(int j1 = 0 ; j1< cir.r; j1++)
-               dist[i][j]= cij.r-cir.r;
-               if(dist[i][j]<10.0)
-                   candidates.add(new Vec(i,j,i1,j1));
+               
               
            
         p2=m2;p1=m1;
@@ -295,12 +277,30 @@ p1. set(i,j,di1);
      
        
     
-    
+    di1 = cij.dist(ci1);
+               di2 = cir.dist(ci1);
+           
+        for(int i=0; i<cij.r; i++)
+           for(int j = 0 ; j< ci1.r; j++)
+               dist[i][j]= cij.r-ci1.r;
+            
+        
+    for(int i=0; i<cij.r; i++)
+           for(int j1 = 0 ; j1< cir.r; j1++)
+               dist[i][j]= cij.r-cir.r;
+               if(dist[i][j]<10.0)
+                   candidates.add(new Vec(i,j,i1,j1));
         
         
             
             
-         
+         public boolean process(File in,File out) {
+        
+        try {
+        
+    if(!in.getName().endsWith(".jpg"))
+        return false;
+    File file = in;
      
         
        try{
