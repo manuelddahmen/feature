@@ -223,7 +223,7 @@ List<Vec> candidate = new ArrayList<>() ;
  ImageIO.write(m2.getImage(), "jpeg", out);
         
                // mapping
-               
+               /*
        int sort=0;int i=0;int j=0;
        while(i<c.length) {
            while(j<c[i].length) {
@@ -248,7 +248,7 @@ p2.colorsRegion(i1, j1, j1-i1,j1-i1, Color. Red) ;
    }
    }
 }}}}}}
-
+*/
 
 public void writeEnds(){
 
