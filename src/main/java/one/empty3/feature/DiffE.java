@@ -308,7 +308,7 @@ p1. set(i,j,di1);
  public void Write2() {
           
        try{
-ImageIO.write(p1.getImage(), "JPEG", out);
+ImageIO.write(m2.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
@@ -316,7 +316,7 @@ ImageIO.write(p1.getImage(), "JPEG", out);
       } catch(Exception ex) {
            ex.printStackTrace();
       }
-    }
+    
   }
 
     
