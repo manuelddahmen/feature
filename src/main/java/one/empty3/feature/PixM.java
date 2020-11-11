@@ -96,7 +96,7 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
 
             for (int i = 0; i < columns; i++) {
                 for (int j = 0; j < lines; j++) {
-                    c.set(i, j, 0.0); //???
+                    //c.set(i, j, 0.0); //???
                     sum = 0.0;
                     for (int u = -filter.columns / 2; u <= filter.lines / 2; u++) {
                         for (int v = -filter.lines / 2; v <= filter.lines / 2; v++) {
