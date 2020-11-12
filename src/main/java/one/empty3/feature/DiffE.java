@@ -216,8 +216,7 @@ List<Vec> candidate = new ArrayList<>() ;
         
         
         
-               // sort by importance or surgace
-    p1=m1;p2=m2;
+               
     
          
  ImageIO.write(m2.getImage(), "jpeg", out);
@@ -256,7 +255,6 @@ public void writeEnds(){
                
               
            
-        p2=m2;p1=m1;
         
     candidates. forEach( c -> {
        p2.setCompNo(0);
@@ -268,7 +266,7 @@ public void writeEnds(){
 p1.set(di1);
 p1.setCompNo(0) ;
 p1. set(i,j,di1);
-           pix1.setCompNo(1) ;
+           p1.setCompNo(1) ;
 p1. set(i,j,di1);
  p1.setCompNo(2);
 p1. set(i,j,di1);
