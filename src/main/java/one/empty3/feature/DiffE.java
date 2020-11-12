@@ -178,11 +178,11 @@ public Circle getLevel(Circle c) {
         
      }
     
-        
+       } 
     
    
    
-    public void writeEnd(){
+    public void writeEnd() {
       
        
 List<Vec> candidate = new ArrayList<>() ;
