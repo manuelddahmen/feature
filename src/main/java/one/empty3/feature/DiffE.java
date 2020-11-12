@@ -180,22 +180,9 @@ public Circle getLevel(Circle c) {
     
         }
     
-    
-    
-        
-    
-    
-        
-      
-        writeEnd();
-    } catch(Exception ex) {
-        ex.printStackTrace();
-     
-    
-      
-     }
    
-    
+   
+    public void writeEnds(){
       
        
 List<Vec> candidate = new ArrayList<>() ;
@@ -249,11 +236,11 @@ p2.colorsRegion(i1, j1, j1-i1,j1-i1, Color. Red) ;
 }}}}}}
 */
 
-public void writeEnds(){
+
 
         // try min diff
                
-              
+              double cij;
            
         
     candidates. forEach( c -> {
@@ -316,3 +303,4 @@ ImageIO.write(m2.getImage(), "JPEG", out);
 }
    
             
+<
