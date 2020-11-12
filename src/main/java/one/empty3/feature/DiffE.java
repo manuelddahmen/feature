@@ -182,7 +182,7 @@ public Circle getLevel(Circle c) {
     
    
    
-    public void writeEnds(){
+    public void writeEnd(){
       
        
 List<Vec> candidate = new ArrayList<>() ;
@@ -296,7 +296,9 @@ ImageIO.write(m2.getImage(), "JPEG", out);
            return true;
       } catch(Exception ex) {
            ex.printStackTrace();
-      }
+      } finally){
+        
+        }
     
   
    }
