@@ -302,8 +302,8 @@ p1. set(i,j,di1);
         return false;
     File file = in;
      
-        
-       try{
+        write,End();
+       
 ImageIO.write(m2.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
