@@ -209,7 +209,7 @@ List<Vec> candidate = new ArrayList<>() ;
  ImageIO.write(m2.getImage(), "jpeg", out);
         
                // mapping
-               /*
+               
        int sort=0;int i=0;int j=0;
        while(i<c.length) {
            while(j<c[i].length) {
@@ -218,29 +218,31 @@ List<Vec> candidate = new ArrayList<>() ;
            }
        }
            
-             for(double g=0; g<p1.columns;  g++) {
+         for(double g=0; g<p1.columns;  g++) {
            for(int h=0; h<p1.lines;  h++) {
               
            
        for(int i1=0; i1<p2.columns ; i1++) {
           for(int j1=0; j1<p2.lines ; j1++) {
-for(int i2=0; i1<p2.columns ; i2++) {
+              for(int i2=0; i1<p2.columns ; i2++) {
    
-          for(int j2=0; j2<p2.lines ; j2++) {
-if(level(cil) ==level(cir)) {
-p2.colorsRegion(i1, j1, j1-i1,j1-i1, Color. Red) ;
-} 
-}
-   }
-   }
-}}}}}
-*/
+                 for(int j2=0; j2<p2.lines ; j2++) {
+                   if(level(cil) ==level(cir)) {
+                       m2.colorsRegion(i1, j1, j1-i1,j1-i1, Color. Red) ;
+                    } 
+                  }
+               }
+           }
+       }
+     }
+    } 
+  }
 
 
 
         // try min diff
                
-              double cij;
+              
            
         
     candidates. forEach( c -> {
@@ -296,12 +298,11 @@ ImageIO.write(m2.getImage(), "JPEG", out);
            return true;
       } catch(Exception ex) {
            ex.printStackTrace();
-      } finally){
+      } finally {
         
-        }
-    }
-  
-   }
+      }
+  }
+}
               
             
 
