@@ -94,9 +94,9 @@ for(JSONObject in : obj.getJSONObject("filters"));
     }
     public static void main(String[] args) {
         if(args[0].endsWith(".properties"))
-            loadArgsProps(arg[0]);
+            loadArgsProps(args[0]);
         if(args[0].endsWith(".json"))
-            loadArgsJson(arg[0]);
+            loadArgsJson(args[0]);
             
     }
     
