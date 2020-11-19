@@ -21,11 +21,11 @@ class Circle {
                           y, double r)
             {
 this.x+= x;
-            this.y+= y;
-            this.r+= r;
-            this.a+= rotate;
-                this.m = m;
-}
+            this.y= y;
+            this.r= r;
+            this.a= rotate;
+            this.m = m;
+        }
         public void rotate(double angle) {
             a+=angle;
         }
@@ -72,7 +72,7 @@ this.x+= x;
                 
        return tin/count;
    }
-   public Circle getLevel(Circle c) {
+   public Circle getLevel(Circle c, PixM m1) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -83,7 +83,7 @@ this.x+= x;
         for (double i = c.x-c.r; i <= c.x+c.r; i++) {
             for (double j = c.y-c.r; j <= c.y+c.r; j++) {
                 if (Math.sqrt((i-c.x) * (i-c.x) + (j-c.y) * ( j-c.y)) <= c.r*c.r
-                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.y+c.r<m.lines) {
+                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m1.columns && c.y+c.r<m1.lines) {
                     intensity += m1.getIntensity((int) i, (int) j);
                     count++;
                     
