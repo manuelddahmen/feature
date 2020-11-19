@@ -93,9 +93,9 @@ private int sizeElement = 20;
             for(int i = (int)(-b.x+ b.r); i<b.y+b.r;i++)
                 for(int j=(int)( -b.x+ b.r); j<b.y+b.r; j++) {
                     
-                diff = diff+
-                diff +=new Vec(m1.getRgb(i. j), Vec(0.0)).norme();
-               diff -= moins(new Vec(m1.getRgb(i, j),new Vec(0.0)).norme();
+               
+                diff +=new Vec(m1.getRgb(i. j).norme();
+               diff -= new Vec(m1.getRgb(i, j).norme();
              
            
                   
@@ -235,7 +235,7 @@ List<Vec> candidate = new ArrayList<>() ;
            }
        }
      }
-    } 
+    
   }
 
 
@@ -281,7 +281,7 @@ p1. set(i,j,di1);
         
            
             
-         public boolean process(File in,File out) {
+    public boolean process(File in,File out) {
         
         try {
         
