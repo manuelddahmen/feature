@@ -52,7 +52,7 @@ class Circle {
               double iin =0.0;
               
  double tin= 0.0;
-         for(i0=i-r; i0<i+r; i0++)
+         for(i0=i-r; i0<i+r; i0++) {
                 for(j0=i-r;j0<i+r; j0++) {                
                 
                     if(Math.sqrt((i0-i)*(i0-i)
@@ -62,9 +62,12 @@ class Circle {
                                 iin=m.getIntensity(i,j);
                                 tin  +=iin;
                             }
-               
-         return tin/count;
-       }
+               }
+          }
+                
+                
+       return tin/count;
+   }
    public Circle getLevel(Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
