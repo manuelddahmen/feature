@@ -34,7 +34,7 @@ private int sizeElement = 20, elementSize=20;
            return Math.sqrt(r*r+g*g+b*b);
         }
          
-        
+        }
     
          
          
@@ -109,7 +109,7 @@ private int sizeElement = 20, elementSize=20;
                  return diff; // attention red
                 
         } 
-}
+
 public Circle getLevel(Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
