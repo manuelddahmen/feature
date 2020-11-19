@@ -6,7 +6,7 @@ import java.awt.Color;
 import java.io.File;
 import java.awt.Point;
 import java.util.*;
-import javax.image.ImageIO;
+import javax.imageio.ImageIO;
 public class DiffE extends ProcessFile {
    private PixM m1; private PixM m2;
 private int sizeElement = 20, elementSize=20;
