@@ -29,7 +29,7 @@ public class FTPProcessFiles {
     public static String getDirname(String s) {
         return s.substring(0, s.lastIndexOf("/"));
     }
-    
+    static String currentDirout.
     
     
     static ProcessFile processInstance;
