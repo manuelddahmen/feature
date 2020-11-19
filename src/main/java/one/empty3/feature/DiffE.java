@@ -206,7 +206,6 @@ List<Vec> candidate = new ArrayList<>() ;
                
     
          
- ImageIO.write(m2.getImage(), "jpeg", out);
         
                // mapping
                
