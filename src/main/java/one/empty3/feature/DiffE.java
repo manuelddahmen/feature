@@ -39,9 +39,9 @@ private int sizeElement = 20, elementSize=20;
          
          
         
-       public Point2D get(double a, double r) {
-          Point3D n =new Point2D(r*Math.cos(2*Math.PI*a),
-                              r*Math.sin(2*Math.PI*a));
+       public Point3D get(double a, double r) {
+          Point3D n =new Point3D(r*Math.cos(2*Math.PI*a),
+                              r*Math.sin(2*Math.PI*a), 0.0);
           return n;
        }
         public void variate(double x, double y,
