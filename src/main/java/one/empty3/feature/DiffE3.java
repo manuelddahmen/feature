@@ -174,7 +174,7 @@ private int sizeElement = 20, elementSize=20;
         
            if(!in.getName().endsWith(".jpg"))
                return false;
-           PixM pi = new PixM(ImageIo.read(in));
+           PixM pi = new PixM(ImageIO.read(in));
            mout = pi;
         // work on featutes
        
