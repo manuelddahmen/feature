@@ -83,15 +83,14 @@ private int sizeElement = 20, elementSize=20;
             }
             return pi;
                 
-        }
+        
        }
         public double dist(Circle b) {
            
             double diff = 0.0;
               
             for(int i = (int)(-b.x+ b.r); i<b.y+b.r;i++)
-                for(int j=(int)( -b.x+ b.r); j<b.y+b.r; j++) {
-                    
+                for(int j=(int)( -b.x+ b.r); j<b.y+b.r; j++)
                
                 diff  = diff + m1.getRgb(i. j).norme()
                              - m1.getRgb(i, j).norme();
@@ -104,7 +103,7 @@ private int sizeElement = 20, elementSize=20;
                        
                        */
                     
-               }
+               
                 
      
                  return diff; // attention red
