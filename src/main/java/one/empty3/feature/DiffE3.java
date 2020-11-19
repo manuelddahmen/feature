@@ -186,9 +186,8 @@ private int sizeElement = 20, elementSize=20;
       } catch(Exception ex) {
            ex.printStackTrace();
            return false;
-      } finally {
       }
-      return false;
+      
     }
 }
      
