@@ -36,7 +36,7 @@ public class FTPProcessFiles {
     static String directoryOut;
     
     
-    public void loadArgsJson(String file) {
+    public static void loadArgsJson(String file) {
     
 /*
 String jsonString = file.getContents(); //assign your JSON String here
