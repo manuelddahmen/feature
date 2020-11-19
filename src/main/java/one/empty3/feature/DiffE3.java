@@ -1,4 +1,9 @@
-/*package one.empty3.feature ;
+/*
+comparaipar cerlcle d intensite et
+de lumierrs filtrers.
+*/
+
+ackage one.empty3.feature ;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
 import one.empty3.library.shader.Vec;
