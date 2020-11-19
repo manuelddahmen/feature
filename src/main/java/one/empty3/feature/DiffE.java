@@ -94,8 +94,8 @@ private int sizeElement = 20;
                 for(int j=(int)( -b.x+ b.r); j<b.y+b.r; j++) {
                     
                
-                diff +=new Vec(m1.getRgb(i. j).norme();
-               diff -= new Vec(m1.getRgb(i, j).norme();
+                diff +=new Vec(m1.getRgb(i. j)).norme();
+               diff -= new Vec(m1.getRgb(i, j)).norme();
              
            
                   
