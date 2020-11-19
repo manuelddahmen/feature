@@ -9,7 +9,7 @@ import java.util.*;
 import javax.image.ImageIO;
 public class DiffE extends ProcessFile {
    private PixM m1; private PixM m2;
-private int sizeElement = 20;
+private int sizeElement = 20, elementSize=20;
     class ColorTranform {
         
         public void rotate(){}
@@ -184,7 +184,7 @@ public Circle getLevel(Circle c) {
     public void writeEnd() {
       
        
-List<Vec> candidate = new ArrayList<>() ;
+        List<Vec> candidate = new ArrayList<>() ;
          Circle [] [] [] c= new  Circle[elementSize ] [elementSize ] [2] ;
        double [][] dist = new double[m1.columns][m1.lines];
        for(int  g=0;m1.columns;  g++) {
@@ -277,8 +277,8 @@ p1. set(i,j,di1);
                    candidates.add(new Vec(i,j,i1,j1));
               }
         
-        }
-           
+        
+    }      
             
     public boolean process(File in,File out) {
         
