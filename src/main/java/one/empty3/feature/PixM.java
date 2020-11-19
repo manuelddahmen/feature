@@ -126,7 +126,7 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         
         return c;
     }
-
+/*
     public V derivative(int x, int y, int order, V originValue) {
         if (originValue == null) {
             originValue = new V(2, 1);
@@ -140,7 +140,7 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         }
 
         return originValue;
-    }
+    }*/
 
     public BufferedImage getImage() {
 
