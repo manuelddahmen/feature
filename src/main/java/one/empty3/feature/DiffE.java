@@ -183,7 +183,7 @@ public Circle getLevel(Circle c) {
     public void writeEnd() {
       
        
-        List<Vec> candidate = new ArrayList<>() ;
+        List<Vec> candidates = new ArrayList<>() ;
          Circle [] [] [] c= new  Circle[elementSize ] [elementSize ] [2] ;
        double [][] dist = new double[m1.columns][m1.lines];
        for(int  g=0;m1.columns;  g++) {
@@ -215,9 +215,7 @@ public Circle getLevel(Circle c) {
            }
        }
            
-         for(double g=0; g<p1.columns;  g++) {
-           for(int h=0; h<p1.lines;  h++) {
-              
+         
            
        for(int i1=0; i1<p2.columns ; i1++) {
           for(int j1=0; j1<p2.lines ; j1++) {
@@ -230,10 +228,10 @@ public Circle getLevel(Circle c) {
                   }
                }
            }
-       }
+        }
+      }
      }
-    }
-  }
+   
 
 
 
@@ -278,7 +276,7 @@ p1. set(i,j,di1);
         
         }
     }      
-    
+    }
     public boolean process(File in, File out) {
         
         try {
