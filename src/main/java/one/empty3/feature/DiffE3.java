@@ -2,7 +2,7 @@
 comparaipar cerlcle d intensite et
 de lumierrs filtrers.
 */
-/*
+
 package one.empty3.feature ;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
@@ -98,9 +98,9 @@ class Circle {
                
 
 
-
+*/
 public class DiffE3 extends ProcessFile {
-   private PixM m1; private PixM m2;
+/*
 private int sizeElement = 20, elementSize=20;
     class ColorTranform {
         
@@ -157,19 +157,19 @@ public Circle getLevel(Circle c) {
     
    
    
- 
+ */
     public boolean process(File in, File out) {
         
         try {
         
     if(!in.getName().endsWith(".jpg"))
         return false;
-    File file = in;
+    
      
         // work on gpeatutes
        
 ImageIO.write(m2.getImage(), "JPEG", out);
-           ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
+           ImageIO.write(mout.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
            return true;
