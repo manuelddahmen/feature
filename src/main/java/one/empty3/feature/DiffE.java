@@ -94,8 +94,8 @@ private int sizeElement = 20;
                 for(int j=(int)( -b.x+ b.r); j<b.y+b.r; j++) {
                     
                
-                diff +=new Vec(m1.getRgb(i. j)).norme();
-               diff -= new Vec(m1.getRgb(i, j)).norme();
+                diff  = diff + new Vec(m1.getRgb(i. j)).norme();
+                             - new Vec(m1.getRgb(i, j)).norme();
              
            
                   
@@ -273,10 +273,11 @@ p1. set(i,j,di1);
             
         
     for(int i=0; i<cij.r; i++)
-           for(int j1 = 0 ; j1< cir.r; j1++)
+           for(int j1 = 0 ; j1< cir.r; j1++) {
                dist[i][j]= cij.r-cir.r;
                if(dist[i][j]<10.0)
                    candidates.add(new Vec(i,j,i1,j1));
+              }
         
         
            
