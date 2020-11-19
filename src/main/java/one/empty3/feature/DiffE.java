@@ -1,4 +1,4 @@
-package one.empty3.feature ;
+/*package one.empty3.feature ;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
 import one.empty3.library.shader.Vec;
@@ -97,11 +97,11 @@ private int sizeElement = 20, elementSize=20;
              
            
                   
-              /*
+              
                    diff =(P.n(b.x,b.oy, b.i)).moins(
                     p1.mean(b.x-b.r, b.y-r, b.x+b.i, b.y+b.i).norme();
                        
-                       */
+                       
                     
                
                 
@@ -300,5 +300,5 @@ ImageIO.write(m2.getImage(), "JPEG", out);
   }
 }
      
-            
+            */
 
