@@ -17,13 +17,13 @@ class Circle {
         
  double x, y, r, a; PixM m;
        
-        public Circle(PixM m,double x,double
-                          y, double r)
+        public Circle(PixM m,double x,double a,
+                          double y, double r)
             {
 this.x+= x;
             this.y= y;
             this.r= r;
-            this.a= rotate;
+            this.a= a;
             this.m = m;
         }
         public void rotate(double angle) {
