@@ -74,7 +74,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
          return p;
     }
     
-   public void loadArgsProps(String propFile ){}
+   public static void loadArgsProps(String propFile ){}
     /*
         try {
             Method m = processInstance.class.getDeclaredMethod(argCl, argValue);  
