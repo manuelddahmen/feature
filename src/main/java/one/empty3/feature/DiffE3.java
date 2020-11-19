@@ -64,68 +64,7 @@ class Circle {
                
          return tin;
        }
-               
-               
-                     public double dist(Circle b) {
-           
-            double diff = 0.0;
-              
-            for(int i = (int)(-b.x+ b.r); i<b.y+b.r;i++)
-                for(int j=(int)( -b.x+ b.r); j<b.y+b.r; j++)
-               
-                diff  = diff + m1.getRgb(i. j).norme()
-                             - m1.getRgb(i, j).norme();
-             
-           
-                  
-              
-                   diff =(P.n(b.x,b.oy, b.i)).moins(
-                    p1.mean(b.x-b.r, b.y-r, b.x+b.i, b.y+b.i).norme();
-                       
-                       
-                    
-               
-                
-     
-                 return diff; // attention red
-                
-        } 
-                           }
-               
-               
-               
-               
-               
-
-
-*/
-public class DiffE3 extends ProcessFile {
-/*
-private int sizeElement = 20, elementSize=20;
-    class ColorTranform {
-        
-        public void rotate(){}
-        public double compare(double[] rbga){}
-        
-    }
-    
-    
-           
-        this.x=x;this.y=y;this.r=r;
-        
-        public double get(Circle c, double r, double a1, double a2) {
-            double pi = 0.0;
-            for (double a = a1; a<a2; a+= 1/r/2/Math.PI) {
-            
-                pi+= c.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
-            }
-            return pi;
-                
-        
-       }
-  
-
-public Circle getLevel(Circle c) {
+               public Circle getLevel(Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -154,6 +93,67 @@ public Circle getLevel(Circle c) {
     return c;
   }
        
+               /*
+                     public double dist(Circle b) {
+           
+            double diff = 0.0;
+              
+            for(int i = (int)(-b.x+ b.r); i<b.y+b.r;i++)
+                for(int j=(int)( -b.x+ b.r); j<b.y+b.r; j++)
+               
+                diff  = diff + m1.getRgb(i. j).norme()
+                             - m1.getRgb(i, j).norme();
+             
+           
+                  
+              
+                   diff =(P.n(b.x,b.oy, b.i)).moins(
+                    p1.mean(b.x-b.r, b.y-r, b.x+b.i, b.y+b.i).norme();
+                       
+                       
+                    
+               
+                
+     
+                 return diff; // attention red
+                
+        } 
+                           
+               
+               
+               
+               
+               
+
+}
+*/
+public class DiffE3 extends ProcessFile {
+/*
+private int sizeElement = 20, elementSize=20;
+    class ColorTranform {
+        
+        public void rotate(){}
+        public double compare(double[] rbga){}
+        
+    }
+    
+    
+           
+        this.x=x;this.y=y;this.r=r;
+        
+        public double get(Circle c, double r, double a1, double a2) {
+            double pi = 0.0;
+            for (double a = a1; a<a2; a+= 1/r/2/Math.PI) {
+            
+                pi+= c.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
+            }
+            return pi;
+                
+        
+       }
+  
+
+
     
    
    
