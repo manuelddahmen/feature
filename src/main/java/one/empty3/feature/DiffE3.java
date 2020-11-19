@@ -16,6 +16,7 @@ import javax.imageio.ImageIO;
 class Circle {
         
  double x, y, r, a; PixM m;
+ double [] comps; double i;
        
         public Circle(PixM m,double x,double a,
                           double y, double r)
@@ -173,11 +174,11 @@ private int sizeElement = 20, elementSize=20;
         
            if(!in.getName().endsWith(".jpg"))
                return false;
-    
+           PixM pi = new PixM(ImageIo.read(in));
      
         // work on featutes
        
-           ImageIO.write(in.getImage(), "JPEG", out);
+           ImageIO.write(, "JPEG", out);
            ImageIO.write(mout.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
