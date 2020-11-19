@@ -284,7 +284,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
        
         } catch(Exception ex) {
             ex.printStackTrace();
-        
+        }
       }
         
     }
