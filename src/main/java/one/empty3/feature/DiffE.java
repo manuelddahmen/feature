@@ -177,13 +177,13 @@ public Circle getLevel(Circle c) {
            }
         
      }
-    
+    }
        
     
    
    
     public void writeEnd() {
-      
+      }
        
 List<Vec> candidate = new ArrayList<>() ;
          Circle [] [] [] c= new  Circle[elementSize ] [elementSize ] [2] ;
