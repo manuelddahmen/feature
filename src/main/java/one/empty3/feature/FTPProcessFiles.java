@@ -24,7 +24,7 @@ public class FTPProcessFiles {
         
     
     
-    public static String directory =;
+    public static String directory="images";
 
     public static String getDirname(String s) {
         return s.substring(0, s.lastIndexOf("/"));
