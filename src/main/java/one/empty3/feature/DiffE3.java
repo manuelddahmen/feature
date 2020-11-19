@@ -175,10 +175,10 @@ private int sizeElement = 20, elementSize=20;
            if(!in.getName().endsWith(".jpg"))
                return false;
            PixM pi = new PixM(ImageIo.read(in));
-     
+           mout = pi;
         // work on featutes
        
-           ImageIO.write(, "JPEG", out);
+           ImageIO.write(pi.getImage(), "JPEG", out);
            ImageIO.write(mout.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
