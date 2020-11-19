@@ -64,40 +64,7 @@ class Circle {
        }
                
                
-               
-               
-               
-               
-               
-               
-
-
-
-public class DiffE extends ProcessFile {
-   private PixM m1; private PixM m2;
-private int sizeElement = 20, elementSize=20;
-    class ColorTranform {
-        
-        public void rotate(){}
-        public double compare(double[] rbga){}
-        
-    }
-    
-    
-           
-        this.x=x;this.y=y;this.r=r;
-        
-        public double get(Circle c, double r, double a1, double a2) {
-            double pi = 0.0;
-            for (double a = a1; a<a2; a+= 1/r/2/Math.PI) {
-            
-                pi+= c.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
-            }
-            return pi;
-                
-        
-       }
-        public double dist(Circle b) {
+                     public double dist(Circle b) {
            
             double diff = 0.0;
               
@@ -121,6 +88,40 @@ private int sizeElement = 20, elementSize=20;
                  return diff; // attention red
                 
         } 
+                           }
+               
+               
+               
+               
+               
+
+
+
+public class DiffE3 extends ProcessFile {
+   private PixM m1; private PixM m2;
+private int sizeElement = 20, elementSize=20;
+    class ColorTranform {
+        
+        public void rotate(){}
+        public double compare(double[] rbga){}
+        
+    }
+    
+    
+           
+        this.x=x;this.y=y;this.r=r;
+        
+        public double get(Circle c, double r, double a1, double a2) {
+            double pi = 0.0;
+            for (double a = a1; a<a2; a+= 1/r/2/Math.PI) {
+            
+                pi+= c.getIntensity((int)(r*Math.cos(a)) ,(int)(r*Math.sin(a)));
+            }
+            return pi;
+                
+        
+       }
+  
 
 public Circle getLevel(Circle c) {
         // I mean. Parcourir le cercle
