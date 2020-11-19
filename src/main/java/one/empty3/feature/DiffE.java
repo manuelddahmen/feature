@@ -183,7 +183,7 @@ public Circle getLevel(Circle c) {
    
    
     public void writeEnd() {
-      }
+      
        
 List<Vec> candidate = new ArrayList<>() ;
          Circle [] [] [] c= new  Circle[elementSize ] [elementSize ] [2] ;
@@ -279,7 +279,7 @@ p1. set(i,j,di1);
                    candidates.add(new Vec(i,j,i1,j1));
               }
         
-        
+        }
            
             
     public boolean process(File in,File out) {
