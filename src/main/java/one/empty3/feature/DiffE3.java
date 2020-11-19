@@ -28,11 +28,7 @@ class Circle {
         public double get(double r, double g, double b){
            return Math.sqrt(r*r+g*g+b*b);
         }
-         
-        }
     
-         
-         
         
        public Point3D get(double a, double r) {
           Point3D n =new Point3D(r*Math.cos(2*Math.PI*a),
@@ -53,14 +49,20 @@ class Circle {
             
               
               
+              double iin =0.0;
               
-              
- double t= 0.0;
+ double tin= 0.0;
          for(i0=i-r; i0<i+r; i0++)
                 for(j0=i-r;j0<i+r; j0++) {                  count +=1 ; ii+= r;}
-            
-               t  +=count/ii;
-         return t;
+                    if(Math.sqrt((i0-i)*(i0-i)
+                                 +(j0-j)*(j0-j))
+                       <=r) {
+                                count ++;
+                                iin=m.getIntensity(i,j);
+                                tin  +=iin;
+                            }
+               
+         return tin;
        }
                
                
@@ -150,146 +152,12 @@ public Circle getLevel(Circle c) {
             c.r = 0.0;
         }
     return c;
-    }
- 
-    public void sort(double [] [] m) {
-
-        // loop for rows of matrix
-
-        for (int i = 0; i < m.length; i++) {
-
- 
-
-            // loop for column of matrix
-
-            for (int j = 0; j < m[i].length; j++) {
-
- 
-
-                // loop for comparison and swapping
-
-                for (int k = 0; k < m[i].length - j - 1; k++) {
-                    if (m[i][k] > m[i][k + 1]) {
-
- 
-
-                        // swapping of elements
-
-                        double t = m[i][k];
-
-                        m[i][k] = m[i][k + 1];
-
-                        m[i][k + 1] = t;
-
-                    }
-
-                  }
-               
-           }
-        
-     }
-    }
+  }
        
     
    
    
-    public void writeEnd() {
-      
-       
-        List<Vec> candidates = new ArrayList<>() ;
-         Circle [] [] [] c= new  Circle[elementSize ] [elementSize ] [2] ;
-       double [][] dist = new double[m1.columns][m1.lines];
-       for(int  g=0;m1.columns;  g++) {
-           for(int h=0; h<m1.lines;  h++) {
-       
-      c[g][h] [0] =new Circle(g*p1.columns/elementSize, 1.*h*p1.lines/elementSize, elementSize);  
-      c[g][h] [1] =new Circle(g*p2.columns/elementSize, 1.*h*p2.lines/elementSize, elementSize);  
-
-                               
-    
-           
-
-    
-
-        
-        
-        
-               
-    
-         
-        
-               // mapping
-               
-       int sort=0;int i=0;int j=0;
-       while(i<c.length) {
-           while(j<c[i].length) {
-               double rMin = sort[i][j];
-                
-           }
-       }
-           
-         
-           
-       for(int i1=0; i1<p2.columns ; i1++) {
-          for(int j1=0; j1<p2.lines ; j1++) {
-              for(int i2=0; i1<p2.columns ; i2++) {
-   
-                 for(int j2=0; j2<p2.lines ; j2++) {
-                   if(level(cil) ==level(cir)) {
-                       m2.colorsRegion(i1, j1, j1-i1,j1-i1, Color. Red) ;
-                    } 
-                  }
-               }
-           }
-        }
-      }
-     }
-   
-
-
-
-        // try min diff
-               
-              
-           
-        
-    candidates. forEach( c -> {
-       p2.setCompNo(0);
-        p2.set(i,j, rij) ;
-           p2.setCompNo(1);
-        p2.set(i,j,rij);
-   p2.setCompNo(2) 
-     ;
-p1.set(di1);
-p1.setCompNo(0) ;
-p1. set(i,j,di1);
-           p1.setCompNo(1) ;
-p1. set(i,j,di1);
- p1.setCompNo(2);
-p1. set(i,j,di1);
-        //return dist;
-      });// end method
-     
-       
-    
-    di1 = cij.dist(ci1);
-               di2 = cir.dist(ci1);
-           
-        for(int i=0; i<cij.r; i++)
-           for(int j = 0 ; j< ci1.r; j++)
-               dist[i][j]= cij.r-ci1.r;
-            
-        
-    for(int i=0; i<cij.r; i++)
-           for(int j1 = 0 ; j1< cir.r; j1++) {
-               dist[i][j]= cij.r-cir.r;
-               if(dist[i][j]<10.0)
-                   candidates.add(new Vec(i,j,i1,j1));
-              }
-        
-        }
-    
-    
+ 
     public boolean process(File in, File out) {
         
         try {
@@ -298,7 +166,7 @@ p1. set(i,j,di1);
         return false;
     File file = in;
      
-        writeEnd();
+        // work on gpeatutes
        
 ImageIO.write(m2.getImage(), "JPEG", out);
            ImageIO.write(m2.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
