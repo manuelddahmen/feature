@@ -277,10 +277,10 @@ p1. set(i,j,di1);
                    candidates.add(new Vec(i,j,i1,j1));
               }
         
-        
+        }
     }      
-            
-    public boolean process(File in,File out) {
+    @Override
+    public boolean process(File in, File out) {
         
         try {
         
