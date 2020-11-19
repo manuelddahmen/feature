@@ -164,22 +164,23 @@ private int sizeElement = 20, elementSize=20;
    
  */
     public boolean process(File in, File out) {
-        
+        PixM mout;
         try {
         
            if(!in.getName().endsWith(".jpg"))
                return false;
     
      
-        // work on gpeatutes
+        // work on featutes
        
-           ImageIO.write(m2.getImage(), "JPEG", out);
+           ImageIO.write(in.getImage(), "JPEG", out);
            ImageIO.write(mout.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
            return true;
       } catch(Exception ex) {
            ex.printStackTrace();
+           return false;
       } finally {
       }
       return false;
