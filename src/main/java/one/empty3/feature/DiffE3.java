@@ -15,12 +15,16 @@ import javax.imageio.ImageIO;
 
 class Circle {
         
- double x, y, r, a;
+ double x, y, r, a; PixM m;
        
         public Circle(PixM m,double x,double
                           y, double r)
             {
-
+this.x+= x;
+            this.y+= y;
+            this.r+= r;
+            this.a+= rotate;
+                this.m = m;
 }
         public void rotate(double angle) {
             a+=angle;
