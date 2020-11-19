@@ -3,7 +3,7 @@ comparaipar cerlcle d intensite et
 de lumierrs filtrers.
 */
 
-ackage one.empty3.feature ;
+package one.empty3.feature ;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
 import one.empty3.library.shader.Vec;
@@ -12,26 +12,16 @@ import java.io.File;
 import java.awt.Point;
 import java.util.*;
 import javax.imageio.ImageIO;
-public class DiffE extends ProcessFile {
-   private PixM m1; private PixM m2;
-private int sizeElement = 20, elementSize=20;
-    class ColorTranform {
-        
-        public void rotate(){}
-        public double compare(double[] rbga){}
-        
-    }
-    
-    class Circle {
+
+class Circle {
         
  double x, y, r, a;
        
         public Circle(PixM m,double x,double
                           y, double r)
             {
-           
-        this.x=x;this.y=y;this.r=r;
-        }
+
+}
         public void rotate(double angle) {
             a+=angle;
         }
@@ -69,17 +59,34 @@ private int sizeElement = 20, elementSize=20;
          for(i0=i-r; i0<i+r; i0++)
                 for(j0=i-r;j0<i+r; j0++) {                  count +=1 ; ii+= r;}
             
-               
-               
-               
-               
-               
-               
-               
-               
                t  +=count/ii;
          return t;
        }
+               
+               
+               
+               
+               
+               
+               
+               
+
+
+
+public class DiffE extends ProcessFile {
+   private PixM m1; private PixM m2;
+private int sizeElement = 20, elementSize=20;
+    class ColorTranform {
+        
+        public void rotate(){}
+        public double compare(double[] rbga){}
+        
+    }
+    
+    
+           
+        this.x=x;this.y=y;this.r=r;
+        
         public double get(Circle c, double r, double a1, double a2) {
             double pi = 0.0;
             for (double a = a1; a<a2; a+= 1/r/2/Math.PI) {
