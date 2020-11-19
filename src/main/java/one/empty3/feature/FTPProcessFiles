@@ -281,11 +281,12 @@ for(JSONObject in : obj.getJSONObject("filters"));
             
             
        // dirin = (fo.getParent());
+       
         } catch(Exception ex) {
             ex.printStackTrace();
         }
-            }
-        
+          
+        }
         
     }
  public static void process(File object){
