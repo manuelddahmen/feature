@@ -219,7 +219,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
             
                  printFileDetails(files1,  directory);
             } else {
-                System.out.println("effect"+processInstance.toString();
+                System.out.println("effect"+processInstance.toString());
                 
                 System.out.println("I>0 clase de traitement"+classs.toString()+" : "+currentDirin);
                 printFileDetails(new File(currentDirin).list(),  currentDirin);
