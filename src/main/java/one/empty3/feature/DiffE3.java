@@ -59,7 +59,7 @@ class Circle {
                                  +(j0-j)*(j0-j))
                        <=r) {
                                 count ++;
-                                iin=m.getIntensity(i,j);
+                                iin=m.getIntensity(i0,j0);
                                 tin  +=iin;
                             }
                }
