@@ -18,7 +18,7 @@ import java.lang.reflect.Method;
  * @author www.codejava.net
  */
 public class FTPProcessFiles {
-    public static String classnames, classname;
+    public static String classnames, classname, classes;
         
        
         
