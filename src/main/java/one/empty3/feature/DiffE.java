@@ -298,9 +298,9 @@ ImageIO.write(m2.getImage(), "JPEG", out);
            ex.printStackTrace();
       } finally {
         
-      }
+      return true;
   }
 }
-              
+     
             
 
