@@ -276,7 +276,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
         Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : "+fo.getAbsolutePath());
         Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : "+processInstance.getClass().getName());
             
-            processInstance.process(fi, fo);
+        processInstance.process(fi, fo);
             
             
             
@@ -284,9 +284,8 @@ for(JSONObject in : obj.getJSONObject("filters"));
        
         } catch(Exception ex) {
             ex.printStackTrace();
-        }
-          
-        }
+        
+      }
         
     }
  public static void process(File object){
