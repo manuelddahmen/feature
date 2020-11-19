@@ -39,7 +39,7 @@ public Point3D getRgb(int i, int j) {
     double dg= get(i,j);
            setCompNo(2);
     double db =get(i,j);
-    return new Vec(dr,dg,db);
+    return new Point3D(dr,dg,db);
 }
 public static PixM getPixM(BufferedImage image, double maxRes) {
         System.out.println("pixm resampling init"+image.getWidth()+" "+image.getHeight()+" - " + maxRes);
