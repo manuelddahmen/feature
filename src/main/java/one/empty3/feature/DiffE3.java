@@ -53,7 +53,8 @@ class Circle {
               
  double tin= 0.0;
          for(i0=i-r; i0<i+r; i0++)
-                for(j0=i-r;j0<i+r; j0++) {                  count +=1 ; ii+= r;}
+                for(j0=i-r;j0<i+r; j0++) {                
+                
                     if(Math.sqrt((i0-i)*(i0-i)
                                  +(j0-j)*(j0-j))
                        <=r) {
@@ -62,9 +63,9 @@ class Circle {
                                 tin  +=iin;
                             }
                
-         return tin;
+         return tin/count;
        }
-               public Circle getLevel(Circle c) {
+   public Circle getLevel(Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -90,7 +91,7 @@ class Circle {
             c.i = 0.0;
             c.r = 0.0;
         }
-    return c;
+        return c;
   }
        
                /*
@@ -162,13 +163,13 @@ private int sizeElement = 20, elementSize=20;
         
         try {
         
-    if(!in.getName().endsWith(".jpg"))
-        return false;
+           if(!in.getName().endsWith(".jpg"))
+               return false;
     
      
         // work on gpeatutes
        
-ImageIO.write(m2.getImage(), "JPEG", out);
+           ImageIO.write(m2.getImage(), "JPEG", out);
            ImageIO.write(mout.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
@@ -177,8 +178,8 @@ ImageIO.write(m2.getImage(), "JPEG", out);
            ex.printStackTrace();
       } finally {
       }
-      return true;
-  }
+      return false;
+    }
 }
      
             
