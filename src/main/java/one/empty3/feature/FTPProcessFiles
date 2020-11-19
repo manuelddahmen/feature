@@ -281,7 +281,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
             
             
        // dirin = (fo.getParent());
-        } catch(IOException ex) {
+        } catch(Exception ex) {
             ex.printStackTrace();
         }
             }
