@@ -172,13 +172,15 @@ for(JSONObject in : obj.getJSONObject("filters"));
            for (String classname2 : classnamesArr) {
             classname = classname2;
             currentDirout = "./output/"+classname+"/";
-            Class classs = Class.forName(
+Logger.getLogger(FTPProcessFiles.class.getName()).info("Process
+            System.out.println(classname);
+Class classs = Class.forName(
                 classname
             );
                
                
           if(i==0){
-             System.out.println("download from ftp"+class);
+             
             
             Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
             Object o = classs.newInstance();
