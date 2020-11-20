@@ -177,7 +177,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
             );
                
                
-          if(i==0&&(class0==null || class0.equals(""))){
+          if(i==0){
              System.out.println("download from ftp"+classes[i]);
             
             Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
