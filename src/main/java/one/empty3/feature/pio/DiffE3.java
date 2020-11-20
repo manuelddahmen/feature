@@ -110,7 +110,7 @@ class Circle {
         }
         
        public double match( Circle b) {
-            return getLevel().getIntensity((int)a.x,(int)a.y)-b.getLevel().getIntensity((int)b.x,(int)b.y);
+            return getLevel().getIntensity((int)(x,(int)y)-b.getLevel().getIntensity((int)b.x,(int)b.y);
                
             
        }
@@ -197,11 +197,11 @@ private int sizeElement = 20, elementSize=20;
                         for(int i1=0; i1<pi.getColumns(); i1++)
 
                 for(int j1=0; j1<pi.getLines(); j1++) {
-                       moutA.set(i,j,moutA.get(i,j)+ Circle.match(new Circle(pi,i,j,0,r),
-                                             new Circle(pi,i1,j1,0,r)));
-                moutB.set(i1,j1,moutB.get(i1,j1)+Circle.match(new Circle(pi,i,j,0,r),
+                       moutA.set(i,j,moutA.get(i,j)+ Circle.match(new Circle(pi,i,j,0,r)
+                                             );
+                moutB.set(i1,j1,moutB.get(i1,j1)+Circle.match(new Circle(pi,i,j,0,r)
 
-                    new Circle(pi,i1,j1,0,r)));
+                );
                         }
            //ImageIO.write(pi.getImage(), "JPEG", out);
            ImageIO.write(moutA.normalize(0.,1.).getImage(), "JPEG", new File(out.getParent()+"a"+"jpg"));
