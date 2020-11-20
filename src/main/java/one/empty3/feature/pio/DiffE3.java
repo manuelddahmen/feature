@@ -73,7 +73,7 @@ this.x+= x;
                 
        return tin/count;
    }
-   public Circle getLevel(Circle c, PixM m1) {
+   public Circle getLevel(Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -84,8 +84,9 @@ this.x+= x;
         for (double i = c.x-c.r; i <= c.x+c.r; i++) {
             for (double j = c.y-c.r; j <= c.y+c.r; j++) {
                 if (Math.sqrt((i-c.x) * (i-c.x) + (j-c.y) * ( j-c.y)) <= c.r*c.r
-                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m1.columns && c.y+c.r<m1.lines) {
-                    intensity += m1.getIntensity((int) i, (int) j);
+                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<c.m.columns && c.y+c.r<c.m.
+                    lines) {
+                    intensity += c.m.getIntensity((int) i, (int) j);
                     count++;
                     
                 }
@@ -101,7 +102,11 @@ this.x+= x;
         }
         return c;
   }
-       
+       public static double match(Circle a, Circle b) {
+            returnb getLevel
+               
+               return 0;
+       }
                /*
                      public double dist(Circle b) {
            
