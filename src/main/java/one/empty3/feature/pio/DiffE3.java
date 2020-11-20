@@ -137,7 +137,7 @@ this.x+= x;
 }
         
         
-public class DiffE3 extends ProcessFile {
+public class DiffE3 extends Pio {
 /*
 private int sizeElement = 20, elementSize=20;
     class ColorTranform {
@@ -167,7 +167,9 @@ private int sizeElement = 20, elementSize=20;
     
    
    
- */
+ */ public List<PI> getPio() {
+ return null;
+ }
     public boolean process(File in, File out) {
         PixM mout;
         try {
