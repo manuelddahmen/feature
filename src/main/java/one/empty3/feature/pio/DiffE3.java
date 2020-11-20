@@ -186,7 +186,7 @@ private int sizeElement = 20, elementSize=20;
            PixM pi = new PixM(ImageIO.read(in));
            mout = pi;
         // work on featutes
-                double r = 10:
+                for(double r = 2; r<30.0; r*=2)
        for(int i=0; i<pi.getColumns(); i++)
                 for(int j=0; j<pi.getLines(); j++)
                         for(int i1=0; i1<pi.getColumns(); i1++)
