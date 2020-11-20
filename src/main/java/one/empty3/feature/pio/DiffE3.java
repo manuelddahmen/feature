@@ -15,8 +15,8 @@ import javax.imageio.ImageIO;
 
 class Circle {
         
- double x, y, r, a; PixM m;
- double [] comps; double i;
+ double x, y, r, a; public PixM m;
+ Color c; double i;
        
         public Circle(PixM m,double x,double a,
                           double y, double r)
@@ -73,7 +73,8 @@ this.x+= x;
                 
        return tin/count;
    }
-   public Circle getLevel(Circle c) {
+   public Circle getLevel() {
+           Circle c = this;
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -100,12 +101,13 @@ this.x+= x;
             c.i = 0.0;
             c.r = 0.0;
         }
+           
         return c;
   }
        public static double match(Circle a, Circle b) {
-            returnb getLevel
+            return a.getLevel()-b.getLevel();
                
-               return 0;
+            
        }
                /*
                      public double dist(Circle b) {
@@ -184,9 +186,16 @@ private int sizeElement = 20, elementSize=20;
            PixM pi = new PixM(ImageIO.read(in));
            mout = pi;
         // work on featutes
-       
+                double r = 10:
+       for(int i=0; i<pi.getColumns(); i++)
+                for(int j=0; j<pi.getLines(); j++)
+                        for(int i1=0; i1<pi.getColumns(); i1++)
+
+                for(int j1=0; j1<pi.getLines(); j1++)
+                       mout.set(Circle.match(new Circle(pi,i,j,0,r),
+                                             new Circle(pi,i1,j1,0,r)));
            ImageIO.write(pi.getImage(), "JPEG", out);
-           ImageIO.write(mout.getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
+           ImageIO.write(mout.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
            return true;
