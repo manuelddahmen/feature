@@ -198,8 +198,8 @@ private int sizeElement = 20, elementSize=20;
                     new Circle(pi,i1,j1,0,r)));
                         }
            //ImageIO.write(pi.getImage(), "JPEG", out);
-           ImageIO.write(moutA.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+"a"+"jpg"));
-                ImageIO.write(moutB.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+"b"+"jpg"));
+           ImageIO.write(moutA.normalize(0.,1.).getImage(), "JPEG", new File(out.getParent()+"a"+"jpg"));
+           ImageIO.write(moutB.normalize(0.,1.).getImage(), "JPEG", new File(out.getParent()+"b"+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
            return true;
