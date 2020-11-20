@@ -348,7 +348,7 @@ Class classs = Class.forName(
     private static void printFileDetails(String[] files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         for (String f : files) {
-            File file = new File(directory +"/" +f);
+            File file = new File(currentDirin +"/" +f);
             if(file.isFile() && !file.getName().equals(".")
                  && !file.getName().equals("..")
               ) {
