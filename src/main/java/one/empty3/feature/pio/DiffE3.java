@@ -87,8 +87,8 @@ class Circle {
         for (double i = c.x-c.r; i <= c.x+c.r; i++) {
             for (double j = c.y-c.r; j <= c.y+c.r; j++) {
                 if (Math.sqrt((i-c.x) * (i-c.x) + (j-c.y) * ( j-c.y)) <= c.r*c.r
-                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<c.m.columns && c.y+c.r<c.m.
-                    lines) {
+                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<c.m.getColumns() && c.y+c.r<c.m.
+                    getLines()) {
                     intensity += c.m.getIntensity((int) i, (int) j);
                     count++;
                     
