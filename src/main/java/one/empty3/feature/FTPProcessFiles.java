@@ -144,10 +144,10 @@ for(JSONObject in : obj.getJSONObject("filters"));
         int port = Integer.parseInt(settings.getProperty("port"));
         String username = (String)settings.getProperty("username");
         String password = (String)settings.getProperty("password");
-        String directory = (String)settings.getProperty("directory");
+        String directory = (String)settings.getProperty("in.directory");
        /* String*/ classnames = (String)settings.getProperty("classname");
         String class0 = (String)settings.getProperty("class0");
-        String directoryOut = directory;
+        String directoryOut =  (String)settings.getProperty("out.directory");
         
         
         ftpClient = new FTPClient();
