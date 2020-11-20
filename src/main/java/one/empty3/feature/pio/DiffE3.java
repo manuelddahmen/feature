@@ -12,7 +12,7 @@ import java.io.File;
 import java.awt.Point;
 import java.util.*;
 import javax.imageio.ImageIO;
-
+class DE {
 class Circle {
         
  double x, y, r, a; public PixM m;
@@ -142,7 +142,7 @@ class Circle {
                
 
 }
-        
+}
         
 public class DiffE3 extends ProcessFile {
 /*
@@ -192,8 +192,8 @@ private int sizeElement = 20, elementSize=20;
                         for(int i1=0; i1<pi.getColumns(); i1++)
 
                 for(int j1=0; j1<pi.getLines(); j1++)
-                       mout.set(Circle.match(new Circle(pi,i,j,0,r),
-                                             new Circle(pi,i1,j1,0,r)));
+                       mout.set(DE.Circle.match(new DE.Circle(pi,i,j,0,r),
+                                             new DE.Circle(pi,i1,j1,0,r)));
            ImageIO.write(pi.getImage(), "JPEG", out);
            ImageIO.write(mout.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
            
