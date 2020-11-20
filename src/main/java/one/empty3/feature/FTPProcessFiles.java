@@ -177,7 +177,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
             );
                
                
-          if(i==0/*&&(class0==null || class0.equals(""))*/){
+          if(i==0&&(class0==null || class0.equals(""))){
              System.out.println("download from ftp"+classes[i]);
             
             Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
@@ -205,7 +205,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
                 System.out.println("Connect failed");
                 return;
             }
- // reads settings.xml or prompts user/pass 
+            // reads settings.xml or prompts user/pass 
             boolean success = ftpClient.login(username, password);
             showServerReply(ftpClient);
  
@@ -238,8 +238,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
  */
             i++;
             
-            
-           // currentDirin = currentDirout;
+           
             
             }
         } catch (Exception ex) {
