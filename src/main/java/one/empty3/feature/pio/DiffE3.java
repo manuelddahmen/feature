@@ -149,6 +149,9 @@ class Circle {
 }
         
 public class DiffE3 extends ProcessFile {
+        
+        
+        public DiffE3(){}
 /*
 private int sizeElement = 20, elementSize=20;
     class ColorTranform {
