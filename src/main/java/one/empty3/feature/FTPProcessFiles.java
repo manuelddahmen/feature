@@ -96,11 +96,15 @@ for(JSONObject in : obj.getJSONObject("filters"));
          return p;
     }
     public static void main(String[] args) {
+         
+
+
+
         if(args[0].endsWith(".properties"))
             loadArgsProps(args[0]);
         if(args[0].endsWith(".json"))
             loadArgsJson(args[0]);
-            
+            defaultProcess();
     }
     
     public static void parseAndSet(ProcessFile processInstance, List<Object> argCl){
