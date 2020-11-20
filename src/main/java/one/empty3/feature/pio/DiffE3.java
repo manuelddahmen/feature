@@ -21,7 +21,7 @@ class Circle {
         public Circle(PixM m,double x,double a,
                           double y, double r)
             {
-this.x+= x;
+            this.x= x;
             this.y= y;
             this.r= r;
             this.a= a;
