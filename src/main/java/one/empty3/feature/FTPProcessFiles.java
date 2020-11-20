@@ -171,6 +171,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
             String [] classnamesArr = classnames.split(",");
            for (String classname2 : classnamesArr) {
             classname = classname2;
+               currentDirin = currentDirout;
             currentDirout = "./output/"+classname+"/";
 Logger.getLogger(FTPProcessFiles.class.getName()).info("Process class name read " + classname);
             System.out.println(classname);
@@ -228,6 +229,7 @@ Class classs = Class.forName(
             
                  printFileDetails(files1,  directory);
             } else {
+              
                 System.out.println("effect"+processInstance.toString());
                 
                 System.out.println("I>0 clase de traitement"+classs.toString()+" : "+currentDirin);
