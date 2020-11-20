@@ -192,12 +192,13 @@ private int sizeElement = 20, elementSize=20;
                 for(int j=0; j<pi.getLines(); j++)
                         for(int i1=0; i1<pi.getColumns(); i1++)
 
-                for(int j1=0; j1<pi.getLines(); j1++)
+                for(int j1=0; j1<pi.getLines(); j1++) {
                        moutA.set(i,j,moutA.get(i,j), DE.Circle.match(new DE.Circle(pi,i,j,0,r),
                                              new DE.Circle(pi,i1,j1,0,r)));
                 moutB.set(i1,j1,moutB.get(i,j), DE.Circle.match(new DE.Circle(pi,i,j,0,r),
 
                     new DE.Circle(pi,i1,j1,0,r)));
+                        }
            ImageIO.write(pi.getImage(), "JPEG", out);
            ImageIO.write(moutA.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+"a"+"jpg"));
                 ImageIO.write(moutB.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+"b"+"jpg"));
