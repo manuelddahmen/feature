@@ -12,7 +12,6 @@ import java.io.File;
 import java.awt.Point;
 import java.util.*;
 import javax.imageio.ImageIO;
-class DE {
 class Circle {
         
  double x, y, r, a; public PixM m;
@@ -73,7 +72,7 @@ class Circle {
                 
        return tin/count;
    }
-   public DE.Circle getLevel() {
+   public Circle getLevel() {
            Circle c = this;
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
@@ -104,7 +103,7 @@ class Circle {
            
         return c;
   }
-       public static double match(DE.Circle a, DE.Circle b) {
+       public static double match(Circle a, Circle b) {
             return a.getLevel().getIntensity((int)a.x,(int)a.y)-b.getLevel().getIntensity((int)b.x,(int)b.y);
                
             
@@ -141,7 +140,6 @@ class Circle {
                
                
 
-}
 }
         
 public class DiffE3 extends ProcessFile {
@@ -193,11 +191,11 @@ private int sizeElement = 20, elementSize=20;
                         for(int i1=0; i1<pi.getColumns(); i1++)
 
                 for(int j1=0; j1<pi.getLines(); j1++) {
-                       moutA.set(i,j,moutA.get(i,j), DE.Circle.match(new DE.Circle(pi,i,j,0,r),
-                                             new DE.Circle(pi,i1,j1,0,r)));
-                moutB.set(i1,j1,moutB.get(i,j), DE.Circle.match(new DE.Circle(pi,i,j,0,r),
+                       moutA.set(i,j,moutA.get(i,j), Circle.match(new DE.Circle(pi,i,j,0,r),
+                                             new Circle(pi,i1,j1,0,r)));
+                moutB.set(i1,j1,moutB.get(i,j), Circle.match(new DE.Circle(pi,i,j,0,r),
 
-                    new DE.Circle(pi,i1,j1,0,r)));
+                    new Circle(pi,i1,j1,0,r)));
                         }
            ImageIO.write(pi.getImage(), "JPEG", out);
            ImageIO.write(moutA.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+"a"+"jpg"));
