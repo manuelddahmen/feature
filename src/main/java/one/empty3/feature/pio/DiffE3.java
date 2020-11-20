@@ -18,7 +18,7 @@ class Circle {
  double x, y, r, a; public PixM m;
  Color c; double i;
        
-        public Circle(PixM m,double x,double a,
+        public DE.Circle(PixM m,double x,double a,
                           double y, double r)
             {
             this.x= x;
@@ -73,7 +73,7 @@ class Circle {
                 
        return tin/count;
    }
-   public Circle getLevel() {
+   public DE.Circle getLevel() {
            Circle c = this;
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
@@ -104,7 +104,7 @@ class Circle {
            
         return c;
   }
-       public static double match(Circle a, Circle b) {
+       public static double match(DE.Circle a, DE.Circle b) {
             return a.getLevel()-b.getLevel();
                
             
@@ -174,9 +174,9 @@ private int sizeElement = 20, elementSize=20;
     
    
    
- */ public List<PI> getPio() {
- return null;
- }
+ */ 
+
+
     public boolean process(File in, File out) {
         PixM mout;
         try {
