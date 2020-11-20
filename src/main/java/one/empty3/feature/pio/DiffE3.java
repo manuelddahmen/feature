@@ -144,7 +144,7 @@ this.x+= x;
 }
         
         
-public class DiffE3 extends Pio {
+public class DiffE3 extends ProcessFile {
 /*
 private int sizeElement = 20, elementSize=20;
     class ColorTranform {
