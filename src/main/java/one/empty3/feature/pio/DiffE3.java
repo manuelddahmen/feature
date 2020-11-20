@@ -105,7 +105,7 @@ class Circle {
         return c;
   }
        public static double match(DE.Circle a, DE.Circle b) {
-            return a.getLevel()-b.getLevel();
+            return a.getLevel().getIntensity(a.x,a.y)-b.getLevel().getIntensity(b.x,b.y);
                
             
        }
