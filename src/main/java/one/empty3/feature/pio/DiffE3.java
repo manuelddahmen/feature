@@ -18,7 +18,7 @@ class Circle {
  double x, y, r, a; public PixM m;
  Color c; double i;
        
-        public DE.Circle(PixM m,double x,double a,
+        public Circle(PixM m,double x,double a,
                           double y, double r)
             {
             this.x= x;
