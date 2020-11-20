@@ -76,7 +76,7 @@ class Circle {
        return tin/count;
    }
    public Circle getLevel() {
-           Circle c = this;
+        Circle c = this;
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -103,9 +103,12 @@ class Circle {
             c.i = 0.0;
             c.r = 0.0;
         }
+          
            
         return c;
-  }
+           
+        }
+        
        public double match( Circle b) {
             return getLevel().getIntensity((int)a.x,(int)a.y)-b.getLevel().getIntensity((int)b.x,(int)b.y);
                
