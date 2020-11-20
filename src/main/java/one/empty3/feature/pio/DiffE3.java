@@ -178,13 +178,14 @@ private int sizeElement = 20, elementSize=20;
 
 
     public boolean process(File in, File out) {
-        PixM mout;
+        PixM moutA, moutB;
         try {
         
            if(!in.getName().endsWith(".jpg"))
                return false;
            PixM pi = new PixM(ImageIO.read(in));
-           mout = pi;
+           moutA = pi;
+                moutB = pi;
         // work on featutes
                 for(double r = 2; r<30.0; r*=2)
        for(int i=0; i<pi.getColumns(); i++)
@@ -192,10 +193,14 @@ private int sizeElement = 20, elementSize=20;
                         for(int i1=0; i1<pi.getColumns(); i1++)
 
                 for(int j1=0; j1<pi.getLines(); j1++)
-                       mout.set(DE.Circle.match(new DE.Circle(pi,i,j,0,r),
+                       moutA.set(i,j,moutA.get(i,j), DE.Circle.match(new DE.Circle(pi,i,j,0,r),
                                              new DE.Circle(pi,i1,j1,0,r)));
+                moutB.set(i1,j1,moutB.get(i,j), DE.Circle.match(new DE.Circle(pi,i,j,0,r),
+
+                    new DE.Circle(pi,i1,j1,0,r)));
            ImageIO.write(pi.getImage(), "JPEG", out);
-           ImageIO.write(mout.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+2+"jpg"));
+           ImageIO.write(moutA.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+"a"+"jpg"));
+                ImageIO.write(moutB.normalize(0.,1.), getImage(), "JPEG", new File(out.getParent()+"b"+"jpg"));
            
            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
            return true;
