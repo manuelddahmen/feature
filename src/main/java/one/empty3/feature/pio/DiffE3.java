@@ -103,8 +103,8 @@ class Circle {
            
         return c;
   }
-       public static double match(Circle a, Circle b) {
-            return a.getLevel().getIntensity((int)a.x,(int)a.y)-b.getLevel().getIntensity((int)b.x,(int)b.y);
+       public double match( Circle b) {
+            return getLevel().getIntensity((int)a.x,(int)a.y)-b.getLevel().getIntensity((int)b.x,(int)b.y);
                
             
        }
