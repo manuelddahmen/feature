@@ -4,6 +4,7 @@ de lumierrs filtrers.
 */
 
 package one.empty3.feature.pio ;
+import one.empty3.feature.PixM;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
 import one.empty3.library.shader.Vec;
@@ -14,8 +15,10 @@ import java.util.*;
 import javax.imageio.ImageIO;
 class Circle {
         
- double x, y, r, a; public PixM m;
- Color c; double i;
+ double x, y, r, a; 
+ public PixM m;
+ Color c; 
+ double i;
        
         public Circle(PixM m,double x,double a,
                           double y, double r)
