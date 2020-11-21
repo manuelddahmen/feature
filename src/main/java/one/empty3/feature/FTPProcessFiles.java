@@ -26,7 +26,7 @@ public class FTPProcessFiles {
     
     
     public static String directory="images";
-
+    static String settingsPropertiesPath ;
     public static String getDirname(String s) {
         return s.substring(0, s.lastIndexOf("/"));
     }
@@ -68,7 +68,10 @@ for(JSONObject in : obj.getJSONObject("filters"));
          Properties p = new Properties();
          try {
               p.load(
-                new FileInputStream("./settings.properties"));
+                new FileInputStream(settingsPropertiesPath + 
+                                    
+                                    
+                                    "/settings.properties"));
           } catch(Exception ex) {
               ex.printStackTrace();
           }
@@ -96,8 +99,10 @@ for(JSONObject in : obj.getJSONObject("filters"));
          return p;
     }
     public static void main(String[] args) {
-         
-
+         settingsPropertiesPath =".";
+    if(args.length>1)
+            settingsPropertiesPath = args[0];
+        
 
 
         if(args[0].endsWith(".properties"))
@@ -132,7 +137,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
         System.out.println("arg 1 : one.empty3.io.ProcessFile class");
         System.out.println("arg 2 : dir0 or ftp1 dir output");
         
-            
+        
        // if(path==null) {
          //      System.exit(-1);
       //  }
