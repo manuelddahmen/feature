@@ -182,7 +182,7 @@ Class classs = Class.forName(
                
           if(i==0){
              
-            
+            i++;
             Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
             Object o = classs.newInstance();
             if(o instanceof ProcessFile)
@@ -235,7 +235,7 @@ Class classs = Class.forName(
                 System.out.println("I>0 clase de traitement"+classs.toString()+" : "+currentDirin);
                 printFileDetails(new File(currentDirin).list(),  currentDirin);
               
-                i++;
+               
             }
  /*
             // uses simpler methods
