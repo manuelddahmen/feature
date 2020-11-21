@@ -1,5 +1,5 @@
 #!/bin/bash
-for i in settings/
+for i in settings/*
 do
-mvn exec:java -Dexec.args="${i}"
+mvn exec:java -Dexec.args="settings/${i}"
 done
