@@ -7,7 +7,7 @@ public class Draw extends ProcessFile {
     
     }
 
-    public boolean process(File in, File out) {
+    public boolean processFile(File in, File out) {
         try {
            ImageIO.write(ImageIO.read(in), "jpg", out);
           
