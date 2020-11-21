@@ -172,7 +172,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
            for (String classname2 : classnamesArr) {
             classname = classname2;
                currentDirin = currentDirout;
-            currentDirout = "./output/"+classname+"/";
+            currentDirout = "./output/"+i+"-"+classname+"/";
 Logger.getLogger(FTPProcessFiles.class.getName()).info("Process class name read " + classname);
             System.out.println(classname);
 Class classs = Class.forName(
