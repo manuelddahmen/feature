@@ -234,13 +234,15 @@ Class classs = Class.forName(
                 
                 System.out.println("I>0 clase de traitement"+classs.toString()+" : "+currentDirin);
                 printFileDetails(new File(currentDirin).list(),  currentDirin);
+              
+                i++;
             }
  /*
             // uses simpler methods
             String[] files2 = ftpClient.listNames(directory);
             printNames(files2);
  */
-            i++;
+            
             
            
             
