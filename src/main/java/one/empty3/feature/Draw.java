@@ -13,9 +13,10 @@ public class Draw extends ProcessFile {
           
         } catch(Exception ex) {
             ex.printStackTrace ();
+            return false;
         }
               
               
-       
+       return true;
     }
 }
