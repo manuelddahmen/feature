@@ -119,11 +119,11 @@
 
             </plugin>
 
-<!--
+
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
-                <version>1.6.0</version>
+                <version>1.6.0</version><!--
                 <configuration>
        <!-- <mainClass>one.empty3.feature.ExtractIntensityInfo</mainClass>      
                          
@@ -136,7 +136,7 @@
                         <argument>-XmX4000m</argument>
                         <argument>-Dexec.args="sets"</argument>
                     </arguments>
-                </configuration>
+                </configuration>-->
             </plugin>
 -->
 
