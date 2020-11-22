@@ -34,18 +34,19 @@ public class ProxyValue extends ProcessFile {
 
                 for (int j = 0; j < original.lines; j++)
                   
-                        
-                    
-                 
-                        if(original.getIntensity(i,j)<0.2){
+                        for(int c=0;c<3; c++) {
+                    original.setCompNo(c);
+                    copy.setCompNo(c);
+                        if(original.getIntensity(i,j)<0.3){
                          
-                           searchFromTo(original, copy, i, j, 0.5, original.getIntensity(i,j));
+                           searchFromTo(original, copy, i, j, 0.4);
                             p++;
                
-                        }
+                        } else
+                            copy.set(i, j, original.get(i,j));
                 
           
-    
+    }
     
     try {
        ImageIO.write( copy.getImage(), "jpg", out);
