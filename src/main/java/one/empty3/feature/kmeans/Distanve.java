@@ -1,3 +1,4 @@
+package one.empty3.feature.kmeans;
 /*
  * Programmed by Shephalika Shekhar
  * class containing methods to calculate distance between two points with features 
