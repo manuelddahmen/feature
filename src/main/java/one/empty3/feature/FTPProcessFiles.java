@@ -100,7 +100,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
     }
     public static void main(String[] args) {
          settingsPropertiesPath =".";
-    if(args.length>1)
+    if(args.length>0)
             settingsPropertiesPath = args[0];
         
 
