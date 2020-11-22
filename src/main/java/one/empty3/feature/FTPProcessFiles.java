@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  */
 public class FTPProcessFiles {
     public static String classnames, classname;
-    static static String [] classes;
+    static String [] classes;
         
        
         
