@@ -137,9 +137,10 @@
                         <argument>-XmX4000m</argument>
                         <argument>-Dexec.args="sets"</argument>
                     </arguments>
-                </configuration>-->
-            </plugin>
+                </configuration>
 -->
+            </plugin>
+
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
