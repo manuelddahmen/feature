@@ -184,11 +184,7 @@ Class classs = Class.forName(
                 classname
             );
                
-               
-          if(i==0){
-             
-            
-            Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
+               Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
             Object o = classs.newInstance();
             if(o instanceof ProcessFile)
                 processInstance = (ProcessFile) o;
@@ -200,6 +196,10 @@ Class classs = Class.forName(
            }
            parseAndSet(processInstance, argCl);
          
+          if(i==0){
+             
+            
+            
                
            
                 
