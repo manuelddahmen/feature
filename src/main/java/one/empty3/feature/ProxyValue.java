@@ -27,7 +27,9 @@ public class ProxyValue extends ProcessFile {
       
      }
         int p=0;
-        PixM copy = original.copy();
+        PixM copy = new PixM(original.columns, original.lines);
+        
+        
          for (int i = 0; i < original.columns; i++)
 
                 for (int j = 0; j < original.lines; j++)
@@ -35,9 +37,9 @@ public class ProxyValue extends ProcessFile {
                         
                     
                  
-                        if(original.getIntensity(i,j)<0.6){
+                        if(original.getIntensity(i,j)<0.2){
                          
-                           searchFromTo(original, copy, i, j, 0.3, 1.0);
+                           searchFromTo(original, copy, i, j, 0.5, original.getIntensity(i,j));
                             p++;
                
                         }
@@ -93,7 +95,7 @@ public class ProxyValue extends ProcessFile {
                      copyPixel(original, (int)(double)(p.get(0)), 
                                      (int)(double)(p.get(1)), 
                                copy, i, j);
-                    return;
+                  
                } else {
                    
                 }
