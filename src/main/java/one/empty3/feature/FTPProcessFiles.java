@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
  */
 public class FTPProcessFiles {
     public static String classnames, classname;
-    static String [] classes;
+    static static String [] classes;
         
        
         
@@ -100,7 +100,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
     }
     public static void main(String[] args) {
          settingsPropertiesPath =".";
-    if(args.length>0)
+         if(args.length>0)
             settingsPropertiesPath = args[0];
         
 
@@ -109,7 +109,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
             loadArgsProps(args[0]);
         if(args[0].endsWith(".json"))
             loadArgsJson(args[0]);
-            defaultProcess();
+        defaultProcess();
     }
     
     public static void parseAndSet(ProcessFile processInstance, List<Object> argCl){
@@ -171,7 +171,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
                 classnames =(classnames !=null?
                              classnames+sep:"")
                            
-                             +(class0==null?"":""+class0);
+                             +(class0==null?"":","+classnames);
             
             String [] classnamesArr = classnames.split(",");
            for (String classname2 : classnamesArr) {
@@ -206,31 +206,31 @@ Class classs = Class.forName(
                 
                 
               ftpClient.connect(server, port);
-            showServerReply(ftpClient);
+             showServerReply(ftpClient);
  
-            int replyCode = ftpClient.getReplyCode();
-            if (!FTPReply.isPositiveCompletion(replyCode)) {
+             int replyCode = ftpClient.getReplyCode();
+             if (!FTPReply.isPositiveCompletion(replyCode)) {
                 System.out.println("Connect failed");
                 return;
-            }
-            // reads settings.xml or prompts user/pass 
-            boolean success = ftpClient.login(username, password);
-            showServerReply(ftpClient);
+             }
+             // reads settings.xml or prompts user/pass 
+             boolean success = ftpClient.login(username, password);
+             showServerReply(ftpClient);
  
-            if (!success) {
+             if (!success) {
                 System.out.println("Could not login to the server");
                 return;
-            }
+             }
              
-            ftpClient.enterLocalPassiveMode();
+             ftpClient.enterLocalPassiveMode();
 
  
-            // Lists files and directories
-            ftpClient.changeWorkingDirectory(directory);
-            showServerReply(ftpClient);
+             // Lists files and directories
+             ftpClient.changeWorkingDirectory(directory);
+             showServerReply(ftpClient);
          
-            FTPFile[] files1 = ftpClient.listFiles(directory);
-            showServerReply(ftpClient);
+             FTPFile[] files1 = ftpClient.listFiles(directory);
+             showServerReply(ftpClient);
             
                  printFileDetails(files1,  directory);
             } else {
@@ -251,7 +251,7 @@ Class classs = Class.forName(
             
            
             
-            }
+            
         } catch (Exception ex) {
             System.out.println("Oops! Something wrong happened");
             ex.printStackTrace();
@@ -266,6 +266,7 @@ Class classs = Class.forName(
                 ex.printStackTrace();
             }
         }
+      }
     }
     public static void process(FTPFile object, String remote){
         if(object.isFile()) {
@@ -282,7 +283,7 @@ Class classs = Class.forName(
             Logger.getLogger(FTPProcessFiles.class.getName()).info("fi"+fi.getAbsolutePath());
             Logger.getLogger(FTPProcessFiles.class.getName()).info("fo"+fo.getAbsolutePath());                                 
         fi.createNewFile();
-        fo.createNewFile();
+        //fo.createNewFile();
             
         FileOutputStream fos =
             new FileOutputStream(fi.getAbsolutePath());
@@ -317,7 +318,7 @@ Class classs = Class.forName(
         new File(getDirname(fi.getAbsolutePath())).mkdirs();
         new File(getDirname(fo.getAbsolutePath())).mkdirs();
         fi.createNewFile();
-        fo.createNewFile();
+        //fo.createNewFile();
             Logger.getLogger(FTPProcessFiles.class.getName()).info("file  in : "+fi.getAbsolutePath());
         Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : "+fo.getAbsolutePath());
         Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : "+processInstance.getClass().getName());
@@ -326,7 +327,7 @@ Class classs = Class.forName(
         processInstance.process(fi, fo);
             
             
-     //   dirin = (fo.getParent());
+  
         } catch(IOException ex) {
             ex.printStackTrace();
         }
