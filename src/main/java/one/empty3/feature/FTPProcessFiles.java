@@ -143,7 +143,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
       //  }
         
        // Properties set = defProcess(args[0]);
-        try {
+        
         Properties settings = settings();
         String server =(String) settings.getProperty("host");
         int port = Integer.parseInt(settings.getProperty("port"));
@@ -175,6 +175,7 @@ for(JSONObject in : obj.getJSONObject("filters"));
             
             String [] classnamesArr = classnames.split(",");
            for (String classname2 : classnamesArr) {
+               try {
             classname = classname2;
                currentDirin = currentDirout;
             currentDirout = ""+directoryOut+"-"+i+"-"+classname+"/";
