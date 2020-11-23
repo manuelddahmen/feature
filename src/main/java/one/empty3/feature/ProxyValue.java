@@ -79,9 +79,9 @@ public class ProxyValue extends ProcessFile {
                 j2 += k1[1];
             
            */
-        for(int l=3; l<original.columns; l++) }
-          for(int i3=-l; i3<l; i3++) {
-            for(int j3 = -l; j3<l; j3++) {
+        for(int l=1; l<original.columns; l++) }
+          for(int i3=-l; i3<l; i3+=l) {
+            for(int j3 = -l; j3<l; j3+=l) {
                 i2 = i + i3;
                 j2 = j + j3;
                 p = null;
