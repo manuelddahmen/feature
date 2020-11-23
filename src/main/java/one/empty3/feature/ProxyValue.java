@@ -67,11 +67,7 @@ public class ProxyValue extends ProcessFile {
            PixM original, PixM copy, int i, int j, double min, double value) {
         Point3D p = null;
         int i2 =i, j2 = j;
-        int [] incr = new int[]{
-                                 
-            original.getColumns(),1,
-              1,
-                                -1,-1,1,-1};
+        
      /*   for(int k=0; k<original.columns*original.lines;k++)
                 { 
             
@@ -81,9 +77,16 @@ public class ProxyValue extends ProcessFile {
                 j2 += k1[1];
             
            */
-        for(int l=1; l<original.columns; l++) }
-          for(int i3=-l; i3<l; i3+=l-1) {
-            for(int j3 = -l; j3<l; j3+=l-1) {
+        for(int l=1; l<original.columns; l++) {
+          int [] incr = new int[]{
+                                 
+            2*l-1,1,
+              1,2*l-1,
+            2*l-1,-1,
+            -1, 2*l-1};
+            for(int sq=0; sq<4; sq++)
+          for(int i3=-l; i3<l; i3+=incr[sq*2]) {
+            for(int j3 = -l; j3<l; j3+=incr[sq*2+1]) {
                 i2 = i + i3;
                 j2 = j + j3;
                 p = null;
