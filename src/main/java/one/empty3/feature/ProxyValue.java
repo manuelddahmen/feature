@@ -105,8 +105,8 @@ public class ProxyValue extends ProcessFile {
                                    p = new Point3D((double)i2, (double) j2, original.get(i2,j2));
                    
            
-                                   copyPixel(original, (int)(double)(p.get(0)), 
-                                     (int)(double)(p.get(1)), 
+                                   copyPixel(original, i2, 
+                                     j2, 
                                    copy, i, j);
                                    return;
                              }
