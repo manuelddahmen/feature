@@ -342,7 +342,7 @@ Class classs = Class.forName(
             
         new File(getDirname(fi.getAbsolutePath())).mkdirs();
         new File(getDirname(fo.getAbsolutePath())).mkdirs();
-        fi.createNewFile();
+        //fi.createNewFile();
         //fo.createNewFile();
             Logger.getLogger(FTPProcessFiles.class.getName()).info("file  in : "+fi.getAbsolutePath());
         Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : "+fo.getAbsolutePath());
