@@ -333,7 +333,7 @@ Class classs = Class.forName(
     }
  public static void process(File object){
         if(object.isFile()) {
-        try {
+        //try {
                     
         
         File fi = object;
@@ -352,10 +352,10 @@ Class classs = Class.forName(
         processInstance.process(fi, fo);
             
             
-  
+  /*
         } catch(IOException ex) {
             ex.printStackTrace();
-        }
+        }*/
             }
     }
  
