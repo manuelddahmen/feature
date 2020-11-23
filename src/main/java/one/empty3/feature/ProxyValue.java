@@ -68,7 +68,9 @@ public class ProxyValue extends ProcessFile {
         Point3D p = null;
         int i2 =i, j2 = j;
         int [] incr = new int[]{
-                                 1,1,1,-1,
+                                 
+            original.getColumns(),1,
+              1,
                                 -1,-1,1,-1};
      /*   for(int k=0; k<original.columns*original.lines;k++)
                 { 
