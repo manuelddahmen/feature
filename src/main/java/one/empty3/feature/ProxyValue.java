@@ -80,7 +80,7 @@ public class ProxyValue extends ProcessFile {
         for(int l=1; l<original.columns; l++) {
           int [] incr = new int[]{
                                  
-            -l,-l,0,1
+            -l,-l,0,1,
              l,-l,0, 1,
              -l,l, 1, 0,
              -l,-l,1,0
