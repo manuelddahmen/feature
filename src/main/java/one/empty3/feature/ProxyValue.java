@@ -89,7 +89,7 @@ public class ProxyValue extends ProcessFile {
             for(int j3 = -l; j3<l; j3+=incr[sq*2+1]) {
                 i2 = i + i3;
                 j2 = j + j3;
-                p = null;
+                [/p = null;
                 if(i3==i&&j3==j
                   )
                     continue;
