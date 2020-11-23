@@ -36,15 +36,15 @@ public class ProxyValue extends ProcessFile {
                   
                         for(int c=0;c<3; c++) {
                             original.setCompNo(c);
-                           copy.setCompNo(c);
-                           if(original.getIntensity(i,j)<min){
+                            copy.setCompNo(c);
+                            if(original.getIntensity(i,j)<min){
                          
-                              searchFromTo(original, copy, i, j, min, 1.0);
+                              searchFromTo(original, copy, i, j, min*2);
                               p++;
                
-                           } else {
+                            } else {
                               copy.set(i, j, original.get(i,j));
-                           }
+                            }
           
     }
     
@@ -64,7 +64,7 @@ public class ProxyValue extends ProcessFile {
         
         
     public void searchFromTo(
-           PixM original, PixM copy, int i, int j, double min, double value) {
+           PixM original, PixM copy, int i, int j, double min) {
         Point3D p = null;
         int i2 =i, j2 = j;
         
@@ -86,9 +86,12 @@ public class ProxyValue extends ProcessFile {
              -l,-l,1,0
             
             };
+            int pass=0;
             for(int sq=0; sq<incr.length; sq+=4)
           for(int i3=incr[sq]; i3<l; i3+=incr[(sq+2)]) {
             for(int j3 = incr[(sq+1)]; j3<l; j3+=incr[(sq+3)]) {
+                if(i3==-l&&incr[sq]==0 || (j3==-l&&incr[sq+1]==0))
+                    pass++;
                 i2 = i + i3;
                 j2 = j + j3;
                 p = null;
@@ -107,7 +110,7 @@ public class ProxyValue extends ProcessFile {
                } else {
                    
                }
-          
+               if(pass>2*l) return;
           
             }
               
