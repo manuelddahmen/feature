@@ -184,29 +184,50 @@ Logger.getLogger(FTPProcessFiles.class.getName()).info("Process class name read 
 Class classs = Class.forName(
                 classname
             );
-         if(i==0){
-               Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
+                   
+                   
+                   
+                   
+                   Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
+
             Object o = classs.newInstance();
+
             if(o instanceof ProcessFile)
+
                 processInstance = (ProcessFile) o;
+
             String arg = null;
+
             List<Object> argCl= new ArrayList();
+
            if((arg=(String)(settings.getProperty(classname)))!=null) {
+
                String [] ar = arg.split(":");
+
                argCl.addAll(Arrays.asList(ar));
+
            }
+
            parseAndSet(processInstance, argCl);
+         
+                   
+                   
+                   
+                   
+                   
+                   if(i==0){
+               
          
           
              
             
-            
+
                
            
                 
                 
                 
-              ftpClient.connect(server, port);
+             ftpClient.connect(server, port);
              showServerReply(ftpClient);
  
              int replyCode = ftpClient.getReplyCode();
