@@ -37,7 +37,7 @@ public class ProxyValue extends ProcessFile {
                         for(int c=0;c<3; c++) {
                             original.setCompNo(c);
                             copy.setCompNo(c);
-                            if(original.getIntensity(i,j)<min){
+                            if(original.getLuminance(i,j)<min){
                          
                               searchFromTo(original, copy, i, j, min*2);
                               p++;
@@ -101,7 +101,7 @@ public class ProxyValue extends ProcessFile {
                                 
 
                   
-                            if(original.getIntensity(i2, j2)>= min) {
+                            if(original.getLuminance(i2, j2)>= min) {
                                    
                    
            
