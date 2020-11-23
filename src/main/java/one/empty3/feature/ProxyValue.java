@@ -12,7 +12,7 @@ import java.util.logging.*;
 public class ProxyValue extends ProcessFile {
 
     public boolean process (File in, File out) {
-        double min = 0.3.
+        double min = 0.2.
     if(!in.getName().endsWith(".jpg"))
         return false;
     File file = in;
@@ -37,7 +37,7 @@ public class ProxyValue extends ProcessFile {
                         for(int c=0;c<3; c++) {
                             original.setCompNo(c);
                            copy.setCompNo(c);
-                           if(original.getIntensity(i,j)<0.3){
+                           if(original.getIntensity(i,j)<min){
                          
                               searchFromTo(original, copy, i, j, min, 1.0);
                               p++;
