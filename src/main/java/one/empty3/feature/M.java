@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class M {
     public static PrimitiveIterator.OfDouble r = new Random().doubles().iterator();
-    public static final Double noValue = 0.0;//r.next();
+    public static final Double noValue = r.next();
 
     protected int columns;
     protected int lines;
