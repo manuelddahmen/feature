@@ -79,7 +79,7 @@ public class ProxyValue extends ProcessFile {
                 j2 += k1[1];
             
            */
-        for(int l=3; l<original.columns; l++)
+        for(int l=3; l<original.columns; l++) }
           for(int i3=-l; i3<l; i3++) {
             for(int j3 = -l; j3<l; j3++) {
                 i2 = i + i3;
@@ -96,15 +96,16 @@ public class ProxyValue extends ProcessFile {
                      copyPixel(original, (int)(double)(p.get(0)), 
                                      (int)(double)(p.get(1)), 
                                copy, i, j);
-                  
+                     return;
                } else {
                    
-                }
+               }
           
           
             }
               
           }
+    }
        // System.out.println("error not found");
         
         return;
