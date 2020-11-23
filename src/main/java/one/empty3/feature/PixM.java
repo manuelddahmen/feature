@@ -348,7 +348,18 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         return false;
 
    }
-    
+    public double luminance (int x, int y) {
+        double l = 0.0;
+        setCompNo(0);
+        l += 0.2126*get(x,y);
+        setCompNo(1);
+
+        l += 0.7152*get(x,y);
+        setCompNo(2);
+        l += 0.0722*get(x,y);
+        
+        return l;
+    } 
     public int getColumns() {
         return columns;
         }
