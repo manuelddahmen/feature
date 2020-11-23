@@ -87,8 +87,8 @@ public class ProxyValue extends ProcessFile {
             
             };
             for(int sq=0; sq<incr.length; sq+=4)
-          for(int i3=incr[sq%4]; i3<l; i3+=incr[(sq+2)%4]]) {
-            for(int j3 = incr[(sq+1)%4]; j3<l; j3+=incr[(sq+3)%4]) {
+          for(int i3=incr[sq]; i3<l; i3+=incr[(sq+2)]) {
+            for(int j3 = incr[(sq+1)]; j3<l; j3+=incr[(sq+3)]) {
                 i2 = i + i3;
                 j2 = j + j3;
                 [/p = null;
