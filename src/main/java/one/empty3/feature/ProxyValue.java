@@ -34,9 +34,7 @@ public class ProxyValue extends ProcessFile {
 
                 for (int j = 0; j < original.lines; j++)
                   
-                        for(int c=0;c<3; c++) {
-                            original.setCompNo(c);
-                            copy.setCompNo(c);
+                        
                             if(original.luminance(i,j)<min){
                          
                               searchFromTo(original, copy, i, j, min*2);
@@ -46,7 +44,7 @@ public class ProxyValue extends ProcessFile {
                               copy.set(i, j, original.get(i,j));
                             }
           
-    }
+    
     
     try {
        ImageIO.write( copy.getImage(), "jpg", out);
