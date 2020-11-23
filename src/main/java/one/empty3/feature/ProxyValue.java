@@ -90,7 +90,7 @@ public class ProxyValue extends ProcessFile {
                 i2 = i + i3;
                 j2 = j + j3;
                 p = null;
-                if(i2==i&&j2==j
+                if(i3==i&&j3==j
                   )
                     continue;
                 if(original.getIntensity(i2, j2)>= min) {
