@@ -110,7 +110,7 @@ public class ProxyValue extends ProcessFile {
                              }
                    
                
-                        if(pass>4*l) break 2;
+                        if(pass>8*l) break 2;
                     
                  }
               }
