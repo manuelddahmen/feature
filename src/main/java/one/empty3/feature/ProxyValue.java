@@ -94,30 +94,30 @@ public class ProxyValue extends ProcessFile {
                     for(int j3 = incr[(sq+1)]; j3<l; j3+=incr[(sq+3)]) {
                         if(i3==-l&&incr[sq]==0 || (j3==-l&&incr[sq+1]==0))
                             pass++;
-                        i2 = i + i3;
+                            i2 = i + i3;
                             j2 = j + j3;
                             p = null;
-                            if(i2==i&&j2==j)
-                                ;
-                             else {
+                            
+                                
+
                   
-                               if(original.getIntensity(i2, j2)>= min) {
-                                   p = new Point3D((double)i2, (double) j2, original.get(i2,j2));
+                            if(original.getIntensity(i2, j2)>= min) {
+                                   
                    
            
-                                   copyPixel(original, i2, 
+                                copyPixel(original, i2, 
                                      j2, 
                                    copy, i, j);
-                                   return;
+                                return;
                              }
                    
                
-               if(pass>2*l) return;
-          }
-            }
+                        if(pass>2*l) return;
+                    }
+                 }
               }
           }
-    }
+       }
        // System.out.println("error not found");
         
         return;
