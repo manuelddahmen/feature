@@ -9,7 +9,7 @@ public class LocalExtrema extends FilterMatPixM {
     private final int pointsCount;
     private final int neighbourSize;
     protected double sub[];
-    private double threshold = 0.5;
+    private double threshold = 0.7;
 
     public int getCompNo() {
         return compNo;
