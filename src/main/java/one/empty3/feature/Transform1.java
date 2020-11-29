@@ -48,8 +48,8 @@ logger.info("gradient computed");
                 linear.op2d2d(new char[]{'*'}, new int[][]{{1, 0}}, new int[]{2});
                 PixM smoothedGrad = linear.getImages()[2].normalize(0.,1.);
 logger.info("dot outter product");
-      PixM pext = pixMOriginal;
-     LocalExtrema le =
+     // PixM pext = pixMOriginal;
+  /*   LocalExtrema le =
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
                       3, 1);
@@ -62,7 +62,7 @@ logger.info("dot outter product");
       
       
        
-      /*
+      
      pext = pixMOriginal;
      LocalExtrema le2 =
          new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
@@ -73,17 +73,17 @@ logger.info("dot outter product");
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum 5x5");
       
-      /*
+      */
       LocalExtrema le3 =
          new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
                       19
                            , 3);
-      PixM plext3 = le3.filter(new M3(pext,
+      PixM plext3 = le3.filter(new M3(smoothedGrad,
                       1, 1)
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum 20x20");
-      */
+      
       
       
      
@@ -114,9 +114,9 @@ logger.info("dot outter product");
      WriteFile.writeNext("extrema 3x3"+file.getName(), plext.normalize(0.,1.).getImage());
      WriteFile.writeNext("angles"+file.getName(), anglesTangente.getImagesMatrix()[0][0].normalize(0.,1.).getImage());
      WriteFile.writeNext("radial grad"+file.getName(), rad.normalize(0.,1.).getImage());
-      WriteFile.writeNext("extrema 5x5"+file.getName(), plext2.normalize(0.,1.).getImage());*/
+     */
      try {
-       ImageIO.write( plext.getImage(), "jpg", out);
+       ImageIO.write( smoothedGrad, "jpg", out);
      } catch (Exception ex){
          return false;
      }
