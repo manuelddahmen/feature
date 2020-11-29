@@ -116,7 +116,7 @@ logger.info("dot outter product");
      WriteFile.writeNext("radial grad"+file.getName(), rad.normalize(0.,1.).getImage());
      */
      try {
-       ImageIO.write( smoothedGrad, "jpg", out);
+       ImageIO.write(plext3.getImage(), "jpg", out);
      } catch (Exception ex){
          return false;
      }
