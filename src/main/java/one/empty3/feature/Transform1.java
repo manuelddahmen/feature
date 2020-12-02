@@ -49,19 +49,19 @@ logger.info("gradient computed");
                 PixM smoothedGrad = linear.getImages()[2].normalize(0.,1.);
 logger.info("dot outter product");
      // PixM pext = pixMOriginal;
-  /*   LocalExtrema le =
+    LocalExtrema le =
     new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
                       3, 1);
         le.setSetMin(false);
-     PixM plext = le.filter(new M3(pext,
+     PixM plext3 = le.filter(new smoothedGrad,
                       1, 1)
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum");
      
       
       
-       
+       /*
       
      pext = pixMOriginal;
      LocalExtrema le2 =
@@ -73,7 +73,7 @@ logger.info("dot outter product");
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum 5x5");
       
-      */
+      /*
       LocalExtrema le3 =
          new  LocalExtrema( imagesMatrix[1][0].getColumns(), 
                       imagesMatrix[1][0].getLines(),
@@ -84,7 +84,7 @@ logger.info("dot outter product");
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum 20x20");
       
-      
+      */
       
      
       
