@@ -9,8 +9,8 @@ La licence pour les sources publiées est la Gnu Gpl version 3.
 ## Filtres (kernels) d'images
 Gauss. Multiples iterations. Tests  photos.
 Gradient X, Y, debugging outter dot ptoduct. 
-SobelX, SobelY. localextrema, #histogram des densites???
-
+SobelX, SobelY. localextrema, histogramme des densites,
+harris matrix c(x,y)
 ## Formats et classes d'images. 
 - BufferedImage Int Rgb (sans rgb)
 - format jpg en sortie
@@ -32,10 +32,9 @@ linear
 
 
 ## En développement. Ambitions.
-ça vous intéresse un logiciel de détection pour vidéo (film, enregistrement ) ou temps réel (live, webcam). Je débute dans ce domaine. Personnalisé ou personnalisable...
-à venir. 
+
 https://github.com/manuelddahmen/feature 
-j'ai fini mes études depuis 10 ans je continue à me former.
+
 ## La conception de features 2d 3d.
 
 Les collections d'images contenant une
@@ -47,12 +46,12 @@ Features' matching
 Base de données à mettre au point.
 Circle. Circle r i dist/ cri
 
-# ./settings.properties
-'''
+# 
+file : ./settings.properties
+
 username=user98
 password=ghhyvj
 host=ftp.example.net
 port=21
 directory=/myimages/selection/input
 classname=one.empty3.feature.Transform1,one.empty3.feature.Histogram2,one.empty3.feature.GradProcess
-''' maquee keski passe sous le tram?
