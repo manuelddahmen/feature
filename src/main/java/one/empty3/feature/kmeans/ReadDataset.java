@@ -1,4 +1,7 @@
 package one.empty3.feature.kmeans;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
 /*
  * Programmed by Shephalika Shekhar
  * Class to extract features from file
