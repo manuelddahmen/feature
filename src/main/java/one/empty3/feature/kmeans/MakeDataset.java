@@ -8,7 +8,8 @@ import one.empty3.feature.*;
 */
 public class MakeDataset {
     public MakeDataset (File image, File outputCsv) {
-        BufferedImage img = ImageIO.read 
+        try {
+         BufferedImage img = ImageIO.read 
           (image) ;
         PixM pix = new PixM(img) ;
 
@@ -28,6 +29,8 @@ public class MakeDataset {
           pw.println("" +l+" " +c+" " +
             +" "+ r+"" + g + " " + b) ;
          } 
+      } catch(IOException ex) {
+         ex.printStackTrace () ;
+      } 
     } 
-
 } 
