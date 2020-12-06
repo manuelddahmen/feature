@@ -174,13 +174,16 @@ public class Histogram2 extends ProcessFile {
                 List<Circle> pointsOfInterest = getPointsOfInterest(4.0);
                 pointsOfInterest.stream().forEach(circle -> {
                     if (circle.i >= min && circle.r>1.0) {
+                        /*
                         Graphics graphics = img.getGraphics();
                         graphics.setColor(Color.WHITE);
                         graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
                         graphics = img2.getGraphics();
-                        Color color = new Color((float) circle.i, 0f, (float) (circle.i / circle.r));
-                        graphics.setColor(color);
-                        graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
+                        */
+                        Color color = new Color((float) (circle.i<1.0?(circle.i):1f), 0f, (float) (circle.i / circle.r<1.0
+                                                                                                  ?circle.i / circle.r:1.0));
+                        //graphics.setColor(color);
+                        //graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (circle.r * 2), (int) (circle.r * 2));
                         img3.setRGB((int) (circle.x), (int) (circle.y), color.getRGB());
                     }
                 });
