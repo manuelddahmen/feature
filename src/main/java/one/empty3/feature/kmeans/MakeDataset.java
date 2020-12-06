@@ -21,7 +21,7 @@ public class MakeDataset {
         PixM pix = new PixM(img) ;
 
 
-        PrintWriter pw = new PrintWriter(output) ;
+        PrintWriter pw = new PrintWriter(outputCsv) ;
         for(int l=0; l<pix.getLines(); l++) 
          for(int c=0; c<pix.getColumns(); c++) {
           pix. setCompNo(0) ;
