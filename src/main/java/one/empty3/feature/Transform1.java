@@ -54,7 +54,7 @@ logger.info("dot outter product");
                       imagesMatrix[1][0].getLines(),
                       3, 1);
         le.setSetMin(false);
-     PixM plext3 = le.filter(nrw M3(smoothedGrad,
+     PixM plext3 = le.filter(new M3(smoothedGrad,
                       1, 1)
             ).getImagesMatrix()[0][0].normalize(0.,1.);
      logger.info("local maximum");
