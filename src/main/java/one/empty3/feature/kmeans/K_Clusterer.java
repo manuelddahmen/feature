@@ -18,7 +18,7 @@ public class K_Clusterer extends ReadDataset {
 		r1.features.clear();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Enter the filename with path");
-		String file=sc.next();
+		String file= args[0] ;
 		r1.read(file); //load data
 		int ex=1;
 		do{
@@ -89,8 +89,10 @@ public class K_Clusterer extends ReadDataset {
 		for(int i=0;i<k;i++){
 			double sse=0;
 			for (double[] key : clusters.keySet()) {
+				double [] key1 = new double [] {key[0],
+				  key[1]};
 				if (clusters.get(key)==i) {
-					sse+=Math.pow(Distance.eucledianDistance(key, centroids.get(i)),2);
+					sse+=Math.pow(Distance.eucledianDistance(key1, centroids.get(i)),2);
 				}
 				}
 			wcss+=sse;
