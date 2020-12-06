@@ -7,7 +7,10 @@ import java.io.*;
 */
 public class MakeDataset {
     public MakeDataset (File image, File outputCsv) {
-        
+        BufferedImage img = ImageIO.read 
+          (image) ;
+        PixM pix = new PixM(img) ;
+
     } 
 
 } 
