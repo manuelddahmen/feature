@@ -27,7 +27,7 @@ public class MakeDataset {
           double b = pix.get(l, c) ;
 
           pw.println("" +l+" " +c+" " +
-            +" "+ r+"" + g + " " + b) ;
+             r+" " + g + " " + b) ;
          } 
       } catch(IOException ex) {
          ex.printStackTrace () ;
