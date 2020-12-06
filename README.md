@@ -23,7 +23,7 @@ color component based.
 linear
 - gradient. dx, dy, phase atan dy/dy atan dx/dy
 - detecteur de contours
-## maven use with pom.xml dependency or checkout the sources
+## maven use with pom.xml dependency
 <dependency>
     <groupId>one.empty3</groupId>
     <artifactId>features</artifactId>
