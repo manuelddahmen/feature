@@ -8,7 +8,7 @@ Documentation utilisée.
 La licence pour les sources publiées est la Gnu Gpl version 3.
 ## Filtres (kernels) d'images
 Gauss. Multiples iterations. Tests  photos.
-Gradient X, Y, debugging outter dot ptoduct. 
+Gradient X, Y, debugging outter dot product. 
 SobelX, SobelY. localextrema, histogramme des densites,
 harris matrix c(x,y)
 ## Formats et classes d'images. 
@@ -37,14 +37,14 @@ https://github.com/manuelddahmen/feature
 
 ## La conception de features 2d 3d.
 
-Les collections d'images contenant une
+Les collections d'images contenant des
 _feature_ (caractéristiques) ou d'un ensemble
 de _features_.
 
-Features' matching
+Features matching
 
 Base de données à mettre au point.
-Circle. Circle r i dist/ cri
+ sum(Circle.i) dist/ c.r2
 
 # 
 file : ./settings.properties
