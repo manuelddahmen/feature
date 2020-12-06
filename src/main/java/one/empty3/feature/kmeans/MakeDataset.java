@@ -3,6 +3,13 @@ package one.empty3.feature.kmeans ;
 import java.io.*;
 import one.empty3.io.ProcessFile ;
 import one.empty3.feature.*;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 /***
  line : l, c, r, g, b
 */
