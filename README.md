@@ -4,8 +4,6 @@
 https://drive.google.com/folderview?id=10CXWU2JPVsNMbHrAssxN23KzizzNkvHg
 Documentation utilisée.
 
-## Licence
-La licence pour les sources publiées est la Gnu Gpl version 3.
 ## Filtres (kernels) d'images
 Gauss. Multiples iterations. Tests  photos.
 Gradient X, Y, debugging outter dot product. 
