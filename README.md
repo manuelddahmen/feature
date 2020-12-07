@@ -24,8 +24,8 @@ linear
 ## maven use with pom.xml dependency
 <dependency>
     <groupId>one.empty3</groupId>
-    <artifactId>features</artifactId>
-    <version>2020.3-SNAPSHOT</version>
+    <artifactId>feature</artifactId>
+    <version>2020.4.2-SNAPSHOT</version>
 </dependency>
 
 
