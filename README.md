@@ -22,13 +22,13 @@ linear
 - gradient. dx, dy, phase atan dy/dy atan dx/dy
 - detecteur de contours
 ## maven use with pom.xml dependency
+```
 <dependency>
     <groupId>one.empty3</groupId>
     <artifactId>feature</artifactId>
     <version>2020.4.2-SNAPSHOT</version>
 </dependency>
-
-
+```
 ## En développement. Ambitions.
 
 https://github.com/manuelddahmen/feature 
