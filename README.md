@@ -5,8 +5,8 @@ https://drive.google.com/folderview?id=10CXWU2JPVsNMbHrAssxN23KzizzNkvHg
 Documentation utilisée.
 
 ## Filtres (kernels) d'images
-Gauss. Multiples iterations. Tests  photos.
-Gradient X, Y, debugging outter dot product. 
+Filtres : flou Gauss, 
+Gradient X, Y, outter dot product. 
 SobelX, SobelY. localextrema, histogramme des densites,
 harris matrix c(x,y)
 ## Formats et classes d'images. 
