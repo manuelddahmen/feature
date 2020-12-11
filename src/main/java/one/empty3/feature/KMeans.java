@@ -7,13 +7,14 @@ import one.empty3.feature.kmeans.*;
 
 public class KMeans extends ProcessFile {
     public boolean process(File in, File out) {
-        /*
+        
         // init centroids with random colored
-        points.
+        // points.
+        
+        new MakeDataaet(in,
+           new File(out.getAbsolutePath()+".csv"));
         
         
-        */
-        
-        return false;
+        return true;
     }
 }
