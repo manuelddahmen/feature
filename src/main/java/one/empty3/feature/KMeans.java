@@ -11,7 +11,7 @@ public class KMeans extends ProcessFile {
         // init centroids with random colored
         // points.
         
-        new MakeDataaet(in,
+        new MakeDataset(in,
            new File(out.getAbsolutePath()+".csv"));
         
         
