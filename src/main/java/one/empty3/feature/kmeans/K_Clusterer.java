@@ -16,8 +16,8 @@ public class K_Clusterer extends ReadDataset {
 	public static void main(String args[]) throws IOException {
 		ReadDataset r1 = new ReadDataset();
 		r1.features.clear();
-		Scanner sc = new Scanner(System.in);
-		System.out.println("Enter the filename with path");
+		//Scanner sc = new Scanner(System.in);
+		//System.out.println("Enter the filename with path");
 		String file= args[0] ;
 		r1.read(file); //load data
 		int ex=1;
