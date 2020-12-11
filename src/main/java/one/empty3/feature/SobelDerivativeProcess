@@ -1,0 +1,15 @@
+package one.empty3.feature;
+
+import java.io.File;
+
+
+public class SobelDerivativeProcess {
+
+
+
+    public boolean process(File in,
+            File out) {
+        SobelDerivativeProcess s = new SobelDerivative(true);
+        
+    }
+}
