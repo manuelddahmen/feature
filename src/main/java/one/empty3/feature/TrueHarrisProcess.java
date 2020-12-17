@@ -4,35 +4,37 @@ package one.empty3.feature ;
 import javax.imageio.ImageIO;
 import one.empty3.io.ProcessFile;
 import java.io.File ;
- public class TrueHarrisProcess extends ProcessFile {
+
+
+public class TrueHarrisProcess extends ProcessFile {
  
- public boolean process (File in, File out) {
+    public boolean process (File in, File out) {
  
- if(!in.getName().endsWith(".jpg"))
+        if(!in.getName().endsWith(".jpg"))
 
-        return false;
+            return false;
 
-    File file = in;
+        File file = in;
 
-    PixM pixMOriginal = null;
+        PixM pixMOriginal = null;
 
-    try {
+        try {
 
-        pix = PixM.getPixM(ImageIO.read(file), 500.0);
+             pix = PixM.getPixM(ImageIO.read(file), 500.0);
 
-    } catch(Exception ex) {
+        } catch(Exception ex) {
 
-        ex.printStackTrace();
+            ex.printStackTrace();
 
-      return false;
+            return false;
 
        // assertTrue(false);
 
       
 
-     }
+         }
      
-     pix. applyFilter(new TrueHarris()) ;
+         pix. applyFilter(new TrueHarris()) ;
      
                     
 
