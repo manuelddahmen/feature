@@ -12,12 +12,12 @@ double Sy2 = (  (get(i, j+1)-get(i,j)) -(get(i,j)-get(i,j-1)) )  *get(i,j) ;
 double Ix = gx*get(i, j);
 double Iy = gy*get(i, j);
 double Ix2 = Ix*Ix;
-double Ixy = Ix*Iy;
-double Ix2 = gx*Ix;
-double Iy2 = gy*Iy;
+double Sxy = Ix*Iy;
+double Sx2 = gx*Ix;
+double Sy2 = gy*Iy;
 double Sxy = Math.sqrt((gx+gy)/2*get(i, j)) ;// Robert Collins 
 
-double r = (Ix2*Iy2-Ixy*Ixy) /(Ix2+Iy2);
+double r = (Sx2*Sy2-Sxy*Sxy) /(Sx2+Sy2);
              
    return r;
   } 
