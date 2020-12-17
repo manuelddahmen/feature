@@ -14,6 +14,7 @@ public class K_Clusterer extends ReadDataset {
 	}
 //main method
 	public static void main(String args[]) throws IOException {
+		
 		ReadDataset r1 = new ReadDataset();
 		r1.features.clear();
 		//Scanner sc = new Scanner(System.in);
@@ -22,12 +23,13 @@ public class K_Clusterer extends ReadDataset {
 		r1.read(file); //load data
 		int ex=1;
 		do{
-		System.out.println("Enter the no. of clusters");
-		int k = sc.nextInt();
-		System.out.println("Enter maximum iterations");
-		int max_iterations = sc.nextInt();
-		System.out.println("Enter distance metric 1 or 2: \n1. Euclidean\n2. Manhattan");
-		int distance = sc.nextInt();
+			
+//System.out.println("Enter the no. of clusters");*/
+		int k = 8
+//System.out.println("Enter maximum iterations");
+		int max_iterations = 10000
+//System.out.println("Enter distance metric 1 or 2: \n1. Euclidean\n2. Manhattan");
+		int distance = 0
 		//Hashmap to store centroids with index
 		Map<Integer, double[]> centroids = new HashMap<>();
 		// calculating initial centroids
