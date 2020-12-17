@@ -4,8 +4,8 @@ public class TrueHarris extends FilterPixM {
 public TrueHarris(PixM pix){
      super(pix);
 }
-public double filter(double x, double y) {
-     int i=(double)x, j=(double)y;
+public double filter(int x, int y) {
+    // int i=(double)x, j=(double)y;
 double gx=get(i+1)-get(i,j), gy=get(i,j+1)+get(i,j);
 double Sx2 = (  (get(i+1, j)-get(i,j)) -(get(i,j)-get(i-1,j)) )  *get(i,j) ;
 double Sy2 = (  (get(i, j+1)-get(i,j)) -(get(i,j)-get(i,j-1)) )  *get(i,j) ; 
