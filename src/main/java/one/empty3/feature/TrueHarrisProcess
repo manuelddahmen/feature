@@ -1,8 +1,8 @@
 package one.empty3.feature ;
 import java.io.File ;
- public class TrueHarrisProcess {
+ public class TrueHarrisProcess extends ProcessFile {
  
- public boolean process (File in, File out) extends ProcessFile{
+ public boolean process (File in, File out) {
  
  if(!in.getName().endsWith(".jpg"))
 
