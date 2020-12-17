@@ -17,7 +17,7 @@ double sSx2 = gx*Ix;
 double sSy2 = gy*Iy;
 double sSxy = Math.sqrt((gx+gy)/2*get(i, j)) ;// Robert Collins 
 
-double r = (Ssx2*sSy2-sSxy*sSxy) /(sSx2+sSy2);
+double r = (sSx2*sSy2-sSxy*sSxy) /(sSx2+sSy2);
              
    return r;
   } 
