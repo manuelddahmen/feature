@@ -16,7 +16,7 @@ public class Threshold {
 GaussFilterPixM gauss = new GaussFilterPixM(size, sigma);
 
        
-        if(getIntensity(x,y)>0.8)
+        if(gauss.getIntensity(x,y)>0.8)
             return 1.0;
         return 0.0;
     }
