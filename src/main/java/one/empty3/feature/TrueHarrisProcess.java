@@ -50,21 +50,13 @@ public class TrueHarrisProcess extends ProcessFile {
 
                                                
 
-                 try {            
+      try {            
 
-                    ImageIO.write (pix.getImage(),
+          ImageIO.write (pix.getImage(), "JPEG", out) ;
 
-       "JPEG", out) ;
-
-                           } catch(Exception  ex )
-
-                           {
-                           
-                           
-                           
-                           }
-
-                    
+      } catch(Exception  ex ) {
+  
+      }
      return true;
  } 
  
