@@ -16,7 +16,7 @@ public class TrueHarrisProcess extends ProcessFile {
 
         File file = in;
 
-        PixM pixMOriginal = null;
+        PixM pix = null;
 
         try {
 
