@@ -13,11 +13,11 @@ double Ix = gx*get(i, j);
 double Iy = gy*get(i, j);
 double Ix2 = Ix*Ix;
 double Ixy = Ix*Iy;
-double Sx2 = gx*Ix;
-double Sy2 = gy*Iy;
-double Sxy = Math.sqrt((gx+gy)/2*get(i, j)) ;// Robert Collins 
+double sSx2 = gx*Ix;
+double sSy2 = gy*Iy;
+double sSxy = Math.sqrt((gx+gy)/2*get(i, j)) ;// Robert Collins 
 
-double r = (Sx2*Sy2-Sxy*Sxy) /(Sx2+Sy2);
+double r = (Ssx2*sSy2-sSxy*sSxy) /(sSx2+sSy2);
              
    return r;
   } 
