@@ -34,7 +34,7 @@ public class TrueHarrisProcess extends ProcessFile {
 
          }
      
-         pix. applyFilter(new TrueHarris()) ;
+         pix. applyFilter(new TrueHarris(pix)) ;
      
                     
 
