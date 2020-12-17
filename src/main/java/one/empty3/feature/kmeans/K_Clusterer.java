@@ -109,7 +109,7 @@ public class K_Clusterer extends ReadDataset {
 		System.out.println("Number of Clusters: "+k);
 		System.out.println("WCSS: "+wcss);
 		System.out.println("Press 1 if you want to continue else press 0 to exit..");
-		ex=sc.nextInt();
+		//ex=sc.nextInt();
 		}while(ex==1);
 	}
 	
