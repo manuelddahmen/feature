@@ -5,7 +5,7 @@ public TrueHarris(PixM pix){
      super(pix);
 }
 public double filter(double x, double y) {
-    int i=(double)(float)x, j=(double)(float)y;
+    int i=(int)(float)x, j=(int)(float)y;
 double gx=get(i+1)-get(i,j), gy=get(i,j+1)+get(i,j);
 double Sx2 = (  (get(i+1, j)-get(i,j)) -(get(i,j)-get(i-1,j)) )  *get(i,j) ;
 double Sy2 = (  (get(i, j+1)-get(i,j)) -(get(i,j)-get(i,j-1)) )  *get(i,j) ; 
