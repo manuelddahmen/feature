@@ -1,5 +1,7 @@
-package one.empty3.feature.kmeans.*;
-import one.empty3.feature.*;
+package one.empty3.feature;
+
+import one.empty3.feature.kmeans.*;
+
 public class Threshold {
 
 
