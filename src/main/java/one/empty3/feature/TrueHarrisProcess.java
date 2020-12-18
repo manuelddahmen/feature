@@ -40,7 +40,7 @@ public class TrueHarrisProcess extends ProcessFile {
          pix.setCompNo(c);
          for(int i=0;i<hp.getColumns();i++)
              for(int j=0;j<hp.getLines();j++)
-                 pix.filter(i, j) ;
+                 hp.filter(i, j) ;
       }
                     
 
