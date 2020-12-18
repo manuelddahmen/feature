@@ -1,7 +1,7 @@
 package one.empty3.feature ;
 
 public class TrueHarris extends FilterPixM {
-
+public TrueHarris(){}
 public double filter(double x, double y) {
     int i=(int)(float)x, j=(int)(float)y;
 double gx=get(i+1,j)-get(i,j), gy=get(i,j+1)+get(i,j);
