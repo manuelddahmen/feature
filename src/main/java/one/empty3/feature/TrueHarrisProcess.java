@@ -19,7 +19,7 @@ public class TrueHarrisProcess extends ProcessFile {
         PixM pix = null;
 
         try {
-
+           
              pix = PixM.getPixM(ImageIO.read(file), 500.0);
 
         } catch(Exception ex) {
@@ -33,9 +33,15 @@ public class TrueHarrisProcess extends ProcessFile {
       
 
          }
-     
-         pix. applyFilter(new TrueHarris(pix)) ;
-     
+          
+     HarrisProcess hp = new HarrisProcess(pix);
+     for (int c=0; c<3; c++) {
+         hp.setCompNo(c);
+         pix.setCompNo(c);
+         for(int i=0;i<hp.getColumns();i++)
+             for(int j=0;j<hp.getLines();j++)
+                 pix.filter(i, j) ;
+      }
                     
 
                 
