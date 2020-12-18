@@ -1,5 +1,5 @@
 package one.empty3.feature ;
-
+import java.awt.image.BudferedImage;
 public class TrueHarris extends FilterPixM {
 public TrueHarris(BufferedImage img){
     super(img);
