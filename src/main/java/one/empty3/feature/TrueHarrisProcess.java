@@ -34,19 +34,20 @@ public class TrueHarrisProcess extends ProcessFile {
 
          }
           
-     TrueHarris hp = new TrueHarris(img);
+     TrueHarris th = new TrueHarris(img);
      for (int c=0; c<3; c++) {
-         hp.setCompNo(c);
+         th.setCompNo(c);
          pix.setCompNo(c);
-         for(int i=0;i<hp.getColumns();i++)
-             for(int j=0;j<hp.getLines();j++)
-                 hp.filter(i, j) ;
+         
+         for(int i=0;i<pix.getColumns();i++)
+             for(int j=0;j<pix.getLines();j++)
+                 th.filter(i, j) ;
       }
                     
 
                 
 
-            pix.normalize(0.0,1.0);
+       pix.normalize(0.0,1.0);
 
                 
 
