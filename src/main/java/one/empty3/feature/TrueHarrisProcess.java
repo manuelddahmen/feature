@@ -17,10 +17,10 @@ public class TrueHarrisProcess extends ProcessFile {
         File file = in;
 
         PixM pix = null;
-
+        BufferedImage img = null;
         try {
-           
-             pix = PixM.getPixM(ImageIO.read(file), 500.0);
+            img = ImageIO.read(file);
+            pix = PixM.getPixM(img, 500.0);
 
         } catch(Exception ex) {
 
@@ -34,7 +34,7 @@ public class TrueHarrisProcess extends ProcessFile {
 
          }
           
-     TrueHarris hp = new TrueHarris(pix);
+     TrueHarris hp = new TrueHarris(img);
      for (int c=0; c<3; c++) {
          hp.setCompNo(c);
          pix.setCompNo(c);
