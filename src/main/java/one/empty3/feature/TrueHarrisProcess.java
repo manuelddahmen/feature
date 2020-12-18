@@ -4,7 +4,7 @@ package one.empty3.feature ;
 import javax.imageio.ImageIO;
 import one.empty3.io.ProcessFile;
 import java.io.File ;
-
+import java.awt.images.BufferedImage;
 
 public class TrueHarrisProcess extends ProcessFile {
  
