@@ -16,6 +16,7 @@ import java.lang.reflect.Method;
  * An example program that demonstrates how to list files and directories
  * on a FTP server using Apache Commons Net API.
  * @author www.codejava.net
+ * @author empty3.one
  */
 public class FTPProcessFiles {
     public static String classnames, classname;
