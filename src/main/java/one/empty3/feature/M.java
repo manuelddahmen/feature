@@ -24,14 +24,15 @@ public class M {
     public M(PixM pix) {
         this.lines = pix.getLines();
         this.columns = pix.getColumns();
-        x = new double[l * c * 3];
+        x = new double[lines * columns * 3];
         for (int c = 0; c < 3; c++) {
             setCompNo(c);
             
             for (int i = 0; i < m.getColumns(); i++) {
                 for (int j = 0; j < pix.getLines(); j++) {
                     set(i, j, pix.get(i, j));
-
+                }
+            }
         }
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
