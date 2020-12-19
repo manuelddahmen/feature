@@ -28,7 +28,7 @@ public class M {
         for (int c = 0; c < 3; c++) {
             setCompNo(c);
             
-            for (int i = 0; i < m.getColumns(); i++) {
+            for (int i = 0; i < pix.getColumns(); i++) {
                 for (int j = 0; j < pix.getLines(); j++) {
                     set(i, j, pix.get(i, j));
                 }
