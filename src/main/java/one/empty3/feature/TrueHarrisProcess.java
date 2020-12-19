@@ -34,7 +34,7 @@ public class TrueHarrisProcess extends ProcessFile {
 
          }
           
-     TrueHarris th = new TrueHarris(img);
+     TrueHarris th = new TrueHarris(pix);
      for (int c=0; c<3; c++) {
          th.setCompNo(c);
          pix.setCompNo(c);
