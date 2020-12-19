@@ -155,8 +155,9 @@ for(JSONObject in : obj.getJSONObject("filters"));
         String class0 = (String)settings.getProperty("class0");
         String directoryOut =  (String)settings.getProperty("out.directory");
         
+            
         
-        ftpClient = new FTPClient();
+        
  
         
       
@@ -224,10 +225,11 @@ Class classs = Class.forName(
             
 
                
+            if (server.startsWith("ftp")) {
            
                 
                 
-                
+             ftpClient = new FTPClient();
              ftpClient.connect(server, port);
              showServerReply(ftpClient);
  
@@ -254,9 +256,13 @@ Class classs = Class.forName(
          
              FTPFile[] files1 = ftpClient.listFiles(directory);
              showServerReply(ftpClient);
-            
-                 printFileDetails(files1,  directory);
-            } else {
+                       {} else if (server.startsWith("http")) {
+                           
+                       } else {
+                           // local path
+                       }
+                       
+                        } else {
               
                 System.out.println("effect"+processInstance.toString());
                 
