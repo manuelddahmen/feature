@@ -257,6 +257,8 @@ Class classs = Class.forName(
          
              FTPFile[] files1 = ftpClient.listFiles(directory);
              showServerReply(ftpClient);
+                
+                printFileDetails(file1, directory);
             } else if (server.startsWith("http")) {
                 URL oracle = new URL(server);
         BufferedReader in = new BufferedReader(
