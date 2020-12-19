@@ -256,13 +256,24 @@ Class classs = Class.forName(
          
              FTPFile[] files1 = ftpClient.listFiles(directory);
              showServerReply(ftpClient);
-                       {} else if (server.startsWith("http")) {
-                           
-                       } else {
+            } else if (server.startsWith("http")) {
+                URL oracle = new URL(server);
+        BufferedReader in = new BufferedReader(
+        new InputStreamReader(oracle.openStream()));
+
+        String inputLine;
+        while ((inputLine = in.readLine()) != null)
+            ;
+        in.close();
+                
+                
+           } else {
                            // local path
-                       }
+                
+                  printFileDetails(new File(server).list(), server);
+            }
                        
-                        } else {
+         } else {
               
                 System.out.println("effect"+processInstance.toString());
                 
