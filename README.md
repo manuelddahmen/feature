@@ -27,7 +27,7 @@ linear
 <dependency>
     <groupId>one.empty3</groupId>
     <artifactId>feature</artifactId>
-    <version>2020.4.4-SNAPSHOT</version>
+    <version>2020.4.4</version>
 </dependency>
 ```
 ## En développement. Ambitions.
