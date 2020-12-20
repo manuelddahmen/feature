@@ -9,7 +9,7 @@
 
     <name>feature</name>
     <groupId>one.empty3</groupId>
-    <artifactId>feature</artifactId>
+    <artifactId>features</artifactId>
     <version>2020.4.4-SNAPSHOT</version>
     <description>feature</description>
     <packaging>jar</packaging>
