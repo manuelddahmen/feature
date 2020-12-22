@@ -256,8 +256,8 @@
                 <executions>
                     <execution>
                         <configuration>
-                            <keyname>22EE55E4</keyname><!--   
-E189861E
+                            <keyname>E189861E</keyname><!--   
+
 ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
                         </configuration>
                         <id>sign-artifacts</id>
