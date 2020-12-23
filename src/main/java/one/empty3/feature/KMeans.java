@@ -13,7 +13,9 @@ public class KMeans extends ProcessFile {
         
         new MakeDataset(in,
            new File(out.getAbsolutePath()+".csv"));
-        
+        KMeans.main(new String[] {
+             out.getAbsolutePath()+".csv"
+        });
         
         return true;
     }
