@@ -10,13 +10,16 @@ public class KMeans extends ProcessFile {
         
         // init centroids with random colored
         // points.
-        
-        new MakeDataset(in,
-           new File(out.getAbsolutePath()+".csv"));
-        K_Clusterer.main(new String[] {
-             out.getAbsolutePath()+".csv"
-        });
-        
+        try {
+             new MakeDataset(in,
+                  new File(out.getAbsolutePath()+".csv"));
+                  K_Clusterer.main(new String[] {
+                        out.getAbsolutePath()+".csv"
+                     }
+              );
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
         return true;
     }
 }
