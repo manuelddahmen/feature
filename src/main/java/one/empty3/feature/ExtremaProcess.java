@@ -119,4 +119,4 @@ public class ExtremaProcess extends FilterMatPixM {
         this.setMin = b;
     }
 }
-© 2020 Manuel Dahmen
+//© 2020 Manuel Dahmen
