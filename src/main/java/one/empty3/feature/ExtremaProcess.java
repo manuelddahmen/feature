@@ -5,7 +5,7 @@ import java.io.File;
 import one.empty3.io.ProcessFile;
 import java.util.ArrayList;
 
-public class ExtremaProcess extends FilterMatPixM {
+public class ExtremaProcess extends ProcessFile {
     private boolean setMin = true;
     private final int pointsCount;
     private final int neighbourSize;
@@ -27,17 +27,11 @@ public class ExtremaProcess extends FilterMatPixM {
         this.pointsCount = 1; //pointsCount;
         //sub = new double[4*lines*columns];
     }
-
-    // Detect regions, vertex(lines or curves), edges
-    public ArrayList<AreaDescriptor> searchForFeaturePlaces() {
-        ArrayList<AreaDescriptor> areas = new ArrayList<>();
-        return areas;
-
-        // Global search AreaDescriptor
-        // Edge
-        // Vertex
-        // Similar colors Region
+    public ExtremaProcess() {
+        
+    
     }
+    
 
     @Override
     public boolean process(File in, File out){
