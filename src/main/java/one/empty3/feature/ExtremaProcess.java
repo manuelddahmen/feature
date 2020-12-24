@@ -27,24 +27,36 @@ public class ExtremaProcess extends ProcessFile {
         this.pointsCount = 1; //pointsCount;
         //sub = new double[4*lines*columns];
     }
-    public ExtremaProcess() {
+    public void process(File in, File out) {
+        PixM pix = null;
+    if(!in.getName().endsWith(".jpg"))
+        return false;
+   
+    try {
+        pix = PixM.getPixM(ImageIO.read(in), 500.0);
+    } catch(Exception ex) {
+        ex.printStackTrace();
+      return false;
+       // assertTrue(false);
+      
+     }
+        logger.info("file loaded");
         
-        private int compNo;
 
-         
-         
-         }
-    
-
-    @Override
-    public boolean process(File in, File out){
-        
-        
         LocalExtrema le =  new LocalExtrema(pix.getColumns(), pix.getLines(), 3, 0) {
    
             
-            M3 m = le.filter(new M3(pix, 1, 1));
+        PixM m = le.filter(new M3(pix, 1, 1)).getImagesMatrix()[0][0];
             
-    }
+              try {
+       ImageIO.write(p.getImage(), "jpg", out);
+     } catch (Exception ex){
+         return false;
+     }
+       
+       System.gc();
+         
+         }
+    
     
 }
