@@ -22,7 +22,7 @@ public class ExtremaProcess extends ProcessFile {
 
     private int compNo;
 
-    public ExtremaProcess(int neighbourSize, int pointsCount) {
+    public ExtremaProcess() {
         this.neighbourSize = 8;//neighbourSize;
         this.pointsCount = 1; //pointsCount;
         //sub = new double[4*lines*columns];
@@ -43,7 +43,7 @@ public class ExtremaProcess extends ProcessFile {
         logger.info("file loaded");
         
 
-        LocalExtrema le =  new LocalExtrema(pix.getColumns(), pix.getLines(), 3, 0) {
+        LocalExtrema le =  new LocalExtrema(pix.getColumns(), pix.getLines(), 3, 0);
    
             
         PixM m = le.filter(new M3(pix, 1, 1)).getImagesMatrix()[0][0];
