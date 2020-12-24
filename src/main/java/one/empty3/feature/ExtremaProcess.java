@@ -48,8 +48,7 @@ public class ExtremaProcess extends ProcessFile {
          return false;
      }
        
-         System.gc();
-         return true;
+  
      }
     
     
