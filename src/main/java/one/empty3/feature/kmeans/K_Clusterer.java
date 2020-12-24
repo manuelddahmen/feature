@@ -91,12 +91,14 @@ public class K_Clusterer extends ReadDataset {
 		for(int i=0;i<k;i++){
 			double sse=0;
 			for (double[] key : clusters.keySet()) {
+				if(key.length>=1) {
 				double [] key1 = new double [] {key[0],
 				  key[1]};
 				if (clusters.get(key)==i) {
 					sse+=Math.pow(Distance.eucledianDistance(key1, centroids.get(i)),2);
 				}
 				}
+			}
 			wcss+=sse;
 		}
 		String dis="";
