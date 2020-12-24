@@ -29,13 +29,22 @@ public class ExtremaProcess extends ProcessFile {
     }
     public ExtremaProcess() {
         
-    
-    }
+        private int compNo;
+
+         
+         
+         }
     
 
     @Override
     public boolean process(File in, File out){
         
+        
+        LocalExtrema le =  new LocalExtrema(pix.getColumns(), pix.getLines(), 3, 0) {
+   
+            
+            M3 m = le.filter(new M3(pix, 1, 1));
+            
     }
     
 }
