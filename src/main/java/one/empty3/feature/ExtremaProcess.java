@@ -1,6 +1,6 @@
 
 package one.empty3.feature;
-import java.imageio.ImageIO;
+import javax.imageio.ImageIO;
 import java.io.File;
 import one.empty3.io.ProcessFile;
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class ExtremaProcess extends ProcessFile {
       return false;
       
      }
-        logger.info("file loaded");
+       
         
 
         LocalExtrema le =  new LocalExtrema(
@@ -43,6 +43,7 @@ public class ExtremaProcess extends ProcessFile {
             
      try {
        ImageIO.write(m.getImage(), "jpg", out);
+         return true;
      } catch (Exception ex){
          return false;
      }
