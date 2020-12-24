@@ -49,7 +49,7 @@ public class ExtremaProcess extends ProcessFile {
         PixM m = le.filter(new M3(pix, 1, 1)).getImagesMatrix()[0][0];
             
               try {
-       ImageIO.write(p.getImage(), "jpg", out);
+       ImageIO.write(m.getImage(), "jpg", out);
      } catch (Exception ex){
          return false;
      }
