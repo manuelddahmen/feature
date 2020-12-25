@@ -44,7 +44,7 @@ public class ReadDataset {
 		while((line=readFile.readLine()) != null)
 			{
 			
-			 String[] split = line.split(",");
+			 String[] split = line.split(" ");
             		 double[] feature = new double[split.length - 1];
              		numberOfFeatures = split.length-1;
             		for (int i = 0; i < split.length - 1; i++)
