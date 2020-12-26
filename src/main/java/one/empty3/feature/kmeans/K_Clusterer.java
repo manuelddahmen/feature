@@ -24,6 +24,9 @@ public class K_Clusterer extends ReadDataset {
 		//System.out.println("Enter the filename with path");
 		String file= args[0] ;
 		r1.read(file); //load data
+		
+		Map<double[], Integer> clusters = new HashMap<>();
+		
 		int ex=1;
 		do{
 			
@@ -45,7 +48,6 @@ public class K_Clusterer extends ReadDataset {
 			
 		}
 		//Hashmap for finding cluster indexes
-		Map<double[], Integer> clusters = new HashMap<>();
 		clusters = kmeans(r1.features, distance, centroids, k);
 		// initial cluster print
 	/*	for (double[] key : clusters.keySet()) {
