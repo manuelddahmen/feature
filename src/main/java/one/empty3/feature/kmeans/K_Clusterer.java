@@ -135,7 +135,7 @@ public class K_Clusterer extends ReadDataset {
 		
 try {
        ImageIO.write( pix.normalize(0.0, 1.0).getImage(), "jpg", out);
-     } catch (Exception ex){
+     } catch (Exception ex1){
          return false;
      }
      return true ;
