@@ -5,9 +5,10 @@ package one.empty3.feature.kmeans;
  */
 import java.io.IOException;
 import java.util.*;
+import one.empty3.feature.*;
 import java.util.concurrent.ThreadLocalRandom;
 import java.io.File;
-import java.imageio.ImageIO;
+import javax.imageio.ImageIO;
 public class K_Clusterer extends ReadDataset {
 
 	public K_Clusterer() {
