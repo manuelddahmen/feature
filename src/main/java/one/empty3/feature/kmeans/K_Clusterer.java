@@ -113,6 +113,11 @@ public class K_Clusterer extends ReadDataset {
 		System.out.println("Press 1 if you want to continue else press 0 to exit..");
 		//ex=sc.nextInt();
 		}while(ex==1);
+		clusters.forEach(
+	            (coords, numCluster) -> {
+		         
+		    }
+		     );
 	}
 	
 	//method to calculate centroids
