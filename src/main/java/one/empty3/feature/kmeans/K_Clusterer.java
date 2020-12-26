@@ -115,7 +115,10 @@ public class K_Clusterer extends ReadDataset {
 		}while(ex==1);
 		clusters.forEach(
 	            (coords, numCluster) -> {
-		         
+		         System.out.println("cluster no "
+					   +numCluster+" centroid at ("+
+					   coords[0]+" "
+					   coords[1]+")");
 		    }
 		     );
 	}
