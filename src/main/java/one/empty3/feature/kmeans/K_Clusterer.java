@@ -27,7 +27,7 @@ public class K_Clusterer extends ReadDataset {
 		
 		Map<double[], Integer> clusters = new HashMap<>();
 		
-		int ex=1;
+		int ex=0;
 		do{
 			
 //System.out.println("Enter the no. of clusters");*/
