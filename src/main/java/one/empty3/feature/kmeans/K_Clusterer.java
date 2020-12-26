@@ -120,8 +120,22 @@ public class K_Clusterer extends ReadDataset {
 					   +numCluster+" centroid at ("+
 					   coords[0]+" "
 					   coords[1]+")");
+			    pix.set(
+				    (int)(float)(coords[0]),
+				    (int)(float)(coords[1]),
+				    numCluster
+			    
+			    );
 		    }
 		     );
+		
+try {
+       ImageIO.write( pix.normalize(0.0, 1.0).getImage(), "jpg", out);
+     } catch (Exception ex){
+         return false;
+     }
+     return true;
+    } 
 	}
 	
 	//method to calculate centroids
