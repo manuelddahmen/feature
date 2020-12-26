@@ -135,8 +135,7 @@ try {
      } catch (Exception ex){
          return false;
      }
-     return true;
-    } 
+     return true ;
 	}
 	
 	//method to calculate centroids
