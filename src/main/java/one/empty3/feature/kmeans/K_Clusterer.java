@@ -119,7 +119,7 @@ public class K_Clusterer extends ReadDataset {
 	            (coords, numCluster) -> {
 		         System.out.println("cluster no "
 					   +numCluster+" centroid at ("+
-					   coords[0]+" "
+					   coords[0]+" "+
 					   coords[1]+")");
 			    pix.set(
 				    (int)(float)(coords[0]),
