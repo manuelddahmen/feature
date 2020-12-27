@@ -10,7 +10,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.io.File;
 import javax.imageio.ImageIO;
 public class K_Clusterer extends ReadDataset {
-
+        static int k = 8;
 	public K_Clusterer() {
 		// TODO Auto-generated constructor stub
 	}
@@ -31,7 +31,7 @@ public class K_Clusterer extends ReadDataset {
 		do{
 			
 //System.out.println("Enter the no. of clusters");*/
-		int k = 8;
+		k = 8;
 //System.out.println("Enter maximum iterations");
 		int max_iterations = 1000;
 //System.out.println("Enter distance metric 1 or 2: \n1. Euclidean\n2. Manhattan");
@@ -143,15 +143,16 @@ public class K_Clusterer extends ReadDataset {
 	public static double[] centroidCalculator(List<double[]> a) {
 		
 		int count = 0;
-		double x[][] = new double[ReadDataset.numberOfFeatures][5];
+		double x[] = new double [5];
 		double sum=0.0;
                 double[] a2 = new double[5];
-		double[] centroids = new double[5];
+		double[][] centroids = new double[][5];
 		for (int i = 0; i < a.size(); i++) {
 			sum=0.0;
 			count = 0;
 					
-			for(int j=0; j<x.length; j++) {
+			for(int j=0; j<5; j++) {
+			    
                             centroids[j] += a.get(i)[j];
                             a2[j] += 1;
                         }
