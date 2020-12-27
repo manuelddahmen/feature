@@ -96,7 +96,8 @@ public class K_Clusterer extends ReadDataset {
 		for(int i=0;i<k;i++){
 			double sse=0;
 			for (double[] key : clusters.keySet()) {
-				if(key.length>=1) {
+				if(key.length>1)
+				   1) {
 				double [] key1 = new double [] {key[0],
 				  key[1]};
 				if (clusters.get(key)==i) {
@@ -153,11 +154,19 @@ public class K_Clusterer extends ReadDataset {
 		for (int i = 0; i < ReadDataset.numberOfFeatures; i++) {
 			sum=0.0;
 			count = 0;
-			for(double[] x:a){
+			int j=0;
+			for(double[] x : a){
+				if(j>1) {
+					
+					sum = sum + x[i];
+				}
+				
+				j++;
 				count++;
-				sum = sum + x[i];
+				
 			}
-			centroids[i] = sum / count;
+			
+			centroids[i] = sum / count/3;
 		}
 		return centroids;
 
@@ -168,7 +177,7 @@ public class K_Clusterer extends ReadDataset {
 		Map<double[], Integer> clusters = new HashMap<>();
 		int k1 = 0;
 		double dist=0.0;
-		for(double[] x:features) {
+		for(double[] x : features) {
 			double minimum = 999999.0;
 			for (int j = 0; j < k; j++) {
 				if(distance==1){
