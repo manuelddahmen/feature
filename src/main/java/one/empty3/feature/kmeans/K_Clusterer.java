@@ -158,10 +158,11 @@ public class K_Clusterer extends ReadDataset {
 				if(j>1) {
 					
 					sum = sum + x[i];
+					count++;
 				}
 				
 				j++;
-				count++;
+				
 				
 			}
 			
