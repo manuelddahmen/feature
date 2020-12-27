@@ -14,11 +14,11 @@ import java.io.FileReader;
  line : l, c, r, g, b
 */
 public class MakeDataset {
-    public MakeDataset (File image, File outputCsv) {
+    public MakeDataset (File image, File outputCsv, int res) {
         try {
          BufferedImage img = ImageIO.read 
           (image) ;
-        PixM pix = new PixM(img) ;
+        PixM pix = PixM.getPixM(img, 50) ;
 
 
         PrintWriter pw = new PrintWriter(outputCsv) ;
