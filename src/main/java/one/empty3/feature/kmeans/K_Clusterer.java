@@ -146,10 +146,10 @@ public class K_Clusterer extends ReadDataset {
 	public static double[] centroidCalculator(List<double[]> a ) {
 		
 		int count = 0;
-		double x[] = new double [5];
+		double x[] = new double [6];
 		double sum=0.0;
-                double[] a2 = new double[5];
-		double[] centroids = new double[5];
+                double[] a2 = new double[6];
+		double[] centroids = new double[6];
 		for (int i = 0; i < a.size(); i++) {
 			sum=0.0;
 			count = 0;
@@ -158,6 +158,7 @@ public class K_Clusterer extends ReadDataset {
 			    
                             centroids[j] += a.get(i)[j];
                             a2[j] += 1;
+				
                         }
 
 		}
