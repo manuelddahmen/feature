@@ -57,11 +57,10 @@ public class ReadDataset {
 void display()
 {
 	Iterator<double[]> itr=features.iterator();
-	Iterator<String> sitr=label.iterator();
 	while(itr.hasNext())
 	{ 
 		double db[]=itr.next();
-		for(int i=0; i<4;i++)
+		for(int i=0; i<db.length;i++)
 	{
 		System.out.print(db[i]+" ");
 	}	
