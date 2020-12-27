@@ -151,7 +151,6 @@ public class K_Clusterer extends ReadDataset {
                 double[] a2 = new double[5];
 		double[] centroids = new double[5];
 		for (int i = 0; i < a.size(); i++) {
-			centroids.add(new double[5]);
 			sum=0.0;
 			count = 0;
 					
