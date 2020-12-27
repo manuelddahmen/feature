@@ -28,11 +28,6 @@ public class ReadDataset {
 		return features;
 	}
 	
-	public List<String> getLabel() 
-	{
-		return label;
-	}
-	
 	void read(String s) throws NumberFormatException, IOException {
 		
 		File file=new File(s);
@@ -49,7 +44,7 @@ public class ReadDataset {
 			
             		for (i = 0; i < split.length; i++)
                			 feature[i] = Double.parseDouble(split[i]);
-			numberOfFeatures = 5+1;
+			numberOfFeatures = split.length;
 			}
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
