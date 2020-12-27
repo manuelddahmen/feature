@@ -32,7 +32,7 @@ public class ReadDataset {
 		
 		File file=new File(s);
 		
-	try {
+	        try {
 		BufferedReader readFile=new BufferedReader(new FileReader(file));
 		String line;
 		while((line=readFile.readLine()) != null)
@@ -45,7 +45,11 @@ public class ReadDataset {
             		for (i = 0; i < split.length; i++)
                			 feature[i] = Double.parseDouble(split[i]);
 			numberOfFeatures = split.length;
+			
+			features.add(feature);
+			
 			}
+			
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
