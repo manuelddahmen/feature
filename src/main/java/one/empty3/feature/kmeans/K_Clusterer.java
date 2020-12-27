@@ -28,7 +28,7 @@ public class K_Clusterer extends ReadDataset {
 		Map<double[], Integer> clusters = new HashMap<>();
 		
 		int ex=0;
-		do{
+		do {
 			
 //System.out.println("Enter the no. of clusters");*/
 		k = 8;
@@ -42,9 +42,12 @@ public class K_Clusterer extends ReadDataset {
 		double[] x1 = new double[numberOfFeatures];
 		int r =0;
 		for (int i = 0; i < k; i++) {
-			
-			x1= r1.features.get(++r);
-			centroids.put(i, x1);
+			for(int j =0; j<r1.features.size(); j++) {
+				
+                        
+			x1= r1.features.get(j);
+			if((int)(float)(x1[5])==j)
+			    centroids.put(i, x1);
 			
 		}
 		//Hashmap for finding cluster indexes
