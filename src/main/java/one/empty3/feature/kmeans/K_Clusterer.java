@@ -99,8 +99,7 @@ public class K_Clusterer extends ReadDataset {
 				if (clusters.get(key)==i) {
 					sse+=Math.pow(Distance.eucledianDistance(key, centroids.get(i)),2);
 				}
-				}
-			}
+	                }
 			wcss+=sse;
 		}
 /*
