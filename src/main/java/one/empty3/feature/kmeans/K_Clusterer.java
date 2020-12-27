@@ -162,8 +162,6 @@ public class K_Clusterer extends ReadDataset {
 		
 			for(int j=0; j<5; j++) {
                             centroids[j] /= a2[j];
-       
-}
                         }
 
 		return centroids;
