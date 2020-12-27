@@ -54,20 +54,17 @@ public class ReadDataset {
 	}
 
 
-void display()
-{
+    void display() {
 	Iterator<double[]> itr=features.iterator();
 	while(itr.hasNext())
 	{ 
 		double db[]=itr.next();
 		for(int i=0; i<db.length;i++)
-	{
-		System.out.print(db[i]+" ");
-	}	
-		String s=sitr.next() ;
-		System.out.println(s);
-		//System.out.println();
+		{
+			System.out.print(db[i]+" ");
+		}	
+	
 	}
 	
-}
+     }
 }
