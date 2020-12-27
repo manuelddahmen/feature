@@ -146,8 +146,8 @@ public class K_Clusterer extends ReadDataset {
 		double x[][] = new double[ReadDataset.numberOfFeatures][5];
 		double sum=0.0;
                 double[] a2 = new double[5];
-		double[] centroids = new double[ReadDataset.numberOfFeatures];
-		for (int i = 0; i < ReadDataset.numberOfFeatures; i++) {
+		double[] centroids = new double[5];
+		for (int i = 0; i < a.size(); i++) {
 			sum=0.0;
 			count = 0;
 					
