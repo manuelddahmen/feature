@@ -21,8 +21,7 @@ import java.util.Scanner;
 public class ReadDataset {
 	
 	protected List<double[]> features=new ArrayList<>();
-	protected List<String> label=new ArrayList<>();
-	protected static int numberOfFeatures;
+	protected int numberOfFeatures;
 	
 	public List<double[]> getFeatures()
 	{
@@ -50,7 +49,7 @@ public class ReadDataset {
 			
             		for (i = 0; i < split.length; i++)
                			 feature[i] = Double.parseDouble(split[i]);
-			numberOfFeatures = 5;
+			numberOfFeatures = 5+1;
 			}
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
