@@ -154,7 +154,7 @@ public class K_Clusterer extends ReadDataset {
 			sum=0.0;
 			count = 0;
 					
-			for(int j=0; j<5; j++) {
+			for(int j=0; j<a.get(i).length; j++) {
 			    
                             centroids[j] += a.get(i)[j];
                             a2[j] += 1;
