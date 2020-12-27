@@ -33,7 +33,7 @@ public class K_Clusterer extends ReadDataset {
 //System.out.println("Enter the no. of clusters");*/
 		int k = 8;
 //System.out.println("Enter maximum iterations");
-		int max_iterations = 10000;
+		int max_iterations = 1000;
 //System.out.println("Enter distance metric 1 or 2: \n1. Euclidean\n2. Manhattan");
 		int distance = 0;
 		//Hashmap to store centroids with index
