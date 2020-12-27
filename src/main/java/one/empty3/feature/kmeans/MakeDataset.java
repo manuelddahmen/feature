@@ -18,7 +18,7 @@ public class MakeDataset {
         try {
          BufferedImage img = ImageIO.read 
           (image) ;
-        PixM pix = PixM.getPixM(img, 50) ;
+        PixM pix = PixM.getPixM(img, res) ;
 
 
         PrintWriter pw = new PrintWriter(outputCsv) ;
