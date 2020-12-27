@@ -45,13 +45,12 @@ public class ReadDataset {
 			{
 			
 			 String[] split = line.split(" ");
-            		 double[] feature = new double[split.length - 1];
-             		numberOfFeatures = split.length-1;
-            		for (int i = 0; i < split.length - 1; i++)
+            		 double[] feature = new double[split.length];
+             		int i=0 ;
+			
+            		for (i = 0; i < split.length; i++)
                			 feature[i] = Double.parseDouble(split[i]);
-            		features.add(feature);
-             		String labels = split[feature.length];
-            		label.add(labels);
+			numberOfFeatures = 5;
 			}
 	} catch (FileNotFoundException e) {
 		// TODO Auto-generated catch block
