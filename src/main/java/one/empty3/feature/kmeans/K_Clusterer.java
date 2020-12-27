@@ -35,7 +35,7 @@ public class K_Clusterer extends ReadDataset {
 //System.out.println("Enter maximum iterations");
 		int max_iterations = 1000;
 //System.out.println("Enter distance metric 1 or 2: \n1. Euclidean\n2. Manhattan");
-		int distance = 0;
+		int distance = 1;
 		//Hashmap to store centroids with index
 		Map<Integer, double[]> centroids = new HashMap<>();
 		// calculating initial centroids
@@ -43,7 +43,7 @@ public class K_Clusterer extends ReadDataset {
 		int r =0;
 		for (int i = 0; i < k; i++) {
 			
-			x1=r1.features.get(r++);
+			x1= r1.features.get(++r);
 			centroids.put(i, x1);
 			
 		}
