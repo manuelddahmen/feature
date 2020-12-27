@@ -45,7 +45,7 @@ public class K_Clusterer extends ReadDataset {
 	
 				
                         
-			x1= r1.features.get(j);
+			x1= r1.features.get(++r);
 			
 			    centroids.put(i, x1);
 			
