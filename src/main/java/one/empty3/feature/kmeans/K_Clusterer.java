@@ -79,17 +79,17 @@ public class K_Clusterer extends ReadDataset {
 			clusters = kmeans(r1.features,distance, centroids, k);
 			
 		}
-		
+
 		//final cluster print
 		System.out.println("\nFinal Clustering of Data");
 		System.out.println("Feature1\tFeature2\tFeature3\tFeature4\tCluster");
-		for (double[] key : clusters.keySet()) {
+/*for (double[] key : clusters.keySet()) {
 			for (int i = 0; i < key.length; i++) {
 				System.out.print(key[i] + "\t \t");
 			}
 			System.out.print(clusters.get(key) + "\n");
 		}
-		
+*/
 		//Calculate WCSS
 		double wcss=0;
 		
@@ -106,6 +106,7 @@ public class K_Clusterer extends ReadDataset {
 			}
 			wcss+=sse;
 		}
+/*
 		String dis="";
 		if(distance ==1)
 			 dis="Euclidean";
@@ -116,7 +117,7 @@ public class K_Clusterer extends ReadDataset {
 		System.out.println("Number of Clusters: "+k);
 		System.out.println("WCSS: "+wcss);
 		System.out.println("Press 1 if you want to continue else press 0 to exit..");
-		//ex=sc.nextInt();
+		//ex=sc.nextInt();*/
 		}while(ex==1);
 		clusters.forEach(
 	            (coords, numCluster) -> {
@@ -132,8 +133,8 @@ public class K_Clusterer extends ReadDataset {
 			    );
 		    }
 		     );
-		
-try {
+
+     try {
        ImageIO.write( pix.normalize(0.0, 1.0).getImage(), "jpg", out);
      } catch (Exception ex1){
 	   ex1.printStackTrace();
