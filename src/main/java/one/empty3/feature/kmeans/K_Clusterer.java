@@ -42,11 +42,11 @@ public class K_Clusterer extends ReadDataset {
 		double[] x1 = new double[numberOfFeatures];
 		int r =0;
 		for (int i = 0; i < k; i++) {
-			for(int j =0; j<r1.features.size(); j++) {
+	
 				
                         
 			x1= r1.features.get(j);
-			if((int)(float)(x1[5])==j)
+			
 			    centroids.put(i, x1);
 			
 		}
@@ -143,13 +143,13 @@ public class K_Clusterer extends ReadDataset {
 	}
 	
 	//method to calculate centroids
-	public static double[] centroidCalculator(List<double[]> a, ) {
+	public static double[] centroidCalculator(List<double[]> a ) {
 		
 		int count = 0;
 		double x[] = new double [5];
 		double sum=0.0;
                 double[] a2 = new double[5];
-		List<double[]> centroids = new ArrayList<double[]>();
+		double[] centroids = new double[5];
 		for (int i = 0; i < a.size(); i++) {
 			centroids.add(new double[5]);
 			sum=0.0;
