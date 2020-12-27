@@ -96,11 +96,8 @@ public class K_Clusterer extends ReadDataset {
 		for(int i=0;i<k;i++){
 			double sse=0;
 			for (double[] key : clusters.keySet()) {
-				if(key.length>1) {
-				double [] key1 = new double [] {key[0],
-				  key[1]};
 				if (clusters.get(key)==i) {
-					sse+=Math.pow(Distance.eucledianDistance(key1, centroids.get(i)),2);
+					sse+=Math.pow(Distance.eucledianDistance(key, centroids.get(i)),2);
 				}
 				}
 			}
@@ -147,26 +144,18 @@ public class K_Clusterer extends ReadDataset {
 	public static double[] centroidCalculator(List<double[]> a) {
 		
 		int count = 0;
-		//double x[] = new double[ReadDataset.numberOfFeatures];
+		double x[][] = new double[ReadDataset.numberOfFeatures][5];
 		double sum=0.0;
 		double[] centroids = new double[ReadDataset.numberOfFeatures];
 		for (int i = 0; i < ReadDataset.numberOfFeatures; i++) {
 			sum=0.0;
 			count = 0;
-			int j=0;
-			for(double[] x : a){
-				if(j>1) {
 					
-					sum = sum + x[i];
-					count++;
-				}
-				
-				j++;
-				
-				
-			}
-			
-			centroids[i] = sum / count/3;
+			for(int j=0; j<x.length; j++) {
+                            centroids.get(i)[j] += a.get(i)[j];
+                            a2[i][j] += 1;
+}
+
 		}
 		return centroids;
 
