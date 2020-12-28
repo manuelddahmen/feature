@@ -14,7 +14,7 @@ public class KMeans extends ProcessFile {
              new MakeDataset(in,
                   new File(out.getAbsolutePath()+".csv"), 50);
                   K_Clusterer.main(new String[] {
-                        out.getAbsolutePath()+".csv", out.getAbsolutePath()
+                        out.getAbsolutePath()+".csv", out.getAbsolutePath(), 50
                      }
               );
         } catch(Exception ex){
