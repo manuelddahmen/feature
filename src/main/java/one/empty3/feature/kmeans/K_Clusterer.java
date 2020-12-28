@@ -15,8 +15,8 @@ public class K_Clusterer extends ReadDataset {
 		// TODO Auto-generated constructor stub
 	}
 //main method
-	public static void main(String args[]) throws IOException {
-		PixM pix = new PixM(500,500);
+	public static void main(String args[], int res) throws IOException {
+		PixM pix = new PixM(res, res);
 		File out = new File(args[1]);
 		ReadDataset r1 = new ReadDataset();
 		r1.features.clear();
