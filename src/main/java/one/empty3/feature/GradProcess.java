@@ -44,7 +44,7 @@ public class GradProcess extends ProcessFile {
     // pattern.setColorsRegion(0,1,0,3,3,0.0);
      LocalPattern gf = new LocalPattern(p);
       */
-      M3 gf = new GradientFilter(pix.getColumns(),
+      GradoentFilter gf = new GradientFilter(pix.getColumns(),
                                 pix.getLines());
       PixM r = gf.filter(
          new M3(
