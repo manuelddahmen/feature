@@ -46,7 +46,10 @@ public class GradProcess extends ProcessFile {
       */
       M3 gf = new GradientFilter(pix.getColumns(),
                                 pix.getLines());
-      PixM r = gf.filter(pix);getImagesMatrix()[0][0];
+      PixM r = gf.filter(
+         new M3(
+         pix, 1, 1)
+      ).getImagesMatrix()[0][0];
            try {
        ImageIO.write( r.normalize(0.0, 1.0). getImage(), "jpg", out);
      } catch (Exception ex){
