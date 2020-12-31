@@ -15,7 +15,7 @@ public class ParseJSon {
            String filterName = arr.getJSONObject(i).getString("classname");
           
            Class c = Class.forName(classname);
-           ProcessFile pf = c.newInstance(c);
+           ProcessFile pf = c.newInstance();
           
            String properties = arr.getJSONObject(i).getString("properties");
            JSONObject propertiesA = new JSONObject(propertiesA);
@@ -29,7 +29,7 @@ public class ParseJSon {
                   String vType  = array[0];
                   String vValue = array[1];
                   
-                  Pojo.setP(pf, key, classname, vValue);
+                  Pojo.setP((Object)pf, key, classname, vValue);
                   
         
                }
