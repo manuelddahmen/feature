@@ -28,8 +28,9 @@ public class ParseJSon {
                   String vType  = array[0];
                   String vValue = array[1];
                   
-                  Pojo.setProperty(pf, o.get(i), key, vType, vValue);
-                     
+                  Pojo.setP(pf, key, vValue, classname);
+                  
+        
                }
            }
        }
