@@ -18,7 +18,24 @@ public class ParseJSon {
                String value = propertiesA.getString(key);
                if(key.equals("classname"))
                    classname = value;
-               String properties = propertiesO.getS(j);
+               else if(value.split(":").length==2) {
+                  String[] array  = value.split(":");
+                  String vType  = array[0];
+                  String vValue = array[1];
+                  switch(vType) {
+                      case "int":
+                      case "Integer":
+                        
+                        break;
+                      case "double":
+                      case "Double":
+                        
+                        break;
+                      case "BigDecimal":
+                        break;
+                  }
+               }
+           }
        }
    }
 }
