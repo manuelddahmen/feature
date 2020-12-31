@@ -484,11 +484,11 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
   <artifactId>google-java-format</artifactId>
   <version>1.9</version>
 </dependency>
+<!-- https://mvnrepository.com/artifact/org.json/json -->
 <dependency>
-  <groupId>org.json</groupId>
-  <artifactId>json</artifactId>
-  <version>20180813</version>
-  <type>bundle</type>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20201115</version>
 </dependency>
     </dependencies>
 </project>
