@@ -484,5 +484,11 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
   <artifactId>google-java-format</artifactId>
   <version>1.9</version>
 </dependency>
+<dependency>
+  <groupId>org.json</groupId>
+  <artifactId>json</artifactId>
+  <version>20180813</version>
+  <type>bundle</type>
+</dependency>
     </dependencies>
 </project>
