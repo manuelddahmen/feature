@@ -4,13 +4,18 @@ import org.json.*;
 
 
 public class ParseJSon {
-   public void parse(String jsonString) {
+   public List<? extends ProcessFile> parse(String jsonString) {
+      List<? extends ProcessFile> o = new ArrayList<>();
        //assign your JSON String here
        JSONObject obj = new JSONObject(jsonString);
        String classname = "";
        JSONArray arr = obj.getJSONArray("filters");
        for (int i = 0; i < arr.length(); i++) {
            String filterName = arr.getJSONObject(i).getString("classname");
+          
+           Class c = Class.forName(classname);
+           ProcessFile pf = c.newInstance(c);
+          
            String properties = arr.getJSONObject(i).getString("properties");
            JSONObject propertiesA = new JSONObject(propertiesA);
            Set<String> keys = propertiesA.keySet();
@@ -22,18 +27,9 @@ public class ParseJSon {
                   String[] array  = value.split(":");
                   String vType  = array[0];
                   String vValue = array[1];
-                  switch(vType) {
-                      case "int":
-                      case "Integer":
-                        
-                        break;
-                      case "double":
-                      case "Double":
-                        
-                        break;
-                      case "BigDecimal":
-                        break;
-                  }
+                  
+                  Pojo.setProperty(pf, o.get(i), key, vType, vValue);
+                     
                }
            }
        }
