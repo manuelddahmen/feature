@@ -12,7 +12,7 @@ public class ParseJSon {
        String classname = "";
        JSONArray arr = obj.getJSONArray("filters");
        for (int i = 0; i < arr.length(); i++) {
-           String filterName = arr.getJSONObject(i).getString("classname");
+           classname = arr.getJSONObject(i).getString("classname");
           
            Class c = Class.forName(classname);
            ProcessFile pf = (ProcessFile) 
