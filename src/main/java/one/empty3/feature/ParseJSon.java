@@ -7,6 +7,7 @@ import one.empty3.Pojo;
 
 public class ParseJSon {
    public List<ProcessFile> parse(String jsonString) {
+      try {
       List<ProcessFile> o = new ArrayList<>();
        //assign your JSON String here
        JSONObject obj = new JSONObject(jsonString);
@@ -22,7 +23,7 @@ public class ParseJSon {
           o.add(pf);
           
            String properties = arr.getJSONObject(i).getString("properties");
-           JSONObject propertiesA = new JSONObject(propertiesA);
+           JSONObject propertiesA = new JSONObject(properties);
            Set<String> keys = propertiesA.keySet();
            for (String key : keys) {
                String value = propertiesA.getString(key);
@@ -40,5 +41,8 @@ public class ParseJSon {
            }
        }
       return o;
+         } catch(InstantiationException | ClassNotFoundException ex | ) {
+            ex.printStackTrace();
+         }
    }
 }
