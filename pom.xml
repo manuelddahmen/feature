@@ -10,7 +10,7 @@
     <name>feature</name>
     <groupId>one.empty3</groupId>
     <artifactId>features</artifactId>
-    <version>2020.4.5-SNAPSHOT</version>
+    <version>2021.1</version>
     <description>feature</description>
     <packaging>jar</packaging>
     <url>https://github.com/manuelddahmen/feature</url>
