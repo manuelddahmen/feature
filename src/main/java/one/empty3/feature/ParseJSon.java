@@ -41,8 +41,9 @@ public class ParseJSon {
            }
        }
       return o;
-         } catch(InstantiationException | ClassNotFoundException ex | ) {
+         } catch(InstantiationException | ClassNotFoundException ex ) {
             ex.printStackTrace();
+         return null;
          }
    }
 }
