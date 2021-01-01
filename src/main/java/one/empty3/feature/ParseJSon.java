@@ -15,7 +15,10 @@ public class ParseJSon {
            String filterName = arr.getJSONObject(i).getString("classname");
           
            Class c = Class.forName(classname);
-           ProcessFile pf = c.newInstance();
+           ProcessFile pf = (ProcessFile) 
+              (c.newInstance());
+           
+          o.add(pf);
           
            String properties = arr.getJSONObject(i).getString("properties");
            JSONObject propertiesA = new JSONObject(propertiesA);
@@ -35,5 +38,6 @@ public class ParseJSon {
                }
            }
        }
+      return o;
    }
 }
