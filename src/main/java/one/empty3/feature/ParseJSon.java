@@ -5,8 +5,8 @@ import java.util.*;
 import one.empty3.io.ProcessFile;
 
 public class ParseJSon {
-   public List<? extends ProcessFile> parse(String jsonString) {
-      List<? extends ProcessFile> o = new ArrayList<>();
+   public List<ProcessFile> parse(String jsonString) {
+      List<ProcessFile> o = new ArrayList<>();
        //assign your JSON String here
        JSONObject obj = new JSONObject(jsonString);
        String classname = "";
