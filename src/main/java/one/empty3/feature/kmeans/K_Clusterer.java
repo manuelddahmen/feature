@@ -132,7 +132,14 @@ public class K_Clusterer extends ReadDataset {
 			    );
 		    }
 		     );
-
+centroids.forEach( (i, db) -> {
+	for(int j=0;j<3;j++) {
+		pix.setCompNo(j);
+	        pix.set((int)(float)(db[1]),
+		    (int)(float)(db[0]),
+	            1.0;
+	       );
+     });
      try {
        ImageIO.write( pix.normalize(0.0, 1.0).getImage(), "jpg", out);
      } catch (Exception ex1){
