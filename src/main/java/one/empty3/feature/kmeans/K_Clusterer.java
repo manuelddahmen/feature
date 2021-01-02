@@ -38,7 +38,6 @@ public class K_Clusterer extends ReadDataset {
 //System.out.println("Enter distance metric 1 or 2: \n1. Euclidean\n2. Manhattan");
 		int distance = 1;
 		//Hashmap to store centroids with index
-		Map<Integer, double[]> centroids = new HashMap<>();
 		// calculating initial centroids
 		double[] x1 = new double[numberOfFeatures];
 		int r =0;
