@@ -137,8 +137,7 @@ centroids.forEach( (i, db) -> {
 		pix.setCompNo(j);
 	        pix.set((int)(float)(db[1]),
 		    (int)(float)(db[0]),
-	            1.0;
-	       );
+	            1.0 );
      });
      try {
        ImageIO.write( pix.normalize(0.0, 1.0).getImage(), "jpg", out);
