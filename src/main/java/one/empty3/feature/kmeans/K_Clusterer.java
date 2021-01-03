@@ -127,6 +127,8 @@ public class K_Clusterer extends ReadDataset {
 					   +numCluster+" centroid at ("+
 					   coords[0]+" "+
 					   coords[1]+")");
+			    
+				    
 			    pix.set(
 				    (int)(float)(coords[0]),
 				    (int)(float)(coords[1]),
