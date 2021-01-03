@@ -7,8 +7,8 @@ package one.empty3.feature.kmeans;
 public class Distance {
     public static float [] r;
 	public Distance(float x, float y) {
-		this.rx = 1f/x;
-		this.ry = 1f/y;
+		this.rx = 1f/(float)x;
+		this.ry = 1f/(float)y;
 		r = new float[] {rx, ry, 1f, 1f, 1f};
 	}
 	
