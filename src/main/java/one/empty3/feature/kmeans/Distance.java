@@ -5,16 +5,18 @@ package one.empty3.feature.kmeans;
  * based on distance metric
  */
 public class Distance {
-
-	public Distance() {
-		// TODO Auto-generated constructor stub
+    public static float [] r;
+	public Distance(float x, float y) {
+		this.rx = 1f/x;
+		this.ry = 1f/y;
+		r = new float[] {rx, ry, 1f, 1f, 1f};
 	}
 	
 	public static double eucledianDistance(double[] point1, double[] point2) {
         double sum = 0.0;
-        for(int i = 2; i < 5; i++) {
+        for(int i = 0; i < 5; i++) {
         	//System.out.println(point1[i]+" "+point2[i]);
-            sum += ((point1[i] - point2[i]) * (point1[i] - point2[i]));
+            sum += ((point1[i] - point2[i]) * (point1[i] - point2[i]))*r[i]*r[i];
         }
         return Math.sqrt(sum);
     }
