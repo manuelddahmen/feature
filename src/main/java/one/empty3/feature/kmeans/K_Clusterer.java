@@ -25,6 +25,9 @@ public class K_Clusterer extends ReadDataset {
 		String file= args[0] ;
 		r1.read(file); //load data
 		
+		new Distance(pix.getColumns(),
+			    pix.getLines());
+		
 		Map<double[], Integer> clusters = new HashMap<>();
 		Map<Integer, double[]> centroids = new HashMap<>();
 		
