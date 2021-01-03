@@ -24,7 +24,7 @@ public class Distance {
     public static double manhattanDistance(double point1[], double point2[]){
     	double sum = 0.0;
         for(int i = 2; i < 5; i++) {
-            sum += (Math.abs(point1[i] - point2[i]));
+            sum += (Math.abs(point1[i] - point2[i]))*r[i]*r[i];
         }
         return sum;
     }
