@@ -9,7 +9,7 @@ public class Distance {
 	public Distance(float x, float y) {
 		float rx = 1f/(float)x;
 		float ry = 1f/(float)y;
-		r = new float[] {rx, ry, 1f, 1f, 1f};
+		r = new float[] {rx*0f, ry*0f, 1f, 1f, 1f};
 	}
 	
 	public static double eucledianDistance(double[] point1, double[] point2) {
