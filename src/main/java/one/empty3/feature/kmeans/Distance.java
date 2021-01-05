@@ -23,7 +23,8 @@ public class Distance {
 		System.out.println("kmeans distance error point2"+point2.length);
         	
         	System.exit(-1);
-	
+		
+}
 		
         for(int i = 2; i < 5; i++) {
         	//System.out.println(point1[i]+" "+point2[i]);
