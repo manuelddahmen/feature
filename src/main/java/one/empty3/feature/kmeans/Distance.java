@@ -15,8 +15,11 @@ public class Distance {
 	public static double eucledianDistance(double[] point1, double[] point2) {
         double sum = 0.0;
 	
+	if(point1.length<5)
+        	System.exit(-1);
+	if(point2.length<5)
+        	System.exit(-1);
 		
-        
         for(int i = 2; i < 5; i++) {
         	//System.out.println(point1[i]+" "+point2[i]);
             sum += ((point1[i] - point2[i]) * (point1[i] - point2[i]))*r[i]*r[i];
