@@ -9,11 +9,14 @@ public class Distance {
 	public Distance(float x, float y) {
 		float rx = 1f/(float)x;
 		float ry = 1f/(float)y;
-		r = new float[] {rx*0f, ry*0f, 1f, 1f, 1f};
+		r = new float[] {10f/rx, 10f/ry, 1f, 1f, 1f};
 	}
 	
 	public static double eucledianDistance(double[] point1, double[] point2) {
         double sum = 0.0;
+	
+		
+        
         for(int i = 2; i < 5; i++) {
         	//System.out.println(point1[i]+" "+point2[i]);
             sum += ((point1[i] - point2[i]) * (point1[i] - point2[i]))*r[i]*r[i];
