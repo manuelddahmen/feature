@@ -121,7 +121,7 @@ public class K_Clusterer extends ReadDataset {
 		System.out.println("Press 1 if you want to continue else press 0 to exit..");
 		//ex=sc.nextInt();*/
 		}while(ex==1);
-		clusters.forEach(
+/*clusters.forEach(
 	            (coords, numCluster) -> {
 		         System.out.println("cluster no "
 					   +numCluster+" centroid at ("+
@@ -136,7 +136,7 @@ public class K_Clusterer extends ReadDataset {
 			    
 			    );
 		    }
-		     );
+		     );*/
         centroids.forEach( (i, db) -> {
 	    for(int j=0;j<3;j++) {
 		pix.setCompNo(j);
@@ -158,10 +158,10 @@ public class K_Clusterer extends ReadDataset {
 	public static double[] centroidCalculator(List<double[]> a ) {
 		
 		int count = 0;
-		double x[] = new double [6];
+		double x[] = new double [5];
 		double sum=0.0;
-                double[] a2 = new double[6];
-		double[] centroids = new double[6];
+                double[] a2 = new double[5];
+		double[] centroids = new double[5];
 		for (int i = 0; i < a.size(); i++) {
 			sum=0.0;
 			count = 0;
