@@ -34,7 +34,7 @@ public class MakeDataset {
           double b = pix.get(l, c) ;
 
           pw.println("" +l+" " +c+" " +
-             r+" " + g + " " + b+" 0.0") ;
+             r+" " + g + " " + b) ;
          } 
       } catch(IOException ex) {
          ex.printStackTrace () ;
