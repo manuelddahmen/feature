@@ -39,7 +39,7 @@ public class ReadDataset {
 			{
 			
 			 String[] split = line.split(" ");
-            		 double[] feature = new double[split.length];
+            		 double[] feature = new double[5];
              		int i=0 ;
 			
             		for (i = 0; i < split.length; i++)
