@@ -27,14 +27,14 @@ public class Distance {
 }
 
 	for(int i = 0; i < 2; i++) {
-        	//System.out.println(point1[i]+" "+point2[i]);
-            sum += (
-               (point1[i] - point2[i]) * (point1[i] - point2[i])
-               )*(r[i]*r[i]/100f);
+		double comp = (  (point1[i] - point2[i]) * (point1[i] - point2[i]) )*(r[i]*r[i]/100f);
+		if(Double.isNaN(comp) 
+		  || Double.isInfinite(comp))
+			comp = 100000;
+		sum += comp;
         }
 
         for(int i = 2; i < 5; i++) {
-        	//System.out.println(point1[i]+" "+point2[i]);
             sum += ((point1[i] - point2[i]) * (point1[i] - point2[i]))*r[i]*r[i];
         }
         return Math.sqrt(sum);
