@@ -16,12 +16,13 @@ public class K_Clusterer extends ReadDataset {
 	}
 //main method
 	public static void main(String args[], int res) throws IOException {
+		PixM pix =null;
 		try {
-      PixM pix = PixM.getPixM( ImageIO.read(new File(args[0])), res);
-     } catch (Exception ex1){
-	   ex1.printStackTrace();
-         return;
-     }
+         		pix = PixM.getPixM( ImageIO.read(new File(args[0])), res);
+     		} catch (Exception ex1){
+	   		ex1.printStackTrace();
+         		return;
+    		}
 		
 	
 		File out = new File(args[2]);
