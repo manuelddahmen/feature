@@ -16,13 +16,20 @@ public class K_Clusterer extends ReadDataset {
 	}
 //main method
 	public static void main(String args[], int res) throws IOException {
-		PixM pix = new PixM(res, res);
-		File out = new File(args[1]);
+		try {
+      PixM pix = new PixM( ImageIO.read(new File(args[0]));
+     } catch (Exception ex1){
+	   ex1.printStackTrace();
+         return;
+     }
+		
+	
+		File out = new File(args[2]);
 		ReadDataset r1 = new ReadDataset();
 		r1.features.clear();
 		//Scanner sc = new Scanner(System.in);
 		//System.out.println("Enter the filename with path");
-		String file= args[0] ;
+		String file= args[1] ;
 		r1.read(file); //load data
 		
 		new Distance(pix.getColumns(),
