@@ -16,7 +16,7 @@ public class K_Clusterer extends ReadDataset {
 	}
 //main method
 	public static void main(String args[], int res) throws IOException {
-		final pix;
+		final PixM pix;
 		try {
          		pix = PixM.getPixM( ImageIO.read(new File(args[0])), res);
      		} catch (Exception ex1){
