@@ -12,7 +12,7 @@ public class KMeans extends ProcessFile {
         // points.
         try {
              new MakeDataset(in,
-                  new File(out.getAbsolutePath()+".csv"),50);
+                  new File(out.getAbsolutePath()+".csv"));
             
                   K_Clusterer.main(new String[] {
                       in.getAbsolutePath(),
