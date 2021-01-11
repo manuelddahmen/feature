@@ -14,7 +14,7 @@ import java.io.FileReader;
  line : l, c, r, g, b
 */
 public class MakeDataset {
-    public MakeDataset (File image, File outputCsv, int res) {
+    public MakeDataset (File image, File outputCsv) {
         try {
          BufferedImage img = ImageIO.read 
           (image) ;
