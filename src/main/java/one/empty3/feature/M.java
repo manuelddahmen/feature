@@ -63,6 +63,15 @@ public class M {
         }
         return Math.sqrt(i);
     }
+    public void getColor(int column, int line,
+            float[] comps) {
+        double i = 0;
+        for (int c = 0; c < 3; c++) {
+            setCompNo(c);
+            comps[i] = get(column, line)*get(column, line);
+
+        }
+    }
 
     public int getCompNo() {
         return compNo;
