@@ -33,4 +33,7 @@ public class IsleFilterPixM
      }
      public double filter(double x, double y) {
      }
+         
+     public void filter() {
+     }
 }
