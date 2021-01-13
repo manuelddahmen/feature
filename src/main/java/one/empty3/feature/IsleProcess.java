@@ -1,4 +1,10 @@
 package one.empty3.feature;
-public class IsleProcess {
 
+//import one.empty3.feature.ProcessFile;
+import java.io.File;
+
+public class IsleProcess extends ProcessFile {
+    public boolean process(File in, File out) {
+        
+    }
 }
