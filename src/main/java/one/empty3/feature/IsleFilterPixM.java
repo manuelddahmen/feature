@@ -7,7 +7,8 @@ public class IsleFilterPixM
          extends FilterPixM {
 
 
-     public void setCValues(Color background, Color sel, double threshold) {
+     public void setCValues(Color background, 
+         Color sel, double threshold) {
 
      }
      public void filter() {
