@@ -7,7 +7,7 @@ public class IsleFilterPixM
          extends FilterPixM {
      private Color selColor;
      private Color oppositeColor;
-     private double threshold:
+     private double threshold;
      private float selComps[] = new float[4];
      private float oppComps[] = new float[4];
      public IsleFilterPixM(PixM pix) {
@@ -15,7 +15,7 @@ public class IsleFilterPixM
      }
      public boolean selectPoint(int x, int y) {
          double [] sel = new double[3];
-         getColor(x, y, sel));
+         getColor(x, y, sel);
          double d = 0;
          for(int i=0; i<3; i++)
              d += (sel[i]-selComps[i])
