@@ -65,10 +65,9 @@ public class M {
     }
     public void getColor(int column, int line,
             float[] comps) {
-        double i = 0;
         for (int c = 0; c < 3; c++) {
             setCompNo(c);
-            comps[i] = get(column, line)*get(column, line);
+            comps[x] =(float)( get(column, line)*get(column, line));
 
         }
     }
