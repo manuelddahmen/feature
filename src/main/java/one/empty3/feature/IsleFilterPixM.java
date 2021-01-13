@@ -20,8 +20,8 @@ public class IsleFilterPixM
        this.oppositeColor = background;
        this.selColor = sel;
        this.threshold = threshold;
-       this.selComps ;
-       this.oppComps ;
+       selColor.getColorComponens(this.selComps );
+       this.oppColor.getColorComponens(this.oppComps ) ;
 
      }
      public void filter() {
