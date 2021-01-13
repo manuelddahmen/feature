@@ -14,7 +14,7 @@ public class IsleFilterPixM
          super(pix);
      }
      public boolean selectPoint(int x, int y) {
-         double [] sel = new double[3];
+         float [] sel = new float[3];
          getColor(x, y, sel);
          double d = 0;
          for(int i=0; i<3; i++)
@@ -31,6 +31,6 @@ public class IsleFilterPixM
        oppositeColor.getComponents(this.oppComps ) ;
 
      }
-     public void filter() {
+     public double filter(double x, double y) {
      }
 }
