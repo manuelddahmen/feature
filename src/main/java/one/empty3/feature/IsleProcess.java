@@ -2,7 +2,7 @@ package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
 import java.io.File;
-
+import java.awt.Color;
 public class IsleProcess extends ProcessFile {
     public boolean process(File in, File out) {
 
@@ -32,9 +32,10 @@ public class IsleProcess extends ProcessFile {
 
          }
           
-     IsleFilterPixM th = new IsleFilterPixM
+     IsleFilterPixM il = new IsleFilterPixM
          (pix.getImage());
-   
+     il.setCValues(Color.BLUE, Color.WHITE, 0.4);
+     il.filter();
       try {            
 
           ImageIO.write (pix.getImage(), "JPEG", out) ;
