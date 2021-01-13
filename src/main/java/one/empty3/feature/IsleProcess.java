@@ -3,6 +3,9 @@ package one.empty3.feature;
 import one.empty3.io.ProcessFile;
 import java.io.File;
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+
 public class IsleProcess extends ProcessFile {
     public boolean process(File in, File out) {
 
