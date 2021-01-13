@@ -67,7 +67,7 @@ public class M {
             float[] comps) {
         for (int c = 0; c < 3; c++) {
             setCompNo(c);
-            comps[x] =(float)( get(column, line)*get(column, line));
+            comps[c] =(float)(get(column, line));
 
         }
     }
