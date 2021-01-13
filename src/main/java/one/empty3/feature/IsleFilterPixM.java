@@ -20,15 +20,15 @@ public class IsleFilterPixM
          for(int i=0; i<3; i++)
              d += (sel[i]-selComps[i])
                   *(sel[i]-selComps[i]);
-         return sqrt(d)<threshold?true:false;
+         return Math.sqrt(d)<threshold?true:false;
      }
      public void setCValues(Color background, 
          Color sel, double threshold) {
        this.oppositeColor = background;
        this.selColor = sel;
        this.threshold = threshold;
-       selColor.getColorComponens(this.selComps );
-       this.oppColor.getColorComponens(this.oppComps ) ;
+       selColor.getComponens(this.selComps );
+       oppositeColor.getComponens(this.oppComps ) ;
 
      }
      public void filter() {
