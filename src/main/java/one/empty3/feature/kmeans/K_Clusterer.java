@@ -148,7 +148,7 @@ public class K_Clusterer extends ReadDataset {
 		     );
         centroids.forEach( (i, db) -> {
 	    for(int j=1;j<2;j++) {
-		pix.setCompNo(i);
+		pix.setCompNo(j);
 	        pix.set((int)(float)(db[0]),
 		    (int)(float)(db[1]),
 	            1.0 );
