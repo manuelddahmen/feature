@@ -44,7 +44,7 @@ public class K_Clusterer extends ReadDataset {
 		do {
 			
 //System.out.println("Enter the no. of clusters");*/
-		k = 100;
+		k = 30;
 //System.out.println("Enter maximum iterations");
 		int max_iterations = 10000;
 //System.out.println("Enter distance metric 1 or 2: \n1. Euclidean\n2. Manhattan");
