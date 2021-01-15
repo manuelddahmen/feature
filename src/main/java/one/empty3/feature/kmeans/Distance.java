@@ -25,9 +25,9 @@ public class Distance {
         	System.exit(-1);
 		
 }
-        double kk = 0.01
+        double k = 0.05;
 	for(int i = 0; i < 2; i++) {
-		double comp = Math.exp( - (point1[i] - point2[i]) * (point1[i] - point2[i]) *kk);
+		double comp = Math.exp( - (point1[i] - point2[i]) * (point1[i] - point2[i]) *k);
 		if(Double.isNaN(comp) 
 		  || Double.isInfinite(comp))
 			comp = 0;
