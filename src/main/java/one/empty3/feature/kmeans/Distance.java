@@ -27,7 +27,7 @@ public class Distance {
 }
 
 	for(int i = 0; i < 2; i++) {
-		double comp = Math.exp( - (point1[i] - point2[i]) * (point1[i] - point2[i]) ));
+		double comp = Math.exp( - (point1[i] - point2[i]) * (point1[i] - point2[i]) );
 		if(Double.isNaN(comp) 
 		  || Double.isInfinite(comp))
 			comp = 0;
