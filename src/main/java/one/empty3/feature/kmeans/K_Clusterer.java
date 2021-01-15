@@ -146,7 +146,7 @@ public class K_Clusterer extends ReadDataset {
 			    );
 		    }
 		     );
-        double [] cs = new double[]{0.0,1.0,0.0};
+        double [] cs = new double[]{1.0,1.0,0.0};
         centroids.forEach( (i, db) -> {
 	    for(int j=0; j<3; j++) {
 		pix.setCompNo(j);
