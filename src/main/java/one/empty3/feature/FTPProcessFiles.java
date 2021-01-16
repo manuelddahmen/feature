@@ -435,7 +435,11 @@ Class classs = Class.forName(
         do {
             File ftmp = new File(mpeg.getAbsolutePath()+"---"+(findex++)+".jpg");
             image = t.getImage();
-            ImageIO.write(image, "", ftmp);
+            try {
+                ImageIO.write(image, "", ftmp);
+            } catch(Exception ex) {
+                ex.printStackTrace();
+            }
             list.add(ftmp);
             t.timeNext();
        }while(image!=null);
