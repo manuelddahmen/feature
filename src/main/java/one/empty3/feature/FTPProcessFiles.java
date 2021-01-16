@@ -439,15 +439,20 @@ Class classs = Class.forName(
         int findex=0;
         BufferedImage image = null;
         do {
+            t.timeNext();
             File ftmp = new File(mpeg.getAbsolutePath()+"---"+(findex++)+".jpg");
             image = t.getImage();
+            if(image==null) {
+                System.out.println("Movie frame == null");
+                break;
+            }
             try {
                 ImageIO.write(image, "", ftmp);
             } catch(Exception ex) {
                 ex.printStackTrace();
             }
             list.add(ftmp);
-            t.timeNext();
+            
        }while(image!=null);
 
      //  File[] files = new File[list.size()];
