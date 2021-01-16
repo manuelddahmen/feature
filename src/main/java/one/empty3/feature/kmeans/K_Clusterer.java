@@ -24,7 +24,7 @@ public class K_Clusterer extends ReadDataset {
 	   		ex1.printStackTrace();
          		return;
     		}
-		
+		PixM pix2 = new PixM(res, res);
 	
 		File out = new File(args[2]);
 		ReadDataset r1 = new ReadDataset();
@@ -138,7 +138,7 @@ public class K_Clusterer extends ReadDataset {
 					   coords[1]+")");
 			    
 				    */
-			    pix.set(
+			    pix2.set(
 				    (int)(float)(coords[0]),
 				    (int)(float)(coords[1]),
 				    numCluster*1.0/k*0.5
@@ -150,14 +150,14 @@ public class K_Clusterer extends ReadDataset {
         double [] cs = new double[]{1.0,1.0,0.0};
         centroids.forEach( (i, db) -> {
 	    for(int j=0; j<3; j++) {
-		pix.setCompNo(j);
-	        pix.set((int)(float)(db[0]),
+		pix3.setCompNo(j);
+	        pix2.set((int)(float)(db[0]),
 		    (int)(float)(db[1]),
 	            1.0 * cs[j] );
          }
      });
      try {
-       ImageIO.write( pix.normalize(0.0, 1.0).getImage(), "jpg", out);
+       ImageIO.write( pix2.normalize(0.0, 1.0).getImage(), "jpg", out);
      } catch (Exception ex1){
 	   ex1.printStackTrace();
          return;
