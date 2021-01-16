@@ -12,6 +12,8 @@ import org.apache.commons.net.ftp.*;
 import one.empty3.io.ProcessFile;
 import java.util.logging.Logger;
 import java.lang.reflect.Method;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import one.empty3.library.TextureMov;
 //import org.json.*;
 /**
