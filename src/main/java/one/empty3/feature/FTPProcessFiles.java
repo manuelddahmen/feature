@@ -356,7 +356,11 @@ Class classs = Class.forName(
         
     }
  public static void process(File object){
+        
         if(object.isFile()) {
+            if(file.getName().endsWith(".mpg")) {
+                printFileDetails(object);
+            }
         //try {
                     
         
@@ -394,7 +398,7 @@ Class classs = Class.forName(
                 String remoteFile = directory+"/"+file.getName();
                //Logger.getLogger(getClass()).info(file.getName());
                 //System.out.println(file.getName() + " "+ remote);
-                
+               
                 
                 process(file, remoteFile);
             }
@@ -425,7 +429,7 @@ Class classs = Class.forName(
     }
     
      
-    private static void printFileDetails(File mpeg, String directory) {
+    private static void printFileDetails(File mpeg) {
 
         TextureMov t = new TextureMov(mpeg.getAbsolutePath());
         List<File> list = new ArrayList<>();
