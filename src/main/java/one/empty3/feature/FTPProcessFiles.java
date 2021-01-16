@@ -425,13 +425,17 @@ Class classs = Class.forName(
      
     private static void printFileDetails(File mpeg, String directory) {
 
-        ITexture t = new TextureMov(mpeg.getAbsolutePath());
+        TextureMov t = new TextureMov(mpeg.getAbsolutePath());
 
         // extraire les images
-
+        int findex=0;
         do {
-            //
-       }while(t.next());
+            File ftmp = new File(mpeg.getAbsolutePath()+"/"+(findex++));
+            BufferedImage image = t.getImage();
+            ImageIO.write(image, "", ftmp);
+            process(File object);
+
+       }while(t.timeNext());
     }
     private static void printNames(String files[]) {
         if (files != null && files.length > 0) {
