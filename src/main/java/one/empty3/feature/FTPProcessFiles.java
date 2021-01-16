@@ -445,7 +445,7 @@ Class classs = Class.forName(
             image = t.getImage();
             if(image==null) {
                 System.out.println("Movie frame == null");
-                break;
+                continue;
             }
             try {
                 ImageIO.write(image, "JPEG", ftmp);
