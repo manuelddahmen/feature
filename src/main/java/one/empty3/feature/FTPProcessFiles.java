@@ -424,6 +424,12 @@ Class classs = Class.forName(
     
      
     private static void printFileDetails(File mpeg, String directory) {
+
+        ITexture t = new TextureMov(mpeg.getAbsolutePath());
+
+        // extraire les images
+
+        
     }
     private static void printNames(String files[]) {
         if (files != null && files.length > 0) {
