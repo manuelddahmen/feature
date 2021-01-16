@@ -436,8 +436,8 @@ Class classs = Class.forName(
             BufferedImage image = t.getImage();
             ImageIO.write(image, "", ftmp);
             list.add(ftmp);
-
-       }while(t.timeNext());
+            t.timeNext();
+       }while(image!=null);
 
      //  File[] files = new File[list.size()];
 
