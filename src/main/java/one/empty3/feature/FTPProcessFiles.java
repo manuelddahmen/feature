@@ -429,7 +429,9 @@ Class classs = Class.forName(
 
         // extraire les images
 
-        
+        do {
+            //
+       }while(t.next());
     }
     private static void printNames(String files[]) {
         if (files != null && files.length > 0) {
