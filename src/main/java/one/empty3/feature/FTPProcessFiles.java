@@ -438,6 +438,7 @@ Class classs = Class.forName(
         // extraire les images
         int findex=0;
         BufferedImage image = null;
+        int i =0;
         do {
             t.timeNext();
             File ftmp = new File(mpeg.getAbsolutePath()+"---"+(findex++)+".jpg");
@@ -447,12 +448,15 @@ Class classs = Class.forName(
                 break;
             }
             try {
-                ImageIO.write(image, "", ftmp);
+                ImageIO.write(image, "JPEG", ftmp);
             } catch(Exception ex) {
+                System.out.println("error writing movie frame");
                 ex.printStackTrace();
+
             }
             list.add(ftmp);
             
+                System.out.println("frame no"+(i++));
        }while(image!=null);
 
      //  File[] files = new File[list.size()];
