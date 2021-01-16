@@ -426,16 +426,22 @@ Class classs = Class.forName(
     private static void printFileDetails(File mpeg, String directory) {
 
         TextureMov t = new TextureMov(mpeg.getAbsolutePath());
-
+        List<File> list = new ArrayList<>();
         // extraire les images
         int findex=0;
         do {
             File ftmp = new File(mpeg.getAbsolutePath()+"/"+(findex++));
             BufferedImage image = t.getImage();
             ImageIO.write(image, "", ftmp);
-            process(File object);
+            list.add(ftmp);
 
        }while(t.timeNext());
+
+     //  File[] files = new File[list.size()];
+
+       for(File file : list)
+           process(file);
+       
     }
     private static void printNames(String files[]) {
         if (files != null && files.length > 0) {
