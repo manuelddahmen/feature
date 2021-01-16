@@ -141,7 +141,8 @@ public class K_Clusterer extends ReadDataset {
 			    pix.set(
 				    (int)(float)(coords[0]),
 				    (int)(float)(coords[1]),
-				    numCluster
+				    /*numCluster*/
+      pix.get((int)(float)(coords[0]), (int)(float)(coords[1]))/2.0
 			    
 			    );
 		    }
