@@ -358,7 +358,9 @@ Class classs = Class.forName(
  public static void process(File object){
         
         if(object.isFile()) {
-            if(object.getName().endsWith(".mpg")) {
+            if(object.getName().endsWith(".mpg")
+              || object.getName().endsWith(".mp4")
+              || object.getName().endsWith(".avi")) {
                 printFileDetails(object);
             }
         //try {
