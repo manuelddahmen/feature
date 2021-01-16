@@ -461,8 +461,11 @@ Class classs = Class.forName(
 
      //  File[] files = new File[list.size()];
 
-       for(File file : list)
+       for(File file : list) {
+           System.out.println("process file "
+               + file.getAbsolutePath());
            process(file);
+       }
        
     }
     private static void printNames(String files[]) {
