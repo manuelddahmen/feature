@@ -431,9 +431,10 @@ Class classs = Class.forName(
         List<File> list = new ArrayList<>();
         // extraire les images
         int findex=0;
+        BufferedImage image = null;
         do {
             File ftmp = new File(mpeg.getAbsolutePath()+"---"+(findex++)+".jpg");
-            BufferedImage image = t.getImage();
+            image = t.getImage();
             ImageIO.write(image, "", ftmp);
             list.add(ftmp);
             t.timeNext();
