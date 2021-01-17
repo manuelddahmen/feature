@@ -98,13 +98,7 @@ public class K_Clusterer extends ReadDataset {
 		//final cluster print
 		System.out.println("\nFinal Clustering of Data");
 		System.out.println("Feature1\tFeature2\tFeature3\tFeature4\tCluster");
-/*for (double[] key : clusters.keySet()) {
-			for (int i = 0; i < key.length; i++) {
-				System.out.print(key[i] + "\t \t");
-			}
-			System.out.print(clusters.get(key) + "\n");
-		}
-*/
+
 		//Calculate WCSS
 		double wcss=0;
 		
@@ -143,8 +137,8 @@ public class K_Clusterer extends ReadDataset {
 			    pix2.set(
 				    (int)(float)(coords[0]),
 				    (int)(float)(coords[1]),
-				    numCluster*1.0/k*0.5
-      //pix.get((int)(float)(coords[0]), (int)(float)(coords[1]))/2.0
+				    //numCluster*1.0/k*0.5
+      pix.get((int)(float)(coords[0]), (int)(float)(coords[1]))/2.0
 			    
 			    );
 		        }
