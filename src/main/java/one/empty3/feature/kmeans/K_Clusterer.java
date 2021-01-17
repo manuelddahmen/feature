@@ -24,7 +24,7 @@ public class K_Clusterer extends ReadDataset {
 	   		ex1.printStackTrace();
          		return;
     		}
-		PixM pix2 = new PixM(res, res);
+		PixM pix2 = pix;
 	
 		File out = new File(args[2]);
 		ReadDataset r1 = new ReadDataset();
