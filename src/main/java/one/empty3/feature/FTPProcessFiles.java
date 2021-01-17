@@ -44,26 +44,9 @@ public class FTPProcessFiles {
     
     public static void loadArgsJson(String file) {
     
-/*
-String jsonString = file.getContents(); //assign your JSON String here
-JSONObject obj = new JSONObject(jsonString);
-for(JSONObject in : obj.getJSONObject("filters"));
-       if(in.getString("directory")!=null){
-         File dir = new File(in.getString("directory")) ;
-       }
-       if(in.getString("file" )){}
-        if(in.getString("json" )){}
-      if(in.getString("ftpjson" )){}
-     if(in.getString("ftpdirectory" )){}
-        for(JSONObject filter : in.getJSONArray("filters")) {
-
-
-
-    String post_id = arr.getJSONObject(i).getString("class");
-
 
     
-    }*/
+   
     }
     static FTPClient ftpClient;
     
@@ -440,6 +423,7 @@ Class classs = Class.forName(
         BufferedImage image = null;
         int i =0;
         do {
+            
             t.timeNext();
             File ftmp = new File(mpeg.getAbsolutePath()+"---"+(findex++)+".jpg");
             image = t.getImage();
@@ -457,7 +441,7 @@ Class classs = Class.forName(
             list.add(ftmp);
             
                 System.out.println("frame no"+(i++));
-       }while(image!=null);
+       }while(t.nextFrame());
 
      //  File[] files = new File[list.size()];
 
