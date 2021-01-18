@@ -137,6 +137,7 @@ public class K_Clusterer extends ReadDataset {
 				    */
 			 for(int j=0; j<3; j++) {
 		            pix2.setCompNo(j);
+		            pix.setCompNo(j);
 			    pix2.set(
 				    (int)(float)(coords[0]),
 				    (int)(float)(coords[1]),
