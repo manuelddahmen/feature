@@ -13,8 +13,8 @@ public class Distance {
 	}
 	
 	public static double eucledianDistance(double[] point1, double[] point2) {
-        double sum = 0.0;
-	
+        double sumColor = 0.01;
+	double sumSpace = 0.01;
 	if(point1.length<5) {
 		System.out.println("kmeans distance error point1"+point1.length);
         	System.exit(-1);
@@ -27,17 +27,17 @@ public class Distance {
 }
         double k = 0.05;
 	for(int i = 0; i < 2; i++) {
-		double comp = Math.exp( - (point1[i] - point2[i]) * (point1[i] - point2[i]) / k);
+		double comp = Math.exp( - (point1[i] - point2[i]) * (point1[i] - point2[i]));
 		if(Double.isNaN(comp) 
 		  || Double.isInfinite(comp))
 			comp = 0;
-		sum += comp;
+		sumSpace += comp;
         }
 
         for(int i = 2; i < 5; i++) {
-            sum += ((point1[i] - point2[i]) * (point1[i] - point2[i]))*r[i]*r[i];
+            sumColor += ((point1[i] - point2[i]) * (point1[i] - point2[i]));
         }
-        return Math.sqrt(sum);
+        return Math.sqrt(sumSpace*sumColor);
     }
     
     public static double manhattanDistance(double point1[], double point2[]){
