@@ -51,7 +51,7 @@ public class MakeDataset {
     
   for(int i=0; i<data.size(); i++) {
      for(int j=0; j<data.get(i).length; j++) {
-     pw.print(data.get(i)[j]);
+     pw.print(data.get(i)[j]+" ");
    }
      pw.println();
    }
