@@ -10,6 +10,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.util.*;
 /***
  line : l, c, r, g, b
 */
@@ -41,4 +42,9 @@ public class MakeDataset {
          ex.printStackTrace () ;
       } 
     } 
+ public static void writeFeature
+  (Set<Integer, List<double[]>> data,
+   File csvout) {
+     
+ }
 } 
