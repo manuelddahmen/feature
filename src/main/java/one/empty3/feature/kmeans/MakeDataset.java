@@ -43,8 +43,21 @@ public class MakeDataset {
       } 
     } 
  public static void writeFeature
-  (Set<Integer, List<double[]>> data,
+  (Set<Integer, double[]> data,
    File csvout) {
-     
+       try {
+      
+  PrintWriter pw = new PrintWriter(csvout) ;
+    
+  for(int i=0; i<data.size(); i++) {
+     for(int j=0; j<data.get(i).length; j++) {
+     pw.print(data.get(i)[j]);
+   }
+     pw.println();
+   }
+        } catch(IOException ex) {
+         ex.printStackTrace () ;
+      } 
  }
+ 
 } 
