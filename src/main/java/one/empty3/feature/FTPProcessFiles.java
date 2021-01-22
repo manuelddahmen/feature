@@ -422,9 +422,12 @@ Class classs = Class.forName(
         int findex=0;
         BufferedImage image = null;
         int i =0;
+        
+        t.timeNext();
+        
         do {
             
-            t.timeNext();
+            
             File ftmp = new File(mpeg.getAbsolutePath()+"---"+(findex++)+".jpg");
             image = t.getImage();
             if(image==null) {
