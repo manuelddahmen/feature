@@ -438,10 +438,10 @@ Class classs = Class.forName(
                 ex.printStackTrace();
 
             }
-            list.add(ftmp);
+            //list.add(ftmp);
             
                 System.out.println("frame no"+(i++));
-       }while(t.nextFrame());
+       }while(t.timeNext());
 
      //  File[] files = new File[list.size()];
 
