@@ -427,7 +427,7 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <groupId>xuggle</groupId>
             <artifactId>xuggle-xuggler</artifactId>
             <version>5.4</version>
-            <type>pom<type>
+            <type>pom</type>
         </dependency>
         <dependency>
             <groupId>com.github.dexecutor</groupId>
