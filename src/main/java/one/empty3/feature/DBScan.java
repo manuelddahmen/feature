@@ -32,7 +32,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
-public class DBScan extends ProcessFile {
+public class Clusters extends ProcessFile {
     public boolean process (File in, File out) {
         return false;
 
