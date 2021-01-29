@@ -464,7 +464,7 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
         <dependency>
          <groupId>one.empty3</groupId>
     <artifactId>empty3-library-3d</artifactId>
-    <version>2021.1.3</version>
+    <version>2021.1.4</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
         <dependency>
