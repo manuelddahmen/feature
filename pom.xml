@@ -308,10 +308,6 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <url>https://empty3.one/downloads/maven</url>
         </repository>
         <repository>
-            <id>spring io</id>
-            <url>https://repo.spring.io/plugins-release/</url>
-        </repository>
-        <repository>
             <id>maven-central</id>
             <url>https://repo1.maven.org/maven2/</url>
         </repository>
