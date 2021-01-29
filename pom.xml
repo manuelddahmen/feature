@@ -324,7 +324,10 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <id>netbeans</id>
             <url>http://bits.netbeans.org/maven2/</url>
         </repository>
-
+<repository>
+<id>xuggle repo 2</id>
+    <url>https://files.liferay.com/mirrors/xuggle.googlecode.com/svn/trunk/repo/share/java/</url>
+  </repository>
 <repository>
     <id>xuggle repo</id>
     <url>https://files.liferay.com/mirrors/xuggle.googlecode.com/svn/trunk/repo/share/java/</url>
