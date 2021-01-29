@@ -23,3 +23,4 @@ etendreCluster(D, P, PtsVoisins, C, eps, MinPts)
           
 epsilonVoisinage(D, P, eps)
  */
+package one.empty3.feature;
