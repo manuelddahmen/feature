@@ -308,11 +308,6 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <url>https://empty3.one/downloads/maven</url>
         </repository>
         <repository>
-            <id>mvn-r</id>
-            <name>mvn r</name>
-            <url>http://mvnrepository.com/maven</url>
-        </repository>
-        <repository>
             <id>spring io</id>
             <url>https://repo.spring.io/plugins-release/</url>
         </repository>
@@ -432,6 +427,7 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <groupId>xuggle</groupId>
             <artifactId>xuggle-xuggler</artifactId>
             <version>5.4</version>
+            <type>pom<type>
         </dependency>
         <dependency>
             <groupId>com.github.dexecutor</groupId>
@@ -442,6 +438,7 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <groupId>one.empty3</groupId>
             <artifactId>montemedia</artifactId>
             <version>0.0.7-2</version>
+            <type>jar</type>
         </dependency>
         <dependency>
             <groupId>org.jcodec</groupId>
