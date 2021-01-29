@@ -26,24 +26,17 @@ epsilonVoisinage(D, P, eps)
 package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
-
-public class DBScan extends ProcessFile {
-    public boolean process (File in, File out)
-{
-        return false;
-}
-/*
-}
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+public class DBScan extends ProcessFile {
+    public boolean process (File in, File out) {
+        return false;
 
-
-
-public class dbscanAlgo{
+    }
     public static List <Vector>Data;
     public static List <Clusters> Clusters;
     public static List <Boolean > Pvisited;
@@ -53,7 +46,7 @@ public class dbscanAlgo{
     public static List  noise;
 
 
-public static void read(int String){
+    public static void read(int String){
 
     String[] values;
      //System.out.println("Working Directory = " +
@@ -185,6 +178,6 @@ public static void main(String[]args){
     DBSCAN(3,5);
 
 
-    //System.out.println(((List<Vector>) Clusters.get(0)).get(1));
-}   
-*/
+      //System.out.println(((List<Vector>) Clusters.get(0)).get(1));
+    }   
+}
