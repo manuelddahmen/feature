@@ -24,3 +24,12 @@ etendreCluster(D, P, PtsVoisins, C, eps, MinPts)
 epsilonVoisinage(D, P, eps)
  */
 package one.empty3.feature;
+
+import one.empty3.io.ProcessFile;
+
+public class DBScan extends ProcessFile {
+    public boolean process (File in, File out)
+{
+        return false;
+}
+}
