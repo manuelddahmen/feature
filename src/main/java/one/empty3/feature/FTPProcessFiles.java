@@ -444,7 +444,7 @@ Class classs = Class.forName(
             //list.add(ftmp);
             
                 System.out.println("frame no"+(i++));
-       }while(t.nextFrame);
+       }while(t.nextFrame());
 
      //  File[] files = new File[list.size()];
 
