@@ -1,6 +1,6 @@
 #!/bin/bash
-for i in sets/*
+for i in sets/$1
 do
-    echo "${i}"
-    mvn exec:java -Dexec.mainClass="one.empty3.feature.FTPProcessFiles" -Dexec.args="$i"
+    echo "${1}"
+    mvn exec:java -Dexec.mainClass="one.empty3.feature.FTPProcessFiles" -Dexec.args="$1"
 done
