@@ -32,6 +32,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import java.io.File;
 public class Clusters extends ProcessFile {
     public boolean process (File in, File out) {
         return false;
