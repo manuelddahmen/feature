@@ -43,7 +43,7 @@ public class MakeDataset {
       } 
     } 
  public static void writeFeature
-  (Set<Integer, double[]> data,
+  (HashMap<Integer, double[]> data,
    File csvout) {
        try {
       
