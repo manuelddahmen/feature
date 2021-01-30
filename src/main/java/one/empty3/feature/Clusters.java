@@ -114,9 +114,9 @@ public static void DBSCAN (int esp, int minPts){
             //System.out.println(c);
             c++;
             //System.out.println("This is c" + c);
-            Clusters C= new Clusters(c);
-            C.setPoint(Data.get(c));
-            Clusters.add(C);
+//            Clusters C = new Clusters(c);
+//            C.setPoint(Data.get(c));
+//            Clusters.add(C);
             //System.out.println(size);
             //C.printC().toString();//System.out.print(C.printC());
             for(int j= 0; j<size;j++){
