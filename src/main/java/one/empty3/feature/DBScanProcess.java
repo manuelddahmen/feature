@@ -95,7 +95,7 @@ for (double[] q : N) {
             ex.printStackTrace();
         }
 		
-		final PixM pix;
+		PixM pix;
 		try {
          		pix = PixM
                   .getPixM(ImageIO.read(in), res);
