@@ -6,7 +6,7 @@ import java.awt.image.*;
 import one.empty3.feature.io.*;
 
 
-public class DBScan extends ProcessFile{
+public class DBScanProcess extends ProcessFile {
      public List<double> ns(List<double> points, double eps, double [] ps) {
    List<double[]> n = new ArrayList();
    for(double[] p : points) {
