@@ -120,15 +120,15 @@ for (double[] q : N) {
             List<double[]> db = r1.features;
           
           DBScanProcess pf = new DBScanProcess();
-          pf.init();
+          pf.dbscan();
           pf.process(new File(args[0]), out);
           
-          centroids.forEach( (i, p) -> {
+          clusters.forEach( (i, p) -> {
 	    for(int j=0; j<3; j++) {
 		pix2.setCompNo(j);
 	        pix2.set((int)(float)(p[0]),
 		    (int)(float)(p[1]),
-	            1.0 * cs[j] );
+	            1.0 * p[j] );
          }
      });
           try {
