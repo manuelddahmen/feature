@@ -18,6 +18,24 @@ public class DBScan extends ProcessFile{
 }
 
 public boolean process(File in, File out){
+// init centroids with random colored
+        // points.
+        try {
+             new MakeDataset(in,
+                  new File(out.getAbsolutePath()+".csv"), 50);
+            
+                  K_Clusterer.main(new String[] {
+                      in.getAbsolutePath(),
+                        out.getAbsolutePath()+".csv", out.getAbsolutePath()
+                     }, 50
+              );
+            
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return true;
+     }
+     public static main(String [] args) {
            List<double[]> points ;
 
 double [] size = new double[]{
@@ -51,7 +69,7 @@ for (double[] q : N) {
 }
                  count++;
            }
-
+        }
      }
      public double distance(double [] p1,
           double [] p2) {
