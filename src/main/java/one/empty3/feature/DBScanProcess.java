@@ -123,14 +123,15 @@ for (double[] q : N) {
           pf.dbscan();
           pf.process(new File(args[0]), out);
           
-          clusters.forEach( (i, p) -> {
+          clusters.forEach( (i, l) -> {
+		  for(double [] p : l)
 	    for(int j=0; j<3; j++) {
 		pix2.setCompNo(j);
 	        pix2.set((int)(float)(p[0]),
 		    (int)(float)(p[1]),
 	            1.0 * p[j] );
-         }
-     });
+             }
+          });
           try {
        ImageIO.write( pix2.normalize(0.0, 1.0).getImage(), "jpg", out);
      } catch (Exception ex1){
