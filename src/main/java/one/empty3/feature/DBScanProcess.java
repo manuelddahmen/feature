@@ -90,7 +90,7 @@ for (double[] q : N) {
             }
            return den;
            }
-	BufferedImage img=null;
+	static BufferedImage img=null;
      //main method
 	public static void main(String args[], int res) throws IOException {
 		final PixM pix;
