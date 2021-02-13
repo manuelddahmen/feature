@@ -3,7 +3,7 @@ package one.empty3.feature;
 import java.util.*;
 import java.io.*;
 import java.awt.image.*;
-import one.empty3.feature.io.*;
+import one.empty3.io.*;
 import one.empty3.feature.kmeans.*;
 
 public class DBScanProcess extends ProcessFile {
@@ -38,7 +38,7 @@ public boolean process(File in, File out){
 	List<double[]> points ;
 	double [] size;
 	HashMap<Integer, List<double[]>> clusters = new HashMap();
-           HashMap<double[], int> centroids = new HashMap();
+           HashMap<double[], Integer> centroids = new HashMap();
            int pointsMax = 100000;
            double eps = 1.0;
            int minPts;
@@ -49,10 +49,10 @@ int c = 0;
       size = new double[]{
           img.getWidth(), img.getHeight(), 1.0, 1.0, 1.0
      };
-           
+           int count=0;
            while(count<pointsMax) {
                  for(double[] p : points) {
-if(label(p)>-1) {
+if(centroids.get(p)!=null && centroids.get(p))>-1) {
        List<double[]> n = ns(points, eps, p);
 if(n.size()<minPts)
       {centroids.put(p, -1);
@@ -64,7 +64,7 @@ centroids.put(p, c);
 
 List<double[]> N = ns(points, eps, p);
 for (double[] q : N) {
-      if(ns(points, eps, q)>minPts) {
+      if(N.size()>minPts) {
            centroids.put(q, c);
 } else {
          centroids.put(q, -1);
@@ -82,19 +82,20 @@ for (double[] q : N) {
              return Math.sqrt(d);
       }
       public double[] density(List<double[]> cluster, double[] centroid) {
-            double den = new double[]{0.0,0.0,0.0,0.0,0.0};
+            double [] den = new double[]{0.0,0.0,0.0,0.0,0.0};
             for(double[] item : cluster) { 
                for(int i=0;i<5;i++)
                  den[i]+=item[i]/distance(item, centroid);
             }
            return den;
            }
+	BufferedImage img=null;
      //main method
 	public static void main(String args[], int res) throws IOException {
 		final PixM pix;
 		try {
          		pix = PixM
-                  .getPixM( ImageIO.read(new File(args[0])), res);
+                  .getPixM( img=ImageIO.read(new File(args[0])), res);
      		} catch (Exception ex1){
 	   		ex1.printStackTrace();
          		return;
