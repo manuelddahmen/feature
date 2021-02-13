@@ -35,7 +35,7 @@ public boolean process(File in, File out){
         }
         return true;
      }
-     public static main(String [] args) {
+     public static void main(String [] args) {
            List<double[]> points ;
 
 double [] size = new double[]{
