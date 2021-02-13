@@ -114,8 +114,11 @@ for (double[] q : N) {
 		//Scanner sc = new Scanner(System.in);
 		//System.out.println("Enter the filename with path");
 		String file=  out.getAbsolutePath()+".csv";
-		r1.read(file); //load data
-		
+		try {
+		    r1.read(file); //load data
+		} catch(Exception ex){
+                    ex.printStackTrace();
+                }
             points = r1.features;
           
           
