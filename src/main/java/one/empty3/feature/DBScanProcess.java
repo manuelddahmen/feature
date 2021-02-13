@@ -85,4 +85,41 @@ for (double[] q : N) {
                  den[i]+=item[i]/distance(item, centroid);
             }
            return den;
+           }
+     //main method
+	public static void main(String args[], int res) throws IOException {
+		final PixM pix;
+		try {
+         		pix = PixM
+                  .getPixM( ImageIO.read(new File(args[0])), res);
+     		} catch (Exception ex1){
+	   		ex1.printStackTrace();
+         		return;
+    		}
+		PixM pix2 = new PixM(
+		    pix.getColumns(),
+	            pix.getLines()
+		  );
+	
+		File out = new File(args[2]);
+		ReadDataset r1 = new ReadDataset();
+		r1.features.clear();
+		//Scanner sc = new Scanner(System.in);
+		//System.out.println("Enter the filename with path");
+		String file= args[1] ;
+		r1.read(file); //load data
+		
+          
+          
+          ProcessFile pf = new DBScanProcess();
+          pf.process(new File(args[0]), out);
+          
+          
+          try {
+       ImageIO.write( pix2.normalize(0.0, 1.0).getImage(), "jpg", out);
+     } catch (Exception ex1){
+	   ex1.printStackTrace();
+         return;
+     }
+     return ;
 }
