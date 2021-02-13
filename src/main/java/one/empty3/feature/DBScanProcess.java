@@ -4,7 +4,7 @@ import java.util.*;
 import java.io.*;
 import java.awt.image.*;
 import one.empty3.feature.io.*;
-
+import one.empty3.feature.kmeans.*;
 
 public class DBScanProcess extends ProcessFile {
      public List<double> ns(List<double> points, double eps, double [] ps) {
@@ -35,18 +35,21 @@ public boolean process(File in, File out){
         }
         return true;
      }
-     public static void main(String [] args) {
-           List<double[]> points ;
-
-double [] size = new double[]{
-          img.getWidth(), img.getHeight(), 1.0, 1.0, 1.0
-     };
-           HashMap<int, List<double>> clusters = new HashMap();
+	List<double[]> points ;
+	double [] size;
+	HashMap<int, List<double>> clusters = new HashMap();
            HashMap<double[], int> centroids = new HashMap();
            int pointsMax = 100000;
            double eps = 1.0;
            int minPts;
 int c = 0;
+     public void dbscan(String [] args) {
+           
+
+      size = new double[]{
+          img.getWidth(), img.getHeight(), 1.0, 1.0, 1.0
+     };
+           
            while(count<pointsMax) {
                  for(double[] p : points) {
 if(label(p)>-1) {
@@ -111,7 +114,8 @@ for (double[] q : N) {
 		
           
           
-          ProcessFile pf = new DBScanProcess();
+          DBScanProcess pf = new DBScanProcess();
+          pf.init();
           pf.process(new File(args[0]), out);
           
           
