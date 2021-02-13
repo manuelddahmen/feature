@@ -120,11 +120,11 @@ for (double[] q : N) {
           pf.init();
           pf.process(new File(args[0]), out);
           
-          centroids.forEach( (i, db) -> {
+          centroids.forEach( (i, p) -> {
 	    for(int j=0; j<3; j++) {
 		pix2.setCompNo(j);
-	        pix2.set((int)(float)(db[0]),
-		    (int)(float)(db[1]),
+	        pix2.set((int)(float)(p[0]),
+		    (int)(float)(p[1]),
 	            1.0 * cs[j] );
          }
      });
