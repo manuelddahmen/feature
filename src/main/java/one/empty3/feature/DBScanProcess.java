@@ -7,7 +7,7 @@ import one.empty3.feature.io.*;
 import one.empty3.feature.kmeans.*;
 
 public class DBScanProcess extends ProcessFile {
-     public List<double> ns(List<double> points, double eps, double [] ps) {
+     public List<double[]> ns(List<double[]> points, double eps, double [] ps) {
    List<double[]> n = new ArrayList();
    for(double[] p : points) {
         if(distance(p, ps)<eps) {
@@ -37,7 +37,7 @@ public boolean process(File in, File out){
      }
 	List<double[]> points ;
 	double [] size;
-	HashMap<int, List<double>> clusters = new HashMap();
+	HashMap<Integer, List<double[]>> clusters = new HashMap();
            HashMap<double[], int> centroids = new HashMap();
            int pointsMax = 100000;
            double eps = 1.0;
