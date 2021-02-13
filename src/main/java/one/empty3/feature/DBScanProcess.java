@@ -112,13 +112,20 @@ for (double[] q : N) {
 		String file= args[1] ;
 		r1.read(file); //load data
 		
-          
+            List<double[]> db = r1.features;
           
           DBScanProcess pf = new DBScanProcess();
           pf.init();
           pf.process(new File(args[0]), out);
           
-          
+          centroids.forEach( (i, db) -> {
+	    for(int j=0; j<3; j++) {
+		pix2.setCompNo(j);
+	        pix2.set((int)(float)(db[0]),
+		    (int)(float)(db[1]),
+	            1.0 * cs[j] );
+         }
+     });
           try {
        ImageIO.write( pix2.normalize(0.0, 1.0).getImage(), "jpg", out);
      } catch (Exception ex1){
