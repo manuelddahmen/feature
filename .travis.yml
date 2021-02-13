@@ -1,3 +1,5 @@
 language: java
 sudo: false
 script: mvn install:install -Dgpg.skip=true 
+- name: Auto-Formatter
+  uses: mezgoodle/auto-formatter@v1.0.1
