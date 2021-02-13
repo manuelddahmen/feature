@@ -123,7 +123,7 @@ for (double[] q : N) {
           pf.dbscan();
           pf.process(new File(args[0]), out);
           
-          clusters.forEach( (i, l) -> {
+          pf.clusters.forEach( (i, l) -> {
 		  for(double [] p : l)
 	    for(int j=0; j<3; j++) {
 		pix2.setCompNo(j);
