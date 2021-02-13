@@ -18,24 +18,7 @@ public class DBScanProcess extends ProcessFile {
    return n;
 }
 
-public boolean process(File in, File out){
-// init centroids with random colored
-        // points.
-        try {
-             new MakeDataset(in,
-                  new File(out.getAbsolutePath()+".csv"), 50);
-            
-                  main(new String[] {
-                      in.getAbsolutePath(),
-                        out.getAbsolutePath()+".csv", out.getAbsolutePath()
-                     }, 50
-              );
-            
-        } catch(Exception ex){
-            ex.printStackTrace();
-        }
-        return true;
-     }
+
 	List<double[]> points ;
 	double [] size;
 	HashMap<Integer, List<double[]>> clusters = new HashMap();
@@ -95,11 +78,27 @@ for (double[] q : N) {
            }
 	static BufferedImage img=null;
      //main method
-	public static void main(String args[], int res) throws IOException {
+	public boolean process(File in, File out){
+		
+		// points.
+        try {
+             new MakeDataset(in,
+                  new File(out.getAbsolutePath()+".csv"), 50);
+            
+                  main(new String[] {
+                      in.getAbsolutePath(),
+                        out.getAbsolutePath()+".csv", out.getAbsolutePath()
+                     }, 50
+              );
+            
+        } catch(Exception ex){
+            ex.printStackTrace();
+        }
+		
 		final PixM pix;
 		try {
          		pix = PixM
-                  .getPixM( img=ImageIO.read(new File(args[0])), res);
+                  .getPixM( img=ImageIO.read(in), res);
      		} catch (Exception ex1){
 	   		ex1.printStackTrace();
          		return;
@@ -109,19 +108,19 @@ for (double[] q : N) {
 	            pix.getLines()
 		  );
 	
-		File out = new File(args[2]);
+		File out = out;
 		ReadDataset r1 = new ReadDataset();
 		r1.features.clear();
 		//Scanner sc = new Scanner(System.in);
 		//System.out.println("Enter the filename with path");
-		String file= args[1] ;
+		String file=  out.getAbsolutePath()+".csv";
 		r1.read(file); //load data
 		
-            List<double[]> db = r1.features;
+            points = r1.features;
           
-          DBScanProcess pf = new DBScanProcess();
-          pf.dbscan();
-          pf.process(new File(args[0]), out);
+          
+          dbscan();
+         
           
           pf.clusters.forEach( (i, l) -> {
 		  for(double [] p : l)
