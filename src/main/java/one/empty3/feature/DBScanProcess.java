@@ -85,7 +85,7 @@ for (double[] q : N) {
              new MakeDataset(in,
                   new File(out.getAbsolutePath()+".csv"), 50);
             
-                  main(new String[] {
+                  K_Clusterer.main(new String[] {
                       in.getAbsolutePath(),
                         out.getAbsolutePath()+".csv", out.getAbsolutePath()
                      }, 50
@@ -101,14 +101,14 @@ for (double[] q : N) {
                   .getPixM( img=ImageIO.read(in), res);
      		} catch (Exception ex1){
 	   		ex1.printStackTrace();
-         		return;
+         		
     		}
 		PixM pix2 = new PixM(
 		    pix.getColumns(),
 	            pix.getLines()
 		  );
 	
-		File out = out;
+		
 		ReadDataset r1 = new ReadDataset();
 		r1.features.clear();
 		//Scanner sc = new Scanner(System.in);
