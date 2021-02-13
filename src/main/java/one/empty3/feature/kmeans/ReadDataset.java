@@ -28,7 +28,7 @@ public class ReadDataset {
 		return features;
 	}
 	
-	void read(String s) throws NumberFormatException, IOException {
+	public void read(String s) throws NumberFormatException, IOException {
 		
 		File file=new File(s);
 		
