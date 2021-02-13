@@ -20,8 +20,8 @@ import java.util.Scanner;
 
 public class ReadDataset {
 	
-        static List<double[]> features=new ArrayList<>();
-	static int numberOfFeatures;
+        public static List<double[]> features=new ArrayList<>();
+	public static int numberOfFeatures;
 	
 	public List<double[]> getFeatures()
 	{
