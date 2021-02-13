@@ -98,7 +98,7 @@ for (double[] q : N) {
 		final PixM pix;
 		try {
          		pix = PixM
-                  .getPixM( img=ImageIO.read(in), res);
+                  .getPixM(ImageIO.read(in), res);
      		} catch (Exception ex1){
 	   		ex1.printStackTrace();
          		
@@ -122,7 +122,7 @@ for (double[] q : N) {
           dbscan();
          
           
-          pf.clusters.forEach( (i, l) -> {
+          clusters.forEach( (i, l) -> {
 		  for(double [] p : l)
 	    for(int j=0; j<3; j++) {
 		pix2.setCompNo(j);
@@ -135,8 +135,8 @@ for (double[] q : N) {
        ImageIO.write( pix2.normalize(0.0, 1.0).getImage(), "jpg", out);
      } catch (Exception ex1){
 	   ex1.printStackTrace();
-         return;
+         
      }
-     return ;
+     
 }
 }
