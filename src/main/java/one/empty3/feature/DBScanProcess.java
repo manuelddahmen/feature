@@ -44,7 +44,10 @@ public boolean process(File in, File out){
            double eps = 1.0;
            int minPts;
 int c = 0;
-     public void dbscan(String [] args) {
+	
+	
+	
+     public void dbscan() {
            
 
       size = new double[]{
