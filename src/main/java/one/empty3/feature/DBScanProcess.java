@@ -101,7 +101,7 @@ for (double[] q : N) {
                   .getPixM(ImageIO.read(in), 100);
      		} catch (Exception ex1){
 	   		ex1.printStackTrace();
-         		
+         		return false;
     		}
 		PixM pix2 = new PixM(
 		    pix.getColumns(),
@@ -137,6 +137,6 @@ for (double[] q : N) {
 	   ex1.printStackTrace();
          
      }
-     
+     return true;
 }
 }
