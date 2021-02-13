@@ -40,7 +40,7 @@ public boolean process(File in, File out){
 	double [] size;
 	HashMap<Integer, List<double[]>> clusters = new HashMap();
            HashMap<double[], Integer> centroids = new HashMap();
-           int pointsMax = 100000;
+           int pointsMax = 10000;
            double eps = 1.0;
            int minPts;
 int c = 0;
