@@ -52,7 +52,7 @@ int c = 0;
            int count=0;
            while(count<pointsMax) {
                  for(double[] p : points) {
-if(centroids.get(p)!=null && centroids.get(p))>-1) {
+if(centroids.get(p)!=null && centroids.get(p)>-1) {
        List<double[]> n = ns(points, eps, p);
 if(n.size()<minPts)
       {centroids.put(p, -1);
