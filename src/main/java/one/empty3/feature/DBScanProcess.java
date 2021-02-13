@@ -24,7 +24,7 @@ public boolean process(File in, File out){
              new MakeDataset(in,
                   new File(out.getAbsolutePath()+".csv"), 50);
             
-                  K_Clusterer.main(new String[] {
+                  main(new String[] {
                       in.getAbsolutePath(),
                         out.getAbsolutePath()+".csv", out.getAbsolutePath()
                      }, 50
