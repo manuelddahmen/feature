@@ -98,7 +98,7 @@ for (double[] q : N) {
 		PixM pix;
 		try {
          		pix = PixM
-                  .getPixM(ImageIO.read(in), res);
+                  .getPixM(ImageIO.read(in), 100);
      		} catch (Exception ex1){
 	   		ex1.printStackTrace();
          		
