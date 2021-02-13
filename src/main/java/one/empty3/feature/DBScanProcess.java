@@ -8,7 +8,7 @@ import one.empty3.feature.io.*;
 
 public class DBScan extends ProcessFile{
      public List<double> ns(List<double> points, double eps, double [] ps) {
-   List<> n = new ArrayList();
+   List<double[]> n = new ArrayList();
    for(double[] p : points) {
         if(distance(p, ps)<eps) {
             n.add(p);
@@ -122,4 +122,5 @@ for (double[] q : N) {
          return;
      }
      return ;
+}
 }
