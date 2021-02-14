@@ -29,12 +29,12 @@ public class DBScanProcess extends ProcessFile {
 int c = 0;
 	
 	
-	
+	PixM pix;
      public void dbscan() {
            
 
       size = new double[]{
-          img.getWidth(), img.getHeight(), 1.0, 1.0, 1.0
+          pix.getColumns(), pix.getLines(), 1.0, 1.0, 1.0
      };
            int count=0;
            while(count<pointsMax) {
@@ -76,7 +76,7 @@ for (double[] q : N) {
             }
            return den;
            }
-	static BufferedImage img=null;
+	
      //main method
 	public boolean process(File in, File out){
 		
@@ -95,7 +95,7 @@ for (double[] q : N) {
             ex.printStackTrace();
         }
 		
-		PixM pix;
+		
 		try {
          		pix = PixM
                   .getPixM(ImageIO.read(in), 100);
