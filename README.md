@@ -5,7 +5,7 @@
 https://drive.google.com/folderview?id=10CXWU2JPVsNMbHrAssxN23KzizzNkvHg
 Documentation utilisée.
 
-## Filtres (kernels) d'images
+## Filtres d'images
 Filtres : flou Gauss, 
 Gradient X, Y, outter dot product. 
 SobelX, SobelY. localextrema, histogramme des densites,
