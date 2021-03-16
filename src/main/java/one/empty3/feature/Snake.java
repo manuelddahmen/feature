@@ -5,6 +5,14 @@ import java.io.*;
 import java.util.*;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
+/***
+1 prendre les points entre t=0.0 et t=1.0
+  extraire un polygone interieur et exterieur,
+  comme gauche/droite.
+2 calculer somme(i-moyenneI)2 a' chaque
+  point.
+3 de? 
+***/
 public class Snake {
 
     private BSpline spline;
