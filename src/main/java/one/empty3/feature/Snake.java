@@ -16,7 +16,7 @@ import one.empty3.library.*;
 public class Snake {
 
     private BSpline spline;
-
+    private List<double[]> in, out;
 
     private double energy() {
         double e;
@@ -32,7 +32,8 @@ public class Snake {
             }
         }
     }
-
+    public void classification(PixM pix) {
+    }
     public boolean process(File in, File out) {
         try {
             PixM pix = new PixM(ImageIO.read(in));
