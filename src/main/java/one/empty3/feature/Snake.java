@@ -68,7 +68,9 @@ public class Snake {
 
 
 
-PixM pix3 = new PixM(pix2.getColumns(), pix2.getLines());
+        PixM pix3 = new PixM(pix2.getColumns(), pix2.getLines());
+ 
+
         in.forEach(v -> {
            
             e = Math.pow(pix.getIntensity((int)(v[0]),
@@ -76,7 +78,7 @@ PixM pix3 = new PixM(pix2.getColumns(), pix2.getLines());
             pix3.set(v[0], v[1], e);
         });
              
-        out;forEach(vector -> {
+        out.forEach(vector -> {
               e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avgIn, 2);
         });
@@ -89,6 +91,15 @@ PixM pix3 = new PixM(pix2.getColumns(), pix2.getLines());
         } catch(Exception ex) {
             ex.printStackTrace();
             return false;
+        }
+
+       
+
+        try {
+            ImageIO.write(pix3.getImage(),
+               "jpg", out);
+        } catch(Exception ex) {
+            ex.printStackTrace();
         }
         return true;
     }
