@@ -13,6 +13,16 @@ public class Snake {
     private double energy() {
         double e;
         return e;
+
+        List<Point3D> p = spline.getControlPoints();
+
+        double sumOut;
+        double sumIn;
+
+        for(int i=0; i<pix.getColumns(); i++) {
+            for(int j=0; j<pix.getLines(); j++) {
+            }
+        }
     }
 
     public boolean process(File in, File out) {
