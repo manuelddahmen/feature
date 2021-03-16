@@ -57,7 +57,7 @@ public class Snake {
                  } else {
                     pix2.set(i,j,1.0);
                     
-                    in.add(M.getVector(0, pix, pix2));
+                    in.add(M.getVector(0, new double [][]{pix.getValues(i,j), pix2.getValues(i,j)}));
                     
                     avgIn += pix.get(i,j);
                     cptIn ++;
