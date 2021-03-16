@@ -65,8 +65,8 @@ public class Snake {
 
             }
         }
-        avgOut /= cptOut;
-        avgIn /= cptIn;
+        avg[1] /= cpt[1];
+        avg[0] /= cpt[0];
 
 
 
