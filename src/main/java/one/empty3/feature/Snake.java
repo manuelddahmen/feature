@@ -23,14 +23,21 @@ public class Snake {
         return e;
     }
     public void classification(PixM pix) {
-    
-        List<Point3D> p = spline.getControlPoints();
-
-        double sumOut;
-        double sumIn;
+        Point3D vecTan0, vecTan;
+        Point3D vecNor0, vecNor;
+        
+        List<Point3D> p = spline.getPoints().getElem();
+        for(double t=0.; t<1.; t+=1./pix.getColumns()) {
+            
+        }
+        double sumOut = 0.0;
+        double sumIn = 0.0
+        
+        PixM pix2 = new PixM(pix.getColumns(),pix.getLines());
 
         for(int i=0; i<pix.getColumns(); i++) {
             for(int j=0; j<pix.getLines(); j++) {
+                 
             }
         }
     }
