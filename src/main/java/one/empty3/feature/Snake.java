@@ -91,7 +91,7 @@ public class Snake {
     
     public boolean process(File in, File out) {
         try {
-            PixM pix = new PixM(ImageIO.read(in));
+           pix = new PixM(ImageIO.read(in));
           pix3 = new PixM(pix.getColumns(), pix.getLines());
         } catch(Exception ex) {
             ex.printStackTrace();
