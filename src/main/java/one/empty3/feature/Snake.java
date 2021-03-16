@@ -38,7 +38,7 @@ public class Snake {
         for(double t=0.; t<1.; t+=1./pix.getColumns()) {
             pix2.setCompNo(0);
             Point3D p2 = spline.calculerPoint3D(t);
-            pix2.set((int)(p2.getX()), (int)(p2.getY()), 1.0);// si get(x,y)>0 ??? separer les courbes
+            pix2.set((int)(double)(p2.getX()), (int)(double)(p2.getY()), 1.0);// si get(x,y)>0 ??? separer les courbes
         }       
         for(int i=0; i<pix.getColumns(); i++) {
             boolean pOut = true;
@@ -50,7 +50,7 @@ public class Snake {
                  if(pOut) {
                      pix2.set(i,j,0.0);
                      
-                     out.add(M.getVectors(1, pix, pix2));
+                     out.add(M.getVectors(1, pix.getValues(), pix2.getValues()));
                      
                      avgOut += pix.get(i,j);
                      cptOut ++;
