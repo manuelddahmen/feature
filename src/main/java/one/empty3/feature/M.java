@@ -31,6 +31,7 @@ public class M {
              for(double dou : vectors[i])
                  f[di++] = dou;
         }
+        return f;
     }
     public M(PixM pix) {
         this.lines = pix.getLines();
