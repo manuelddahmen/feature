@@ -23,8 +23,7 @@ public class Snake {
    PixM pix, pix3;
   
 
-  
-    public void classification(PixM pix) {
+      public void classification() {
         double avgIn, avgOut;
         int cptIn, cptOut;
         Point3D vecTan0, vecTan;
