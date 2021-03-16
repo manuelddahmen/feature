@@ -22,7 +22,7 @@ public class M {
     }
     public static double [] getVector(int add, double[] ... vectors) {
         int d=0;
-        for(int i=0; i<vectors.length();i++)
+        for(int i=0; i<vectors.length;i++)
             d+= vectors[i].length;
         d+= add;
         double [] f = new double[d];
