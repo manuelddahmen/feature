@@ -84,9 +84,10 @@ public class Snake {
         out.forEach(v -> {
               double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avgIn, 2);
-        });
-        pix3.set((double)(v[0]), (double)(v[1]), - e);
+        
+        pix3.set((int)(double)(v[0]), (int)(double)(v[1]), - e);
         energy -= e;
+        });
     }
     
     public boolean process(File in, File out) {
@@ -104,6 +105,7 @@ public class Snake {
                "jpg", out);
         } catch(Exception ex) {
             ex.printStackTrace();
+          return false;
         }
         return true;
     }
