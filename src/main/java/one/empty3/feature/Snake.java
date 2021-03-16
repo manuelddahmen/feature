@@ -34,7 +34,7 @@ public class Snake {
        
         double sumOut = 0.0;
         double sumIn = 0.0;
-        double energy = 0.0;
+        double [] energy = new double[]{0.0};
         for(double t=0.; t<1.; t+=1./pix.getColumns()) {
             pix2.setCompNo(0);
             Point3D p2 = spline.calculerPoint3D(t);
@@ -78,7 +78,7 @@ public class Snake {
             final double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avg[0], 2);
             pix3.set((int)(double)(v[0]), (int)(double)(v[1]), e);
-            energy += e;
+            energy [0]+= e;
         });
              
         out.forEach(v -> {
@@ -86,7 +86,7 @@ public class Snake {
 (int)(v[1]))-avg[1], 2);
         
         pix3.set((int)(double)(v[0]), (int)(double)(v[1]), - e);
-        energy -= e;
+        energy [0]-= e;
         });
     }
     
