@@ -5,6 +5,7 @@ import java.io.*;
 import java.util.*;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
+import javax.image.ImageIO;
 /***
 1 prendre les points entre t=0.0 et t=1.0
   extraire un polygone interieur et exterieur,
