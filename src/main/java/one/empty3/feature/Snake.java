@@ -75,14 +75,14 @@ public class Snake {
 
         in.forEach(v -> {
            
-            e = Math.pow(pix.getIntensity((int)(v[0]),
+            double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avgIn, 2);
             pix3.set(v[0], v[1], e);
             energy += e;
         });
              
         out.forEach(vector -> {
-              e = Math.pow(pix.getIntensity((int)(v[0]),
+              double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avgIn, 2);
         });
         pix3.set(v[0], v[1], - e);
