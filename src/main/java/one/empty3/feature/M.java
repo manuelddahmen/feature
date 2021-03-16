@@ -20,7 +20,18 @@ public class M {
 
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
-    
+    public static double [] getVector() {int add, double[] ... vectors) {
+        int d=0;
+        for(int i=0; i<vectors.length();i++)
+            d++;
+        d+= add;
+        double [] f = new double[d];
+        int di=0;
+        for(int i=0; i<vectors.length();i++) {
+             for(double dou : vectors[i])
+                 f[di++] = dou;
+        }
+    }
     public M(PixM pix) {
         this.lines = pix.getLines();
         this.columns = pix.getColumns();
