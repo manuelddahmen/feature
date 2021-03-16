@@ -26,8 +26,8 @@ public class M {
         double [] v = new double[getCompCount()];
         
         for(int d=0; d<getCompCount(); d++) {
-            setCompNo(c);
-            v[c] = get(i, j);
+            setCompNo(d);
+            v[d] = get(i, j);
         }
         return v;
     }
