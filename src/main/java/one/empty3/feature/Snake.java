@@ -33,11 +33,11 @@ public class Snake {
        
         double sumOut = 0.0;
         double sumIn = 0.0;
-        double energy = 0.0.;
+        double energy = 0.0;
         for(double t=0.; t<1.; t+=1./pix.getColumns()) {
             pix2.setCompNo(0);
             Point3D p = spline.calculerPoint3D(t);
-            pix2.set((int)(p.getX(), (int)(p.getY()), 1.0);// si get(x,y)>0 ??? separer les courbes
+            pix2.set((int)(p.getX()), (int)(p.getY()), 1.0);// si get(x,y)>0 ??? separer les courbes
         }       
         for(int i=0; i<pix.getColumns(); i++) {
             boolean pOut = true;
