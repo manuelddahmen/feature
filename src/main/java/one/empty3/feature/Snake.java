@@ -20,7 +20,8 @@ public class Snake {
     private CourbeParametriquePolynomialeBezier spline;
     private List<double[]> in, out;
 
-   PixM pix, pix3;
+   final PixM pix;
+   PixM pix3;
   
 
       public void classification() {
@@ -74,14 +75,14 @@ public class Snake {
 
         in.forEach( v -> {
            
-            double e = Math.pow(pix.getIntensity((int)(v[0]),
+            final double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avgIn, 2);
             pix3.set((int)(double)(v[0]), (int)(double)(v[1]), e);
             energy += e;
         });
              
         out.forEach(v -> {
-              double e = Math.pow(pix.getIntensity((int)(v[0]),
+              final double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avgIn, 2);
         
         pix3.set((int)(double)(v[0]), (int)(double)(v[1]), - e);
