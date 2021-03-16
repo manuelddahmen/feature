@@ -20,7 +20,7 @@ public class M {
 
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
-    public static double [] getVector() {int add, double[] ... vectors) {
+    public static double [] getVector(int add, double[] ... vectors) {
         int d=0;
         for(int i=0; i<vectors.length();i++)
             d++;
