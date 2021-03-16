@@ -16,7 +16,7 @@ import javax.imageio.ImageIO;
 ***/
 public class Snake {
 
-    private BSpline spline;
+    private CourbeParametriquePolynomialeBezier spline;
     private List<double[]> in, out;
 
   
