@@ -20,11 +20,11 @@ public class Snake {
     private CourbeParametriquePolynomialeBezier spline;
     private List<double[]> in, out;
 
-   final PixM pix;
+   PixM pix;
    PixM pix3;
   
 
-      public void classification() {
+      public void classification(PixM pix, PixM pix3) {
         double avgIn=0.0, avgOut=0.0;
         int cptIn=0, cptOut=0;
         Point3D vecTan0, vecTan;
@@ -70,7 +70,7 @@ public class Snake {
 
 
 
-        pix3 = new PixM(pix2.getColumns(), pix2.getLines());
+ //       pix3 = new PixM(pix2.getColumns(), pix2.getLines());
  
 
         in.forEach( v -> {
@@ -91,15 +91,17 @@ public class Snake {
     }
     
     public boolean process(File in, File out) {
+      final PixM pix;
+      final PixM pix3;
         try {
            pix = new PixM(ImageIO.read(in));
-          pix3 = new PixM(pix.getColumns(), pix.getLines());
+           pix3 = new PixM(pix.getColumns(), pix.getLines());
         } catch(Exception ex) {
             ex.printStackTrace();
             return false;
         }
 
-       classification();
+       classification(pix, pix3);
 
         try {
             ImageIO.write(pix3.getImage(),
