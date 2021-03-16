@@ -49,14 +49,14 @@ public class Snake {
                      pix2.set(i,j,0.0);
                      
                      out.add(pix.getVector(pix2, 1));
-
+                     
                      avgOut += pix.get(i,j);
                      cptOut ++;
                  } else {
                     pix2.set(i,j,1.0);
-
+                    
                     in.add(pix.getVector(pix2));
-                 
+                    
                     avgIn += pix.get(i,j);
                     cptIn ++;
                  }
@@ -66,13 +66,21 @@ public class Snake {
         avgOut /= cptOut;
         avgIn /= cptIn;
 
-        in.forEach(vector -> {
-            
+
+
+PixM pix3 = new PixM(pix2.getColumns(), pix2.getLines());
+        in.forEach(v -> {
+           
+            e = Math.pow(pix.getIntensity((int)(v[0]),
+(int)(v[1]))-avgIn, 2);
+            pix3.set(v[0], v[1], e);
         });
              
         out;forEach(vector -> {
+              e = Math.pow(pix.getIntensity((int)(v[0]),
+(int)(v[1]))-avgIn, 2);
         });
-             
+        pix3.set(v[0], v[1], - e);
     }
     
     public boolean process(File in, File out) {
