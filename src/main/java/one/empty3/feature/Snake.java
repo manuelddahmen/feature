@@ -23,6 +23,8 @@ public class Snake {
         return e;
     }
     public void classification(PixM pix) {
+        double avgIn, avgOut;
+        int cptIn, cptOut;
         Point3D vecTan0, vecTan;
         Point3D vecNor0, vecNor;
         PixM pix2 = new PixM(pix.getColumns(),pix.getLines());
@@ -45,10 +47,16 @@ public class Snake {
                  } 
                  if(pOut) {
                      pix2.set(i,j,0.0);
+                     
+                     out.add(pix.getVector(pix2, 1));
+
                      avgOut += pix.get(i,j);
                      cptOut ++;
                  } else {
                     pix2.set(i,j,1.0);
+
+                    in.add(pix.getVector(pix2));
+                 
                     avgIn += pix.get(i,j);
                     cptIn ++;
                  }
@@ -56,15 +64,15 @@ public class Snake {
             }
         }
         avgOut /= cptOut;
-        avgIn /= cptOut;
+        avgIn /= cptIn;
 
-        for(int i=0; i<pix.getColumns(); i++) {
-            for(int j=0; j<pix.getLines(); j++) {
-                
-            }
-        }
+        in.forEach(vector -> {
+            
+        });
              
-       
+        out;forEach(vector -> {
+        });
+             
     }
     
     public boolean process(File in, File out) {
