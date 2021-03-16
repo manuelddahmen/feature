@@ -50,7 +50,7 @@ public class Snake {
                  if(pOut) {
                      pix2.set(i,j,0.0);
                      
-                     out.add(M.getVector(1, new double[][] {pix.getValues(), pix2.getValues()}));
+                     out.add(M.getVector(1, new double[][] {pix.getValues(i,j), pix2.getValues(i,j)}));
                      
                      avgOut += pix.get(i,j);
                      cptOut ++;
