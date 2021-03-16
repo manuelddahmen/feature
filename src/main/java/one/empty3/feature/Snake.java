@@ -21,7 +21,9 @@ public class Snake {
     private double energy() {
         double e;
         return e;
-
+    }
+    public void classification(PixM pix) {
+    
         List<Point3D> p = spline.getControlPoints();
 
         double sumOut;
@@ -32,8 +34,7 @@ public class Snake {
             }
         }
     }
-    public void classification(PixM pix) {
-    }
+   
     public boolean process(File in, File out) {
         try {
             PixM pix = new PixM(ImageIO.read(in));
