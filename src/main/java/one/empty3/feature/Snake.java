@@ -26,7 +26,7 @@ public class Snake {
 
       public void classification(PixM pix, PixM pix3) {
         double[] avg= new double[2];
-        int[] cpt;
+        int[] cpt = new int[2];
         Point3D vecTan0, vecTan;
         Point3D vecNor0, vecNor;
         PixM pix2 = new PixM(pix.getColumns(),pix.getLines());
