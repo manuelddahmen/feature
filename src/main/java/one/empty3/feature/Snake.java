@@ -30,7 +30,7 @@ public class Snake {
         Point3D vecTan0, vecTan;
         Point3D vecNor0, vecNor;
         PixM pix2 = new PixM(pix.getColumns(),pix.getLines());
-        List<Point3D> p = spline.getCoefficients().getElem();
+        List<Point3D> p = spline.getCoefficients().getData1d();
        
         double sumOut = 0.0;
         double sumIn = 0.0;
@@ -50,7 +50,7 @@ public class Snake {
                  if(pOut) {
                      pix2.set(i,j,0.0);
                      
-                     out.add(M.getVector(1, pix.getValues(), pix2.getValues()));
+                     out.add(M.getVector(1, new double[][] {pix.getValues(), pix2.getValues()}));
                      
                      avgOut += pix.get(i,j);
                      cptOut ++;
@@ -73,7 +73,7 @@ public class Snake {
         PixM pix3 = new PixM(pix2.getColumns(), pix2.getLines());
  
 
-        in.forEach(v -> {
+        in.forEach( v -> {
            
             double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avgIn, 2.);
@@ -81,7 +81,7 @@ public class Snake {
             energy += e;
         });
              
-        out.forEach(vector -> {
+        out.forEach(v -> {
               double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avgIn, 2.);
         });
