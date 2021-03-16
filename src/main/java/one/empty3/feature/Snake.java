@@ -29,20 +29,44 @@ public class Snake {
         List<Point3D> p = spline.getPoints().getElem();
        
         double sumOut = 0.0;
-        double sumIn = 0.0
-/*       
-        for(int i=0; i<pix.getColumns(); i++) {
-            for(int j=0; j<pix.getLines(); j++) {
-                 pix2.set();
-            }
-        }*/
+        double sumIn = 0.0;
+
         for(double t=0.; t<1.; t+=1./pix.getColumns()) {
             pix2.setCompNo(0);
             Point3D p = spline.calculerPoint3D(t);
-            pix2.set((int)(p.getX((), (int)(p.getY()), 1.0);
+            pix2.set((int)(p.getX((), (int)(p.getY()), 1.0);// si get(x,y)>0 ??? separer les courbes
+        }       
+        for(int i=0; i<pix.getColumns(); i++) {
+            boolean pOut = true;
+            for(int j=0; j<pix.getLines(); j++) {
+                 if(pix2.get(i,j)==1.0) {
+                     pOut = !pOut;
+                     
+                 } 
+                 if(pOut) {
+                     pix2.set(i,j,0.0);
+                     avgOut += pix.get(i,j);
+                     cptOut ++;
+                 } else {
+                    pix2.set(i,j,1.0);
+                    avgIn += pix.get(i,j);
+                    cptIn ++;
+                 }
+
+            }
         }
+        avgOut /= cptOut;
+        avgIn /= cptOut;
+
+        for(int i=0; i<pix.getColumns(); i++) {
+            for(int j=0; j<pix.getLines(); j++) {
+                
+            }
+        }
+             
+       
     }
-   
+    
     public boolean process(File in, File out) {
         try {
             PixM pix = new PixM(ImageIO.read(in));
@@ -50,4 +74,6 @@ public class Snake {
             ex.printStackTrace();
             return false;
         }
+        return true;
+    }
 }
