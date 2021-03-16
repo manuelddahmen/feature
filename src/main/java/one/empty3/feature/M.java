@@ -27,7 +27,7 @@ public class M {
         d+= add;
         double [] f = new double[d];
         int di=0;
-        for(int i=0; i<vectors.length();i++) {
+        for(int i=0; i<vectors.length;i++) {
              for(double dou : vectors[i])
                  f[di++] = dou;
         }
