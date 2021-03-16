@@ -25,8 +25,8 @@ public class Snake {
   
 
       public void classification(PixM pix, PixM pix3) {
-        double avgIn=0.0, avgOut=0.0;
-        int cptIn=0, cptOut=0;
+        double[] avg= new double[2];
+        int[] cpt;
         Point3D vecTan0, vecTan;
         Point3D vecNor0, vecNor;
         PixM pix2 = new PixM(pix.getColumns(),pix.getLines());
@@ -52,15 +52,15 @@ public class Snake {
                      
                      out.add(M.getVector(1, new double[][] {pix.getValues(i,j), pix2.getValues(i,j)}));
                      
-                     avgOut += pix.get(i,j);
-                     cptOut ++;
+                     avg[1] += pix.get(i,j);
+                     cpt[1] ++;
                  } else {
                     pix2.set(i,j,1.0);
                     
                     in.add(M.getVector(0, new double [][]{pix.getValues(i,j), pix2.getValues(i,j)}));
                     
-                    avgIn += pix.get(i,j);
-                    cptIn ++;
+                    avg[0] += pix.get(i,j);
+                    cpt[0] ++;
                  }
 
             }
@@ -76,14 +76,14 @@ public class Snake {
         in.forEach( v -> {
            
             final double e = Math.pow(pix.getIntensity((int)(v[0]),
-(int)(v[1]))-avgIn, 2);
+(int)(v[1]))-avg[0], 2);
             pix3.set((int)(double)(v[0]), (int)(double)(v[1]), e);
             energy += e;
         });
              
         out.forEach(v -> {
               final double e = Math.pow(pix.getIntensity((int)(v[0]),
-(int)(v[1]))-avgIn, 2);
+(int)(v[1]))-avg[1], 2);
         
         pix3.set((int)(double)(v[0]), (int)(double)(v[1]), - e);
         energy -= e;
