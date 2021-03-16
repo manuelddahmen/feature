@@ -20,6 +20,17 @@ public class M {
 
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
+    
+    public double[] getValues(int i, int j) {
+        
+        double [] v = new double[getCompCount()];
+        
+        for(int d=0; d<getCompCount(); d++) {
+            setCompNo(c);
+            v[c] = get(i, j);
+        }
+        return v;
+    }
     public static double [] getVector(int add, double[] ... vectors) {
         int d=0;
         for(int i=0; i<vectors.length;i++)
