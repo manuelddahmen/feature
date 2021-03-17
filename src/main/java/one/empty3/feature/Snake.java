@@ -34,6 +34,8 @@ public class Snake {
       }
 
       public void classification() {
+        in = new ArrayList<>();
+        out = new ArrayList<>();
         double[] avg= new double[2];
         int[] cpt = new int[2];
         Point3D vecTan0, vecTan;
