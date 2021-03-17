@@ -44,6 +44,17 @@ public class M {
         }
         return f;
     }
+   
+    public void setValues(int i, int j, double... v) {
+        
+        
+        
+        for(int d=0; d<v.length; d++) {
+            setCompNo(d);
+            set(i, j, v[d]);
+        }
+        return;
+    }
     public M(PixM pix) {
         this.lines = pix.getLines();
         this.columns = pix.getColumns();
