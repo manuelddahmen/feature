@@ -97,7 +97,7 @@ public class Snake extends ProcessFile {
 (int)(v[1]))-avg[1], 2);
         
         pix3.set((int)(double)(v[0]), (int)(double)(v[1]), - e);
-        energy [0]-= e;
+        energy [1]-= e;
         }
     }
     
