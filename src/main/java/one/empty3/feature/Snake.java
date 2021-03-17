@@ -33,7 +33,7 @@ public class Snake {
         spline.getCoefficients().getData1d().add(P.n(c/2, l/3,0.));
       }
 
-      public void classification(PixM pix, PixM pix3) {
+      public void classification() {
         double[] avg= new double[2];
         int[] cpt = new int[2];
         Point3D vecTan0, vecTan;
@@ -82,26 +82,24 @@ public class Snake {
  //       pix3 = new PixM(pix2.getColumns(), pix2.getLines());
  
 
-        in.forEach( v -> {
+        for(double [] v : in) {
            
-            final double e = Math.pow(pix.getIntensity((int)(v[0]),
+            double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avg[0], 2);
             pix3.set((int)(double)(v[0]), (int)(double)(v[1]), e);
             energy [0]+= e;
-        });
+        }
              
-        out.forEach(v -> {
-              final double e = Math.pow(pix.getIntensity((int)(v[0]),
+        for(double : out) {
+              double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avg[1], 2);
         
         pix3.set((int)(double)(v[0]), (int)(double)(v[1]), - e);
         energy [0]-= e;
-        });
+        }
     }
     
     public boolean process(File in, File out) {
-      final PixM pix;
-      final PixM pix3;
         try {
            pix = new PixM(ImageIO.read(in));
            pix3 = new PixM(pix.getColumns(), pix.getLines());
