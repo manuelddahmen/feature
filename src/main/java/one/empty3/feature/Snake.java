@@ -109,7 +109,7 @@ public class Snake extends ProcessFile {
             ex.printStackTrace();
             return false;
         }
-
+       initCurve();
        classification();
 
         try {
