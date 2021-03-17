@@ -59,14 +59,14 @@ public class Snake extends ProcessFile {
                      
                  } 
                  if(pOut) {
-                     pix2.set(i,j,0.0);
+                     pix2.setValues(i,j,0.0, 0.0, 0.0);
                      
                      out.add(M.getVector(1, new double[][] {pix.getValues(i,j), pix2.getValues(i,j)}));
                      
                      avg[1] += pix.get(i,j);
                      cpt[1] ++;
                  } else {
-                    pix2.set(i,j,1.0);
+                    pix2.setValues(i,j,1.0,1.,1.);
                     
                     in.add(M.getVector(0, new double [][]{pix.getValues(i,j), pix2.getValues(i,j)}));
                     
