@@ -92,7 +92,7 @@ public class Snake {
             energy [0]+= e;
         }
              
-        for(double : out) {
+        for(double[] v : out) {
               double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avg[1], 2);
         
