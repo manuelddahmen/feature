@@ -45,7 +45,7 @@ public class Snake extends ProcessFile {
        
         double sumOut = 0.0;
         double sumIn = 0.0;
-        double [] energy = new double[]{0.0};
+        double [] energy = new double[]{0.0, 0.0};
         for(double t=0.; t<1.; t+=1./pix.getColumns()) {
             pix2.setCompNo(0);
             Point3D p2 = spline.calculerPoint3D(t);
@@ -88,6 +88,7 @@ public class Snake extends ProcessFile {
            
             double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avg[0], 2);
+          setCompNo(2);
             pix3.set((int)(double)(v[0]), (int)(double)(v[1]), e);
             energy [0]+= e;
         }
@@ -95,7 +96,7 @@ public class Snake extends ProcessFile {
         for(double[] v : out) {
               double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avg[1], 2);
-        
+        pix3.setCompNo(1);
         pix3.set((int)(double)(v[0]), (int)(double)(v[1]), - e);
         energy [1]-= e;
         }
@@ -113,7 +114,7 @@ public class Snake extends ProcessFile {
        classification();
 
         try {
-            ImageIO.write(pix3.getImage(),
+            ImageIO.write(pix3.normalize(0.,1.).getImage(),
                "jpg", out);
         } catch(Exception ex) {
             ex.printStackTrace();
