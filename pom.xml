@@ -38,7 +38,7 @@
 
     <licenses>
         <license>
-            <name>Gnu Gpl 3</name>
+            <name>fsf gnu gpl</name>
             <url>http://www.fsf.org/licenses/gpl</url>
             <distribution>repo</distribution>
         </license>
@@ -124,22 +124,19 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <version>1.6.0</version>
-                     <!--
+                     
                 <configuration>
-       <mainClass>one.empty3.feature.ExtractIntensityInfo</mainClass>      
+    <!--   <mainClass>one.empty3.feature.ExtractIntensityInfo</mainClass>    -->  
                          
                      <mainClass>one.empty3.feature.FTPProcessFiles</mainClass>
-                   <arguments>
-                       <argument>resources/IMG_20200822_204218.jpg</argument>
-                                
+                   <arguments> 
                         <argument>-Xms4000m</argument>
                         <argument>-Xmx4000m</argument>
                         <argument>-XmX4000m</argument>
                         <argument>-Dexec.args="sets"</argument>
                     </arguments>
                 </configuration>
--->
-            </plugin>
+       </plugin>
 
 
             <plugin>
