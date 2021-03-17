@@ -104,7 +104,7 @@ public class Snake extends ProcessFile {
     
     public boolean process(File in, File out) {
         try {
-           pix = PixM.getPixM(ImageIo.read(in, 500));
+           pix = PixM.getPixM(ImageIO.read(in, 500));
            pix3 = new PixM(pix.getColumns(), pix.getLines());
         } catch(Exception ex) {
             ex.printStackTrace();
