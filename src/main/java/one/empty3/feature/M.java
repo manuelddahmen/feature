@@ -11,7 +11,7 @@ public class M {
     protected int lines;
     double[] x;
     protected int compNo;
-    protected final int compCount = 4;
+    protected final int compCount = 3;
 
     public M(int c, int l) {
         this.lines = l;
