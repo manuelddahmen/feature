@@ -15,7 +15,7 @@ import javax.imageio.ImageIO;
   point.
 3 de? 
 ***/
-public class Snake {
+public class Snake extends ProcessFile {
 
     private CourbeParametriquePolynomialeBezier spline;
     private List<double[]> in, out;
