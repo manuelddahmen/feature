@@ -26,11 +26,11 @@ public class Snake {
         double c= (double) (pix.getColumns());
         double l = (double) (pix.getLines());
         spline = new CourbeParametriquePolynomialeBezier();
-        spline.getCoefficients().getElem().add(P.n(c/2, l/3));
-        spline.getCoefficients().getElem().add(P.n(2*c/3, l/2));
-        spline.getCoefficients().getElem().add(P.n(c/2, 2*l/3));
-        spline.getCoefficients().getElem().add(P.n(c/3, l/2));
-        spline.getCoefficients().getElem().add(P.n(c/2, l/3));
+        spline.getCoefficients().getElem().add(P.n(c/2, l/3,0.));
+        spline.getCoefficients().getElem().add(P.n(2*c/3, l/2,0.));
+        spline.getCoefficients().getElem().add(P.n(c/2, 2*l/3,0.));
+        spline.getCoefficients().getElem().add(P.n(c/3, l/2,0.));
+        spline.getCoefficients().getElem().add(P.n(c/2, l/3,0.));
       }
 
       public void classification(PixM pix, PixM pix3) {
