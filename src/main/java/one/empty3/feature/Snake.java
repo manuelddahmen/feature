@@ -110,7 +110,7 @@ public class Snake {
             return false;
         }
 
-       classification(pix, pix3);
+       classification();
 
         try {
             ImageIO.write(pix3.getImage(),
