@@ -88,7 +88,7 @@ public class Snake extends ProcessFile {
            
             double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avg[0], 2);
-          pix3.setCompNo(2);
+          pix3.setCompNo(1);
             pix3.set((int)(double)(v[0]), (int)(double)(v[1]), e);
             energy [0]+= e;
         }
@@ -96,7 +96,7 @@ public class Snake extends ProcessFile {
         for(double[] v : out) {
               double e = Math.pow(pix.getIntensity((int)(v[0]),
 (int)(v[1]))-avg[1], 2);
-        pix3.setCompNo(1);
+        pix3.setCompNo(2);
         pix3.set((int)(double)(v[0]), (int)(double)(v[1]), - e);
         energy [1]-= e;
         }
