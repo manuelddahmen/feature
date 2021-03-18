@@ -2,7 +2,7 @@ package one.empty3.feature;
 
 import java.util.PrimitiveIterator;
 import java.util.Random;
-
+import one.empty3.library.Point3D;
 public class M {
     public static PrimitiveIterator.OfDouble r = new Random().doubles().iterator();
     public static final Double noValue = r.next();
