@@ -60,7 +60,7 @@ public class M {
         
         for(int d=0; d<3; d++) {
             setCompNo(d);
-            p.set(i, j, p.get(d));
+            p.set(d, get(i , j));
         }
         return p;
     }
