@@ -44,7 +44,7 @@ public class M {
         }
         return f;
     }
-      public void setP(int i, int j, Point3D p) {
+    public void setP(int i, int j, Point3D p) {
         
        
         
@@ -53,7 +53,7 @@ public class M {
             set(i, j, p.get(i));
         }
         return;
-    }
+   }
    public Point3D getP(int i, int j) {
         
        Point3D p = new Point3D();
@@ -62,7 +62,7 @@ public class M {
             setCompNo(d);
             p.set(i, j, p.get(d));
         }
-        return;
+        return p;
     }
     public void setValues(int i, int j, double... v) {
         
