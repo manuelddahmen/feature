@@ -27,14 +27,13 @@ public class HeadRepresentable extends Representable {
             headRb.load(new BufferedReader(new InputStreamReader(new FileInputStream(properties))));
 
             headRb.keySet().forEach(o -> {
-                sb.append(headRb.getProperty((String) o));
-                System.out.println(o+" = "+headRb.getProperty((String)o));
-            }
+                        sb.append(headRb.getProperty((String) o));
+                        System.out.println(o + " = " + headRb.getProperty((String) o));
+                    }
 
             );
 
             //sb.append(')');
-
 
 
             String s = sb.toString();
@@ -44,7 +43,7 @@ public class HeadRepresentable extends Representable {
 
             Scene load = new Scene();
 
-            if((load = new Loader().load(txt, load))!=null) {
+            if ((load = new Loader().load(txt, load)) != null) {
 
 
                 //File sceneL = new File("resources/stl/headRewrite.moo");
@@ -56,15 +55,15 @@ public class HeadRepresentable extends Representable {
                 new PrintWriter(sceneStl).println(sb.toString());
 
                 System.out.println(load);
-            }
-            else
+            } else
                 System.out.println("Model moo not loaded");
 
-        } catch ( IOException | ExtensionFichierIncorrecteException | VersionNonSupporteeException e) {
+        } catch (IOException | ExtensionFichierIncorrecteException | VersionNonSupporteeException e) {
             e.printStackTrace();
         }
     }
-        public static void main(String [] args) {
-            HeadRepresentable headRepresentable = new HeadRepresentable();
-        }
+
+    public static void main(String[] args) {
+        HeadRepresentable headRepresentable = new HeadRepresentable();
+    }
 }

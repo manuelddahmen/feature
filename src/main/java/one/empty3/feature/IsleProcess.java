@@ -1,6 +1,7 @@
 package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
+
 import java.io.File;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
@@ -10,8 +11,7 @@ public class IsleProcess extends ProcessFile {
     public boolean process(File in, File out) {
 
 
-
-        if(!in.getName().endsWith(".jpg"))
+        if (!in.getName().endsWith(".jpg"))
 
             return false;
 
@@ -23,30 +23,29 @@ public class IsleProcess extends ProcessFile {
             img = ImageIO.read(file);
             pix = PixM.getPixM(img, 500.0);
 
-        } catch(Exception ex) {
+        } catch (Exception ex) {
 
             ex.printStackTrace();
 
             return false;
 
-       // assertTrue(false);
+            // assertTrue(false);
 
-      
 
-         }
-          
-     IsleFilterPixM il = new IsleFilterPixM
-         (pix);
-     il.setCValues(Color.BLUE, Color.WHITE, 0.4);
-     il.filter();
-      try {            
+        }
 
-          ImageIO.write (pix.getImage(), "JPEG", out) ;
+        IsleFilterPixM il = new IsleFilterPixM
+                (pix);
+        il.setCValues(Color.BLUE, Color.WHITE, 0.4);
+        il.filter();
+        try {
 
-      } catch(Exception  ex ) {
-  
-      }
-     
-      return false;
+            ImageIO.write(pix.getImage(), "JPEG", out);
+
+        } catch (Exception ex) {
+
+        }
+
+        return false;
     }
 }

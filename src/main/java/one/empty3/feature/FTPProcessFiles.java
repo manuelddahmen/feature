@@ -37,7 +37,7 @@ public class FTPProcessFiles {
     static String settingsPropertiesPath;
 
     public static String getDirname(String s) {
-        if(s.contains("/"))
+        if (s.contains("/"))
             return s.substring(0, s.lastIndexOf("/"));
         return s;
     }
@@ -101,11 +101,14 @@ public class FTPProcessFiles {
 
 
         if (args.length > 1) {
-            if (args[0].endsWith(".properties"))
+            if (args[0].endsWith(".properties")) {
                 loadArgsProps(args[1]);
-            if (args[0].endsWith(".json"))
+                defaultProcess();
+            }
+            if (args[0].endsWith(".json")) {
                 loadArgsJson(args[1]);
-            defaultProcess();
+                defaultProcess();
+            }
         } else {
             int i = 0;
             while (i < Objects.requireNonNull(new File("sets").list()).length) {
@@ -195,7 +198,7 @@ public class FTPProcessFiles {
         for (String classname2 : classnamesArr) {
             try {
                 classname = classname2;
-                if(i>0)
+                if (i > 0)
                     currentDirin = currentDirout;
                 currentDirout = "" + directoryOut + "-" + i + "-" + classname + "/";
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("Process class name read " + classname);
@@ -304,7 +307,7 @@ public class FTPProcessFiles {
                 ex.printStackTrace();
             } finally {
                 // logs out and disconnects from server
-                if(ftpClient!=null) {
+                if (ftpClient != null) {
                     try {
                         if (ftpClient.isConnected()) {
                             ftpClient.logout();

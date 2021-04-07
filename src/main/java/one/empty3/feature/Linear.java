@@ -46,7 +46,7 @@ public class Linear {
         assert images != null;
         for (int x = 0; x < op.length; x++) {
             workingImages = new PixM[images.length];//.??N
-        //new PixM[index[x].length];//.??N
+            //new PixM[index[x].length];//.??N
             for (int j = 0; j < index[x].length; j++) {
                 workingImages[j] = images[index[x][j]];
             }
@@ -61,33 +61,33 @@ public class Linear {
                         for (int j = 0; j < workingImages[m].lines; j++)
                             switch (op[x]) {
                                 case '+':
-                                    if(m==0)
+                                    if (m == 0)
                                         pixM.set(i, j, workingImages[0].get(i, j));
                                     pixM.set(i, j, pixM.get(i, j) + workingImages[m].get(i, j));
                                     break;
                                 case '-':
-                                    if(m==0)
+                                    if (m == 0)
                                         pixM.set(i, j, workingImages[0].get(i, j));
                                     else
                                         pixM.set(i, j, pixM.get(i, j) - workingImages[m].get(i, j));
                                     break;
                                 case '*':
-                                    if(m==0)
+                                    if (m == 0)
                                         pixM.set(i, j, workingImages[0].get(i, j));
-                                    pixM.set(i, j, pixM.get(i, j)*workingImages[m].get(i, j));
+                                    pixM.set(i, j, pixM.get(i, j) * workingImages[m].get(i, j));
                                     break;
                                 case '/'://divide M1/M2/M3
-                                    if(m==0)
+                                    if (m == 0)
                                         pixM.set(i, j, workingImages[0].get(i, j));
                                     pixM.set(i, j, pixM.get(i, j) / workingImages[m].get(i, j));
                                     break;
                                 case '~': //average
-                                    if(m==0)
+                                    if (m == 0)
                                         pixM.set(i, j, workingImages[0].get(i, j));
                                     pixM.set(i, j, pixM.get(i, j) + workingImages[m].get(i, j) / workingImages.length);
                                     break;
                                 case '%':
-                                    if(m==0)
+                                    if (m == 0)
                                         pixM.set(i, j, workingImages[0].get(i, j));
                                     pixM.set(i, j, Math.IEEEremainder(pixM.get(i, j), workingImages[m].get(i, j)));
                                     break;

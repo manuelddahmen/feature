@@ -11,6 +11,7 @@ import java.util.Objects;
 
 public class Main {
     private File directory;
+
     /*
     public static void makeGoodOutput(File original, File folderOutput) {
         try {
@@ -87,7 +88,7 @@ public class Main {
                     work(directory, pixMOriginal.getImage(), s + "/original.jpg");
 
                     for (double angle = 0.8;
-                            angle < 2 * Math.PI; angle += 2 * Math.PI / itereAngleGrad) {
+                         angle < 2 * Math.PI; angle += 2 * Math.PI / itereAngleGrad) {
                         stream(filter3, angle, s);
                         System.gc();
                     }
@@ -127,32 +128,32 @@ public class Main {
     private void stream(M3 smoothedGradM3, double angle, String s) {
         //int[] i = {0};
         Arrays.stream(smoothedGradM3.getImagesMatrix()).forEach(pixMS -> Arrays.stream(pixMS).forEach(pixM1 -> {
-            LocalExtrema localExtrema1 = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 3, 0);
-            M3 extremaOrientedGrad = localExtrema1.filter(new M3(pixM1, 1, 1));
-            try {
-                System.out.println("Gradient (gx,gy).(nx,ny)");
-                work(directory, pixM1.getImage(), s + "/4/OrientedGradExtremum_1_" + angle + ".jpg");
-                System.gc();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            System.out.println("oriented grad extremum search (max==1.0) ");
-            Arrays.stream(extremaOrientedGrad.getImagesMatrix()).forEach(pixMS1 -> Arrays.stream(pixMS1).forEach(pixM -> {
-                try {
-                    String sub = s + "/4/OrientedGradExtremum_2_" +
-                            +angle + ".jpg";
-                    File image = work(directory, pixM.getImage(), sub);
-                    BufferedImage image1 = pixM.getImage();
-                    Histogram.testCircleSelect(image1, new File("resources"), 10, 0.3, pixM.columns/10.0);
-                    //i[0]++;
-                    System.gc();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                    LocalExtrema localExtrema1 = new LocalExtrema(smoothedGradM3.columns, smoothedGradM3.lines, 3, 0);
+                    M3 extremaOrientedGrad = localExtrema1.filter(new M3(pixM1, 1, 1));
+                    try {
+                        System.out.println("Gradient (gx,gy).(nx,ny)");
+                        work(directory, pixM1.getImage(), s + "/4/OrientedGradExtremum_1_" + angle + ".jpg");
+                        System.gc();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("oriented grad extremum search (max==1.0) ");
+                    Arrays.stream(extremaOrientedGrad.getImagesMatrix()).forEach(pixMS1 -> Arrays.stream(pixMS1).forEach(pixM -> {
+                        try {
+                            String sub = s + "/4/OrientedGradExtremum_2_" +
+                                    +angle + ".jpg";
+                            File image = work(directory, pixM.getImage(), sub);
+                            BufferedImage image1 = pixM.getImage();
+                            Histogram.testCircleSelect(image1, new File("resources"), 10, 0.3, pixM.columns / 10.0);
+                            //i[0]++;
+                            System.gc();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
 
-            }));
+                    }));
 
-        })
+                })
         );
     }
 

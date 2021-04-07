@@ -41,45 +41,49 @@ public class LocalExtrema extends FilterMatPixM {
     @Override
     public M3 filter(M3 original) {
         M3 copy = new M3(original.columns, original.lines,
-                        1, 1);
+                1, 1);
         for (int i = 0; i < original.columns; i++) {
             for (int j = 0; j < original.lines; j++) {
-                    //copy.setCompNo(c);
-                    //boolean isMaximum = true;
+                //copy.setCompNo(c);
+                //boolean isMaximum = true;
                 double maxLocal = original.getIntensity(i, j, 0, 0);
-                    int countOut = 0;
-                    int countIn = 0;
-                if(maxLocal>=threshold) {
-                        
+                int countOut = 0;
+                int countIn = 0;
+                if (maxLocal >= threshold) {
+
                     for (int ii = -neighbourSize / 2; ii <= neighbourSize / 2; ii++) {
                         for (int ij = neighbourSize / 2; ij <= neighbourSize / 2; ij++) {
-                                double v = original.getIntensity(i + ii, j + ij, 0, 0);
+                            double v = original.getIntensity(i + ii, j + ij, 0, 0);
                             if (v < maxLocal) {
-                                    countIn++;
-                            }
-                            else 
-                                countOut ++;
+                                countIn++;
+                            } else
+                                countOut++;
                         }
                     }
-                
-                
-                    
-                    if (isSetMin()&&countIn >= pointsCount && countOut == 0) {
-                            copy.setCompNo(0);original.setCompNo(0);
-                            copy.set(i, j, 0, 0, original.get(i,j,0,0));//1 au lieu value
-                            copy.setCompNo(1);original.setCompNo(1);
-                            copy.set(i, j, 0, 0, original.get(i,j,0,0));//1 au lieu value
-                            copy.setCompNo(2);original.setCompNo(2);
-                            copy.set(i, j, 0, 0, original.get(i,j,0,0));//1 au lieu value
-                } else if (countIn < pointsCount ) {
-                            copy.setCompNo(0);original.setCompNo(0);
-                            copy.set(i, j, 0, 0, original.get(i,j,0,0));//1 au lieu value
-                            copy.setCompNo(1);original.setCompNo(1);
-                            copy.set(i, j, 0, 0, original.get(i,j,0,0));//1 au lieu value
-                            copy.setCompNo(2);original.setCompNo(2);
-                            copy.set(i, j, 0, 0, original.get(i,j,0,0));//1 au lieu value
+
+
+                    if (isSetMin() && countIn >= pointsCount && countOut == 0) {
+                        copy.setCompNo(0);
+                        original.setCompNo(0);
+                        copy.set(i, j, 0, 0, original.get(i, j, 0, 0));//1 au lieu value
+                        copy.setCompNo(1);
+                        original.setCompNo(1);
+                        copy.set(i, j, 0, 0, original.get(i, j, 0, 0));//1 au lieu value
+                        copy.setCompNo(2);
+                        original.setCompNo(2);
+                        copy.set(i, j, 0, 0, original.get(i, j, 0, 0));//1 au lieu value
+                    } else if (countIn < pointsCount) {
+                        copy.setCompNo(0);
+                        original.setCompNo(0);
+                        copy.set(i, j, 0, 0, original.get(i, j, 0, 0));//1 au lieu value
+                        copy.setCompNo(1);
+                        original.setCompNo(1);
+                        copy.set(i, j, 0, 0, original.get(i, j, 0, 0));//1 au lieu value
+                        copy.setCompNo(2);
+                        original.setCompNo(2);
+                        copy.set(i, j, 0, 0, original.get(i, j, 0, 0));//1 au lieu value
+                    }
                 }
-              }
             }
         }
         return copy;
@@ -87,8 +91,8 @@ public class LocalExtrema extends FilterMatPixM {
 
     private double lambda1dot2div1sum2(M3 original, int compNo, int i, int j) {
         PixM pixM = new PixM(3, 3);
-        pixM.setRegionCopy(original, 0, 0,  i-1, j-1, i+1, j+1, pixM, 0, 0);
-        return pixM.determinant()/ pixM.diagonalSum();
+        pixM.setRegionCopy(original, 0, 0, i - 1, j - 1, i + 1, j + 1, pixM, 0, 0);
+        return pixM.determinant() / pixM.diagonalSum();
     }
 
     @Override
@@ -108,10 +112,11 @@ public class LocalExtrema extends FilterMatPixM {
     public void setThreshold(double threshold) {
         this.threshold = threshold;
     }
-    
+
     public boolean isSetMin() {
         return setMin;
     }
+
     public void setSetMin(boolean b) {
         this.setMin = b;
     }

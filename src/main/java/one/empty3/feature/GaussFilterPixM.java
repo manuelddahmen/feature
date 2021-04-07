@@ -11,7 +11,7 @@ public class GaussFilterPixM extends FilterPixM {
     public double filter(double x, double y) {
         return Math.exp(
                 -(x * x + y * y)
-                        / 2 / sigma / sigma)/ 2 / Math.PI / sigma / sigma;
+                        / 2 / sigma / sigma) / 2 / Math.PI / sigma / sigma;
     }
 
     /***

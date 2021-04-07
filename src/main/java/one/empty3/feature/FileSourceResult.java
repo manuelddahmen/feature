@@ -8,14 +8,17 @@ public class FileSourceResult {
         Paths paths;
         Files files;
     }
+
     public abstract class ClassExec {
 
         public abstract void exec();
     }
+
     public class FilterInput {
 
     }
-    public class FilterOutput  {
+
+    public class FilterOutput {
 
     }
 

@@ -6,8 +6,7 @@ import java.util.function.Consumer;
 
 public class FollowLines {
     private M3 traces;
-    private double threshold = 0.1
-            ;
+    private double threshold = 0.1;
     private ArrayList<Line> lines = new ArrayList<>();
     private int maxNeighbours = 2;
 
@@ -49,14 +48,14 @@ public class FollowLines {
      * @return m3 traiter matrice (ii,ij)
      */
     public ArrayList<Line> processPoints(int ii, int ij) {
-        int [] x = new int[getMaxNeighbours()];
-        int [] y = new int[getMaxNeighbours()];
+        int[] x = new int[getMaxNeighbours()];
+        int[] y = new int[getMaxNeighbours()];
         M3 points = new M3(traces.columns, traces.lines, 1, 1);
         for (int comp = 0; comp < 4; comp++) {
             for (int i = 0; i < traces.columns; i++) {
                 for (int j = 0; j < traces.lines; j++) {
 
-                    if(comp<3) {
+                    if (comp < 3) {
                         int add = 0;
                         double[][] neighbours = neighbours(i, j, ii, ij);
                         if (traces.get(i, j, ii, ij) > getThreshold())

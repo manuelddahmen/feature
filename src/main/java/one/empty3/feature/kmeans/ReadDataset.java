@@ -1,4 +1,5 @@
 package one.empty3.feature.kmeans;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
@@ -19,56 +20,52 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ReadDataset {
-	
-        public static List<double[]> features=new ArrayList<>();
-	public static int numberOfFeatures;
-	
-	public List<double[]> getFeatures()
-	{
-		return features;
-	}
-	
-	public void read(String s) throws NumberFormatException, IOException {
-		
-		File file=new File(s);
-		
-	        try {
-		BufferedReader readFile=new BufferedReader(new FileReader(file));
-		String line;
-		while((line=readFile.readLine()) != null)
-			{
-			
-			 String[] split = line.split(" ");
-            		 double[] feature = new double[5];
-             		int i=0 ;
-			
-            		for (i = 0; i < split.length; i++)
-               			 feature[i] = Double.parseDouble(split[i]);
-			numberOfFeatures = split.length;
-			
-			features.add(feature);
-			
-			}
-			
-	} catch (FileNotFoundException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	
-	}
+
+    public static List<double[]> features = new ArrayList<>();
+    public static int numberOfFeatures;
+
+    public List<double[]> getFeatures() {
+        return features;
+    }
+
+    public void read(String s) throws NumberFormatException, IOException {
+
+        File file = new File(s);
+
+        try {
+            BufferedReader readFile = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = readFile.readLine()) != null) {
+
+                String[] split = line.split(" ");
+                double[] feature = new double[5];
+                int i = 0;
+
+                for (i = 0; i < split.length; i++)
+                    feature[i] = Double.parseDouble(split[i]);
+                numberOfFeatures = split.length;
+
+                features.add(feature);
+
+            }
+
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+    }
 
 
     void display() {
-	Iterator<double[]> itr=features.iterator();
-	while(itr.hasNext())
-	{ 
-		double db[]=itr.next();
-		for(int i=0; i<db.length;i++)
-		{
-			System.out.print(db[i]+" ");
-		}	
-	
-	}
-	
-     }
+        Iterator<double[]> itr = features.iterator();
+        while (itr.hasNext()) {
+            double db[] = itr.next();
+            for (int i = 0; i < db.length; i++) {
+                System.out.print(db[i] + " ");
+            }
+
+        }
+
+    }
 }

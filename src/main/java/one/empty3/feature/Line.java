@@ -1,6 +1,7 @@
 package one.empty3.feature;
 
 import one.empty3.library.Point2D;
+
 import java.util.Iterator;
 import java.util.function.Consumer;
 
@@ -8,6 +9,7 @@ public class Line {
     private int size;
     static MultiLinkList xys = new MultiLinkList();
     private int index;
+
     public Line(int... xys) {
         int n = xys.length / 2;
 
@@ -15,10 +17,10 @@ public class Line {
         for (int n2 = 0; n2 <= xys.length - 4; n2 += 4
         ) {
             index =
-            this.xys.add(new P2P2(new Point2D(xys[n2], xys[n2 + 1]),
-                    new Point2D(xys[n2 + 2], xys[n2 + 3])
-            ));
-            size = xys.length/2;
+                    this.xys.add(new P2P2(new Point2D(xys[n2], xys[n2 + 1]),
+                            new Point2D(xys[n2 + 2], xys[n2 + 3])
+                    ));
+            size = xys.length / 2;
             /*
             this.xys.add(new MultiLinkList.P2P2(new Point2D(xys[n2], xys[n2 + 1]),
                     new Point2D(xys[n2 + 1], xys[n2 + 2])
@@ -81,6 +83,7 @@ public class Line {
 
 
 }
+
 class MyIterator<T> implements Iterator {
 
     private final Line line;
@@ -105,7 +108,7 @@ class MyIterator<T> implements Iterator {
         } else if (!p1) {
             p1 = true;
         }
-        if (p1) return  line.xys.get(current).getP1();
+        if (p1) return line.xys.get(current).getP1();
         return line.xys.get(current).getP0();
     }
 

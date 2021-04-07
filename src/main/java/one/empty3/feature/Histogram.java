@@ -71,23 +71,22 @@ public class Histogram {
         //  return c;
         int count = 0;
         double intensity = 0.0;
-        for (double i = c.x-c.r; i <= c.x+c.r; i++) {
-            for (double j = c.y-c.r; j <= c.y+c.r; j++) {
+        for (double i = c.x - c.r; i <= c.x + c.r; i++) {
+            for (double j = c.y - c.r; j <= c.y + c.r; j++) {
                 if (Math.sqrt((i - c.x) * (i - c.x) + (j - c.y) * (j - c.y)) <= c.r
-                && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<m.columns && c.x+c.r<m.lines) {
+                        && c.x - c.r >= 0 && c.y - c.r >= 0 && c.x + c.r < m.columns && c.x + c.r < m.lines) {
                     intensity += m.getIntensity((int) i, (int) j);
                     count++;
                 }
             }
         }
 
-        if(count>0)
+        if (count > 0)
             c.i = intensity / count;
         else {
             c.i = 0.0;
             c.r = 1;
         }
-
 
 
         return c;
@@ -107,16 +106,16 @@ public class Histogram {
                 double diffI = 0;
                 Circle c1 = null, c2;
                 int iterates = 0;
-                while (r < m.columns && diffI <heightMaxLevelI ) {
+                while (r < m.columns && diffI < heightMaxLevelI) {
                     c1 = new Circle(i, j, r);
                     c2 = new Circle(i, j, r + radiusIncr);
                     diffI = Math.abs(getLevel(c1).i - getLevel(c2).i);
-                    if(getLevel(c1).i<diffLevel) break;
-                    c1=c2;
+                    if (getLevel(c1).i < diffLevel) break;
+                    c1 = c2;
                     r += radiusIncr;
                     iterates++;
                 }
-                if(iterates>0 && c1.i>0.0) {
+                if (iterates > 0 && c1.i > 0.0) {
                     circles.add(c1);
                 }
             }
@@ -126,7 +125,7 @@ public class Histogram {
     public static void testCircleSelect(BufferedImage file, File directory, int levels, double min, double radiusIncr) {
         for (int i = 0; i < levels; i++) {
             try {
-                BufferedImage img  = file;
+                BufferedImage img = file;
                 BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 BufferedImage img3 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
                 Histogram histogram = new Histogram(new PixM(img), levels, min, radiusIncr, 0.1);
@@ -148,18 +147,17 @@ public class Histogram {
                     @Override
                     public int compare(Circle o1, Circle o2) {
                         double v = o1.y - o1.y;
-                        if(v<0)
-                             return -1;
-                        if(v>0)
-                             return 1;
-                        if(v==0)
-                        {
+                        if (v < 0)
+                            return -1;
+                        if (v > 0)
+                            return 1;
+                        if (v == 0) {
                             double v1 = o1.x - o1.x;
-                            if(v1<0)
+                            if (v1 < 0)
                                 return -1;
-                            if(v1>0)
+                            if (v1 > 0)
                                 return 1;
-                            if(v1==0)
+                            if (v1 == 0)
                                 return 0;
                         }
                         return 0;
@@ -167,11 +165,11 @@ public class Histogram {
                 });
 
                 File fileToWrite = new File(directory.getAbsolutePath()
-                        + "level"+ finalI + ".jpg");
+                        + "level" + finalI + ".jpg");
                 File fileToWrite2 = new File(directory.getAbsolutePath()
-                        + "level"+ finalI + "_NEW.jpg");
+                        + "level" + finalI + "_NEW.jpg");
                 File fileToWrite3 = new File(directory.getAbsolutePath()
-                        + "level"+ finalI + "_NEW_RGB.jpg");
+                        + "level" + finalI + "_NEW_RGB.jpg");
                 fileToWrite.mkdirs();
                 ImageIO.write(img, "JPEG", fileToWrite);
                 ImageIO.write(img, "JPEG", fileToWrite2);

@@ -2,7 +2,9 @@ package one.empty3.feature;
 
 import java.util.PrimitiveIterator;
 import java.util.Random;
+
 import one.empty3.library.Point3D;
+
 public class M {
     public static PrimitiveIterator.OfDouble r = new Random().doubles().iterator();
     public static final Double noValue = r.next();
@@ -20,67 +22,70 @@ public class M {
 
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
-    
+
     public double[] getValues(int i, int j) {
-        
-        double [] v = new double[getCompCount()];
-        
-        for(int d=0; d<getCompCount(); d++) {
+
+        double[] v = new double[getCompCount()];
+
+        for (int d = 0; d < getCompCount(); d++) {
             setCompNo(d);
             v[d] = get(i, j);
         }
         return v;
     }
-    public static double [] getVector(int add, double[] ... vectors) {
-        int d=0;
-        for(int i=0; i<vectors.length;i++)
-            d+= vectors[i].length;
-        d+= add;
-        double [] f = new double[d];
-        int di=0;
-        for(int i=0; i<vectors.length;i++) {
-             for(double dou : vectors[i])
-                 f[di++] = dou;
+
+    public static double[] getVector(int add, double[]... vectors) {
+        int d = 0;
+        for (int i = 0; i < vectors.length; i++)
+            d += vectors[i].length;
+        d += add;
+        double[] f = new double[d];
+        int di = 0;
+        for (int i = 0; i < vectors.length; i++) {
+            for (double dou : vectors[i])
+                f[di++] = dou;
         }
         return f;
     }
+
     public void setP(int i, int j, Point3D p) {
-        
-       
-        
-        for(int d=0; d<3; d++) {
+
+
+        for (int d = 0; d < 3; d++) {
             setCompNo(d);
             set(i, j, p.get(i));
         }
         return;
-   }
-   public Point3D getP(int i, int j) {
-        
-       Point3D p = new Point3D();
-        
-        for(int d=0; d<3; d++) {
+    }
+
+    public Point3D getP(int i, int j) {
+
+        Point3D p = new Point3D();
+
+        for (int d = 0; d < 3; d++) {
             setCompNo(d);
-            p.set(d, get(i , j));
+            p.set(d, get(i, j));
         }
         return p;
     }
+
     public void setValues(int i, int j, double... v) {
-        
-        
-        
-        for(int d=0; d<v.length; d++) {
+
+
+        for (int d = 0; d < v.length; d++) {
             setCompNo(d);
             set(i, j, v[d]);
         }
         return;
     }
+
     public M(PixM pix) {
         this.lines = pix.getLines();
         this.columns = pix.getColumns();
         x = new double[lines * columns * 3];
         for (int c = 0; c < 3; c++) {
             setCompNo(c);
-            
+
             for (int i = 0; i < pix.getColumns(); i++) {
                 for (int j = 0; j < pix.getLines(); j++) {
                     set(i, j, pix.get(i, j));
@@ -89,19 +94,20 @@ public class M {
         }
         //System.out.println("Columns=" + columns + "\n Lines = " + lines+ " \n Total size ="+x.length);
     }
-    
-    
+
+
     protected void init(int l, int c) {
-    this.lines = l;
+        this.lines = l;
         this.columns = c;
         x = new double[l * c * compCount];
-    } 
+    }
+
     public M(int cl) {
         this(cl, cl);
     }
 
     public double get(int column, int line) {
-        if (column >= 0 && column < columns && line >= 0 && line < lines && compNo>=0 && compNo<compCount) {
+        if (column >= 0 && column < columns && line >= 0 && line < lines && compNo >= 0 && compNo < compCount) {
             return x[index(column, line)];
         } else
             return noValue; // OutOfBound?
@@ -111,16 +117,17 @@ public class M {
         double i = 0;
         for (int c = 0; c < 3; c++) {
             setCompNo(c);
-            i+=get(column, line)*get(column, line);
+            i += get(column, line) * get(column, line);
 
         }
         return Math.sqrt(i);
     }
+
     public void getColor(int column, int line,
-            float[] comps) {
+                         float[] comps) {
         for (int c = 0; c < 3; c++) {
             setCompNo(c);
-            comps[c] =(float)(get(column, line));
+            comps[c] = (float) (get(column, line));
 
         }
     }
@@ -133,8 +140,8 @@ public class M {
         this.compNo = compNo;
     }
 
-    public int index (int column, int line) {
-        return getCompNo()+getCompCount()*((line * columns + column));
+    public int index(int column, int line) {
+        return getCompNo() + getCompCount() * ((line * columns + column));
     }
 
     public void set(int column, int line, double d) {
@@ -319,11 +326,11 @@ public class M {
             original.setCompNo(c);
             pixM.setCompNo(c);
             int x = 0;
-            for(int i=iStart; i<iEnd; i++) {
-                int y=0;
-                for(int j=jStart; j<jEnd; j++) {
+            for (int i = iStart; i < iEnd; i++) {
+                int y = 0;
+                for (int j = jStart; j < jEnd; j++) {
                     double v = original.get(i, j, ii, ij);
-                    pixM.set(iPaste+x, jPaste+y, v);
+                    pixM.set(iPaste + x, jPaste + y, v);
                     y++;
                 }
                 x++;
@@ -332,6 +339,7 @@ public class M {
 
         }
     }
+
     public void setRegionCopy(PixM original, int iStart, int jStart, int iEnd, int jEnd,
                               PixM pixM, int iPaste, int jPaste) {
     }

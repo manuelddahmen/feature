@@ -67,7 +67,7 @@ public class GradientFilter extends FilterMatPixM {
             d = (-source.get(i, j - 1, ii, ij) + v) * lines;
         }
         if (ii == 1 && ij == 1) {
-            d = Math.atan(1/(
+            d = Math.atan(1 / (
                     (source.get(i, j + 1, ii, ij) - v) /
                             (source.get(i + 1, j, ii, ij) - v)) * lines);
         }
@@ -141,7 +141,7 @@ public class GradientFilter extends FilterMatPixM {
                         for (int c = 0; c < image.getCompCount(); c++) {
                             copy.setCompNo(c);
                             double v = copy.get(i, j, ii, ij);
-                            copy.set(i, j, ii, ij, v/sum[c]);
+                            copy.set(i, j, ii, ij, v / sum[c]);
                         }
 
                     }

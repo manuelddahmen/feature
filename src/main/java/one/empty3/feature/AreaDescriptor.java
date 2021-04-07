@@ -10,9 +10,11 @@ import java.util.function.Consumer;
 
 public abstract class AreaDescriptor {
     RepresentableConteneur area = new RepresentableConteneur();
+
     public AreaDescriptor(int x, int y, int sizeX, int sizeY) {
 
     }
+
     public void setRegion(Point3D... p) {
         final int[] i = new int[1];
         Arrays.stream(p).sequential().forEach(new Consumer<Point3D>() {
@@ -25,6 +27,7 @@ public abstract class AreaDescriptor {
             }
         });
     }
+
     public abstract FilterPixM getFilter();
 
     public abstract double match();

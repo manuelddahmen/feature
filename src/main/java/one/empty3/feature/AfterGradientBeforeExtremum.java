@@ -12,6 +12,7 @@ public class AfterGradientBeforeExtremum extends FilterMatPixM {
     public AfterGradientBeforeExtremum(int angleIterations) {
         this.angles = angleIterations;
     }
+
     @Override
     public M3 filter(M3 maximumAndGradient00m01gx02gy) {
         M3 original = maximumAndGradient00m01gx02gy;
@@ -30,32 +31,32 @@ public class AfterGradientBeforeExtremum extends FilterMatPixM {
         double itere = angles;
 
         M3 orientations = new M3(original.columns, original.lines,
-                                  1, 1);
+                1, 1);
 
         double angle = 0;
-        for (ii=0; ii<angles; ii++) {
-            
+        for (ii = 0; ii < angles; ii++) {
+
             double r = 1.0;
             for (int i = 0; i < original.columns; i++)
                 for (int j = 0; j < original.lines; j++)
                     for (int c = 0; c < 4; c++) {
-                        if(maximumAndGradient00m01gx02gy.get(i, j, 0, 0)==1.0) {
-                        maximumAndGradient00m01gx02gy.setCompNo(c);
-                        orientations.setCompNo(c);
-                        double x = maximumAndGradient00m01gx02gy.get(i, j, 0, 1, c);
-                        double y = maximumAndGradient00m01gx02gy.get(i, j, 0, 2, c);
-                        double[] normale = {
-                                Math.cos(angle),
-                                Math.sin(angle)
-                        };
-                        double dotVec = r * (x * normale[0] + y * normale[1]);
-                            if(orientations.get(i, j, 0, 0)<= dotVec) 
-                        orientations.set(i, j, 0, 0, angle);
+                        if (maximumAndGradient00m01gx02gy.get(i, j, 0, 0) == 1.0) {
+                            maximumAndGradient00m01gx02gy.setCompNo(c);
+                            orientations.setCompNo(c);
+                            double x = maximumAndGradient00m01gx02gy.get(i, j, 0, 1, c);
+                            double y = maximumAndGradient00m01gx02gy.get(i, j, 0, 2, c);
+                            double[] normale = {
+                                    Math.cos(angle),
+                                    Math.sin(angle)
+                            };
+                            double dotVec = r * (x * normale[0] + y * normale[1]);
+                            if (orientations.get(i, j, 0, 0) <= dotVec)
+                                orientations.set(i, j, 0, 0, angle);
                         }
                     }
             angle += 2 * Math.PI / angles;
         }
-        
+
         // iterer sur les matrices => angle choisi 
         // quand maximum en ii tangente angle en i,j
         return orientations;

@@ -1,6 +1,8 @@
 package one.empty3.feature;
+
 import one.empty3.library.Point3D;
 import one.empty3.library.shader.Vec;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.PrimitiveIterator;
@@ -14,6 +16,7 @@ public class PixM extends M {
     public static final int COMP_BLUE = 2;
     public static final int COMP_ALPHA = 3;
     public static final int COMP_INTENSITY = 4;
+
     public PixM(int l, int c) {
         super(l, c);
     }
@@ -32,53 +35,50 @@ public class PixM extends M {
             }
         }
     }
-public Point3D getRgb(int i, int j) {
-    setCompNo(0);
-    double dr =get(i,j);
-       setCompNo(1);
-    double dg= get(i,j);
-           setCompNo(2);
-    double db =get(i,j);
-    return new Point3D(dr,dg,db);
-}
-public static PixM getPixM(BufferedImage image, double maxRes) {
-        System.out.println("pixm resampling init"+image.getWidth()+" "+image.getHeight()+" - " + maxRes);
-    
-        double f = 1.0/Math.max(image.getWidth(), image.getHeight ())*maxRes;
-        
-        double columns2 = 1.0 * image.getWidth()* f;
+
+    public Point3D getRgb(int i, int j) {
+        setCompNo(0);
+        double dr = get(i, j);
+        setCompNo(1);
+        double dg = get(i, j);
+        setCompNo(2);
+        double db = get(i, j);
+        return new Point3D(dr, dg, db);
+    }
+
+    public static PixM getPixM(BufferedImage image, double maxRes) {
+
+        double f = 1.0 / Math.max(image.getWidth(), image.getHeight()) * maxRes;
+
+        double columns2 = 1.0 * image.getWidth() * f;
         double lines2 = 1.0 * image.getHeight() * f;
         double cli2 = 1.0 * maxRes;
-        System.out.println("pixm resampling in it ("+columns2+"- " + lines2+") " );
+        System.out.println("pixm resampling init  --> (" + maxRes + ", " + maxRes + ")  (" + columns2 + ", " + lines2 + ")");
         PixM pixM = new PixM((int) (columns2), ((int) lines2));
-        
-    
-       
-        
-            
-            for (int i = 0; i < (int) columns2; i++) {
-                for (int j = 0; j < (int) lines2; j++) {
 
 
-                   int rgb = image.getRGB(
-(int) (1.0* i / columns2 * image.getWidth()) 
-      
-      
+        for (int i = 0; i < (int) columns2; i++) {
+            for (int j = 0; j < (int) lines2; j++) {
 
-, (int) (1.0* j / lines2 * image.getHeight() ));
+
+                int rgb = image.getRGB(
+                        (int) (1.0 * i / columns2 * image.getWidth())
+
+
+                        , (int) (1.0 * j / lines2 * image.getHeight()));
                 float[] colorComponents = new float[pixM.getCompCount()];
                 colorComponents = new Color(rgb).getColorComponents(colorComponents);
                 for (int com = 0; com < pixM.getCompCount(); com++) {
-                    pixM. setCompNo(com);
-                    pixM. set(i, j, colorComponents[com]);
-                
+                    pixM.setCompNo(com);
+                    pixM.set(i, j, colorComponents[com]);
+
                     //double m = mean((int) (i * div), (int) (j * div), (int) (cli2 * div),
                     //        (int) (cli2 * div));
                     //pixM.set(i, j, );
                 }
-           }
-         
-        }    
+            }
+
+        }
         return pixM;
 
 
@@ -253,13 +253,11 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
             }
         return m / p;
     }
-    
-    
-    
+
+
     public PixM copy() {
-        
-     
-       
+
+
         PixM pixM = new PixM(columns, lines);
         for (int c = 0; c < getCompCount(); c++) {
             setCompNo(c);
@@ -273,13 +271,12 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
         }
         return pixM;
     }
-    
-    
-    
+
+
     public double distance(PixM p2) {
-        double d =0.0;
-        
-        
+        double d = 0.0;
+
+
         double div = 1.0;
         double columns2 = 1.0 * columns / div;
         double lines2 = 1.0 * lines / div;
@@ -294,76 +291,79 @@ public static PixM getPixM(BufferedImage image, double maxRes) {
                             (int) (cli2 * div));
                     double m2 = p2.mean((int) (i * div), (int) (j * div), (int) (cli2 * div),
                             (int) (cli2 * div));
-                    d+= Math.abs(m-m2);
+                    d += Math.abs(m - m2);
                 }
         }
-        return d/columns/lines;
+        return d / columns / lines;
     }
-    
-    
+
+
     public void colorsRegion(int x, int y, int w, int h, double[] comps) {
-         for(int i=x; i<x+w; i++)
-              for(int j=y; j<y+h; j++)
-                   for(int c=0; c<comps.length; c++) {
-                        setCompNo(c);
-                        set(i, j, comps[c]);
-                   }
+        for (int i = x; i < x + w; i++)
+            for (int j = y; j < y + h; j++)
+                for (int c = 0; c < comps.length; c++) {
+                    setCompNo(c);
+                    set(i, j, comps[c]);
+                }
     }
-    
+
     public PixM getColorsRegion(int x, int y, int w, int h, int sizeX, int sizeY) {
         PixM subimage = new PixM(sizeX, sizeY);
-         for(int i=x; i<x+w; i++)
-              for(int j=y; j<y+h; j++)
-                   for(int c=0; c<getCompCount(); c++) {
-                        setCompNo(c);
-                        subimage.setCompNo(c);
-                        double v = get(i, j);
-                        subimage.set((int)(1.0*(x+w-i)/w*subimage.columns), (int)(1.0*(y+h-j)/h*subimage.lines), v);
-                        set(i, j, v);
-                   }
+        for (int i = x; i < x + w; i++)
+            for (int j = y; j < y + h; j++)
+                for (int c = 0; c < getCompCount(); c++) {
+                    setCompNo(c);
+                    subimage.setCompNo(c);
+                    double v = get(i, j);
+                    subimage.set((int) (1.0 * (x + w - i) / w * subimage.columns), (int) (1.0 * (y + h - j) / h * subimage.lines), v);
+                    set(i, j, v);
+                }
         return subimage;
     }
-    
+
     public void colorsRegion(int x, int y, int w, int h, PixM subimage, int subImageCopyMode) {
-         for(int i=x; i<x+w; i++)
-              for(int j=y; j<y+h; j++)
-                   for(int c=0; c<getCompCount(); c++) {
-                        setCompNo(c);
-                        subimage.setCompNo(c);
-                        double v = subimage.get((int)(1.0*(x+w-i)/w*subimage.columns), (int)(1.0*(y+h-j)/h*subimage.lines));
-                        set(i, j, v);
-                   }
+        for (int i = x; i < x + w; i++)
+            for (int j = y; j < y + h; j++)
+                for (int c = 0; c < getCompCount(); c++) {
+                    setCompNo(c);
+                    subimage.setCompNo(c);
+                    double v = subimage.get((int) (1.0 * (x + w - i) / w * subimage.columns), (int) (1.0 * (y + h - j) / h * subimage.lines));
+                    set(i, j, v);
+                }
     }
-    
+
     public boolean equals(Object compare) {
-        if(compare instanceof PixM)
-            if(
-                Arrays.equals
-               (
-                   ((PixM) compare).x,
-                   x
-               )
-              )
+        if (compare instanceof PixM)
+            if (
+                    Arrays.equals
+                            (
+                                    ((PixM) compare).x,
+                                    x
+                            )
+            )
                 return true;
         return false;
 
-   }
-    public double luminance (int x, int y) {
+    }
+
+    public double luminance(int x, int y) {
         double l = 0.0;
         setCompNo(0);
-        l += 0.2126*get(x,y);
+        l += 0.2126 * get(x, y);
         setCompNo(1);
 
-        l += 0.7152*get(x,y);
+        l += 0.7152 * get(x, y);
         setCompNo(2);
-        l += 0.0722*get(x,y);
-        
+        l += 0.0722 * get(x, y);
+
         return l;
-    } 
+    }
+
     public int getColumns() {
         return columns;
-        }
+    }
+
     public int getLines() {
         return lines;
-        }
+    }
 }

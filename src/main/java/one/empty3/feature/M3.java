@@ -47,6 +47,7 @@ public class M3 {
             }
         }
     }
+
     public M3(PixM pixM, int columnsIn, int linesIn) {
         this(pixM.columns, pixM.lines, columnsIn, linesIn);
         for (int c = 0; c < getCompCount(); c++) {
@@ -66,25 +67,25 @@ public class M3 {
 
     public M3(PixM pixM[][]) {
         this(pixM[0][0].columns, pixM[0][0].lines, pixM.length, pixM[0].length);
-        
-            for (int i = 0; i < columns; i++) {
-                for (int j = 0; j < lines; j++) {
-                    
-                    for (int ii = 0; ii < columnsIn; ii++)
-                        for (int ij = 0; ij < linesIn; ij++) {
-                            for (int c = 0; c < getCompCount(); c++) {
-                                
-                                pixM[ii][ij].setCompNo(c);
-                                
-                                double d = pixM[ii][ij].get(i, j);
-                                
-                                setCompNo(c);
-                                set(i, j, ii, ij, d);
-                            }
+
+        for (int i = 0; i < columns; i++) {
+            for (int j = 0; j < lines; j++) {
+
+                for (int ii = 0; ii < columnsIn; ii++)
+                    for (int ij = 0; ij < linesIn; ij++) {
+                        for (int c = 0; c < getCompCount(); c++) {
+
+                            pixM[ii][ij].setCompNo(c);
+
+                            double d = pixM[ii][ij].get(i, j);
+
+                            setCompNo(c);
+                            set(i, j, ii, ij, d);
                         }
-                }
+                    }
             }
-        
+        }
+
     }
 
     private void init() {
@@ -92,12 +93,12 @@ public class M3 {
     }
 
 
-    public M3(BufferedImage image, int columns , int lines,int columnsIn, int linesIn) {
-        this(columns,lines, columnsIn, linesIn);
+    public M3(BufferedImage image, int columns, int lines, int columnsIn, int linesIn) {
+        this(columns, lines, columnsIn, linesIn);
         float[] colorComponents = new float[getCompCount()];
         for (int i = 0; i < columns; i++) {
             for (int j = 0; j < lines; j++) {
-                int rgb = image.getRGB((int)(1.0*i/columns*image.getWidth()),(int) (1.0*j/lines*image.getHeight()));
+                int rgb = image.getRGB((int) (1.0 * i / columns * image.getWidth()), (int) (1.0 * j / lines * image.getHeight()));
                 colorComponents = new Color(rgb).getColorComponents(colorComponents);
                 for (int ii = 0; ii < columnsIn; ii++)
                     for (int ij = 0; ij < linesIn; ij++) {
@@ -109,6 +110,7 @@ public class M3 {
             }
         }
     }
+
     @Deprecated
     public M3(BufferedImage image, int columnsIn, int linesIn) {
         this(image.getWidth(), image.getHeight(), columnsIn, linesIn);
@@ -155,7 +157,6 @@ public class M3 {
             //System.out.println("Outs : " + incrGetOut);
         }
     }
-
 
 
     public M3 copy() {
@@ -263,10 +264,10 @@ public class M3 {
                         }
                     }
                     meanRgbai[comp][ii][ij] /= (lines * columns);
-                    System.out.println("min/max/avg (ii, ij) (" + ii + ", " + ij + ")" +" "+
-                            "min: "+minRgbai[comp][ii][ij]+
-                            "max: "+maxRgbai[comp][ii][ij]+
-                            "avg: "+meanRgbai[comp][ii][ij]);
+                    System.out.println("min/max/avg (ii, ij) (" + ii + ", " + ij + ")" + " " +
+                            "min: " + minRgbai[comp][ii][ij] +
+                            "max: " + maxRgbai[comp][ii][ij] +
+                            "avg: " + meanRgbai[comp][ii][ij]);
                 }
             }
         }
@@ -338,14 +339,13 @@ public class M3 {
     public double get(int i, int j, int ii, int ij, int c) {
         double I = 0.0;
         setCompNo(0);
-        if(c==4) {
-            for(int c1=0; c1<3; c1++) {
+        if (c == 4) {
+            for (int c1 = 0; c1 < 3; c1++) {
                 setCompNo(c1);
-                I += Math.abs(get(i, j, ii, ij))/3;
+                I += Math.abs(get(i, j, ii, ij)) / 3;
             }
             I = Math.sqrt(I);
-        }
-        else  {
+        } else {
             setCompNo(c);
             I = get(i, j, ii, ij);
         }
@@ -356,9 +356,10 @@ public class M3 {
     public void resizeSubmatrix(int ii0, int ij0, int i2, int j2) {
 
     }
+
     public double getIntensity(int column, int line, int ii, int ij) {
-        return get(column, line, ii, ij, 4) ;
+        return get(column, line, ii, ij, 4);
     }
-    
-    
+
+
 }

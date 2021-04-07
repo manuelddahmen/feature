@@ -67,8 +67,8 @@ public class SimilarPatchVolume {
 
     public BufferedImage getImageFromDir(String filename1) {
         String s0 = filename1.substring(filename1.lastIndexOf(".") + 1);
-        if((Arrays.asList(ImageIO.getReaderMIMETypes()).contains(s0))) {
-            System.out.println("No ImageReader for "+s0+" from file"+filename1);
+        if ((Arrays.asList(ImageIO.getReaderMIMETypes()).contains(s0))) {
+            System.out.println("No ImageReader for " + s0 + " from file" + filename1);
             return null;
         }
 
@@ -101,12 +101,12 @@ public class SimilarPatchVolume {
                     continue;
 
 //                    image2 = getImageFromDir(filename2);
-             //   GradientFilter gradientMask = new GradientFilter(image1.getWidth(), image1.getHeight());
+                //   GradientFilter gradientMask = new GradientFilter(image1.getWidth(), image1.getHeight());
                 PixM pixMOriginal = PixM.getPixM(image1, 500);
-image1 = null;
+                image1 = null;
                 GradientFilter gradientMask = new GradientFilter(pixMOriginal.columns, pixMOriginal.lines);
-                M3 imgForGrad = new M3( pixMOriginal,
-2, 2);
+                M3 imgForGrad = new M3(pixMOriginal,
+                        2, 2);
                 M3 filter = gradientMask.filter(imgForGrad);
                 PixM[][] imagesMatrix = filter.getImagesMatrix();//.normalize(0, 1);
 
@@ -121,11 +121,11 @@ image1 = null;
                 int iteratesAngleGrad = 12;
                 M3 filter3 = new AfterGradientBeforeExtremum(iteratesAngleGrad).filter(new M3(smoothedGrad, 1, 1));
                 PixM[][] afterGradientAngular = filter3.getImagesMatrix();
-               /** try {
-                    work(directory, image1, filename1 + "/original.jpg");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
+                /** try {
+                 work(directory, image1, filename1 + "/original.jpg");
+                 } catch (IOException e) {
+                 e.printStackTrace();
+                 }*/
 
                 for (int angleIncr = 0; angleIncr < iteratesAngleGrad; angleIncr++) {
                     double angle = 2 * Math.PI * angleIncr / iteratesAngleGrad;
@@ -141,7 +141,7 @@ image1 = null;
                             M3 filter2 = localExtrema.filter(smoothedGradM3);
                             PixM filter1 = filter2.getImagesMatrix()[0][0];
                             System.out.println("Original read image1");
-                            work(directory, imagesMatrix[0][0].getImage(), filename1 + "/1/angle-"+angle+"/sigma" + sigma + "/size" + size + "gradient.jpg");
+                            work(directory, imagesMatrix[0][0].getImage(), filename1 + "/1/angle-" + angle + "/sigma" + sigma + "/size" + size + "gradient.jpg");
                             System.out.println("oriented grad extremum search (max==1.0) ");
                             AtomicInteger i = new AtomicInteger();
                             int finalSize = size;
@@ -149,12 +149,12 @@ image1 = null;
                             {
                                 try {
                                     work(directory, pixM1.getImage(), filename1 + "/2-smoothed_grad/angle-" + angle + "-arrayCase" + (i.incrementAndGet()) + "size" +
-                                            +finalSize +".jpg");
+                                            +finalSize + ".jpg");
                                 } catch (IOException exception) {
                                     exception.printStackTrace();
                                 }
                             }));
-                            work(directory, filter1.normalize(0,1).getImage(), filename1 + "/3/extremum_search" + sigma + "/size" + size + ".jpg");
+                            work(directory, filter1.normalize(0, 1).getImage(), filename1 + "/3/extremum_search" + sigma + "/size" + size + ".jpg");
                             stream(smoothedGradM3, angle, sigma, size, filename1);
                             System.gc();
                         }
@@ -198,18 +198,19 @@ image1 = null;
                 })
         );
     }
-/*
-    public double distance(PixM image1, PixM image2, int x1, int y1, int s1, int x2, int y2, int s2) {
-        // Prendre 2 patches 2 à 2.
-        // Les faire tourner,
-        // Prendre x tailles dans 1, 2 à partir de 3x3
-        // 1) Brute "force".
+
+    /*
+        public double distance(PixM image1, PixM image2, int x1, int y1, int s1, int x2, int y2, int s2) {
+            // Prendre 2 patches 2 à 2.
+            // Les faire tourner,
+            // Prendre x tailles dans 1, 2 à partir de 3x3
+            // 1) Brute "force".
 
 
-        return 0.0;
+            return 0.0;
 
-    }
-*/
+        }
+    */
     public static BufferedImage hideAlpha(File input) throws IOException {
         // Read input
         BufferedImage inputImage = ImageIO.read(input);

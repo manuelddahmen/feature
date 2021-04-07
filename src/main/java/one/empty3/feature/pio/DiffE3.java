@@ -3,79 +3,85 @@ comparaipar cerlcle d intensite et
 de lumierrs filtrers.
 */
 
-package one.empty3.feature.pio ;
+package one.empty3.feature.pio;
+
 import one.empty3.feature.PixM;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.*;
 import one.empty3.library.shader.Vec;
+
 import java.awt.Color;
 import java.io.File;
 import java.awt.Point;
 import java.util.*;
 import javax.imageio.ImageIO;
+
 class Circle {
-        
- double x, y, r, a; 
- public PixM m;
- Color c; 
- double i;
-       
-        public Circle(PixM m,double x,double a,
-                          double y, double r)
-            {
-            this.x= x;
-            this.y= y;
-            this.r= r;
-            this.a= a;
-            this.m = m;
+
+    double x, y, r, a;
+    public PixM m;
+    Color c;
+    double i;
+
+    public Circle(PixM m, double x, double a,
+                  double y, double r) {
+        this.x = x;
+        this.y = y;
+        this.r = r;
+        this.a = a;
+        this.m = m;
+    }
+
+    public void rotate(double angle) {
+        a += angle;
+    }
+
+    public double get(double r, double g, double b) {
+        return Math.sqrt(r * r + g * g + b * b);
+    }
+
+
+    public Point3D get(double a, double r) {
+        Point3D n = new Point3D(r * Math.cos(2 * Math.PI * a),
+                r * Math.sin(2 * Math.PI * a), 0.0);
+        return n;
+    }
+
+    public void variate(double x, double y,
+                        double r, double rotate) {
+        this.x += x;
+        this.y += y;
+        this.r += r;
+        this.a += rotate;
+    }
+
+    public double getIntensity(int i, int j) {
+        double count = 0.0;
+        double
+                i0, j0;
+
+
+        double iin = 0.0;
+
+        double tin = 0.0;
+        for (i0 = i - r; i0 < i + r; i0++) {
+            for (j0 = i - r; j0 < i + r; j0++) {
+
+                if (Math.sqrt((i0 - i) * (i0 - i)
+                        + (j0 - j) * (j0 - j))
+                        <= r) {
+                    count++;
+                    iin = m.getIntensity((int) i0, (int) j0);
+                    tin += iin;
+                }
+            }
         }
-        public void rotate(double angle) {
-            a+=angle;
-        }
-        public double get(double r, double g, double b){
-           return Math.sqrt(r*r+g*g+b*b);
-        }
-    
-        
-       public Point3D get(double a, double r) {
-          Point3D n =new Point3D(r*Math.cos(2*Math.PI*a),
-                              r*Math.sin(2*Math.PI*a), 0.0);
-          return n;
-       }
-        public void variate(double x, double y,
-                           double r, double rotate) {
-            this.x+= x;
-            this.y+= y;
-            this.r+= r;
-            this.a+= rotate;
-        }
-        public double getIntensity(int i, int j) {
-            double count=0.0;
-         double
-            i0, j0;
-            
-              
-              
-              double iin =0.0;
-              
- double tin= 0.0;
-         for(i0=i-r; i0<i+r; i0++) {
-                for(j0=i-r;j0<i+r; j0++) {                
-                
-                    if(Math.sqrt((i0-i)*(i0-i)
-                                 +(j0-j)*(j0-j))
-                       <=r) {
-                                count ++;
-                                iin=m.getIntensity((int)i0,(int)j0);
-                                tin  +=iin;
-                            }
-               }
-          }
-                
-                
-       return tin/count;
-   }
-   public Circle getLevel() {
+
+
+        return tin / count;
+    }
+
+    public Circle getLevel() {
         Circle c = this;
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
@@ -83,37 +89,36 @@ class Circle {
         //  return c;
         int count = 0;
         double intensity = 0.0;
-         c.r = r;
-        for (double i = c.x-c.r; i <= c.x+c.r; i++) {
-            for (double j = c.y-c.r; j <= c.y+c.r; j++) {
-                if (Math.sqrt((i-c.x) * (i-c.x) + (j-c.y) * ( j-c.y)) <= c.r*c.r
-                        && c.x-c.r>=0 && c.y-c.r>=0 && c.x+c.r<c.m.getColumns() && c.y+c.r<c.m.
-                    getLines()) {
+        c.r = r;
+        for (double i = c.x - c.r; i <= c.x + c.r; i++) {
+            for (double j = c.y - c.r; j <= c.y + c.r; j++) {
+                if (Math.sqrt((i - c.x) * (i - c.x) + (j - c.y) * (j - c.y)) <= c.r * c.r
+                        && c.x - c.r >= 0 && c.y - c.r >= 0 && c.x + c.r < c.m.getColumns() && c.y + c.r < c.m.
+                        getLines()) {
                     intensity += c.m.getIntensity((int) i, (int) j);
                     count++;
-                    
+
                 }
             }
         }
 
-        if(count>0) {
+        if (count > 0) {
             c.i = intensity / count;
-        }
-        else {
+        } else {
             c.i = 0.0;
             c.r = 0.0;
         }
-          
-           
+
+
         return c;
-           
-        }
-        
-       public double match( Circle b) {
-            return getLevel().getIntensity((int)x,(int)y)-b.getLevel().getIntensity((int)b.x,(int)b.y);
-               
-            
-       }
+
+    }
+
+    public double match(Circle b) {
+        return getLevel().getIntensity((int) x, (int) y) - b.getLevel().getIntensity((int) b.x, (int) b.y);
+
+
+    }
                /*
                      public double dist(Circle b) {
            
@@ -142,16 +147,15 @@ class Circle {
                            
                
                */
-               
-               
-               
+
 
 }
-        
+
 public class DiffE3 extends ProcessFile {
-        
-        
-        public DiffE3(){}
+
+
+    public DiffE3() {
+    }
 /*
 private int sizeElement = 20, elementSize=20;
     class ColorTranform {
@@ -181,42 +185,42 @@ private int sizeElement = 20, elementSize=20;
     
    
    
- */ 
+ */
 
 
     public boolean process(File in, File out) {
         PixM moutA, moutB;
         try {
-        
-           if(!in.getName().endsWith(".jpg"))
-               return false;
-           PixM pi = new PixM(ImageIO.read(in));
-           moutA = pi;
-                moutB = pi;
-        // work on featutes
-                for(double r = 2; r<30.0; r*=2)
-       for(int i=0; i<pi.getColumns(); i++)
-                for(int j=0; j<pi.getLines(); j++)
-                        for(int i1=0; i1<pi.getColumns(); i1++)
 
-                for(int j1=0; j1<pi.getLines(); j1++) {
-                       moutA.set(i,j,moutA.get(i,j)+ new Circle(pi,i,j,0,r).match(new Circle(pi, i1, j1,0,r)));
-                                             
-                moutB.set(i1,j1,moutB.get(i1,j1)+new Circle(pi,i1,j1,0,r).match(new Circle(pi,i,j,0,r)));
+            if (!in.getName().endsWith(".jpg"))
+                return false;
+            PixM pi = new PixM(ImageIO.read(in));
+            moutA = pi;
+            moutB = pi;
+            // work on featutes
+            for (double r = 2; r < 30.0; r *= 2)
+                for (int i = 0; i < pi.getColumns(); i++)
+                    for (int j = 0; j < pi.getLines(); j++)
+                        for (int i1 = 0; i1 < pi.getColumns(); i1++)
 
-                
-                        }
-           //ImageIO.write(pi.getImage(), "JPEG", out);
-           ImageIO.write(moutA.normalize(0.,1.).getImage(), "JPEG", new File(out.getParent()+"a"+"jpg"));
-           ImageIO.write(moutB.normalize(0.,1.).getImage(), "JPEG", new File(out.getParent()+"b"+"jpg"));
-           
-           //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
-           return true;
-      } catch(Exception ex) {
-           ex.printStackTrace();
-           return false;
-      }
-      
+                            for (int j1 = 0; j1 < pi.getLines(); j1++) {
+                                moutA.set(i, j, moutA.get(i, j) + new Circle(pi, i, j, 0, r).match(new Circle(pi, i1, j1, 0, r)));
+
+                                moutB.set(i1, j1, moutB.get(i1, j1) + new Circle(pi, i1, j1, 0, r).match(new Circle(pi, i, j, 0, r)));
+
+
+                            }
+            //ImageIO.write(pi.getImage(), "JPEG", out);
+            ImageIO.write(moutA.normalize(0., 1.).getImage(), "JPEG", new File(out.getParent() + "a" + "jpg"));
+            ImageIO.write(moutB.normalize(0., 1.).getImage(), "JPEG", new File(out.getParent() + "b" + "jpg"));
+
+            //ImageIO.write(m2g, "JPEG", new File(out.getParent()+5+"jpg"));
+            return true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return false;
+        }
+
     }
 }
      

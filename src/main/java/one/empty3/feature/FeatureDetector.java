@@ -12,6 +12,7 @@ public class FeatureDetector {
     public FeatureDetector(Representable r, FeatureDescriptor feature) {
         this.wanted = r;
     }
+
     public void detect(Region region) {
 
     }

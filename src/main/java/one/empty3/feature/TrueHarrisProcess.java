@@ -1,16 +1,18 @@
-package one.empty3.feature ;
+package one.empty3.feature;
 
 
 import javax.imageio.ImageIO;
+
 import one.empty3.io.ProcessFile;
-import java.io.File ;
+
+import java.io.File;
 import java.awt.image.BufferedImage;
 
 public class TrueHarrisProcess extends ProcessFile {
- 
-    public boolean process (File in, File out) {
- 
-        if(!in.getName().endsWith(".jpg"))
+
+    public boolean process(File in, File out) {
+
+        if (!in.getName().endsWith(".jpg"))
 
             return false;
 
@@ -22,49 +24,42 @@ public class TrueHarrisProcess extends ProcessFile {
             img = ImageIO.read(file);
             pix = PixM.getPixM(img, 500.0);
 
-        } catch(Exception ex) {
+        } catch (Exception ex) {
 
             ex.printStackTrace();
 
             return false;
 
-       // assertTrue(false);
+            // assertTrue(false);
 
-      
 
-         }
-          
-     TrueHarris th = new TrueHarris(pix.getImage());
-     for (int c=0; c<3; c++) {
-         th.setCompNo(c);
-         pix.setCompNo(c);
-         
-         for(int i=0;i<pix.getColumns();i++)
-             for(int j=0;j<pix.getLines();j++)
-                 th.filter(i, j) ;
-      }
-                    
+        }
 
-                
+        TrueHarris th = new TrueHarris(pix.getImage());
+        for (int c = 0; c < 3; c++) {
+            th.setCompNo(c);
+            pix.setCompNo(c);
 
-       pix.normalize(0.0,1.0);
+            for (int i = 0; i < pix.getColumns(); i++)
+                for (int j = 0; j < pix.getLines(); j++)
+                    th.filter(i, j);
+        }
 
-                
 
-                    //
+        pix.normalize(0.0, 1.0);
 
-                                               
 
-                                               
+        //
 
-      try {            
 
-          ImageIO.write (pix.getImage(), "JPEG", out) ;
+        try {
 
-      } catch(Exception  ex ) {
-  
-      }
-     return true;
- } 
- 
+            ImageIO.write(pix.getImage(), "JPEG", out);
+
+        } catch (Exception ex) {
+
+        }
+        return true;
+    }
+
 } 
