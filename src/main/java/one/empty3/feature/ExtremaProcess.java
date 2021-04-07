@@ -28,7 +28,7 @@ public class ExtremaProcess extends ProcessFile {
             return false;
 
         try {
-            pix = PixM.getPixM(ImageIO.read(in), 500.0);
+            pix = PixM.getPixM(ImageIO.read(in), -10.0);
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;

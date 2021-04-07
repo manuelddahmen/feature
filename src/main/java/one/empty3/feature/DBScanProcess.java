@@ -88,12 +88,12 @@ public class DBScanProcess extends ProcessFile {
         // points.
         try {
             new MakeDataset(in,
-                    new File(out.getAbsolutePath() + ".csv"), 50);
+                    new File(out.getAbsolutePath() + ".csv"), -1);
 
             K_Clusterer.main(new String[]{
                             in.getAbsolutePath(),
                             out.getAbsolutePath() + ".csv", out.getAbsolutePath()
-                    }, 50
+                    }, -1
             );
 
         } catch (Exception ex) {

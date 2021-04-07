@@ -22,7 +22,7 @@ public class GradProcess extends ProcessFile {
         File file = in;
         PixM pix = null;
         try {
-            pix = PixM.getPixM(ImageIO.read(file), 500.0);
+            pix = PixM.getPixM(ImageIO.read(file), -10.0);
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;

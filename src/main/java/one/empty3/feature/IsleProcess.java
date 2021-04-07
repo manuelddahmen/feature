@@ -21,7 +21,7 @@ public class IsleProcess extends ProcessFile {
         BufferedImage img = null;
         try {
             img = ImageIO.read(file);
-            pix = PixM.getPixM(img, 500.0);
+            pix = PixM.getPixM(img, -10.0);
 
         } catch (Exception ex) {
 

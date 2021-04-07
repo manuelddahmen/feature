@@ -47,12 +47,12 @@ public class PixM extends M {
     }
 
     public static PixM getPixM(BufferedImage image, double maxRes) {
-
-        double f = 1.0 / Math.max(image.getWidth(), image.getHeight()) * maxRes;
+        double f = 1.0;
+        if(maxRes<image.getWidth()&&maxRes<image.getHeight())
+            f = 1.0 / Math.max(image.getWidth(), image.getHeight()) * maxRes;
 
         double columns2 = 1.0 * image.getWidth() * f;
         double lines2 = 1.0 * image.getHeight() * f;
-        double cli2 = 1.0 * maxRes;
         System.out.println("pixm resampling init  --> (" + maxRes + ", " + maxRes + ")  (" + columns2 + ", " + lines2 + ")");
         PixM pixM = new PixM((int) (columns2), ((int) lines2));
 

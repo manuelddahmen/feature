@@ -29,7 +29,7 @@ public class ExtractIntensityInfo extends
             img = ImageIO.read(in);
         } catch (Exception rx) {
         }
-        PixM pix = PixM.getPixM(img, 500.0);
+        PixM pix = PixM.getPixM(img, -1);
 
 
         PixM pixMOriginal = pix;

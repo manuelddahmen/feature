@@ -7,8 +7,7 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Comparator;
+import java.util.*;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -23,9 +22,11 @@ public class HarrisProcess extends ProcessFile {
 
     public boolean process(File in, File out) {
         try {
-
-
-            /* PixM m = new PixM(ImageIO.read(in));*/
+            ResourceBundle resourceBundle = ResourceBundle.getBundle("one.empty3.feature.Bundle", Locale.FRENCH);
+            BufferedImage img = ImageIO.read
+                    (in);
+            PixM m;
+            m = PixM.getPixM(img, Double.parseDouble(resourceBundle.getString("HarrisProcess.maxRes")));
 
             PixM m2;
 
