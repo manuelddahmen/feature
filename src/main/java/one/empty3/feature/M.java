@@ -101,7 +101,7 @@ public class M {
     }
 
     public double get(int column, int line) {
-        if (column >= 0 && column < columns && line >= 0 && line < lines) {
+        if (column >= 0 && column < columns && line >= 0 && line < lines && compNo>=0 && compNo<compCount) {
             return x[index(column, line)];
         } else
             return noValue; // OutOfBound?

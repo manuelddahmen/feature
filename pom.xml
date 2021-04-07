@@ -10,7 +10,7 @@
     <name>feature</name>
     <groupId>one.empty3</groupId>
     <artifactId>features</artifactId>
-    <version>2021.1.6-SNAPSHOT</version>
+    <version>2021.4.1-SNAPSHOT</version>
     <description>feature</description>
     <packaging>jar</packaging>
     <url>https://github.com/manuelddahmen/feature</url>
@@ -253,7 +253,7 @@
                 <executions>
                     <execution>
                         <configuration>
-                            <keyname>E189861E</keyname><!--   
+                            <keyname>22EE55E4</keyname><!--
 
 ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
                         </configuration>
@@ -461,7 +461,7 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
         <dependency>
          <groupId>one.empty3</groupId>
     <artifactId>empty3-library-3d</artifactId>
-    <version>2021.2.3-SNAPSHOT</version>
+    <version>2021.4.4</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
         <dependency>
