@@ -20,9 +20,10 @@ public class TrueHarrisProcess extends ProcessFile {
 
         PixM pix = null;
         BufferedImage img = null;
+
         try {
             img = ImageIO.read(file);
-            pix = PixM.getPixM(img, 500.0);
+            pix = PixM.getPixM(img, maxRes);
 
         } catch (Exception ex) {
 

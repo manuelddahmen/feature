@@ -6,6 +6,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.*;
 import java.util.List;
@@ -22,11 +23,12 @@ public class HarrisProcess extends ProcessFile {
 
     public boolean process(File in, File out) {
         try {
-            ResourceBundle resourceBundle = ResourceBundle.getBundle("one.empty3.feature.Bundle", Locale.FRENCH);
+            Properties resourceBundle = new Properties();
+            resourceBundle.load(new FileInputStream(new File("resources/settings.properties")));
             BufferedImage img = ImageIO.read
                     (in);
             PixM m;
-            m = PixM.getPixM(img, Double.parseDouble(resourceBundle.getString("HarrisProcess.maxRes")));
+            m = PixM.getPixM(img, Double.parseDouble(resourceBundle.getProperty("HarrisProcess.maxRes")));
 
             PixM m2;
 

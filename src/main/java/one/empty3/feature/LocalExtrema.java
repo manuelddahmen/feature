@@ -20,7 +20,10 @@ public class LocalExtrema extends FilterMatPixM {
     }
 
     private int compNo;
-
+    public LocalExtrema() {
+        this.neighbourSize = 6;
+        pointsCount = 1;
+    }
     public LocalExtrema(int width, int height, int neighbourSize, int pointsCount) {
         this.neighbourSize = neighbourSize;
         this.pointsCount = pointsCount;

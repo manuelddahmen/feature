@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
 import one.empty3.library.TextureMov;
+import org.apache.xmlbeans.impl.tool.Diff;
 //import org.json.*;
 
 /**
@@ -35,6 +36,8 @@ public class FTPProcessFiles {
 
     public static String directory = "images";
     static String settingsPropertiesPath;
+    private static PrintWriter pw;
+    private static int maxRes;
 
     public static String getDirname(String s) {
         if (s.contains("/"))
@@ -111,8 +114,9 @@ public class FTPProcessFiles {
             }
         } else {
             int i = 0;
-            while (i < Objects.requireNonNull(new File("sets").list()).length) {
-                settingsPropertiesPath = "sets/" + new File(settingsPropertiesPath).list()[i];
+            String[] sets = new File("sets").list();
+            while (i < Objects.requireNonNull(sets).length) {
+                settingsPropertiesPath = "sets/" + sets[i];
                 defaultProcess();
                 i++;
             }
@@ -143,6 +147,11 @@ public class FTPProcessFiles {
         System.out.println("arg 1 : one.empty3.io.ProcessFile class");
         System.out.println("arg 2 : dir0 or ftp1 dir output");
 
+        try {
+            DiffEnergy.pw = new PrintWriter("."+File.separator+"energies.txt");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         // if(path==null) {
         //      System.exit(-1);
@@ -175,6 +184,9 @@ public class FTPProcessFiles {
 
             currentDirin = directory = (String) settings.getProperty("in.directory");
         }
+
+        maxRes = Integer.parseInt(settings.getProperty("maxRes"));
+
         /* String*/
         classnames = (String) settings.getProperty("classname");
         String class0 = (String) settings.getProperty("class0");
@@ -195,11 +207,16 @@ public class FTPProcessFiles {
                 + (class0 == null ? "" : "," + classnames);
 
         String[] classnamesArr = classnames.split(",");
+
+
+
         for (String classname2 : classnamesArr) {
             try {
                 classname = classname2;
                 if (i > 0)
                     currentDirin = currentDirout;
+
+
                 currentDirout = "" + directoryOut + "-" + i + "-" + classname + "/";
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("Process class name read " + classname);
                 System.out.println(classname);
@@ -280,7 +297,10 @@ public class FTPProcessFiles {
                     } else {
                         // local path
 
-                        printFileDetails(new File(currentDirin).list(), currentDirin);
+                        if(new File(currentDirin).exists())
+                            printFileDetails(new File(currentDirin).list(), currentDirin);
+
+
                     }
 
                 } else {
@@ -288,6 +308,9 @@ public class FTPProcessFiles {
                     System.out.println("effect" + processInstance.toString());
 
                     System.out.println("I>0 clase de traitement" + classs.toString() + " : " + currentDirin);
+
+
+                    if(new File(currentDirin).exists())
                     printFileDetails(new File(currentDirin).list(), currentDirin);
 
 
@@ -349,8 +372,7 @@ public class FTPProcessFiles {
 
                 processInstance.process(fi, fo);
 
-
-                // dirin = (fo.getParent());
+                energy(fo);
 
             } catch (Exception ex) {
                 ex.printStackTrace();
@@ -359,6 +381,19 @@ public class FTPProcessFiles {
 
     }
 
+    public static void energy(File image) {
+        try {
+            DiffEnergy diffEnergy = new DiffEnergy(ImageIO.read(image), pw);
+            for(int i=0; i<diffEnergy.columns; i++)
+                for(int j=0; j<diffEnergy.lines; j++) {
+                    diffEnergy.filter(i, j);
+                }
+            diffEnergy.end(image.getAbsolutePath());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
     public static void process(File object) {
 
         if (object.isFile()) {
@@ -380,11 +415,13 @@ public class FTPProcessFiles {
             //fo.createNewFile();
             Logger.getLogger(FTPProcessFiles.class.getName()).info("file  in : " + fi.getAbsolutePath());
             Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : " + fo.getAbsolutePath());
+            processInstance.setMaxRes(maxRes);
             Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
 
             processInstance.process(fi, fo);
-            
+
+            energy(fo);
             
   /*
         } catch(IOException ex) {
