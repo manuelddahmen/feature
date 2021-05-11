@@ -169,20 +169,17 @@ public class FTPProcessFiles {
 
 
         if ("local".equals(settings.getProperty("in.device"))) {
-            String directory = (String) settings.getProperty("in.directory");
             currentDirin = settings.getProperty("in.directory");
             server = "file";
             port = 0;
             username = "";
             password = "";
         } else {
+            currentDirin =(String) settings.getProperty("in.directory");
             server = (String) settings.getProperty("host");
             port = Integer.parseInt(settings.getProperty("port"));
             username = (String) settings.getProperty("username");
             password = (String) settings.getProperty("password");
-            String directory = (String) settings.getProperty("in.directory");
-
-            currentDirin = directory = (String) settings.getProperty("in.directory");
         }
 
         maxRes = Integer.parseInt(settings.getProperty("maxRes"));
@@ -382,7 +379,7 @@ public class FTPProcessFiles {
     }
 
     public static void energy(File image) {
-        try {
+       /* try {
             DiffEnergy diffEnergy = new DiffEnergy(ImageIO.read(image), pw);
             for(int i=0; i<diffEnergy.columns; i++)
                 for(int j=0; j<diffEnergy.lines; j++) {
@@ -392,7 +389,7 @@ public class FTPProcessFiles {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+*/
     }
     public static void process(File object) {
 

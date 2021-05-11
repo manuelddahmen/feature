@@ -15,7 +15,7 @@ public class Classification extends ProcessFile {
     Random random = new Random();
     private BufferedImage imageOut;
     private int SIZE = 5;
-    private double ratio = 0.8;
+    private double ratio = 0.2;
 
 
     @Override
@@ -39,13 +39,13 @@ public class Classification extends ProcessFile {
         for (int i = 0; i < selectPointColorMassAglo1.getColumns(); i += 1)
             for (int j = 0; j < selectPointColorMassAglo1.getLines(); j += 1) {
                 selectPointColorMassAglo1.setTmpColor(Colors.random());
-                double v = selectPointColorMassAglo1.averageCountMeanOf(i, j, SIZE, SIZE, 0.2);
+                double v = selectPointColorMassAglo1.averageCountMeanOf(i, j, SIZE, SIZE, 0.4);
                 if (v > ratio) {
                     imageOut.setRGB(i, j, color);/*selectPointColorMassAglo.getChosenColor().getRGB()*/
                 } else {
                     double[] doubles = Lumiere.getDoubles(read.getRGB(i, j));
                     for(int c=0; c<3; c++)
-                        doubles[c] = doubles[c]/2;
+                        doubles[c] = doubles[c]/3;
                     imageOut.setRGB(i, j, Lumiere.getInt(doubles));
                 }
             }
