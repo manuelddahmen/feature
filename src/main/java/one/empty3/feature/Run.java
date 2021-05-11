@@ -8,13 +8,11 @@ public class Run extends Thread {
     @Override
     public void run() {
         String settingsPropertiesPath = "sets/";
-
-        FTPProcessFiles files = new FTPProcessFiles();
         int i=0;
-        for (String directoryName :args)/*new File(settingsPropertiesPath).list()*/ {
-            files.settingsPropertiesPath = settingsPropertiesPath + File.separator + directoryName;
-            files.loadArgsProps(files.settingsPropertiesPath);
-            files.defaultProcess();
+        for (String directoryName : Objects.requireNonNull(new File(settingsPropertiesPath).list())) {
+            FTPProcessFiles.settingsPropertiesPath = settingsPropertiesPath + File.separator + directoryName;
+            FTPProcessFiles.loadArgsProps(FTPProcessFiles.settingsPropertiesPath);
+            FTPProcessFiles.defaultProcess();
             //       }
 
 

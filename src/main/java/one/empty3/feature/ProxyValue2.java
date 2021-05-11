@@ -20,7 +20,6 @@ public class ProxyValue2 extends ProcessFile {
 
         if (!in.getName().endsWith(".jpg"))
             return false;
-        File file = in;
         PixM original = null;
 
         try {
@@ -38,9 +37,9 @@ public class ProxyValue2 extends ProcessFile {
             for (int j = 0; j < original.lines; j++)
 
 
-                if (copy.getIntensity(i, j) < 0.3) {
+                if (copy.luminance(i, j) < 0.3) {
 
-                    searchFromTo(original, copy, i, j, 0.3, 1.0);
+                    searchFromTo(original, copy, i, j, 0.3);
                     p++;
 
                 }
@@ -60,52 +59,64 @@ public class ProxyValue2 extends ProcessFile {
     }
 
 
+
     public void searchFromTo(
-            PixM original, PixM copy, int i, int j, double min, double value) {
+            PixM original, PixM copy, int i, int j, double min) {
         Point3D p = null;
         int i2 = i, j2 = j;
-        int[] incr = new int[]{
-                1, 1, 1, -1,
-                -1, -1, 1, -1};
+
      /*   for(int k=0; k<original.columns*original.lines;k++)
-                { 
-            
-              int [] k1 = new int[] {incr[(k/2)%8], 
+                {
+
+              int [] k1 = new int[] {incr[(k/2)%8],
                                      incr[(k/2+1)%8]};
                 i2+= k1[0];
                 j2 += k1[1];
-            
+
            */
-        for (int l = 1; l < original.columns; l++)
-            for (int i3 = -l; i3 < l; i3++) {
-                for (int j3 = -l; j3 < l; j3++) {
-                    i2 = i + i3;
-                    j2 = j + j3;
-                    p = null;
-                    if (i2 == i && j2 == j
-                    )
-                        continue;
-                    if (original.getIntensity(i2, j2) >= min) {
-                        p = new Point3D((double) i2, (double) j2, original.get(i2, j2));
+        for (int l = 1; l < original.columns; l++) {
+            int[] incr = new int[]{
+
+                    -l, -l, 0, 1,
+                    l, -l, 0, 1,
+                    -l, l, 1, 0,
+                    -l, -l, 1, 0
+
+            };
+
+            for (int sq = 0; sq < incr.length; sq += 4) {
+                int pass = 0;
+                for (int i3 = incr[sq]; i3 < l && pass > -1; i3 += incr[(sq + 2)]) {
+
+                    for (int j3 = incr[(sq + 1)]; j3 < l && pass > -1; j3 += incr[(sq + 3)]) {
+
+                        pass++;
+                        i2 = i + i3;
+                        j2 = j + j3;
+                        p = null;
+
+
+                        if (original.luminance(i2, j2) >= min) {
+
+
+                            copyPixel(original, i2,
+                                    j2,
+                                    copy, i, j);
+                            return;
+                        }
+
+
+                        if (pass > 2 * l) pass = -1;
+
                     }
-
-                    if (p != null) {
-                        copyPixel(original, (int) (double) (p.get(0)),
-                                (int) (double) (p.get(1)),
-                                copy, i, j);
-                        return;
-                    } else {
-
-                    }
-                    // }
-
                 }
-
             }
+        }
         // System.out.println("error not found");
 
         return;
     }
+
 
     public void copyPixel(PixM m1, int i, int j,
                           PixM m2, int i2, int j2) {

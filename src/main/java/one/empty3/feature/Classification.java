@@ -34,7 +34,7 @@ public class Classification extends ProcessFile {
             e.printStackTrace();
         }
         assert selectPointColorMassAglo != null;
-        SelectPointColorMassAglo selectPointColorMassAglo1 = new SelectPointColorMassAglo(selectPointColorMassAglo.getImage());
+        SelectPointColorMassAglo selectPointColorMassAglo1 = new SelectPointColorMassAglo(read);
         int color = Color.WHITE.getRGB();
         for (int i = 0; i < selectPointColorMassAglo1.getColumns(); i += 1)
             for (int j = 0; j < selectPointColorMassAglo1.getLines(); j += 1) {

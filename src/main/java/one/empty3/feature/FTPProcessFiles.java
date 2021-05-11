@@ -38,6 +38,7 @@ public class FTPProcessFiles {
     static String settingsPropertiesPath;
     private static PrintWriter pw;
     private static int maxRes;
+    private static int maxFilesInDir;
 
     public static String getDirname(String s) {
         if (s.contains("/"))
@@ -182,7 +183,8 @@ public class FTPProcessFiles {
             password = (String) settings.getProperty("password");
         }
 
-        maxRes = Integer.parseInt(settings.getProperty("maxRes"));
+        String maxFilesInDir = settings.getProperty("maxFilesInDir");
+        FTPProcessFiles.maxFilesInDir = Integer.parseInt(maxFilesInDir!=null?maxFilesInDir:"-10000000");
 
         /* String*/
         classnames = (String) settings.getProperty("classname");
@@ -429,7 +431,10 @@ public class FTPProcessFiles {
 
     private static void printFileDetails(FTPFile[] files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        int it = 0;
         for (FTPFile file : files) {
+            if(it++>maxFilesInDir)
+                return;
 
             if (file.isFile() && !file.getName().equals(".")
                     && !file.getName().equals("..")
@@ -448,7 +453,11 @@ public class FTPProcessFiles {
 
     private static void printFileDetails(String[] files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+
+        int it = 0;
         for (String f : files) {
+            if(it>maxFilesInDir)
+                return;
             File file = new File(currentDirin + "/" + f);
             if (file.isFile() && !file.getName().equals(".")
                     && !file.getName().equals("..")
@@ -464,6 +473,8 @@ public class FTPProcessFiles {
                 System.out.println("error file in not found");
                 System.exit(-1);
             }
+
+            it++;
         }
 
     }
@@ -513,7 +524,10 @@ public class FTPProcessFiles {
 
     private static void printNames(String files[]) {
         if (files != null && files.length > 0) {
+            int it = 0;
             for (String aFile : files) {
+                if(it++>maxFilesInDir)
+                    return;
                 System.out.println(aFile);
             }
         }
