@@ -30,13 +30,17 @@ public class Lines extends ProcessFile {
                         listTmpCurve = new ArrayList<Point3D>();
                         int dist = 0;
                         int listSize = 0;
-                        dist = 1;
+                        dist = 2;
                         double value = pixM.luminance(i, j);
                         double valueMin = pixM.mean(i - dist / 2, j - dist / 2, dist, dist);
+                        if (valueMin < 0.3) {
+                            valueMin = 0.3;
+                        }
                         List<Point3D> points = neighborHood(i, j, dist, valueMin);
 
-                        if(points.size()==0)
+                        if (points.size() == 0) {
                             break;
+                        }
 
                         for (List<Point3D> ps : lists)
                             for (Point3D p : ps)
@@ -63,7 +67,7 @@ public class Lines extends ProcessFile {
                 });
             });
 
-            ImageIO.write(pixM.getImage(), "jpg", out);
+            ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", out);
 
             return true;
         } catch (IOException e) {
@@ -77,16 +81,19 @@ public class Lines extends ProcessFile {
 
     private List<Point3D> neighborHood(int i, int j, int dist, double valueMin) {
         listTmp.clear();
-        for (int x = 0; x < 2; x++) {
-            for (int y = 0; y < 2; y++) {
-                for (int s = 0; s < dist * 8; s++) {
-                    Point point = new Point(i + (x - 1) * dist, j + (y - 1));
-                    Point3D p = new Point3D(point.getX(), point.getY(), pixM.luminance((int) point.getX(), (int) point.getY()));
-                    if (p.getZ() >= valueMin) {
-                        listTmp.add(p);
-                        break;
+        for (int x = 0; x < dist; x++) {
+            for (int y = 0; y < dist; y++) {
+                int x2 = i + (x - 1) * dist;
+                int y2 = j + (y - 1);
+                if (x != i && y != j)
+                    for (int s = 1; s < dist * 8; s++) {
+                        Point point = new Point(x2, y2);
+                        Point3D p = new Point3D(point.getX(), point.getY(), pixM.luminance((int) point.getX(), (int) point.getY()));
+                        if (p.getZ() >= valueMin) {
+                            listTmp.add(p);
+                            break;
+                        }
                     }
-                }
             }
         }
 

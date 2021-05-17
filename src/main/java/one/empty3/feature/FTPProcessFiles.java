@@ -183,7 +183,8 @@ public class FTPProcessFiles {
             password = (String) settings.getProperty("password");
         }
 
-        maxFilesInDir = Integer.parseInt(settings.getProperty("maxFilesInDir"));
+        String maxFilesInDir0 = settings.getProperty("maxFilesInDir");
+        FTPProcessFiles.maxFilesInDir = Integer.parseInt(maxFilesInDir0==null?"10000":maxFilesInDir0);
         maxRes = Integer.parseInt(settings.getProperty("maxRes"));
         /* String*/
         classnames = (String) settings.getProperty("classname");

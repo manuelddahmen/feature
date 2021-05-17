@@ -56,7 +56,7 @@ public class TrueHarrisProcess extends ProcessFile {
         try {
 
             ImageIO.write(pix.getImage(), "JPEG", out);
-
+            return true;
         } catch (Exception ex) {
 
         }
