@@ -183,9 +183,8 @@ public class FTPProcessFiles {
             password = (String) settings.getProperty("password");
         }
 
-        String maxFilesInDir = settings.getProperty("maxFilesInDir");
-        FTPProcessFiles.maxFilesInDir = Integer.parseInt(maxFilesInDir!=null?maxFilesInDir:"-10000000");
-
+        maxFilesInDir = Integer.parseInt(settings.getProperty("maxFilesInDir"));
+        maxRes = Integer.parseInt(settings.getProperty("maxRes"));
         /* String*/
         classnames = (String) settings.getProperty("classname");
         String class0 = (String) settings.getProperty("class0");
@@ -458,7 +457,7 @@ public class FTPProcessFiles {
         for (String f : files) {
             if(it>maxFilesInDir)
                 return;
-            File file = new File(currentDirin + "/" + f);
+            File file = new File(directory + File.separator + f);
             if (file.isFile() && !file.getName().equals(".")
                     && !file.getName().equals("..")
             ) {
@@ -469,10 +468,10 @@ public class FTPProcessFiles {
 
 
                 process(file);
-            } else {
+            }/* else {
                 System.out.println("error file in not found");
                 System.exit(-1);
-            }
+            }*/
 
             it++;
         }
