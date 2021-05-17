@@ -305,7 +305,7 @@ public class FTPProcessFiles {
 
                     System.out.println("effect" + processInstance.toString());
 
-                    System.out.println("I>0 clase de traitement" + classs.toString() + " : " + currentDirin);
+                    System.out.println("I>0 classes de traitement\nClasse : " + classs.toString() + " : " + currentDirin);
 
 
                     if(new File(currentDirin).exists())
