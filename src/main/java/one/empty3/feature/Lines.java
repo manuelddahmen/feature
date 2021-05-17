@@ -33,9 +33,9 @@ public class Lines extends ProcessFile {
                         dist = 2;
                         double value = pixM.luminance(i, j);
                         double valueMin = pixM.mean(i - dist / 2, j - dist / 2, dist, dist);
-                        if (valueMin < 0.3) {
+                        /*if (valueMin < 0.3) {
                             valueMin = 0.3;
-                        }
+                        }*/
                         List<Point3D> points = neighborHood(i, j, dist, valueMin);
 
                         if (points.size() == 0) {
