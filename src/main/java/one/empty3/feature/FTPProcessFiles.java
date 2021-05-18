@@ -208,7 +208,7 @@ public class FTPProcessFiles {
 
         String[] classnamesArr = classnames.split(",");
 
-        for(String inputDir : currentDirin) {
+//        for(String inputDir : currentDirin) {
 
             int index = 0;
             for (String classname2 : classnamesArr) {
@@ -319,7 +319,7 @@ public class FTPProcessFiles {
 
 
                     i++;
-                    index++;
+  //                  index++;
  /*
             // uses simpler methods
             String[] files2 = ftpClient.listNames(directory);
@@ -343,7 +343,7 @@ public class FTPProcessFiles {
                         }
                     }
                 }
-            }
+//            }
         }
     }
 
