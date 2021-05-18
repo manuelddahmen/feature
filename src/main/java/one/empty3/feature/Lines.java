@@ -15,6 +15,9 @@ import java.util.function.Consumer;
 public class Lines extends ProcessFile {
     private PixM pixM;
     private ArrayList<List<Point3D>> lists;
+    private double pz;
+    private double py;
+    private double px;
 
     @Override
     public boolean process(File in, File out) {
@@ -24,56 +27,56 @@ public class Lines extends ProcessFile {
             PixM o = new PixM(pixM.getColumns(), pixM.getLines());
             for (int i = 0; i < pixM.getColumns(); i++) {
                 for (int j = 0; j < pixM.getLines(); j++) {
-                    int x = i;
-                    int y = j;
+                    int listSize = 0;
+                    int dist = 2;
 
                     listTmpCurve = new ArrayList<Point3D>();
-                    listTmpCurve.add(new Point3D((double)x, (double)y, pixM.luminance(x, y)));
+                    listTmpCurve.add(new Point3D((double) i, (double) j, pixM.luminance(i, j)));
                     int cont = 0;
-                    double valueDiff = 0.2;
-                    for (int s = 0; s < pixM.getLines(); s++) {
-                        int dist = 0;
-                        int listSize = 0;
-                        dist = 2;
-                        double value = pixM.luminance(x, y);
+                    double valueDiff = 0.1;
 
-                        double valueAvg = pixM.mean(x - dist/2, y -dist/2, dist+1, dist+1);
+                    double valueAvg = pixM.mean(i - dist / 2, j - dist / 2, dist + 1, dist + 1);
+                    Point3D pNext = listTmpCurve.get(0);
+                    while(true) {
+
                         if (valueAvg < 0.1) {
                             break;
                         }
-                        List<Point3D> points = neighborHood(i, j, 2, valueAvg, valueDiff);
-
-                        if (points.size()==0) {
-                                break;
+                        neighborhood((int)(double)pNext.get(0), (int)(double)pNext.get(1), 2, valueAvg, valueDiff);
+                        List<Point3D> points = new ArrayList<>();
+                        if (listTmpX.size() <=1) {
+                            break;
+                        }
+                        else {
+                            listTmpCurve.add(new Point3D(px, py, pz));
                         }
 
                         for (List<Point3D> ps : lists)
                             for (Point3D p : ps)
-                                for (int c = 0; c < points.size(); c++)
-                                    if (points.get(c).equals(p))
-                                        points.remove(c);
-                        for (Point3D p : listTmpCurve)
-                            for (int c = 0; c < points.size(); c++)
-                                if (points.get(c).equals(p))
-                                    points.remove(c);
+                                for (int c = 0; c < listTmpCurve.size(); c++)
+                                    if (listTmpCurve.get(c).equals(p))
+                                        listTmpCurve.remove(c);
 
-                        listTmpCurve.addAll(points);
+                        valueAvg = pixM.mean(i - dist / 2, j - dist / 2, dist + 1, dist + 1);
 
                     }
-                    if (listTmpCurve.size() > 0)
+
+                    if (listTmpCurve.size() > 1)
                         lists.add(listTmpCurve);
+
+                    System.gc();
                 }
             }
 
             lists.forEach(point3DS -> {
                 Color r = Colors.random();
                 point3DS.forEach(point3D -> {
-                    o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed()/255., r.getGreen()/255., r.getBlue()/255.);
+                    if(point3DS.size()>1)
+                        o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                 });
             });
 
-            ImageIO.write(/*o.normalize(0.0, 1.0)*/o.getImage(), "jpg", out);
-
+            ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", out);
             return true;
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,29 +85,47 @@ public class Lines extends ProcessFile {
     }
 
     ArrayList<Point3D> listTmpCurve = new ArrayList();
-    ArrayList<Point3D> listTmp = new ArrayList();
+    ArrayList<Double> listTmpX = new ArrayList();
+    ArrayList<Double> listTmpY = new ArrayList();
+    ArrayList<Double> listTmpZ = new ArrayList();
 
-    private List<Point3D> neighborHood(int i, int j, int dist, double valueMin, double valueDiff) {
-        listTmp.clear();
+    public void addTmp(double x, double y, double z) {
+        listTmpX.add(x);
+        listTmpY.add(y);
+        listTmpZ.add(z);
+    }
+    public void removeTmp(int i) {
+        listTmpX.remove(i);
+        listTmpY.remove(i);
+        listTmpZ.remove(i);
+    }
+    public void getTmp(int i) {
+        px = listTmpX.get(i);
+        py = listTmpY.get(i);
+        pz = listTmpZ.get(i);
+    }
+
+    private List<Point3D> neighborhood(int i, int j, int dist, double valueAvg, double valueDiff) {
+        listTmpX.clear();
+        listTmpY.clear();
+        listTmpZ.clear();
         for (int x = 0; x < dist; x++) {
             for (int y = 0; y < dist; y++) {
-                if (i+x != i && j+y != j) {
+                if (i + x != i && j + y != j) {
                     int x2 = i + (x - dist / 2);
                     int y2 = j + (y - dist / 2);
                     Point point = new Point(x2, y2);
-                    Point3D p = new Point3D(point.getX(), point.getY(), pixM.mean((int) point.getX(), (int) point.getY(), dist, dist));
-                    if (p.getZ() >= valueMin - valueDiff && p.getZ() <= valueMin + valueDiff) {
-                        listTmp.add(p);
+                    double px = point.getX();
+                    double py = point.getY();
+                    double pz = pixM.luminance((int) point.getX(), (int) point.getY());
+                    if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff) {
+                        addTmp(px, py, pz);
                         break;
                     }
                 }
             }
         }
 
-        for (Object o : listTmp) {
-            Point3D p = (Point3D) o;
-
-        }
-        return ((List<Point3D>) listTmp.clone());
+        return null;
     }
 }
