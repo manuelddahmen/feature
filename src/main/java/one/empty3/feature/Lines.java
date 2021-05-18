@@ -30,25 +30,21 @@ public class Lines extends ProcessFile {
                     listTmpCurve = new ArrayList<Point3D>();
                     listTmpCurve.add(new Point3D((double)x, (double)y, pixM.luminance(x, y)));
                     int cont = 0;
-                    double valueDiff = 0.1;
+                    double valueDiff = 0.2;
                     for (int s = 0; s < pixM.getLines(); s++) {
                         int dist = 0;
                         int listSize = 0;
                         dist = 2;
-                        double value = pixM.luminance(i, j);
-                        double valueMin = pixM.mean(i - dist / 2, j -dist / 2, dist, dist);
-                        if (valueMin < 0.05) {
+                        double value = pixM.luminance(x, y);
+
+                        double valueAvg = pixM.mean(x - dist/2, y -dist/2, dist+1, dist+1);
+                        if (valueAvg < 0.1) {
                             break;
                         }
-                        List<Point3D> points = neighborHood(i, j, 2, valueMin, valueDiff);
+                        List<Point3D> points = neighborHood(i, j, 2, valueAvg, valueDiff);
 
-                        if (points.size()<=1) {
-                            cont++;
-                            valueDiff += 0.1;
-                            if(cont==3) {
+                        if (points.size()==0) {
                                 break;
-                            }
-                            continue;
                         }
 
                         for (List<Point3D> ps : lists)
@@ -64,7 +60,7 @@ public class Lines extends ProcessFile {
                         listTmpCurve.addAll(points);
 
                     }
-                    if (listTmpCurve.size() > 1)
+                    if (listTmpCurve.size() > 0)
                         lists.add(listTmpCurve);
                 }
             }
@@ -92,11 +88,11 @@ public class Lines extends ProcessFile {
         listTmp.clear();
         for (int x = 0; x < dist; x++) {
             for (int y = 0; y < dist; y++) {
-                if (x != i && y != j) {
-                    int x2 = i + (x - dist/2) * 1;
-                    int y2 = j + (y - dist/2) * 1;
+                if (i+x != i && j+y != j) {
+                    int x2 = i + (x - dist / 2);
+                    int y2 = j + (y - dist / 2);
                     Point point = new Point(x2, y2);
-                    Point3D p = new Point3D(point.getX(), point.getY(), pixM.luminance((int) point.getX(), (int) point.getY()));
+                    Point3D p = new Point3D(point.getX(), point.getY(), pixM.mean((int) point.getX(), (int) point.getY(), dist, dist));
                     if (p.getZ() >= valueMin - valueDiff && p.getZ() <= valueMin + valueDiff) {
                         listTmp.add(p);
                         break;
