@@ -29,19 +29,26 @@ public class Lines extends ProcessFile {
 
                     listTmpCurve = new ArrayList<Point3D>();
                     listTmpCurve.add(new Point3D((double)x, (double)y, pixM.luminance(x, y)));
+                    int cont = 0;
+                    double valueDiff = 0.1;
                     for (int s = 0; s < pixM.getLines(); s++) {
                         int dist = 0;
                         int listSize = 0;
-                        dist = 4;
+                        dist = 2;
                         double value = pixM.luminance(i, j);
-                        double valueMin = pixM.mean(i - 2*dist / 2, j -2* dist / 2, dist, dist)-0.2;
-                        if (valueMin > 0.05) {
+                        double valueMin = pixM.mean(i - dist / 2, j -dist / 2, dist, dist);
+                        if (valueMin < 0.05) {
                             break;
                         }
-                        List<Point3D> points = neighborHood(i, j, 2, value);
+                        List<Point3D> points = neighborHood(i, j, 2, valueMin, valueDiff);
 
-                        if (points.size() == 0) {
-                            break;
+                        if (points.size()<=1) {
+                            cont++;
+                            valueDiff += 0.1;
+                            if(cont==3) {
+                                break;
+                            }
+                            continue;
                         }
 
                         for (List<Point3D> ps : lists)
@@ -69,7 +76,7 @@ public class Lines extends ProcessFile {
                 });
             });
 
-            ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", out);
+            ImageIO.write(/*o.normalize(0.0, 1.0)*/o.getImage(), "jpg", out);
 
             return true;
         } catch (IOException e) {
@@ -81,7 +88,7 @@ public class Lines extends ProcessFile {
     ArrayList<Point3D> listTmpCurve = new ArrayList();
     ArrayList<Point3D> listTmp = new ArrayList();
 
-    private List<Point3D> neighborHood(int i, int j, int dist, double valueAvg) {
+    private List<Point3D> neighborHood(int i, int j, int dist, double valueMin, double valueDiff) {
         listTmp.clear();
         for (int x = 0; x < dist; x++) {
             for (int y = 0; y < dist; y++) {
@@ -90,7 +97,7 @@ public class Lines extends ProcessFile {
                     int y2 = j + (y - dist/2) * 1;
                     Point point = new Point(x2, y2);
                     Point3D p = new Point3D(point.getX(), point.getY(), pixM.luminance((int) point.getX(), (int) point.getY()));
-                    if (p.getZ() >= valueAvg - 0.2 /*&& p.getZ() <= valueAvg + 0.2*/) {
+                    if (p.getZ() >= valueMin - valueDiff && p.getZ() <= valueMin + valueDiff) {
                         listTmp.add(p);
                         break;
                     }
