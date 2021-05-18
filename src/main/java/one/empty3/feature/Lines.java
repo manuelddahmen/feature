@@ -32,29 +32,29 @@ public class Lines extends ProcessFile {
 
                     listTmpCurve = new ArrayList<Point3D>();
                     listTmpCurve.add(new Point3D((double) i, (double) j, pixM.luminance(i, j)));
-                    int cont = 0;
-                    double valueDiff = 0.1;
 
-                    double valueAvg = pixM.mean(i - dist / 2, j - dist / 2, dist + 1, dist + 1);
-                    Point3D pNext = listTmpCurve.get(0);
+                    double valueMin = 0.3;
+
+                    double valueDiff = 0.3;
 
                     int x = i;
                     int y = j;
 
-                    while(valueAvg-valueDiff>=pixM.luminance(x, y)&&valueAvg+valueDiff<=pixM.luminance(x, y)) {
+                    double valueAvg = pixM.luminance(x, y);
+
+                    while (valueAvg >= valueMin && valueAvg - valueDiff >= pixM.luminance(x, y) && valueAvg + valueDiff <= pixM.luminance(x, y)) {
 
                         if (valueAvg < 0.1) {
                             break;
                         }
-                        neighborhood((int)(double)x,(int) (double)y, 2, valueAvg, valueDiff);
-                        List<Point3D> points = new ArrayList<>();
-                        if (listTmpX.size() <=1) {
+                        neighborhood((int) (double) x, (int) (double) y, 2, valueAvg, valueDiff);
+
+                        if (listTmpX.size() < 1) {
                             break;
-                        }
-                        else {
+                        } else {
                             listTmpCurve.add(new Point3D(px, py, pz));
-                            x = (int)px;
-                            y = (int)py;
+                            x = (int) px;
+                            y = (int) py;
                         }
 
                         for (List<Point3D> ps : lists)
@@ -63,7 +63,7 @@ public class Lines extends ProcessFile {
                                     if (listTmpCurve.get(c).equals(p))
                                         listTmpCurve.remove(c);
 
-                        valueAvg = pixM.mean(i - dist / 2, j - dist / 2, dist + 1, dist + 1);
+                        valueAvg = pixM.mean(x - dist / 2, y - dist / 2, dist + 1, dist + 1);
 
                     }
 
@@ -77,7 +77,7 @@ public class Lines extends ProcessFile {
             lists.forEach(point3DS -> {
                 Color r = Colors.random();
                 point3DS.forEach(point3D -> {
-                    if(point3DS.size()>1)
+                    if (point3DS.size() > 1)
                         o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                 });
             });
@@ -100,11 +100,13 @@ public class Lines extends ProcessFile {
         listTmpY.add(y);
         listTmpZ.add(z);
     }
+
     public void removeTmp(int i) {
         listTmpX.remove(i);
         listTmpY.remove(i);
         listTmpZ.remove(i);
     }
+
     public void getTmp(int i) {
         px = listTmpX.get(i);
         py = listTmpY.get(i);
@@ -117,14 +119,14 @@ public class Lines extends ProcessFile {
         listTmpZ.clear();
         for (int x = 0; x < dist; x++) {
             for (int y = 0; y < dist; y++) {
-                if (i + x != i && j + y != j) {
-                    int x2 = i + (x - dist / 2);
-                    int y2 = j + (y - dist / 2);
+                int x2 = i + (x - dist / 2);
+                int y2 = j + (y - dist / 2);
+                if (x2 != i && y2 != j) {
                     Point point = new Point(x2, y2);
                     double px = point.getX();
                     double py = point.getY();
                     double pz = pixM.luminance((int) point.getX(), (int) point.getY());
-                    if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff) {
+                    if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > 0.1) {
                         addTmp(px, py, pz);
                         break;
                     }
