@@ -37,18 +37,24 @@ public class Lines extends ProcessFile {
 
                     double valueAvg = pixM.mean(i - dist / 2, j - dist / 2, dist + 1, dist + 1);
                     Point3D pNext = listTmpCurve.get(0);
-                    while(true) {
+
+                    int x = i;
+                    int y = j;
+
+                    while(valueAvg-valueDiff>=pixM.luminance(x, y)&&valueAvg+valueDiff<=pixM.luminance(x, y)) {
 
                         if (valueAvg < 0.1) {
                             break;
                         }
-                        neighborhood((int)(double)pNext.get(0), (int)(double)pNext.get(1), 2, valueAvg, valueDiff);
+                        neighborhood((int)(double)x,(int) (double)y, 2, valueAvg, valueDiff);
                         List<Point3D> points = new ArrayList<>();
                         if (listTmpX.size() <=1) {
                             break;
                         }
                         else {
                             listTmpCurve.add(new Point3D(px, py, pz));
+                            x = (int)px;
+                            y = (int)py;
                         }
 
                         for (List<Point3D> ps : lists)
