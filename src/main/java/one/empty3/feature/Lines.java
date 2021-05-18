@@ -10,67 +10,79 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Consumer;
 
 public class Lines extends ProcessFile {
     private PixM pixM;
-    private ArrayList<List<Point3D>> lists;
     private double pz;
     private double py;
     private double px;
 
     @Override
     public boolean process(File in, File out) {
-        lists = new ArrayList<List<Point3D>>();
+        ArrayList<List<Point3D>> lists = new ArrayList<List<Point3D>>();
+        lists.add(new ArrayList<>());
+        listTmpCurve = new ArrayList<Point3D>();
         try {
             pixM = new PixM(ImageIO.read(in));
             PixM o = new PixM(pixM.getColumns(), pixM.getLines());
+
+            int[][] p = new int[pixM.getColumns()][pixM.getLines()];
+
+            for (int x = 0; x < pixM.getColumns(); x++)
+                for (int y = 0; y < pixM.getLines(); y++)
+                    p[x][y] = 0;
+
             for (int i = 0; i < pixM.getColumns(); i++) {
                 for (int j = 0; j < pixM.getLines(); j++) {
-                    int listSize = 0;
-                    int dist = 2;
-
-                    listTmpCurve = new ArrayList<Point3D>();
                     listTmpCurve.add(new Point3D((double) i, (double) j, pixM.luminance(i, j)));
 
-                    double valueMin = 0.3;
+                    double valueMin = 0.4;
 
-                    double valueDiff = 0.3;
+                    double valueDiff = 0.2;
+
 
                     int x = i;
                     int y = j;
 
                     double valueAvg = pixM.luminance(x, y);
 
-                    while (valueAvg >= valueMin && valueAvg - valueDiff >= pixM.luminance(x, y) && valueAvg + valueDiff <= pixM.luminance(x, y)) {
+                    int cont = 1;
 
-                        if (valueAvg < 0.1) {
-                            break;
-                        }
-                        neighborhood((int) (double) x, (int) (double) y, 2, valueAvg, valueDiff);
+                    while (valueAvg >= valueMin && cont == 1) {
+                        cont = 0;
+
+                        p[x][y] = 1;
+
+                        neighborhood((int) (double) x, (int) (double) y, valueAvg, valueDiff, valueMin);
+
 
                         if (listTmpX.size() < 1) {
-                            break;
-                        } else {
+                            cont = 0;
+                        } else if (p[(int) px][(int) py] == 0) {
                             listTmpCurve.add(new Point3D(px, py, pz));
+
+                            if (!(px >= 0 && px < pixM.getColumns() && py >= 0 && py < pixM.getLines()))
+                                cont = 0;
                             x = (int) px;
                             y = (int) py;
+                            cont = 1;
+                        } else if (p[(int) px][(int) py] == 1) {
+                            cont = 0;
                         }
 
-                        for (List<Point3D> ps : lists)
-                            for (Point3D p : ps)
-                                for (int c = 0; c < listTmpCurve.size(); c++)
-                                    if (listTmpCurve.get(c).equals(p))
-                                        listTmpCurve.remove(c);
+                    }/*
+                    for (List<Point3D> ps : lists)
+                        for (Point3D p0 : ps)
+                            for (int c = 0; c < listTmpCurve.size(); c++)
+                                if (listTmpCurve.get(c).equals(p0))
+                                    listTmpCurve.remove(c);
+*/
+                    valueAvg = pixM.luminance(x, y);
 
-                        valueAvg = pixM.mean(x - dist / 2, y - dist / 2, dist + 1, dist + 1);
-
-                    }
-
-                    if (listTmpCurve.size() > 1)
+                    if (listTmpCurve.size() == 1)
+                        lists.get(0).add(listTmpCurve.get(0));
+                    else if (listTmpCurve.size() > 1)
                         lists.add(listTmpCurve);
-
-                    System.gc();
                 }
             }
 
@@ -90,10 +102,10 @@ public class Lines extends ProcessFile {
         }
     }
 
-    ArrayList<Point3D> listTmpCurve = new ArrayList();
-    ArrayList<Double> listTmpX = new ArrayList();
-    ArrayList<Double> listTmpY = new ArrayList();
-    ArrayList<Double> listTmpZ = new ArrayList();
+    ArrayList<Point3D> listTmpCurve = new ArrayList<Point3D>();
+    ArrayList<Double> listTmpX = new ArrayList<Double>();
+    ArrayList<Double> listTmpY = new ArrayList<Double>();
+    ArrayList<Double> listTmpZ = new ArrayList<Double>();
 
     public void addTmp(double x, double y, double z) {
         listTmpX.add(x);
@@ -113,27 +125,26 @@ public class Lines extends ProcessFile {
         pz = listTmpZ.get(i);
     }
 
-    private List<Point3D> neighborhood(int i, int j, int dist, double valueAvg, double valueDiff) {
+    private void neighborhood(int i, int j, double valueAvg, double valueDiff, double valueMin) {
         listTmpX.clear();
         listTmpY.clear();
         listTmpZ.clear();
-        for (int x = 0; x < dist; x++) {
-            for (int y = 0; y < dist; y++) {
-                int x2 = i + (x - dist / 2);
-                int y2 = j + (y - dist / 2);
+        listTmpCurve.clear();
+        for (int x = 0; x < 2; x++) {
+            for (int y = 0; y < 2; y++) {
+                int x2 = i + (x - 1);
+                int y2 = j + (y - 1);
                 if (x2 != i && y2 != j) {
                     Point point = new Point(x2, y2);
                     double px = point.getX();
                     double py = point.getY();
                     double pz = pixM.luminance((int) point.getX(), (int) point.getY());
-                    if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > 0.1) {
+                    if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > valueMin) {
                         addTmp(px, py, pz);
                         break;
                     }
                 }
             }
         }
-
-        return null;
     }
 }
