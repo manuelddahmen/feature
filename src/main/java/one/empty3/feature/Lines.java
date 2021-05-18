@@ -17,6 +17,39 @@ public class Lines extends ProcessFile {
     private double py;
     private double px;
 
+
+
+    public List<Point3D> relierPoints(List<List<Point3D>> points) {
+        List<Point3D> list = new ArrayList<>();
+
+        List<Point3D> p = points.get(0);
+
+        for(int i=0; i<p.size(); i++) {
+            Point3D proche = proche(p.get(i), p);
+            if(proche==null)
+                continue;
+            else {
+                p.remove(proche);
+                list.add(proche);
+            }
+        }
+
+        return list;
+    }
+
+    private Point3D proche(Point3D point3D, List<Point3D> p) {
+        double dist = 100000;
+        Point3D pRes = null;
+        for(Point3D p2 : p) {
+            if (Point3D.distance(point3D, p2) < dist) {
+                dist = Point3D.distance(point3D, p2);
+                pRes = p2;
+            }
+        }
+        return pRes;
+    }
+
+
     @Override
     public boolean process(File in, File out) {
         ArrayList<List<Point3D>> lists = new ArrayList<List<Point3D>>();
@@ -70,13 +103,13 @@ public class Lines extends ProcessFile {
                             cont = 0;
                         }
 
-                    }/*
+                    }
                     for (List<Point3D> ps : lists)
                         for (Point3D p0 : ps)
                             for (int c = 0; c < listTmpCurve.size(); c++)
                                 if (listTmpCurve.get(c).equals(p0))
                                     listTmpCurve.remove(c);
-*/
+
                     valueAvg = pixM.luminance(x, y);
 
                     if (listTmpCurve.size() == 1)
@@ -86,14 +119,23 @@ public class Lines extends ProcessFile {
                 }
             }
 
-            lists.forEach(point3DS -> {
+
+            List<List<Point3D>> lists2 = new ArrayList<>();
+            List<Point3D> point3DS = relierPoints(lists);
+            do {
+                if(point3DS!=null) {
+                    lists2.add(point3DS);
+                }
+                point3DS = relierPoints(lists);
+            } while(point3DS!=null);
+
+
+            lists2.forEach(p3s -> {
                 Color r = Colors.random();
-                point3DS.forEach(point3D -> {
-                    if (point3DS.size() > 1)
-                        o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
+                p3s.forEach(point3D -> {
+                    o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                 });
             });
-
             ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", out);
             return true;
         } catch (IOException e) {
