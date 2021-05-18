@@ -44,9 +44,9 @@ public class Classification extends ProcessFile {
                     imageOut.setRGB(i, j, color);/*selectPointColorMassAglo.getChosenColor().getRGB()*/
                 } else {
                     double[] doubles = Lumiere.getDoubles(read.getRGB(i, j));
-                    for(int c=0; c<3; c++)
+                    /*for(int c=0; c<3; c++)
                         doubles[c] = doubles[c]/3;
-                    imageOut.setRGB(i, j, Lumiere.getInt(doubles));
+*/                    imageOut.setRGB(i, j, Lumiere.getInt(doubles));
                 }
             }
 

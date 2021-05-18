@@ -26,17 +26,19 @@ public class Lines extends ProcessFile {
                 for (int j = 0; j < pixM.getLines(); j++) {
                     int x = i;
                     int y = j;
+
+                    listTmpCurve = new ArrayList<Point3D>();
+                    listTmpCurve.add(new Point3D((double)x, (double)y, pixM.luminance(x, y)));
                     for (int s = 0; s < pixM.getLines(); s++) {
-                        listTmpCurve = new ArrayList<Point3D>();
                         int dist = 0;
                         int listSize = 0;
-                        dist = 2;
+                        dist = 4;
                         double value = pixM.luminance(i, j);
-                        double valueMin = pixM.mean(i - dist / 2, j - dist / 2, dist, dist);
-                        /*if (valueMin < 0.3) {
-                            valueMin = 0.3;
-                        }*/
-                        List<Point3D> points = neighborHood(i, j, dist, valueMin);
+                        double valueMin = pixM.mean(i - 2*dist / 2, j -2* dist / 2, dist, dist)-0.2;
+                        if (valueMin > 0.05) {
+                            break;
+                        }
+                        List<Point3D> points = neighborHood(i, j, 2, value);
 
                         if (points.size() == 0) {
                             break;
@@ -55,7 +57,7 @@ public class Lines extends ProcessFile {
                         listTmpCurve.addAll(points);
 
                     }
-                    if (listTmpCurve.size() > 0)
+                    if (listTmpCurve.size() > 1)
                         lists.add(listTmpCurve);
                 }
             }
@@ -63,7 +65,7 @@ public class Lines extends ProcessFile {
             lists.forEach(point3DS -> {
                 Color r = Colors.random();
                 point3DS.forEach(point3D -> {
-                    o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed(), r.getGreen(), r.getBlue());
+                    o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed()/255., r.getGreen()/255., r.getBlue()/255.);
                 });
             });
 
@@ -79,21 +81,20 @@ public class Lines extends ProcessFile {
     ArrayList<Point3D> listTmpCurve = new ArrayList();
     ArrayList<Point3D> listTmp = new ArrayList();
 
-    private List<Point3D> neighborHood(int i, int j, int dist, double valueMin) {
+    private List<Point3D> neighborHood(int i, int j, int dist, double valueAvg) {
         listTmp.clear();
         for (int x = 0; x < dist; x++) {
             for (int y = 0; y < dist; y++) {
-                int x2 = i + (x - 1) * dist;
-                int y2 = j + (y - 1);
-                if (x != i && y != j)
-                    for (int s = 1; s < dist * 8; s++) {
-                        Point point = new Point(x2, y2);
-                        Point3D p = new Point3D(point.getX(), point.getY(), pixM.luminance((int) point.getX(), (int) point.getY()));
-                        if (p.getZ() >= valueMin) {
-                            listTmp.add(p);
-                            break;
-                        }
+                if (x != i && y != j) {
+                    int x2 = i + (x - dist/2) * 1;
+                    int y2 = j + (y - dist/2) * 1;
+                    Point point = new Point(x2, y2);
+                    Point3D p = new Point3D(point.getX(), point.getY(), pixM.luminance((int) point.getX(), (int) point.getY()));
+                    if (p.getZ() >= valueAvg - 0.2 /*&& p.getZ() <= valueAvg + 0.2*/) {
+                        listTmp.add(p);
+                        break;
                     }
+                }
             }
         }
 
