@@ -16,7 +16,7 @@ public class Lines extends ProcessFile {
     private double pz;
     private double py;
     private double px;
-    private double distMax = 3.;
+    private double distMax = 40.;
 
 
     public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
@@ -24,9 +24,9 @@ public class Lines extends ProcessFile {
 
         List<Point3D> p = points.get(0);
 
-        for(int i=0; i<p.size(); i++) {
+        for (int i = 0; i < p.size(); i++) {
             Point3D proche = proche(p0, p);
-            if(proche==null)
+            if (proche == null)
                 return list;
             else {
                 p.remove(proche);
@@ -40,7 +40,7 @@ public class Lines extends ProcessFile {
     private Point3D proche(Point3D point3D, List<Point3D> p) {
         double dist = distMax;
         Point3D pRes = null;
-        for(Point3D p2 : p) {
+        for (Point3D p2 : p) {
             if (Point3D.distance(point3D, p2) < dist) {
                 dist = Point3D.distance(point3D, p2);
                 pRes = p2;
@@ -71,7 +71,7 @@ public class Lines extends ProcessFile {
 
                     double valueMin = 0.4;
 
-                    double valueDiff = 0.2;
+                    double valueDiff = 0.1;
 
 
                     int x = i;
@@ -122,14 +122,14 @@ public class Lines extends ProcessFile {
 
             List<List<Point3D>> lists2 = new ArrayList<>();
             List<Point3D> point3DS = relierPoints(lists, lists.get(0).get(0));
-            int index=0;
+            int index = 0;
             do {
-                if(point3DS!=null) {
+                if (point3DS != null) {
                     index++;
                     lists2.add(point3DS);
                 }
                 point3DS = relierPoints(lists, lists.get(0).get(index));
-            } while(point3DS!=null&&point3DS.size()>0 && index<lists.get(0).size()-1);
+            } while (point3DS != null && point3DS.size() > 0 && index < lists.get(0).size() - 1);
 
 
             lists2.forEach(p3s -> {
