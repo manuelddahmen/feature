@@ -19,21 +19,37 @@ public class Lines extends ProcessFile {
     private double distMax = 40.;
     private Random random = new Random();
     Point3D [][] mapPoints;
+    private List<List<Point3D>> lists = new ArrayList<>();
 
-    public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
+    public List<Point3D> relierPointsMap( Point3D p0) {
         List<Point3D> list = new ArrayList<>();
 
-        List<Point3D> p = points.get(0);
+        List<Point3D> p = lists.get(0);
 
-/*        for (int i = 0; i < p.size(); i++) {
-            Point3D proche = near(p0, mapPoints);
+        for (int i = 0; i < p.size(); i++) {
+            Point3D proche = near(p0, p);
             if (proche == null)
                 return list;
             else {
                 p.remove(proche);
                 list.add(proche);
             }
-        }*/
+        }/*
+        Point3D proche = near(p0, mapPoints);
+        if (proche == null) {
+            p.remove(proche);
+            return list;
+        } else {
+            p.remove(proche);
+            list.add(proche);
+        }
+*/
+        return list;
+    }
+
+    public List<Point3D> relierPointsList(List<List<Point3D>> p, Point3D p0) {
+        List<Point3D> list = new ArrayList<>();
+
         Point3D proche = near(p0, mapPoints);
         if (proche == null) {
             p.remove(proche);
@@ -45,14 +61,13 @@ public class Lines extends ProcessFile {
 
         return list;
     }
-
-    private Point3D near(Point3D point3D, List<Point3D> p) {
+    private Point3D near(Point3D p0, List<Point3D> p) {
         double distMax1 = 10000;
         double dist = distMax;
         Point3D pRes = null;
         for (Point3D p2 : p) {
-            if (Point3D.distance(point3D, p2) < distMax1 && p2!=point3D && !p2.equals(point3D)) {
-                dist = Point3D.distance(point3D, p2);
+            if (Point3D.distance(p0, p2) < distMax1 && p2!=p0 && !p2.equals(p0)) {
+                dist = Point3D.distance(p0, p2);
                 pRes = p2;
                 if(dist<2.0)
                     return pRes;
@@ -86,7 +101,6 @@ public class Lines extends ProcessFile {
     }
     @Override
     public boolean process(File in, File out) {
-        ArrayList<List<Point3D>> lists = new ArrayList<List<Point3D>>();
         lists.add(new ArrayList<>());
         listTmpCurve = new ArrayList<Point3D>();
         try {
@@ -171,14 +185,14 @@ public class Lines extends ProcessFile {
 
 
             List<List<Point3D>> lists2 = new ArrayList<>();
-            List<Point3D> point3DS = relierPoints(lists, lists.get(0).get(0));
+            List<Point3D> point3DS = relierPointsMap(lists.get(0).get(0));
             int index = 0;
             do {
                 if (point3DS != null) {
                     index++;
                     lists2.add(point3DS);
                 }
-                point3DS = relierPoints(lists, lists.get(0).get(index));
+                point3DS = relierPointsMap(lists.get(0).get(index));
             } while (point3DS != null && point3DS.size() > 0 && index < lists.get(0).size() - 1);
 
 
