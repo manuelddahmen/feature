@@ -27,38 +27,32 @@ public class Lines extends ProcessFile {
         List<Point3D> p = lists.get(0);
 
         for (int i = 0; i < p.size(); i++) {
-            Point3D proche = near(p0, p);
-            if (proche == null)
+            Point3D proche = near(p0, mapPoints);
+            if (proche == null) {
+                p.remove(p0);
                 return list;
-            else {
+            } else {
                 p.remove(proche);
                 list.add(proche);
             }
-        }/*
-        Point3D proche = near(p0, mapPoints);
-        if (proche == null) {
-            p.remove(proche);
-            return list;
-        } else {
-            p.remove(proche);
-            list.add(proche);
         }
-*/
+
         return list;
     }
 
-    public List<Point3D> relierPointsList(List<List<Point3D>> p, Point3D p0) {
+    public List<Point3D> relierPointsList(List<Point3D> p, Point3D p0) {
         List<Point3D> list = new ArrayList<>();
 
-        Point3D proche = near(p0, mapPoints);
-        if (proche == null) {
-            p.remove(proche);
-            return list;
-        } else {
-            p.remove(proche);
-            list.add(proche);
+        for (int i = 0; i < p.size(); i++) {
+            Point3D proche = near(p0, p);
+            if (proche == null) {
+                p.remove(p0);
+                return list;
+            } else {
+                p.remove(p0);
+                list.add(proche);
+            }
         }
-
         return list;
     }
 
@@ -177,8 +171,9 @@ public class Lines extends ProcessFile {
                     } else if (listTmpCurve.size() > 1) {
                         lists.add(listTmpCurve);
                     }
+
                     for (Point3D point3D : listTmpCurve) {
-                        mapPoints[(int) (double) point3D.getX()][(int) (double) point3D.getY()] = point3D;
+                        mapPoints[(int) (double) point3D.getX()][(int) (double) point3D.getY()] = a;
                     }
                 }
             }
