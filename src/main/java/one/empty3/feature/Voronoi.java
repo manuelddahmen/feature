@@ -10,14 +10,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Voronoi extends ProcessFile {
+    private PixM pixM;
+
     private Point3D proche(Point3D point3D, List<Point3D> p) {
         double dist = 1000000;
         Point3D pRes = null;
-        for (Point3D p2 : p) {
-            if (Point3D.distance(point3D, p2) < dist) {
-                dist = Point3D.distance(point3D, p2);
-                pRes = p2;
+
+        int x = (int)(double)point3D.getX();
+        int y = (int)(double)point3D.getY();
+
+        int index2 = 0;
+
+        while(true){
+
+            if(index2>=p.size()-1)
+                break;
+
+            Point3D p3 = p.get(index2);
+
+            if (Point3D.distance(point3D, p3) < dist && p3!=point3D && !p3.equals(point3D)) {
+                dist = Point3D.distance(point3D, p3);
+                pRes = p3;
+
+
             }
+            index2++;
         }
         return pRes;
     }
@@ -26,29 +43,37 @@ public class Voronoi extends ProcessFile {
         try {
             List<Point3D> points = new ArrayList();
             BufferedImage read = ImageIO.read(in);
-            PixM pixM = PixM.getPixM(read, maxRes);
+            pixM = PixM.getPixM(read, maxRes);
             PixM pixMOut = pixM.copy();
             for(int i=0; i<pixM.getColumns(); i++) {
                 for (int j = 0; j < pixM.getLines(); j++) {
-                    if(pixM.luminance(i, j)>0.0) {
-                        Point3D p = pixM.getP(i, j);
-                        points.add(p);
+                    if(pixM.luminance(i, j)>0.4) {
+                        points.add(new Point3D((double)i, (double)j, pixM.luminance(i,j)));
                     }
                 }
             }
+
+
             for(int i=0; i<pixM.getColumns(); i++) {
                 for (int j = 0; j < pixM.getLines(); j++) {
-                    Point3D proche = proche(pixMOut.getP(i, j), points);
-                    Point3D p = pixMOut.getP((int) (double) proche.get(0), (int) (double) proche.get(1));
-                    pixMOut.setValues(i, j, p.getX(), p.getY(), p.getZ());
+                    Point3D proche = proche(new Point3D((double)i, (double)j), points);
+                    if(proche!=null) {
+                        Point3D p = pixM.getP((int) (double) proche.get(0), (int) (double) proche.get(1));
+                        pixMOut.setValues(i, j, p.getX(), p.getY(), p.getZ());
+                    }else {
+                        System.out.println("Error proche==null");
+                    }
                 }
-
-
             }
+
+
             ImageIO.write(pixMOut.getImage(), "jpg", out);
 
             return true;
+
+
         } catch (Exception ex) {
+            ex.printStackTrace();
             return false;
         }
     }

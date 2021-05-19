@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Lines extends ProcessFile {
     private PixM pixM;
@@ -17,6 +18,7 @@ public class Lines extends ProcessFile {
     private double py;
     private double px;
     private double distMax = 40.;
+    private Random random = new Random();
 
 
     public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
@@ -41,7 +43,7 @@ public class Lines extends ProcessFile {
         double dist = distMax;
         Point3D pRes = null;
         for (Point3D p2 : p) {
-            if (Point3D.distance(point3D, p2) < dist) {
+            if (Point3D.distance(point3D, p2) < dist && p2!=point3D && !p2.equals(point3D)) {
                 dist = Point3D.distance(point3D, p2);
                 pRes = p2;
             }
@@ -49,7 +51,9 @@ public class Lines extends ProcessFile {
         return pRes;
     }
 
-
+    public double r() {
+        return (random.doubles().iterator().nextDouble() + 1.) / 2;
+    }
     @Override
     public boolean process(File in, File out) {
         ArrayList<List<Point3D>> lists = new ArrayList<List<Point3D>>();
@@ -133,7 +137,7 @@ public class Lines extends ProcessFile {
 
 
             lists2.forEach(p3s -> {
-                Color r = Colors.random();
+                Color r = new Color((float)r(),(float)r(),(float)r());
                 p3s.forEach(point3D -> {
                     o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                 });
