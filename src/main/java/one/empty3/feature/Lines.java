@@ -18,10 +18,10 @@ public class Lines extends ProcessFile {
     private double px;
     private double distMax = 40.;
     private Random random = new Random();
-    Point3D [][] mapPoints;
+    Point3D[][] mapPoints;
     private List<List<Point3D>> lists = new ArrayList<>();
 
-    public List<Point3D> relierPointsMap( Point3D p0) {
+    public List<Point3D> relierPointsMap(Point3D p0) {
         List<Point3D> list = new ArrayList<>();
 
         List<Point3D> p = lists.get(0);
@@ -61,35 +61,37 @@ public class Lines extends ProcessFile {
 
         return list;
     }
+
     private Point3D near(Point3D p0, List<Point3D> p) {
         double distMax1 = 10000;
         double dist = distMax;
         Point3D pRes = null;
         for (Point3D p2 : p) {
-            if (Point3D.distance(p0, p2) < distMax1 && p2!=p0 && !p2.equals(p0)) {
+            if (Point3D.distance(p0, p2) < distMax1 && p2 != p0 && !p2.equals(p0)) {
                 dist = Point3D.distance(p0, p2);
                 pRes = p2;
-                if(dist<2.0)
+                if (dist < 2.0)
                     return pRes;
             }
         }
         return pRes;
     }
+
     private Point3D near(Point3D p0, Point3D[][] map) {
         int distMax1 = 2;
         double dist = distMax;
         Point3D pRes = null;
-        int x0 = (int)(double)p0.getX();
-        int y0 = (int)(double)p0.getY();
-        for (int i = Math.max(x0 - distMax1 / 2, 0); i<x0+distMax/2&&i>=0&&i<pixM.getColumns(); i++) {
-            for (int j = Math.max(y0 - distMax1 / 2, 0); j<y0+distMax1/2&&j>=0&&j<pixM.getLines(); j++) {
+        int x0 = (int) (double) p0.getX();
+        int y0 = (int) (double) p0.getY();
+        for (int i = Math.max(x0 - distMax1 / 2, 0); i < Math.min(x0 + distMax1 / 2, pixM.getColumns()); i++) {
+            for (int j = Math.max(y0 - distMax1 / 2, 0); j < Math.min(y0 + distMax1 / 2, pixM.getLines()); j++) {
                 Point3D p2 = mapPoints[i][j];
-                if (p2!=null&&Point3D.distance(p0, p2) < distMax1 && p2!=p0 && !p2.equals(p0)) {
+                if (p2 != null && Point3D.distance(p0, p2) < distMax1 && p2 != p0 && !p2.equals(p0)) {
                     dist = Point3D.distance(p0, p2);
                     pRes = p2;
                     map[i][j] = null;
-                if(dist<2.0)
-                    return pRes;
+                    if (dist < 2.0)
+                        return pRes;
                 }
             }
         }
@@ -99,6 +101,7 @@ public class Lines extends ProcessFile {
     public double r() {
         return (random.doubles().iterator().nextDouble() + 1.) / 2;
     }
+
     @Override
     public boolean process(File in, File out) {
         lists.add(new ArrayList<>());
@@ -117,7 +120,6 @@ public class Lines extends ProcessFile {
             for (int i = 0; i < pixM.getColumns(); i++) {
                 for (int j = 0; j < pixM.getLines(); j++) {
                     Point3D a = new Point3D((double) i, (double) j, pixM.luminance(i, j));
-
 
 
                     listTmpCurve.add(a);
@@ -176,12 +178,10 @@ public class Lines extends ProcessFile {
                         lists.add(listTmpCurve);
                     }
                     for (Point3D point3D : listTmpCurve) {
-                        mapPoints[(int)(double)point3D.getX()] [(int)(double)point3D.getY()] = point3D;
+                        mapPoints[(int) (double) point3D.getX()][(int) (double) point3D.getY()] = point3D;
                     }
                 }
             }
-
-
 
 
             List<List<Point3D>> lists2 = new ArrayList<>();
@@ -197,7 +197,7 @@ public class Lines extends ProcessFile {
 
 
             lists2.forEach(p3s -> {
-                Color r = new Color((float)r(),(float)r(),(float)r());
+                Color r = new Color((float) r(), (float) r(), (float) r());
                 p3s.forEach(point3D -> {
                     o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                 });
