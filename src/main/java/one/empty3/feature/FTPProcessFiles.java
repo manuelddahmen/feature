@@ -125,7 +125,10 @@ public class FTPProcessFiles {
 
         }
     }
-
+    public String[] split(String array) {
+        String[] split = array.split(",");
+        return split;
+    }
     public static void parseAndSet(ProcessFile processInstance, List<Object> argCl) {
         if (argCl.size() % 3 == 0) {
             for (int i = 0; i < argCl.size(); i += 3) {
@@ -170,14 +173,15 @@ public class FTPProcessFiles {
         String password;
 
 
+        currentDirin = new String[1];
         if ("local".equals(settings.getProperty("in.device"))) {
-            currentDirin = (settings.getProperty("in.directory")).split(",");
+            currentDirin[0] = (settings.getProperty("in.directory")).split(",")[0];
             server = "file";
             port = 0;
             username = "";
             password = "";
         } else {
-            currentDirin =((String) settings.getProperty("in.directory")).split(",");
+            currentDirin[0] =((String) settings.getProperty("in.directory")).split(",")[0];
             server = (String) settings.getProperty("host");
             port = Integer.parseInt(settings.getProperty("port"));
             username = (String) settings.getProperty("username");
@@ -200,16 +204,15 @@ public class FTPProcessFiles {
             sep = "";
         } else sep = ",";
 
-
+/*
         classnames = (classnames != null ?
                 classnames + sep : "")
 
                 + (class0 == null ? "" : "," + classnames);
-
+*/
         String[] classnamesArr = classnames.split(",");
 
 //        for(String inputDir : currentDirin) {
-
             int index = 0;
             for (String classname2 : classnamesArr) {
                 try {
@@ -299,7 +302,7 @@ public class FTPProcessFiles {
                             // local path
 
                             if (new File(currentDirin[index]).exists())
-                                printFileDetails(new File(currentDirin[index]).list(), currentDirin[index]);
+                                printFileDetails(Objects.requireNonNull(new File(currentDirin[index]).list()), currentDirin[index]);
 
 
                         }
@@ -312,7 +315,7 @@ public class FTPProcessFiles {
 
 
                         if (new File(currentDirin[index]).exists())
-                            printFileDetails(new File(currentDirin[index]).list(), currentDirin[index]);
+                            printFileDetails(Objects.requireNonNull(new File(currentDirin[index]).list()), currentDirin[index]);
 
 
                     }

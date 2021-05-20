@@ -19,7 +19,7 @@ public class Classification extends ProcessFile {
 
 
     @Override
-    public boolean process(File in, File out) {
+    public boolean process(final File in, final File out) {
         PixM selectPointColorMassAglo = null;
         BufferedImage read = null;
         try {
