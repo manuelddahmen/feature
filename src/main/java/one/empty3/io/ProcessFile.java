@@ -1,5 +1,6 @@
 package one.empty3.io;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.*;
 
@@ -18,5 +19,9 @@ public abstract class ProcessFile {
 
     public void setMaxRes(int maxRes) {
         this.maxRes = maxRes;
+    }
+
+    public BufferedImage getStack(int i) {
+        return null;
     }
 }
