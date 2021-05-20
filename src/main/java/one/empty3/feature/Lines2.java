@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-public class Lines extends ProcessFile {
+public class Lines2 extends ProcessFile {
     private PixM pixM;
     private double pz;
     private double py;
