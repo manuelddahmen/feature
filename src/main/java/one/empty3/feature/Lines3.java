@@ -54,8 +54,6 @@ public class Lines3 extends ProcessFile {
     public double r() {
         return (random.doubles().iterator().nextDouble() + 1.) / 2;
     }
-
-
     @Override
     public boolean process(File in, File out) {
         ArrayList<List<Point3D>> lists = new ArrayList<List<Point3D>>();
@@ -99,22 +97,18 @@ public class Lines3 extends ProcessFile {
                             cont = 0;
                         } else if (p[(int) px][(int) py] == 0) {
                             getTmp(0);
-
-                            listTmpCurve.add(new Point3D(px, py, pz));
-                            p[x][y] = 1;
-                            if (!(px >= 0 && px < pixM.getColumns() && py >= 0 && py < pixM.getLines()))
-                                cont = 0;
                             x = (int) px;
                             y = (int) py;
+                            listTmpCurve.add(new Point3D(px, py, pz));
+                            p[x][y] = 1;//ADD
 
+                            if (!(px >= 0 && px < pixM.getColumns() && py >= 0 && py < pixM.getLines()))
+                                cont = 0;
                             cont = 1;
                         } else if (p[(int) px][(int) py] == 1) {
                             cont = 0;
-                        } else {
-                            cont = 0;
                         }
 
-                        valueAvg = pz;
                     }
                     for (List<Point3D> ps : lists)
                         for (Point3D p0 : ps)
@@ -122,6 +116,7 @@ public class Lines3 extends ProcessFile {
                                 if (listTmpCurve.get(c).equals(p0))
                                     listTmpCurve.remove(c);
 
+                    valueAvg = pixM.luminance(x, y);
 
                     if (listTmpCurve.size() == 1)
                         lists.get(0).add(listTmpCurve.get(0));
@@ -194,8 +189,7 @@ public class Lines3 extends ProcessFile {
                     double px = point.getX();
                     double py = point.getY();
                     double pz = pixM.luminance((int) point.getX(), (int) point.getY());
-                    if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > valueMin
-                      && px>=0&&px<pixM.getColumns()&&py>=0&&py< pixM.getLines()) {
+                    if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > valueMin) {
                         addTmp(px, py, pz);
                         break;
                     }
