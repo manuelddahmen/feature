@@ -17,7 +17,7 @@ public class Voronoi extends ProcessFile {
 
         int index2 = 0;
 
-        while(index2>=p.size()-1){
+        while(index2<=p.size()-1){
             Point3D p3 = p.get(index2);
 
             if (Point3D.distance(point3D, p3) < dist && p3!=point3D && !p3.equals(point3D)) {
@@ -53,7 +53,7 @@ public class Voronoi extends ProcessFile {
                         Point3D p = pixM.getP((int) (double) near.get(0), (int) (double) near.get(1));
                         pixMOut.setValues(i, j, p.getX(), p.getY(), p.getZ());
                     }else {
-                        System.out.println("Error near==null");
+                        //System.out.println("Error near==null");
                     }
                 }
             }

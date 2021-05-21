@@ -43,7 +43,7 @@ public class Lines3 extends ProcessFile {
         double dist = distMax;
         Point3D pRes = null;
         for (Point3D p2 : p) {
-            if (Point3D.distance(point3D, p2) < dist && p2!=point3D && !p2.equals(point3D)) {
+            if (Point3D.distance(point3D, p2) < dist && p2 != point3D && !p2.equals(point3D)) {
                 dist = Point3D.distance(point3D, p2);
                 pRes = p2;
             }
@@ -54,6 +54,7 @@ public class Lines3 extends ProcessFile {
     public double r() {
         return (random.doubles().iterator().nextDouble() + 1.) / 2;
     }
+
     @Override
     public boolean process(File in, File out) {
         ArrayList<List<Point3D>> lists = new ArrayList<List<Point3D>>();
@@ -71,7 +72,6 @@ public class Lines3 extends ProcessFile {
 
             for (int i = 0; i < pixM.getColumns(); i++) {
                 for (int j = 0; j < pixM.getLines(); j++) {
-                    listTmpCurve.add(new Point3D((double) i, (double) j, pixM.luminance(i, j)));
 
                     double valueMin = 0.4;
 
@@ -83,34 +83,37 @@ public class Lines3 extends ProcessFile {
 
                     double valueAvg = pixM.luminance(x, y);
 
+                    if (p[x][y] == 0)
+                        listTmpCurve.add(new Point3D((double) x, (double) y, valueAvg));
+
+
                     int cont = 1;
 
                     while (valueAvg >= valueMin && cont == 1) {
-                        cont = 0;
 
                         p[x][y] = 1;
 
+
                         neighborhood((int) (double) x, (int) (double) y, valueAvg, valueDiff, valueMin);
 
-
-                        /*if (listTmpX.size() < 1) {
-                            cont = 0;
-                        } else*/ if (p[(int) px][(int) py] == 0) {
+                        if (listTmpX.size() > 0) {
                             getTmp(0);
                             x = (int) px;
                             y = (int) py;
-                            listTmpCurve.add(new Point3D(px, py, pz));
-                            p[x][y] = 1;//ADD
 
-                            if (!(px >= 0 && px < pixM.getColumns() && py >= 0 && py < pixM.getLines()))
-                                cont = 0;
-                            cont = 1;
+                            if (!(x >= 0 && x < pixM.getColumns() && y >= 0 && y < pixM.getLines()))
+                                break;
 
-                            valueAvg = pixM.luminance(x, y);
+                            if (p[(int) x][(int) y] == 0) {
+                                listTmpCurve.add(new Point3D((double) x, (double) y, pz));
+                                //p[x][y] = 1;//ADD
 
-                        } else if (p[(int) px][(int) py] == 1) {
-                            cont = 0;
-                        }
+                                cont = 1;
+
+                                valueAvg = pixM.luminance(x, y);
+
+                            }
+                        } else cont = 0;
 
                     }
                     for (List<Point3D> ps : lists)
@@ -119,7 +122,6 @@ public class Lines3 extends ProcessFile {
                                 if (listTmpCurve.get(c).equals(p0))
                                     listTmpCurve.remove(c);
 
-                    valueAvg = pixM.luminance(x, y);
 
                     if (listTmpCurve.size() == 1)
                         lists.get(0).add(listTmpCurve.get(0));
@@ -130,19 +132,29 @@ public class Lines3 extends ProcessFile {
 
 
             List<List<Point3D>> lists2 = new ArrayList<>();
-            List<Point3D> point3DS = relierPoints(lists, lists.get(0).get(0));
-            int index = 0;
-            do {
-                if (point3DS != null) {
-                    index++;
-                    lists2.add(point3DS);
-                }
-                point3DS = relierPoints(lists, lists.get(0).get(index));
-            } while (point3DS != null && point3DS.size() > 0 && index < lists.get(0).size() - 1);
+            int index3 = 0;
+            while (index3 < lists.size() && lists.get(index3).size() == 0)
+                index3++;
+            if (index3 < lists.size() && lists.get(index3).size() > 0) {
+
+                List<Point3D> point3DS = relierPoints(lists, lists.get(index3).get(0));
+                int index = 0;
+                do {
+                    if (point3DS != null) {
+                        index++;
+                        lists2.add(point3DS);
+                    }
+                    while (index3 < lists.size() && lists.get(index3).size() == 0)
+                        index3++;
+                    if (index3 < lists.size()) {
+                        point3DS = relierPoints(lists, lists.get(index3).get(index));
+                    }
+                } while (index3 < lists.size() && point3DS != null && point3DS.size() > 0 && index < lists.get(0).size() - 1);
+            }
 
 
             lists2.forEach(p3s -> {
-                Color r = new Color((float)r(),(float)r(),(float)r());
+                Color r = new Color((float) r(), (float) r(), (float) r());
                 p3s.forEach(point3D -> {
                     o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                 });
@@ -189,9 +201,9 @@ public class Lines3 extends ProcessFile {
                 int y2 = j + (y - 1);
                 if (x2 != i && y2 != j) {
                     Point point = new Point(x2, y2);
-                    double px = point.getX();
-                    double py = point.getY();
-                    double pz = pixM.luminance((int) point.getX(), (int) point.getY());
+                    px = point.getX();
+                    py = point.getY();
+                    pz = pixM.luminance((int) point.getX(), (int) point.getY());
                     if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > valueMin) {
                         addTmp(px, py, pz);
                         break;
