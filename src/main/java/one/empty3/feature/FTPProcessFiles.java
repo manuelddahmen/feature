@@ -376,6 +376,9 @@ public class FTPProcessFiles {
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : " + fo.getAbsolutePath());
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
+
+
+                Object o = processInstance.getClass().newInstance();
                 processInstance.process(fi, fo);
 
                 energy(fo);
@@ -419,16 +422,23 @@ public class FTPProcessFiles {
             new File(getDirname(fo.getAbsolutePath())).getParentFile().mkdirs();
             //fi.createNewFile();
             //fo.createNewFile();
+
             Logger.getLogger(FTPProcessFiles.class.getName()).info("file  in : " + fi.getAbsolutePath());
             Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : " + fo.getAbsolutePath());
             processInstance.setMaxRes(maxRes);
             Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
 
-            processInstance.process(fi, fo);
+            try {
+                Object o = processInstance.getClass().newInstance();
+                processInstance.process(fi, fo);
+                energy(fo);
+            } catch (InstantiationException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
 
-            energy(fo);
-            
   /*
         } catch(IOException ex) {
             ex.printStackTrace();

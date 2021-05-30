@@ -104,15 +104,14 @@ public class Lines3 extends ProcessFile {
                             if (!(x >= 0 && x < pixM.getColumns() && y >= 0 && y < pixM.getLines()))
                                 break;
 
-                            if (p[(int) x][(int) y] == 0) {
+                            if (p[x][y] == 0) {
                                 listTmpCurve.add(new Point3D((double) x, (double) y, pz));
-                                //p[x][y] = 1;//ADD
 
                                 cont = 1;
 
                                 valueAvg = pixM.luminance(x, y);
 
-                            }
+                            } else cont = 0;
                         } else cont = 0;
 
                     }
@@ -121,8 +120,6 @@ public class Lines3 extends ProcessFile {
                             for (int c = 0; c < listTmpCurve.size(); c++)
                                 if (listTmpCurve.get(c).equals(p0))
                                     listTmpCurve.remove(c);
-
-
                     if (listTmpCurve.size() == 1)
                         lists.get(0).add(listTmpCurve.get(0));
                     else if (listTmpCurve.size() > 1)
@@ -195,8 +192,8 @@ public class Lines3 extends ProcessFile {
         listTmpY.clear();
         listTmpZ.clear();
         listTmpCurve.clear();
-        for (int x = 0; x < 2; x++) {
-            for (int y = 0; y < 2; y++) {
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 3; y++) {
                 int x2 = i + (x - 1);
                 int y2 = j + (y - 1);
                 if (x2 != i && y2 != j) {
