@@ -189,7 +189,7 @@ public class Lines3 extends ProcessFile {
                         });
                     }
                 });
-                if(extremes[0][0]!=null && extremes[1][0]!=null) {
+                if(extremes[0][0]!=null && extremes[0][1]!=null) {
                     lines.add(new LineSegment(extremes[0][0], extremes[0][1]));
                 }
                 /*CourbeParametriquePolynomialeBezier parametricCurve = new CourbeParametriquePolynomialeBezier();
@@ -254,7 +254,8 @@ public class Lines3 extends ProcessFile {
                     px = point.getX();
                     py = point.getY();
                     pz = pixM.luminance((int) point.getX(), (int) point.getY());
-                    if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > valueMin) {
+                    if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > valueMin
+                    && px>=0.0&&px<pixM.getColumns()&&py>=0&&py<pixM.getLines()) {
                         addTmp(px, py, pz);
                         break;
                     }
