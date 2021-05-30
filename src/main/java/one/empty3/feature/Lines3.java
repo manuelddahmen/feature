@@ -1,16 +1,20 @@
 package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
+import one.empty3.library.LineSegment;
 import one.empty3.library.Point3D;
 import one.empty3.library.core.lighting.Colors;
+import one.empty3.library.core.nurbs.CourbeParametriquePolynomialeBezier;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 
 public class Lines3 extends ProcessFile {
     private PixM pixM;
@@ -149,6 +153,7 @@ public class Lines3 extends ProcessFile {
                 } while (index3 < lists.size() && point3DS != null && point3DS.size() > 0 && index < lists.get(0).size() - 1);
             }
 
+            List<LineSegment> lines = new ArrayList<>();
 
             lists2.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
@@ -156,6 +161,54 @@ public class Lines3 extends ProcessFile {
                     o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                 });
             });
+
+
+            CourbeParametriquePolynomialeBezier[] courbeParametriquePolynomialeBeziers = new CourbeParametriquePolynomialeBezier[lists2.size()];
+
+            int [] i =new int[] {0};
+            lists2.forEach(p3s -> {
+                Color r = new Color((float) r(), (float) r(), (float) r());
+                List<Point3D> segment = p3s;
+                final Point3D[][] extremes = {new Point3D[2]};
+                final Double[] distMax2 = {0.0};
+                p3s.forEach(new Consumer<Point3D>() {
+                    private Point3D p1;
+
+                    @Override
+                    public void accept(Point3D point3D) {
+                        p1 = point3D;
+                        p3s.forEach(new Consumer<Point3D>() {
+                            @Override
+                            public void accept(Point3D point3D) {
+                                if(Point3D.distance(p1, point3D)>= distMax2[0]) {
+                                    extremes[0][0] = p1;
+                                    extremes[0][1] = point3D;
+                                    distMax2[0] = Point3D.distance(p1, point3D);
+                                }
+                            }
+                        });
+                    }
+                });
+                if(extremes[0][0]!=null && extremes[1][0]!=null) {
+                    lines.add(new LineSegment(extremes[0][0], extremes[0][1]));
+                }
+                /*CourbeParametriquePolynomialeBezier parametricCurve = new CourbeParametriquePolynomialeBezier();
+                p3s.forEach(point3D -> parametricCurve.getCoefficients().getData1d().add(point3D));
+                courbeParametriquePolynomialeBeziers[i[0]++] = parametricCurve;
+*/
+            });
+
+            BufferedImage blines = new BufferedImage(o.getColumns(), o.getLines(), BufferedImage.TYPE_INT_RGB);
+            for (LineSegment line : lines) {
+                for(int c = 0; c<line.getLength(); c++) {
+                    Point3D pDraw = line.getOrigine().plus(
+                            line.getExtremite().moins(line.getOrigine().mult(c/line.getLength())));
+                    int x = (int)(double)pDraw.getX();
+                    int y = (int)(double)pDraw.getX();
+                    o.setValues(x, y, 1., 1., 1.);
+                }
+            }
+
             ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", out);
             return true;
         } catch (IOException e) {
