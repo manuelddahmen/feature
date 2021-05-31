@@ -1,6 +1,7 @@
 package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
+import one.empty3.library.ColorTexture;
 import one.empty3.library.LineSegment;
 import one.empty3.library.Point3D;
 import one.empty3.library.core.lighting.Colors;
@@ -158,63 +159,91 @@ public class Lines3 extends ProcessFile {
             lists2.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
                 p3s.forEach(point3D -> {
-                    o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
+                    if(isInBound(point3D)) {
+                        o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
+                    }
+                    // Calculer le segment AB qui approxime un maximum de points dans l'ensemble
+
                 });
             });
 
 
+            List<List<Point3D>> points = new ArrayList<>();
             CourbeParametriquePolynomialeBezier[] courbeParametriquePolynomialeBeziers = new CourbeParametriquePolynomialeBezier[lists2.size()];
 
             int [] i =new int[] {0};
             lists2.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
-                List<Point3D> segment = p3s;
-                final Point3D[][] extremes = {new Point3D[2]};
-                final Double[] distMax2 = {0.0};
-                p3s.forEach(new Consumer<Point3D>() {
-                    private Point3D p1;
+                final Point3D[][] extremes = {new Point3D[2], new Point3D[2]};
+                final Double[] distMaxMinP1 = {2.5, 1000.0};
+                List<Point3D> pointsCurrent = new ArrayList<>();
+                points.add(pointsCurrent);
 
-                    @Override
-                    public void accept(Point3D point3D) {
-                        p1 = point3D;
-                        p3s.forEach(new Consumer<Point3D>() {
-                            @Override
-                            public void accept(Point3D point3D) {
-                                if(Point3D.distance(p1, point3D)>= distMax2[0]) {
-                                    extremes[0][0] = p1;
-                                    extremes[0][1] = point3D;
-                                    distMax2[0] = Point3D.distance(p1, point3D);
-                                }
-                            }
-                        });
-                    }
+                p3s.forEach(point3D1 -> {
+                    Point3D p1 = point3D1;
+                    p3s.forEach(point3D2 -> {
+                        Point3D p2 = point3D2;
+                        if (Point3D.distance(p1, p2) >= distMaxMinP1[0] && isInBound(p1) && isInBound(p2)) {
+                            extremes[0][0] = p1;
+                            extremes[0][1] = p2;
+                            distMaxMinP1[0] = Point3D.distance(p1, p2);
+                        }
+                        if (Point3D.distance(p1, p2) <= distMaxMinP1[1] && isInBound(p1) && isInBound(p2)) {
+                            extremes[1][0] = p1;
+                            extremes[1][1] = p2;
+                            distMaxMinP1[1] = Point3D.distance(p1, p2);
+                            pointsCurrent.add(p2);
+                        }
+                    });
                 });
-                if(extremes[0][0]!=null && extremes[0][1]!=null) {
-                    lines.add(new LineSegment(extremes[0][0], extremes[0][1]));
+                if(extremes[0][0]!=null && extremes[0][1]!=null && isInBound(extremes[0][0]) && isInBound(extremes[0][1])){
+                    lines.add(new LineSegment(extremes[0][0], extremes[0][1], new ColorTexture(r)));
                 }
+
+                // Recouper les lignes par db min max
+
+
                 /*CourbeParametriquePolynomialeBezier parametricCurve = new CourbeParametriquePolynomialeBezier();
                 p3s.forEach(point3D -> parametricCurve.getCoefficients().getData1d().add(point3D));
                 courbeParametriquePolynomialeBeziers[i[0]++] = parametricCurve;
 */
+
+                if(pointsCurrent.size()>2)
+                    lines.add(new LineSegment(extremes[1][0], extremes[1][1], new ColorTexture(r)));
+
             });
 
-            BufferedImage blines = new BufferedImage(o.getColumns(), o.getLines(), BufferedImage.TYPE_INT_RGB);
+            BufferedImage bLines = new BufferedImage(o.getColumns(), o.getLines(), BufferedImage.TYPE_INT_RGB);
             for (LineSegment line : lines) {
-                for(int c = 0; c<line.getLength(); c++) {
-                    Point3D pDraw = line.getOrigine().plus(
-                            line.getExtremite().moins(line.getOrigine().mult(c/line.getLength())));
-                    int x = (int)(double)pDraw.getX();
-                    int y = (int)(double)pDraw.getX();
-                    o.setValues(x, y, 1., 1., 1.);
+                if(line.getLength()>2) {
+                    for (double c = 0.0; c <= 1.0; c += 1 / line.getLength()) {
+                        Point3D pDraw = line.getOrigine().plus(
+                                line.getOrigine().plus(line.getExtremite().moins(line.getOrigine().mult(c))));
+                        int x = (int) (double) pDraw.getX();
+                        int y = (int) (double) pDraw.getY();
+                        if (isInBound(pDraw))
+                            bLines.setRGB(x, y, Color.WHITE.getRGB());
+                    }
                 }
             }
+            points.forEach(new Consumer<List<Point3D>>() {
+                @Override
+                public void accept(List<Point3D> point3DS) {
 
+                }
+            });
             ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", out);
+            ImageIO.write(bLines, "jpg",
+                    new File(out.getAbsolutePath()+"-blines.jpg"));
             return true;
         } catch (IOException e) {
             e.printStackTrace();
             return false;
         }
+    }
+
+    private boolean isInBound(Point3D p1) {
+        return p1.get(0)>=0&&p1.get(0)< pixM.getColumns()&&p1.get(1)>=0&&p1.get(1)<pixM.getLines();
     }
 
     ArrayList<Point3D> listTmpCurve = new ArrayList<Point3D>();
