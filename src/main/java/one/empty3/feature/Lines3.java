@@ -156,13 +156,51 @@ public class Lines3 extends ProcessFile {
 
             List<LineSegment> lines = new ArrayList<>();
 
+            final double[][] xyMoyen = {new double[2]};
+            double [] ab = new double[2];
+            List<Point3D> moyennes = new ArrayList<>();
+            lists2.forEach(p3s -> {
+                xyMoyen[0][0] = 0.0;
+                xyMoyen[0][1] = 0.0;
+
+                final int[] i = {0};
+                p3s.forEach(point3D -> {
+                    if(isInBound(point3D)) {
+                        xyMoyen[0][0] += point3D.getX();
+                        xyMoyen[0][1] += point3D.getY();
+                    }
+
+                    i[0]++;
+
+                });
+
+                moyennes.add(new Point3D(xyMoyen[0][0]/lists2.get(i[0]).size(), xyMoyen[0][1]/lists2.get(i[0]).size(), 0.0));
+            });
+            List<double[]> coefficients = new ArrayList<>();
+
+            lists2.forEach(p3s -> {
+                xyMoyen[0][0] = 0.0;
+                xyMoyen[0][1] = 0.0;
+                final double[] b = {0};
+                final double[] a = { 0 };
+                final int[] i = {0};
+                p3s.forEach(point3D -> {
+                    b[0] += (point3D.getY() - moyennes.get(i[0]).getY())/(point3D.getX() - moyennes.get(i[0]).getX());
+                    a[0] += moyennes.get(i[0]).getY() - b[0] *moyennes.get(i[0]).getX();
+
+                });
+
+                coefficients.add(new double[]{a[0], b[0]});
+            });
             lists2.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
+                double xA;
+                double yA;
                 p3s.forEach(point3D -> {
                     if(isInBound(point3D)) {
                         o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                     }
-                    // Calculer le segment AB qui approxime un maximum de points dans l'ensemble
+
 
                 });
             });
@@ -199,6 +237,8 @@ public class Lines3 extends ProcessFile {
                 if(extremes[0][0]!=null && extremes[0][1]!=null && isInBound(extremes[0][0]) && isInBound(extremes[0][1])){
                     lines.add(new LineSegment(extremes[0][0], extremes[0][1], new ColorTexture(r)));
                 }
+                // Calculer le segment AB qui approxime un maximum de points dans l'ensemble
+                    /*b = (yB − yA)/(xB − xA); a = (yA − bxA). :?yA = yMoyen, xA = xMoyen*/
 
                 // Recouper les lignes par db min max
 
@@ -222,7 +262,7 @@ public class Lines3 extends ProcessFile {
                         int x = (int) (double) pDraw.getX();
                         int y = (int) (double) pDraw.getY();
                         if (isInBound(pDraw))
-                            bLines.setRGB(x, y, Color.WHITE.getRGB());
+                            bLines.setRGB(x, y, line.texture().getColorAt(0, 0));
                     }
                 }
             }
