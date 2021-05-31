@@ -157,7 +157,7 @@ public class Lines3 extends ProcessFile {
             List<LineSegment> lines = new ArrayList<>();
 
             final double[][] xyMoyen = {new double[2]};
-            double [] ab = new double[2];
+            double[] ab = new double[2];
             List<Point3D> moyennes = new ArrayList<>();
             lists2.forEach(p3s -> {
                 xyMoyen[0][0] = 0.0;
@@ -165,39 +165,42 @@ public class Lines3 extends ProcessFile {
 
                 final int[] i = {0};
                 p3s.forEach(point3D -> {
-                    if(isInBound(point3D)) {
+                    if (isInBound(point3D)) {
                         xyMoyen[0][0] += point3D.getX();
                         xyMoyen[0][1] += point3D.getY();
                     }
 
-                    i[0]++;
 
                 });
 
-                moyennes.add(new Point3D(xyMoyen[0][0]/lists2.get(i[0]).size(), xyMoyen[0][1]/lists2.get(i[0]).size(), 0.0));
+                moyennes.add(new Point3D(xyMoyen[0][0] / lists2.get(i[0]).size(), xyMoyen[0][1] / lists2.get(i[0]).size(), 0.0));
+                i[0]++;
             });
             List<double[]> coefficients = new ArrayList<>();
 
+
+            int i[] = new int[]{0};
+            int[] finalI = i;
             lists2.forEach(p3s -> {
                 xyMoyen[0][0] = 0.0;
                 xyMoyen[0][1] = 0.0;
                 final double[] b = {0};
-                final double[] a = { 0 };
-                final int[] i = {0};
+                final double[] a = {0};
                 p3s.forEach(point3D -> {
-                    b[0] += (point3D.getY() - moyennes.get(i[0]).getY())/(point3D.getX() - moyennes.get(i[0]).getX());
-                    a[0] += moyennes.get(i[0]).getY() - b[0] *moyennes.get(i[0]).getX();
+                    b[0] += (point3D.getY() - moyennes.get(finalI[0]).getY()) / (point3D.getX() - moyennes.get(finalI[0]).getX());
+                    a[0] += moyennes.get(finalI[0]).getY() - b[0] * moyennes.get(finalI[0]).getX();
 
                 });
 
                 coefficients.add(new double[]{a[0], b[0]});
+                finalI[0]++;
             });
             lists2.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
                 double xA;
                 double yA;
                 p3s.forEach(point3D -> {
-                    if(isInBound(point3D)) {
+                    if (isInBound(point3D)) {
                         o.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                     }
 
@@ -209,7 +212,7 @@ public class Lines3 extends ProcessFile {
             List<List<Point3D>> points = new ArrayList<>();
             CourbeParametriquePolynomialeBezier[] courbeParametriquePolynomialeBeziers = new CourbeParametriquePolynomialeBezier[lists2.size()];
 
-            int [] i =new int[] {0};
+            i = new int[]{0};
             lists2.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
                 final Point3D[][] extremes = {new Point3D[2], new Point3D[2]};
@@ -234,11 +237,11 @@ public class Lines3 extends ProcessFile {
                         }
                     });
                 });
-                if(extremes[0][0]!=null && extremes[0][1]!=null && isInBound(extremes[0][0]) && isInBound(extremes[0][1])){
+                if (extremes[0][0] != null && extremes[0][1] != null && isInBound(extremes[0][0]) && isInBound(extremes[0][1])) {
                     lines.add(new LineSegment(extremes[0][0], extremes[0][1], new ColorTexture(r)));
                 }
                 // Calculer le segment AB qui approxime un maximum de points dans l'ensemble
-                    /*b = (yB − yA)/(xB − xA); a = (yA − bxA). :?yA = yMoyen, xA = xMoyen*/
+                /*b = (yB − yA)/(xB − xA); a = (yA − bxA). :?yA = yMoyen, xA = xMoyen*/
 
                 // Recouper les lignes par db min max
 
@@ -248,42 +251,76 @@ public class Lines3 extends ProcessFile {
                 courbeParametriquePolynomialeBeziers[i[0]++] = parametricCurve;
 */
 
-                if(pointsCurrent.size()>2)
+                if (pointsCurrent.size() > 2)
                     lines.add(new LineSegment(extremes[1][0], extremes[1][1], new ColorTexture(r)));
 
             });
 
             BufferedImage bLines = new BufferedImage(o.getColumns(), o.getLines(), BufferedImage.TYPE_INT_RGB);
+            Graphics g = bLines.getGraphics();
             for (LineSegment line : lines) {
-                if(line.getLength()>2) {
-                    for (double c = 0.0; c <= 1.0; c += 1 / line.getLength()) {
+                if (line.getLength() >= 2) {
+                    /*for (double c = 0.0; c <= 1.0; c += 1 / line.getLength()) {
                         Point3D pDraw = line.getOrigine().plus(
                                 line.getOrigine().plus(line.getExtremite().moins(line.getOrigine().mult(c))));
                         int x = (int) (double) pDraw.getX();
                         int y = (int) (double) pDraw.getY();
                         if (isInBound(pDraw))
                             bLines.setRGB(x, y, line.texture().getColorAt(0, 0));
+                    }*/
+
+                    Point3D pDraw1 = line.getOrigine().plus(
+                            line.getOrigine().plus(line.getExtremite().moins(line.getOrigine().mult(0.0))));
+                    Point3D pDraw2 = line.getOrigine().plus(
+                            line.getOrigine().plus(line.getExtremite().moins(line.getOrigine().mult(1.0))));
+                    int x1 = (int) (double) pDraw1.getX();
+                    int y1 = (int) (double) pDraw1.getY();
+                    int x2 = (int) (double) pDraw2.getX();
+                    int y2 = (int) (double) pDraw2.getY();
+                    if (isInBound(pDraw1) && isInBound(pDraw2)) {
+                        g.setColor(Colors.random());
+                        g.drawLine(x1, y1, x2, y2);
                     }
                 }
             }
-            points.forEach(new Consumer<List<Point3D>>() {
-                @Override
-                public void accept(List<Point3D> point3DS) {
 
-                }
-            });
-            ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", out);
-            ImageIO.write(bLines, "jpg",
-                    new File(out.getAbsolutePath()+"-blines.jpg"));
-            return true;
-        } catch (IOException e) {
-            e.printStackTrace();
-            return false;
-        }
+        BufferedImage linesImg2 = new BufferedImage(o.getColumns(), o.getLines(), BufferedImage.TYPE_INT_RGB);
+
+
+        coefficients.forEach(doubles -> {
+            double a = doubles[0];
+            double b = doubles[1];
+            // y = ax+b
+            Point p1 = new Point(0, (int) b);
+            Point p2 = new Point((int) (-b / a), 0);
+            Graphics g2 = linesImg2.getGraphics();
+            g2.setColor(Colors.random());
+            g2.drawLine((int) p1.getX(), (int) p1.getY(), (int) p2.getX(), (int) p2.getY());
+        });
+        points.forEach(new Consumer<List<Point3D>>() {
+            @Override
+            public void accept(List<Point3D> point3DS) {
+
+            }
+        });
+        ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", out);
+        ImageIO.write(bLines, "jpg",
+                new File(out.getAbsolutePath() + "-blines.jpg"));
+        ImageIO.write(linesImg2, "jpg",
+                new File(out.getAbsolutePath() + "-lines-yAxB.jpg"));
+        return true;
+    } catch(
+    IOException e)
+
+    {
+        e.printStackTrace();
+        return false;
     }
 
+}
+
     private boolean isInBound(Point3D p1) {
-        return p1.get(0)>=0&&p1.get(0)< pixM.getColumns()&&p1.get(1)>=0&&p1.get(1)<pixM.getLines();
+        return p1.get(0) >= 0 && p1.get(0) < pixM.getColumns() && p1.get(1) >= 0 && p1.get(1) < pixM.getLines();
     }
 
     ArrayList<Point3D> listTmpCurve = new ArrayList<Point3D>();
@@ -324,7 +361,7 @@ public class Lines3 extends ProcessFile {
                     py = point.getY();
                     pz = pixM.luminance((int) point.getX(), (int) point.getY());
                     if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > valueMin
-                    && px>=0.0&&px<pixM.getColumns()&&py>=0&&py<pixM.getLines()) {
+                            && px >= 0.0 && px < pixM.getColumns() && py >= 0 && py < pixM.getLines()) {
                         addTmp(px, py, pz);
                         break;
                     }
