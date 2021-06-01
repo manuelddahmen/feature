@@ -160,9 +160,9 @@ public class Lines3 extends ProcessFile {
             lists2.forEach(listP -> {
                 final int[] i = {0};
 
+                list3.add(new ArrayList<>());
                 listP.forEach(point3D -> {
                     Double distNormal = 0.9;
-                    list3.add(new ArrayList<>());
                     if (isInBound(point3D)) {
                         list3.get(list3.size() - 1).add(point3D);
                         int j = 0;
@@ -182,10 +182,20 @@ public class Lines3 extends ProcessFile {
                                 list3.get(list3.size() - 1).add(listP.get((listP.size() + k) % listP.size()));
                             }
                         }
+
                     }
 
 
                 });
+                if(listP.size()>2) {
+                    Point3D p1 = listP.get(0);
+                    Point3D p2 = listP.get(listP.size()-1);
+                    list3.remove(list3.size() - 1);
+                    list3.add(new ArrayList<>());
+                    list3.get(list3.size()-1).add(p1);
+                    list3.get(list3.size()-1).add(p2);
+
+                }
             });
             List<double[]> coefficients = new ArrayList<>();
 
@@ -219,22 +229,14 @@ public class Lines3 extends ProcessFile {
 
             list3.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
-                double xA;
-                double yA;
-                p3s.forEach(point3D -> {
-                    if (isInBound(point3D)) {
+                if(p3s.size()>2) {
+                    Point3D p1 = p3s.get(0);
+                    Point3D p2 = p3s.get(p3s.size() - 1);
+                    double length = p1.moins(p2).norme();
+                    for (double i = 0; i < 1.0; i += 1. / length) {
+                        Point3D point3D = p1.plus(p2.moins(p1).mult(i));
                         img3.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
-
                     }
-
-
-                });
-                Point3D p1 = p3s.get(0);
-                Point3D p2 = p3s.get(p3s.size()-1);
-                double length = p1.moins(p2).norme();
-                for(double i=0; i< 1.0; i+=1./length) {
-                    Point3D point3D = p1.plus(p2.moins(p1).mult(i));
-                    img3.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
                 }
             });
             List<List<Point3D>> points = new ArrayList<>();
