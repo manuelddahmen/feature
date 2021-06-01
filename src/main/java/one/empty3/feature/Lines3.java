@@ -157,46 +157,58 @@ public class Lines3 extends ProcessFile {
             List<LineSegment> lines = new ArrayList<>();
             List<List<Point3D>> list3 = new ArrayList<>();
 
-            lists2.forEach(listP -> {
-                final int[] i = {0};
-
+            for (List<Point3D> listP : lists2) {
+                int i = 0;
+                int a = 0;
+                int b = listP.size() - 1;
                 list3.add(new ArrayList<>());
-                listP.forEach(point3D -> {
-                    Double distNormal = 0.9;
-                    if (isInBound(point3D)) {
-                        list3.get(list3.size() - 1).add(point3D);
-                        int j = 0;
-                        for (j = 1; j < listP.size(); j++) {
-                            if (Point3D.distance(point3D, listP.get(j)) >= distNormal) {
-                                distNormal = Point3D.distance(point3D, listP.get(j));
-                                list3.get(list3.size() - 1).add(listP.get(j));
-                            } else {
-                                j--;
+                if (listP.size() > 0) {
+                    boolean passed = false;
+                    list3.get(list3.size() - 1).add(listP.get(0));
+                    for (Point3D point3D : listP) {
+                        Double distNormal = 0.9;
+                        if (isInBound(point3D)) {
+                            int j = 0;
+                            for (j = 1; j < listP.size(); j++) {
+                                if (Point3D.distance(point3D, listP.get(j)) >= distNormal) {
+                                    distNormal = Point3D.distance(point3D, listP.get(j));
+                                    list3.get(list3.size() - 1).add(listP.get(j));
+                                }  //j--;break;
+
+
+                            }
+                            if(j==listP.size()) {
                                 break;
                             }
-
-                        }
-                        for (int k = 0; k >= - listP.size(); k--) {
-                            if (Point3D.distance(point3D, listP.get((listP.size() + k) % listP.size())) >= distNormal) {
-                                distNormal = Point3D.distance(point3D, listP.get((listP.size() + k) % listP.size()));
-                                list3.get(list3.size() - 1).add(listP.get((listP.size() + k) % listP.size()));
+                            a = j-1;
+                            int k;
+                            for (k = 0; k >= -listP.size(); k--) {
+                                if (Point3D.distance(point3D, listP.get((listP.size() + k) % listP.size())) >= distNormal) {
+                                    distNormal = Point3D.distance(point3D, listP.get((listP.size() + k) % listP.size()));
+                                    list3.get(list3.size() - 1).add(listP.get((listP.size() + k) % listP.size()));
+                                }
                             }
+                            if(k==-listP.size()) {
+                                break;
+                            }
+                            b = (k +1+ listP.size()) % listP.size();
+
+                            passed = true;
                         }
 
                     }
+                    if (list3.get(list3.size() - 1).size() >= 2 && passed) {
+                        Point3D p1 = list3.get(list3.size() - 1).get(a);
+                        Point3D p2 = list3.get(list3.size() - 1).get(b);
+                        list3.remove(list3.size() - 1);
+                        list3.add(new ArrayList<>());
+                        list3.get(list3.size() - 1).add(p1);
+                        list3.get(list3.size() - 1).add(p2);
 
-
-                });
-                if(listP.size()>2) {
-                    Point3D p1 = listP.get(0);
-                    Point3D p2 = listP.get(listP.size()-1);
-                    list3.remove(list3.size() - 1);
-                    list3.add(new ArrayList<>());
-                    list3.get(list3.size()-1).add(p1);
-                    list3.get(list3.size()-1).add(p2);
-
+                    }
                 }
-            });
+
+            }
             List<double[]> coefficients = new ArrayList<>();
 
 
@@ -229,7 +241,7 @@ public class Lines3 extends ProcessFile {
 
             list3.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
-                if(p3s.size()>2) {
+                if (p3s.size() > 2) {
                     Point3D p1 = p3s.get(0);
                     Point3D p2 = p3s.get(p3s.size() - 1);
                     double length = p1.moins(p2).norme();
@@ -242,7 +254,7 @@ public class Lines3 extends ProcessFile {
             List<List<Point3D>> points = new ArrayList<>();
             CourbeParametriquePolynomialeBezier[] courbeParametriquePolynomialeBeziers = new CourbeParametriquePolynomialeBezier[lists2.size()];
 
-            int [] i = new int[]{0};
+            int[] i = new int[]{0};
             lists2.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
                 final Point3D[][] extremes = {new Point3D[2], new Point3D[2]};
