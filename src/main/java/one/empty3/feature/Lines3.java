@@ -18,6 +18,8 @@ import java.util.Random;
 import java.util.function.Consumer;
 
 public class Lines3 extends ProcessFile {
+
+
     private PixM pixM;
     private double pz;
     private double py;

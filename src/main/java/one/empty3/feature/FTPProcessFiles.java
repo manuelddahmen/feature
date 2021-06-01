@@ -1,5 +1,6 @@
 package one.empty3.feature;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.*;
 import java.io.IOException;
@@ -125,10 +126,12 @@ public class FTPProcessFiles {
 
         }
     }
+
     public String[] split(String array) {
         String[] split = array.split(",");
         return split;
     }
+
     public static void parseAndSet(ProcessFile processInstance, List<Object> argCl) {
         if (argCl.size() % 3 == 0) {
             for (int i = 0; i < argCl.size(); i += 3) {
@@ -153,7 +156,7 @@ public class FTPProcessFiles {
         System.out.println("arg 2 : dir0 or ftp1 dir output");
 
         try {
-            DiffEnergy.pw = new PrintWriter("."+File.separator+"energies.txt");
+            DiffEnergy.pw = new PrintWriter("." + File.separator + "energies.txt");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -181,7 +184,7 @@ public class FTPProcessFiles {
             username = "";
             password = "";
         } else {
-            currentDirin[0] =((String) settings.getProperty("in.directory")).split(",")[0];
+            currentDirin[0] = ((String) settings.getProperty("in.directory")).split(",")[0];
             server = (String) settings.getProperty("host");
             port = Integer.parseInt(settings.getProperty("port"));
             username = (String) settings.getProperty("username");
@@ -189,7 +192,7 @@ public class FTPProcessFiles {
         }
 
         String maxFilesInDir0 = settings.getProperty("maxFilesInDir");
-        FTPProcessFiles.maxFilesInDir = Integer.parseInt(maxFilesInDir0==null?"10000":maxFilesInDir0);
+        FTPProcessFiles.maxFilesInDir = Integer.parseInt(maxFilesInDir0 == null ? "10000" : maxFilesInDir0);
         maxRes = Integer.parseInt(settings.getProperty("maxRes"));
         /* String*/
         classnames = (String) settings.getProperty("classname");
@@ -213,106 +216,93 @@ public class FTPProcessFiles {
         String[] classnamesArr = classnames.split(",");
 
 //        for(String inputDir : currentDirin) {
-            int index = 0;
-            for (String classname2 : classnamesArr) {
-                try {
-                    classname = classname2;
-                    if (i > 0)
-                        currentDirin[index] = currentDirout;
+        int index = 0;
+        for (String classname2 : classnamesArr) {
+            try {
+                classname = classname2;
+                if (i > 0)
+                    currentDirin[index] = currentDirout;
 
 
-                    currentDirout = "" + directoryOut + "-" + i + "-" + classname + "/";
-                    Logger.getLogger(FTPProcessFiles.class.getName()).info("Process class name read " + classname);
-                    System.out.println(classname);
-                    Class classs = Class.forName(
-                            classname
-                    );
+                currentDirout = "" + directoryOut + "-" + i + "-" + classname + "/";
+                Logger.getLogger(FTPProcessFiles.class.getName()).info("Process class name read " + classname);
+                System.out.println(classname);
+                Class classs = Class.forName(
+                        classname
+                );
 
 
-                    Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
+                Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
 
-                    Object o = classs.newInstance();
+                Object o = classs.newInstance();
 
-                    if (o instanceof ProcessFile)
+                if (o instanceof ProcessFile)
 
-                        processInstance = (ProcessFile) o;
+                    processInstance = (ProcessFile) o;
 
-                    String arg = null;
+                String arg = null;
 
-                    List<Object> argCl = new ArrayList();
+                List<Object> argCl = new ArrayList();
 
-                    if ((arg = (String) (settings.getProperty(classname))) != null) {
+                if ((arg = (String) (settings.getProperty(classname))) != null) {
 
-                        String[] ar = arg.split(":");
+                    String[] ar = arg.split(":");
 
-                        argCl.addAll(Arrays.asList(ar));
+                    argCl.addAll(Arrays.asList(ar));
 
-                    }
+                }
 
-                    parseAndSet(processInstance, argCl);
-
-
-                    if (i == 0) {
+                parseAndSet(processInstance, argCl);
 
 
-                        if (server.startsWith("ftp")) {
+                if (i == 0) {
 
 
-                            ftpClient = new FTPClient();
-                            ftpClient.connect(server, port);
-                            showServerReply(ftpClient);
-
-                            int replyCode = ftpClient.getReplyCode();
-                            if (!FTPReply.isPositiveCompletion(replyCode)) {
-                                System.out.println("Connect failed");
-                                return;
-                            }
-                            // reads settings.xml or prompts user/pass
-                            boolean success = ftpClient.login(username, password);
-                            showServerReply(ftpClient);
-
-                            if (!success) {
-                                System.out.println("Could not login to the server");
-                                return;
-                            }
-
-                            ftpClient.enterLocalPassiveMode();
+                    if (server.startsWith("ftp")) {
 
 
-                            // Lists files and directories
-                            ftpClient.changeWorkingDirectory(directory);
-                            showServerReply(ftpClient);
+                        ftpClient = new FTPClient();
+                        ftpClient.connect(server, port);
+                        showServerReply(ftpClient);
 
-                            FTPFile[] files1 = ftpClient.listFiles(directory);
-                            showServerReply(ftpClient);
+                        int replyCode = ftpClient.getReplyCode();
+                        if (!FTPReply.isPositiveCompletion(replyCode)) {
+                            System.out.println("Connect failed");
+                            return;
+                        }
+                        // reads settings.xml or prompts user/pass
+                        boolean success = ftpClient.login(username, password);
+                        showServerReply(ftpClient);
 
-                            printFileDetails(files1, directory);
-                        } else if (server.startsWith("http")) {
-                            URL oracle = new URL(server);
-                            BufferedReader in = new BufferedReader(
-                                    new InputStreamReader(oracle.openStream()));
-
-                            String inputLine;
-                            while ((inputLine = in.readLine()) != null)
-                                ;
-                            in.close();
-
-
-                        } else {
-                            // local path
-
-                            if (new File(currentDirin[index]).exists())
-                                printFileDetails(Objects.requireNonNull(new File(currentDirin[index]).list()), currentDirin[index]);
-
-
+                        if (!success) {
+                            System.out.println("Could not login to the server");
+                            return;
                         }
 
+                        ftpClient.enterLocalPassiveMode();
+
+
+                        // Lists files and directories
+                        ftpClient.changeWorkingDirectory(directory);
+                        showServerReply(ftpClient);
+
+                        FTPFile[] files1 = ftpClient.listFiles(directory);
+                        showServerReply(ftpClient);
+
+                        printFileDetails(files1, directory);
+                    } else if (server.startsWith("http")) {
+                        URL oracle = new URL(server);
+                        BufferedReader in = new BufferedReader(
+                                new InputStreamReader(oracle.openStream()));
+
+                        String inputLine;
+                        while ((inputLine = in.readLine()) != null)
+                            ;
+                        in.close();
+
+
                     } else {
-
-                        System.out.println("effect" + processInstance.toString());
-
-                        System.out.println("I>0 classes de traitement\nClasse : " + classs.toString() + " : " + currentDirin[index]);
-
+                        // local path
 
                         if (new File(currentDirin[index]).exists())
                             printFileDetails(Objects.requireNonNull(new File(currentDirin[index]).list()), currentDirin[index]);
@@ -320,9 +310,22 @@ public class FTPProcessFiles {
 
                     }
 
+                } else {
 
-                    i++;
-  //                  index++;
+                    System.out.println("effect" + processInstance.toString());
+
+                    System.out.println("I>0 classes de traitement\nClasse : " + classs.toString() + " : " + currentDirin[index]);
+
+
+                    if (new File(currentDirin[index]).exists())
+                        printFileDetails(Objects.requireNonNull(new File(currentDirin[index]).list()), currentDirin[index]);
+
+
+                }
+
+
+                i++;
+                //                  index++;
  /*
             // uses simpler methods
             String[] files2 = ftpClient.listNames(directory);
@@ -330,22 +333,22 @@ public class FTPProcessFiles {
  */
 
 
-                } catch (Exception ex) {
-                    System.out.println("Oops! Something wrong happened");
-                    ex.printStackTrace();
-                } finally {
-                    // logs out and disconnects from server
-                    if (ftpClient != null) {
-                        try {
-                            if (ftpClient.isConnected()) {
-                                ftpClient.logout();
-                                ftpClient.disconnect();
-                            }
-                        } catch (IOException ex) {
-                            ex.printStackTrace();
+            } catch (Exception ex) {
+                System.out.println("Oops! Something wrong happened");
+                ex.printStackTrace();
+            } finally {
+                // logs out and disconnects from server
+                if (ftpClient != null) {
+                    try {
+                        if (ftpClient.isConnected()) {
+                            ftpClient.logout();
+                            ftpClient.disconnect();
                         }
+                    } catch (IOException ex) {
+                        ex.printStackTrace();
                     }
                 }
+            }
 //            }
         }
     }
@@ -377,12 +380,13 @@ public class FTPProcessFiles {
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
 
+ //               Thread thread = new Thread(() -> {
 
-                Object o = processInstance.getClass().newInstance();
-                processInstance.process(fi, fo);
-
-                energy(fo);
-
+                    processInstance.process(fi, fo);
+                    energy(fo);
+   //             });
+     //           thread.start();
+       //         new TimerKillThread(thread);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -403,6 +407,7 @@ public class FTPProcessFiles {
         }
 */
     }
+
     public static void process(File object) {
 
         if (object.isFile()) {
@@ -429,16 +434,12 @@ public class FTPProcessFiles {
             Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
 
-            try {
-                Object o = processInstance.getClass().newInstance();
+         //   Thread thread = new Thread(() -> {
                 processInstance.process(fi, fo);
                 energy(fo);
-            } catch (InstantiationException e) {
-                e.printStackTrace();
-            } catch (IllegalAccessException e) {
-                e.printStackTrace();
-            }
-
+           // });
+           //thread.start();
+           // new TimerKillThread(thread);
   /*
         } catch(IOException ex) {
             ex.printStackTrace();
@@ -450,7 +451,7 @@ public class FTPProcessFiles {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         int it = 0;
         for (FTPFile file : files) {
-            if(it++>maxFilesInDir)
+            if (it++ > maxFilesInDir)
                 return;
 
             if (file.isFile() && !file.getName().equals(".")
@@ -473,7 +474,7 @@ public class FTPProcessFiles {
 
         int it = 0;
         for (String f : files) {
-            if(it>maxFilesInDir)
+            if (it > maxFilesInDir)
                 return;
             File file = new File(directory + File.separator + f);
             if (file.isFile() && !file.getName().equals(".")
@@ -543,7 +544,7 @@ public class FTPProcessFiles {
         if (files != null && files.length > 0) {
             int it = 0;
             for (String aFile : files) {
-                if(it++>maxFilesInDir)
+                if (it++ > maxFilesInDir)
                     return;
                 System.out.println(aFile);
             }

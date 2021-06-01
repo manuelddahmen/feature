@@ -338,6 +338,13 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <artifactId>miglayout-swing</artifactId>
             <version>5.2</version>
         </dependency>
+        <!--
+        <dependency>
+            <groupId>com.github.sarxos</groupId>
+            <artifactId>webcam-capture</artifactId>
+            <version>0.3.12</version>
+        </dependency>
+        -->
         <dependency>
             <groupId>org.jogamp.jocl</groupId>
             <artifactId>jocl-main</artifactId>
