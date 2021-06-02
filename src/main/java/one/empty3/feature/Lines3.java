@@ -24,9 +24,10 @@ public class Lines3 extends ProcessFile {
     private double pz;
     private double py;
     private double px;
-    private double distMax = 40.;
+    private double distMax;
     private Random random = new Random();
-
+    public Lines3() {
+    }
 
     public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
         List<Point3D> list = new ArrayList<>();
@@ -64,6 +65,16 @@ public class Lines3 extends ProcessFile {
 
     @Override
     public boolean process(File in, File out) {
+        pixM = null;
+        pz = 0.0;
+        py = 0.0;
+        px = 0.0;
+        distMax = 40.0;
+        random = new Random();
+        listTmpCurve = new ArrayList<Point3D>();
+        listTmpX = new ArrayList<Double>();
+        listTmpY = new ArrayList<Double>();
+        listTmpZ = new ArrayList<Double>();
         ArrayList<List<Point3D>> lists = new ArrayList<List<Point3D>>();
         lists.add(new ArrayList<>());
         listTmpCurve = new ArrayList<Point3D>();
