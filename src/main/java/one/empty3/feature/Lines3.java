@@ -126,15 +126,19 @@ public class Lines3 extends ProcessFile {
 
                     }
                     for (List<Point3D> ps : lists)
-                        for (Point3D p0 : ps)
+                        for (int k=0;k<ps.size(); k++) {
+                            Point3D p0 = ps.get(k);
                             for (int c = 0; c < listTmpCurve.size(); c++)
-                                if (listTmpCurve.get(c).equals(p0)) {
+                                if (listTmpCurve.get(c).equals(p0) &&
+                                        lists.get(0).contains(p0)) {
                                     Point3D p1 = listTmpCurve.get(c);
-                                    if(isInBound(p1))
-                                        p[(int)(double)p1.getX()]
-                                     [(int)(double)p1.getY()] = 1;
-                                    listTmpCurve.remove(c);
+                                    if (isInBound(p1))
+                                        p[(int) (double) p1.getX()]
+                                                [(int) (double) p1.getY()] = 1;
+                                    //listTmpCurve.remove(c);
+                                    lists.get(0).remove(p0);
                                 }
+                        }
                     if (listTmpCurve.size() == 1)
                         lists.get(0).add(listTmpCurve.get(0));
                     else if (listTmpCurve.size() > 1 && !lists.contains(listTmpCurve))
