@@ -20,12 +20,17 @@ import java.util.function.Consumer;
 public class Lines3 extends ProcessFile {
 
 
+    ArrayList<Point3D> listTmpCurve = new ArrayList<Point3D>();
+    ArrayList<Double> listTmpX = new ArrayList<Double>();
+    ArrayList<Double> listTmpY = new ArrayList<Double>();
+    ArrayList<Double> listTmpZ = new ArrayList<Double>();
     private PixM pixM;
     private double pz;
     private double py;
     private double px;
     private double distMax;
     private Random random = new Random();
+
     public Lines3() {
     }
 
@@ -77,7 +82,6 @@ public class Lines3 extends ProcessFile {
         listTmpZ = new ArrayList<Double>();
         ArrayList<List<Point3D>> lists = new ArrayList<List<Point3D>>();
         lists.add(new ArrayList<>());
-        listTmpCurve = new ArrayList<Point3D>();
         try {
             pixM = new PixM(ImageIO.read(in));
             PixM o = new PixM(pixM.getColumns(), pixM.getLines());
@@ -98,19 +102,19 @@ public class Lines3 extends ProcessFile {
 
                     int x = i;
                     int y = j;
-                    if(!isInBound(new Point3D((double)x, (double)y, 0.0)))
+                    if (!isInBound(new Point3D((double) x, (double) y, 0.0)))
                         continue;
                     double valueAvg = pixM.luminance(x, y);
 
                     if (p[x][y] == 0) {
                         listTmpCurve.add(new Point3D((double) x, (double) y, valueAvg));
-                    }else {
+                    } else {
                         continue;
                     }
 
                     int cont = 1;
 
-                    while (valueAvg >= valueMin && cont == 1 &&p[x][y]==0) {
+                    while (valueAvg >= valueMin && cont == 1 && p[x][y] == 0) {
 
                         p[x][y] = 1;
 
@@ -122,7 +126,7 @@ public class Lines3 extends ProcessFile {
                             x = (int) px;
                             y = (int) py;
 
-                            if(!isInBound(new Point3D((double)x, (double)y, 0.0)))
+                            if (!isInBound(new Point3D((double) x, (double) y, 0.0)))
                                 break;
 
                             if (p[x][y] == 0) {
@@ -137,7 +141,7 @@ public class Lines3 extends ProcessFile {
 
                     }
                     for (List<Point3D> ps : lists)
-                        for (int k=0;k<ps.size(); k++) {
+                        for (int k = 0; k < ps.size(); k++) {
                             Point3D p0 = ps.get(k);
                             for (int c = 0; c < listTmpCurve.size(); c++)
                                 if (listTmpCurve.get(c).equals(p0) &&
@@ -202,10 +206,10 @@ public class Lines3 extends ProcessFile {
 
 
                             }
-                            if(j==listP.size()) {
+                            if (j == listP.size()) {
                                 break;
                             }
-                            a = j-1;
+                            a = j - 1;
                             int k;
                             for (k = 0; k >= -listP.size(); k--) {
                                 if (Point3D.distance(point3D, listP.get((listP.size() + k) % listP.size())) >= distNormal) {
@@ -213,10 +217,10 @@ public class Lines3 extends ProcessFile {
                                     list3.get(list3.size() - 1).add(listP.get((listP.size() + k) % listP.size()));
                                 }
                             }
-                            if(k==-listP.size()) {
+                            if (k == -listP.size()) {
                                 break;
                             }
-                            b = (k +1+ listP.size()) % listP.size();
+                            b = (k + 1 + listP.size()) % listP.size();
 
                             passed = true;
                         }
@@ -389,11 +393,6 @@ public class Lines3 extends ProcessFile {
     private boolean isInBound(Point3D p1) {
         return p1.get(0) >= 0 && p1.get(0) < pixM.getColumns() && p1.get(1) >= 0 && p1.get(1) < pixM.getLines();
     }
-
-    ArrayList<Point3D> listTmpCurve = new ArrayList<Point3D>();
-    ArrayList<Double> listTmpX = new ArrayList<Double>();
-    ArrayList<Double> listTmpY = new ArrayList<Double>();
-    ArrayList<Double> listTmpZ = new ArrayList<Double>();
 
     public void addTmp(double x, double y, double z) {
         listTmpX.add(x);
