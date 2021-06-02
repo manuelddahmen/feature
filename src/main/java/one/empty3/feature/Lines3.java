@@ -87,11 +87,14 @@ public class Lines3 extends ProcessFile {
 
                     int x = i;
                     int y = j;
-
+                    if(!isInBound(new Point3D((double)x, (double)y, 0.0)))
+                        continue;
                     double valueAvg = pixM.luminance(x, y);
 
                     if (p[x][y] == 0) {
                         listTmpCurve.add(new Point3D((double) x, (double) y, valueAvg));
+                    }else {
+                        continue;
                     }
 
                     int cont = 1;
@@ -108,7 +111,7 @@ public class Lines3 extends ProcessFile {
                             x = (int) px;
                             y = (int) py;
 
-                            if (!(x >= 0 && x < pixM.getColumns() && y >= 0 && y < pixM.getLines()))
+                            if(!isInBound(new Point3D((double)x, (double)y, 0.0)))
                                 break;
 
                             if (p[x][y] == 0) {
@@ -125,11 +128,16 @@ public class Lines3 extends ProcessFile {
                     for (List<Point3D> ps : lists)
                         for (Point3D p0 : ps)
                             for (int c = 0; c < listTmpCurve.size(); c++)
-                                if (listTmpCurve.get(c).equals(p0))
+                                if (listTmpCurve.get(c).equals(p0)) {
+                                    Point3D p1 = listTmpCurve.get(c);
+                                    if(isInBound(p1))
+                                        p[(int)(double)p1.getX()]
+                                     [(int)(double)p1.getY()] = 1;
                                     listTmpCurve.remove(c);
+                                }
                     if (listTmpCurve.size() == 1)
                         lists.get(0).add(listTmpCurve.get(0));
-                    else if (listTmpCurve.size() > 1)
+                    else if (listTmpCurve.size() > 1 && !lists.contains(listTmpCurve))
                         lists.add(listTmpCurve);
                 }
             }

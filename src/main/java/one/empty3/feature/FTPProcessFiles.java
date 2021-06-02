@@ -377,12 +377,12 @@ public class FTPProcessFiles {
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
 
-                Thread thread = new Thread(() -> {
+                //Thread thread = new Thread(() -> {
 
                     processInstance.process(fi, fo);
                     energy(fo);
-                });
-                new TimerKillThread(thread);
+                //});
+                //new TimerKillThread(thread);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -428,12 +428,12 @@ public class FTPProcessFiles {
             processInstance.setMaxRes(maxRes);
             Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
-            Thread thread = new Thread(() -> {
+           // Thread thread = new Thread(() -> {
                 processInstance.process(fi, fo);
                 energy(fo);
-            });
+      //      });
 
-            new TimerKillThread(thread);
+       //     new TimerKillThread(thread);
 
         }
     }

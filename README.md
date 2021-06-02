@@ -56,3 +56,4 @@ port=21
 directory=/myimages/selection/input
 classname=one.empty3.feature.Transform1,one.empty3.feature.Histogram2,one.empty3.feature.GradProcess
 ```
+Manuel DAHMEN.
