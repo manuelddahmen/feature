@@ -11,14 +11,18 @@ public class TimerKillThread extends Thread {
     private long time;
 
     public TimerKillThread(Thread t) {
+
         this.thread = t;
+
+        this.time = System.nanoTime();
+
+        start();
     }
     @Override
     public void run() {
         instances.add(this);
-        this.time = System.nanoTime();
 
-        while((System.nanoTime()-time)<4000000000l
+        while((System.nanoTime()-time)< 4000000L
                 || instances.size()>=MAX_THREADS) {
             try {
                 Thread.sleep(2000);
@@ -26,8 +30,8 @@ public class TimerKillThread extends Thread {
                 e.printStackTrace();
             }
         }
-        thread.stop();
         instances.remove(this);
+        thread.interrupt();
     }
 
 }

@@ -90,13 +90,13 @@ public class Lines3 extends ProcessFile {
 
                     double valueAvg = pixM.luminance(x, y);
 
-                    if (p[x][y] == 0)
+                    if (p[x][y] == 0) {
                         listTmpCurve.add(new Point3D((double) x, (double) y, valueAvg));
-
+                    }
 
                     int cont = 1;
 
-                    while (valueAvg >= valueMin && cont == 1) {
+                    while (valueAvg >= valueMin && cont == 1 &&p[x][y]==0) {
 
                         p[x][y] = 1;
 

@@ -1,14 +1,11 @@
 package one.empty3.feature;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.*;
 import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.nio.file.*;
 import java.io.*;
-import java.net.URI;
 import java.io.FileInputStream;
 
 import org.apache.commons.net.ftp.*;
@@ -20,7 +17,6 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 
 import one.empty3.library.TextureMov;
-import org.apache.xmlbeans.impl.tool.Diff;
 //import org.json.*;
 
 /**
@@ -40,6 +36,7 @@ public class FTPProcessFiles {
     private static PrintWriter pw;
     private static int maxRes;
     private static int maxFilesInDir;
+    private static String[] initialDirectories;
 
     public static String getDirname(String s) {
         if (s.contains("/"))
@@ -178,13 +175,13 @@ public class FTPProcessFiles {
 
         currentDirin = new String[1];
         if ("local".equals(settings.getProperty("in.device"))) {
-            currentDirin[0] = (settings.getProperty("in.directory")).split(",")[0];
+            currentDirin = (settings.getProperty("in.directory")).split(",");
             server = "file";
             port = 0;
             username = "";
             password = "";
         } else {
-            currentDirin[0] = ((String) settings.getProperty("in.directory")).split(",")[0];
+            currentDirin = ((String) settings.getProperty("in.directory")).split(",");
             server = (String) settings.getProperty("host");
             port = Integer.parseInt(settings.getProperty("port"));
             username = (String) settings.getProperty("username");
@@ -206,7 +203,6 @@ public class FTPProcessFiles {
         if (class0 == null || class0.equals("")) {
             sep = "";
         } else sep = ",";
-
 /*
         classnames = (classnames != null ?
                 classnames + sep : "")
@@ -303,9 +299,10 @@ public class FTPProcessFiles {
 
                     } else {
                         // local path
-
-                        if (new File(currentDirin[index]).exists())
-                            printFileDetails(Objects.requireNonNull(new File(currentDirin[index]).list()), currentDirin[index]);
+                        initialDirectories = currentDirin;
+                        for(int d = 0; d< initialDirectories.length; d++)
+                        if (new File(initialDirectories[d]).exists())
+                            printFileDetails(Objects.requireNonNull(new File(initialDirectories[d]).list()), initialDirectories[d]);
 
 
                     }
@@ -380,13 +377,13 @@ public class FTPProcessFiles {
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
 
- //               Thread thread = new Thread(() -> {
+                //Thread thread = new Thread(() -> {
 
                     processInstance.process(fi, fo);
                     energy(fo);
-   //             });
-     //           thread.start();
-       //         new TimerKillThread(thread);
+                //});
+                //thread.start();
+                //new TimerKillThread(thread);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -416,7 +413,6 @@ public class FTPProcessFiles {
                     || object.getName().endsWith(".avi")) {
                 printFileDetails(object);
             }
-            //try {
 
 
             File fi = object;
@@ -433,17 +429,13 @@ public class FTPProcessFiles {
             processInstance.setMaxRes(maxRes);
             Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
+            //Thread thread = new Thread(() -> {
+              processInstance.process(fi, fo);
+              energy(fo);
+          //});
 
-         //   Thread thread = new Thread(() -> {
-                processInstance.process(fi, fo);
-                energy(fo);
-           // });
-           //thread.start();
-           // new TimerKillThread(thread);
-  /*
-        } catch(IOException ex) {
-            ex.printStackTrace();
-        }*/
+            //new TimerKillThread(thread);
+
         }
     }
 
