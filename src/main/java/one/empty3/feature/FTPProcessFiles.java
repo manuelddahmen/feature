@@ -300,9 +300,9 @@ public class FTPProcessFiles {
                     } else {
                         // local path
                         initialDirectories = currentDirin;
-                        for(int d = 0; d< initialDirectories.length; d++)
-                        if (new File(initialDirectories[d]).exists())
-                            printFileDetails(Objects.requireNonNull(new File(initialDirectories[d]).list()), initialDirectories[d]);
+                        for (int d = 0; d < initialDirectories.length; d++)
+                            if (new File(initialDirectories[d]).exists())
+                                printFileDetails(Objects.requireNonNull(new File(initialDirectories[d]).list()), initialDirectories[d]);
 
 
                     }
@@ -377,13 +377,12 @@ public class FTPProcessFiles {
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
 
-                //Thread thread = new Thread(() -> {
+                Thread thread = new Thread(() -> {
 
                     processInstance.process(fi, fo);
                     energy(fo);
-                //});
-                //thread.start();
-                //new TimerKillThread(thread);
+                });
+                new TimerKillThread(thread);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
@@ -429,12 +428,12 @@ public class FTPProcessFiles {
             processInstance.setMaxRes(maxRes);
             Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
-            //Thread thread = new Thread(() -> {
-              processInstance.process(fi, fo);
-              energy(fo);
-          //});
+            Thread thread = new Thread(() -> {
+                processInstance.process(fi, fo);
+                energy(fo);
+            });
 
-            //new TimerKillThread(thread);
+            new TimerKillThread(thread);
 
         }
     }
