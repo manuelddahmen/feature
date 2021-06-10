@@ -21,8 +21,6 @@ import java.util.function.Consumer;
 public class Lines4 extends ProcessFile {
 
 
-
-    public static final double LEVELS = 1/0.4;
     ArrayList<Point3D> listTmpCurve = new ArrayList<>();
     ArrayList<Double> listTmpX = new ArrayList<>();
     ArrayList<Double> listTmpY = new ArrayList<>();
@@ -81,12 +79,12 @@ public class Lines4 extends ProcessFile {
             PixM o = new PixM(pixM.getColumns(), pixM.getLines());
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];
 
-            for (double levels : Arrays.asList( 1.0, 0.8, 0.6, 0.4, 0.2 )) {
+            for (double levels : Arrays.asList( 0.9, 0.7,   0.5, 0.3 )) {
 
                 pz = 0.0;
                 py = 0.0;
                 px = 0.0;
-                distMax = 40.0;
+                distMax = (pixM.getColumns()+ pixM.getLines())/2;//???
                 random = new Random();
                 listTmpCurve = new ArrayList<Point3D>();
                 listTmpX = new ArrayList<Double>();
@@ -101,7 +99,7 @@ public class Lines4 extends ProcessFile {
                 for (int i = 0; i < pixM.getColumns(); i++) {
                     for (int j = 0; j < pixM.getLines(); j++) {
 
-                        double valueDiff = 0.2;
+                        double valueDiff = 0.1;
 
 
                         int x = i;
