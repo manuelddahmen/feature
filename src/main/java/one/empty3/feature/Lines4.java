@@ -202,7 +202,7 @@ public class Lines4 extends ProcessFile {
                     boolean passed = false;
                     list3.get(list3.size() - 1).add(listP.get(0));
                     for (Point3D point3D : listP) {
-                        Double distNormal = 0.9;
+                        Double distNormal = 1.0;//0.9??
                         if (isInBound(point3D)) {
                             int j = 0;
                             for (j = 1; j < listP.size(); j++) {
