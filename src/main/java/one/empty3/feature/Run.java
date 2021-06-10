@@ -6,7 +6,7 @@ import java.util.Objects;
 import static org.bouncycastle.asn1.x509.GeneralName.directoryName;
 
 public class Run extends Thread {
-    static String [] args = new String[] {"aquarelle1", "aquarelle2", "aquarelle3"};
+    static String [] args = new String[] {"jeu1_lines3_passes"};
     @Override
     public void run() {
         String settingsPropertiesPath = "sets/";

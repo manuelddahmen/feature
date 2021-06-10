@@ -18,7 +18,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.function.Consumer;
 
-public class Lines3 extends ProcessFile {
+public class Lines4 extends ProcessFile {
+
 
 
     public static final double LEVELS = 1/0.4;
@@ -33,7 +34,7 @@ public class Lines3 extends ProcessFile {
     private double distMax;
     private Random random = new Random();
 
-    public Lines3() {
+    public Lines4() {
     }
 
     public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
@@ -80,7 +81,7 @@ public class Lines3 extends ProcessFile {
             PixM o = new PixM(pixM.getColumns(), pixM.getLines());
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];
 
-            for (double levels : Arrays.asList( 0.4/*, 0.6, 0.8*/ )) {
+            for (double levels : Arrays.asList( 1.0, 0.8, 0.6, 0.4, 0.2 )) {
 
                 pz = 0.0;
                 py = 0.0;
@@ -117,7 +118,7 @@ public class Lines3 extends ProcessFile {
 
                         int cont = 1;
 
-                        while (valueAvg >= levels /*&& valueAvg<=levels+valueDiff*/ && cont == 1 && p[x][y] == 0) {//2nd condition
+                        while (valueAvg >= levels && valueAvg<=levels+valueDiff && cont == 1 && p[x][y] == 0) {//2nd condition
 
                             p[x][y] = 1;
 
@@ -143,6 +144,7 @@ public class Lines3 extends ProcessFile {
                             }
 
                         }
+                        /*
                         for (List<Point3D> ps : lists)
                             for (int k = 0; k < ps.size(); k++) {
                                 Point3D p0 = ps.get(k);
@@ -156,7 +158,7 @@ public class Lines3 extends ProcessFile {
                                         //listTmpCurve.remove(c);
                                         lists.get(0).remove(p0);
                                     }
-                            }
+                            }*/
                         if (listTmpCurve.size() == 1)
                             lists.get(0).add(listTmpCurve.get(0));
                         else if (listTmpCurve.size() > 1 && !lists.contains(listTmpCurve))

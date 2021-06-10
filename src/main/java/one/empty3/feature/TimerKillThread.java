@@ -24,7 +24,6 @@ public class TimerKillThread extends Thread {
             }
         }
         thread.start();
-        start();
     }
     @Override
     public void run() {

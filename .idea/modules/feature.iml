@@ -12,16 +12,16 @@
       <excludeFolder url="file://$MODULE_DIR$/../../lib" />
       <excludeFolder url="file://$MODULE_DIR$/../../out" />
       <excludeFolder url="file://$MODULE_DIR$/../../outputFiles" />
-      <excludeFolder url="file://$MODULE_DIR$/../../target" />
       <excludeFolder url="file://$MODULE_DIR$/../../o2" />
+      <excludeFolder url="file://$MODULE_DIR$/../../target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="MigLayout" level="project" />
     <orderEntry type="library" name="Maven: junit:junit:4.13.1" level="project" />
     <orderEntry type="library" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.5.3" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.5.3" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all-main:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-android-aarch64:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-android-armv6:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-linux-amd64:2.3.2" level="project" />
@@ -33,6 +33,8 @@
     <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-solaris-i586:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-windows-amd64:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:natives-windows-i586:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: com.miglayout:miglayout-swing:5.2" level="project" />
+    <orderEntry type="library" name="Maven: com.miglayout:miglayout-core:5.2" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.jocl:jocl-main:2.0.2-rc12" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.jocl:jocl:2.0.2-rc12" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.jocl:jocl:natives-android-armv6:2.0.2-rc12" level="project" />
@@ -71,20 +73,9 @@
     <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-solaris-amd64:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-solaris-i586:2.3.2" level="project" />
     <orderEntry type="library" name="Maven: org.jogamp.gluegen:gluegen-rt:natives-windows-i586:2.3.2" level="project" />
-    <orderEntry type="library" name="Maven: org.swinglabs:swing-layout:1.0.3" level="project" />
-    <orderEntry type="library" name="Maven: io.humble:humble-video-all:0.3.0" level="project" />
-    <orderEntry type="library" name="Maven: io.humble:humble-video-arch-x86_64-w64-mingw32:0.3.0" level="project" />
-    <orderEntry type="library" name="Maven: io.humble:humble-video-noarch:0.3.0" level="project" />
-    <orderEntry type="library" name="Maven: jep:jep:2.24" level="project" />
-    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl:2.3.2" level="project" />
-    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl-all:2.3.2" level="project" />
-    <orderEntry type="library" name="Maven: com.github.sarxos:webcam-capture:0.3.9" level="project" />
-    <orderEntry type="library" name="Maven: com.jhlabs:filters:2.0.235-1" level="project" />
-    <orderEntry type="library" name="Maven: com.nativelibs4java:bridj:0.6.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.android.tools:dx:1.7" level="project" />
     <orderEntry type="library" name="Maven: commons-cli:commons-cli:1.4" level="project" />
-    <orderEntry type="library" name="Maven: com.badlogicgames.gdx:gdx:1.9.10" level="project" />
     <orderEntry type="library" name="Maven: com.github.dexecutor:dexecutor-core:2.1.1" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.21" level="project" />
     <orderEntry type="library" name="Maven: one.empty3:montemedia:0.0.7-2" level="project" />
     <orderEntry type="library" name="Maven: org.mongodb:mongo-java-driver:3.2.2" level="project" />
     <orderEntry type="library" name="Maven: commons-io:commons-io:2.5" level="project" />
@@ -106,8 +97,19 @@
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:14" level="project" />
     <orderEntry type="library" name="Maven: org.openjfx:javafx-fxml:win:14" level="project" />
     <orderEntry type="library" name="Maven: com.miglayout:miglayout-javafx:5.2" level="project" />
-    <orderEntry type="library" name="Maven: com.miglayout:miglayout-core:5.2" level="project" />
     <orderEntry type="library" name="Maven: one.empty3:empty3-library-3d:2021.4.4" level="project" />
+    <orderEntry type="library" name="Maven: org.slf4j:slf4j-simple:1.5.3" level="project" />
+    <orderEntry type="library" name="Maven: org.swinglabs:swing-layout:1.0.3" level="project" />
+    <orderEntry type="library" name="Maven: io.humble:humble-video-all:0.3.0" level="project" />
+    <orderEntry type="library" name="Maven: io.humble:humble-video-arch-x86_64-w64-mingw32:0.3.0" level="project" />
+    <orderEntry type="library" name="Maven: io.humble:humble-video-noarch:0.3.0" level="project" />
+    <orderEntry type="library" name="Maven: jep:jep:2.24" level="project" />
+    <orderEntry type="library" name="Maven: org.jogamp.jogl:jogl:2.3.2" level="project" />
+    <orderEntry type="library" name="Maven: com.github.sarxos:webcam-capture:0.3.9" level="project" />
+    <orderEntry type="library" name="Maven: com.jhlabs:filters:2.0.235-1" level="project" />
+    <orderEntry type="library" name="Maven: com.nativelibs4java:bridj:0.6.2" level="project" />
+    <orderEntry type="library" name="Maven: com.google.android.tools:dx:1.7" level="project" />
+    <orderEntry type="library" name="Maven: com.badlogicgames.gdx:gdx:1.9.10" level="project" />
     <orderEntry type="library" name="Maven: xuggle:xuggle-xuggler:5.4" level="project" />
     <orderEntry type="library" name="Maven: com.github.zakgof:velvet-video:0.5.1" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.jnr:jnr-ffi:2.1.9" level="project" />
@@ -121,6 +123,7 @@
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.jnr:jnr-a64asm:1.0.0" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.jnr:jnr-x86asm:1.0.2" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: com.github.zakgof:tools:0.7.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.guava:guava:18.0" level="project" />
     <orderEntry type="library" name="Maven: org.objenesis:objenesis:2.6" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.netlib-java:netlib-java:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.github.fommil.netlib:core:1.1" level="project" />
@@ -263,15 +266,6 @@
     <orderEntry type="library" name="Maven: org.burningwave:core:8.20.4" level="project" />
     <orderEntry type="library" name="Maven: org.openpnp:opencv:3.2.0-0" level="project" />
     <orderEntry type="library" name="Maven: commons-net:commons-net:3.7.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.googlejavaformat:google-java-format:1.9" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:guava:28.1-jre" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:failureaccess:1.0.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava" level="project" />
-    <orderEntry type="library" name="Maven: org.checkerframework:checker-qual:2.8.1" level="project" />
-    <orderEntry type="library" name="Maven: com.google.errorprone:error_prone_annotations:2.3.2" level="project" />
-    <orderEntry type="library" name="Maven: com.google.j2objc:j2objc-annotations:1.3" level="project" />
-    <orderEntry type="library" name="Maven: org.codehaus.mojo:animal-sniffer-annotations:1.18" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20201115" level="project" />
-    <orderEntry type="library" name="MigLayout" level="project" />
   </component>
 </module>

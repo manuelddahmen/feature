@@ -378,7 +378,6 @@ public class FTPProcessFiles {
 
 
                 //Thread thread = new Thread(() -> {
-
                     processInstance.process(fi, fo);
                     energy(fo);
                 //});
