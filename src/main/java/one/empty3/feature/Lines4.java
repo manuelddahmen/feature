@@ -77,9 +77,11 @@ public class Lines4 extends ProcessFile {
             ArrayList<List<Point3D>> lists = new ArrayList<>();
             lists.add(new ArrayList<>());
             PixM o = new PixM(pixM.getColumns(), pixM.getLines());
-            int[][] p = new int[pixM.getColumns()][pixM.getLines()];
+
+            double valueDiff = 0.1;
 
             for (double levels : Arrays.asList( 0.9, 0.7,   0.5, 0.3 )) {
+                int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
 
                 pz = 0.0;
                 py = 0.0;
@@ -99,7 +101,6 @@ public class Lines4 extends ProcessFile {
                 for (int i = 0; i < pixM.getColumns(); i++) {
                     for (int j = 0; j < pixM.getLines(); j++) {
 
-                        double valueDiff = 0.1;
 
 
                         int x = i;
@@ -116,7 +117,7 @@ public class Lines4 extends ProcessFile {
 
                         int cont = 1;
 
-                        while (valueAvg >= levels && valueAvg<=levels+valueDiff && cont == 1 && p[x][y] == 0) {//2nd condition
+                        while (valueAvg >= levels-valueDiff && valueAvg<=levels+valueDiff && cont == 1 && p[x][y] == 0) {//2nd condition
 
                             p[x][y] = 1;
 
