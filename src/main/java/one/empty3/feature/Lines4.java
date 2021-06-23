@@ -12,10 +12,8 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.*;
 import java.util.List;
-import java.util.Random;
 import java.util.function.Consumer;
 
 public class Lines4 extends ProcessFile {
@@ -80,8 +78,9 @@ public class Lines4 extends ProcessFile {
 
             double valueDiff = 0.1;
 
-            for (double levels : Arrays.asList( 0.9, 0.7,   0.5, 0.3 )) {
-                int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
+            int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
+
+            for (double levels : Arrays.asList(1.0,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1,0.0)) {
 
                 pz = 0.0;
                 py = 0.0;
