@@ -159,8 +159,10 @@ public class Lines4 extends ProcessFile {
                             }*/
                         if (listTmpCurve.size() == 1)
                             lists.get(0).add(listTmpCurve.get(0));
-                        else if (listTmpCurve.size() > 1 && !lists.contains(listTmpCurve))
+                        else if (listTmpCurve.size() > 1 && !lists.contains(listTmpCurve)) {
                             lists.add(listTmpCurve);
+                            //listTmpCurve = new ArrayList<>();//!!
+                        }
                     }
                 }
             }
