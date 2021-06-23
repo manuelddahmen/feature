@@ -78,9 +78,9 @@ public class Lines4 extends ProcessFile {
 
             double valueDiff = 0.1;
 
-            int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
 
-            for (double levels : Arrays.asList(1.0,0.9,0.8,0.7,0.6,0.5,0.4,0.3,0.2,0.1,0.0)) {
+            for (double levels : Arrays.asList(1.0,0.9,0.8,0.7,0.6,0.5,0.4/*,0.3,0.2,0.1,0.0*/)) {
+                int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
 
                 pz = 0.0;
                 py = 0.0;
@@ -132,7 +132,7 @@ public class Lines4 extends ProcessFile {
                                     break;
 
                                 if (p[x][y] == 0) {
-                                    listTmpCurve.add(new Point3D((double) x, (double) y, pz));
+                                    listTmpCurve.add(new Point3D((double) x, (double) y, levels));
 
                                     cont = 1;
 
@@ -279,12 +279,17 @@ public class Lines4 extends ProcessFile {
             list3.forEach(p3s -> {
                 Color r = new Color((float) r(), (float) r(), (float) r());
                 if (p3s.size() > 2) {
-                    Point3D p1 = p3s.get(0);
-                    Point3D p2 = p3s.get(p3s.size() - 1);
-                    double length = p1.moins(p2).norme();
-                    for (double i = 0; i < 1.0; i += 1. / length) {
-                        Point3D point3D = p1.plus(p2.moins(p1).mult(i));
-                        img3.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()), r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.);
+                    for(int j=0; j<p3s.size()-1; j++) {
+                        Point3D p1 = p3s.get(j);
+                        Point3D p2 = p3s.get( j + 1 );
+                        double length = p1.moins(p2).norme();
+                        for (double i = 0; i < 1.0; i += 1. / length) {
+                            Point3D point3D = p1.plus(p2.moins(p1).mult(i));
+                            img3.setValues((int) (double) (point3D.getX()), (int) (double) (point3D.getY()),
+                                    p1.getZ(), p1.getZ(), p1.getZ()
+                                    /*        r.getRed() / 255., r.getGreen() / 255., r.getBlue() / 255.*/
+                            );
+                        }
                     }
                 }
             });
