@@ -79,7 +79,7 @@ public class Lines4 extends ProcessFile {
             double valueDiff = 0.1;
 
 
-            for (double levels : Arrays.asList(1.0,0.9,0.8,0.7,0.6,0.5,0.4/*,0.3,0.2,0.1,0.0*/)) {
+            for (double levels : Arrays.asList(1.0,0.8,0.6,0.4/*,0.3,0.2,0.1,0.0*/)) {
                 int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
 
                 pz = 0.0;
