@@ -1,5 +1,6 @@
 package one.empty3.feature.violajonesclassifier;
 
+import one.empty3.feature.GaussFilterPixM;
 import one.empty3.feature.PixM;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.Point2D;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PartMatch extends ProcessFile {
-    List<PixM> features = new ArrayList<>();
+    List<PixM> featuresDescriptors = new ArrayList<>();
     /// Partitioning searches for features.
     double featureMaxSize;//%original
     double featureMinSize;//PX
@@ -47,7 +48,7 @@ public class PartMatch extends ProcessFile {
                     e.printStackTrace();
                 }
 
-                features.add(pixM);
+                featuresDescriptors.add(pixM);
             }
         }
     }
@@ -76,27 +77,57 @@ public class PartMatch extends ProcessFile {
         }
         return score/n/n;
     }
+
+    public double intensity(PixM image, int x, int y, int n) {
+        double score = 0.0;
+        for(int i = x; i < x + n; i++) {
+            for (int j = y; j < y + n; j++) {
+                score = image.luminance(i, j) * 1;
+            }
+        }
+        return score/n/n;
+    }
+
     @Override
     public boolean process(File in, File out) {
+
+
         try {
             PixM pix = PixM.getPixM(ImageIO.read(in), maxRes);
+
+            BufferedImage outImg = pix.getImage();
+
+            Graphics g = outImg.getGraphics();
+
+
             int[][] largeurs = new int[pix.getColumns()][pix.getLines()];
             double lastMatchScore = 0;
-            for (int n = 1; n < 25; n *= 2) {
+            for (int n = 4; n < 128; n *= 2) {
                 double matchScoreMax;
                 int index = 0;
                 for (int i = 0; i < pix.getColumns(); i++) {
                     for (int j = 0; j < pix.getLines(); j++) {
                         double m;
-                        double matchScoreMin = 0.5;
-                        if ((m =computeScore(pix, i, j, n, features.get(index)))>lastMatchScore
-                              && m>=matchScoreMin) {
-                            classify(m, features.get(index));
-                            lastMatchScore = m;
+                        double matchScoreMin = 0.0;
+
+                        double intensity  = intensity(pix, i, j, n);
+                        double intensityFD = intensity(featuresDescriptors.get(index), i, j, n);
+                        double matchScore =computeScore(pix, i, j, n, featuresDescriptors.get(index));
+                            if(matchScore>= Math.abs(intensity-intensityFD)
+                              && matchScore>=matchScoreMin) {
+
+                            g.setColor(Color.YELLOW);
+                            g.drawRect(i, j, n, n);
+
+                            classify(matchScore, featuresDescriptors.get(index));
+                            lastMatchScore = matchScore;
                         }
                     }
                 }
             }
+
+            ImageIO.write(outImg, "jpg", out);
+
             return true;
         } catch (IOException e) {
             e.printStackTrace();
