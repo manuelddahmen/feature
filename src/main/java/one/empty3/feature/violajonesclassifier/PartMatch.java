@@ -75,7 +75,7 @@ public class PartMatch extends ProcessFile {
                 score = image.luminance(i, j) * match.luminance(i, j);
             }
         }
-        return score/n/n;
+        return Math.abs(score/n/n);
     }
 
     public double intensity(PixM image, int x, int y, int n) {
