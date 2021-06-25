@@ -90,7 +90,7 @@ public class PartMatch extends ProcessFile {
 
     @Override
     public boolean process(File in, File out) {
-
+        featuresDescriptors = new ArrayList<>();
 
         try {
             PixM pix = PixM.getPixM(ImageIO.read(in), maxRes);
@@ -104,23 +104,24 @@ public class PartMatch extends ProcessFile {
             double lastMatchScore = 0;
             for (int n = 4; n < 128; n *= 2) {
                 double matchScoreMax;
-                int index = 0;
                 for (int i = 0; i < pix.getColumns(); i++) {
                     for (int j = 0; j < pix.getLines(); j++) {
                         double m;
-                        double matchScoreMin = 0.0;
+                        double matchScoreMin = 0.6;
+                        int index = 0;
+                        for(index=0; index<featuresDescriptors.size(); index++) {
+                            double intensity = intensity(pix, i, j, n);
+                            double intensityFD = intensity(featuresDescriptors.get(index), i, j, n);
+                            double matchScore = computeScore(pix, i, j, n, featuresDescriptors.get(index));
+                            if (matchScore >= Math.abs(intensity - intensityFD)
+                                    && matchScore >= matchScoreMin) {
 
-                        double intensity  = intensity(pix, i, j, n);
-                        double intensityFD = intensity(featuresDescriptors.get(index), i, j, n);
-                        double matchScore =computeScore(pix, i, j, n, featuresDescriptors.get(index));
-                            if(matchScore>= Math.abs(intensity-intensityFD)
-                              && matchScore>=matchScoreMin) {
+                                g.setColor(Color.YELLOW);
+                                g.drawRect(i, j, n, n);
 
-                            g.setColor(Color.YELLOW);
-                            g.drawRect(i, j, n, n);
-
-                            classify(matchScore, featuresDescriptors.get(index));
-                            lastMatchScore = matchScore;
+                                classify(matchScore, featuresDescriptors.get(index));
+                                lastMatchScore = matchScore;
+                            }
                         }
                     }
                 }
