@@ -18,6 +18,8 @@
       <excludeFolder url="file://$MODULE_DIR$/../../o/allpass-lines4-0-one.empty3.feature.GradProcess" />
       <excludeFolder url="file://$MODULE_DIR$/../../o/allpass-lines4-1-one.empty3.feature.TrueHarrisProcess" />
       <excludeFolder url="file://$MODULE_DIR$/../../o/allpass-lines4-2-one.empty3.feature.Lines4" />
+      <excludeFolder url="file://$MODULE_DIR$/../../ffmpeg" />
+      <excludeFolder url="file://$MODULE_DIR$/../../o" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
