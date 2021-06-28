@@ -1,5 +1,4 @@
 package one.empty3.feature;
-
 import one.empty3.io.ProcessFile;
 import one.empty3.library.ColorTexture;
 import one.empty3.library.LineSegment;
@@ -16,7 +15,7 @@ import java.util.*;
 import java.util.List;
 import java.util.function.Consumer;
 
-public class Lines4 extends ProcessFile {
+public class Lines5 extends ProcessFile {
 
 
     ArrayList<Point3D> listTmpCurve = new ArrayList<>();
@@ -30,7 +29,7 @@ public class Lines4 extends ProcessFile {
     private double distMax;
     private Random random = new Random();
 
-    public Lines4() {
+    public Lines5() {
     }
 
     public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
@@ -386,7 +385,7 @@ public class Lines4 extends ProcessFile {
 
                 }
             });
-            //ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", new File(out.getAbsolutePath()+"-dotted.jpg"));
+            ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", new File(out.getAbsolutePath()+"-dotted.jpg"));
             //ImageIO.write(bLines, "jpg",
             //        new File(out.getAbsolutePath() + "-blines.jpg"));
 //            ImageIO.write(linesImg2, "jpg",

@@ -48,7 +48,7 @@ public class TrueHarrisProcess extends ProcessFile {
         }
 
 
-        pixM.normalize(0.0, 1.0);
+        PixM normalize = pixM.normalize(0.0, 1.0);
 
 
         //
@@ -56,7 +56,7 @@ public class TrueHarrisProcess extends ProcessFile {
 
         try {
 
-            ImageIO.write(pixM.getImage(), "JPEG", out);
+            ImageIO.write(normalize.getImage(), "JPEG", out);
             return true;
         } catch (Exception ex) {
 

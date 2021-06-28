@@ -25,7 +25,7 @@ public class TrueHarris extends FilterPixM {
 
         //double r = (sSx2 * sSy2 - sSxy * sSxy);// / (sSx2 + sSy2);
         //double r = (Ix2 + Iy2 - Ix * Iy - Ixy) ;// / (sSx2 + sSy2);
-        double r = pow2(0.5-get(i,j));
+        double r = Math.abs(0.5-get(i,j));
         return r;
     }
 
