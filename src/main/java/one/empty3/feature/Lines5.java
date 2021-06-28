@@ -343,15 +343,6 @@ public class Lines5 extends ProcessFile {
             for (LineSegment line : lines) {
                 g.setColor(Color.WHITE);
                 if (line.getLength() >= 1.2) {
-                    /*for (double c = 0.0; c <= 1.0; c += 1 / line.getLength()) {
-                        Point3D pDraw = line.getOrigine().plus(
-                                line.getOrigine().plus(line.getExtremite().moins(line.getOrigine().mult(c))));
-                        int x = (int) (double) pDraw.getX();
-                        int y = (int) (double) pDraw.getY();
-                        if (isInBound(pDraw))
-                            bLines.setRGB(x, y, line.texture().getColorAt(0, 0));
-                    }*/
-
                     Point3D pDraw1 = line.getOrigine().plus(
                             line.getOrigine().plus(line.getExtremite().moins(line.getOrigine().mult(0.0))));
                     Point3D pDraw2 = line.getOrigine().plus(
@@ -368,13 +359,17 @@ public class Lines5 extends ProcessFile {
             points.forEach(new Consumer<List<Point3D>>() {
                 @Override
                 public void accept(List<Point3D> point3DS) {
+                    final Point3D[] point = {point3DS.get(0)};
                     g.setColor(Color.GRAY);
                     point3DS.forEach(new Consumer<Point3D>() {
                         @Override
                         public void accept(Point3D p) {
                             g.drawLine((int)(double)(p.getX()),(int)(double)(p.getY()),
                                     (int)(double)(p.getX()),(int)(double)(p.getY()));
+
+                            point[0] = p;
                         }
+
                     });
                 }
             });
