@@ -380,13 +380,13 @@ public class Lines3 extends ProcessFile {
 
                 }
             });
-            ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", new File(out.getAbsolutePath()+"-dotted.jpg"));
+            //ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", new File(out.getAbsolutePath()+"-dotted.jpg"));
             //ImageIO.write(bLines, "jpg",
             //        new File(out.getAbsolutePath() + "-blines.jpg"));
 //            ImageIO.write(linesImg2, "jpg",
 //                    new File(out.getAbsolutePath() + "-lines-yAxB.jpg"));
             ImageIO.write(img3.normalize(0.0, 1.0).getImage(), "jpg",
-                    new File(out.getAbsolutePath()));
+                  new File(out.getAbsolutePath()));
             return true;
         } catch (
                 IOException e) {
