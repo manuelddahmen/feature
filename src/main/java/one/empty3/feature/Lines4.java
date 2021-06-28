@@ -16,6 +16,9 @@ import java.util.*;
 import java.util.List;
 import java.util.function.Consumer;
 
+/***
+ * Classifier version 4
+ */
 public class Lines4 extends ProcessFile {
 
 
@@ -387,13 +390,13 @@ public class Lines4 extends ProcessFile {
 
                 }
             });
-            //ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", new File(out.getAbsolutePath()+"-dotted.jpg"));
+            ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", out);
             //ImageIO.write(bLines, "jpg",
             //        new File(out.getAbsolutePath() + "-blines.jpg"));
 //            ImageIO.write(linesImg2, "jpg",
 //                    new File(out.getAbsolutePath() + "-lines-yAxB.jpg"));
-            ImageIO.write(img3.normalize(0.0, 1.0).getImage(), "jpg",
-                    new File(out.getAbsolutePath()));
+            //ImageIO.write(img3.normalize(0.0, 1.0).getImage(), "jpg",
+//                    new File(out.getAbsolutePath());
             return true;
         } catch (
                 IOException e) {

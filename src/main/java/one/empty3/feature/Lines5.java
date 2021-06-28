@@ -15,6 +15,9 @@ import java.util.*;
 import java.util.List;
 import java.util.function.Consumer;
 
+/***
+ * Segmentation
+ */
 public class Lines5 extends ProcessFile {
 
 
