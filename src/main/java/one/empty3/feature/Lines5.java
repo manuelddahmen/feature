@@ -205,7 +205,7 @@ public class Lines5 extends ProcessFile {
                     boolean passed = false;
                     list3.get(list3.size() - 1).add(listP.get(0));
                     for (Point3D point3D : listP) {
-                        Double distNormal = 1.0;//0.9??
+                        double distNormal = 1.0;//0.9??
                         if (isInBound(point3D)) {
                             int j = 0;
                             for (j = 1; j < listP.size(); j++) {
@@ -249,9 +249,6 @@ public class Lines5 extends ProcessFile {
 
             }
 
-            List<double[]> coefficients = new ArrayList<>();
-
-
             List<List<Point3D>> points = new ArrayList<>();
 
 
@@ -266,6 +263,8 @@ public class Lines5 extends ProcessFile {
                     Point3D p1 = point3D1;
                     p3s.forEach(point3D2 -> {
                         Point3D p2 = point3D2;
+                        if(p1.equals(p2))
+                            return;
                         if (Point3D.distance(p1, p2) >= distMaxMinP1[0] && isInBound(p1) && isInBound(p2)) {
                             extremes[0][0] = p1;
                             extremes[0][1] = p2;
@@ -279,6 +278,7 @@ public class Lines5 extends ProcessFile {
                         }
                     });
                 });
+
                 if (extremes[0][0] != null && extremes[0][1] != null && isInBound(extremes[0][0]) && isInBound(extremes[0][1])) {
                     lines.add(new LineSegment(extremes[0][0], extremes[0][1], new ColorTexture(r)));
                 } else {
