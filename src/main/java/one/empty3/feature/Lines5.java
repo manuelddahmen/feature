@@ -268,12 +268,12 @@ public class Lines5 extends ProcessFile {
                         if (Point3D.distance(p1, p2) >= distMaxMinP1[0] && isInBound(p1) && isInBound(p2)) {
                             extremes[0][0] = p1;
                             extremes[0][1] = p2;
-                            distMaxMinP1[0] = Point3D.distance(p1, p2);
+                            //distMaxMinP1[0] = Point3D.distance(p1, p2);
                         }
                         if (Point3D.distance(p1, p2) <= distMaxMinP1[1] && isInBound(p1) && isInBound(p2)) {
                             extremes[1][0] = p1;
                             extremes[1][1] = p2;
-                            distMaxMinP1[1] = Point3D.distance(p1, p2);
+                            //distMaxMinP1[1] = Point3D.distance(p1, p2);
                             pointsCurrent.add(p2);
                         }
                     });
