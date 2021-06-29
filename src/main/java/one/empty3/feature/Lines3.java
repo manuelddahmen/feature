@@ -297,10 +297,10 @@ public class Lines3 extends ProcessFile {
                 List<Point3D> pointsCurrent = new ArrayList<>();
                 points.add(pointsCurrent);
 
-                p3s.forEach(point3D1 -> {
-                    Point3D p1 = point3D1;
-                    p3s.forEach(point3D2 -> {
-                        Point3D p2 = point3D2;
+                for(int k = 0; k<p3s.size()-1; k++) {
+                    Point3D p1 = p3s.get(k);
+                    if (p3s.size() > k + 1) {
+                        Point3D p2 = p3s.get(k + 1);
                         if (Point3D.distance(p1, p2) >= distMaxMinP1[0] && isInBound(p1) && isInBound(p2)) {
                             extremes[0][0] = p1;
                             extremes[0][1] = p2;
@@ -312,8 +312,8 @@ public class Lines3 extends ProcessFile {
                             distMaxMinP1[1] = Point3D.distance(p1, p2);
                             pointsCurrent.add(p2);
                         }
-                    });
-                });
+                    }
+                }
                 if (extremes[0][0] != null && extremes[0][1] != null && isInBound(extremes[0][0]) && isInBound(extremes[0][1])) {
                     lines.add(new LineSegment(extremes[0][0], extremes[0][1], new ColorTexture(r)));
                 }
@@ -380,11 +380,7 @@ public class Lines3 extends ProcessFile {
 
                 }
             });
-            //ImageIO.write(o.normalize(0.0, 1.0).getImage(), "jpg", new File(out.getAbsolutePath()+"-dotted.jpg"));
-            //ImageIO.write(bLines, "jpg",
-            //        new File(out.getAbsolutePath() + "-blines.jpg"));
-//            ImageIO.write(linesImg2, "jpg",
-//                    new File(out.getAbsolutePath() + "-lines-yAxB.jpg"));
+
             ImageIO.write(img3.normalize(0.0, 1.0).getImage(), "jpg",
                   new File(out.getAbsolutePath()));
             return true;
