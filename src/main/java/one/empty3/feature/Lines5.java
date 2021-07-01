@@ -81,7 +81,7 @@ public class Lines5 extends ProcessFile {
 
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
 
-            for (double levels : Arrays.asList(1.0, 0.9, 0.8, 0.7, 0.6/*, 0.5, 0.4, 0.3, 0.2,0.1,0.0*/)) {
+            for (double levels : Arrays.asList(1.0, 0.9/*, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2,0.1,0.0*/)) {
 
 
                 pz = 0.0;
@@ -164,24 +164,24 @@ public class Lines5 extends ProcessFile {
             List<LineSegment> lines = new ArrayList<>();
             List<List<Point3D>> list3 = new ArrayList<>();
 
-            for (Point3D point3D : list2) {
+            for (int i=0; i<list2.size(); i++) {
+                Point3D point3D = list2.get(i);
                 final double distNormal = 1.1;//0.9??
                 list3.add(new ArrayList<>());
                 list3.get(list3.size() - 1).add(point3D);
-                distMax = 0.0;
+                distMax = 0.5;
 
                 if (isInBound(point3D)) {
-                    int j = 0;
-
-                    for (j = 0; j < list2.size(); j++) {
+                    for (int j = 0; j < list2.size(); j++) {
                         Point3D current = list2.get(j);
                         Point3D prev = list3.get(list3.size() - 1).get(
                                 list3.get(list3.size() - 1).size() - 1);
 
                         if (prev != current && current != point3D &&
                                 Point3D.distance(prev, current) <= distNormal &&
-                                Point3D.distance(point3D, current) >= distMax) {
+                                Point3D.distance(point3D, current) > distMax) {
                             list3.get(list3.size() - 1).add(current);
+                            distMax = Point3D.distance(point3D, current);
                         }
 
                     }
@@ -189,6 +189,11 @@ public class Lines5 extends ProcessFile {
 
                 if (list3.get(list3.size() - 1).size() < 2) {
                     list3.remove(list3.size() - 1);
+
+                } else {
+                    for (Point3D d : list3.get(list3.size() - 1)) {
+                        list2.remove(d);
+                    }
                 }
             }
 
@@ -200,11 +205,11 @@ public class Lines5 extends ProcessFile {
             list3.forEach(point3DS -> {
                 Point3D p1 = point3DS.get(0);
                 Point3D p2 = point3DS.get(point3DS.size() - 1);
-
-                g.drawLine((int) (double) p1.get(0),
-                        (int) (double) p1.get(1),
-                        (int) (double) p2.get(0),
-                        (int) (double) p2.get(1));
+                if(p1!=p2)
+                    g.drawLine((int) (double) p1.getX(),
+                        (int) (double) p1.getY(),
+                        (int) (double) p2.getX(),
+                        (int) (double) p2.getY());
             });
 
             ImageIO.write(bLines, "jpg", out);
