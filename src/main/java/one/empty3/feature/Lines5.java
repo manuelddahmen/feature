@@ -77,7 +77,7 @@ public class Lines5 extends ProcessFile {
             lists.add(new ArrayList<>());
             PixM o = new PixM(pixM.getColumns(), pixM.getLines());
 
-            double valueDiff = 0.2;
+            double valueDiff = 0.1;
 
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
 
@@ -157,8 +157,7 @@ public class Lines5 extends ProcessFile {
             ArrayList<Point3D> list2 = new ArrayList<Point3D>();
 
 
-            for (int i = 0; i < lists.size(); i++) {
-                List<Point3D> point3DS = lists.get(i);
+            for (List<Point3D> point3DS : lists) {
                 list2.addAll(point3DS);
             }
 
