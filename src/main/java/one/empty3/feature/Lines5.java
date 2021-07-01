@@ -1,19 +1,20 @@
 package one.empty3.feature;
+
 import one.empty3.io.ProcessFile;
 import one.empty3.library.ColorTexture;
 import one.empty3.library.LineSegment;
 import one.empty3.library.Point3D;
-import one.empty3.library.core.lighting.Colors;
-import one.empty3.library.core.nurbs.CourbeParametriquePolynomialeBezier;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.function.Consumer;
+import java.util.Random;
+import java.util.concurrent.atomic.AtomicReference;
 
 /***
  * Segmentation
@@ -82,7 +83,7 @@ public class Lines5 extends ProcessFile {
 
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
 
-            for (double levels : Arrays.asList(1.0,0.8,0.6,0.4,0.3,0.2/*,0.1,0.0*/)) {
+            for (double levels : Arrays.asList(1.0, 0.8, 0.6, 0.4, 0.3, 0.2/*,0.1,0.0*/)) {
 
 
                 pz = 0.0;
@@ -104,7 +105,6 @@ public class Lines5 extends ProcessFile {
                     for (int j = 0; j < pixM.getLines(); j++) {
 
 
-
                         int x = i;
                         int y = j;
                         if (!isInBound(new Point3D((double) x, (double) y, 0.0)))
@@ -119,14 +119,14 @@ public class Lines5 extends ProcessFile {
 
                         int cont = 1;
 
-                        while (valueAvg >= levels-valueDiff && valueAvg<=levels+valueDiff && cont == 1 && p[x][y] == 0) {//2nd condition
+                        while (valueAvg >= levels - valueDiff && valueAvg <= levels + valueDiff && cont == 1 && p[x][y] == 0) {//2nd condition
 
                             p[x][y] = 1;
 
 
                             neighborhood((int) (double) x, (int) (double) y, valueAvg, valueDiff, levels);
 //
-                            while(listTmpX.size() > 0) {
+                            while (listTmpX.size() > 0) {
                                 getTmp(0);
                                 x = (int) px;
                                 y = (int) py;
@@ -169,7 +169,6 @@ public class Lines5 extends ProcessFile {
                     }
                 }
             }
-
 
 
             List<List<Point3D>> lists2 = new ArrayList<>();
@@ -249,78 +248,71 @@ public class Lines5 extends ProcessFile {
 
             }
 
-            List<List<Point3D>> points = new ArrayList<>();
+            List<Point3D> points = new ArrayList<>();
 
-
-            list3.forEach(p3s -> {
-                Color r = new Color((float) r(), (float) r(), (float) r());
-                final Point3D[][] extremes = {new Point3D[2], new Point3D[2]};
-                final Double[] distMaxMinP1 = {2.5, 1000.0};
-                List<Point3D> pointsCurrent = new ArrayList<>();
-                points.add(pointsCurrent);
-
-                p3s.forEach(point3D1 -> {
-                    Point3D p1 = point3D1;
-                    p3s.forEach(point3D2 -> {
-                        Point3D p2 = point3D2;
-                        if(p1.equals(p2))
-                            return;
-                        if (Point3D.distance(p1, p2) >= distMaxMinP1[0] && isInBound(p1) && isInBound(p2)) {
-                            extremes[0][0] = p1;
-                            extremes[0][1] = p2;
-                            //distMaxMinP1[0] = Point3D.distance(p1, p2);
-                        }
-                        if (Point3D.distance(p1, p2) <= distMaxMinP1[1] && isInBound(p1) && isInBound(p2)) {
-                            extremes[1][0] = p1;
-                            extremes[1][1] = p2;
-                            //distMaxMinP1[1] = Point3D.distance(p1, p2);
-                            pointsCurrent.add(p2);
-                        }
-                    });
-                });
-
-                if (extremes[0][0] != null && extremes[0][1] != null && isInBound(extremes[0][0]) && isInBound(extremes[0][1])) {
-                    lines.add(new LineSegment(extremes[0][0], extremes[0][1], new ColorTexture(r)));
-                } else {
-                    // Calculer le segment AB qui approxime un maximum de points dans l'ensemble
-                    /*b = (yB − yA)/(xB − xA); a = (yA − bxA). :?yA = yMoyen, xA = xMoyen*/
-
-                    // Recouper les lignes par db min max
-
-
-                /*CourbeParametriquePolynomialeBezier parametricCurve = new CourbeParametriquePolynomialeBezier();
-                p3s.forEach(point3D -> parametricCurve.getCoefficients().getData1d().add(point3D));
-                courbeParametriquePolynomialeBeziers[i[0]++] = parametricCurve;
-*/
-
-                    if (pointsCurrent.size() >= 2)
-                        lines.add(new LineSegment(extremes[1][0], extremes[1][1], new ColorTexture(r)));
+            List<Point3D> list4 = new ArrayList<>();
+            for (int i = 0; i < list3.size(); i++) {
+                List<Point3D> point3DS = list3.get(i);
+                for (int i1 = 0; i1 < point3DS.size(); i1++) {
+                    list4.add(point3DS.get(i1));
                 }
-            });
+            }
+
+
+            ArrayList<Point3D> pointsCourants = new ArrayList<Point3D>();
+
+            AtomicReference<Point3D> p1 = new AtomicReference<>(null);
+            AtomicReference<Point3D> p2 = new AtomicReference<>(null);
+
+            ColorTexture colorTexture = new ColorTexture(Color.WHITE);
+            for (int i=0; i<list4.size(); i++) {
+                p1.set(list4.get(i));
+                points.add(p1.get());
+                for (int j=0; j<list4.size(); j++) {
+                    Point3D[][] extremes = {new Point3D[2], new Point3D[2]};
+                    Double[] distMaxMinP1 = {2., 1000.0};
+                    p2.set(list4.get(j));
+                    if (!(p1.get()==p2.get())) {
+                        if (Point3D.distance(p1.get(), p2.get()) <= distMaxMinP1[0] && isInBound(p1.get()) && isInBound(p2.get())) {
+                            extremes[0][0] = p1.get();
+                            extremes[0][1] = p2.get();
+                            //distMaxMinP1[0] = Point3D.distance(p1.get(), p2.get());
+                        }
+                        else
+                            continue;
+                        if (Point3D.distance(p1.get(), p2.get()) >= distMaxMinP1[1] && isInBound(p1.get()) && isInBound(p2.get())) {
+                            extremes[1][0] = p1.get();
+                            extremes[1][1] = p2.get();
+                            distMaxMinP1[1] = Point3D.distance(p1.get(), p2.get());
+                            pointsCourants.add(p2.get());
+                        }
+                        else continue;
+                    }
+                    if(p1.get()!=null && p2.get()!=null
+                            &&extremes[0][0]!=null && extremes[0][1]!=null) {
+                        lines.add(new LineSegment(extremes[0][0], extremes[0][1],
+                                colorTexture));
+                        list4.remove(extremes[0][0]);
+                        list4.remove(extremes[0][1]);
+                    }
+                }
+            }
+
 
             BufferedImage bLines = new BufferedImage(o.getColumns(), o.getLines(), BufferedImage.TYPE_INT_RGB);
             Graphics g = bLines.getGraphics();
 
 
-            points.forEach(point3DS -> {
-                final Point3D[] point = {point3DS.get(0)};
-                g.setColor(Color.GRAY);
-                point3DS.forEach(new Consumer<Point3D>() {
-                    @Override
-                    public void accept(Point3D p12) {
-                        g.drawLine((int)(double)(p12.getX()),(int)(double)(p12.getY()),
-                                (int)(double)(p12.getX()),(int)(double)(p12.getY()));
-
-                        point[0] = p12;
-                    }
-
-                });
+            g.setColor(Color.GRAY);
+            points.forEach(p12 -> {
+                g.drawLine((int) (double) (p12.getX()), (int) (double) (p12.getY()),
+                        (int) (double) (p12.getX()), (int) (double) (p12.getY()));
             });
 
 
+            g.setColor(Color.WHITE);
             for (LineSegment line : lines) {
-                g.setColor(Color.WHITE);
-                if (line.getLength() >= 1.2) {
+                if (line.getLength() >= 0.9) {
                     Point3D pDraw1 = line.getOrigine().plus(
                             line.getOrigine().plus(line.getExtremite().moins(line.getOrigine().mult(0.0))));
                     Point3D pDraw2 = line.getOrigine().plus(
@@ -334,6 +326,24 @@ public class Lines5 extends ProcessFile {
                     }
                 }
             }
+
+            g.setColor(Color.RED);
+            /*list3.forEach(new Consumer<List<Point3D>>() {
+                @Override
+                public void accept(List<Point3D> point3DS) {
+                    for (int i = 0; i < point3DS.size(); i++) {
+                        if (i < point3DS.size() - 1) {
+                            Point3D p0 = point3DS.get(i);
+                            Point3D p1 = point3DS.get(i + 1);
+
+                            g.drawLine((int) (double) p0.get(0),
+                                    (int) (double) p0.get(1),
+                                    (int) (double) p1.get(0),
+                                    (int) (double) p1.get(1));
+                        }
+                    }
+                }
+            });*/
             ImageIO.write(bLines, "jpg", out);
             return true;
         } catch (
