@@ -253,9 +253,7 @@ public class Lines5 extends ProcessFile {
             List<Point3D> list4 = new ArrayList<>();
             for (int i = 0; i < list3.size(); i++) {
                 List<Point3D> point3DS = list3.get(i);
-                for (int i1 = 0; i1 < point3DS.size(); i1++) {
-                    list4.add(point3DS.get(i1));
-                }
+                list4.addAll(point3DS);
             }
 
 
