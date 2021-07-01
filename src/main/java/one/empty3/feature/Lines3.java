@@ -182,7 +182,7 @@ public class Lines3 extends ProcessFile {
                     }
                     while (index3 < lists.size() && lists.get(index3).size() == 0)
                         index3++;
-                    if (index3 < lists.size()) {
+                    if (index3 < lists.size() && lists.get(index3).size()>0 && lists.get(index3).size()>index) {
                         point3DS = relierPoints(lists, lists.get(index3).get(index));
                     }
                 } while (index3 < lists.size() && point3DS != null && point3DS.size() > 0 && index < lists.get(0).size() - 1);
