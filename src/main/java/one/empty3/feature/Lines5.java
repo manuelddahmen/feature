@@ -147,6 +147,7 @@ lists. add(listTmpCurve) ;
                                 Point3D.distance(point3D, current) > distMax) {
                             list3.get(list3.size() - 1).add(current);
                             distMax = Point3D.distance(point3D, current);
+                            p[(int) (double) current. getX() ] [(int) (double) current.getY()] ++;
                         }
 
                     }
