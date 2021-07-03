@@ -126,6 +126,7 @@ public class Lines5 extends ProcessFile {
 //
                             while (listTmpX.size() > 0) {
                                 getTmp(0);
+                                p[x][y] = 1:
                                 x = (int) px;
                                 y = (int) py;
                                 removeTmp(0);
