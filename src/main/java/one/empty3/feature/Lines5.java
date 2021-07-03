@@ -74,7 +74,6 @@ public class Lines5 extends ProcessFile {
             pixM = null;
             pixM = new PixM(ImageIO.read(in));
             ArrayList<List<Point3D>> lists = new ArrayList<>();
-            lists.add(new ArrayList<>());
             PixM o = new PixM(pixM.getColumns(), pixM.getLines());
 
             double valueDiff = 0.1;
@@ -82,18 +81,13 @@ public class Lines5 extends ProcessFile {
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
 
             for (double levels : Arrays.asList(1.0, 0.9/*, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2,0.1,0.0*/)) {
-
+listTmpCurve = new ArrayList<Point3D>();
 
                 pz = 0.0;
                 py = 0.0;
                 px = 0.0;
                 distMax = (pixM.getColumns() + pixM.getLines()) >> 1;//???
                 random = new Random();
-                listTmpCurve = new ArrayList<Point3D>();
-                listTmpX = new ArrayList<Double>();
-                listTmpY = new ArrayList<Double>();
-                listTmpZ = new ArrayList<Double>();
-
 
                 for (int x = 0; x < pixM.getColumns(); x++)
                     for (int y = 0; y < pixM.getLines(); y++)
@@ -101,7 +95,7 @@ public class Lines5 extends ProcessFile {
 
                 for (int i = 0; i < pixM.getColumns(); i++) {
                     for (int j = 0; j < pixM.getLines(); j++) {
-
+// remove long complicated uncertain loop//
 
                         int x = i;
                         int y = j;
@@ -109,52 +103,22 @@ public class Lines5 extends ProcessFile {
                             continue;
                         double valueAvg = pixM.luminance(x, y);
 
-                        if (p[x][y] == 0) {
-                            listTmpCurve.add(new Point3D((double) x, (double) y, valueAvg));
-                        } else {
-                            continue;
-                        }
-
+                        
                         int cont = 1;
 
-                        while (valueAvg >= levels - valueDiff && valueAvg <= levels + valueDiff && cont == 1 && p[x][y] == 0) {//2nd condition
+                        if (valueAvg >= levels - valueDiff && valueAvg <= levels + valueDiff && cont == 1 && p[x][y] == 0) {//2nd condition
 
                             p[x][y] = 1;
-
-
-                            neighborhood((int) (double) x, (int) (double) y, valueAvg, valueDiff, levels);
-//
-                            while (listTmpX.size() > 0) {
-                                getTmp(0);
-                                p[x][y] = 1:
-                                x = (int) px;
-                                y = (int) py;
-                                removeTmp(0);
-                                if (!isInBound(new Point3D(px, py, 0.0)))
-                                    break;
-
-                                if (p[x][y] == 0) {
-                                    listTmpCurve.add(new Point3D((double) x, (double) y, levels));
-
-                                    cont = 1;
-
-                                    valueAvg = pixM.luminance(x, y);
-
-                                } else cont = 0;
-                            }
+                            listTmpCurve.add(new Point3D ((double) x, (double) y, 0.0) );
 
                         }
 
-                        if (listTmpCurve.size() == 1)
-                            lists.get(0).add(listTmpCurve.get(0));
-                        else if (listTmpCurve.size() > 1 && !lists.contains(listTmpCurve)) {
-                            lists.add(listTmpCurve);
-                            //listTmpCurve = new ArrayList<>();//!!
-                        }
+                        
                     }
+      
                 }
             }
-
+lists. add(listTmpCurve) ;
             ArrayList<Point3D> list2 = new ArrayList<Point3D>();
 
 
