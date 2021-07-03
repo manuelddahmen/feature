@@ -109,7 +109,7 @@ listTmpCurve = new ArrayList<Point3D>();
                         if (valueAvg >= levels - valueDiff && valueAvg <= levels + valueDiff && cont == 1 && p[x][y] == 0) {//2nd condition
 
                             p[x][y] = 1;
-                            listTmpCurve.add(new Point3D ((double) x, (double) y, 0.0) );
+                            listTmpCurve.add(new Point3D ((double) x, (double) y, valueAvg) );
 
                         }
 
