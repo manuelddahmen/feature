@@ -185,7 +185,7 @@ public class Lines5 extends ProcessFile {
                         }
 
                     }
-                }
+                
 
                 if (list3.get(list3.size() - 1).size() < 2) {
                     list3.remove(list3.size() - 1);
@@ -193,11 +193,13 @@ public class Lines5 extends ProcessFile {
                 } else {
                     for (Point3D d : list3.get(list3.size() - 1)) {
                         list2.remove(d);
+                      
                     }
+                    i=0;
                 }
             }
 
-
+}
             BufferedImage bLines = new BufferedImage(o.getColumns(), o.getLines(), BufferedImage.TYPE_INT_RGB);
             Graphics g = bLines.getGraphics();
 
