@@ -163,6 +163,7 @@ lists. add(listTmpCurve) ;
                         }
                         i=0;
                     }
+                    // supprimer points en doubles
                 }
 
             }
