@@ -81,7 +81,7 @@ public class Lines5 extends ProcessFile {
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
             listTmpCurve = new ArrayList<Point3D>();
 //[] x, y-> pCount, subListRef.
-            for (double levels : Arrays.asList(1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3 /*,x0.2,0.1,0.0*/)) {
+            for (double levels : Arrays.asList(1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4/*, 0.3 ,x0.2,0.1,0.0*/)) {
 
                 pz = 0.0;
                 py = 0.0;
