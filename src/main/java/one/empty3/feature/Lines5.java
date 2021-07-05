@@ -167,7 +167,7 @@ lists. add(listTmpCurve) ;
                 }
 
             }
-
+// d'après pcount x, y et curve xy supprimer les courbes en trop. 
             BufferedImage bLines = new BufferedImage(o.getColumns(), o.getLines(), BufferedImage.TYPE_INT_RGB);
             Graphics g = bLines.getGraphics();
 
