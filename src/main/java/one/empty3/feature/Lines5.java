@@ -76,12 +76,12 @@ public class Lines5 extends ProcessFile {
             ArrayList<List<Point3D>> lists = new ArrayList<>();
             PixM o = new PixM(pixM.getColumns(), pixM.getLines());
 
-            double valueDiff = 0.1;
+            double valueDiff = 0.2;
 
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
-//[] x, y-> pCount, subListRef. 
-            for (double levels : Arrays.asList(1.0, 0.9/*, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2,0.1,0.0*/)) {
-listTmpCurve = new ArrayList<Point3D>();
+            listTmpCurve = new ArrayList<Point3D>();
+//[] x, y-> pCount, subListRef.
+            for (double levels : Arrays.asList(1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3 /*,x0.2,0.1,0.0*/)) {
 
                 pz = 0.0;
                 py = 0.0;
@@ -103,22 +103,19 @@ listTmpCurve = new ArrayList<Point3D>();
                             continue;
                         double valueAvg = pixM.luminance(x, y);
 
-                        
-                        int cont = 1;
-
-                        if (valueAvg >= levels - valueDiff && valueAvg <= levels + valueDiff && cont == 1 && p[x][y] == 0) {//2nd condition
+                        if (valueAvg >= levels - valueDiff && valueAvg <= levels + valueDiff && p[x][y] == 0) {//2nd condition
 
                             p[x][y] = 1;
-                            listTmpCurve.add(new Point3D ((double) x, (double) y, valueAvg) );
+                            listTmpCurve.add(new Point3D((double) x, (double) y, valueAvg));
 
                         }
 
-                        
+
                     }
-      
+
                 }
             }
-lists. add(listTmpCurve) ;
+            lists.add(listTmpCurve);
             ArrayList<Point3D> list2 = new ArrayList<Point3D>();
 
 
@@ -129,7 +126,7 @@ lists. add(listTmpCurve) ;
             List<LineSegment> lines = new ArrayList<>();
             List<List<Point3D>> list3 = new ArrayList<>();
 
-            for (int i=0; i<list2.size(); i++) {
+            for (int i = 0; i < list2.size(); i++) {
                 Point3D point3D = list2.get(i);
                 final double distNormal = 1.1;//0.9??
                 list3.add(new ArrayList<>());
@@ -147,11 +144,11 @@ lists. add(listTmpCurve) ;
                                 Point3D.distance(point3D, current) > distMax) {
                             list3.get(list3.size() - 1).add(current);
                             distMax = Point3D.distance(point3D, current);
-                            p[(int) (double) current. getX() ] [(int) (double) current.getY()] ++;
+                            p[(int) (double) current.getX()][(int) (double) current.getY()]++;
                         }
 
                     }
-                
+
 
                     if (list3.get(list3.size() - 1).size() < 2) {
                         list3.remove(list3.size() - 1);
@@ -159,9 +156,9 @@ lists. add(listTmpCurve) ;
                     } else {
                         for (Point3D d : list3.get(list3.size() - 1)) {
                             list2.remove(d);
-                      
+
                         }
-                        i=0;
+                        i = 0;
                     }
                     // supprimer points en doubles
                 }
@@ -175,11 +172,11 @@ lists. add(listTmpCurve) ;
             list3.forEach(point3DS -> {
                 Point3D p1 = point3DS.get(0);
                 Point3D p2 = point3DS.get(point3DS.size() - 1);
-                if(p1!=p2)
+                if (p1 != p2)
                     g.drawLine((int) (double) p1.getX(),
-                        (int) (double) p1.getY(),
-                        (int) (double) p2.getX(),
-                        (int) (double) p2.getY());
+                            (int) (double) p1.getY(),
+                            (int) (double) p2.getX(),
+                            (int) (double) p2.getY());
             });
 
             ImageIO.write(bLines, "jpg", out);

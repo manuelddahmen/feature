@@ -1,5 +1,6 @@
 package one.empty3.feature.gui;
 
+import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 import net.miginfocom.swing.*;
@@ -37,7 +38,7 @@ public class ExploreResults extends JFrame {
         button3 = new JButton();
 
         //======== this ========
-        var contentPane = getContentPane();
+        Container contentPane = getContentPane();
         contentPane.setLayout(new MigLayout(
             "fill,hidemode 3",
             // columns
