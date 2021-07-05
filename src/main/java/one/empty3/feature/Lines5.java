@@ -81,7 +81,7 @@ public class Lines5 extends ProcessFile {
 
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
 
-            for (double levels : Arrays.asList(1.0, 0.9/*, 0.8, 0.7, 0.6, 0.5, 0.4, 0.3, 0.2,0.1,0.0*/)) {
+            for (double levels : Arrays.asList(1.0, 0.9, 0.8, 0.7, 0.6, 0.5/*, 0.4, 0.3, 0.2,0.1,0.0*/)) {
 
 
                 pz = 0.0;
@@ -110,7 +110,7 @@ public class Lines5 extends ProcessFile {
                         double valueAvg = pixM.luminance(x, y);
 
                         if (p[x][y] == 0) {
-                            listTmpCurve.add(new Point3D((double) x, (double) y, valueAvg));
+                            listTmpCurve.add(new Point3D((double) x, (double) y, levels));
                         } else {
                             continue;
                         }
@@ -135,6 +135,7 @@ public class Lines5 extends ProcessFile {
                                 if (p[x][y] == 0) {
                                     listTmpCurve.add(new Point3D((double) x, (double) y, levels));
 
+
                                     cont = 1;
 
                                     valueAvg = pixM.luminance(x, y);
@@ -158,41 +159,52 @@ public class Lines5 extends ProcessFile {
 
 
             for (List<Point3D> point3DS : lists) {
-                list2.addAll(point3DS);
+                for (Point3D p1 : point3DS) {
+                    if (!list2.contains(p1))
+                        list2.add(p1);
+                }
             }
 
             List<LineSegment> lines = new ArrayList<>();
             List<List<Point3D>> list3 = new ArrayList<>();
 
-            for (int i=0; i<list2.size(); i++) {
+            for (int i = 0; i < list2.size(); i++) {
                 Point3D point3D = list2.get(i);
-                final double distNormal = 1.1;//0.9??
-                list3.add(new ArrayList<>());
-                list3.get(list3.size() - 1).add(point3D);
-                distMax = 0.5;
-
                 if (isInBound(point3D)) {
+                    final double distNormal = 1.2;//0.9??
+                    list3.add(new ArrayList<>());
+
+                    List<Point3D> lastInsertedList = list3.get(list3.size() - 1);
+
+                    lastInsertedList.add(point3D);
+                    distMax = 0.5;
+
                     for (int j = 0; j < list2.size(); j++) {
+                        if (i == j)
+                            continue;
                         Point3D current = list2.get(j);
-                        Point3D prev = list3.get(list3.size() - 1).get(
-                                list3.get(list3.size() - 1).size() - 1);
+                        Point3D prev = lastInsertedList.get(
+                                lastInsertedList.size() - 1);
 
                         if (prev != current && current != point3D &&
                                 Point3D.distance(prev, current) <= distNormal &&
-                                Point3D.distance(point3D, current) > distMax) {
-                            list3.get(list3.size() - 1).add(current);
+                                Point3D.distance(point3D, current) > distMax
+                                && isInBound(point3D) && current.getZ() > 0.4) {
+
+                            lastInsertedList.add(current);
                             distMax = Point3D.distance(point3D, current);
                         }
 
                     }
-                }
 
-                if (list3.get(list3.size() - 1).size() < 2) {
-                    list3.remove(list3.size() - 1);
+                    if (lastInsertedList.size() < 2) {
+                        list3.remove(lastInsertedList);
 
-                } else {
-                    for (Point3D d : list3.get(list3.size() - 1)) {
-                        list2.remove(d);
+                    } else {
+                        for (Point3D d : lastInsertedList) {
+                            list2.remove(d);
+                            i = 0;
+                        }
                     }
                 }
             }
@@ -205,11 +217,11 @@ public class Lines5 extends ProcessFile {
             list3.forEach(point3DS -> {
                 Point3D p1 = point3DS.get(0);
                 Point3D p2 = point3DS.get(point3DS.size() - 1);
-                if(p1!=p2)
+                if (p1 != p2)
                     g.drawLine((int) (double) p1.getX(),
-                        (int) (double) p1.getY(),
-                        (int) (double) p2.getX(),
-                        (int) (double) p2.getY());
+                            (int) (double) p1.getY(),
+                            (int) (double) p2.getX(),
+                            (int) (double) p2.getY());
             });
 
             ImageIO.write(bLines, "jpg", out);
