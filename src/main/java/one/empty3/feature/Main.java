@@ -94,7 +94,7 @@ public class Main {
                     }
 
                     for (double sigma = 0.8; sigma < 2.0; sigma += 0.2) {
-                        PixM pixM = smoothedGrad.applyFilter(new GaussFilterPixM(4, sigma));
+                        PixM pixM = smoothedGrad.applyFilter(new GaussFilterPixM(smoothedGrad, 4, sigma));
 
 
                         for (int size = 1; size < 16; size *= 2) {

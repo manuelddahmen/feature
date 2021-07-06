@@ -1,21 +1,29 @@
 package one.empty3.feature;
 
 public class GaussFilterPixM extends FilterPixM {
+    private final PixM in;
     public double sigma = 0.8;
 
     public GaussFilterPixM() {
         super(3, 3);
+        in = null;
     }
 
-    public GaussFilterPixM(int squareSize) {
+    public GaussFilterPixM(PixM in, int squareSize) {
         super(squareSize, squareSize);
+        this.in = in;
     }
 
     @Override
     public double filter(double x, double y) {
-        return Math.exp(
-                -(x * x + y * y)
-                        / 2 / sigma / sigma) / 2 / Math.PI / sigma / sigma;
+        double ret =0.0;
+        for(double i=x-in.lines/2; i<x+in.lines/2; i++)
+            for(double j=y-in.columns/2; j<y+in.columns/2; j++) {
+                ret += in.get((int)i, (int)j) * Math.exp(
+                        -((x-i) * (x-i) + (y-j) * (y-j))
+                                / 2 / sigma / sigma) / 2 / Math.PI / sigma / sigma;
+            }
+        return ret;
     }
 
     /***
@@ -23,8 +31,8 @@ public class GaussFilterPixM extends FilterPixM {
      * @param halfSquareSizeMinus1 n*n square distribution
      * @param sigma gauss parameter
      */
-    public GaussFilterPixM(int halfSquareSizeMinus1, double sigma) {
-        this(halfSquareSizeMinus1 * 2 + 1);
+    public GaussFilterPixM(PixM pixM, int halfSquareSizeMinus1, double sigma) {
+        this(pixM, halfSquareSizeMinus1 * 2 + 1);
         this.sigma = sigma;
         for (int comp = 0; comp < getCompCount(); comp++) {
             setCompNo(comp);

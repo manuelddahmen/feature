@@ -13,13 +13,11 @@ public class GaussFilterProcess extends ProcessFile {
 
                     return false;
 
-                File file = in;
-
                 PixM pix = null;
                 BufferedImage img = null;
 
                 try {
-                    img = ImageIO.read(file);
+                    img = ImageIO.read(in);
                     pix = PixM.getPixM(img, maxRes);
 
                 } catch (Exception ex) {
@@ -33,19 +31,20 @@ public class GaussFilterProcess extends ProcessFile {
 
                 }
 
-                GaussFilterPixM th = new GaussFilterPixM(5);
-                PixM pixM = new PixM(pix.getImage());
+                GaussFilterPixM th = new GaussFilterPixM(pix, 3);
+
+        PixM pixRes = new PixM(pix.getColumns(), pix.getLines());
                 for (int c = 0; c < 3; c++) {
                     th.setCompNo(c);
-                    pixM.setCompNo(c);
                     pix.setCompNo(c);
+                    pixRes.setCompNo(c);
                     for (int i = 0; i < pix.getColumns(); i++)
                         for (int j = 0; j < pix.getLines(); j++)
-                            pixM.set(i, j, th.filter(i, j));
+                            pixRes.set(i, j, th.filter(i, j));
                 }
 
 
-                PixM normalize = pixM.normalize(0.0, 1.0);
+                PixM normalize = pix.normalize(0.0, 1.0);
 
 
                 //

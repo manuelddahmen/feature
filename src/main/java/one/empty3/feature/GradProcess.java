@@ -16,6 +16,9 @@ import java.util.logging.*;
 
 public class GradProcess extends ProcessFile {
 
+    public void setMaxRes(int maxRes) {
+        this.maxRes = maxRes;
+    }
     public boolean process(File in, File out) {
 
         if (!in.getName().endsWith(".jpg"))

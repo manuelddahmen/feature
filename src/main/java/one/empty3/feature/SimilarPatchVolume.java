@@ -130,7 +130,7 @@ public class SimilarPatchVolume {
                 for (int angleIncr = 0; angleIncr < iteratesAngleGrad; angleIncr++) {
                     double angle = 2 * Math.PI * angleIncr / iteratesAngleGrad;
                     for (double sigma = 0.8; sigma < 2.0; sigma += 0.2) {
-                        PixM pixM = afterGradientAngular[angleIncr][0].applyFilter(new GaussFilterPixM(4, sigma));
+                        PixM pixM = afterGradientAngular[angleIncr][0].applyFilter(new GaussFilterPixM(afterGradientAngular[angleIncr][0], 4, sigma));
 
 
                         for (int size = 1; size <= 16; size *= 2) {
