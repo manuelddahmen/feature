@@ -3,16 +3,22 @@ package one.empty3.feature;
 import one.empty3.io.ProcessFile;
 import one.empty3.library.LineSegment;
 import one.empty3.library.Point3D;
+import one.empty3.library.core.lighting.Colors;
+import org.json.XML;
 
 import javax.imageio.ImageIO;
+import javax.xml.stream.XMLOutputFactory;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.beans.XMLEncoder;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.function.Consumer;
 
 /***
  * Segmentation
@@ -179,6 +185,84 @@ public class Lines5 extends ProcessFile {
                             (int) (double) p2.getY());
             });
 
+            double longueur = 0.0;
+            // Prendre un pourcentage de lignes les plus longues et les dessiner en blanc
+            for (List<Point3D> point3DS : list3) {
+                longueur+= size(point3DS);
+
+            }
+            longueur /= list3.size();
+
+
+            double finalLongueur = longueur;
+            int i = 0;
+            List<Point3D>  temp1 = new ArrayList<Point3D>();
+            List<Point3D>  temp2 = new ArrayList<Point3D>();
+            g.setColor(Color.GREEN);
+            boolean temp1b = false;
+            boolean temp2b = false;
+            List<Point3D> listTemp1 = null;
+            List<Point3D> listTemp2 = null;
+
+            for (List<Point3D> points : list3) {
+                if (size(points) > finalLongueur * 2.0 + 2) {
+                    g.setColor(new Color(0, (int) (((double) (i)) / 255 * points.size()), 0));
+                    Point3D p1 = points.get(0);
+                    Point3D p2 = points.get(points.size() - 1);
+                    if (p1 != p2) {
+                        g.setColor(Color.RED);
+                        g.drawLine((int) (double) p1.getX(),
+                                (int) (double) p1.getY(),
+                                (int) (double) p2.getX(),
+                                (int) (double) p2.getY());
+                    }
+                    for(int j=0; j<points.size()-1; j++) {
+                        p1 = points.get(j);
+                        p2 = points.get(j+1);
+                        if (p1 != p2)
+                            g.drawLine((int) (double) p1.getX(),
+                                    (int) (double) p1.getY(),
+                                    (int) (double) p2.getX(),
+                                    (int) (double) p2.getY());
+                    }
+                    i++;
+
+                    if(temp1.size()==0) {
+                        listTemp1 = points;
+                        temp1b = true;
+                        listTemp1.add(p1);
+                    }
+                    if(temp1.size()==0 || temp1b){
+                        temp1b = true;
+                        if(listTemp1 == points||temp1.size()==0) {
+                            temp1.add(p1);
+                        }
+                    } else if(Point3D.distance(listTemp1.get(0), p1)>bLines.getWidth()/5) {
+                        temp2b = true;
+                        temp1b = false;
+                        listTemp2 = points;
+                        temp2.add(p1);
+                    }
+                    if(temp2b && listTemp1==points) {
+                        temp2.add(p1);
+                    } else if(temp2b&&listTemp1!=points) {
+                        temp2b=false;
+                    }
+                }
+            }
+            listTemp1.forEach(new Consumer<Point3D>() {
+                @Override
+                public void accept(Point3D point3D) {
+                    System.out.printf("POINT LIST TEMP1", point3D);
+                }
+            });
+            listTemp2.forEach(new Consumer<Point3D>() {
+                @Override
+                public void accept(Point3D point3D) {
+                    System.out.printf("POINT LIST TEMP2", point3D);
+                }
+            });
+
             ImageIO.write(bLines, "jpg", out);
             return true;
         } catch (
@@ -187,6 +271,10 @@ public class Lines5 extends ProcessFile {
             return false;
         }
 
+    }
+
+    private double size(List<Point3D> point3DS) {
+        return Point3D.distance(point3DS.get(0), point3DS.get(point3DS.size()-1));
     }
 
     private boolean isInBound(Point3D p1) {
