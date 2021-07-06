@@ -25,11 +25,14 @@ public class GradProcess extends ProcessFile {
             pix = PixM.getPixM(ImageIO.read(file), maxRes);
             GradientFilter gf = new GradientFilter(pix.getColumns(),
                     pix.getLines());
-            PixM r = gf.filter(
+            PixM[][] imagesMatrix = gf.filter(
                     new M3(
-                            pix, 1, 1)
-            ).getImagesMatrix()[0][0];
-
+                            pix, 2, 2)
+            ).getImagesMatrix();
+            Linear linear = new Linear(imagesMatrix[0][0], imagesMatrix[0][1],
+                    new PixM(pix.getColumns(), pix.getLines()));
+            linear.op2d2d(new char[]{'+'}, new int[][]{{1, 0}}, new int[]{2});
+            PixM r = linear.getImages()[2];
             ImageIO.write(r.normalize(0.0, 1.0).getImage(), "jpg", out);
 
             return true;

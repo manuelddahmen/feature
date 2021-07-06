@@ -250,18 +250,8 @@ public class Lines5 extends ProcessFile {
                     }
                 }
             }
-            temp1.forEach(new Consumer<Point3D>() {
-                @Override
-                public void accept(Point3D point3D) {
-                    System.out.printf("POINT LIST TEMP1", point3D);
-                }
-            });
-            temp2.forEach(new Consumer<Point3D>() {
-                @Override
-                public void accept(Point3D point3D) {
-                    System.out.printf("POINT LIST TEMP2", point3D);
-                }
-            });
+            temp1.forEach(point3D -> System.out.printf("POINT LIST TEMP1 %s", point3D));
+            temp2.forEach(point3D -> System.out.printf("POINT LIST TEMP2 %s", point3D));
 
             ImageIO.write(bLines, "jpg", out);
             return true;
