@@ -10,6 +10,7 @@ import static org.junit.Assert.*;
 import javax.imageio.ImageIO;
 
 import one.empty3.feature.*;
+import one.empty3.library.Point3D;
 
 import java.util.logging.*;
 
@@ -29,12 +30,9 @@ public class GradProcess extends ProcessFile {
                     new M3(
                             pix, 2, 2)
             ).getImagesMatrix();
-            Linear linear = new Linear(imagesMatrix[0][0], imagesMatrix[0][1],
-                    new PixM(pix.getColumns(), pix.getLines()));
+            Linear linear = new Linear(imagesMatrix[0][0], imagesMatrix[0][1], new PixM(pix.getColumns(), pix.getLines()));
             linear.op2d2d(new char[]{'+'}, new int[][]{{1, 0}}, new int[]{2});
-            PixM r = linear.getImages()[2];
-            ImageIO.write(r.normalize(0.0, 1.0).getImage(), "jpg", out);
-
+            ImageIO.write(linear.getImages()[2].normalize(0.0, 1.0).getImage(), "jpg", out);
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();

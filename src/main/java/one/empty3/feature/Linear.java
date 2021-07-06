@@ -41,6 +41,13 @@ public class Linear {
 
     }
 
+    /***
+     *
+     * @param op
+     * @param index
+     * @param indexRes
+     * @return
+     */
     public boolean op2d2d(char[] op, int[][] index, int[] indexRes) {
         PixM[] workingImages = null;
         assert images != null;

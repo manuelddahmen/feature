@@ -1,7 +1,11 @@
 package one.empty3.feature;
 
 public class GaussFilterPixM extends FilterPixM {
-    public double sigma;
+    public double sigma = 0.8;
+
+    public GaussFilterPixM() {
+        super(3, 3);
+    }
 
     public GaussFilterPixM(int squareSize) {
         super(squareSize, squareSize);
