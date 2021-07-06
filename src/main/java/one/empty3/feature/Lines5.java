@@ -107,7 +107,7 @@ public class Lines5 extends ProcessFile {
                         int y = j;
                         if (!isInBound(new Point3D((double) x, (double) y, 0.0)))
                             continue;
-                        double valueAvg = pixM.luminance(x, y);
+                        double valueAvg = pixM.norme(x, y);
 
                         if (valueAvg >= levels - valueDiff && valueAvg <= levels + valueDiff && p[x][y] == 0) {//2nd condition
 
@@ -302,7 +302,7 @@ public class Lines5 extends ProcessFile {
                     Point point = new Point(x2, y2);
                     px = point.getX();
                     py = point.getY();
-                    pz = pixM.luminance((int) point.getX(), (int) point.getY());
+                    pz = pixM.norme((int) point.getX(), (int) point.getY());
                     if (pz >= valueAvg - valueDiff && pz <= valueAvg + valueDiff && pz > valueMin
                             && px >= 0.0 && px < pixM.getColumns() && py >= 0 && py < pixM.getLines()) {
                         addTmp(px, py, pz);

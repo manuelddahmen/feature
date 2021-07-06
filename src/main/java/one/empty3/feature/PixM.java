@@ -358,6 +358,18 @@ public class PixM extends M {
 
         return l;
     }
+    public double norme(int x, int y) {
+        double l = 0.0;
+        setCompNo(0);
+        l += get(x, y);
+        setCompNo(1);
+
+        l += get(x, y);
+        setCompNo(2);
+        l += get(x, y);
+
+        return l;
+    }
 
     public int getColumns() {
         return columns;
