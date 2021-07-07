@@ -12,16 +12,6 @@
       <option name="url" value="https://repo.maven.apache.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="xuggle repo 2" />
-      <option name="name" value="xuggle repo 2" />
-      <option name="url" value="https://files.liferay.com/mirrors/xuggle.googlecode.com/svn/trunk/repo/share/java/" />
-    </remote-repository>
-    <remote-repository>
-      <option name="id" value="netbeans-r" />
-      <option name="name" value="netbeans-r" />
-      <option name="url" value="http://bits.netbeans.org/maven2" />
-    </remote-repository>
-    <remote-repository>
       <option name="id" value="spring io" />
       <option name="name" value="spring io" />
       <option name="url" value="https://repo.spring.io/plugins-release/" />
@@ -32,9 +22,9 @@
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="mvnrepo" />
-      <option name="name" value="mvnrepo" />
-      <option name="url" value="https://www.dcm4che.org/maven2/" />
+      <option name="id" value="MavenLocal" />
+      <option name="name" value="MavenLocal" />
+      <option name="url" value="file:/$MAVEN_REPOSITORY$/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="maven-central" />
@@ -47,9 +37,9 @@
       <option name="url" value="https://empty3.one/downloads/maven" />
     </remote-repository>
     <remote-repository>
-      <option name="id" value="xuggle repo" />
-      <option name="name" value="xuggle repo" />
-      <option name="url" value="https://files.liferay.com/mirrors/xuggle.googlecode.com/svn/trunk/repo/share/java/" />
+      <option name="id" value="maven-central" />
+      <option name="name" value="maven-central" />
+      <option name="url" value="https://repo.maven.apache.org/maven2/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="spring-io" />
@@ -57,9 +47,29 @@
       <option name="url" value="https://repo.spring.io/plugins-release/" />
     </remote-repository>
     <remote-repository>
+      <option name="id" value="Google" />
+      <option name="name" value="Google" />
+      <option name="url" value="https://dl.google.com/dl/android/maven2/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="http://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven" />
+      <option name="name" value="maven" />
+      <option name="url" value="https://mvnrepository.com/" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="jboss.community" />
       <option name="name" value="JBoss Community repository" />
       <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="maven2" />
+      <option name="name" value="maven2" />
+      <option name="url" value="https://jcenter.bintray.com/" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="netbeans" />

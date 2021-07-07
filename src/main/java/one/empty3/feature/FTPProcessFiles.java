@@ -1,22 +1,20 @@
 package one.empty3.feature;
 
-import java.net.URL;
-import java.util.*;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.io.*;
-import java.io.FileInputStream;
-
-import org.apache.commons.net.ftp.*;
 import one.empty3.io.ProcessFile;
+import one.empty3.library.TextureMov;
+import org.apache.commons.net.ftp.FTPClient;
+import org.apache.commons.net.ftp.FTPFile;
+import org.apache.commons.net.ftp.FTPReply;
 
-import java.util.logging.Logger;
-import java.lang.reflect.Method;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-
-import one.empty3.library.TextureMov;
+import java.io.*;
+import java.lang.reflect.Method;
+import java.net.URL;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
+import java.util.logging.Logger;
 //import org.json.*;
 
 /**
@@ -376,9 +374,9 @@ public class FTPProcessFiles {
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : " + fo.getAbsolutePath());
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
-
                 //Thread thread = new Thread(() -> {
                     processInstance.process(fi, fo);
+                    processInstance.setImage(fo);
                     energy(fo);
                 //});
                 //new TimerKillThread(thread);
