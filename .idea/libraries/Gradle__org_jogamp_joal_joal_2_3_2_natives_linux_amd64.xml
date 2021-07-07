@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jogamp.joal:joal:2.3.2:natives-linux-amd64">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jogamp.joal/joal/2.3.2/8e8872fcb53a6a3a3e03351c8b3b5d27d068cb88/joal-2.3.2-natives-linux-amd64.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jogamp.joal/joal/2.3.2/57516fee4bfcdb5268b340e62c8b9002eafb03d7/joal-2.3.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

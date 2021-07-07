@@ -28,12 +28,12 @@ public class Lines5 extends ProcessFile {
     private double pz;
     private double py;
     private double px;
-    private double distMax;
+//    private double distMax;
     private Random random = new Random();
 
     public Lines5() {
     }
-
+/*
     public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
         List<Point3D> list = new ArrayList<>();
 
@@ -51,7 +51,7 @@ public class Lines5 extends ProcessFile {
 
         return list;
     }
-
+*//*
     private Point3D proche(Point3D point3D, List<Point3D> p) {
         double dist = distMax;
         Point3D pRes = null;
@@ -63,7 +63,7 @@ public class Lines5 extends ProcessFile {
         }
         return pRes;
     }
-
+*/
     public double r() {
         return (random.doubles().iterator().nextDouble() + 1.) / 2;
     }
@@ -81,6 +81,7 @@ public class Lines5 extends ProcessFile {
             int[][] p = new int[pixM.getColumns()][pixM.getLines()];//!!
             listTmpCurve = new ArrayList<Point3D>();
 //[] x, y-> pCount, subListRef.
+            double distMax;
             for (double levels : Arrays.asList(1.0, 0.9, 0.8, 0.7, 0.6, 0.5, 0.4/*, 0.3 ,x0.2,0.1,0.0*/)) {
 
                 pz = 0.0;
@@ -210,6 +211,7 @@ public class Lines5 extends ProcessFile {
                                 (int) (double) p2.getX(),
                                 (int) (double) p2.getY());
                     }
+                    /*
                     for (int j = 0; j < points.size() - 1; j++) {
                         p1 = points.get(j);
                         p2 = points.get(j + 1);
@@ -218,20 +220,20 @@ public class Lines5 extends ProcessFile {
                                     (int) (double) p1.getY(),
                                     (int) (double) p2.getX(),
                                     (int) (double) p2.getY());
-                    }
+                    }*/
                     i++;
 
                     if (temp1.size() == 0) {
+                        temp1b = true;
+                        temp1.add(p1);
                         listTemp1 = points;
+                    } else if (temp1b) {
                         temp1b = true;
-                        listTemp1.add(p1);
-                    }
-                    if (temp1.size() == 0 || temp1b) {
-                        temp1b = true;
-                        if (listTemp1 == points || temp1.size() == 0) {
+                        if (listTemp1 == points) {
                             temp1.add(p1);
                         }
-                    } else if (Point3D.distance(listTemp1.get(0), p1) > bLines.getWidth() / 5) {
+                    }
+                    if (temp1b &&!temp2b && Point3D.distance(listTemp1.get(0), p1) > bLines.getWidth() / 5.) {
                         temp2b = true;
                         temp1b = false;
                         listTemp2 = points;
@@ -239,7 +241,7 @@ public class Lines5 extends ProcessFile {
                     }
                     if (temp2b && listTemp2== points) {
                         temp2.add(p1);
-                    } else if (temp2b && listTemp2 != points) {
+                    } else if (temp2b) {
                         temp2b = false;
                     }
                 }
@@ -307,11 +309,4 @@ public class Lines5 extends ProcessFile {
         }
     }
 
-    public double getDistMax() {
-        return distMax;
-    }
-
-    public void setDistMax(double distMax) {
-        this.distMax = distMax;
-    }
 }

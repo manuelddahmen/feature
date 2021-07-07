@@ -1,9 +1,6 @@
 package one.empty3.feature;
 
 import java.io.File;
-import java.util.Objects;
-
-import static org.bouncycastle.asn1.x509.GeneralName.directoryName;
 
 public class Run extends Thread {
     static String [] args = new String[] {"jeu1_lines3_passes"};

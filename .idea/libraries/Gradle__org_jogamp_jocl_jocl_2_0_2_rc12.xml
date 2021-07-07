@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jogamp.jocl:jocl:2.0.2-rc12">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jogamp.jocl/jocl/2.0.2-rc12/4c9944770fd0e233b2d19453d2b5571a8f8a5e0c/jocl-2.0.2-rc12.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jogamp.jocl/jocl/2.0.2-rc12/dc280823adba5c5878a4ad53c2aecbc4a1b3fb60/jocl-2.0.2-rc12-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,7 +1,5 @@
 package one.empty3.feature;
 
-import org.apache.poi.hssf.util.HSSFColor;
-
 import java.util.ArrayList;
 
 public class LocalExtrema extends FilterMatPixM {

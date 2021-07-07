@@ -4,7 +4,7 @@ import javax.imageio.ImageIO;
 import java.io.File;
 import one.empty3.feature.*;
 import java.util.logging.*; 
-
+/*
 public class TestMatGrad {
    static Logger logger;
   static {
@@ -111,3 +111,4 @@ logger.info("angles tangentes");
 
 }
 }
+*/

@@ -10,7 +10,7 @@
     <name>feature</name>
     <groupId>one.empty3</groupId>
     <artifactId>features</artifactId>
-    <version>2021.4.1-SNAPSHOT</version>
+    <version>2021.7.1-SNAPSHOT</version>
     <description>feature</description>
     <packaging>jar</packaging>
     <url>https://github.com/manuelddahmen/feature</url>
@@ -63,8 +63,9 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>14</maven.compiler.source>
-        <maven.compiler.target>14</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <EMPTY3_PATH>${project.basedir}/empty3-library-3d-android-2021.6.2-SNAPSHOT.jar</EMPTY3_PATH>
     </properties>
 
     <build>
@@ -113,8 +114,8 @@
                 <version>3.6.2</version>
                 <configuration>
                     <showDeprecation>true</showDeprecation>
-                    <source>16</source>
-                    <target>16</target>
+                    <source>8</source>
+                    <target>8</target>
                 </configuration>
 
             </plugin>
@@ -182,8 +183,8 @@
                 <extensions>true</extensions>
                 <configuration>
                     <serverId>ossrh</serverId>
-                    <nexusUrl>https://oss.sonatype.org/</nexusUrl>
-                    <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                    <nexusUrl>https://oss1.sonatype.org/</nexusUrl>
+                    <autoReleaseAfterClose>false</autoReleaseAfterClose>
                 </configuration>
             </plugin>
 
@@ -284,37 +285,17 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
 
         </plugins>
 
-        <extensions>
-            <!-- Enabling the use of FTP -->
-            <extension>
-                <groupId>org.apache.maven.wagon</groupId>
-                <artifactId>wagon-ftp</artifactId>
-                <version>2.12</version>
-            </extension>
-        </extensions>
     </build>
 
 
     <repositories>
         <repository>
-            <id>mvnrepo</id>
-            <url>https://www.dcm4che.org/maven2/</url>
-        </repository>
-        <repository>
-            <id>myrepo</id>
-            <url>https://empty3.one/downloads/maven</url>
-        </repository>
-        <repository>
             <id>maven-central</id>
-            <url>https://repo1.maven.org/maven2/</url>
+            <url>https://repo.maven.apache.org/maven2/</url>
         </repository>
-        <repository>
-            <id>netbeans</id>
-            <url>http://bits.netbeans.org/maven2/</url>
-        </repository>
+
     </repositories>
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/junit/junit -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -330,13 +311,6 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <artifactId>miglayout-swing</artifactId>
             <version>5.2</version>
         </dependency>
-        <!--
-        <dependency>
-            <groupId>com.github.sarxos</groupId>
-            <artifactId>webcam-capture</artifactId>
-            <version>0.3.12</version>
-        </dependency>
-        -->
         <dependency>
             <groupId>org.jogamp.jocl</groupId>
             <artifactId>jocl-main</artifactId>
@@ -371,18 +345,6 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <artifactId>commons-cli</artifactId>
             <version>1.4</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/xuggle/xuggle-xuggler -->
-        <dependency>
-            <groupId>com.github.dexecutor</groupId>
-            <artifactId>dexecutor-core</artifactId>
-            <version>2.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>one.empty3</groupId>
-            <artifactId>montemedia</artifactId>
-            <version>0.0.7-2</version>
-            <type>jar</type>
-        </dependency>
         <dependency>
             <groupId>org.jcodec</groupId>
             <artifactId>jcodec</artifactId>
@@ -409,21 +371,13 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <version>5.2</version>
         </dependency>
         <dependency>
-         <groupId>one.empty3</groupId>
-    <artifactId>empty3-library-3d</artifactId>
-    <version>2021.4.4</version>
+            <groupId>one.empty3</groupId>
+            <artifactId>empty3-library-3d-android</artifactId>
+            <version>2021.5.2</version>
+            <type>jar</type>
+            <scope>system</scope>
+            <systemPath>${EMPTY3_PATH}</systemPath>
+
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.openpnp/opencv -->
-        <dependency>
-            <groupId>org.openpnp</groupId>
-            <artifactId>opencv</artifactId>
-            <version>3.2.0-0</version>
-        </dependency>
-<!-- https://mvnrepository.com/artifact/commons-net/commons-net -->
-<dependency>
-    <groupId>commons-net</groupId>
-    <artifactId>commons-net</artifactId>
-    <version>3.7.1</version>
-</dependency>
     </dependencies>
 </project>
