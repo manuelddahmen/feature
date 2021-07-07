@@ -201,7 +201,7 @@ public class Lines5 extends ProcessFile {
 
             for (List<Point3D> points : list3) {
                 if (size(points) > finalLongueur * 2.0 + 2) {
-                    g.setColor(new Color(0, (int) (((double) (i)) / 255 * points.size()), 0));
+                    g.setColor(new Color(0, (int) (((double) (i)) * 255/ list3.size()), 0));
                     Point3D p1 = points.get(0);
                     Point3D p2 = points.get(points.size() - 1);
                     if (p1 != p2) {
@@ -228,18 +228,15 @@ public class Lines5 extends ProcessFile {
                         temp1.add(p1);
                         listTemp1 = points;
                     } else if (temp1b) {
-                        temp1b = true;
                         if (listTemp1 == points) {
                             temp1.add(p1);
+                        } else {
+                            temp2b = true;
+                            temp1b = false;
+                            listTemp2 = points;
+                            temp2.add(p1);
                         }
-                    }
-                    if (temp1b &&!temp2b && Point3D.distance(listTemp1.get(0), p1) > bLines.getWidth() / 5.) {
-                        temp2b = true;
-                        temp1b = false;
-                        listTemp2 = points;
-                        temp2.add(p1);
-                    }
-                    if (temp2b && listTemp2== points) {
+                    } else if (temp2b && listTemp2== points) {
                         temp2.add(p1);
                     } else if (temp2b) {
                         temp2b = false;
