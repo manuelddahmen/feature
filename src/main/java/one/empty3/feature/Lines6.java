@@ -133,7 +133,7 @@ public class Lines6 extends ProcessFile {
                 final double distNormal = 1.1;//0.9??
                 list3.add(new ArrayList<>());
                 list3.get(list3.size() - 1).add(point3D);
-                distMax = 0.5;
+                distMax = (pixM.getColumns() + pixM.getLines()) >> 1;
 
                 if (isInBound(point3D)) {
                     for (int j = 0; j < list2.size(); j++) {
@@ -143,9 +143,9 @@ public class Lines6 extends ProcessFile {
 
                         if (prev != current && current != point3D &&
                                 Point3D.distance(prev, current) <= distNormal &&
-                                Point3D.distance(point3D, current) > distMax) {
+                                !(Point3D.distance(point3D, current) > distMax)) {
                             list3.get(list3.size() - 1).add(current);
-                            distMax = Point3D.distance(point3D, current);
+                            //distMax = Point3D.distance(point3D, current);
                             p[(int) (double) current.getX()][(int) (double) current.getY()]++;
                         }
 
