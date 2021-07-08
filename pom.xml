@@ -39,7 +39,7 @@
     <licenses>
         <license>
             <name>fsf gnu gpl</name>
-            <url>http://www.fsf.org/licenses/gpl</url>
+            <url>https://www.fsf.org/licenses/gpl</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -134,7 +134,7 @@
                         <argument>-Xms4000m</argument>
                         <argument>-Xmx4000m</argument>
                         <argument>-XmX4000m</argument>
-                        <!--<argument>-Dexec.args="sets/aquarelle1"</argument>-->
+                        <argument>-Dexec.args="allpass-class"</argument>
                     </arguments>
                 </configuration>
        </plugin>
@@ -162,7 +162,6 @@
                         <id>attach-javadocs</id>
                         <goals>
                             <goal>javadoc</goal><!-- default jar -->
-                            <goal>jar</goal>
                         </goals>
 
                         <configuration>
@@ -315,6 +314,17 @@ ED0DB26D5F0BDADD1CB2BC079B7BFF1322EE55E4-->
             <groupId>com.miglayout</groupId>
             <artifactId>miglayout-javafx</artifactId>
             <version>5.2</version>
+        </dependency>
+        <dependency>
+            <groupId>com.miglayout</groupId>
+            <artifactId>miglayout-swing</artifactId>
+            <version>5.2</version>
+
+        </dependency>
+        <dependency>
+            <groupId>com.miglayout</groupId>
+            <artifactId>miglayout-core</artifactId>
+            <version>5.0</version>
         </dependency>
         <dependency>
             <groupId>one.empty3</groupId>

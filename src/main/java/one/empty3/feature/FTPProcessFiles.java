@@ -427,6 +427,7 @@ public class FTPProcessFiles {
 
            // Thread thread = new Thread(() -> {
                 processInstance.process(fi, fo);
+                processInstance.setImage(fo);
                 energy(fo);
       //      });
 

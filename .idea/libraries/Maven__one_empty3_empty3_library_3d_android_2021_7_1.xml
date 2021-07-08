@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: one.empty3:empty3-library-3d-android:2021.7.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/one/empty3/empty3-library-3d-android/2021.7.1/empty3-library-3d-android-2021.7.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/one/empty3/empty3-library-3d-android/2021.7.1/empty3-library-3d-android-2021.7.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/one/empty3/empty3-library-3d-android/2021.7.1/empty3-library-3d-android-2021.7.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

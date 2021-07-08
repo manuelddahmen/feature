@@ -6,7 +6,6 @@ import java.io.File;
 import one.empty3.library.Point3D;
 import one.empty3.io.ProcessFile;
 
-import static org.junit.Assert.*;
 
 import javax.imageio.ImageIO;
 

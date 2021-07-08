@@ -1,5 +1,3 @@
-import org.junit.Test;
-import static org.junit.Assert.*;
 import javax.imageio.ImageIO;
 import java.io.File;
 import one.empty3.feature.*;

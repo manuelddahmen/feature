@@ -1,4 +1,4 @@
-package one.empty3.feature.gui;
+/*package one.empty3.feature.gui;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -181,3 +181,4 @@ public class ExploreResults extends JFrame {
         results.setVisible(true);
     }
 }
+*/

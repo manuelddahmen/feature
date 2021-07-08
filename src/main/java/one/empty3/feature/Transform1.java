@@ -2,15 +2,9 @@ package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
 
-import java.io.File;
-
-import static org.junit.Assert.*;
-
 import javax.imageio.ImageIO;
-
-import one.empty3.feature.*;
-
-import java.util.logging.*;
+import java.io.File;
+import java.util.logging.Logger;
 
 public class Transform1 extends ProcessFile {
 

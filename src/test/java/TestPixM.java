@@ -1,6 +1,3 @@
-import org.junit.Test;
-import static org.junit.Assert.*;
-
 import one.empty3.feature.*;
 /*
 public class TestPixM {

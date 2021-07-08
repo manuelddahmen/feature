@@ -28,30 +28,31 @@ public class Lines6 extends ProcessFile {
     private double pz;
     private double py;
     private double px;
-//    private double distMax;
+    //    private double distMax;
     private Random random = new Random();
 
     public Lines6() {
     }
-/*
-    public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
-        List<Point3D> list = new ArrayList<>();
 
-        List<Point3D> p = points.get(0);
+    /*
+        public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
+            List<Point3D> list = new ArrayList<>();
 
-        for (int i = 0; i < p.size(); i++) {
-            Point3D proche = proche(p0, p);
-            if (proche == null)
-                return list;
-            else {
-                p.remove(proche);
-                list.add(proche);
+            List<Point3D> p = points.get(0);
+
+            for (int i = 0; i < p.size(); i++) {
+                Point3D proche = proche(p0, p);
+                if (proche == null)
+                    return list;
+                else {
+                    p.remove(proche);
+                    list.add(proche);
+                }
             }
-        }
 
-        return list;
-    }
-*//*
+            return list;
+        }
+    *//*
     private Point3D proche(Point3D point3D, List<Point3D> p) {
         double dist = distMax;
         Point3D pRes = null;
@@ -201,7 +202,7 @@ public class Lines6 extends ProcessFile {
 
             for (List<Point3D> points : list3) {
                 if (size(points) > finalLongueur * 2.0 + 2) {
-                    g.setColor(new Color(0, (int) (((double) (i)) / 255 * points.size()), 0));
+                    g.setColor(new Color(0, (int) (((double) (i)) * 255 / list3.size()), 0));
                     Point3D p1 = points.get(0);
                     Point3D p2 = points.get(points.size() - 1);
                     if (p1 != p2) {
@@ -221,31 +222,43 @@ public class Lines6 extends ProcessFile {
                                     (int) (double) p2.getX(),
                                     (int) (double) p2.getY());
                     }*/
-                    i++;
-
+                    // Il faut au moins deux contours (les contours du visage) et des yeux.
                     if (temp1.size() == 0) {
                         temp1b = true;
                         temp1.add(p1);
                         listTemp1 = points;
-                    }
-                    if (listTemp1 == points && temp1b) {
+                    } else if (temp1b) {
+                        Point3D d1 = distanceCurvePoint(temp1, p1);
+                        double distance = Point3D.distance(d1, p1);
+                        if (listTemp1 == points || distance < pixM.getColumns() / 5.) {
                             temp1.add(p1);
+                        } else {
+                            temp2b = true;
+                            temp1b = false;
+                            listTemp2 = points;
+                        }
+                    }
+                    if (temp2b) {
+                        Point3D d2 = distanceCurvePoint(temp2, p1);
+                        double distance = Point3D.distance(d2, p1);
+                        if (listTemp2 == points) {
+                            temp2.add(p1);
+                        } else if (distance > pixM.getColumns() / 5.) {
+                            temp2b = false;
 
-                    } else if (temp1b && Point3D.distance(listTemp1.get(0), p1) > bLines.getWidth() / 5.) {
-                        temp2b = true;
-                        temp1b = false;
-                        listTemp2 = points;
-                        temp2.add(p1);
+                        }
                     }
-                    if (temp2b && listTemp2== points) {
-                        temp2.add(p1);
-                    }
-                    if (temp2b && listTemp2 != points) {
-                        temp2b = false;
-                    }
+                    i++;
                 }
             }
-            temp1.forEach(point3D -> System.out.printf("POINT LIST TEMP1 %s", point3D));
+
+            g.setColor(Color.BLUE);
+            temp1.forEach(point3D -> {
+                        System.out.printf("POINT LIST TEMP1 %s", point3D);
+                        g.drawLine((int) (double) point3D.getX() - 2, (int) (double) point3D.getY() - 2,
+                                (int) (double) point3D.getX() + 2, (int) (double) point3D.getY() + 2);
+                    }
+            );
             temp2.forEach(point3D -> System.out.printf("POINT LIST TEMP2 %s", point3D));
 
             ImageIO.write(bLines, "jpg", out);
@@ -308,4 +321,19 @@ public class Lines6 extends ProcessFile {
         }
     }
 
+    public Point3D distanceCurvePoint(List<Point3D> curve, Point3D point) {
+        if (point != null && curve.size() > 0) {
+            double dist = Point3D.distance(point, curve.get(0));
+            int p = 0;
+            for (int i = 0; i < curve.size(); i++) {
+                Double distance = Point3D.distance(curve.get(i), point);
+                if (distance < dist) {
+                    dist = distance;
+                    p = i;
+                }
+            }
+            return curve.get(p);
+        } else
+            return Point3D.INFINI;
+    }
 }

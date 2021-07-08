@@ -1,18 +1,11 @@
 package one.empty3.feature;
 
 
-import java.io.File;
-
-import one.empty3.library.Point3D;
 import one.empty3.io.ProcessFile;
-
-import static org.junit.Assert.*;
+import one.empty3.library.Point3D;
 
 import javax.imageio.ImageIO;
-
-import one.empty3.feature.*;
-
-import java.util.logging.*;
+import java.io.File;
 
 public class ProxyValue2 extends ProcessFile {
 
