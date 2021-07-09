@@ -3,7 +3,7 @@
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import net.miginfocom.swing.*;
+import net.miginfocom.swing.MigLayout;
 
 import java.io.File;
 
