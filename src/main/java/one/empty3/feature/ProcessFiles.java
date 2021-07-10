@@ -17,14 +17,7 @@ import java.util.*;
 import java.util.logging.Logger;
 //import org.json.*;
 
-/**
- * An example program that demonstrates how to list files and directories
- * on a FTP server using Apache Commons Net API.
- *
- * @author www.codejava.net
- * @author empty3.one
- */
-public class FTPProcessFiles {
+public class ProcessFiles {
     public static String classnames, classname;
     static String[] classes;
 
@@ -178,7 +171,7 @@ public class FTPProcessFiles {
         }
 
         String maxFilesInDir0 = settings.getProperty("maxFilesInDir");
-        FTPProcessFiles.maxFilesInDir = Integer.parseInt(maxFilesInDir0 == null ? "10000" : maxFilesInDir0);
+        ProcessFiles.maxFilesInDir = Integer.parseInt(maxFilesInDir0 == null ? "10000" : maxFilesInDir0);
         maxRes = Integer.parseInt(settings.getProperty("maxRes"));
         /* String*/
         classnames = (String) settings.getProperty("classname");
@@ -210,14 +203,14 @@ public class FTPProcessFiles {
 
 
                 currentDirout = "" + directoryOut + "-" + i + "-" + classname + "/";
-                Logger.getLogger(FTPProcessFiles.class.getName()).info("Process class name read " + classname);
+                Logger.getLogger(ProcessFiles.class.getName()).info("Process class name read " + classname);
                 System.out.println(classname);
                 Class classs = Class.forName(
                         classname
                 );
 
 
-                Logger.getLogger(FTPProcessFiles.class.getName()).info("Process Dir" + classname2);
+                Logger.getLogger(ProcessFiles.class.getName()).info("Process Dir" + classname2);
 
                 Object o = classs.newInstance();
 
@@ -354,8 +347,8 @@ public class FTPProcessFiles {
                 new File(getDirname(fi.getAbsolutePath())).getParentFile().mkdirs();
                 new File(getDirname(fo.getAbsolutePath())).getParentFile().mkdirs();
 
-                Logger.getLogger(FTPProcessFiles.class.getName()).info("fi" + fi.getAbsolutePath());
-                Logger.getLogger(FTPProcessFiles.class.getName()).info("fo" + fo.getAbsolutePath());
+                Logger.getLogger(ProcessFiles.class.getName()).info("fi" + fi.getAbsolutePath());
+                Logger.getLogger(ProcessFiles.class.getName()).info("fo" + fo.getAbsolutePath());
                 fi.createNewFile();
                 //fo.createNewFile();
 
@@ -364,9 +357,9 @@ public class FTPProcessFiles {
 
                 ftpClient.retrieveFile(remote, fos);
 
-                Logger.getLogger(FTPProcessFiles.class.getName()).info("file  in : " + fi.getAbsolutePath());
-                Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : " + fo.getAbsolutePath());
-                Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
+                Logger.getLogger(ProcessFiles.class.getName()).info("file  in : " + fi.getAbsolutePath());
+                Logger.getLogger(ProcessFiles.class.getName()).info("file out : " + fo.getAbsolutePath());
+                Logger.getLogger(ProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
                 //Thread thread = new Thread(() -> {
                 processInstance.process(fi, fo);
@@ -414,10 +407,10 @@ public class FTPProcessFiles {
             //fi.createNewFile();
             //fo.createNewFile();
 
-            Logger.getLogger(FTPProcessFiles.class.getName()).info("file  in : " + fi.getAbsolutePath());
-            Logger.getLogger(FTPProcessFiles.class.getName()).info("file out : " + fo.getAbsolutePath());
+            Logger.getLogger(ProcessFiles.class.getName()).info("file  in : " + fi.getAbsolutePath());
+            Logger.getLogger(ProcessFiles.class.getName()).info("file out : " + fo.getAbsolutePath());
             processInstance.setMaxRes(maxRes);
-            Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
+            Logger.getLogger(ProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
             // Thread thread = new Thread(() -> {
             processInstance.process(fi, fo);

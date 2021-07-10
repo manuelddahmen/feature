@@ -264,7 +264,7 @@ public class Lines6 extends ProcessFile {
             temp2.forEach(point3D -> System.out.printf("POINT LIST TEMP2 %s", point3D));
 
             Paste paste = new Paste();
-
+/*
             PixM stack = bean.getStack(0);
 
             for (int i1 = 0; i1 < list3.size(); i1++) {
@@ -273,9 +273,8 @@ public class Lines6 extends ProcessFile {
 
             }
 
-
-            ImageIO.write(pixM.normalize(0.0,1.0).getImage(),
-                    "jpg", out);
+*/
+            ImageIO.write(bLines, "jpg", out);
             return true;
         } catch (
                 IOException e) {
