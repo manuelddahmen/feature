@@ -1,6 +1,8 @@
 package one.empty3.feature;
 
+import one.empty3.feature.selection.Paste;
 import one.empty3.io.ProcessFile;
+import one.empty3.library.ColorTexture;
 import one.empty3.library.LineSegment;
 import one.empty3.library.Point3D;
 
@@ -261,7 +263,19 @@ public class Lines6 extends ProcessFile {
             );
             temp2.forEach(point3D -> System.out.printf("POINT LIST TEMP2 %s", point3D));
 
-            ImageIO.write(bLines, "jpg", out);
+            Paste paste = new Paste();
+
+            PixM stack = bean.getStack(0);
+
+            for (int i1 = 0; i1 < list3.size(); i1++) {
+                paste.pasteList(list3.get(i1),
+                        pixM, new ColorTexture(Color.BLACK));
+
+            }
+
+
+            ImageIO.write(pixM.normalize(0.0,1.0).getImage(),
+                    "jpg", out);
             return true;
         } catch (
                 IOException e) {

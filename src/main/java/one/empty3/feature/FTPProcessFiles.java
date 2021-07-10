@@ -31,10 +31,10 @@ public class FTPProcessFiles {
 
     public static String directory = "images";
     static String settingsPropertiesPath;
-    private static PrintWriter pw;
     private static int maxRes;
     private static int maxFilesInDir;
     private static String[] initialDirectories;
+    private static HashMap<String, ProcessBean> listBeans = new HashMap<>();
 
     public static String getDirname(String s) {
         if (s.contains("/"))
@@ -283,7 +283,9 @@ public class FTPProcessFiles {
                         FTPFile[] files1 = ftpClient.listFiles(directory);
                         showServerReply(ftpClient);
 
-                        printFileDetails(files1, directory);
+                        List<ProcessBean> processBeans = ProcessBean.processBeanList(files1);
+
+                        printFileDetails(processBeans, directory);
                     } else if (server.startsWith("http")) {
                         URL oracle = new URL(server);
                         BufferedReader in = new BufferedReader(
@@ -299,9 +301,10 @@ public class FTPProcessFiles {
                         // local path
                         initialDirectories = currentDirin;
                         for (int d = 0; d < initialDirectories.length; d++)
-                            if (new File(initialDirectories[d]).exists())
+                            if (new File(initialDirectories[d]).exists()) {
+                                ProcessBean.processBeanList(new File(initialDirectories[d]).listFiles());
                                 printFileDetails(Objects.requireNonNull(new File(initialDirectories[d]).list()), initialDirectories[d]);
-
+                            }
 
                     }
 
@@ -375,9 +378,9 @@ public class FTPProcessFiles {
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
                 //Thread thread = new Thread(() -> {
-                    processInstance.process(fi, fo);
-                    processInstance.setImage(fo);
-                    energy(fo);
+                processInstance.process(fi, fo);
+                processInstance.bean.setImage(fo);
+                energy(fo);
                 //});
                 //new TimerKillThread(thread);
             } catch (Exception ex) {
@@ -425,34 +428,37 @@ public class FTPProcessFiles {
             processInstance.setMaxRes(maxRes);
             Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
-           // Thread thread = new Thread(() -> {
-                processInstance.process(fi, fo);
-                processInstance.setImage(fo);
-                energy(fo);
-      //      });
+            // Thread thread = new Thread(() -> {
+            processInstance.process(fi, fo);
+            processInstance.bean.setImage(fo);
+            energy(fo);
+            //      });
 
-       //     new TimerKillThread(thread);
+            //     new TimerKillThread(thread);
 
         }
     }
 
-    private static void printFileDetails(FTPFile[] files, String directory) {
+    private static void printFileDetails(List<ProcessBean> files, String directory) {
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         int it = 0;
-        for (FTPFile file : files) {
+        for (ProcessBean bean : files) {
             if (it++ > maxFilesInDir)
                 return;
 
-            if (file.isFile() && !file.getName().equals(".")
-                    && !file.getName().equals("..")
-            ) {
-                String filePath = "";
-                String remoteFile = directory + "/" + file.getName();
-                //Logger.getLogger(getClass()).info(file.getName());
-                //System.out.println(file.getName() + " "+ remote);
+            if (bean.ftp) {
+                FTPFile file = bean.ftpFile;
+                if (file.isFile() && !file.getName().equals(".")
+                        && !file.getName().equals("..")
+                ) {
+                    String filePath = "";
+                    String remoteFile = directory + "/" + file.getName();
+                    //Logger.getLogger(getClass()).info(file.getName());
+                    //System.out.println(file.getName() + " "+ remote);
 
 
-                process(file, remoteFile);
+                    process(file, remoteFile);
+                }
             }
         }
     }

@@ -1,6 +1,7 @@
 package one.empty3.io;
 
 import one.empty3.feature.PixM;
+import one.empty3.feature.ProcessBean;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -10,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public abstract class ProcessFile {
-    List<PixM> listImage = new ArrayList<>();
+    public ProcessBean bean;
     protected int maxRes = -1;
 
     public ProcessFile() {
@@ -24,15 +25,4 @@ public abstract class ProcessFile {
         this.maxRes = maxRes;
     }
 
-    public BufferedImage getStack(int i) {
-        return null;
-    }
-
-    public void setImage(File fo) {
-        try {
-            listImage.add(new PixM(ImageIO.read(fo)));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
 }
