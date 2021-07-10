@@ -29,6 +29,7 @@ public class ProcessFile {
 
     }
     public File getStackItem(int index) {
+        System.out.printf("STACK %d : %s", index, images.get(index));
         return images.get(index);
     }
 

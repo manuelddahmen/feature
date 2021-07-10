@@ -36,6 +36,7 @@ public class FTPProcessFiles {
     private static int maxFilesInDir;
     private static String[] initialDirectories;
     private static HashMap<File, List<File>> listsFiles = new HashMap<>();
+
     public static String getDirname(String s) {
         if (s.contains("/"))
             return s.substring(0, s.lastIndexOf("/"));
@@ -382,9 +383,9 @@ public class FTPProcessFiles {
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
                 //Thread thread = new Thread(() -> {
-                    processInstance.process(fi, fo);
-                    processInstance.bean.setImage(fo);
-                    energy(fo);
+                processInstance.process(fi, fo);
+                processInstance.bean.setImage(fo);
+                energy(fo);
                 //});
                 //new TimerKillThread(thread);
             } catch (Exception ex) {
@@ -432,12 +433,12 @@ public class FTPProcessFiles {
             processInstance.setMaxRes(maxRes);
             Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
-           // Thread thread = new Thread(() -> {
-                processInstance.process(fi, fo);
-                energy(fo);
-      //      });
+            // Thread thread = new Thread(() -> {
+            processInstance.process(fi, fo);
+            energy(fo);
+            //      });
 
-       //     new TimerKillThread(thread);
+            //     new TimerKillThread(thread);
 
         }
     }
@@ -449,7 +450,7 @@ public class FTPProcessFiles {
             if (it++ > maxFilesInDir)
                 return;
 
-            if(bean.ftp) {
+            if (bean.ftp) {
                 FTPFile file = bean.ftpFile;
                 if (file.isFile() && !file.getName().equals(".")
                         && !file.getName().equals("..")
@@ -485,7 +486,7 @@ public class FTPProcessFiles {
                 List<File> files1 = searchFile(file);
 
                 System.out.println(file.getName());
-                if(files1==null) {
+                if (files1 == null) {
                     listsFiles.put(file, new ArrayList<>());
                     files1 = listsFiles.get(file);
                     files1.add(file);
@@ -508,11 +509,11 @@ public class FTPProcessFiles {
     }
 
     private static List<File> searchFile(File file1) {
-        final List<File>[] files1 = new List[] {null};
+        final List<File>[] files1 = new List[]{null};
         listsFiles.forEach(new BiConsumer<File, List<File>>() {
             @Override
             public void accept(File file, List<File> files) {
-                if(file.equals(file1))
+                if (file.getAbsolutePath().equals(file1.getAbsolutePath()))
                     files1[0] = files;
             }
         });
