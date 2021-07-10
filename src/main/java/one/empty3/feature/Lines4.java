@@ -33,9 +33,6 @@ public class Lines4 extends ProcessFile {
     private double distMax;
     private Random random = new Random();
 
-    public Lines4() {
-    }
-
     public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
         List<Point3D> list = new ArrayList<>();
 

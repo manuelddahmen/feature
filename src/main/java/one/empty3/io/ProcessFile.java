@@ -10,19 +10,26 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class ProcessFile {
+public class ProcessFile {
+    public List<File> images = new ArrayList<>();
     public ProcessBean bean;
     protected int maxRes = -1;
 
-    public ProcessFile() {
 
 
-    }
 
-    public abstract boolean process(File in, File out);
+    public boolean process(File in, File out) {return false;}
 
     public void setMaxRes(int maxRes) {
         this.maxRes = maxRes;
+    }
+
+    public void setStack(List<File> files1) {
+        this.images = files1;
+
+    }
+    public File getStackItem(int index) {
+        return images.get(index);
     }
 
 }

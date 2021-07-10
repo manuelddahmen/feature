@@ -10,6 +10,7 @@ import javax.imageio.ImageIO;
 import one.empty3.feature.*;
 import one.empty3.library.Point3D;
 
+import java.util.List;
 import java.util.logging.*;
 
 public class GradProcess extends ProcessFile {
@@ -34,10 +35,13 @@ public class GradProcess extends ProcessFile {
             Linear linear = new Linear(imagesMatrix[0][0], imagesMatrix[0][1], new PixM(pix.getColumns(), pix.getLines()));
             linear.op2d2d(new char[]{'+'}, new int[][]{{1, 0}}, new int[]{2});
             ImageIO.write(linear.getImages()[2].normalize(0.0, 1.0).getImage(), "jpg", out);
+
+            images.add(out);
             return true;
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
         }
     }
+
 }

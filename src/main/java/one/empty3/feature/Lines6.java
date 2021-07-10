@@ -5,6 +5,7 @@ import one.empty3.io.ProcessFile;
 import one.empty3.library.ColorTexture;
 import one.empty3.library.LineSegment;
 import one.empty3.library.Point3D;
+import one.empty3.library.core.nurbs.F;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -32,9 +33,6 @@ public class Lines6 extends ProcessFile {
     private double px;
     //    private double distMax;
     private Random random = new Random();
-
-    public Lines6() {
-    }
 
     /*
         public List<Point3D> relierPoints(List<List<Point3D>> points, Point3D p0) {
@@ -264,17 +262,25 @@ public class Lines6 extends ProcessFile {
             temp2.forEach(point3D -> System.out.printf("POINT LIST TEMP2 %s", point3D));
 
             Paste paste = new Paste();
-/*
-            PixM stack = bean.getStack(0);
+
+            PixM stack = new PixM(ImageIO.read(getStackItem(0)));
 
             for (int i1 = 0; i1 < list3.size(); i1++) {
                 paste.pasteList(list3.get(i1),
-                        pixM, new ColorTexture(Color.BLACK));
+                        stack, new ColorTexture(Color.BLACK));
 
             }
 
-*/
+
             ImageIO.write(bLines, "jpg", out);
+
+            ImageIO.write(stack.getImage(), "jpg",
+                    new File(out.getAbsolutePath()+"-paste.jpg"));
+
+            images.add(out);
+
+            System.out.printf("IMAGES 0 : %s", images.get(0));
+
             return true;
         } catch (
                 IOException e) {

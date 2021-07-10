@@ -14,6 +14,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
+import java.util.function.BiConsumer;
 import java.util.logging.Logger;
 //import org.json.*;
 
@@ -34,7 +35,7 @@ public class FTPProcessFiles {
     private static int maxRes;
     private static int maxFilesInDir;
     private static String[] initialDirectories;
-    private static HashMap<String, ProcessBean> listBeans = new HashMap<>();
+    private static HashMap<File, List<File>> listsFiles = new HashMap<>();
     public static String getDirname(String s) {
         if (s.contains("/"))
             return s.substring(0, s.lastIndexOf("/"));
@@ -301,8 +302,8 @@ public class FTPProcessFiles {
                         initialDirectories = currentDirin;
                         for (int d = 0; d < initialDirectories.length; d++)
                             if (new File(initialDirectories[d]).exists()) {
-                                ProcessBean.processBeanList(new File(initialDirectories[d]).listFiles());
                                 printFileDetails(Objects.requireNonNull(new File(initialDirectories[d]).list()), initialDirectories[d]);
+
                             }
 
                     }
@@ -314,9 +315,13 @@ public class FTPProcessFiles {
                     System.out.println("I>0 classes de traitement\nClasse : " + classs.toString() + " : " + currentDirin[index]);
 
 
-                    if (new File(currentDirin[index]).exists())
-                        printFileDetails(Objects.requireNonNull(new File(currentDirin[index]).list()), currentDirin[index]);
+                    if (new File(currentDirin[index]).exists()) {
+                        File files = new File(
+                                currentDirin[index]);
 
+                        printFileDetails(files.list(), currentDirin[index]);
+
+                    }
 
                 }
 
@@ -476,8 +481,20 @@ public class FTPProcessFiles {
                 String filePath = directory + "/" + classname + "/" + file.getName();
 
                 //Logger.getLogger(getClass()).info(file.getName());
-                System.out.println(file.getName());
 
+                List<File> files1 = searchFile(file);
+
+                System.out.println(file.getName());
+                if(files1==null) {
+                    listsFiles.put(file, new ArrayList<>());
+                    files1 = listsFiles.get(file);
+                    files1.add(file);
+                    processInstance.setStack(files1);
+                } else {
+                    listsFiles.get(file).add(file);
+                    files1.add(file);
+                    processInstance.setStack(files1);
+                }
 
                 process(file);
             }/* else {
@@ -488,6 +505,18 @@ public class FTPProcessFiles {
             it++;
         }
 
+    }
+
+    private static List<File> searchFile(File file1) {
+        final List<File>[] files1 = new List[] {null};
+        listsFiles.forEach(new BiConsumer<File, List<File>>() {
+            @Override
+            public void accept(File file, List<File> files) {
+                if(file.equals(file1))
+                    files1[0] = files;
+            }
+        });
+        return files1[0];
     }
 
 
