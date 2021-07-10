@@ -1,6 +1,7 @@
 package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
+import one.empty3.library.T;
 import one.empty3.library.TextureMov;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
@@ -28,6 +29,25 @@ public class ProcessFiles {
     private static int maxFilesInDir;
     private static String[] initialDirectories;
     private static HashMap<String, ProcessBean> listBeans = new HashMap<>();
+
+    public ProcessFiles(File [] setsDirList) {
+        for (int i = 0; i < setsDirList.length; i++) {
+            SetSettings setSettings = settings(setsDirList[i]);
+
+            for(File initialDirectory: setSettings.getDirs()){
+                ProcessBean processBean = new ProcessBean(initialDirectory);
+                processBean.config(setSettings);
+                new Thread(processBean).start();
+
+            }
+        }
+    }
+
+    private SetSettings settings(File file) {
+
+        return null;
+    }
+
 
     public static String getDirname(String s) {
         if (s.contains("/"))
@@ -271,9 +291,9 @@ public class ProcessFiles {
 
                         printFileDetails(processBeans, directory);
                     } else if (server.startsWith("http")) {
-                        URL oracle = new URL(server);
+                        URL url = new URL(server);
                         BufferedReader in = new BufferedReader(
-                                new InputStreamReader(oracle.openStream()));
+                                new InputStreamReader(url.openStream()));
 
                         String inputLine;
                         while ((inputLine = in.readLine()) != null)
@@ -287,6 +307,11 @@ public class ProcessFiles {
                         for (int d = 0; d < initialDirectories.length; d++)
                             if (new File(initialDirectories[d]).exists()) {
                                 List<ProcessBean> processBeans = ProcessBean.processBeanList(new File(initialDirectories[d]).listFiles());
+                                for (int i1 = 0; i1 < processBeans.size(); i1++) {
+                                    processBeans.get(i1).addProcess(processInstance);
+
+                                    new Thread(processBeans.get(i1)).start();
+                                }
                                 printFileDetails(processBeans, initialDirectories[d]);
                             }
 
@@ -299,9 +324,12 @@ public class ProcessFiles {
                     System.out.println("I>0 classes de traitement\nClasse : " + classs.toString() + " : " + currentDirin[index]);
 
 
-                    if (new File(currentDirin[index]).exists())
-                        printFileDetails(Objects.requireNonNull(new File(currentDirin[index]).list()), currentDirin[index]);
+                    if (new File(currentDirin[index]).exists()) {
+                        ProcessBean processBean = new ProcessBean(new File(currentDirin[index]));
+                        processBean.addProcess(processInstance);
 
+                        //printFileDetails(Objects.requireNonNull(new File(currentDirin[index]).list()), currentDirin[index]);
+                    }
 
                 }
 

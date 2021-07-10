@@ -86,4 +86,8 @@ public class ProcessBean extends Thread {
     public List<File> files() {
         return files;
     }
- }
+
+    public void config(SetSettings setSettings) {
+
+    }
+}
