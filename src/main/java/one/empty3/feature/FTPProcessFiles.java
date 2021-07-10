@@ -35,7 +35,6 @@ public class FTPProcessFiles {
     private static int maxFilesInDir;
     private static String[] initialDirectories;
     private static HashMap<String, ProcessBean> listBeans = new HashMap<>();
-
     public static String getDirname(String s) {
         if (s.contains("/"))
             return s.substring(0, s.lastIndexOf("/"));
@@ -75,7 +74,16 @@ public class FTPProcessFiles {
     public static void loadArgsProps(String propFile) {
     }
 
-   public static Properties defProcess(
+    /*
+        try {
+            Method m = processInstance.class.getDeclaredMethod(argCl, argValue);
+        Object rv = m.invoke(processInstance);
+        System.out.println(rv);
+            }
+        catch (NoSuchMethodException,
+            InvocationTargetException, IllegalAccessException
+            }*/
+    public static Properties defProcess(
             InputStream is) {
         Properties p = new Properties();
         try {
@@ -293,8 +301,8 @@ public class FTPProcessFiles {
                         initialDirectories = currentDirin;
                         for (int d = 0; d < initialDirectories.length; d++)
                             if (new File(initialDirectories[d]).exists()) {
-                                List<ProcessBean> processBeans = ProcessBean.processBeanList(new File(initialDirectories[d]).listFiles());
-                                printFileDetails(processBeans, initialDirectories[d]);
+                                ProcessBean.processBeanList(new File(initialDirectories[d]).listFiles());
+                                printFileDetails(Objects.requireNonNull(new File(initialDirectories[d]).list()), initialDirectories[d]);
                             }
 
                     }
@@ -369,9 +377,9 @@ public class FTPProcessFiles {
                 Logger.getLogger(FTPProcessFiles.class.getName()).info("process ftpfile  : " + processInstance.getClass().getName());
 
                 //Thread thread = new Thread(() -> {
-                processInstance.process(fi, fo);
-                processInstance.bean.setImage(fo);
-                energy(fo);
+                    processInstance.process(fi, fo);
+                    processInstance.bean.setImage(fo);
+                    energy(fo);
                 //});
                 //new TimerKillThread(thread);
             } catch (Exception ex) {
@@ -419,13 +427,12 @@ public class FTPProcessFiles {
             processInstance.setMaxRes(maxRes);
             Logger.getLogger(FTPProcessFiles.class.getName()).info("process file  : " + processInstance.getClass().getName());
 
-            // Thread thread = new Thread(() -> {
-            processInstance.process(fi, fo);
-            processInstance.bean.setImage(fo);
-            energy(fo);
-            //      });
+           // Thread thread = new Thread(() -> {
+                processInstance.process(fi, fo);
+                energy(fo);
+      //      });
 
-            //     new TimerKillThread(thread);
+       //     new TimerKillThread(thread);
 
         }
     }
@@ -437,9 +444,10 @@ public class FTPProcessFiles {
             if (it++ > maxFilesInDir)
                 return;
 
-            if (bean.ftp) {
+            if(bean.ftp) {
                 FTPFile file = bean.ftpFile;
-                if (file.isFile() && !file.getName().equals(".")                        && !file.getName().equals("..")
+                if (file.isFile() && !file.getName().equals(".")
+                        && !file.getName().equals("..")
                 ) {
                     String filePath = "";
                     String remoteFile = directory + "/" + file.getName();
@@ -470,7 +478,7 @@ public class FTPProcessFiles {
                 //Logger.getLogger(getClass()).info(file.getName());
                 System.out.println(file.getName());
 
-                processInstance.bean = new ProcessBean(file);
+
                 process(file);
             }/* else {
                 System.out.println("error file in not found");
