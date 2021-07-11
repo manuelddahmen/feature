@@ -189,7 +189,9 @@ public class FTPProcessFiles {
 
         String maxFilesInDir0 = settings.getProperty("maxFilesInDir");
         FTPProcessFiles.maxFilesInDir = Integer.parseInt(maxFilesInDir0 == null ? "10000" : maxFilesInDir0);
-        maxRes = Integer.parseInt(settings.getProperty("maxRes"));
+        String maxRes = settings.getProperty("maxRes");
+        if(maxRes!=null)
+            FTPProcessFiles.maxRes = Integer.parseInt(maxRes);
         /* String*/
         classnames = (String) settings.getProperty("classname");
         String class0 = (String) settings.getProperty("class0");

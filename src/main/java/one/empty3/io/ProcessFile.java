@@ -13,7 +13,7 @@ import java.util.List;
 public class ProcessFile {
     public List<File> images = new ArrayList<>();
     public ProcessBean bean;
-    protected int maxRes = -1;
+    protected int maxRes = 400;
 
 
 

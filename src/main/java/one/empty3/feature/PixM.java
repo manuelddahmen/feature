@@ -48,7 +48,7 @@ public class PixM extends M {
 
     public static PixM getPixM(BufferedImage image, double maxRes) {
         double f = 1.0;
-        if(maxRes<image.getWidth()&&maxRes<image.getHeight())
+        if (maxRes < image.getWidth() && maxRes < image.getHeight())
             f = 1.0 / Math.max(image.getWidth(), image.getHeight()) * maxRes;
 
         double columns2 = 1.0 * image.getWidth() * f;
@@ -358,6 +358,7 @@ public class PixM extends M {
 
         return l;
     }
+
     public double norme(int x, int y) {
         double l = 0.0;
         setCompNo(0);

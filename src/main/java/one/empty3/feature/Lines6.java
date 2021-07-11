@@ -6,6 +6,7 @@ import one.empty3.library.ColorTexture;
 import one.empty3.library.LineSegment;
 import one.empty3.library.Point3D;
 import one.empty3.library.core.nurbs.F;
+import one.empty3.library.core.nurbs.Point3DS;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -170,15 +171,22 @@ public class Lines6 extends ProcessFile {
             BufferedImage bLines = new BufferedImage(o.getColumns(), o.getLines(), BufferedImage.TYPE_INT_RGB);
             Graphics g = bLines.getGraphics();
 
+            Paste paste = new Paste();
+
+            PixM stack = new PixM(ImageIO.read(getStackItem(1)));
+
             g.setColor(Color.RED);
             list3.forEach(point3DS -> {
                 Point3D p1 = point3DS.get(0);
                 Point3D p2 = point3DS.get(point3DS.size() - 1);
-                if (p1 != p2)
+                if (p1 != p2) {
                     g.drawLine((int) (double) p1.getX(),
                             (int) (double) p1.getY(),
                             (int) (double) p2.getX(),
                             (int) (double) p2.getY());
+                    paste.pasteList(point3DS,
+                            stack, new ColorTexture(Color.BLACK));
+                }
             });
 
             double longueur = 0.0;
@@ -261,25 +269,15 @@ public class Lines6 extends ProcessFile {
             );
             temp2.forEach(point3D -> System.out.printf("POINT LIST TEMP2 %s", point3D));
 
-            Paste paste = new Paste();
-
-            PixM stack = new PixM(ImageIO.read(getStackItem(0)));
-
-            for (int i1 = 0; i1 < list3.size(); i1++) {
-                paste.pasteList(list3.get(i1),
-                        stack, new ColorTexture(Color.BLACK));
-
-            }
 
 
             ImageIO.write(bLines, "jpg", out);
 
-            ImageIO.write(stack.getImage(), "jpg",
-                    new File(out.getAbsolutePath()+"-paste.jpg"));
+            ImageIO.write(stack.getImage(), "jpg", out);
 
             images.add(out);
 
-            System.out.printf("IMAGES 0 : %s", images.get(0));
+            System.out.printf("IMAGES 0 : %s\n", images.get(0));
 
             return true;
         } catch (
