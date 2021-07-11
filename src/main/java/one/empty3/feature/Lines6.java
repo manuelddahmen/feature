@@ -271,7 +271,7 @@ public class Lines6 extends ProcessFile {
 
 
 
-            ImageIO.write(bLines, "jpg", out);
+            //ImageIO.write(bLines, "jpg", out);
 
             ImageIO.write(stack.getImage(), "jpg", out);
 
