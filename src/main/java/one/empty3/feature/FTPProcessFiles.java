@@ -492,7 +492,6 @@ public class FTPProcessFiles {
                     files1.add(file);
                     processInstance.setStack(files1);
                 } else {
-                    listsFiles.get(file).add(file);
                     files1.add(file);
                     processInstance.setStack(files1);
                 }
@@ -510,12 +509,9 @@ public class FTPProcessFiles {
 
     private static List<File> searchFile(File file1) {
         final List<File>[] files1 = new List[]{null};
-        listsFiles.forEach(new BiConsumer<File, List<File>>() {
-            @Override
-            public void accept(File file, List<File> files) {
-                if (file.getAbsolutePath().equals(file1.getAbsolutePath()))
-                    files1[0] = files;
-            }
+        listsFiles.forEach((file, files) -> {
+            if (file.getName().equals(file1.getName()))
+                files1[0] = files;
         });
         return files1[0];
     }

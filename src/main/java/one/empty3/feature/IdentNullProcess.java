@@ -22,9 +22,9 @@ public class IdentNullProcess extends ProcessFile {
     public boolean process(File in, File out) {
         try {
             PixM pixM = null;
-            pixM = new PixM(ImageIO.read(in));
+            pixM =  PixM.getPixM(ImageIO.read(in), maxRes);
             ImageIO.write(pixM.getImage(), "jpg", out);
-
+            images.add(out);
             return true;
         } catch (
                 IOException e) {

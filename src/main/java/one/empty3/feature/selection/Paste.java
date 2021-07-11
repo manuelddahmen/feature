@@ -22,15 +22,13 @@ public class Paste {
             int x = (int) (double) points.get(i).getX();
             int y = (int) (double) points.get(i).getY();
 
-            int rgb = points.get(i).texture().getColorAt(
+            int rgb = col.getColorAt(
                     points.get(i).getX()/img.getColumns(),
                     points.get(i).getY()/img.getLines());
 
-            double [] rgbD = Lumiere.getDoubles(col.getColorAt((double)x/img.getColumns(),
-                    (double)y/img.getLines()));
+            double [] rgbD = Lumiere.getDoubles(rgb);
             for (int i1 = 0; i1 < 3; i1++) {
                 img.setCompNo(i1);
-
                 img.set(x, y, rgbD[i1]);
             }
 
