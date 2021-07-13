@@ -17,7 +17,6 @@ import java.util.List;
  */
 public class Histogram3 extends ProcessFile {
     private int numLevels = 3;
-    private PixM m = null;
     private double[] max;
     private double[] min;
     private double minimumI = 0.1;
@@ -45,19 +44,15 @@ public class Histogram3 extends ProcessFile {
         }
     }
 
-    //private final int[][][] levels;
-    public void setM(PixM m2) {
-        this.m = m2;
-    }
-
     /***
      *
      *
      */
 
     public Histogram3(int numLevels) {
-
-
+        rFact = 2.0;
+        numLevels = 3;
+        minimumI = 0.1;
         min = new double[numLevels];
         max = new double[numLevels];
 
@@ -65,8 +60,7 @@ public class Histogram3 extends ProcessFile {
             min[i] = 1.0 * i / numLevels;
             max[i] = 1.0 * (i + 1) / numLevels;
         }
-        this.numLevels = numLevels;
-        minimumI = 0.4;
+        minimumI = 0.2;
     }
 
     public Histogram3() {
@@ -78,7 +72,7 @@ public class Histogram3 extends ProcessFile {
 
     }
 
-    public Circle getLevel(Circle c) {
+    public Circle getLevel(PixM m, Circle c) {
         // I mean. Parcourir le cercle
         // mesurer I / numPoints
         // for(int i=Math.sqrt()
@@ -111,7 +105,7 @@ public class Histogram3 extends ProcessFile {
     }
 
 
-    public List<Circle> getPointsOfInterest(double rMin0, double iMin) {
+    public List<Circle> getPointsOfInterest(PixM m, double rMin0, double iMin) {
         ArrayList<Circle> circles;
         circles = new ArrayList<>();
 
@@ -121,7 +115,7 @@ public class Histogram3 extends ProcessFile {
         for (int i = 0; i < m.columns; i++) {
             for (int j = 0; j < m.lines; j++) {
                 double rMin = rMin0;
-                Circle level = getLevel(new Circle(i, j, rMin));
+                Circle level = getLevel(m, new Circle(i, j, rMin));
                 // level.i = intensity;
                 //int index = Math.max(((int) (level.i * numLevels)), 0);
                 //index = Math.min(numLevels-1, index);
@@ -133,7 +127,7 @@ public class Histogram3 extends ProcessFile {
                 while (level.i >= iMin && level.i >= iOrigin - 1.0 / numLevels && level.i <= iOrigin + 1.0 / numLevels && level.r < Math.max(m.columns, m.lines)) {
 
                     level.r *= rFact;
-                    getLevel(level);
+                    getLevel(m, level);
                 }
                 level.r /= rFact;
                 if (level.r >= rMin0) {
@@ -158,16 +152,16 @@ public class Histogram3 extends ProcessFile {
 
     public boolean process(File in, File out) {
         try {
-            this.m = new PixM(ImageIO.read(in));
-            BufferedImage file = m.getImage();
+            PixM m = new PixM(ImageIO.read(in));
+            BufferedImage image = m.getImage();
 
 
             double radiusIncr = 4;
 
 
-            BufferedImage img2 = new BufferedImage(file.getWidth(), file.getHeight(), BufferedImage.TYPE_INT_RGB);
+            BufferedImage img2 = new BufferedImage(image.getWidth(), image.getHeight(), BufferedImage.TYPE_INT_RGB);
             List<Circle> pointsOfInterest;
-            pointsOfInterest = getPointsOfInterest(4.0, 0.25);
+            pointsOfInterest = getPointsOfInterest(m, 4.0, 0.25);
             // grands;cercles = grandes iles les separer
             // verifier les distances et constantes i
             // petits cercles successifs entoures 
@@ -176,29 +170,41 @@ public class Histogram3 extends ProcessFile {
 
             System.out.println("getPointsOfInterest ");
 
-            pointsOfInterest.sort(new Comparator<Circle>() {
-                @Override
-                public int compare(Circle o1, Circle o2) {
-                    double v = o2.r - o1.r;
-                    if (v < 0)
-                        return -1;
-                    if (v > 0)
-                        return 1;
-                    return (int) ((o2.i - o1.i) / Math.abs(o2.i - o1.i));
-                }
+
+            double [] i_ir = new double[] {0, 0};
+            pointsOfInterest.forEach(c1 -> {
+                if(i_ir[0]<c1.i)
+                    i_ir[0] = c1.i;
+                if(i_ir[1]<c1.i/c1.r)
+                    i_ir[1] = c1.i/c1.r;
+
+            });
+            pointsOfInterest.sort((o1, o2) -> {
+                double v = (o2.i/o2.r - o1.i/o1.r)/i_ir[1];
+                if (v < 0)
+                    return -1;
+                if (v > 0)
+                    return 1;
+                return (int) Math.signum((o2.i - o1.i) / Math.abs(o2.r - o1.r));
             });
 
             System.out.println("draw ");
 
             pointsOfInterest.forEach(circle -> {
-                if (circle.i > minimumI && circle.r > file.getWidth() / 10.) {
-                    Graphics graphics = img2.getGraphics();
-                    graphics.setColor(Color.RED);
-                    graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (2 * circle.r), (int) (2 * circle.r));
-                    ;
+                if (circle.i > 0.1 && circle.r > 1.0 * image.getWidth() / maxRes) {
+                    try {
+                        Graphics graphics = img2.getGraphics();
+                        graphics.setColor(new Color((float) (circle.i / circle.r / i_ir[1]),
+                                (float) (circle.i / i_ir[1]),
+                                (float) (circle.i / i_ir[1])));
+                        //graphics.fillOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (2 * circle.r), (int) (2 * circle.r));
+                        graphics.fillRect((int) (circle.x), (int) (circle.y), 1, 1);
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
+                    }
                 }
             });
-            // grouper les points par similarites et distances
+            // grouper les points par similarités et distances
               /*  group(pointsOfInterest);
                 File fileToWrite = new File(directory.getAbsolutePath()
                         + "level" + ".jpg");
