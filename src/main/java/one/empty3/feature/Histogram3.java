@@ -158,17 +158,14 @@ public class Histogram3 extends ProcessFile {
 
     public boolean process(File in, File out) {
         try {
-            File directory = new File(out.getParent());
-            PixM imageCoutours = new PixM(ImageIO.read(in));
-            this.m = imageCoutours;
+            this.m = new PixM(ImageIO.read(in));
             BufferedImage file = m.getImage();
 
 
             double radiusIncr = 4;
 
 
-            BufferedImage img = file;
-            BufferedImage img2 = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
+            BufferedImage img2 = new BufferedImage(file.getWidth(), file.getHeight(), BufferedImage.TYPE_INT_RGB);
             List<Circle> pointsOfInterest;
             pointsOfInterest = getPointsOfInterest(4.0, 0.25);
             // grands;cercles = grandes iles les separer
@@ -193,8 +190,8 @@ public class Histogram3 extends ProcessFile {
 
             System.out.println("draw ");
 
-            pointsOfInterest.stream().forEach(circle -> {
-                if (circle.i > minimumI && circle.r > img.getWidth() / 10) {
+            pointsOfInterest.forEach(circle -> {
+                if (circle.i > minimumI && circle.r > file.getWidth() / 10.) {
                     Graphics graphics = img2.getGraphics();
                     graphics.setColor(Color.RED);
                     graphics.drawOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (2 * circle.r), (int) (2 * circle.r));
@@ -210,7 +207,7 @@ public class Histogram3 extends ProcessFile {
                 File fileToWrite3 = new File(directory.getAbsolutePath()
                         + "level"+ "_NEW_RGB.jpg");
                 //fileToWrite.mkdirs();*/
-            ImageIO.write(img2, "JPEG", out);
+            ImageIO.write(new PixM(img2).normalize(0.,1.).getImage(), "JPEG", out);
                 /*
                 ImageIO.write(img, "JPEG", fileToWrite);
                 ImageIO.write(img, "JPEG", fileToWrite2);
