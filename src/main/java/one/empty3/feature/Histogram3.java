@@ -1,7 +1,6 @@
 package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
-import one.empty3.library.Lumiere;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -9,7 +8,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 
 /*** 
@@ -17,7 +15,7 @@ import java.util.List;
  *
  */
 public class Histogram3 extends ProcessFile {
-    public final double rFact = 2.5;
+    public final double rFract = 2.5;
 
     public static class Circle {
         public double x, y, r;
@@ -107,11 +105,11 @@ public class Histogram3 extends ProcessFile {
                 //if(index0<0) index0 = 0;
                 //if(index0<=min.length) index0 = min.length-1;
                 while (level.i >= iMin && level.i > iOrigin - 1.0 / numLevels && level.i < iOrigin + 1.0 / numLevels && level.r < Math.max(m.columns, m.lines) / 20.) {
-                    level.r *= rFact;
+                    level.r *= rFract;
                     getLevel(m, level);
                 }
 
-                level.r /= rFact;
+                level.r /= rFract;
 
                 if (level.r >= rMin0 && level.r<Math.max(m.getColumns(), m.getLines())) {
                     //level.i = iOrigin;
