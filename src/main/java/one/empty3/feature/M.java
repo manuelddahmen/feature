@@ -117,7 +117,7 @@ public class M {
         double i = 0;
         for (int c = 0; c < 3; c++) {
             setCompNo(c);
-            i += get(column, line) * get(column, line);
+            i += Math.abs( get(column, line));
 
         }
         return Math.sqrt(i);

@@ -1,6 +1,7 @@
 package one.empty3.feature;
 
 import one.empty3.io.ProcessFile;
+import one.empty3.library.Lumiere;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -20,7 +21,7 @@ public class Histogram3 extends ProcessFile {
     private double[] max;
     private double[] min;
     private double minimumI = 0.1;
-    public double rFact = 2.0;
+    public double rFact = 2.5;
 
     public class Circle {
         public double x, y, r;
@@ -50,6 +51,9 @@ public class Histogram3 extends ProcessFile {
      */
 
     public Histogram3(int numLevels) {
+        init(numLevels);
+    }
+    public void init(int numLevels) {
         rFact = 2.0;
         numLevels = 3;
         minimumI = 0.1;
@@ -82,7 +86,9 @@ public class Histogram3 extends ProcessFile {
         for (double i = -c.r; i <= c.r; i++) {
             for (double j = -c.r; j <= c.r; j++) {
                 if (Math.sqrt((i) * (i) + (j) * (j)) <= c.r * c.r
-                        && c.x - i >= 0 && c.y - j >= 0 && c.x + i < m.columns && c.y + j < m.lines) {
+                        && c.x + i >= 0 && c.y + j >= 0 && c.x + i < m.columns && c.y + j < m.lines) {
+                    intensity += m.mean((int) (c.x + i), (int) (c.y + j),
+                            (int)(2*c.r), (int)(2*c.r));
                     intensity += m.getIntensity((int) (c.x + i), (int) (c.y + j));
                     count++;
                 }
@@ -143,14 +149,15 @@ public class Histogram3 extends ProcessFile {
     }
 
     public List<List<Circle>> group(List<Circle> circles) {
-        List<List<Circle>> out = new ArrayList<>();
 
 
-        return out;
+        return new ArrayList<>();
 
     }
 
     public boolean process(File in, File out) {
+
+        init(4);
         try {
             PixM m = new PixM(ImageIO.read(in));
             BufferedImage image = m.getImage();
@@ -172,14 +179,17 @@ public class Histogram3 extends ProcessFile {
 
 
             double [] i_ir = new double[] {0, 0};
-            pointsOfInterest.forEach(c1 -> {
+            for(int i=0; i<pointsOfInterest.size(); i++){
+                Circle c1 = pointsOfInterest.get(i);
+                if(c1.r<=0 || c1.i<=0)
+                    pointsOfInterest.remove(i++);
                 if(i_ir[0]<c1.i)
                     i_ir[0] = c1.i;
                 if(i_ir[1]<c1.i/c1.r)
                     i_ir[1] = c1.i/c1.r;
 
-            });
-            pointsOfInterest.sort((o1, o2) -> {
+            }
+/*            pointsOfInterest.sort((o1, o2) -> {
                 double v = (o2.i/o2.r - o1.i/o1.r)/i_ir[1];
                 if (v < 0)
                     return -1;
@@ -187,23 +197,22 @@ public class Histogram3 extends ProcessFile {
                     return 1;
                 return (int) Math.signum((o2.i - o1.i) / Math.abs(o2.r - o1.r));
             });
-
+*/
             System.out.println("draw ");
 
-            pointsOfInterest.forEach(circle -> {
-                if (circle.i > 0.1 && circle.r > 1.0 * image.getWidth() / maxRes) {
-                    try {
-                        Graphics graphics = img2.getGraphics();
-                        graphics.setColor(new Color((float) (circle.i / circle.r / i_ir[1]),
-                                (float) (circle.i / i_ir[1]),
-                                (float) (circle.i / i_ir[1])));
-                        //graphics.fillOval((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (2 * circle.r), (int) (2 * circle.r));
-                        graphics.fillRect((int) (circle.x), (int) (circle.y), 1, 1);
-                    } catch (Exception exception) {
-                        exception.printStackTrace();
-                    }
+            Graphics graphics = img2.getGraphics();
+            for(int i=0; i<pointsOfInterest.size(); i++) {
+                Circle circle = pointsOfInterest.get(i);
+                if (circle.i > 0.1&& circle.r >= 1.0 * image.getWidth() / maxRes) {
+                        double v = circle.i / circle.r / i_ir[1];
+                    //int anInt = Lumiere.getInt(new double[]{v, v, v});
+                    if(v>=0.2 && v<=1.0) {
+                            graphics.setColor(new Color((float) (v), (float) (v), (float) (v)));
+                            graphics.fillRect((int) (circle.x - circle.r), (int) (circle.y - circle.r), (int) (2 * circle.r), (int) (2 * circle.r));
+                            //img2.setRGB((int) (circle.x), (int) (circle.y), anInt);
+                        }
                 }
-            });
+            }
             // grouper les points par similarités et distances
               /*  group(pointsOfInterest);
                 File fileToWrite = new File(directory.getAbsolutePath()
