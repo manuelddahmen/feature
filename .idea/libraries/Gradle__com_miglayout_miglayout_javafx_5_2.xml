@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: com.miglayout:miglayout-javafx:5.2">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.miglayout/miglayout-javafx/5.2/4812493eea963e31bc6ec577fd4a3dfba244cd9a/miglayout-javafx-5.2.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../gradle-7.1.1/caches/modules-2/files-2.1/com.miglayout/miglayout-javafx/5.2/4812493eea963e31bc6ec577fd4a3dfba244cd9a/miglayout-javafx-5.2.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.miglayout/miglayout-javafx/5.2/5c8101d775767714b69d07f7da35dc517450ec02/miglayout-javafx-5.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../gradle-7.1.1/caches/modules-2/files-2.1/com.miglayout/miglayout-javafx/5.2/5c8101d775767714b69d07f7da35dc517450ec02/miglayout-javafx-5.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

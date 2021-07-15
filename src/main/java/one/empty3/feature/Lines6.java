@@ -173,6 +173,7 @@ public class Lines6 extends ProcessFile {
 
             Paste paste = new Paste();
 
+            PixM stack = new PixM(ImageIO.read(getStackItem(1)));
 
             g.setColor(Color.RED);
             list3.forEach(point3DS -> {
@@ -183,6 +184,8 @@ public class Lines6 extends ProcessFile {
                             (int) (double) p1.getY(),
                             (int) (double) p2.getX(),
                             (int) (double) p2.getY());
+                    paste.pasteList(point3DS,
+                            stack, new ColorTexture(Color.BLACK));
                 }
             });
 
@@ -257,7 +260,6 @@ public class Lines6 extends ProcessFile {
                 }
             }
 
-
             g.setColor(Color.BLUE);
             temp1.forEach(point3D -> {
                         System.out.printf("POINT LIST TEMP1 %s", point3D);
@@ -267,13 +269,6 @@ public class Lines6 extends ProcessFile {
             );
             temp2.forEach(point3D -> System.out.printf("POINT LIST TEMP2 %s", point3D));
 
-
-            PixM stack = new PixM(bLines);
-
-            list3.forEach(point3DS -> {
-                paste.pasteList(point3DS,
-                        stack, new ColorTexture(Color.BLACK));
-            });
 
 
             //ImageIO.write(bLines, "jpg", out);

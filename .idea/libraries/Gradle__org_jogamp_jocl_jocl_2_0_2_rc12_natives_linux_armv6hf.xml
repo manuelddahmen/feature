@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: org.jogamp.jocl:jocl:2.0.2-rc12:natives-linux-armv6hf">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jogamp.jocl/jocl/2.0.2-rc12/f944dd188803c89fd56682ee786141c72da84d2c/jocl-2.0.2-rc12-natives-linux-armv6hf.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../gradle-7.1.1/caches/modules-2/files-2.1/org.jogamp.jocl/jocl/2.0.2-rc12/f944dd188803c89fd56682ee786141c72da84d2c/jocl-2.0.2-rc12-natives-linux-armv6hf.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jogamp.jocl/jocl/2.0.2-rc12/dc280823adba5c5878a4ad53c2aecbc4a1b3fb60/jocl-2.0.2-rc12-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../gradle-7.1.1/caches/modules-2/files-2.1/org.jogamp.jocl/jocl/2.0.2-rc12/dc280823adba5c5878a4ad53c2aecbc4a1b3fb60/jocl-2.0.2-rc12-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

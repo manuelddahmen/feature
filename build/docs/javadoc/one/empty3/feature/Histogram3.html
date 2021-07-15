@@ -134,7 +134,7 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 <th class="colLast" scope="col">Class and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>class&nbsp;</code></td>
+<td class="colFirst"><code>static class&nbsp;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a></span></code>&nbsp;</td>
 </tr>
 </table>
@@ -154,7 +154,7 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#rFact">rFact</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#rFract">rFract</a></span></code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -162,7 +162,7 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;one.empty3.io.<a href="../../../one/empty3/io/ProcessFile.html" title="class in one.empty3.io">ProcessFile</a></h3>
-<code><a href="../../../one/empty3/io/ProcessFile.html#maxRes">maxRes</a></code></li>
+<code><a href="../../../one/empty3/io/ProcessFile.html#bean">bean</a>, <a href="../../../one/empty3/io/ProcessFile.html#images">images</a>, <a href="../../../one/empty3/io/ProcessFile.html#maxRes">maxRes</a></code></li>
 </ul>
 </li>
 </ul>
@@ -179,9 +179,6 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 </tr>
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#Histogram3--">Histogram3</a></span>()</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#Histogram3-int-">Histogram3</a></span>(int&nbsp;numLevels)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -200,11 +197,13 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code><a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#getLevel-one.empty3.feature.Histogram3.Circle-">getLevel</a></span>(<a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a>&nbsp;c)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#getLevel-one.empty3.feature.PixM-one.empty3.feature.Histogram3.Circle-">getLevel</a></span>(<a href="../../../one/empty3/feature/PixM.html" title="class in one.empty3.feature">PixM</a>&nbsp;m,
+        <a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a>&nbsp;c)</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a>&gt;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#getPointsOfInterest-double-double-">getPointsOfInterest</a></span>(double&nbsp;rMin0,
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#getPointsOfInterest-one.empty3.feature.PixM-double-double-">getPointsOfInterest</a></span>(<a href="../../../one/empty3/feature/PixM.html" title="class in one.empty3.feature">PixM</a>&nbsp;m,
+                   double&nbsp;rMin0,
                    double&nbsp;iMin)</code>&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
@@ -213,23 +212,23 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#makeHistogram-double-">makeHistogram</a></span>(double&nbsp;r)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#init--">init</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#makeHistogram-double-">makeHistogram</a></span>(double&nbsp;r)</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#nPoints-int-int-int-int-">nPoints</a></span>(int&nbsp;x,
        int&nbsp;y,
        int&nbsp;w,
        int&nbsp;h)</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#process-java.io.File-java.io.File-">process</a></span>(java.io.File&nbsp;in,
        java.io.File&nbsp;out)</code>&nbsp;</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/Histogram3.html#setM-one.empty3.feature.PixM-">setM</a></span>(<a href="../../../one/empty3/feature/PixM.html" title="class in one.empty3.feature">PixM</a>&nbsp;m2)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -237,7 +236,7 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;one.empty3.io.<a href="../../../one/empty3/io/ProcessFile.html" title="class in one.empty3.io">ProcessFile</a></h3>
-<code><a href="../../../one/empty3/io/ProcessFile.html#getStack-int-">getStack</a>, <a href="../../../one/empty3/io/ProcessFile.html#setMaxRes-int-">setMaxRes</a></code></li>
+<code><a href="../../../one/empty3/io/ProcessFile.html#getStackItem-int-">getStackItem</a>, <a href="../../../one/empty3/io/ProcessFile.html#setMaxRes-int-">setMaxRes</a>, <a href="../../../one/empty3/io/ProcessFile.html#setStack-java.util.List-">setStack</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -260,13 +259,17 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a name="rFact">
+<a name="rFract">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>rFact</h4>
-<pre>public&nbsp;double rFact</pre>
+<h4>rFract</h4>
+<pre>public final&nbsp;double rFract</pre>
+<dl>
+<dt><span class="seeLabel">See Also:</span></dt>
+<dd><a href="../../../constant-values.html#one.empty3.feature.Histogram3.rFract">Constant Field Values</a></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -277,15 +280,6 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Histogram3-int-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>Histogram3</h4>
-<pre>public&nbsp;Histogram3(int&nbsp;numLevels)</pre>
-</li>
-</ul>
 <a name="Histogram3--">
 <!--   -->
 </a>
@@ -303,13 +297,13 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="setM-one.empty3.feature.PixM-">
+<a name="init--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>setM</h4>
-<pre>public&nbsp;void&nbsp;setM(<a href="../../../one/empty3/feature/PixM.html" title="class in one.empty3.feature">PixM</a>&nbsp;m2)</pre>
+<h4>init</h4>
+<pre>public&nbsp;void&nbsp;init()</pre>
 </li>
 </ul>
 <a name="makeHistogram-double-">
@@ -321,13 +315,14 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 <pre>public&nbsp;void&nbsp;makeHistogram(double&nbsp;r)</pre>
 </li>
 </ul>
-<a name="getLevel-one.empty3.feature.Histogram3.Circle-">
+<a name="getLevel-one.empty3.feature.PixM-one.empty3.feature.Histogram3.Circle-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getLevel</h4>
-<pre>public&nbsp;<a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a>&nbsp;getLevel(<a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a>&nbsp;c)</pre>
+<pre>public&nbsp;<a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a>&nbsp;getLevel(<a href="../../../one/empty3/feature/PixM.html" title="class in one.empty3.feature">PixM</a>&nbsp;m,
+                                  <a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a>&nbsp;c)</pre>
 </li>
 </ul>
 <a name="nPoints-int-int-int-int-">
@@ -342,13 +337,14 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
                       int&nbsp;h)</pre>
 </li>
 </ul>
-<a name="getPointsOfInterest-double-double-">
+<a name="getPointsOfInterest-one.empty3.feature.PixM-double-double-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>getPointsOfInterest</h4>
-<pre>public&nbsp;java.util.List&lt;<a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a>&gt;&nbsp;getPointsOfInterest(double&nbsp;rMin0,
+<pre>public&nbsp;java.util.List&lt;<a href="../../../one/empty3/feature/Histogram3.Circle.html" title="class in one.empty3.feature">Histogram3.Circle</a>&gt;&nbsp;getPointsOfInterest(<a href="../../../one/empty3/feature/PixM.html" title="class in one.empty3.feature">PixM</a>&nbsp;m,
+                                                             double&nbsp;rMin0,
                                                              double&nbsp;iMin)</pre>
 </li>
 </ul>
@@ -370,7 +366,7 @@ extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.em
 <pre>public&nbsp;boolean&nbsp;process(java.io.File&nbsp;in,
                        java.io.File&nbsp;out)</pre>
 <dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
 <dd><code><a href="../../../one/empty3/io/ProcessFile.html#process-java.io.File-java.io.File-">process</a></code>&nbsp;in class&nbsp;<code><a href="../../../one/empty3/io/ProcessFile.html" title="class in one.empty3.io">ProcessFile</a></code></dd>
 </dl>
 </li>

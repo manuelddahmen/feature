@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: org.openjfx:javafx-fxml:14">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/14/e86c2069ebaf2e17cfdf32e8a7759f4f1feccde9/javafx-fxml-14.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../gradle-7.1.1/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/14/e86c2069ebaf2e17cfdf32e8a7759f4f1feccde9/javafx-fxml-14.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/14/fee2bd88290c47cb2b75d4f377bd25970d2b609f/javafx-fxml-14-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../gradle-7.1.1/caches/modules-2/files-2.1/org.openjfx/javafx-fxml/14/fee2bd88290c47cb2b75d4f377bd25970d2b609f/javafx-fxml-14-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="Gradle: org.jogamp.joal:joal:2.3.2:natives-solaris-i586">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jogamp.joal/joal/2.3.2/903af6eb91da2e6c1f30b2334b83c9dcdde1566b/joal-2.3.2-natives-solaris-i586.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../gradle-7.1.1/caches/modules-2/files-2.1/org.jogamp.joal/joal/2.3.2/903af6eb91da2e6c1f30b2334b83c9dcdde1566b/joal-2.3.2-natives-solaris-i586.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jogamp.joal/joal/2.3.2/57516fee4bfcdb5268b340e62c8b9002eafb03d7/joal-2.3.2-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../gradle-7.1.1/caches/modules-2/files-2.1/org.jogamp.joal/joal/2.3.2/57516fee4bfcdb5268b340e62c8b9002eafb03d7/joal-2.3.2-sources.jar!/" />
     </SOURCES>
   </library>
 </component>

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -73,7 +73,7 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.one.empty3.feature.FilterPixM">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.one.empty3.io.ProcessFile">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
@@ -98,20 +98,10 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../one/empty3/feature/M.html" title="class in one.empty3.feature">one.empty3.feature.M</a></li>
-<li>
-<ul class="inheritance">
-<li><a href="../../../one/empty3/feature/PixM.html" title="class in one.empty3.feature">one.empty3.feature.PixM</a></li>
-<li>
-<ul class="inheritance">
-<li><a href="../../../one/empty3/feature/FilterPixM.html" title="class in one.empty3.feature">one.empty3.feature.FilterPixM</a></li>
+<li><a href="../../../one/empty3/io/ProcessFile.html" title="class in one.empty3.io">one.empty3.io.ProcessFile</a></li>
 <li>
 <ul class="inheritance">
 <li>one.empty3.feature.DiffEnergy</li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -123,7 +113,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">DiffEnergy</span>
-extends <a href="../../../one/empty3/feature/FilterPixM.html" title="class in one.empty3.feature">FilterPixM</a></pre>
+extends <a href="../../../one/empty3/io/ProcessFile.html" title="class in one.empty3.io">ProcessFile</a></pre>
 </li>
 </ul>
 </div>
@@ -137,25 +127,11 @@ extends <a href="../../../one/empty3/feature/FilterPixM.html" title="class in on
 </a>
 <h3>Field Summary</h3>
 <ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.one.empty3.feature.FilterPixM">
+<li class="blockList"><a name="fields.inherited.from.class.one.empty3.io.ProcessFile">
 <!--   -->
 </a>
-<h3>Fields inherited from class&nbsp;one.empty3.feature.<a href="../../../one/empty3/feature/FilterPixM.html" title="class in one.empty3.feature">FilterPixM</a></h3>
-<code><a href="../../../one/empty3/feature/FilterPixM.html#NORM_CUSTOM">NORM_CUSTOM</a>, <a href="../../../one/empty3/feature/FilterPixM.html#NORM_FLOOR_0">NORM_FLOOR_0</a>, <a href="../../../one/empty3/feature/FilterPixM.html#NORM_FLOOR_1">NORM_FLOOR_1</a>, <a href="../../../one/empty3/feature/FilterPixM.html#NORM_MAX">NORM_MAX</a>, <a href="../../../one/empty3/feature/FilterPixM.html#NORM_MEAN">NORM_MEAN</a>, <a href="../../../one/empty3/feature/FilterPixM.html#NORM_NONE">NORM_NONE</a></code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.one.empty3.feature.PixM">
-<!--   -->
-</a>
-<h3>Fields inherited from class&nbsp;one.empty3.feature.<a href="../../../one/empty3/feature/PixM.html" title="class in one.empty3.feature">PixM</a></h3>
-<code><a href="../../../one/empty3/feature/PixM.html#COMP_ALPHA">COMP_ALPHA</a>, <a href="../../../one/empty3/feature/PixM.html#COMP_BLUE">COMP_BLUE</a>, <a href="../../../one/empty3/feature/PixM.html#COMP_GREEN">COMP_GREEN</a>, <a href="../../../one/empty3/feature/PixM.html#COMP_INTENSITY">COMP_INTENSITY</a>, <a href="../../../one/empty3/feature/PixM.html#COMP_RED">COMP_RED</a></code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.one.empty3.feature.M">
-<!--   -->
-</a>
-<h3>Fields inherited from class&nbsp;one.empty3.feature.<a href="../../../one/empty3/feature/M.html" title="class in one.empty3.feature">M</a></h3>
-<code><a href="../../../one/empty3/feature/M.html#columns">columns</a>, <a href="../../../one/empty3/feature/M.html#compCount">compCount</a>, <a href="../../../one/empty3/feature/M.html#compNo">compNo</a>, <a href="../../../one/empty3/feature/M.html#lines">lines</a>, <a href="../../../one/empty3/feature/M.html#noValue">noValue</a>, <a href="../../../one/empty3/feature/M.html#r">r</a></code></li>
+<h3>Fields inherited from class&nbsp;one.empty3.io.<a href="../../../one/empty3/io/ProcessFile.html" title="class in one.empty3.io">ProcessFile</a></h3>
+<code><a href="../../../one/empty3/io/ProcessFile.html#bean">bean</a>, <a href="../../../one/empty3/io/ProcessFile.html#images">images</a>, <a href="../../../one/empty3/io/ProcessFile.html#maxRes">maxRes</a></code></li>
 </ul>
 </li>
 </ul>
@@ -171,12 +147,7 @@ extends <a href="../../../one/empty3/feature/FilterPixM.html" title="class in on
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/DiffEnergy.html#DiffEnergy-java.awt.image.BufferedImage-java.io.PrintWriter-">DiffEnergy</a></span>(java.awt.image.BufferedImage&nbsp;fo,
-          java.io.PrintWriter&nbsp;printWriter)</code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/DiffEnergy.html#DiffEnergy-int-int-">DiffEnergy</a></span>(int&nbsp;l,
-          int&nbsp;c)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/DiffEnergy.html#DiffEnergy--">DiffEnergy</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -194,46 +165,28 @@ extends <a href="../../../one/empty3/feature/FilterPixM.html" title="class in on
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/DiffEnergy.html#end-java.lang.String-">end</a></span>(java.lang.String&nbsp;comment)</code>&nbsp;</td>
+<td class="colFirst"><code>double</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/DiffEnergy.html#diffEnergy--">diffEnergy</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/DiffEnergy.html#filter-double-double-">filter</a></span>(double&nbsp;x,
-      double&nbsp;y)</code>&nbsp;</td>
-</tr>
-<tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/DiffEnergy.html#init--">init</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../one/empty3/feature/DiffEnergy.html#setPixMS-int-int-">setPixMS</a></span>(int&nbsp;img1,
+        int&nbsp;img2)</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.one.empty3.feature.FilterPixM">
+<li class="blockList"><a name="methods.inherited.from.class.one.empty3.io.ProcessFile">
 <!--   -->
 </a>
-<h3>Methods inherited from class&nbsp;one.empty3.feature.<a href="../../../one/empty3/feature/FilterPixM.html" title="class in one.empty3.feature">FilterPixM</a></h3>
-<code><a href="../../../one/empty3/feature/FilterPixM.html#getNormalize--">getNormalize</a>, <a href="../../../one/empty3/feature/FilterPixM.html#setNormalize-int-">setNormalize</a></code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.one.empty3.feature.PixM">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;one.empty3.feature.<a href="../../../one/empty3/feature/PixM.html" title="class in one.empty3.feature">PixM</a></h3>
-<code><a href="../../../one/empty3/feature/PixM.html#applyFilter-one.empty3.feature.FilterPixM-">applyFilter</a>, <a href="../../../one/empty3/feature/PixM.html#colorsRegion-int-int-int-int-double:A-">colorsRegion</a>, <a href="../../../one/empty3/feature/PixM.html#colorsRegion-int-int-int-int-one.empty3.feature.PixM-int-">colorsRegion</a>, <a href="../../../one/empty3/feature/PixM.html#copy--">copy</a>, <a href="../../../one/empty3/feature/PixM.html#derivative-int-int-int-one.empty3.feature.V-">derivative</a>, <a href="../../../one/empty3/feature/PixM.html#distance-one.empty3.feature.PixM-">distance</a>, <a href="../../../one/empty3/feature/PixM.html#equals-java.lang.Object-">equals</a>, <a href="../../../one/empty3/feature/PixM.html#getColorsRegion-int-int-int-int-int-int-">getColorsRegion</a>, <a href="../../../one/empty3/feature/PixM.html#getColumns--">getColumns</a>, <a href="../../../one/empty3/feature/PixM.html#getImage--">getImage</a>, <a href="../../../one/empty3/feature/PixM.html#getLines--">getLines</a>, <a href="../../../one/empty3/feature/PixM.html#getPixM-java.awt.image.BufferedImage-double-">getPixM</a>, <a href="../../../one/empty3/feature/PixM.html#getRgb-int-int-">getRgb</a>, <a href="../../../one/empty3/feature/PixM.html#luminance-int-int-">luminance</a>, <a href="../../../one/empty3/feature/PixM.html#mean-int-int-int-int-">mean</a>, <a href="../../../one/empty3/feature/PixM.html#normalize-double-double-">normalize</a>, <a href="../../../one/empty3/feature/PixM.html#norme-int-int-">norme</a>, <a href="../../../one/empty3/feature/PixM.html#subSampling-double-">subSampling</a></code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.one.empty3.feature.M">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;one.empty3.feature.<a href="../../../one/empty3/feature/M.html" title="class in one.empty3.feature">M</a></h3>
-<code><a href="../../../one/empty3/feature/M.html#CoFactor--">CoFactor</a>, <a href="../../../one/empty3/feature/M.html#diagonalSum--">diagonalSum</a>, <a href="../../../one/empty3/feature/M.html#error-double...-">error</a>, <a href="../../../one/empty3/feature/M.html#get-int-int-">get</a>, <a href="../../../one/empty3/feature/M.html#getColor-int-int-float:A-">getColor</a>, <a href="../../../one/empty3/feature/M.html#getCompCount--">getCompCount</a>, <a href="../../../one/empty3/feature/M.html#getCompNo--">getCompNo</a>, <a href="../../../one/empty3/feature/M.html#getIntensity-int-int-">getIntensity</a>, <a href="../../../one/empty3/feature/M.html#getOpValue-java.lang.String-double-double-">getOpValue</a>, <a href="../../../one/empty3/feature/M.html#getP-int-int-">getP</a>, <a href="../../../one/empty3/feature/M.html#getValues-int-int-">getValues</a>, <a href="../../../one/empty3/feature/M.html#getVector-int-double:A...-">getVector</a>, <a href="../../../one/empty3/feature/M.html#index-int-int-">index</a>, <a href="../../../one/empty3/feature/M.html#init-int-int-">init</a>, <a href="../../../one/empty3/feature/M.html#op-one.empty3.feature.M-java.lang.String-">op</a>, <a href="../../../one/empty3/feature/M.html#set-int-int-double-">set</a>, <a href="../../../one/empty3/feature/M.html#setCompNo-int-">setCompNo</a>, <a href="../../../one/empty3/feature/M.html#setP-int-int-one.empty3.library.Point3D-">setP</a>, <a href="../../../one/empty3/feature/M.html#setRegionCopy-one.empty3.feature.M3-int-int-int-int-int-int-one.empty3.feature.PixM-int-int-">setRegionCopy</a>, <a href="../../../one/empty3/feature/M.html#setRegionCopy-one.empty3.feature.PixM-int-int-int-int-one.empty3.feature.M3-int-int-int-int-">setRegionCopy</a>, <a href="../../../one/empty3/feature/M.html#setRegionCopy-one.empty3.feature.PixM-int-int-int-int-one.empty3.feature.PixM-int-int-">setRegionCopy</a>, <a href="../../../one/empty3/feature/M.html#setValues-int-int-double...-">setValues</a>, <a href="../../../one/empty3/feature/M.html#tild--">tild</a>, <a href="../../../one/empty3/feature/M.html#trace--">trace</a></code></li>
+<h3>Methods inherited from class&nbsp;one.empty3.io.<a href="../../../one/empty3/io/ProcessFile.html" title="class in one.empty3.io">ProcessFile</a></h3>
+<code><a href="../../../one/empty3/io/ProcessFile.html#getStackItem-int-">getStackItem</a>, <a href="../../../one/empty3/io/ProcessFile.html#process-java.io.File-java.io.File-">process</a>, <a href="../../../one/empty3/io/ProcessFile.html#setMaxRes-int-">setMaxRes</a>, <a href="../../../one/empty3/io/ProcessFile.html#setStack-java.util.List-">setStack</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -249,24 +202,13 @@ extends <a href="../../../one/empty3/feature/FilterPixM.html" title="class in on
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="DiffEnergy-int-int-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>DiffEnergy</h4>
-<pre>public&nbsp;DiffEnergy(int&nbsp;l,
-                  int&nbsp;c)</pre>
-</li>
-</ul>
-<a name="DiffEnergy-java.awt.image.BufferedImage-java.io.PrintWriter-">
+<a name="DiffEnergy--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DiffEnergy</h4>
-<pre>public&nbsp;DiffEnergy(java.awt.image.BufferedImage&nbsp;fo,
-                  java.io.PrintWriter&nbsp;printWriter)</pre>
+<pre>public&nbsp;DiffEnergy()</pre>
 </li>
 </ul>
 </li>
@@ -277,36 +219,23 @@ extends <a href="../../../one/empty3/feature/FilterPixM.html" title="class in on
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="init--">
+<a name="setPixMS-int-int-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>init</h4>
-<pre>public&nbsp;void&nbsp;init()</pre>
+<h4>setPixMS</h4>
+<pre>public&nbsp;void&nbsp;setPixMS(int&nbsp;img1,
+                     int&nbsp;img2)</pre>
 </li>
 </ul>
-<a name="filter-double-double-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>filter</h4>
-<pre>public&nbsp;double&nbsp;filter(double&nbsp;x,
-                     double&nbsp;y)</pre>
-<dl>
-<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../one/empty3/feature/FilterPixM.html#filter-double-double-">filter</a></code>&nbsp;in class&nbsp;<code><a href="../../../one/empty3/feature/FilterPixM.html" title="class in one.empty3.feature">FilterPixM</a></code></dd>
-</dl>
-</li>
-</ul>
-<a name="end-java.lang.String-">
+<a name="diffEnergy--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>end</h4>
-<pre>public&nbsp;void&nbsp;end(java.lang.String&nbsp;comment)</pre>
+<h4>diffEnergy</h4>
+<pre>public&nbsp;double&nbsp;diffEnergy()</pre>
 </li>
 </ul>
 </li>
@@ -362,7 +291,7 @@ extends <a href="../../../one/empty3/feature/FilterPixM.html" title="class in on
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.one.empty3.feature.FilterPixM">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.one.empty3.io.ProcessFile">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>

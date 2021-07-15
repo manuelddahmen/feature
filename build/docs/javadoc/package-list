@@ -2,6 +2,8 @@ one.empty3.feature
 one.empty3.feature.gui
 one.empty3.feature.kmeans
 one.empty3.feature.pio
+one.empty3.feature.selection
+one.empty3.feature.stack
 one.empty3.feature.violajonesclassifier
 one.empty3.io
 sample
