@@ -60,11 +60,11 @@ public class K_Clusterer extends ReadDataset {
         for (double[] coords : clusters.keySet()) {
             int numCluster = clusters.get(coords);
             int iter = 10000;
-            do {
+            
                 int r = 0;
 
 //System.out.println("Enter the no. of clusters");*/
-                k = 30;
+                k = 4;
 //System.out.println("Enter maximum iterations");
                 //System.out.println("Enter distance metric 1 or 2: \n1. Euclidean\n2. Manhattan");
                 int distance = 1;
@@ -140,7 +140,7 @@ public class K_Clusterer extends ReadDataset {
 		System.out.println("WCSS: "+wcss);
 		System.out.println("Press 1 if you want to continue else press 0 to exit..");
 		//ex=sc.nextInt();*/
-            } while (ex == 1 && iter < max_iterations);
+            
 
             result = coords;
         }
