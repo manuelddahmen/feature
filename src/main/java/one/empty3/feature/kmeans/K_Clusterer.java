@@ -39,19 +39,20 @@ public class K_Clusterer extends ReadDataset {
             //Scanner sc = new Scanner(System.in);
             //System.out.println("Enter the filename with path");
             String file = args[1];
+            r1.features.clear();
             r1.read(file); //load data
 
 
             Map<double[], Integer> clusters = new HashMap<>();
             Map<Integer, double[]> centroids = new HashMap<>();
 
-            int max_iterations = 100*pix.getColumns()*pix.getLines();
+            int max_iterations = 100 * pix.getColumns() * pix.getLines();
 //System.out
 
             int ex = 0;
             double[] result = null;
             do {
-                        ex++;
+                ex++;
                 for (double[] coords : clusters.keySet()) {
                     int numCluster = clusters.get(coords);
                     int r = 0;
@@ -76,7 +77,6 @@ public class K_Clusterer extends ReadDataset {
                             for (double[] key : clusters.keySet()) {
                                 if (clusters.get(key) == j) {
                                     list.add(key);
-                                    ex++;
                                 }
                             }
                             db = centroidCalculator(list);
@@ -84,29 +84,26 @@ public class K_Clusterer extends ReadDataset {
 
 
                         }
-                        clusters.clear();
-                        clusters = kmeans(features, distance, centroids, k);
-
-                    }
-
-                    //final cluster print
-                    System.out.println("\nFinal Clustering of Data");
-                    System.out.println("Feature1\tFeature2\tFeature3\tFeature4\tCluster");
-
-                    //Calculate WCSS
-                    double wcss = 0;
-
-                    for (int i = 0; i < k; i++) {
-                        double sse = 0;
-                        for (double[] key : clusters.keySet()) {
-                            if (clusters.get(key) == i) {
-                                sse += Math.pow(Distance.eucledianDistance(key, centroids.get(i)), 2);
-                            }
-                        }
-                        wcss += sse;
                     }
                 }
-            } while (ex < max_iterations);
+                clusters.clear();
+                clusters = kmeans(features, 1, centroids, k);
+
+
+
+                //Calculate WCSS
+                double wcss = 0;
+
+                for (int i = 0; i < k; i++) {
+                    double sse = 0;
+                    for (double[] key : clusters.keySet()) {
+                        if (clusters.get(key) == i) {
+                            sse += Math.pow(Distance.eucledianDistance(key, centroids.get(i)), 2);
+                        }
+                    }
+                    wcss += sse;
+                }
+            } while (ex < 1000);
 
             double[] cs = new double[]{1.0, 1.0, 0.0};
             clusters.forEach(new BiConsumer<double[], Integer>() {
@@ -124,11 +121,13 @@ public class K_Clusterer extends ReadDataset {
                 }
             });
             ImageIO.write(pix2.normalize(0.0, 1.0).getImage(), "jpg", out);
+
+            return;
         } catch (Exception ex1) {
             ex1.printStackTrace();
             return;
         }
-        return;
+
     }
 
     //method to calculate centroids
