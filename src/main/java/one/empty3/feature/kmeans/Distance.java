@@ -28,7 +28,7 @@ public class Distance {
 
         }
         double k = 0.05;
-        for (int i = 0; i < 2; i++) {
+        /*for (int i = 0; i < 2; i++) {
             double comp = Math.exp(-(point1[i] - point2[i]) * (point1[i] - point2[i]));
             if (Double.isNaN(comp)
                     || Double.isInfinite(comp))
@@ -38,6 +38,12 @@ public class Distance {
 
         for (int i = 2; i < 5; i++) {
             sumColor += ((point1[i] - point2[i]) * (point1[i] - point2[i]));
+        }*/
+        sumSpace = 0.0;
+        for (int i = 0; i < 2; i++) {
+            //double comp = Math.exp(-(point1[i] - point2[i]) * (point1[i] - point2[i]));
+            double comp =(point1[i] - point2[i]) * (point1[i] - point2[i]);
+            sumSpace += comp;
         }
         return Math.sqrt(sumSpace * sumColor);
     }

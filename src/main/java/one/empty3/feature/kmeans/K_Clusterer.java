@@ -168,15 +168,15 @@ public class K_Clusterer extends ReadDataset {
         for (double[] x : features) {
             double minimum = 999999.0;
             for (int j = 0; j < k; j++) {
-                if (distance == 1) {
-                    dist = Distance.eucledianDistance(centroids.get(j), x);
-                } else if (distance == 2) {
+                //if (distance == 1) {
+                dist = Distance.eucledianDistance(centroids.get(j), x);
+                /*} else if (distance == 2) {
                     dist = Distance.manhattanDistance(centroids.get(j), x);
-                }
-                if (dist < minimum) {
+                }*/
+                /*if (dist < minimum) {
                     minimum = dist;
                     k1 = j;
-                }
+                }*/
 
             }
             clusters.put(x, k1);
