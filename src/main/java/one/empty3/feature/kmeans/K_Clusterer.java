@@ -22,7 +22,7 @@ public class K_Clusterer extends ReadDataset {
     }
 
     //main method
-    public static void main(String args[], int res) throws IOException {
+    public void main(String args[], int res) throws IOException {
 
         final PixM pix;
         try {
@@ -36,7 +36,6 @@ public class K_Clusterer extends ReadDataset {
             );
             File out = new File(args[2]);
             ReadDataset r1 = new ReadDataset();
-            r1.features.clear();
             //Scanner sc = new Scanner(System.in);
             //System.out.println("Enter the filename with path");
             String file = args[1];
@@ -133,7 +132,7 @@ public class K_Clusterer extends ReadDataset {
     }
 
     //method to calculate centroids
-    public static double[] centroidCalculator(List<double[]> a) {
+    public double[] centroidCalculator(List<double[]> a) {
 
         int count = 0;
         double x[] = new double[5];
@@ -161,7 +160,7 @@ public class K_Clusterer extends ReadDataset {
     }
 
     //method for putting features to clusters and reassignment of clusters.
-    public static Map<double[], Integer> kmeans(List<double[]> features, int distance, Map<Integer, double[]> centroids, int k) {
+    public Map<double[], Integer> kmeans(List<double[]> features, int distance, Map<Integer, double[]> centroids, int k) {
         Map<double[], Integer> clusters = new HashMap<>();
         int k1 = 0;
         double dist = 0.0;

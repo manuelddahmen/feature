@@ -16,10 +16,10 @@ public class KMeans extends ProcessFile {
             new MakeDataset(in,
                     new File(out.getAbsolutePath() + ".csv"), -1);
 
-            K_Clusterer.main(new String[]{
+            new K_Clusterer().main(new String[]{
                             in.getAbsolutePath(),
                             out.getAbsolutePath() + ".csv", out.getAbsolutePath()
-                    }, -1
+                    }, maxRes
             );
 
         } catch (Exception ex) {
