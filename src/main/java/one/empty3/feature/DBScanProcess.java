@@ -93,7 +93,7 @@ public class DBScanProcess extends ProcessFile {
             K_Clusterer.main(new String[]{
                             in.getAbsolutePath(),
                             out.getAbsolutePath() + ".csv", out.getAbsolutePath()
-                    }, -1
+                    }, maxRes
             );
 
         } catch (Exception ex) {
