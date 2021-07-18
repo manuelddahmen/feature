@@ -50,52 +50,39 @@ public class K_Clusterer extends ReadDataset {
 
             k = 4;
 
-            Random random = new Random();
-            for(int i = 0; i<k; i++) {
-                centroids.put(i, new double [] {
-                        random.nextDouble()*pix.getColumns()-1,
-                        random.nextDouble()*pix.getLines()-1,
-                        0, 0, 0
+            int r =0;
+            for (int i = 0; i < k; i++) {
 
-                });
+                double[] x1 = features.get(r++);
+                centroids.put(i, x1);
+
             }
+            clusters = kmeans(1, centroids, k);
+            int max_iterations = 10000;
+            double db[] = new double[numberOfFeatures];
 
-            do {
-                ex++;
-                for (double[] coords : clusters.keySet()) {
-                    int r = 0;
-                    int distance = 1;
-                    double[] x1;
-
-                    for (int i = 0; i < k; i++) {
-                        x1 = features.get(++r);
-                        centroids.put(i, x1);
-                    }
-                    clusters = kmeans(distance, centroids, k);
-                    double db[];
+            for(int i = 0; i<max_iterations; i++) {
                     //reassigning to new clusters
-                    for (int j = 0; j < k; j++) {
-                        List<double[]> list = new ArrayList<>();
-                        for (double[] key : clusters.keySet()) {
-                            if (clusters.get(key) == j) {
-                                list.add(key);
-                            }
+                for (int j = 0; j < k; j++) {
+                    List<double[]> list = new ArrayList<>();
+                    for (double[] key : clusters.keySet()) {
+                        if (clusters.get(key)==j) {
+                            list.add(key);
+//					for(int x=0;x<key.length;x++){
+//						System.out.print(key[x]+", ");
+//						}
+//					System.out.println();
                         }
-                        db = centroidCalculator(j, list);
-                        centroids.put(j, db);
-
-
                     }
+                    db = centroidCalculator(j, list);
+                    centroids.put(j, db);
 
                 }
                 clusters.clear();
                 clusters = kmeans(1, centroids, k);
 
-            } while (ex < 10);
-
-            //Calculate WCSS
-            double wcss = 0;
-
+            }
+            double wcss = 0.0;
             for (int i = 0; i < k; i++) {
                 double sse = 0;
                 for (double[] key : clusters.keySet()) {
@@ -107,12 +94,12 @@ public class K_Clusterer extends ReadDataset {
             }
 
             double[] cs = new double[]{1.0, 1.0, 0.0};
-            clusters.forEach((doubles, integer) -> centroids.forEach((i, db) -> {
+            clusters.forEach((doubles, integer) -> centroids.forEach((i, db1) -> {
                 for (int j1 = 0; j1 < 3; j1++) {
                     pix2.setCompNo(j1);
-                    pix2.setValues((int) (float) (db[0]),
-                            (int) (float) (db[1]),
-                            db[2], db[3], db[4]);
+                    pix2.setValues((int) (float) (db1[0]),
+                            (int) (float) (db1[1]),
+                            db1[2], db1[3], db1[4]);
                 }
 
             }));
@@ -130,57 +117,45 @@ public class K_Clusterer extends ReadDataset {
     public double[] centroidCalculator(int id, List<double[]> a) {
 
         int count = 0;
-        double x[] = new double[5];
-        double[] a2 = new double[5];
-        double[] centroids = new double[5];
-        for (int i = 0; i < a.size(); i++) {
+        //double x[] = new double[ReadDataset.numberOfFeatures];
+        double sum=0.0;
+        double[] centroids = new double[ReadDataset.numberOfFeatures];
+        for (int i = 0; i < ReadDataset.numberOfFeatures; i++) {
+            sum=0.0;
             count = 0;
-
-            for (int j = 0; j < 3; j++) {
-
-                centroids[j] += a.get(i)[j];
-                a2[j] += 1;
-
+            for(double[] x:a){
+                count++;
+                sum = sum + x[i];
             }
-
+            centroids[i] = sum / count;
         }
-
-
-        for (int j = 0; j < 5; j++) {
-            centroids[j] /= a2[j];
-        }
-
         return centroids;
-
     }
 
     //method for putting features to clusters and reassignment of clusters.
     public Map<double[], Integer> kmeans(int distance, Map<Integer, double[]> centroids, int k) {
         Map<double[], Integer> clusters = new HashMap<>();
-        double dist = 0.0;
-        for (double[] x : features) {
-            if(x.length!=5)
-                System.out.println("Error kmeans");
-            int k1 = -1;
+        int k1 = 0;
+        double dist=0.0;
+        for(double[] x:features) {
             double minimum = 999999.0;
             for (int j = 0; j < k; j++) {
-                //if (distance == 1) {
-                dist = Distance.eucledianDistance(centroids.get(j), x);
-                /*} else if (distance == 2) {
+                if(distance==1){
+                    dist = Distance.eucledianDistance(centroids.get(j), x);
+                }
+                else if(distance==2){
                     dist = Distance.manhattanDistance(centroids.get(j), x);
-                }*/
+                }
                 if (dist < minimum) {
                     minimum = dist;
                     k1 = j;
                 }
 
             }
-            if(k1>=0)
-                clusters.put(x, k1);
+            clusters.put(x, k1);
         }
 
         return clusters;
-
     }
 
 }
