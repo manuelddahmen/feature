@@ -22,7 +22,7 @@ import java.util.Scanner;
 public class ReadDataset {
 
     public List<double[]> features = new ArrayList<>();
-    public static int numberOfFeatures;
+    public static int numberOfFeatures = 5;
 
     public List<double[]> getFeatures() {
         return features;
@@ -43,10 +43,12 @@ public class ReadDataset {
 
                 for (i = 0; i < split.length; i++)
                     feature[i] = Double.parseDouble(split[i]);
-                numberOfFeatures = split.length;
-                features.add(feature);
+
+                if(feature.length==5)
+                    features.add(feature);
 
             }
+            readFile.close();
 
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block

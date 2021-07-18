@@ -40,7 +40,7 @@ public class Distance {
             sumColor += ((point1[i] - point2[i]) * (point1[i] - point2[i]));
         }*/
         sumSpace = 0.0;
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             //double comp = Math.exp(-(point1[i] - point2[i]) * (point1[i] - point2[i]));
             double comp =(point1[i] - point2[i]) * (point1[i] - point2[i]);
             sumSpace += comp;
