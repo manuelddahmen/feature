@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 
 public class DBScanProcess extends ProcessFile {
     public List<double[]> ns(List<double[]> points, double eps, double[] ps) {
-        List<double[]> n = new ArrayList();
+        List<double[]> n = new ArrayList<>();
         for (double[] p : points) {
             if (distance(p, ps) < eps) {
                 n.add(p);
@@ -23,8 +23,8 @@ public class DBScanProcess extends ProcessFile {
 
     List<double[]> points;
     double[] size;
-    HashMap<Integer, List<double[]>> clusters = new HashMap();
-    HashMap<double[], Integer> centroids = new HashMap();
+    HashMap<Integer, List<double[]>> clusters = new HashMap<>();
+    HashMap<double[], Integer> centroids = new HashMap<>();
     int pointsMax = 10000;
     double eps = 1.0;
     int minPts;

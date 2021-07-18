@@ -44,7 +44,6 @@ public class ReadDataset {
                 for (i = 0; i < split.length; i++)
                     feature[i] = Double.parseDouble(split[i]);
                 numberOfFeatures = split.length;
-
                 features.add(feature);
 
             }

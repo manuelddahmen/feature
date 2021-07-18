@@ -16,7 +16,8 @@ public class KMeans extends ProcessFile {
             new MakeDataset(in,
                     new File(out.getAbsolutePath() + ".csv"), -1);
 
-            new K_Clusterer().main(new String[]{
+            K_Clusterer k_clusterer = new K_Clusterer();
+            k_clusterer.main(new String[]{
                             in.getAbsolutePath(),
                             out.getAbsolutePath() + ".csv", out.getAbsolutePath()
                     }, maxRes
